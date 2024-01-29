@@ -1,0 +1,54 @@
+import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import dotenv from "dotenv";
+
+export class LoginPage {
+    readonly page: Page;
+    readonly userNameOrEmailInputField: Locator;
+    readonly passwordInputField: Locator;
+
+    readonly signinButton: Locator;
+
+
+    constructor(page: Page) {
+        this.page = page;
+        this.userNameOrEmailInputField = page.locator('input[title="Email or Username"]');
+        this.passwordInputField = page.locator('input[title="Password"]');
+        this.signinButton = page.locator('span[title="Sign in"]');
+    }
+
+    async gotoLoginPage(url: string) {
+        await this.page.goto(process.env.URL as string || url);
+        await this.page.waitForLoadState('networkidle');
+    }
+
+    async loginToApplication(superUser: string, password: string) {
+        await this.userNameOrEmailInputField.fill(superUser);
+        await this.passwordInputField.fill(password);
+        //  await this.rememberMeCheckbox.click();
+        await this.signinButton.click();
+    }
+
+    async enterLoginDetails(superUser: string, companyName: string, password: string) {
+        await this.userNameOrEmailInputField.fill(superUser);
+        await this.passwordInputField.fill(password);
+        //  await this.rememberMeCheckbox.click();
+    }
+    async enterEmailId(emailID: string) {
+        await this.userNameOrEmailInputField.fill(emailID);
+    }
+
+    async clickOnSigninButton() {
+        await this.signinButton.click();
+        await this.page.waitForLoadState('networkidle');
+    }
+    /**
+     * This function is used to verify the current page title
+     * @param expectedPageTitle - the title youwant to verify
+     */
+    async verifyPageTitle(expectedPageTitle: string) {
+        await this.page.waitForTimeout(10000);
+        await this.page.waitForLoadState('networkidle');
+        const actualPageTitle = await this.page.title();
+        expect(actualPageTitle).toBe(expectedPageTitle);
+    }
+}

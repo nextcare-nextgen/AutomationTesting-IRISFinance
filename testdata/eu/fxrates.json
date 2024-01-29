@@ -1,0 +1,20 @@
+{
+    "TC_000_FX_Rates": {
+        "breadcrumbsText": "FX Rates"
+    },
+
+    "TC_002_FX_Rates": {
+        "dashboardText": "Dashboard"
+    },
+
+    "TC_028_FX_Rates": {
+        "fromCurrency": "UAE"
+    },
+
+    "TC_031_FX_Rates": {
+        "rate": "1.04"
+    },
+    "TC_034_FX_Rates": {
+        "title": "Records per page:"
+    }
+}

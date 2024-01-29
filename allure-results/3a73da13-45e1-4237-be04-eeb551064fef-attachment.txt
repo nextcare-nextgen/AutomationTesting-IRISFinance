@@ -1,0 +1,3 @@
+currency first:0
+currency first:1
+2

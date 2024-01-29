@@ -1,0 +1,43 @@
+{
+    "TC_000_Policies": {
+        "breadcrumbsText": "Policies"
+    },
+    "TC_002_Policies": {
+        "dashboardText": "Dashboard"
+    },
+    "TC_005_Policies": {
+        "policiesText": "Policies"
+    },
+    "TC_008_Policies": {
+        "fromDate": "01 Jan 2024",
+        "toDate": "08 Jan 2024"
+    },
+    "TC_013_Policies": {
+        "fromDate": "01 Jan 2024",
+        "toDate": "08 Jan 2024"
+    },
+    "TC_020_Policies": {
+        "organization": "2024",
+        "policyRef": "MH-AWPDE-3673-NB"
+    },
+    "TC_021_Policies": {
+        "organization": "2024",
+        "policyId": "73581537"
+    },
+    "TC_022_Policies": {
+        "organization": "2024",
+        "policyHolderName": "Rami Zaklit"
+    },
+    "TC_025_Policies": {
+        "policyJournalVochereText": "Policy Journal Voucher",
+        "organization": "2024"
+    },
+    "TC_030_Policies": {
+        "organization": "2024"
+    },
+    "TC_034_Policies": {
+        "fromDate": "01 Jan 2027",
+        "organization": "2024",
+        "errorText": "Exceeded maximum value"
+    }
+}

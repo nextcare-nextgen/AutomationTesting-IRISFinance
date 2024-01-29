@@ -1,0 +1,425 @@
+import { Keyboard, Locator, Page, expect } from "@playwright/test";
+
+export class PoliciesPage {
+    readonly page: Page;
+
+    readonly policiesShortcut: Locator;
+    readonly breadCrumbs: Locator;
+    readonly dashboard: Locator;
+    readonly policiesText: Locator;
+    readonly fromDate: Locator;
+    readonly toDate: Locator;
+    readonly search: Locator;
+    readonly advancedSearch: Locator;
+    readonly reset: Locator;
+    readonly policyId: Locator;
+    readonly reference: Locator;
+    readonly holderName: Locator;
+    readonly startDate: Locator;
+    readonly endDate: Locator;
+    readonly brokerName: Locator;
+    readonly policyRef: Locator;
+    readonly advancedSearchPolicyId: Locator;
+    readonly policyHolderName: Locator;
+    readonly applybutton: Locator;
+    readonly policyJournalVochereyeicon: Locator;
+    readonly policyJournalVochereText: Locator;
+    readonly policyJournalVoucherList: Locator;
+    readonly policyJournalVoucherDtailsList: Locator;
+    readonly voucherNumber: Locator;
+    readonly voucherType: Locator;
+    readonly voucherRef: Locator;
+    readonly voucherDate: Locator;
+    readonly validated: Locator;
+    readonly validationDate: Locator;
+    readonly account: Locator;
+    readonly description: Locator;
+    readonly currency: Locator;
+    readonly amount: Locator;
+    readonly amountCV1EUR: Locator;
+    readonly amountCV2EUR: Locator;
+    readonly credit_debit: Locator;
+    readonly valuedDate: Locator;
+    readonly recordPerPage: Locator;
+    readonly errorText: Locator;
+    readonly orgShortcut: Locator;
+    readonly threedotsfromOrg: Locator;
+    readonly editOrganization: Locator;
+
+
+
+
+
+    constructor(page: Page) {
+        this.page = page;
+        this.policiesShortcut = page.locator('//div//span[@title="Policies"]');
+        this.breadCrumbs = page.locator('//iris-breadcrumb//li//iris-navigation-hyperlink');
+        this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
+        this.policiesText = page.locator('//div//h1[@title="Policies"]');
+        this.fromDate = page.locator('//input[@title="From Date"]');
+        this.toDate = page.locator('//input[@title="To Date"]');
+        this.search = page.locator('//div//button[@title="Search"]');
+        this.advancedSearch = page.locator('//div//button[@title="Filter"]');
+        this.reset = page.locator('//div//button[@title="Reset"]');
+        this.policyId = page.locator('//iris-base-label//small[@title="Policy Id"]');
+        this.reference = page.locator('//iris-base-label//small[@title="Reference"]');
+        this.holderName = page.locator('//iris-base-label//small[@title="Holder Name"]');
+        this.startDate = page.locator('//iris-base-label//small[@title="Start Date"]');
+        this.endDate = page.locator('//iris-base-label//small[@title="End Date"]');
+        this.brokerName = page.locator('//iris-base-label//small[@title="Broker Name"]');
+        this.policyRef = page.locator('//div//input[@title="Policy Reference"]');
+        this.advancedSearchPolicyId = page.locator('//div//input[@title="Policy Id"]');
+        this.policyHolderName = page.locator('//div//input[@title="Policy Holder Name"]');
+        this.applybutton = page.locator('//div//button[@title="Apply"]');
+        this.policyJournalVochereyeicon = page.locator('//button[@title="View Policy Journal Voucher"]');
+        this.policyJournalVochereText = page.locator('//div//h1[@title="Policy Journal Voucher"]');
+        this.policyJournalVoucherList = page.locator('//mat-table[@id="policyJournalVoucherList"]');
+        this.policyJournalVoucherDtailsList = page.locator('//mat-table[@id="policyJournalVoucherDtailsList"]');
+        this.voucherNumber = page.locator('//div//small[text()="Voucher number"]');
+        this.voucherType = page.locator('//div//small[text()="Voucher Type"]');
+        this.voucherRef = page.locator('//div//small[text()="Voucher Reference"]');
+        this.voucherDate = page.locator('//div//small[text()="Voucher Date"]');
+        this.validated = page.locator('//div//small[text()="Validated"]');
+        this.validationDate = page.locator('//div//small[text()="Validation Date"]');
+        this.account = page.locator('//div//small[text()="Account"]');
+        this.description = page.locator('//div//small[text()="Description"]');
+        this.currency = page.locator('//div//small[text()="Currency"]');
+        this.amount = page.locator('//div//small[text()="Amount"]');
+        this.amountCV1EUR = page.locator('//div//small[text()="Amount CV1 (EUR)"]');
+        this.amountCV2EUR = page.locator('//div//small[text()="Amount CV2 (EUR)"]');
+        this.credit_debit = page.locator('//div//small[text()="Credit/Debit"]');
+        this.valuedDate = page.locator('//div//small[text()="Value Date"]');
+        this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
+        this.errorText = page.locator('//mat-label[text()="Exceeded maximum value"]');
+        this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
+        this.threedotsfromOrg = page.locator('//mat-cell[contains(@class,"table-button-cell")]//button//mat-icon');
+        this.editOrganization = page.locator('//span[@title="Edit Organization"]');
+
+    }
+
+
+    async verifyBreadCrumbsText(data: string) {
+        await expect(this.breadCrumbs).toHaveText(data);
+    }
+
+    async clickOnPoliciesShrtcutsButton() {
+        // await this.policiesShortcut.click();
+        await this.policiesShortcut.first().click();
+    }
+
+    async clickOnOrganizationShrtcutsButton() {
+        // await this.policiesShortcut.click();
+        await this.orgShortcut.last().click();
+    }
+
+    async verifyDashboardText(data: string) {
+        await expect(this.dashboard).toHaveText(data);
+    }
+
+
+    async clickOnPolicisShrtcutsButton() {
+        await this.policiesShortcut.click();
+    }
+
+    async verifyPolicisShortcutButton() {
+        expect(this.policiesShortcut).toBeVisible;
+
+    }
+
+    async verifyPoliciesText(data: string) {
+        await expect(this.policiesText).toHaveText(data);
+    }
+
+    async verifyTextisinBold(text: string) {
+
+        function selectionIsBold() {
+            var isBold = false;
+            // if () {
+            //     isBold = document.queryCommandState("bold");
+            // }
+            return isBold;
+        }
+    }
+
+    async verifyFromDate() {
+        await expect(this.fromDate).toBeVisible;
+    }
+
+    async verifyToDate() {
+        await expect(this.toDate).toBeVisible;
+    }
+
+    async enterValidFromDate(fromDate: string) {
+        await this.fromDate.clear();
+        await this.fromDate.fill(fromDate);
+    }
+
+    async enterinValidFromDate(fromDates: string, errorText: string) {
+        await this.fromDate.clear();
+        await this.fromDate.fill(fromDates);
+        this.page.keyboard.press("Enter")
+        await expect(this.errorText).toHaveText(errorText);
+
+    }
+
+    async enterValidToDate(ToDate: string) {
+        await this.fromDate.clear();
+        await this.fromDate.fill(ToDate);
+    }
+
+    async verifySearch() {
+        await expect(this.search).toBeVisible;
+    }
+
+    async verifyAdvancedSearch() {
+        await expect(this.advancedSearch).toBeVisible;
+    }
+
+    async verifyReset() {
+        await expect(this.reset).toBeVisible;
+    }
+
+    async verifyGridColumn() {
+        await expect(this.policyId).toBeVisible;
+        await expect(this.reference).toBeVisible;
+        await expect(this.holderName).toBeVisible;
+        await expect(this.startDate).toBeVisible;
+        await expect(this.endDate).toBeVisible;
+        await expect(this.brokerName).toBeVisible;
+    }
+
+    async clickOnSerach() {
+        await this.search.click();
+    }
+
+    async clickOnReset() {
+        await this.reset.click();
+    }
+
+    async VerifyStartDateFromGrid() {
+
+        let startdatevalue = await this.page.locator("//mat-cell[contains(@class,'policyStartDate')]").all();
+        console.log(startdatevalue);
+
+        for (let i = 0; i < startdatevalue.length; i++) {
+
+            console.log(startdatevalue[i].allTextContents);
+        }
+    }
+
+
+    async verifySearchResultFromDate() {
+
+        const pendingReasonLocator = this.page.locator('//mat-cell[contains(@class,"policyStartDate")]');
+
+        for (let index = 0; index < await pendingReasonLocator.count(); index++) {
+            expect(await pendingReasonLocator.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await pendingReasonLocator.count());
+    }
+
+
+    async clickOnAdvancedSerach() {
+        await this.advancedSearch.click();
+    }
+
+    async verifyPolicyReference() {
+        await expect(this.policyRef).toBeVisible;
+    }
+
+    async verifyPolicyId() {
+        await expect(this.policyId).toBeVisible;
+    }
+
+    async verifyPolicyHolderName() {
+        await expect(this.policyHolderName).toBeVisible;
+    }
+
+    async verifyApplyButton() {
+        await expect(this.applybutton).toBeVisible;
+    }
+
+    async verifyPolicyJournalVochereyeiconButton() {
+        await expect(this.policyJournalVochereyeicon).toBeVisible;
+    }
+
+    async clickOnPolicyJournalVochereyeiconButton() {
+        await this.policyJournalVochereyeicon.click();
+    }
+
+    async verifyPolicyJournalVocherTitle(data: string) {
+        await expect(this.policyJournalVochereText).toHaveText(data);
+    }
+
+    async clickOnViewJournalVoucherEyeIcon() {
+
+        let eyeIcons = this.page.locator('//button[@title="View Policy Journal Voucher"]');
+        await eyeIcons.first().click();
+
+        // await eyeIcons.nth(5).click();
+        // for (let index = 0; index < await eyeIcons.count(); index++) {
+
+        //    await eyeIcons[index].click;
+        //     break;
+        // }
+
+    }
+
+    async verifyPolicyJournalVoucherListSection() {
+        await expect(this.policyJournalVoucherList).toBeVisible;
+    }
+
+    async verifyPolicyJournalVoucherDtailsListSection() {
+        await expect(this.policyJournalVochereyeicon).toBeVisible;
+    }
+
+    async enterPolicyReference(policyRef: string) {
+        await this.policyRef.fill(policyRef);
+
+    }
+
+    async enterPolicyId(policyId: string) {
+        await this.advancedSearchPolicyId.fill(policyId);
+
+    }
+
+    async enterPolicyHolderName(policyHolderName: string) {
+        await this.policyHolderName.fill(policyHolderName);
+
+    }
+
+    async clickOnApplyButton() {
+        await this.applybutton.click();
+    }
+
+    async verifySearchResultPolicyRef() {
+
+        const policyRef = this.page.locator('//mat-cell[contains(@class,"policyReference")]');
+        expect(await policyRef).toBeVisible;
+    }
+
+    async verifySearchResultPolicyId() {
+
+        const policyID = this.page.locator('//mat-cell[contains(@class,"policyId")]');
+        expect(await policyID).toBeVisible;
+
+    }
+
+    async verifySearchResultPolicyHolderName() {
+
+        const policyHolderName = this.page.locator('//mat-cell[contains(@class,"policyHolderName")]');
+        for (let index = 0; index < await policyHolderName.count(); index++) {
+            expect(await policyHolderName.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await policyHolderName.count());
+    }
+
+
+    async verifyPolicyJournalVoucherFirstSectionGridColumn() {
+        await expect(this.voucherNumber).toBeVisible;
+        await expect(this.voucherType).toBeVisible;
+        await expect(this.voucherRef).toBeVisible;
+        await expect(this.voucherDate).toBeVisible;
+        await expect(this.validated).toBeVisible;
+        await expect(this.validationDate).toBeVisible;
+    }
+
+    async verifyPolicyJournalVoucherSecondSectionGridColumn() {
+        await expect(this.account).toBeVisible;
+        await expect(this.description).toBeVisible;
+        await expect(this.currency).toBeVisible;
+        await expect(this.amount).toBeVisible;
+        await expect(this.amountCV1EUR).toBeVisible;
+        await expect(this.amountCV2EUR).toBeVisible;
+        await expect(this.valuedDate).toBeVisible;
+    }
+
+
+    async clickOnVoucherRef() {
+        let vocherRefs = this.page.locator('//mat-cell[contains(@class,"voucherReference")]');
+        await vocherRefs.first().click();
+
+    }
+
+    async verifyAccountRecordsFromSecondGrid() {
+
+        const account = this.page.locator('//mat-cell[contains(@class,"accountName")]');
+
+        for (let index = 0; index < await account.count(); index++) {
+            expect(await account.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await account.count());
+    }
+
+    async verifyRecordsPerPageTitle() {
+
+        const recordsPerPageTitle = this.page.locator('//div[text()=" Records per page: "]');
+
+        for (let index = 0; index < await recordsPerPageTitle.count(); index++) {
+            expect(await recordsPerPageTitle.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await recordsPerPageTitle.count());
+    }
+
+    async clickOnRecordsPerPageDropdown(data: string[]) {
+        const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        recordsPerPagedropdown.first().click();
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+    }
+
+
+    async verifyCurrencyRecordsFromSecondGrid() {
+
+        const account = this.page.locator('//mat-cell[contains(@class,"currencyCode")]');
+
+        for (let index = 0; index < await account.count(); index++) {
+            //expect(await account.nth(index).innerText()).toBeTruthy();
+            const currency = await account.nth(index).innerText();
+            console.log("currency first:" + currency);
+
+        }
+        console.log(await account.count());
+    }
+
+    async clickonthreedotsfromOrg() {
+        this.threedotsfromOrg.first().click();
+
+    }
+
+    async clickOnEditOrganization() {
+        this.editOrganization.click();
+    }
+
+    async verifyCurrencyFromOrganization() {
+
+        const currency = this.page.locator('//iris-currency-autocomplete//div//input');
+
+        for (let index = 0; index < await currency.count(); index++) {
+            //expect(await account.nth(index).innerText()).toBeTruthy();
+            const currencies = await currency.nth(index).innerText();
+            console.log("currency CV:" + currencies);
+
+        }
+    }
+
+
+    async verifyAmountEqulestoCV() {
+
+        const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
+        const amountcv1 = this.page.locator('//mat-cell[contains(@class,"amountCV1")]');
+        // const amountcv2 = this.page.locator('//mat-cell[contains(@class,"amountCV2")]');
+
+        for (let index = 0; index < await amount.count() || await amountcv1.count(); index++) {
+            //const amountcv1 = this.page.locator('//mat-cell[contains(@class,"amountCV1")]');
+            expect(await amount.nth(index).innerText()).toEqual(amountcv1.nth(index).innerText());
+
+
+        }
+        //console.log(await account.count());
+    }
+
+}
