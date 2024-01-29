@@ -1453,14 +1453,14 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
     })
 
     await test.step("User Enter From Date", async () => {
-        await page.pause();
+     
         await policiesPage.enterinValidFromDate(policiesData['TC_034_Policies'].fromDate, policiesData['TC_034_Policies'].errorText);
-        await page.pause();
+      
 
     })
 })
 
-test('TC_035_Policies_Verify that Any journal created under a policy can be viewed when clicked on the detail button for the respective policy', async ({ page }) => {
+test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a policy can be viewed when clicked on the detail button for the respective policy', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1513,7 +1513,7 @@ test('TC_035_Policies_Verify that Any journal created under a policy can be view
 })
 
 
-test('TC_036_Policies_Verify that the values in Amount CV1 CV2 varies based on the selected currencies defined in the respective organization', async ({ page }) => {
+test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 varies based on the selected currencies defined in the respective organization', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1594,7 +1594,7 @@ test('TC_036_Policies_Verify that the values in Amount CV1 CV2 varies based on t
 })
 
 
-test('TC_037_Policies_Verify that the Amount column displays the Total of debit amount column from grid', async ({ page }) => {
+test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the Total of debit amount column from grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);

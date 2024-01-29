@@ -34,7 +34,7 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
     })
     await test.step("Verify Breadcrumbs Text", async () => {
         await journalVoucherLookupPage.verifyBreadCrumbsText(JournalVoucherLookupPageData['TC_000_Journal_Voucher_Lookup'].breadcrumbsText);
-       
+
     })
 
 });
@@ -103,9 +103,9 @@ test('NXGF-TC-2009: TC_003_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("Verified that the User is able to See Journal Voucher Shortcut Button", async () => {
-        await page.pause();
+
         await journalVoucherLookupPage.verifyJournalVoucherShortcutButton();
-        await page.pause();
+
     })
 
 });

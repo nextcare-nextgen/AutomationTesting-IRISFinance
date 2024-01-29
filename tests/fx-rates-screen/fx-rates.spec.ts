@@ -26,7 +26,7 @@ test('TC_001_Login_Access_VerifyUserIsAbleToAccessIRIS MAWISTA Portal', async ({
 
 });
 
-test('TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
   
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -45,7 +45,7 @@ test('TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ pag
 
 });
 
-test('TC_001_FX_Rates_Verify that the user is able to navigate to main menu', async ({ page }) => {
+test('NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to main menu', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -62,7 +62,7 @@ test('TC_001_FX_Rates_Verify that the user is able to navigate to main menu', as
 
 });
 
-test('TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login', async ({ page }) => {
+test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -79,7 +79,7 @@ test('TC_002_FX_Rates_Verify that the user is able to land on the dashboard page
 });
 
 
-test('TC_003_FX_Rates_Verify that FX Rates shortcut buttons are clickable', async ({ page }) => {
+test('NXGF-TC-1875: TC_003_FX_Rates_Verify that FX Rates shortcut buttons are clickable', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -98,7 +98,7 @@ test('TC_003_FX_Rates_Verify that FX Rates shortcut buttons are clickable', asyn
 });
 
 
-test('TC_004_FX_Rates_Verify that the user is able to see FX Rates shortcut menu button in the main menu page', async ({ page }) => {
+test('NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates shortcut menu button in the main menu page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -119,7 +119,7 @@ test('TC_004_FX_Rates_Verify that the user is able to see FX Rates shortcut menu
 
 
 
-test('TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select From Currency from dropdown', async ({ page }) => {
+test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select From Currency from dropdown', async ({ page }) => {
   
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -141,7 +141,7 @@ test('TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select
 
 });
 
-test('TC_031_FX_Rates_Add new FX Rates_Verify that user should be able to Enter Rate', async ({ page }) => {
+test('NXGF-TC-1902: TC_031_FX_Rates_Add new FX Rates_Verify that user should be able to Enter Rate', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -161,7 +161,7 @@ test('TC_031_FX_Rates_Add new FX Rates_Verify that user should be able to Enter 
 
 });
 
-test('TC_033_FX_Rates_Add new FX Rates_Verify that user should able to click on Close button', async ({ page }) => {
+test('NXGF-TC-1904: TC_033_FX_Rates_Add new FX Rates_Verify that user should able to click on Close button', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -180,7 +180,7 @@ test('TC_033_FX_Rates_Add new FX Rates_Verify that user should able to click on 
    
 });
 
-test('TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed', async ({ page }) => {
+test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -198,7 +198,7 @@ test('TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title sh
   
 });
 
-test('TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
+test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
 
     const countValues = [ " 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 " ];
     const loginPage: LoginPage = new LoginPage(page);
@@ -218,7 +218,7 @@ test('TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the 
     
 });
 
-test('TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts', async ({ page }) => {
+test('NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -235,7 +235,7 @@ test('TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose fr
     await fxRatesPage.clickOnRecordsPerPageDropdownOption();
 });
 
-test('TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
+test('NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
 
