@@ -19,7 +19,7 @@ test.afterEach(async ({ page, request, baseURL }, testInfo) => {
             },
             multipart: {
                 file: {
-                    name: `${process.env.TEST_CYCLE_ID || "PA-CY-5"}_${DynamicName.fileName()}`,
+                    name: `${process.env.TEST_CYCLE_ID || "NXGF-CY-12"}_${DynamicName.fileName()}`,
                     mimeType: "image/png",
                     buffer: image,
                 },
