@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { JournalVoucherLookupPage } from '../../page-objects/journalVoucherLookup-page/journalVoucherLookup-pages';
+import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const JournalVoucherLookupPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherLookup.json`) as Record<string, any>;
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
-test.only('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);

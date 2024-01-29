@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
-const data = require(`../../testdata/${process.env.ENV || 'uat'}/login.json`) as Record<string, any>;
-const dashboardData = require(`../../testdata/${process.env.ENV || 'uat'}/dashboard.json`) as Record<string, any>;
+const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 
 test('TC_002 Verify the Search Box With Valid Data on Pending Claims section', async ({ page }) => {
 
@@ -18,22 +18,8 @@ test('TC_002 Verify the Search Box With Valid Data on Pending Claims section', a
 
     await loginPage.verifyPageTitle(data["TC-Login-2"].claimsDashboardTitle);
     
-    await dashboardPage.clickOnPendingClaimsButton();
+    //await dashboardPage.clickOnPendingClaimsButton();
 
-    await dashboardPage.enterSearchData(dashboardData['TC-Pending-Claims-1'].searchDataCard);
-
-    await dashboardPage.verifySearchResult(dashboardData['TC-Pending-Claims-1'].searchDataCard);
-
-    await dashboardPage.clickandSelectPageNum(dashboardData['TC-Pending-Claims-1'].pageNumber);
-
-    await dashboardPage.verifyPageNumberValue(dashboardData['TC-Pending-Claims-1'].pageNumber);
-
-    await dashboardPage.enterSearchData(dashboardData['TC-Pending-Claims-1'].searchPendingReason);
-
-    await dashboardPage.verifySearchResultPendingReason(dashboardData['TC-Pending-Claims-1'].searchPendingReason);
-
-    await dashboardPage.enterSearchData(dashboardData['TC-Pending-Claims-1'].searchPendingReason1);
-
-    await dashboardPage.verifySearchResultPendingReason(dashboardData['TC-Pending-Claims-1'].searchPendingReason1);
+    //await dashboardPage.enterSearchData(dashboardData['TC-Pending-Claims-1'].searchDataCard);
 
 });

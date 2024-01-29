@@ -1,6 +1,5 @@
 import { Page } from "@playwright/test";
 
-
 export class DatePicker {
     readonly page: Page;
 
@@ -269,4 +268,3 @@ export class DatePicker {
     }
 
 }
-
