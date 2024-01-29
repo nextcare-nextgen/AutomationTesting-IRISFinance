@@ -7,7 +7,7 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 const policiesData = require(`../../testdata/${process.env.ENV || 'eu'}/policies.json`) as Record<string, any>;
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+test('NXGF-TC-1910:TC_000_Policies_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -39,7 +39,7 @@ test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed'
 
 });
  
-test('NXGF-TC-1911: TC_001_Policies_Verify that the user is able to navigate to main menu', async ({ page }) => {
+test('NXGF-TC-1911:TC_001_Policies_Verify that the user is able to navigate to main menu', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -60,7 +60,7 @@ test('NXGF-TC-1911: TC_001_Policies_Verify that the user is able to navigate to 
 
 });
 
-test('NXGF-TC-1912: TC_002_Policies_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
+test('NXGF-TC-1912:TC_002_Policies_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const policiesPage: PoliciesPage = new PoliciesPage(page);
@@ -82,7 +82,7 @@ test('NXGF-TC-1912: TC_002_Policies_Verify that the user is able to land on the 
 
 });
 
-test('NXGF-TC-1913: TC_003_Policies_Verify that Policies shortcut buttons are clickable', async ({ page }) => {
+test('NXGF-TC-1913:TC_003_Policies_Verify that Policies shortcut buttons are clickable', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -110,7 +110,7 @@ test('NXGF-TC-1913: TC_003_Policies_Verify that Policies shortcut buttons are cl
 
 });
 
-test('NXGF-TC-1914: TC_004_Policies_Verify that the user is able to see Policies shortcut menu button in the main menu page', async ({ page }) => {
+test('NXGF-TC-1914:TC_004_Policies_Verify that the user is able to see Policies shortcut menu button in the main menu page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -137,7 +137,7 @@ test('NXGF-TC-1914: TC_004_Policies_Verify that the user is able to see Policies
 
 });
 
-test('NXGF-TC-1915: TC_005_Policies_Verify that the user is redirected to the Policies page', async ({ page }) => {
+test('NXGF-TC-1915:TC_005_Policies_Verify that the user is redirected to the Policies page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -172,7 +172,7 @@ test('NXGF-TC-1915: TC_005_Policies_Verify that the user is redirected to the Po
 
 });
 
-test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Policies" title in bold', async ({ page }) => {
+test('NXGF-TC-1916:TC_006_Policies_Verify that the user is able to view the "Policies" title in bold', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -205,7 +205,7 @@ test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Po
 
 });
 
-test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is displayed', async ({ page }) => {
+test('NXGF-TC-1917:TC_007_Policies_Verify that the From date and To date is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -249,7 +249,7 @@ test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is dis
 
 });
 
-test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to Enter From date and To date', async ({ page }) => {
+test('NXGF-TC-1918:TC_008_Policies_Verify that the user is able to Enter From date and To date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -301,7 +301,7 @@ test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to Enter From d
 
 });
 
-test('NXGF-TC-1919: TC_009_Policies_Verify that the Search filed is displayed', async ({ page }) => {
+test('NXGF-TC-1919:TC_009_Policies_Verify that the Search filed is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -341,7 +341,7 @@ test('NXGF-TC-1919: TC_009_Policies_Verify that the Search filed is displayed', 
 
 });
 
-test('NXGF-TC-1920: TC_010_Policies_Verify that the Advanced search filed is displayed', async ({ page }) => {
+test('NXGF-TC-1920:TC_010_Policies_Verify that the Advanced search filed is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -382,7 +382,7 @@ test('NXGF-TC-1920: TC_010_Policies_Verify that the Advanced search filed is dis
 
 });
 
-test('NXGF-TC-1921: TC_011_Policies_Verify that the Reset filed is displayed', async ({ page }) => {
+test('NXGF-TC-1921:TC_011_Policies_Verify that the Reset filed is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -419,7 +419,7 @@ test('NXGF-TC-1921: TC_011_Policies_Verify that the Reset filed is displayed', a
 
 });
 
-test('NXGF-TC-1922: TC_012_Policies_Verify that the all the column name should displayed in grid', async ({ page }) => {
+test('NXGF-TC-1922:TC_012_Policies_Verify that the all the column name should displayed in grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -458,7 +458,7 @@ test('NXGF-TC-1922: TC_012_Policies_Verify that the all the column name should d
 
 });
 
-test('NXGF-TC-1923: TC_013_Policies_Verify that the user is able to search with From date to To date and get record from the grid', async ({ page }) => {
+test('NXGF-TC-1923:TC_013_Policies_Verify that the user is able to search with From date to To date and get record from the grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -509,7 +509,7 @@ test('NXGF-TC-1923: TC_013_Policies_Verify that the user is able to search with 
 
 });
 
-test('NXGF-TC-1924: TC_014_Policies_Verify that the Policy Reference filed is displayed in Advanced search', async ({ page }) => {
+test('NXGF-TC-1924:TC_014_Policies_Verify that the Policy Reference filed is displayed in Advanced search', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -554,7 +554,7 @@ test('NXGF-TC-1924: TC_014_Policies_Verify that the Policy Reference filed is di
 
 })
 
-test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id filed is displayed in Advanced search', async ({ page }) => {
+test('NXGF-TC-1925:TC_015_Policies_Verify that the Policy Id filed is displayed in Advanced search', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -597,7 +597,7 @@ test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id filed is displayed
 
 })
 
-test('NXGF-TC-1926: TC_016_Policies_Verify that the Policy Holder Name field is displayed in Advanced search', async ({ page }) => {
+test('NXGF-TC-1926:TC_016_Policies_Verify that the Policy Holder Name field is displayed in Advanced search', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -642,7 +642,7 @@ test('NXGF-TC-1926: TC_016_Policies_Verify that the Policy Holder Name field is 
 
 })
 
-test('NXGF-TC-1927: TC_017_Policies_Verify that the Apply button is displayed in Advanced search', async ({ page }) => {
+test('NXGF-TC-1927:TC_017_Policies_Verify that the Apply button is displayed in Advanced search', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -684,7 +684,7 @@ test('NXGF-TC-1927: TC_017_Policies_Verify that the Apply button is displayed in
 
 })
 
-test('NXGF-TC-1928: TC_018_Policies_Verify that the user is able to click on Reset button', async ({ page }) => {
+test('NXGF-TC-1928:TC_018_Policies_Verify that the user is able to click on Reset button', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -723,7 +723,7 @@ test('NXGF-TC-1928: TC_018_Policies_Verify that the user is able to click on Res
 
 })
 
-test('NXGF-TC-1929: TC_019_Policies_Verify that the user is able to Reset field and get the existing result', async ({ page }) => {
+test('NXGF-TC-1929:TC_019_Policies_Verify that the user is able to Reset field and get the existing result', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -764,7 +764,7 @@ test('NXGF-TC-1929: TC_019_Policies_Verify that the user is able to Reset field 
 })
 
 
-test('NXGF-TC-1930: TC_020_Policies_Verify that the user is able to search with Policy reference', async ({ page }) => {
+test('NXGF-TC-1930:TC_020_Policies_Verify that the user is able to search with Policy reference', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -826,7 +826,7 @@ test('NXGF-TC-1930: TC_020_Policies_Verify that the user is able to search with 
 })
 
 
-test('NXGF-TC-1931: TC_021_Policies_Verify that the user is able to search with Policy ID', async ({ page }) => {
+test('NXGF-TC-1931:TC_021_Policies_Verify that the user is able to search with Policy ID', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -886,7 +886,7 @@ test('NXGF-TC-1931: TC_021_Policies_Verify that the user is able to search with 
 
 })
 
-test('NXGF-TC-1932: TC_022_Policies_Verify that the user is able to search with Policy Holder name', async ({ page }) => {
+test('NXGF-TC-1932:TC_022_Policies_Verify that the user is able to search with Policy Holder name', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -944,7 +944,7 @@ test('NXGF-TC-1932: TC_022_Policies_Verify that the user is able to search with 
 
 })
 
-test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher eye icon is displayed', async ({ page }) => {
+test('NXGF-TC-1933:TC_023_Policies_Verify that the View Policy Journal ocher eye icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -977,7 +977,7 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
 
 })
 
-test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected on Policy Journal Voucher screen after click on view policy journal voucher', async ({ page }) => {
+test('NXGF-TC-1934:TC_024_Policies_Verify that the user is able to redirected on Policy Journal Voucher screen after click on view policy journal voucher', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1016,7 +1016,7 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
 
 })
 
-test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title is displayed', async ({ page }) => {
+test('NXGF-TC-1935:TC_025_Policies_Verify that the Policy Journal Voucher title is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1060,7 +1060,7 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
 
 })
 
-test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', async ({ page }) => {
+test('NXGF-TC-1936:TC_026_Policies_Verify that the two section are displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1105,7 +1105,7 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
 
 })
 
-test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed in first section', async ({ page }) => {
+test('NXGF-TC-1937:TC_027_Policies_Verify that the all the column are displayed in first section', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1150,7 +1150,7 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
 
 })
 
-test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed in second section', async ({ page }) => {
+test('NXGF-TC-1938:TC_028_Policies_Verify that the all the column are displayed in second section', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1195,7 +1195,7 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
 
 })
 
-test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on voucher reference and the record data should get in second section of grid', async ({ page }) => {
+test('NXGF-TC-1939:TC_029_Policies_Verify that the user is able to click on voucher reference and the record data should get in second section of grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1247,7 +1247,7 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
 
 })
 
-test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title should displayed', async ({ page }) => {
+test('NXGF-TC-1940:TC_030_Policies_Verify that the Records per page title should displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1292,7 +1292,7 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
 
 })
 
-test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down', async ({ page }) => {
+test('NXGF-TC-1941:TC_031_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1340,7 +1340,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
 })
 
 
-test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the item counts  (10,15,20,30,50,100,250) in the drop down in Polices screen', async ({ page }) => {
+test('NXGF-TC-1942:TC_032_Policies_Verify that the user is able to view the item counts  (10,15,20,30,50,100,250) in the drop down in Polices screen', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1381,7 +1381,7 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
 
 })
 
-test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title should displayed in Polices screen', async ({ page }) => {
+test('NXGF-TC-1943:TC_033_Policies_Verify that the Records per page title should displayed in Polices screen', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1420,7 +1420,7 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
 
 })
 
-test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select future date in From date', async ({ page }) => {
+test('NXGF-TC-1944:TC_034_Policies_Verify that the user is not able to select future date in From date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1460,7 +1460,7 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
     })
 })
 
-test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a policy can be viewed when clicked on the detail button for the respective policy', async ({ page }) => {
+test('NXGF-TC-1945:TC_035_Policies_Verify that Any journal created under a policy can be viewed when clicked on the detail button for the respective policy', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1513,7 +1513,7 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
 })
 
 
-test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 varies based on the selected currencies defined in the respective organization', async ({ page }) => {
+test('NXGF-TC-1946:TC_036_Policies_Verify that the values in Amount CV1 CV2 varies based on the selected currencies defined in the respective organization', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1594,7 +1594,7 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
 })
 
 
-test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the Total of debit amount column from grid', async ({ page }) => {
+test('NXGF-TC-1947:TC_037_Policies_Verify that the Amount column displays the Total of debit amount column from grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
