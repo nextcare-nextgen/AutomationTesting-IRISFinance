@@ -8,7 +8,7 @@ const JournalVoucherLookupPageData = require(`../../testdata/${process.env.ENV |
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
-test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+test('NXGF-TC-2006:TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -39,11 +39,10 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
 
 });
 
-test('NXGF-TC-2007: TC_001_Journal Voucher Lookup_Verify that the main menu option is clickable', async ({ page }) => {
+test('NXGF-TC-2007:TC_001_Journal Voucher Lookup_Verify that the main menu option is clickable', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
-    const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -61,10 +60,9 @@ test('NXGF-TC-2007: TC_001_Journal Voucher Lookup_Verify that the main menu opti
 
 });
 
-test('NXGF-TC-2008: TC_002_Journal Voucher Lookup_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
+test('NXGF-TC-2008:TC_002_Journal Voucher Lookup_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
@@ -82,7 +80,7 @@ test('NXGF-TC-2008: TC_002_Journal Voucher Lookup_Verify that the user is able t
 
 });
 
-test('NXGF-TC-2009: TC_003_Journal Voucher Lookup_Verify that the user is able to see shortcut menu buttons in the main menu page', async ({ page }) => {
+test('NXGF-TC-2009:TC_003_Journal Voucher Lookup_Verify that the user is able to see shortcut menu buttons in the main menu page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -105,7 +103,7 @@ test('NXGF-TC-2009: TC_003_Journal Voucher Lookup_Verify that the user is able t
     await test.step("Verified that the User is able to See Journal Voucher Shortcut Button", async () => {
 
         await journalVoucherLookupPage.verifyJournalVoucherShortcutButton();
-
+        
     })
 
 });
