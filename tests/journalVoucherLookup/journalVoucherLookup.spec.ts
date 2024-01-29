@@ -39,7 +39,7 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
 
 });
 
-test.only('NXGF-TC-2007: TC_001_Journal Voucher Lookup_Verify that the main menu option is clickable', async ({ page }) => {
+test('NXGF-TC-2007: TC_001_Journal Voucher Lookup_Verify that the main menu option is clickable', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -61,7 +61,7 @@ test.only('NXGF-TC-2007: TC_001_Journal Voucher Lookup_Verify that the main menu
 
 });
 
-test.only('NXGF-TC-2008: TC_002_Journal Voucher Lookup_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
+test('NXGF-TC-2008: TC_002_Journal Voucher Lookup_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -82,7 +82,7 @@ test.only('NXGF-TC-2008: TC_002_Journal Voucher Lookup_Verify that the user is a
 
 });
 
-test.only('NXGF-TC-2009: TC_003_Journal Voucher Lookup_Verify that the user is able to see shortcut menu buttons in the main menu page', async ({ page }) => {
+test('NXGF-TC-2009: TC_003_Journal Voucher Lookup_Verify that the user is able to see shortcut menu buttons in the main menu page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);

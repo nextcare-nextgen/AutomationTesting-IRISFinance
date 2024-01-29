@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 import { LoginPage } from "../page-objects/login-page";
 import { DashboardPage } from "../page-objects/dashboard-pages/dashboard-page";
-const data = require(`../testdata/${process.env.ENV || "uat"}/login.json`) as Record<string, any>;
+const data = require(`../testdata/${process.env.ENV || "eu"}/login.json`) as Record<string, any>;
 
 test("TC_001 Verify that the user is able to Login with Valid Credentials", async ({ page, }) => {
 
