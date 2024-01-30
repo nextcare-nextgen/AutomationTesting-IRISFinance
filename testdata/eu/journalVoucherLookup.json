@@ -4,6 +4,9 @@
     },
     "TC_002_Journal_Voucher_Lookup": {
         "dashboardText": "Dashboard"
+    }, 
+    "TC_004_Journal_Voucher_Lookup": {
+        "journalVocherText": "Journal Voucher lookup"
     }
 
 }
