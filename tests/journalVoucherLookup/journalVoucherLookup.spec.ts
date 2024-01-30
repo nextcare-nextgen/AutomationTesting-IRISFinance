@@ -169,7 +169,7 @@ test('NXGF-TC-2011: TC_005_Journal Voucher Lookup_Verify that the screen is divi
     })
 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
-       // await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
+        await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
     })
 
     await test.step("Verified that the user is able to see journal Voucher Lookup search Section", async () => {
