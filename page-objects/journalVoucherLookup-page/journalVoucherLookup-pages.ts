@@ -20,7 +20,7 @@ export class JournalVoucherLookupPage{
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
         this.journalVoucherText = page.locator('//div//h1[@title="Journal Vouchers"]');
         this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
-        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher lookup"]');
+        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher looku"]');
         this.journalVoucherLookupsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherLookupGridSection = page.locator('//section//mat-table[@id="JournalVoucherLookupList"]');
 
