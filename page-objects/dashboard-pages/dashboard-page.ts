@@ -58,7 +58,7 @@ export class DashboardPage {
     async selectOrganization(org: string) {
       await this.organization.click();
       //mat-optgroup[2]//mat-option//mat-label[text()='2024']
-      await this.page.locator('//mat-optgroup[2]//mat-option//mat-label[text()="' + org + '"]').click();
+      await this.page.locator('//mat-optgroup//mat-option//mat-label[text()="' + org + '"]').click();
   }
 
 }

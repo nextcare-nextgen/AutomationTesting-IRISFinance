@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="46.251909999999995">
+<testsuite name="tests\journalVoucherLookup\journalVoucherLookup.spec.ts" timestamp="2024-02-01T13:22:03.934Z" hostname="chromium" tests="1" failures="0" skipped="0" time="44.202" errors="0">
+<testcase name="NXGF-TC-2029: TC_047_Journal Voucher Lookup_Verify that the user is redirected to Journal Voucher information" classname="tests\journalVoucherLookup\journalVoucherLookup.spec.ts" time="44.202">
+</testcase>
+</testsuite>
+</testsuites>

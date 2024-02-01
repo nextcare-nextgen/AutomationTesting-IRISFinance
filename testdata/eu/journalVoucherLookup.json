@@ -4,9 +4,51 @@
     },
     "TC_002_Journal_Voucher_Lookup": {
         "dashboardText": "Dashboard"
-    }, 
+    },
     "TC_004_Journal_Voucher_Lookup": {
         "journalVocherText": "Journal Voucher lookup"
+    },
+    "TC_008_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "orgName": "Allianz Partners - 2024"
+    },
+    "TC_014_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "accountNumber": "987123"
+    },
+    "TC_016_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "accountName": "Gross Writen Premium Health"
+    },
+    "TC_018_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "fromVoucherNumber": "3456"
+    },
+    "TC_019_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "fromVoucherNumber": "100",
+        "toVoucherNumber": "50",
+        "errorMessage": "Please enter a value greater than or equal to 100"
+    },
+    "TC_021_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "fromVoucherNumber": "100",
+        "toVoucherNumber": "50",
+        "errorMessage": "Please enter a value greater than or equal to 100"
+    },
+    "TC_022_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "amount": "1000"
+    },
+    "TC_023_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "amount": "69.00"
+    },
+    "TC_031_Journal_Voucher_Lookup": {
+        "organization": "2024"
+    },
+    "TC_047_Journal_Voucher_Lookup": {
+        "organization": "2024",
+        "voucherInfo": "Voucher Information"
     }
-
 }

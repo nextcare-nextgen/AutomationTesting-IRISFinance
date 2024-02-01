@@ -1,6 +1,6 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 
-export class JournalVoucherLookupPage{
+export class JournalVoucherLookupPage {
 
     readonly page: Page;
     readonly journalVoucherShortcut: Locator;
@@ -8,10 +8,34 @@ export class JournalVoucherLookupPage{
     readonly dashboard: Locator;
     readonly journalVoucherText: Locator;
     readonly orgShortcut: Locator;
-    readonly journalVoucherLookupButton:Locator;
-    readonly journalVoucherLookupsearchSection:Locator;
-    readonly journalVoucherLookupGridSection:Locator;
-
+    readonly journalVoucherLookupButton: Locator;
+    readonly journalVoucherLookupsearchSection: Locator;
+    readonly journalVoucherLookupGridSection: Locator;
+    readonly organizationName: Locator;
+    readonly advancedSearch: Locator;
+    readonly accountNumber: Locator;
+    readonly accountName: Locator;
+    readonly applybutton: Locator;
+    readonly search: Locator;
+    readonly vouchertype: Locator;
+    readonly fromVoucherNumber: Locator;
+    readonly toVoucherNumber: Locator;
+    readonly errorMessageVochernumber: Locator;
+    readonly amount: Locator;
+    readonly gridVoucherNum: Locator;
+    readonly gridVouchertype: Locator;
+    readonly gridVoucherDate: Locator;
+    readonly gridAccountName: Locator;
+    readonly gridAccountNum: Locator;
+    readonly gridAmount: Locator;
+    readonly gridCurrency: Locator;
+    readonly gridAmountCV1: Locator;
+    readonly gridAmountCV2: Locator;
+    readonly gridDebitCredit: Locator;
+    readonly gridValueDate: Locator;
+    readonly gridproductLine: Locator;
+    readonly gridVoucherRef: Locator;
+    readonly vocherInfoText: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -20,12 +44,37 @@ export class JournalVoucherLookupPage{
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
         this.journalVoucherText = page.locator('//div//h1[@title="Journal Vouchers"]');
         this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
-        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher looku"]');
+        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher lookup"]');
         this.journalVoucherLookupsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherLookupGridSection = page.locator('//section//mat-table[@id="JournalVoucherLookupList"]');
-
-        
+        this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
+        this.advancedSearch = page.locator('//div//button[@title="Filter"]');
+        this.accountNumber = page.locator('//div//input[@title="Account number"]');
+        this.accountName = page.locator('//div//input[@title="Account name"]');
+        this.applybutton = page.locator('//div//button[@title="Apply"]');
+        this.search = page.locator('//div//button[@title="Search"]');
+        this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
+        this.fromVoucherNumber = page.locator('//div//input[@title="From voucher number"]');
+        this.toVoucherNumber = page.locator('//div//input[@title="To voucher number"]');
+        this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
+        this.amount = page.locator('//div//input[@title="From Amount"]');
+        this.gridVoucherNum = page.locator('//small[text()="Voucher Number"]');
+        this.gridVouchertype = page.locator('//small[text()="Voucher Type"]');
+        this.gridVoucherDate = page.locator('//small[text()="Voucher Date"]');
+        this.gridAccountNum = page.locator('//small[text()="Account Number"]');
+        this.gridAccountName = page.locator('//small[text()="Account Name"]');
+        this.gridAmount = page.locator('//small[text()="Amount"]');
+        this.gridCurrency = page.locator('//small[text()="Currency"]');
+        this.gridAmountCV1 = page.locator('//small[text()="Amount CV1 (EUR)"]');
+        this.gridAmountCV2 = page.locator('//small[text()="Amount CV2 (EUR)"]');
+        this.gridDebitCredit = page.locator('//small[text()="Debit/Credit"]');
+        this.gridValueDate = page.locator('//small[text()="Value Date"]');
+        this.gridproductLine = page.locator('//small[text()="Product Line"]');
+        this.gridVoucherRef = page.locator('//small[text()="Voucher Reference"]');
+        this.vocherInfoText = page.locator('//h2[text()="Voucher Information"]');
     }
+
+
 
 
     async verifyBreadCrumbsText(data: string) {
@@ -46,7 +95,7 @@ export class JournalVoucherLookupPage{
     }
 
     async verifyJournalVoucherShortcutButton() {
-         expect(this.journalVoucherShortcut).toBeVisible;
+        expect(this.journalVoucherShortcut).toBeVisible;
     }
 
     async verifyJournalVoucherLookupText(data: string) {
@@ -59,11 +108,120 @@ export class JournalVoucherLookupPage{
 
     async verifyjournalVoucherLookupsearchSection() {
         expect(this.journalVoucherLookupsearchSection).toBeVisible;
-   }
+    }
 
-   async verifyjournalVoucherLookupGridSection() {
-    expect(this.journalVoucherLookupGridSection).toBeVisible;
-}
+    async verifyjournalVoucherLookupGridSection() {
+        expect(this.journalVoucherLookupGridSection).toBeVisible;
+    }
+
+    async verifyOrganizationName(data: string) {
+        await expect(this.organizationName).toHaveText(data);
+    }
+
+    async clickOnAdvancedSearchButton() {
+        await this.advancedSearch.click();
+    }
+
+    async verifyAccountNumberField() {
+        expect(this.accountNumber).toBeVisible;
+    }
+
+    async verifyAccountNameField() {
+        expect(this.accountName).toBeVisible;
+    }
+
+    async enterAccountNumber(accountnumber: string) {
+        await this.accountNumber.clear();
+        await this.accountNumber.fill(accountnumber);
+    }
+
+    async enterAccountName(accountname: string) {
+        await this.accountName.clear();
+        await this.accountName.fill(accountname);
+    }
+
+    async clickonApplyButton() {
+        await this.applybutton.click();
+    }
+
+    async clickonSearchButton() {
+        await this.search.click();
+    }
+
+    async clickonVoucherType() {
+        await this.vouchertype.click();
+    }
+
+    async verifyVoucherTypeDropdownList() {
+
+        const dropdownLst = this.page.locator('//div//mat-option//span//iris-base-label');
+        for (let index = 0; index < await dropdownLst.count(); index++) {
+            expect(await dropdownLst.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await dropdownLst.count());
+    }
+
+    async enterFromVoucherNumber(fromvoucherNumber: string) {
+        await this.fromVoucherNumber.clear();
+        await this.fromVoucherNumber.fill(fromvoucherNumber);
+    }
+
+
+    async enterToVoucherNumber(tovoucherNumber: string) {
+        await this.toVoucherNumber.clear();
+        await this.toVoucherNumber.fill(tovoucherNumber);
+    }
+
+
+    async verifyErrorForVoucherNumber(data: string) {
+        await expect(this.errorMessageVochernumber).toHaveText(data);
+    }
+
+    async enterAmount(amount: string) {
+        await this.amount.clear();
+        await this.amount.fill(amount);
+    }
+
+
+    async verifyAmountFromGrid() {
+
+        const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
+        for (let index = 0; index < await amount.count(); index++) {
+            expect(await amount.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await amount.count());
+    }
+
+    async verifySearchButton() {
+        await expect(this.search).toBeVisible;
+    }
+
+    async verifyGridHeaderCloumnName() {
+        await expect(this.gridVouchertype).toBeVisible;
+        await expect(this.gridVoucherDate).toBeVisible;
+        await expect(this.gridAccountName).toBeVisible;
+        await expect(this.gridAccountNum).toBeVisible;
+        await expect(this.gridAmount).toBeVisible;
+        await expect(this.gridCurrency).toBeVisible;
+        await expect(this.gridAmountCV1).toBeVisible;
+        await expect(this.gridAmountCV2).toBeVisible;
+        await expect(this.gridDebitCredit).toBeVisible;
+        await expect(this.gridValueDate).toBeVisible;
+        await expect(this.gridproductLine).toBeVisible;
+        await expect(this.gridVoucherRef).toBeVisible;
+
+    }
+
+    async clickOnEditJournalVoucherButton() {
+        let editicon = this.page.locator('//mat-icon[@data-mat-icon-name="icon-edit"]');
+        await editicon.first().click();
+    }
+
+    async verifyVoucherInformationTexr(data: string) {
+        await expect(this.vocherInfoText).toHaveText(data);
+    }
 
 
 }
