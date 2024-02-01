@@ -927,7 +927,6 @@ test('NXGF-TC-2029: TC_047_Journal Voucher Lookup_Verify that the user is redire
     })
 
     await test.step("User Select Organization", async () => {
-
         await dashboardPage.selectOrganization(JournalVoucherLookupPageData['TC_047_Journal_Voucher_Lookup'].organization);
         await sleep(2000);
     })
