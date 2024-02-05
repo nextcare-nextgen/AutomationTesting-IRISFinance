@@ -36,6 +36,15 @@ export class JournalVoucherLookupPage {
     readonly gridproductLine: Locator;
     readonly gridVoucherRef: Locator;
     readonly vocherInfoText: Locator;
+    readonly secondsection :Locator;
+    readonly thirdsection :Locator;
+    readonly voucherType :Locator;
+    readonly voucherDate :Locator;
+    readonly voucherRef :Locator; 
+    readonly voucherNum :Locator;
+    readonly validationDate :Locator;
+    readonly validatedCheckbox :Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -72,6 +81,15 @@ export class JournalVoucherLookupPage {
         this.gridproductLine = page.locator('//small[text()="Product Line"]');
         this.gridVoucherRef = page.locator('//small[text()="Voucher Reference"]');
         this.vocherInfoText = page.locator('//h2[text()="Voucher Information"]');
+        this.secondsection = page.locator('//mat-table[@id="voucherTransactionList"]');
+        this.thirdsection = page.locator('//mat-table[@id="pivot-grid-data"]');
+        this.voucherType = page.locator('//iris-standard-card//iris-select-formfield//div[contains(@class,"mat-form-field-flex")]');
+        this.voucherDate = page.locator('//iris-standard-date//following::div//input[@title="Voucher Date"]');
+        this.voucherRef = page.locator('//iris-standard-date//following::div//input[@title="Voucher Ref"]');
+        this.voucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
+        this.validationDate = page.locator('//iris-standard-date//following::div//input[@title="Validation Date"]');
+        this.validatedCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
+
     }
 
 
@@ -223,5 +241,35 @@ export class JournalVoucherLookupPage {
         await expect(this.vocherInfoText).toHaveText(data);
     }
 
+
+    async verifyTransactionFromGrid() {
+
+        const transaction = this.page.locator('//mat-cell[contains(@class,"account")]');
+        for (let index = 0; index < await transaction.count(); index++) {
+            expect(await transaction.nth(index).innerText()).toBeTruthy();
+
+        }
+        console.log(await transaction.count());
+    }
+
+    async verifySectionsFromVoucherInfo() {
+        await expect(this.secondsection).toBeVisible;
+        await expect(this.thirdsection).toBeVisible;
+    }
+
+    async verifyVoucherDetailsFirstSection() {
+        await expect(this.voucherType).toBeVisible;
+        await expect(this.voucherDate).toBeVisible;
+        await expect(this.voucherRef).toBeVisible;
+        await expect(this.voucherNum).toBeVisible;
+        await expect(this.validationDate).toBeVisible;
+        await expect(this.validatedCheckbox).toBeVisible;
+        
+    }
+
+    async verifyValidatedCheckboxDisbaled() {
+        await expect(this.validatedCheckbox).toBeDisabled;
+        
+    }
 
 }
