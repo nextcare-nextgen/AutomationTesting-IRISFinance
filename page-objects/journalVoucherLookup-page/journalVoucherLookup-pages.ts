@@ -1,4 +1,5 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class JournalVoucherLookupPage {
 
@@ -36,15 +37,33 @@ export class JournalVoucherLookupPage {
     readonly gridproductLine: Locator;
     readonly gridVoucherRef: Locator;
     readonly vocherInfoText: Locator;
-    readonly secondsection :Locator;
-    readonly thirdsection :Locator;
-    readonly voucherType :Locator;
-    readonly voucherDate :Locator;
-    readonly voucherRef :Locator; 
-    readonly voucherNum :Locator;
-    readonly validationDate :Locator;
-    readonly validatedCheckbox :Locator;
-
+    readonly secondsection: Locator;
+    readonly thirdsection: Locator;
+    readonly voucherType: Locator;
+    readonly voucherDate: Locator;
+    readonly voucherRef: Locator;
+    readonly voucherNum: Locator;
+    readonly validationDate: Locator;
+    readonly validatedCheckbox: Locator;
+    readonly accountVoucherInfo: Locator;
+    readonly amountVoucherInfo: Locator;
+    readonly currencyVoucherInfo: Locator;
+    readonly amountcv1VoucherInfo: Locator;
+    readonly amountcv2VoucherInfo: Locator;
+    readonly debitcreditVoucherInfo: Locator;
+    readonly valueDateVoucherInfo: Locator;
+    readonly productLineVoucherInfo: Locator;
+    readonly descVoucherInfo: Locator;
+    readonly recordsPerPage: Locator;
+    readonly recordPerPageDropdown: Locator;
+    readonly currencyVoucherInfoThirdSection: Locator;
+    readonly totalDebitVoucherInfoThirdSection: Locator;
+    readonly totalCredityVoucherInfoThirdSection: Locator;
+    readonly balanceVoucherInfoThirdSection: Locator;
+    readonly searchbar: Locator;
+    readonly toAmount: Locator;
+    readonly clearAll: Locator;
+    readonly label: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -89,11 +108,28 @@ export class JournalVoucherLookupPage {
         this.voucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
         this.validationDate = page.locator('//iris-standard-date//following::div//input[@title="Validation Date"]');
         this.validatedCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
+        this.accountVoucherInfo = page.locator('//div//small[@title="Account"]');
+        this.amountVoucherInfo = page.locator('//div//small[@title="Amount"]');
+        this.currencyVoucherInfo = page.locator('//mat-header-cell[contains(@class,"currencyCode")]//div//small[@title="Currency"]');
+        this.amountcv1VoucherInfo = page.locator('//div//small[@title="Amount CV1 (EUR)"]');
+        this.amountcv2VoucherInfo = page.locator('//div//small[@title="Amount CV2 (EUR)"]');
+        this.debitcreditVoucherInfo = page.locator('//div//small[@title="Debit/Credit"]');
+        this.valueDateVoucherInfo = page.locator('//div//small[@title="Value Date"]');
+        this.productLineVoucherInfo = page.locator('//div//small[@title="Product Line"]');
+        this.descVoucherInfo = page.locator('//div//small[@title="Description"]');
+        this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
+        this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        this.currencyVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"amountName")]//div//small[@title="Currency"]');
+        this.totalCredityVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"debitTotal")]//div//small[@title="Total Debit"]');
+        this.totalDebitVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"creditTotal")]//div//small[@title="Total Credit"]');
+        this.balanceVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"balance")]//div//small[@title="Balance"]');
+        this.searchbar = page.locator('//div//input[@placeholder="Search"]');
+        this.toAmount = page.locator('//div//input[@title="To Amount"]');
+        this.clearAll = page.locator('//div//button[@title="Clear All"]');
+        this.label = page.locator('//iris-menu-card//iris-base-label//span');
+
 
     }
-
-
-
 
     async verifyBreadCrumbsText(data: string) {
         await expect(this.breadCrumbs).toHaveText(data);
@@ -162,12 +198,22 @@ export class JournalVoucherLookupPage {
         await this.applybutton.click();
     }
 
+    async clickonClearAllButton() {
+        await this.clearAll.click();
+    }
+
     async clickonSearchButton() {
         await this.search.click();
     }
 
     async clickonVoucherType() {
         await this.vouchertype.click();
+    }
+
+    async selectVoucherType() {
+        await this.vouchertype.click();
+        const selectvouchertype = this.page.locator('//mat-option//span//mat-label[text()="Auto Commission Payable Posting"]');
+        selectvouchertype.click();
     }
 
     async verifyVoucherTypeDropdownList() {
@@ -191,6 +237,10 @@ export class JournalVoucherLookupPage {
         await this.toVoucherNumber.fill(tovoucherNumber);
     }
 
+    async enterToAmount(tovoucherNumber: string) {
+        await this.toVoucherNumber.clear();
+        await this.toVoucherNumber.fill(tovoucherNumber);
+    }
 
     async verifyErrorForVoucherNumber(data: string) {
         await expect(this.errorMessageVochernumber).toHaveText(data);
@@ -264,12 +314,95 @@ export class JournalVoucherLookupPage {
         await expect(this.voucherNum).toBeVisible;
         await expect(this.validationDate).toBeVisible;
         await expect(this.validatedCheckbox).toBeVisible;
-        
+
     }
 
-    async verifyValidatedCheckboxDisbaled() {
+    async verifyValidatedCheckboxDisabled() {
         await expect(this.validatedCheckbox).toBeDisabled;
-        
+
     }
+
+    async verifyVoucherDetailsSecondSection() {
+        await expect(this.amountVoucherInfo).toBeVisible;
+        await expect(this.accountVoucherInfo).toBeVisible;
+        await expect(this.currencyVoucherInfo).toBeVisible;
+        await expect(this.amountcv1VoucherInfo).toBeVisible;
+        await expect(this.amountcv2VoucherInfo).toBeVisible;
+        await expect(this.debitcreditVoucherInfo).toBeVisible;
+        await expect(this.valueDateVoucherInfo).toBeVisible;
+        await expect(this.productLineVoucherInfo).toBeVisible;
+        await expect(this.descVoucherInfo).toBeVisible;
+    }
+
+
+    async verifyRecordsPerPageText(data: string) {
+        await expect(this.recordsPerPage).toHaveText(data);
+    }
+
+
+    async clickOnRecordsPerPageDropdown(data: string[]) {
+        const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        recordsPerPagedropdown.first().click();
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+    }
+
+    async clickOnRecordsPerPageDropdownOption() {
+        await this.recordPerPageDropdown.click();
+        let dropdownOptions = await this.page.locator('//mat-option//span').all();
+
+        for (let i = 0; i < dropdownOptions.length; i++) {
+            // Check if current value is Item 1
+            if (await dropdownOptions[i].textContent() === " 30 ") {
+                // Click if element with text found
+                await dropdownOptions[i].click();
+                break;
+            }
+        }
+    }
+
+    async verifyVoucherDetailsThirdSection() {
+        await expect(this.currencyVoucherInfoThirdSection).toBeVisible;
+        await expect(this.totalCredityVoucherInfoThirdSection).toBeVisible;
+        await expect(this.totalDebitVoucherInfoThirdSection).toBeVisible;
+        await expect(this.balanceVoucherInfoThirdSection).toBeVisible;
+    }
+
+
+    async verifyCurrencyAndAmountFromGrid() {
+
+        const currency = this.page.locator('//mat-cell[contains(@class,"amountName")]');
+        for (let index = 0; index < await currency.count(); index++) {
+            expect(await currency.nth(index).innerText()).toBeTruthy();
+
+        }
+
+        const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
+        for (let index = 0; index < await amount.count(); index++) {
+            expect(await amount.nth(index).innerText()).toBeTruthy();
+
+        }
+
+    }
+
+    async verifySearchBarisDisplay() {
+        await expect(this.searchbar).toBeVisible;
+    }
+
+    async verifyAdvancedSearchfieldisEmpty() {
+        await expect(this.fromVoucherNumber).toBeEmpty;
+        await expect(this.toVoucherNumber).toBeEmpty;
+        await expect(this.voucherType).toBeEmpty;
+        await expect(this.accountName).toBeEmpty;
+        await expect(this.accountNumber).toBeEmpty;
+
+    }
+
+    async enterinSearchbar(data: string) {
+        await this.searchbar.fill(data);
+        await sleep(2000);
+        await expect(this.label).toHaveText(data)
+    }
+
+
 
 }

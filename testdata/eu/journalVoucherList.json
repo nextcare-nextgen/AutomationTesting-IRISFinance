@@ -1,0 +1,31 @@
+{
+    "TC_000_Journal_Voucher_List": {
+        "breadcrumbsText": "Journal Vouchers"
+    },
+    "TC_002_Journal_Voucher_List": {
+        "dashboardText": "Dashboard"
+    },
+    "TC_004_Journal_Voucher_List": {
+        "journalVocherText": "Journal Voucher list"
+    },
+    "TC_006_Journal_Voucher_List":{
+        "journalVocherText": "Journal Vouchers"
+    },
+    "TC_008_Journal_Voucher_List": {
+        "organization": "2024"
+    },
+    "TC_009_Journal_Voucher_List": {
+        "organization": "2024",
+        "voucherType":"Bank Charges Posting"
+    },
+    "TC_011_Journal_Voucher_List": {
+        "organization": "2024",
+        "voucherType":"Bank Charges Posting"
+    },
+    "TC_013_Journal_Voucher_List": {
+        "organization": "2024",
+        "fromVoucherNumber": "100",
+        "toVoucherNumber": "50",
+        "errorMessage": "Please enter a value greater than or equal to 100"
+    }
+}

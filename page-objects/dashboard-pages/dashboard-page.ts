@@ -14,7 +14,7 @@ export class DashboardPage {
         this.dashboardTitle = page.locator('h1[title="Dashboard"]');
         this.organization = page.locator('//iris-organization-financial-year-dropdown//mat-select[@role="combobox"]');
 
-        this.menuIcon = page.locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-men"]');
+        this.menuIcon = page.locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]');
        
     }
 
