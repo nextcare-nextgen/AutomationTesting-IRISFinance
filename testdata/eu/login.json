@@ -2,40 +2,8 @@
     "Login-Access": {
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "HSmith",
-        "passwordInput": "Buncrana123$",
+        "passwordInput": "LazyCactus5*",
         "expectedPageTitle": "Iris Finance Portal | Dashboard",
         "claimsDashboardTitle":"Pulse | Claims Dashboard"
-    },
-    "TC-Login-3": {
-        "url": "https://test-pulsev3-uae.tatsh.cloud/auth/login",
-        "userNameInput": "DemoSuperUserrr",
-        "passwordInput": "DemoPass!CA1rr",
-        "errorMessage": "The credentials you used did not work. Please enter new credentials."
-    },
-    "TC-Login-4": {
-        "url": "https://test-pulsev3-uae.tatsh.cloud/auth/login",
-        "userNameInput": "DemoSuperUser",
-        "passwordInput": "DemoPass!CA1rr",
-        "errorMessage": "The credentials you used did not work. Please enter new credentials."
-    },
-    "TC-Login-5": {
-        "url": "https://test-pulsev3-uae.tatsh.cloud/auth/login",
-        "userNameInput": "DemoSuperUserrr",
-        "passwordInput": "DemoPass!CA1",
-        "errorMessage": "The credentials you used did not work. Please enter new credentials."
-    },
-    "TC-Login-6": {
-        "url": "https://test-pulsev3-uae.tatsh.cloud/auth/login",
-        "userNameInput": "DemoSuperUserrr"
-    },
-    "TC-Login-7": {
-        "url": "https://test-pulsev3-uae.tatsh.cloud/auth/login",
-        "userNameInput": "DemoSuperUser",
-        "passwordInput": "DemoPass!CA1"
-    },
-    "TC-Login-8": {
-        "url": "https://test-pulsev3-uae.tatsh.cloud/auth/login",
-        "userNameInput": "DemoSuperUser2",
-        "passwordInput": "    DemoPass!CA1",
-        "expectedPageTitle": "Pulse | Login"
-    }}
+    }
+   }

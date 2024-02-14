@@ -221,7 +221,6 @@ export class JournalVoucherLookupPage {
         const dropdownLst = this.page.locator('//div//mat-option//span//iris-base-label');
         for (let index = 0; index < await dropdownLst.count(); index++) {
             expect(await dropdownLst.nth(index).innerText()).toBeTruthy();
-
         }
         console.log(await dropdownLst.count());
     }
@@ -253,11 +252,9 @@ export class JournalVoucherLookupPage {
 
 
     async verifyAmountFromGrid() {
-
         const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
         for (let index = 0; index < await amount.count(); index++) {
             expect(await amount.nth(index).innerText()).toBeTruthy();
-
         }
         console.log(await amount.count());
     }

@@ -153,8 +153,36 @@ export class JournalVoucherListPage {
         await expect(this.errorMessageVochernumber).toHaveText(data);
     }
 
-    
     async verifyFromDate() {
         expect(this.fromDate).toBeVisible;
+    }
+
+    async enterfromDate(fromDate: string) {
+        await this.fromDate.clear();
+        await this.fromDate.fill(fromDate);
+    }
+
+    async enterToDate(date: string) {
+        await this.toDate.clear();
+        await this.toDate.fill(date);
+    }
+
+    async verifyToDate() {
+        expect(this.toDate).toBeVisible;
+    }
+
+    async verifySearchButton() {
+        expect(this.search).toBeVisible;
+    }
+
+    async clickOnSearchButton() {
+        await this.search.click();
+    }
+
+    async verifyVoucherNumFromGrid() {
+        const voucherNum = this.page.locator('//mat-cell[contains(@class,"voucherNumber")]');
+        for (let index = 0; index < await voucherNum.count(); index++) {
+            expect(await voucherNum.nth(index).innerText()).toBeTruthy();
+        }
     }
 }

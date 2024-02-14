@@ -4,5 +4,8 @@
     },
     "TC_012": {
         "dashboardText": "Dashboard"
+    },
+    "TC_030": {
+        "organizationText": "Organizations"
     }
 }

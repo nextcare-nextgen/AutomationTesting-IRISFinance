@@ -15,6 +15,7 @@ export class FinancialOrganizationsPage {
     readonly policiesShortcut: Locator;
     readonly reportsShortcut: Locator;
     readonly FTMShortcut: Locator;
+    readonly organization: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -29,6 +30,7 @@ export class FinancialOrganizationsPage {
         this.policiesShortcut = page.locator('//div//span[@title="Policies"]');
         this.reportsShortcut = page.locator('//div//span[@title="Reports"]');
         this.FTMShortcut = page.locator('//div//span[@title="Financial Transactions Monitoring"]');
+        this.organization = page.locator('//h1[@title="Organizations"]');
 
     }
 
@@ -51,6 +53,10 @@ export class FinancialOrganizationsPage {
         await expect(this.dashboard).toHaveText(data);
     }
 
+    async verifyOrganizationText(data: string) {
+        await expect(this.organization).toHaveText(data);
+    }
+
     async verifyAllShrtcutButtonIsClickable() {
         await expect(this.financialOrganizationShortcut).toBeEnabled();
         await expect(this.dashboardShortcut).toBeEnabled();
@@ -62,7 +68,7 @@ export class FinancialOrganizationsPage {
         await expect(this.FTMShortcut).toBeEnabled();
         
     }
+      
 
 }
-
 
