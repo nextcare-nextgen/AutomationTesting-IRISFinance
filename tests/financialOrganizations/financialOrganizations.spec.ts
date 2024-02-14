@@ -63,7 +63,6 @@ test('NXGF-TC-1652: TC_003_Verify that the user is able to click on the Remember
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await page.pause();
         await loginPage.enterLoginDetails(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 });
@@ -295,7 +294,6 @@ test('NXGF-TC-1674: TC_031_Verify that the user is able to view the "Organizatio
     }) 
 
     await test.step("Verified that the user is able to view the 'Organizations' title in bold", async () => {
-        await page.pause();
         const element = await page.waitForSelector(
             "//h1[@title='Organizations']"
           )
@@ -304,7 +302,6 @@ test('NXGF-TC-1674: TC_031_Verify that the user is able to view the "Organizatio
             
           })
           console.log(fontWeight);
-          await page.pause();
        // await financialOrganizationsPage.verifyTextisinBold();
     })
 
