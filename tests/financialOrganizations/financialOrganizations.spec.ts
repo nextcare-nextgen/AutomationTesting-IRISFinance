@@ -8,7 +8,7 @@ const FinancialOrganizationsData = require(`../../testdata/${process.env.ENV || 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
-test.only('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access the IRIS Finance portal', async ({ page }) => {
+test('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access the IRIS Finance portal', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -20,23 +20,7 @@ test.only('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to acc
 
 });
 
-test.only('NXGF-TC-1648: TC_001_Login_Access_Verify that the user is able to enter the username and password ', async ({ page }) => {
-
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
-
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
-
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
-    })
-});
-
-test.only('NXGF-TC-1650: TC_002_Login_Access_Verify that user is able to click on sign in button', async ({ page }) => {
+test('NXGF-TC-1648: TC_001_Login_Access_Verify that the user is able to enter the username and password ', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -52,7 +36,23 @@ test.only('NXGF-TC-1650: TC_002_Login_Access_Verify that user is able to click o
     })
 });
 
-test.only('NXGF-TC-1652: TC_003_Verify that the user is able to click on the Remember me checkbox', async ({ page }) => {
+test('NXGF-TC-1650: TC_002_Login_Access_Verify that user is able to click on sign in button', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+});
+
+test('NXGF-TC-1652: TC_003_Verify that the user is able to click on the Remember me checkbox', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -68,7 +68,7 @@ test.only('NXGF-TC-1652: TC_003_Verify that the user is able to click on the Rem
     })
 });
 
-test.only('NXGF-TC-1658: TC_010_Verify that the user is able to see login UI', async ({ page }) => {
+test('NXGF-TC-1658: TC_010_Verify that the user is able to see login UI', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
