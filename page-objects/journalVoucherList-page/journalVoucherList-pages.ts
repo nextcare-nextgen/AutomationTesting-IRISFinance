@@ -28,6 +28,10 @@ export class JournalVoucherListPage {
     readonly toVoucherNumber: Locator;
     readonly voucherRefAdvancedFilter: Locator;
     readonly errorMessageVochernumber: Locator;
+    readonly applybutton: Locator;
+    readonly journalVoucherDeatilsText:Locator;
+    readonly voucherNum:Locator;
+    readonly validatedCheckbox:Locator;
 
 
     constructor(page: Page) {
@@ -55,6 +59,10 @@ export class JournalVoucherListPage {
         this.toVoucherNumber = page.locator('//div//input[@title="To voucher number"]');
         this.voucherRefAdvancedFilter = page.locator('///div//input[@title="Voucher Reference"]');
         this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
+        this.applybutton = page.locator('//div//button[@title="Apply"]');
+        this.journalVoucherDeatilsText= page.locator('//h1[@title="Journal Voucher Modification"]');
+        this.voucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
+        this.validatedCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -127,6 +135,10 @@ export class JournalVoucherListPage {
         await this.filter.click();
     }
 
+    async clickOnApplyButton() {
+        await this.applybutton.click();
+    }
+
     async selectVoucherType(data: string) {
         await this.vouchertype.click();
         const vouchertypeinput = this.page.locator('//iris-base-layout//iris-select-formfield//mat-form-field[contains(@class,"type")]//input');
@@ -145,6 +157,11 @@ export class JournalVoucherListPage {
     }
 
     async enterToVoucherNumber(tovoucherNumber: string) {
+        await this.toVoucherNumber.clear();
+        await this.toVoucherNumber.fill(tovoucherNumber);
+    }
+
+    async enterToVoucherN(tovoucherNumber: string) {
         await this.toVoucherNumber.clear();
         await this.toVoucherNumber.fill(tovoucherNumber);
     }
@@ -185,4 +202,47 @@ export class JournalVoucherListPage {
             expect(await voucherNum.nth(index).innerText()).toBeTruthy();
         }
     }
+
+    async clickOnEditJournalVoucherButton() {
+        let editicon = this.page.locator('//mat-icon[@data-mat-icon-name="icon-edit"]');
+        await editicon.first().click();
+    }
+
+    
+    async verifyJournalVoucherDeatilsText(data: string) {
+        await expect(this.journalVoucherDeatilsText).toHaveText(data);
+    }
+
+    async verifyAccountsFromGrid() {
+        const accounts = this.page.locator('//mat-cell[contains(@class,"accountnumberandname")]');
+        for (let index = 0; index < await accounts.count(); index++) {
+            expect(await accounts.nth(index).innerText()).toBeTruthy();
+        }
+    }
+
+    async verifyVoucherDetailsFirstSection() {
+        await expect(this.voucherType).toBeVisible;
+        await expect(this.voucherDate).toBeVisible;
+        await expect(this.voucherRef).toBeVisible;
+        await expect(this.voucherNum).toBeVisible;
+        await expect(this.validationDate).toBeVisible;
+        await expect(this.validatedCheckbox).toBeVisible;
+
+    }
+
+    async verifyValidatedCheckboxDisabled() {
+        await expect(this.validatedCheckbox).toBeDisabled;
+
+    }
+
+    async verifyTotalDebitCVisequaltoTotalCreditCV() {
+        let totalDebit = await this.page.locator('//mat-cell[contains(@class,"debitTotal")]').all;
+        let totalCredit = await this.page.locator('//mat-cell[contains(@class,"debitTotal")]').all;
+
+        for (let i = 0; i < totalDebit.length && totalCredit.length; i++) {
+            expect(totalDebit[i].toEqual(totalCredit[i]));
+        }
+    }
+
+
 }

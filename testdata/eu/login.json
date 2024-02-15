@@ -3,7 +3,6 @@
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "HSmith",
         "passwordInput": "LazyCactus5*",
-        "expectedPageTitle": "Iris Finance Portal | Dashboard",
-        "claimsDashboardTitle":"Pulse | Claims Dashboard"
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
     }
    }
