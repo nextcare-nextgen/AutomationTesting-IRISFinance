@@ -304,6 +304,4 @@ test('NXGF-TC-1674: TC_031_Verify that the user is able to view the "Organizatio
           console.log(fontWeight);
        // await financialOrganizationsPage.verifyTextisinBold();
     })
-
-
 });

@@ -7,25 +7,6 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.json`) as Record<string, any>;
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-test('TC_001_Login_Access_VerifyUserIsAbleToAccessIRIS MAWISTA Portal', async ({ page }) => {
-
-    const loginPage: LoginPage = new LoginPage(page);
-
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-
-    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
-
-    await loginPage.gotoLoginPage(data['Login-Access'].url);
-
-    await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
-    await dashboardPage.clickOnMenuIconButton();
-
-    await fxRatesPage.clickOnFxRatesShrtcutsButton();
-    // await page.pause();
-
-});
-
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
   
     const loginPage: LoginPage = new LoginPage(page);

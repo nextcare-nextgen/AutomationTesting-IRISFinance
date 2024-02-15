@@ -36,6 +36,15 @@ export class JournalVoucherListPage {
     readonly totalDebit:Locator;
     readonly totalCredit:Locator;
     readonly balance:Locator;
+    readonly accountName:Locator;
+    readonly amount:Locator;
+    readonly editTransationCurrency:Locator;
+    readonly amountCV1:Locator;
+    readonly amountCV2:Locator;
+    readonly valueDate:Locator;
+    readonly description:Locator;
+    readonly recordPerPageDropdown:Locator;
+    readonly recordPerPage:Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -70,6 +79,14 @@ export class JournalVoucherListPage {
         this.totalDebit = page.locator('//mat-header-cell[contains(@id,"debitTotal-Total Debit")]');
         this.totalCredit = page.locator('//mat-header-cell[contains(@id,"creditTotal-Total Credit")]');
         this.balance = page.locator('//mat-header-cell[contains(@id,"balance-Balance")]');
+        this.amount = page.locator('//div//input[@title="Amount"]');
+        this.editTransationCurrency = page.locator('//mat-header-cell[contains(@id,"balance-Balance")]');
+        this.amountCV1 = page.locator('//div//input[@title="Amount CV1"]');
+        this.amountCV2 = page.locator('//div//input[@title="Amount CV2"]');
+        this.valueDate = page.locator('//div//input[@title="Value Date"]');
+        this.description = page.locator('//div//input[@title="Description"]');
+        this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -252,10 +269,50 @@ export class JournalVoucherListPage {
     }
 
     async verifyEditTransactionScreen() {
-        await expect(this.currency).toBeVisible;
-        await expect(this.totalDebit).toBeVisible;
-        await expect(this.totalCredit).toBeVisible;
-        await expect(this.balance).toBeVisible;
+        await expect(this.amount).toBeVisible;
+        await expect(this.amountCV1).toBeVisible;
+        await expect(this.amountCV2).toBeVisible;
+        await expect(this.valueDate).toBeVisible;
+        await expect(this.description).toBeVisible;
     }
 
+    async clickOnRecordsPerPageDropdown(data: string[]) {
+        await this.recordPerPageDropdown.click();
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ',' 15 ',' 20 ',' 30 ',' 50 ',' 100 ',' 250 ']);
+      }
+
+      async verifyRecordsPerPageTitle(data: string) {
+        await expect(this.recordPerPage).toHaveText(data);
+      }
+
+      async clickOnRecordsPerPageDropdownOption() {
+        await this.recordPerPageDropdown.click();
+        let dropdownOptions = await this.page.locator('//mat-option//span').all();
+      
+        for (let i = 0; i < dropdownOptions.length; i++){
+            // Check if current value is Item 1
+            if(await dropdownOptions[i].textContent()===" 30 "){
+                // Click if element with text found
+                await dropdownOptions[i].click();    
+                break;   
+            }      
+        } 
+      }
+      
+      async verifyCurrencyAndAmountFromGrid() {
+
+        const currency = this.page.locator('//mat-cell[contains(@class,"amountName")]');
+        for (let index = 0; index < await currency.count(); index++) {
+            expect(await currency.nth(index).innerText()).toBeTruthy();
+
+        }
+
+        const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
+        for (let index = 0; index < await amount.count(); index++) {
+            expect(await amount.nth(index).innerText()).toBeTruthy();
+
+        }
+
+    }
+      
 }
