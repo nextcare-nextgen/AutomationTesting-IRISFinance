@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="15.994743999999999">
-<testsuite name="tests\financialOrganizations\financialOrganizations.spec.ts" timestamp="2024-02-08T13:12:33.951Z" hostname="chromium" tests="1" failures="0" skipped="0" time="13.619" errors="0">
-<testcase name="NXGF-TC-1670: TC_029_Verify that the user is able to click on the Organization icon" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="13.619">
-</testcase>
-</testsuite>
-</testsuites>

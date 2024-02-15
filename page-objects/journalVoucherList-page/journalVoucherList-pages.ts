@@ -32,7 +32,10 @@ export class JournalVoucherListPage {
     readonly journalVoucherDeatilsText:Locator;
     readonly voucherNum:Locator;
     readonly validatedCheckbox:Locator;
-
+    readonly currency:Locator;
+    readonly totalDebit:Locator;
+    readonly totalCredit:Locator;
+    readonly balance:Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -63,6 +66,10 @@ export class JournalVoucherListPage {
         this.journalVoucherDeatilsText= page.locator('//h1[@title="Journal Voucher Modification"]');
         this.voucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
         this.validatedCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
+        this.currency = page.locator('//mat-header-cell[contains(@id,"amountName-Currency")]');
+        this.totalDebit = page.locator('//mat-header-cell[contains(@id,"debitTotal-Total Debit")]');
+        this.totalCredit = page.locator('//mat-header-cell[contains(@id,"creditTotal-Total Credit")]');
+        this.balance = page.locator('//mat-header-cell[contains(@id,"balance-Balance")]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -244,5 +251,11 @@ export class JournalVoucherListPage {
         }
     }
 
+    async verifyEditTransactionScreen() {
+        await expect(this.currency).toBeVisible;
+        await expect(this.totalDebit).toBeVisible;
+        await expect(this.totalCredit).toBeVisible;
+        await expect(this.balance).toBeVisible;
+    }
 
 }

@@ -1189,4 +1189,138 @@ test('NXGF-TC-2086: TC_043_Journal Voucher List_Modify_Verfiy that the Voucher i
     
 });
 
+test('NXGF-TC-2087: TC_044_Journal Voucher List_Modify_Verify that the second section has a grid with balance and differences', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Select Organization", async () => {
+        await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_044_Journal_Voucher_List'].organization);
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher List Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherListButton();
+        await sleep(5000);
+    })
+
+    await test.step("Click on Advanced Serch button", async () => {
+        await journalVoucherListPage.clickOnAdvancedSearchButton();
+    })
+
+    await test.step("Enter To Voucher Number", async () => {
+        await journalVoucherListPage.enterFromVoucherNumber(JournalVoucherListPageData['TC_044_Journal_Voucher_List'].fromVoucherNumber);
+    })
+
+    await test.step("Enter To Voucher Number", async () => {
+        await journalVoucherListPage.enterToVoucherNumber(JournalVoucherListPageData['TC_044_Journal_Voucher_List'].tovoucherNumber);
+    })
+
+    await test.step("Select Voucher Type", async () => {
+        await journalVoucherListPage.selectVoucherType(JournalVoucherListPageData['TC_044_Journal_Voucher_List'].voucherType);
+    })
+
+    await test.step("Click on Apply button", async () => {
+        await journalVoucherListPage.clickOnApplyButton();
+        await sleep(5000);
+    })
+    
+    await test.step("Verified that the user is able to Enter a date for 'To Date'", async () => {
+        await journalVoucherListPage.clickOnSearchButton();
+        await sleep(5000);
+    })
+
+    await test.step("Click on Edit Vocher Details button", async () => {
+        await journalVoucherListPage.clickOnEditJournalVoucherButton();
+    })
+
+    await test.step("Verified that if the voucher is validated user should not bel able to edit the validated checkbox", async () => {
+        await journalVoucherListPage.verifyVoucherDetailsSecondSection();
+    })
+    
+});
+
+test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transaction fields under the voucher reference are available on the details page', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Select Organization", async () => {
+        await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_045_Journal_Voucher_List'].organization);
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher List Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherListButton();
+        await sleep(5000);
+    })
+
+    await test.step("Click on Advanced Serch button", async () => {
+        await journalVoucherListPage.clickOnAdvancedSearchButton();
+    })
+
+    await test.step("Select Voucher Type", async () => {
+        await journalVoucherListPage.selectVoucherType(JournalVoucherListPageData['TC_045_Journal_Voucher_List'].voucherType);
+    })
+
+    await test.step("Click on Apply button", async () => {
+        await journalVoucherListPage.clickOnApplyButton();
+        await sleep(5000);
+    })
+    
+    await test.step("Verified that the user is able to Enter a date for 'To Date'", async () => {
+        await journalVoucherListPage.clickOnSearchButton();
+        await sleep(5000);
+    })
+
+    await test.step("Click on Edit Vocher Details button", async () => {
+        await journalVoucherListPage.clickOnEditJournalVoucherButton();
+    })
+
+    await test.step("Click on Edit Vocher Details button", async () => {
+        await journalVoucherListPage.clickOnEditJournalVoucherButton();
+    })
+
+    await test.step("Verified that if the voucher is validated user should not bel able to edit the validated checkbox", async () => {
+        await journalVoucherListPage.verifyVoucherDetailsSecondSection();
+    })
+    
+});
+
 

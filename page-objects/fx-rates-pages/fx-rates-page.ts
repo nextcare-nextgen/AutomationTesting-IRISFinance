@@ -1,4 +1,5 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import { parseArgs } from "util";
 
 export class FxRatesPage {
     readonly page: Page;
@@ -64,9 +65,11 @@ export class FxRatesPage {
   }
 
   async selectFromCurrency(fromCurrencyData: string) {
-    await this.fromCurrency.click();
+    let dropdownOptions = await this.page.locator('//mat-dialog-container//div[1]//input[@aria-haspopup="listbox"]');
+    await dropdownOptions.first().click();
     await this.fromCurrencyenter.fill(fromCurrencyData);
     await this.selectvalue.click();
+   
  
 }
 

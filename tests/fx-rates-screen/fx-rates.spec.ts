@@ -65,15 +65,12 @@ test('NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to 
 test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-
     const dashboardPage: DashboardPage = new DashboardPage(page);
-
     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
     await loginPage.gotoLoginPage(data['Login-Access'].url);
-
     await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    await fxRatesPage.verifyDashboardText(fxRatesData['TC_000_FX_Rates'].dashboardText)
+    await fxRatesPage.verifyDashboardText(fxRatesData['TC_002_FX_Rates'].dashboardText)
     // await page.pause();
 
 });
@@ -130,12 +127,10 @@ test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be 
     await loginPage.gotoLoginPage(data['Login-Access'].url);
 
     await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     await dashboardPage.clickOnMenuIconButton();
     await sleep(2000);
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
     await fxRatesPage.clickOnAddFxRatesButton();
-
     await fxRatesPage.selectFromCurrency(fxRatesData['TC_028_FX_Rates'].fromCurrency)
   
 
@@ -202,18 +197,15 @@ test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is abl
 
     const countValues = [ " 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 " ];
     const loginPage: LoginPage = new LoginPage(page);
-
     const dashboardPage: DashboardPage = new DashboardPage(page);
-
     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
     await loginPage.gotoLoginPage(data['Login-Access'].url);
-
     await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     await dashboardPage.clickOnMenuIconButton();
     await sleep(2000);
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
- 
+    await sleep(2000);
     await fxRatesPage.clickOnRecordsPerPageDropdown(countValues);
     
 });
