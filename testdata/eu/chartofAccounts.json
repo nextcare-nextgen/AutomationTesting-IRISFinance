@@ -1,0 +1,17 @@
+{
+    "TC_000_Chart_of_Accounts": {
+        "breadcrumbsText": "Charts of Accounts"
+    },
+    "TC_002_Chart_of_Accounts": {
+        "dashboardText": "Dashboard"
+    },
+    "TC_007_Chart_of_Accounts": {
+        "chartOfAccountsText": "Charts of Accounts"
+    },
+    "TC_011_Chart_of_Accounts": {
+        "accountNumber": "875421"
+    },
+    "TC_014_Chart_of_Accounts": {
+        "accountNumber": "875421"
+    }
+}

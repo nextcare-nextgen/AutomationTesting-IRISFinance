@@ -29,22 +29,25 @@ export class JournalVoucherListPage {
     readonly voucherRefAdvancedFilter: Locator;
     readonly errorMessageVochernumber: Locator;
     readonly applybutton: Locator;
-    readonly journalVoucherDeatilsText:Locator;
-    readonly voucherNum:Locator;
-    readonly validatedCheckbox:Locator;
-    readonly currency:Locator;
-    readonly totalDebit:Locator;
-    readonly totalCredit:Locator;
-    readonly balance:Locator;
-    readonly accountName:Locator;
-    readonly amount:Locator;
-    readonly editTransationCurrency:Locator;
-    readonly amountCV1:Locator;
-    readonly amountCV2:Locator;
-    readonly valueDate:Locator;
-    readonly description:Locator;
-    readonly recordPerPageDropdown:Locator;
-    readonly recordPerPage:Locator;
+    readonly journalVoucherDeatilsText: Locator;
+    readonly voucherNum: Locator;
+    readonly validatedCheckbox: Locator;
+    readonly currency: Locator;
+    readonly totalDebit: Locator;
+    readonly totalCredit: Locator;
+    readonly balance: Locator;
+    readonly accountName: Locator;
+    readonly amount: Locator;
+    readonly editTransationCurrency: Locator;
+    readonly amountCV1: Locator;
+    readonly amountCV2: Locator;
+    readonly valueDate: Locator;
+    readonly description: Locator;
+    readonly recordPerPageDropdown: Locator;
+    readonly recordPerPage: Locator;
+    readonly searchBar: Locator;
+    readonly label: Locator;
+    readonly clearAll: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -72,7 +75,7 @@ export class JournalVoucherListPage {
         this.voucherRefAdvancedFilter = page.locator('///div//input[@title="Voucher Reference"]');
         this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
         this.applybutton = page.locator('//div//button[@title="Apply"]');
-        this.journalVoucherDeatilsText= page.locator('//h1[@title="Journal Voucher Modification"]');
+        this.journalVoucherDeatilsText = page.locator('//h1[@title="Journal Voucher Modification"]');
         this.voucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
         this.validatedCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
         this.currency = page.locator('//mat-header-cell[contains(@id,"amountName-Currency")]');
@@ -87,6 +90,9 @@ export class JournalVoucherListPage {
         this.description = page.locator('//div//input[@title="Description"]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
+        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.label = page.locator('//iris-menu-card//iris-base-label//span');
+        this.clearAll = page.locator('//div//button[@title="Clear All"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -232,7 +238,7 @@ export class JournalVoucherListPage {
         await editicon.first().click();
     }
 
-    
+
     async verifyJournalVoucherDeatilsText(data: string) {
         await expect(this.journalVoucherDeatilsText).toHaveText(data);
     }
@@ -278,28 +284,28 @@ export class JournalVoucherListPage {
 
     async clickOnRecordsPerPageDropdown(data: string[]) {
         await this.recordPerPageDropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ',' 15 ',' 20 ',' 30 ',' 50 ',' 100 ',' 250 ']);
-      }
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+    }
 
-      async verifyRecordsPerPageTitle(data: string) {
+    async verifyRecordsPerPageTitle(data: string) {
         await expect(this.recordPerPage).toHaveText(data);
-      }
+    }
 
-      async clickOnRecordsPerPageDropdownOption() {
+    async clickOnRecordsPerPageDropdownOption() {
         await this.recordPerPageDropdown.click();
         let dropdownOptions = await this.page.locator('//mat-option//span').all();
-      
-        for (let i = 0; i < dropdownOptions.length; i++){
+
+        for (let i = 0; i < dropdownOptions.length; i++) {
             // Check if current value is Item 1
-            if(await dropdownOptions[i].textContent()===" 30 "){
+            if (await dropdownOptions[i].textContent() === " 30 ") {
                 // Click if element with text found
-                await dropdownOptions[i].click();    
-                break;   
-            }      
-        } 
-      }
-      
-      async verifyCurrencyAndAmountFromGrid() {
+                await dropdownOptions[i].click();
+                break;
+            }
+        }
+    }
+
+    async verifyCurrencyAndAmountFromGrid() {
 
         const currency = this.page.locator('//mat-cell[contains(@class,"amountName")]');
         for (let index = 0; index < await currency.count(); index++) {
@@ -314,5 +320,28 @@ export class JournalVoucherListPage {
         }
 
     }
-      
+
+    async verifySearchBar() {
+        await expect(this.searchBar).toBeVisible;
+    }
+
+    async enterinSearchbar(data: string) {
+        await this.searchBar.fill(data);
+        await sleep(2000);
+        await expect(this.label).toHaveText(data)
+    }
+
+
+    async clickonClearAllButton() {
+        await this.clearAll.click();
+    }
+
+    async verifyAdvancedSearchfieldisEmpty() {
+        await expect(this.fromVoucherNumber).toBeEmpty;
+        await expect(this.toVoucherNumber).toBeEmpty;
+        await expect(this.voucherType).toBeEmpty;
+
+    }
+
+
 }

@@ -8,7 +8,7 @@ const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.j
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
-  
+
     const loginPage: LoginPage = new LoginPage(page);
 
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -89,16 +89,16 @@ test('NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates
     await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     await dashboardPage.clickOnMenuIconButton();
     await sleep(2000);
- 
+
     await fxRatesPage.verifyFXRateShortcutButton();
-   
+
 
 });
 
 
 
 test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select From Currency from dropdown', async ({ page }) => {
-  
+
     const loginPage: LoginPage = new LoginPage(page);
 
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -113,7 +113,7 @@ test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be 
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
     await fxRatesPage.clickOnAddFxRatesButton();
     await fxRatesPage.selectFromCurrency(fxRatesData['TC_028_FX_Rates'].fromCurrency)
-  
+
 
 });
 
@@ -133,7 +133,7 @@ test('NXGF-TC-1902: TC_031_FX_Rates_Add new FX Rates_Verify that user should be 
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
     await fxRatesPage.clickOnAddFxRatesButton();
     await fxRatesPage.getRate(fxRatesData['TC_031_FX_Rates'].rate);
-  
+
 
 });
 
@@ -153,7 +153,7 @@ test('NXGF-TC-1904: TC_033_FX_Rates_Add new FX Rates_Verify that user should abl
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
     await fxRatesPage.clickOnAddFxRatesButton();
     await fxRatesPage.clickOnCloseButton();
-   
+
 });
 
 test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed', async ({ page }) => {
@@ -171,12 +171,12 @@ test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per
     await sleep(2000);
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
     await fxRatesPage.verifyRecordsPerPageTitle(fxRatesData['TC_034_FX_Rates'].title);
-  
+
 });
 
 test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
 
-    const countValues = [ " 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 " ];
+    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
@@ -188,7 +188,7 @@ test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is abl
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
     await sleep(2000);
     await fxRatesPage.clickOnRecordsPerPageDropdown(countValues);
-    
+
 });
 
 test('NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts', async ({ page }) => {

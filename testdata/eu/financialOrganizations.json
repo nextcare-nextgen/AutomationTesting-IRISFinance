@@ -7,5 +7,20 @@
     },
     "TC_030": {
         "organizationText": "Organizations"
+    },
+    "TC_034": {
+        "organizationCode": "AZP"
+    },
+    "TC_035": {
+        "organizationCode": "AZP1"
+    },
+    "TC_036": {
+        "organizationCode": "AZP"
+    },
+    "TC_037": {
+        "organizationCode": "AZP"
+    },
+    "TC_038": {
+        "organizationCode": "AZP"
     }
 }

@@ -38,7 +38,7 @@ test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed'
     })
 
 });
- 
+
 test('NXGF-TC-1911: TC_001_Policies_Verify that the user is able to navigate to main menu', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -198,7 +198,7 @@ test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Po
     })
 
     await test.step("User Verify Text is in Bold", async () => {
-       // await policiesPage.verifyTextisinBold(policiesData['TC_006_Policies'].policiesText)
+        // await policiesPage.verifyTextisinBold(policiesData['TC_006_Policies'].policiesText)
 
 
     })
@@ -1453,9 +1453,9 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
     })
 
     await test.step("User Enter From Date", async () => {
-     
+
         await policiesPage.enterinValidFromDate(policiesData['TC_034_Policies'].fromDate, policiesData['TC_034_Policies'].errorText);
-      
+
 
     })
 })

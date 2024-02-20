@@ -91,6 +91,20 @@
     "TC_048_Journal_Voucher_List":{
         "organization": "2024",
         "voucherType":"VR"
+    },
+    "TC_055_Journal_Voucher_List": {
+        "organization": "2024",
+        "fromVoucherNumber":"5688",
+        "tovoucherNumber":"5688"
+    },
+    "TC_057_Journal_Voucher_List": {
+        "value": "Organizations"
+    },
+    "TC_058_Journal_Voucher_List":{
+        "organization": "2024",
+        "fromVoucherNumber":"10",
+        "tovoucherNumber":"900",
+        "voucherType":"Reverse TAX Posting"
     }
     
 }

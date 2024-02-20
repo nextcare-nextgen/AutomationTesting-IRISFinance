@@ -137,7 +137,6 @@ test('NXGF-TC-2010: TC_004_Journal Voucher Lookup_Verify that the user is able t
     await test.step("Verified that the user is able to navigate to the Journal Voucher Lookup screen", async () => {
         await journalVoucherLookupPage.verifyJournalVoucherLookupText(JournalVoucherLookupPageData['TC_004_Journal_Voucher_Lookup'].journalVocherText)
 
-
     })
 
 });

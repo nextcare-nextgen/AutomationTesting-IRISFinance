@@ -32,7 +32,7 @@ export class LoginPage {
     async enterLoginDetails(superUser: string, password: string) {
         await this.userNameOrEmailInputField.fill(superUser);
         await this.passwordInputField.fill(password);
-         await this.rememberMeCheckbox.click();
+        await this.rememberMeCheckbox.click();
     }
     async enterEmailId(emailID: string) {
         await this.userNameOrEmailInputField.fill(emailID);

@@ -16,6 +16,9 @@ export class FinancialOrganizationsPage {
     readonly reportsShortcut: Locator;
     readonly FTMShortcut: Locator;
     readonly organization: Locator;
+    readonly organizationName: Locator;
+    readonly organizationCode: Locator;
+    readonly search: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -31,6 +34,9 @@ export class FinancialOrganizationsPage {
         this.reportsShortcut = page.locator('//div//span[@title="Reports"]');
         this.FTMShortcut = page.locator('//div//span[@title="Financial Transactions Monitoring"]');
         this.organization = page.locator('//h1[@title="Organizations"]');
+        this.organizationName = page.locator('//div//input[@title="Name"]');
+        this.organizationCode = page.locator('//div//input[@title="Code"]');
+        this.search = page.locator('//div//button[@title="Search"]');
 
     }
 
@@ -66,9 +72,32 @@ export class FinancialOrganizationsPage {
         await expect(this.journalVoucherText).toBeEnabled();
         await expect(this.reportsShortcut).toBeEnabled();
         await expect(this.FTMShortcut).toBeEnabled();
-        
-    }
-      
 
+    }
+
+    async verifyOrgNameAndOrgCodeField() {
+        await expect(this.organizationName).toBeVisible();
+        await expect(this.organizationCode).toBeVisible();
+    }
+
+    async verifySearchField() {
+        await expect(this.search).toBeVisible();
+    }
+
+    async enterOrganizationCode(data: string) {
+        await this.organizationCode.fill(data);
+    }
+
+    async clickOnSearch() {
+        await this.search.click();
+    }
+
+    async verifyOrganizationCodeFromGrid() {
+        const code = this.page.locator('//mat-cell[contains(@class,"code")]');
+        for (let index = 0; index < await code.count(); index++) {
+            expect(await code.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
 }
 

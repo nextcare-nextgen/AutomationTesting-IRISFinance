@@ -400,6 +400,4 @@ export class JournalVoucherLookupPage {
         await expect(this.label).toHaveText(data)
     }
 
-
-
 }
