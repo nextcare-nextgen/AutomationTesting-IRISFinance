@@ -13,5 +13,18 @@
     },
     "TC_014_Chart_of_Accounts": {
         "accountNumber": "875421"
+    },
+    "TC_015_Chart_of_Accounts": {
+        "accountNumber": "875421"
+    },
+    "TC_019_Chart_of_Accounts": {
+        "accountName": "IPT Liability"
+    },
+    "TC_028_Chart_of_Accounts": {
+        "confirmationMessage": "Are you sure you want to stop this account ?"
+    },
+    "TC_030_Chart_of_Accounts": {
+        "expectedText": " Records per page: "
     }
+    
 }

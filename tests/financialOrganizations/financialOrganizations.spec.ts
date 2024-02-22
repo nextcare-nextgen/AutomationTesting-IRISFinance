@@ -531,5 +531,40 @@ test('NXGF-TC-1689: TC_038_Verify that the user is able to view the results afte
     })
 });
 
+test('NXGF-TC-1691: TC_039_Verify that the user is able to view the mentioned values in the grid', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the user is able to click on the Organization icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+    await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
+        await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_039'].organizationCode)
+    })
+    await test.step("Click on Search", async () => {
+        await financialOrganizationsPage.clickOnSearch();
+    })
+
+    await test.step("Verified Searched Organization Code from Grid", async () => {
+        await financialOrganizationsPage.verifyOrganizationCodeFromGrid();
+    })
+});
+
 
 

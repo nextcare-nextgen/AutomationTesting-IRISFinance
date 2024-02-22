@@ -46,12 +46,14 @@ export class FxRatesPage {
   }
 
   async verifyBreadCrumbsText(data: string) {
-    await expect(this.breadCrumbs).toHaveText(data);
+    const actual = await this.breadCrumbs.textContent();
+    expect(actual).toBe(data);
   }
 
 
   async verifyDashboardText(data: string) {
-    await expect(this.dashboard).toHaveText(data);
+    const actual = await this.dashboard.textContent();
+    expect(actual).toBe(data);
   }
 
 
@@ -82,8 +84,10 @@ export class FxRatesPage {
   }
 
   async verifyRecordsPerPageTitle(data: string) {
-    await expect(this.recordPerPage).toHaveText(data);
+    const actual = await this.recordPerPage.textContent();
+    expect(actual).toBe(data);
   }
+
 
   async clickOnRecordsPerPageDropdown(data: string[]) {
     await this.recordPerPageDropdown.click();

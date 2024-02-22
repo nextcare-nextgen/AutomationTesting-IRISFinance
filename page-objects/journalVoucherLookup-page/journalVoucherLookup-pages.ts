@@ -132,7 +132,8 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyBreadCrumbsText(data: string) {
-        await expect(this.breadCrumbs).toHaveText(data);
+        const actual = await this.breadCrumbs.textContent();
+			expect(actual).toBe(data);
     }
 
 
@@ -145,7 +146,8 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyDashboardText(data: string) {
-        await expect(this.dashboard).toHaveText(data);
+        const actual = await this.dashboard.textContent();
+			expect(actual).toBe(data);
     }
 
     async verifyJournalVoucherShortcutButton() {
@@ -153,7 +155,8 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyJournalVoucherLookupText(data: string) {
-        await expect(this.journalVoucherLookupButton).toHaveText(data);
+        const actual = await this.journalVoucherLookupButton.textContent();
+			expect(actual).toBe(data);
     }
 
     async clickOnJournalVoucherLookupButton() {
@@ -169,7 +172,8 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyOrganizationName(data: string) {
-        await expect(this.organizationName).toHaveText(data);
+        const actual = await this.organizationName.textContent();
+			expect(actual).toBe(data);
     }
 
     async clickOnAdvancedSearchButton() {
@@ -242,7 +246,8 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyErrorForVoucherNumber(data: string) {
-        await expect(this.errorMessageVochernumber).toHaveText(data);
+        const actual = await this.errorMessageVochernumber.textContent();
+        expect(actual).toBe(data);
     }
 
     async enterAmount(amount: string) {
@@ -285,16 +290,15 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyVoucherInformationTexr(data: string) {
-        await expect(this.vocherInfoText).toHaveText(data);
+        const actual = await this.vocherInfoText.textContent();
+        expect(actual).toBe(data);
     }
 
 
     async verifyTransactionFromGrid() {
-
         const transaction = this.page.locator('//mat-cell[contains(@class,"account")]');
         for (let index = 0; index < await transaction.count(); index++) {
             expect(await transaction.nth(index).innerText()).toBeTruthy();
-
         }
         console.log(await transaction.count());
     }
@@ -333,7 +337,8 @@ export class JournalVoucherLookupPage {
 
 
     async verifyRecordsPerPageText(data: string) {
-        await expect(this.recordsPerPage).toHaveText(data);
+        const actual = await this.recordsPerPage.textContent();
+        expect(actual).toBe(data);
     }
 
 
@@ -397,7 +402,8 @@ export class JournalVoucherLookupPage {
     async enterinSearchbar(data: string) {
         await this.searchbar.fill(data);
         await sleep(2000);
-        await expect(this.label).toHaveText(data)
+        const actual = await this.label.textContent();
+			expect(actual).toBe(data);
     }
 
 }

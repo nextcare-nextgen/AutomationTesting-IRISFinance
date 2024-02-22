@@ -99,7 +99,8 @@ export class PoliciesPage {
 
 
     async verifyBreadCrumbsText(data: string) {
-        await expect(this.breadCrumbs).toHaveText(data);
+        const actual = await this.breadCrumbs.textContent();
+			expect(actual).toBe(data);
     }
 
     async clickOnPoliciesShrtcutsButton() {
@@ -113,7 +114,8 @@ export class PoliciesPage {
     }
 
     async verifyDashboardText(data: string) {
-        await expect(this.dashboard).toHaveText(data);
+        const actual = await this.dashboard.textContent();
+			expect(actual).toBe(data);
     }
 
 
@@ -127,7 +129,8 @@ export class PoliciesPage {
     }
 
     async verifyPoliciesText(data: string) {
-        await expect(this.policiesText).toHaveText(data);
+        const actual = await this.policiesText.textContent();
+			expect(actual).toBe(data);
     }
 
     async verifyTextisinBold(text: string) {
@@ -158,7 +161,8 @@ export class PoliciesPage {
         await this.fromDate.clear();
         await this.fromDate.fill(fromDates);
         this.page.keyboard.press("Enter")
-        await expect(this.errorText).toHaveText(errorText);
+        const actual = await this.errorText.textContent();
+			expect(actual).toBe(errorText);
 
     }
 
@@ -197,12 +201,9 @@ export class PoliciesPage {
     }
 
     async VerifyStartDateFromGrid() {
-
         let startdatevalue = await this.page.locator("//mat-cell[contains(@class,'policyStartDate')]").all();
         console.log(startdatevalue);
-
         for (let i = 0; i < startdatevalue.length; i++) {
-
             console.log(startdatevalue[i].allTextContents);
         }
     }
@@ -249,7 +250,8 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVocherTitle(data: string) {
-        await expect(this.policyJournalVochereText).toHaveText(data);
+        const actual = await this.policyJournalVochereText.textContent();
+			expect(actual).toBe(data);
     }
 
     async clickOnViewJournalVoucherEyeIcon() {

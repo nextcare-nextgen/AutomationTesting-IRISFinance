@@ -96,7 +96,8 @@ export class JournalVoucherListPage {
     }
 
     async verifyBreadCrumbsText(data: string) {
-        await expect(this.breadCrumbs).toHaveText(data);
+        const actual = await this.breadCrumbs.textContent();
+        expect(actual).toBe(data);
     }
 
 
@@ -106,7 +107,8 @@ export class JournalVoucherListPage {
 
 
     async verifyDashboardText(data: string) {
-        await expect(this.dashboard).toHaveText(data);
+        const actual = await this.dashboard.textContent();
+        expect(actual).toBe(data);
     }
 
     async verifyJournalVoucherShortcutButton() {
@@ -114,7 +116,8 @@ export class JournalVoucherListPage {
     }
 
     async verifyJournalVoucherListText(data: string) {
-        await expect(this.journalVoucherListButton).toHaveText(data);
+        const actual = await this.journalVoucherListButton.textContent();
+        expect(actual).toBe(data);
     }
 
     async clickOnJournalVoucherListButton() {
@@ -130,7 +133,8 @@ export class JournalVoucherListPage {
     }
 
     async verifyJournalVoucherText(data: string) {
-        await expect(this.journalVouchertext).toHaveText(data);
+        const actual = await this.journalVouchertext.textContent();
+        expect(actual).toBe(data);
     }
 
     async verifyjournalVoucherListAllFields() {
@@ -197,7 +201,8 @@ export class JournalVoucherListPage {
     }
 
     async verifyErrorForVoucherNumber(data: string) {
-        await expect(this.errorMessageVochernumber).toHaveText(data);
+        const actual = await this.errorMessageVochernumber.textContent();
+        expect(actual).toBe(data);
     }
 
     async verifyFromDate() {
@@ -240,7 +245,8 @@ export class JournalVoucherListPage {
 
 
     async verifyJournalVoucherDeatilsText(data: string) {
-        await expect(this.journalVoucherDeatilsText).toHaveText(data);
+        const actual = await this.journalVoucherDeatilsText.textContent();
+        expect(actual).toBe(data);
     }
 
     async verifyAccountsFromGrid() {
@@ -288,7 +294,8 @@ export class JournalVoucherListPage {
     }
 
     async verifyRecordsPerPageTitle(data: string) {
-        await expect(this.recordPerPage).toHaveText(data);
+        const actual = await this.recordPerPage.textContent();
+        expect(actual).toBe(data);
     }
 
     async clickOnRecordsPerPageDropdownOption() {
@@ -328,7 +335,8 @@ export class JournalVoucherListPage {
     async enterinSearchbar(data: string) {
         await this.searchBar.fill(data);
         await sleep(2000);
-        await expect(this.label).toHaveText(data)
+        const actual = await this.label.textContent();
+        expect(actual).toBe(data);
     }
 
 
