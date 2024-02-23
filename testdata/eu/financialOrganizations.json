@@ -22,5 +22,14 @@
     },
     "TC_038": {
         "organizationCode": "AZP"
+    },
+    "TC_041": {
+        "organizationCode": "AZP"
+    },
+    "TC_042": {
+        "organizationName": "Allianz Partners"
+    },
+    "TC_045": {
+        "expectedText": " Records per page: "
     }
 }

@@ -566,5 +566,138 @@ test('NXGF-TC-1691: TC_039_Verify that the user is able to view the mentioned va
     })
 });
 
+test('NXGF-TC-1692: TC_040_Verify that the user is able to see the coloring indexes below the grid', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the user is able to click on the Organization icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that the user is able to see the coloring indexes below the grid", async () => {
+        await financialOrganizationsPage.verifyIndexStatus();
+    })
+});
+
+test('NXGF-TC-1694: TC_041_Verify that the user is able to view all the organizations listed irrespective of the status', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the user is able to click on the Organization icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+    await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
+        await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_041'].organizationCode)
+    })
+
+    await test.step("Click on Search", async () => {
+        await financialOrganizationsPage.clickOnSearch();
+    })
+
+    await test.step("Verified that the user is able to view all the organizations listed irrespective of the status", async () => {
+        await financialOrganizationsPage.verifyActiveIndexFromGrid();
+    })
+
+});
+
+test('NXGF-TC-1696,NXGF-TC-1698: TC_042_Verify that the user is able to enter the organization name in the Search by Organization "Name" field', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the user is able to click on the Organization icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that the user is able to view all the organizations listed irrespective of the status", async () => {
+        await financialOrganizationsPage.enterOrganizationName(FinancialOrganizationsData['TC_042'].organizationName);
+    })
+
+});
+
+test('NXGF-TC-1700: TC_045_Verify that the user is able to view the Records per page for the search results and select the number of rows from the dropdown', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the user is able to click on the Organization icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that Records per page: is displayed", async () => {
+        await financialOrganizationsPage.verifyRecordsPerPageText(FinancialOrganizationsData['TC_045'].expectedText);
+    })
+
+    await test.step("Click On Records per page dropdown", async () => {
+        await sleep(2000);
+        await financialOrganizationsPage.clickOnRecordsPerPageDropdown(countValues);
+    })
+
+
+});
+
 
 

@@ -19,6 +19,11 @@ export class FinancialOrganizationsPage {
     readonly organizationName: Locator;
     readonly organizationCode: Locator;
     readonly search: Locator;
+    readonly activeIndex: Locator;
+    readonly stoppedIndex: Locator;
+    readonly recordsPerPage:Locator;
+    readonly recordPerPageDropdown:Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -37,6 +42,10 @@ export class FinancialOrganizationsPage {
         this.organizationName = page.locator('//div//input[@title="Name"]');
         this.organizationCode = page.locator('//div//input[@title="Code"]');
         this.search = page.locator('//div//button[@title="Search"]');
+        this.activeIndex = page.locator('//iris-table-filter-tags//mat-chip-listbox//div//span[@title="Active"]');
+        this.stoppedIndex = page.locator('//iris-table-filter-tags//mat-chip-listbox//div//span[@title="Stopped"]');
+        this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
+        this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
 
     }
 
@@ -91,6 +100,10 @@ export class FinancialOrganizationsPage {
         await this.organizationCode.fill(data);
     }
 
+    async enterOrganizationName(data: string) {
+        await this.organizationName.fill(data);
+    }
+
     async clickOnSearch() {
         await this.search.click();
     }
@@ -102,5 +115,34 @@ export class FinancialOrganizationsPage {
 
         }
     }
+
+    async verifyIndexStatus() {
+        await expect(this.activeIndex).toBeVisible();
+        await expect(this.stoppedIndex).toBeVisible();
+    }
+
+    async clickOnActiveIndex() {
+        await this.activeIndex.click();
+    }
+
+    async verifyActiveIndexFromGrid() {
+        const status = this.page.locator('//mat-cell[contains(@class,"status")]');
+        for (let index = 0; index < await status.count(); index++) {
+            expect(await status.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
+
+    async verifyRecordsPerPageText(data: string) {
+        const actual = await this.recordsPerPage.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async clickOnRecordsPerPageDropdown(data: string[]) {
+        const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        recordsPerPagedropdown.first().click();
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+    }
+
 }
 

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "Tests":"npx playwright test || powershell -command Compress-Archive -Path playwright-report -DestinationPath playwright-report.zip -Force"},
   "keywords": [],
   "author": "",
   "license": "ISC",

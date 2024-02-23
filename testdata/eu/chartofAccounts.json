@@ -25,6 +25,26 @@
     },
     "TC_030_Chart_of_Accounts": {
         "expectedText": " Records per page: "
+    },
+    "TC_035_Chart_of_Accounts": {
+        "expectedText": "Add a new account"
+    },
+    "TC_038_Chart_of_Accounts": {
+        "organization": "2024",
+        "orgName": "Allianz Partners - 2024"
+    },
+    "TC_039_Chart_of_Accounts": {
+        "accountNum": "1234567"
+    },
+    "TC_040_Chart_of_Accounts": {
+        "accountName": "Test"
+    },
+    "TC_041_Chart_of_Accounts": {
+        "value": "Bank Charges"
+    },
+    "TC_042_Chart_of_Accounts": {
+        "value": "22 Feb 2024"
     }
+    
     
 }

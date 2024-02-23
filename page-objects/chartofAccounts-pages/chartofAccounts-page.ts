@@ -26,6 +26,25 @@ export class ChartOfAccountsPage {
     readonly confirmationMessage: Locator;
     readonly recordsPerPage: Locator;
     readonly recordPerPageDropdown: Locator;
+    readonly addAccount: Locator;
+    readonly addAccountScreenText: Locator;
+    readonly addAccountNumber: Locator;
+    readonly addAccountName: Locator;
+    readonly addAccountSelectDate: Locator;
+    readonly addAccountType: Locator;
+    readonly addAccountProductLine: Locator;
+    readonly addAccountCostCenter2: Locator;
+    readonly addAccountCostCenter3: Locator;
+    readonly addAccountGLAcoountType: Locator;
+    readonly addAccountNameMandatory: Locator;
+    readonly addAccountNumberMandatory: Locator;
+    readonly addAccountTypeMandatory: Locator;
+    readonly addAccountGLAcoountTypeMandatory: Locator;
+    readonly organization: Locator;
+    readonly organizationName: Locator;
+    readonly selectAddAccountType: Locator;
+    readonly selectstartDate: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -51,6 +70,24 @@ export class ChartOfAccountsPage {
         this.confirmationMessage = page.locator('//p[@title="Are you sure you want to stop this account ?"]');
         this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        this.addAccount = page.locator('//div//button[@title="Add Account"]');
+        this.addAccountNumber = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Number"]');
+        this.addAccountName = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Name"]');
+        this.addAccountSelectDate = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Start Date"]');
+        this.addAccountType = page.locator('//div//span[@title="Account Type"]');
+        this.addAccountProductLine = page.locator('//div//span[@title="Product Line"]');
+        this.addAccountCostCenter2 = page.locator('//div//span[@title="Cost Center 2"]');
+        this.addAccountCostCenter3 = page.locator('//div//span[@title="Cost Center 3"]');
+        this.addAccountGLAcoountType = page.locator('//div//span[@title="GL Account Type"]');
+        this.addAccountNameMandatory = page.locator('//div//input[@title="Account Name"]//following::span[contains(@class,"required-marker")][1]');
+        this.addAccountNumberMandatory = page.locator('//div//input[@title="Account Number"]//following::span[contains(@class,"required-marker")][2]');
+        this.addAccountTypeMandatory = page.locator('//div//span[@title="Account Type"]//following::span[1]');
+        this.addAccountGLAcoountTypeMandatory = page.locator('//div//span[@title="GL Account Type"]//following::span[1]');
+        this.organization = page.locator('//iris-organization-financial-year-dropdown//mat-select[@role="combobox"]');
+        this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
+        this.selectAddAccountType = page.locator('//iris-account-type-autocomplete//div//input[contains(@class,"input-element")]');
+        this.selectstartDate = page.locator('//div//input[contains(@class,"datepicker")]');
+
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -165,4 +202,82 @@ export class ChartOfAccountsPage {
 
     }
 
+    async clickOnRecordsPerPageDropdownOption() {
+        await this.recordPerPageDropdown.click();
+        let dropdownOptions = await this.page.locator('//mat-option//span').all();
+
+        for (let i = 0; i < dropdownOptions.length; i++) {
+            // Check if current value is Item 1
+            if (await dropdownOptions[i].textContent() === " 30 ") {
+                // Click if element with text found
+                await dropdownOptions[i].click();
+                break;
+            }
+        }
+    }
+
+    async verifyAddAccountButton() {
+        await expect(this.addAccount).toBeVisible();
+    }
+
+    async clickOnAddAccountButton() {
+        await this.addAccount.click();
+    }
+
+    async verifyAddAccountpopupScreenText(data: string) {
+        const actual = await this.addAccountScreenText.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyAddAccountAllFields() {
+        await expect(this.addAccountNumber).toBeVisible();
+        await expect(this.addAccountName).toBeVisible();
+        await expect(this.addAccountSelectDate).toBeVisible();
+        await expect(this.addAccountType).toBeVisible();
+        await expect(this.productLine).toBeVisible();
+        await expect(this.costCenter2).toBeVisible();
+        await expect(this.costCenter3).toBeVisible();
+        await expect(this.GLAccounttype).toBeVisible();
+
+    }
+
+    async verifyasteriskmarkFormandatoryFields() {
+        await expect(this.addAccountNumberMandatory).toBeVisible();
+        await expect(this.addAccountNameMandatory).toBeVisible();
+        await expect(this.addAccountTypeMandatory).toBeVisible();
+        await expect(this.addAccountGLAcoountTypeMandatory).toBeVisible();
+    }
+
+    async selectOrganization(org: string) {
+        await this.organization.click();
+        await this.page.locator('//mat-optgroup//mat-option//mat-label[text()="' + org + '"]').click();
+    }
+
+    async verifyOrganizationName(data: string) {
+        const actual = await this.organizationName.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async enterAddAccountNumber(data: string) {
+        await this.addAccountNumber.fill(data);
+    }
+
+    async enterAddAccountName(data: string) {
+        await this.addAccountName.fill(data);
+    }
+
+    async selectAddAccountTypeFromDropdown(data: string) {
+        await this.page.pause();
+        await this.selectAddAccountType.click();
+        const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
+        AccountTypeinput.fill(data);
+        const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+        selectAccounttype.click();
+        await this.page.pause();
+    }
+
+    async enterSelectStartDate(data: string) {
+        await this.selectstartDate.fill(data);
+    }
 }
+
