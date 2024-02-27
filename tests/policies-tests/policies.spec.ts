@@ -9,6 +9,10 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
+    await test.step("--------------Start the Testclass----------------------", async () => {
+        console.log("--------------Start the Testclass----------------------")
+    })
+    
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const policiesPage: PoliciesPage = new PoliciesPage(page);
@@ -28,10 +32,9 @@ test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed'
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
+
     await test.step("Verify Breadcrumbs Text", async () => {
         await policiesPage.verifyBreadCrumbsText(policiesData['TC_000_Policies'].breadcrumbsText);
 
@@ -103,9 +106,7 @@ test('NXGF-TC-1913: TC_003_Policies_Verify that Policies shortcut buttons are cl
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //   await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
 });
@@ -158,10 +159,9 @@ test('NXGF-TC-1915: TC_005_Policies_Verify that the user is redirected to the Po
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
+
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.verifyPoliciesText(policiesData['TC_005_Policies'].policiesText)
 
@@ -233,9 +233,7 @@ test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is dis
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //   await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Verify that From Date is Displayed", async () => {
@@ -249,7 +247,7 @@ test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is dis
 
 });
 
-test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to Enter From date and To date', async ({ page }) => {
+test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to select From date and To date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -276,9 +274,7 @@ test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to Enter From d
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
 
@@ -327,9 +323,7 @@ test('NXGF-TC-1919: TC_009_Policies_Verify that the Search filed is displayed', 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Verify Search field is displayed", async () => {
@@ -368,9 +362,7 @@ test('NXGF-TC-1920: TC_010_Policies_Verify that the Advanced search filed is dis
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Vrify Advanced Search is displayed", async () => {
@@ -408,7 +400,6 @@ test('NXGF-TC-1921: TC_011_Policies_Verify that the Reset filed is displayed', a
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
 
@@ -446,9 +437,7 @@ test('NXGF-TC-1922: TC_012_Policies_Verify that the all the column name should d
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Verify All coumn name should displayed", async () => {
@@ -485,9 +474,7 @@ test('NXGF-TC-1923: TC_013_Policies_Verify that the user is able to search with 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Enter From Date", async () => {
@@ -536,9 +523,7 @@ test('NXGF-TC-1924: TC_014_Policies_Verify that the Policy Reference filed is di
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Advanced Search Button", async () => {
@@ -554,7 +539,7 @@ test('NXGF-TC-1924: TC_014_Policies_Verify that the Policy Reference filed is di
 
 })
 
-test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id filed is displayed in Advanced search', async ({ page }) => {
+test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id field is displayed in Advanced search', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -581,9 +566,7 @@ test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id filed is displayed
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Advanced Search Button", async () => {
@@ -623,9 +606,7 @@ test('NXGF-TC-1926: TC_016_Policies_Verify that the Policy Holder Name field is 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Advanced Search Button", async () => {
@@ -668,7 +649,6 @@ test('NXGF-TC-1927: TC_017_Policies_Verify that the Apply button is displayed in
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -711,9 +691,7 @@ test('NXGF-TC-1928: TC_018_Policies_Verify that the user is able to click on Res
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Reset Button", async () => {
@@ -751,9 +729,7 @@ test('NXGF-TC-1929: TC_019_Policies_Verify that the user is able to Reset field 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Reset Button", async () => {
@@ -790,9 +766,7 @@ test('NXGF-TC-1930: TC_020_Policies_Verify that the user is able to search with 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Advanced Search Button", async () => {
@@ -814,8 +788,6 @@ test('NXGF-TC-1930: TC_020_Policies_Verify that the user is able to search with 
         await policiesPage.clickOnSerach();
 
     })
-
-
     await test.step("Verify the Policy Refrences from Grid", async () => {
         await policiesPage.verifySearchResultPolicyRef();
 
@@ -854,9 +826,7 @@ test('NXGF-TC-1931: TC_021_Policies_Verify that the user is able to search with 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click on Advanced Search Button", async () => {
@@ -912,7 +882,6 @@ test('NXGF-TC-1932: TC_022_Policies_Verify that the user is able to search with 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -965,7 +934,6 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1004,9 +972,7 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
@@ -1043,7 +1009,6 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        // await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1087,7 +1052,6 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1121,7 +1085,6 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
         await sleep(2000);
     })
@@ -1132,7 +1095,6 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1166,7 +1128,6 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
         await sleep(2000);
     })
@@ -1177,7 +1138,6 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1211,7 +1171,6 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
         await sleep(2000);
     })
@@ -1222,7 +1181,6 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1263,7 +1221,6 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
         await sleep(2000);
     })
@@ -1274,7 +1231,7 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
+
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1309,7 +1266,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
+
         await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
         await sleep(2000);
     })
@@ -1320,7 +1277,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
+
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1340,7 +1297,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
 })
 
 
-test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the item counts  (10,15,20,30,50,100,250) in the drop down in Polices screen', async ({ page }) => {
+test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down in Polices screen', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1357,7 +1314,6 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
         await sleep(2000);
     })
@@ -1368,7 +1324,6 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1397,7 +1352,6 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
         await sleep(2000);
     })
@@ -1408,7 +1362,6 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1436,7 +1389,6 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_034_Policies'].organization);
         await sleep(2000);
     })
@@ -1447,16 +1399,12 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
 
     await test.step("User Enter From Date", async () => {
-
         await policiesPage.enterinValidFromDate(policiesData['TC_034_Policies'].fromDate, policiesData['TC_034_Policies'].errorText);
-
-
     })
 })
 
@@ -1476,7 +1424,6 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
         await sleep(2000);
     })
@@ -1487,7 +1434,6 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
@@ -1529,7 +1475,6 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
         await sleep(2000);
     })
@@ -1540,11 +1485,9 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
-
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
@@ -1570,7 +1513,6 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
 
 
     await test.step("User Click on Organzation Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnOrganizationShrtcutsButton();
 
     })
@@ -1610,7 +1552,6 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
     })
 
     await test.step("User select oragnization", async () => {
-        //await page.pause();
         await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
         await sleep(2000);
     })
@@ -1621,11 +1562,9 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        //  await page.pause();
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
-
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
@@ -1637,12 +1576,13 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
 
     })
 
-
     await test.step("Verify Currency Records from Second grid", async () => {
         await sleep(2000);
         await policiesPage.verifyAmountEqulestoCV();
 
     })
 
-
+   await test.step("--------------End the Testclass----------------------", async () => {
+        console.log("--------------End the Testclass----------------------")
+    })
 })

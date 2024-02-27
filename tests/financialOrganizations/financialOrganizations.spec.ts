@@ -10,6 +10,10 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access the IRIS Finance portal', async ({ page }) => {
 
+    await test.step("--------------Start the Testclass----------------------", async () => {
+        console.log("--------------Start the Testclass----------------------")
+    })
+
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
@@ -696,6 +700,51 @@ test('NXGF-TC-1700: TC_045_Verify that the user is able to view the Records per 
         await financialOrganizationsPage.clickOnRecordsPerPageDropdown(countValues);
     })
 
+});
+
+test('NXGF-TC-1702: TC_046_Verify that the user is able to view the same search results for both the search criteria', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the user is able to click on the Organization icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("User Enter Organization Name", async () => {
+        await financialOrganizationsPage.enterOrganizationName(FinancialOrganizationsData['TC_046'].organizationName);
+    })
+
+    await test.step("User Enter Organization Code", async () => {
+        await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_046'].organizationCode);
+    })
+
+    await test.step("User Click on Search", async () => {
+        await financialOrganizationsPage.clickOnSearch();
+    })
+
+    await test.step("Verify that the user is able to view the same search results for both the search criteria", async () => {
+        await financialOrganizationsPage.verifyOrgNameAndCodeFromGrid();
+    })
+
+    await test.step("--------------End the Testclass----------------------", async () => {
+        console.log("--------------End the Testclass----------------------")
+    })
 
 });
 

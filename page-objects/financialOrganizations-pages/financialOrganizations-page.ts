@@ -144,5 +144,18 @@ export class FinancialOrganizationsPage {
         await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
     }
 
+    async verifyOrgNameAndCodeFromGrid() {
+        const Name = this.page.locator('//mat-cell[contains(@class,"name")]');
+        for (let index = 0; index < await Name.count(); index++) {
+            expect(await Name.nth(index).innerText()).toBeTruthy();
+
+        }
+        const code = this.page.locator('//mat-cell[contains(@class,"code")]');
+        for (let index = 0; index < await Name.count(); index++) {
+            expect(await Name.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
+    
 }
 

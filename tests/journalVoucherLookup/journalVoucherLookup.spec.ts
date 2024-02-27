@@ -10,6 +10,9 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
+    await test.step("--------------Start the Testclass----------------------", async () => {
+        console.log("--------------Start the Testclass----------------------")
+    })
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
@@ -337,7 +340,7 @@ test('NXGF-TC-2016: TC_013_Journal Voucher Lookup_Verify that the Account number
 
 });
 
-test('NXGF-TC-2017: TC_014_Journal Voucher Lookup_Verify that the  user is able to manually enter the Account number ', async ({ page }) => {
+test('NXGF-TC-2017: TC_014_Journal Voucher Lookup_Verify that the user is able to manually enter the Account number', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -383,7 +386,7 @@ test('NXGF-TC-2017: TC_014_Journal Voucher Lookup_Verify that the  user is able 
 
 });
 
-test('NXGF-TC-2018: TC_015_Journal Voucher Lookup_Verify that the Account name  is a non mandatory field', async ({ page }) => {
+test('NXGF-TC-2018: TC_015_Journal Voucher Lookup_Verify that the Account name is a non mandatory field', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -534,7 +537,7 @@ test('NXGF-TC-2020: TC_017_Journal Voucher Lookup_Verify that the Voucher type i
 
 });
 
-test('NXGF-TC-2021: TC_018_Journal Voucher Lookup_Verify that the user is able to enter the a number in the "From Voucher Number" field ', async ({ page }) => {
+test('NXGF-TC-2021: TC_018_Journal Voucher Lookup_Verify that the user is able to enter the a number in the "From Voucher Number" field', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -632,7 +635,7 @@ test('NXGF-TC-2022: TC_019_Journal Voucher Lookup_Verify that the from Voucher n
 
 });
 
-test('NXGF-TC-2023: TC_021_Journal Voucher Lookup_Verify that the To Voucher number should be  greater than the From Voucher number" error message is displayed', async ({ page }) => {
+test('NXGF-TC-2023: TC_021_Journal Voucher Lookup_Verify that the To Voucher number should be greater than the From Voucher number" error message is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -828,7 +831,7 @@ test('NXGF-TC-2026: TC_031_Journal Voucher Lookup_Verify that the user is able t
 
 });
 
-test('NXGF-TC-2027: TC_045_Journal Voucher Lookup_Verify that after the search the  result grid has all the details with the valid headers', async ({ page }) => {
+test('NXGF-TC-2027: TC_045_Journal Voucher Lookup_Verify that after the search the result grid has all the details with the valid headers', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1042,7 +1045,7 @@ test('NXGF-TC-2031: TC_049_Journal Voucher Lookup_Verify that the voucher detail
 
 });
 
-test('NXGF-TC-2032: TC_050_Journal Voucher Lookup_Verify that under the voucher details first  section is with Voucher Type, Voucher Date, Voucher reference, voucher number, validation date and Validate Checkbox', async ({ page }) => {
+test('NXGF-TC-2032: TC_050_Journal Voucher Lookup_Verify that under the voucher details first section is with Voucher Type, Voucher Date, Voucher reference, voucher number, validation date and Validate Checkbox', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1130,7 +1133,7 @@ test('NXGF-TC-2033: TC_051_Journal Voucher Lookup_Verify that the user is able t
 
 });
 
-test('NXGF-TC-2034: TC_052_Journal Voucher Lookup_Verify that the  Validate checkbox is disabled', async ({ page }) => {
+test('NXGF-TC-2034: TC_052_Journal Voucher Lookup_Verify that the Validate checkbox is disabled', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1574,6 +1577,10 @@ test('NXGF-TC-2045: TC_067_Journal Voucher Lookup_Verify that the User is able t
 
     await test.step("User Enter in Search bar", async () => {
         await journalVoucherLookupPage.enterinSearchbar(JournalVoucherLookupPageData['TC_067_Journal_Voucher_Lookup'].value);
+    })
+
+    await test.step("--------------End the Testclass----------------------", async () => {
+        console.log("--------------End the Testclass----------------------")
     })
 
 })

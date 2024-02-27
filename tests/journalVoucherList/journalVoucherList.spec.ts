@@ -10,6 +10,10 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-2060: TC_000_Journal Voucher List_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
+    await test.step("--------------Start the Testclass----------------------", async () => {
+        console.log("--------------Start the Testclass----------------------")
+    })
+
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
@@ -139,7 +143,7 @@ test('NXGF-TC-2064: TC_004_Journal Voucher List_Verify that the user is able to 
 
 });
 
-test('NXGF-TC-2065: TC_005_Journal Voucher List_Verify that the screen is divided into two  sections with search fields and results grid', async ({ page }) => {
+test('NXGF-TC-2065: TC_005_Journal Voucher List_Verify that the screen is divided into two sections with search fields and results grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -429,7 +433,7 @@ test('NXGF-TC-2071: TC_013_Journal Voucher List_Search_Verify that the from vouc
 
 });
 
-test('NXGF-TC-2072: TC_014_Journal Voucher List_Search_Verify that the  From Voucher  number is smaller to "To Voucher number" field', async ({ page }) => {
+test('NXGF-TC-2072: TC_014_Journal Voucher List_Search_Verify that the From Voucher number is smaller to "To Voucher number" field', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -521,7 +525,7 @@ test('NXGF-TC-2073: TC_015_Journal Voucher List_Search_Verify that user is able 
 
 });
 
-test('NXGF-TC-2074: TC_016_Journal Voucher List_Search_Verify that the user is able to Enter a date for "From Date"', async ({ page }) => {
+test('NXGF-TC-2074: TC_016_Journal Voucher List_Search_Verify that the user is able to select a date from the calendar for "From Date"', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -641,7 +645,7 @@ test('NXGF-TC-2076: TC_019_Journal Voucher List_Search_Verify that the user is a
 
 });
 
-test('NXGF-TC-2078: TC_020_Journal Voucher List_Search_Verify that the To Date is a date after the From datee', async ({ page }) => {
+test('NXGF-TC-2078: TC_020_Journal Voucher List_Search_Verify that the To Date is a date after the From date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1729,4 +1733,7 @@ test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to 
         await journalVoucherListPage.verifyAdvancedSearchfieldisEmpty();
     })
 
+    await test.step("--------------End the Testclass----------------------", async () => {
+        console.log("--------------End the Testclass----------------------")
+    })
 })

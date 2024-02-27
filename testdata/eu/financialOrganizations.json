@@ -31,5 +31,9 @@
     },
     "TC_045": {
         "expectedText": " Records per page: "
+    },
+    "TC_046": {
+        "organizationName": "Allianz Partners",
+        "organizationCode":"AZP"
     }
 }

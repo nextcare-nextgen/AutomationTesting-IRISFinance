@@ -8,6 +8,9 @@ const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.j
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+    await test.step("--------------Start the Testclass----------------------", async () => {
+        console.log("--------------Start the Testclass----------------------")
+    })
 
     const loginPage: LoginPage = new LoginPage(page);
 
@@ -39,11 +42,10 @@ test('NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to 
     await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
     await dashboardPage.clickOnMenuIconButton();
-    // await page.pause();
 
 });
 
-test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login', async ({ page }) => {
+test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -52,8 +54,7 @@ test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the 
     await loginPage.gotoLoginPage(data['Login-Access'].url);
     await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     await fxRatesPage.verifyDashboardText(fxRatesData['TC_002_FX_Rates'].dashboardText)
-    // await page.pause();
-
+   
 });
 
 
@@ -71,8 +72,7 @@ test('NXGF-TC-1875: TC_003_FX_Rates_Verify that FX Rates shortcut buttons are cl
     await dashboardPage.clickOnMenuIconButton();
     await sleep(2000);
     await fxRatesPage.clickOnFxRatesShrtcutsButton();
-    // await page.pause();
-
+   
 });
 
 
@@ -94,8 +94,6 @@ test('NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates
 
 
 });
-
-
 
 test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select From Currency from dropdown', async ({ page }) => {
 
@@ -222,5 +220,9 @@ test('NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar 
     await dashboardPage.clickOnMenuIconButton();
     await sleep(2000);
     await fxRatesPage.verifySearchBar();
+
+    await test.step("--------------End the Testclass----------------------", async () => {
+        console.log("--------------End the Testclass----------------------")
+    })
 
 });

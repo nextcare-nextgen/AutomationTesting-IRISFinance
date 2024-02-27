@@ -1,4 +1,5 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import { count } from "console";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class ChartOfAccountsPage {
@@ -44,6 +45,8 @@ export class ChartOfAccountsPage {
     readonly organizationName: Locator;
     readonly selectAddAccountType: Locator;
     readonly selectstartDate: Locator;
+    readonly selectglAccountTypee: Locator;
+    readonly saveButton: Locator;
 
 
     constructor(page: Page) {
@@ -87,6 +90,9 @@ export class ChartOfAccountsPage {
         this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
         this.selectAddAccountType = page.locator('//iris-account-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.selectstartDate = page.locator('//div//input[contains(@class,"datepicker")]');
+        this.selectglAccountTypee = page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
+        //('//iris-gl-account-type-autocomplete//div//input[contains(@class,"input-element")]');
+        this.saveButton = page.locator('//button[@title="Save"]');
 
     }
 
@@ -267,17 +273,53 @@ export class ChartOfAccountsPage {
     }
 
     async selectAddAccountTypeFromDropdown(data: string) {
-        await this.page.pause();
         await this.selectAddAccountType.click();
         const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         AccountTypeinput.fill(data);
         const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
         selectAccounttype.click();
-        await this.page.pause();
     }
 
     async enterSelectStartDate(data: string) {
         await this.selectstartDate.fill(data);
+    }
+
+    async selectglAccountTypeFromDropdown(data: string) {
+        await this.selectglAccountTypee.click();
+        const glAccountTypeinput = this.page.locator('//iris-gl-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
+        glAccountTypeinput.fill(data);
+        const selectGLAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+        selectGLAccounttype.click();
+    }
+
+    async verifySaveButton() {
+        await expect(this.saveButton).toBeVisible();
+    }
+
+    async clickOnSaveButton() {
+        await this.saveButton.click();
+    }
+
+    async verifyAccountsinGrid(data: string) {
+    
+
+        var accountNumber;
+        accountNumber = this.page.locator("//mat-table[@id='AccountsList']//mat-cell[2]").innerText();
+     accountNumber.then(function (result) {
+        console.log(result);
+
+    console.log(result.count());
+        for (let i = 0; i  < result.count(); i++) {
+            console.log("Testtt------------------")
+            console.log(accountNumber.innerText());
+            console.log(accountNumber.textContent());
+            const actual = accountNumber.nth[i].innerText(); 
+            console.log(actual[i]);
+            expect(actual).toBe(data);
+        }
+   
+
+    })
     }
 }
 
