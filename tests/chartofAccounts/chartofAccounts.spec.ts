@@ -490,7 +490,7 @@ test('NXGF-TC-2114,NXGF-TC-2115: TC_019_Chart of Accounts_Verify that the user i
     })
 
     await test.step("Verified that the user is able to enter the organization name in the 'Account name' search field", async () => {
-        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_019_Chart_of_Accounts'].accountName);
+        await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_019_Chart_of_Accounts'].accountName);
     })
 
 });
@@ -1150,14 +1150,11 @@ test('NXGF-TC-2134: TC_044_ Chart of Accounts_Verify that the user is able to cl
     await test.step("Click on Save button", async () => {
         await chartOfAccountsPage.clickOnSaveButton();
     })
-    
-    await test.step("--------------End the Charts of Accounts Testclass----------------------", async () => {
-        console.log("--------------End the Charts of Accounts Testclass----------------------")
-    })
+
 
 });
 
-test('NXGF-TC-2135,NXGF-TC-2136: TC_045_ Chart of Accounts_Verify that the user is able to save after entering the mandatory fields', async ({ page }) => {
+test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify that the user is able to save after entering the mandatory fields', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1186,10 +1183,250 @@ test('NXGF-TC-2135,NXGF-TC-2136: TC_045_ Chart of Accounts_Verify that the user 
 
     await test.step("Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
+        sleep(3000);
     })
 
     await test.step("Verified that the user is able to save after entering the mandatory fields", async () => {
-        await chartOfAccountsPage.verifyAccountsinGrid(ChartOfAccountsPageData['TC_045_Chart_of_Accounts'].dropdownvalue);
+        await chartOfAccountsPage.verifyAccountsinGrid(ChartOfAccountsPageData['TC_045_Chart_of_Accounts'].accountNum);
     })
     
 });
+
+test('NXGF-TC-2137: TC_047_ Chart of Accounts_Verify that the user is able to click on cancel to exit the form creation', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the user is able to click on cancel to exit the form creation", async () => {
+        await chartOfAccountsPage.clickOnCloseButton();
+    })
+
+
+});
+
+test('NXGF-TC-2138: TC_049_ Chart of Accounts_Verify that the user is unable to save the new creation form without entering the mandatory fields', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the user is unable to save the new creation form without entering the mandatory fields", async () => {
+        await chartOfAccountsPage.verifySaveButtonDisbled();
+    })
+
+
+});
+
+test('NXGF-TC-2140: TC_051_Chart of Accounts_Verify that the user is able to select the Product Line', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the user is able to select the Product Line", async () => {
+        await chartOfAccountsPage.selectProductLineFromDropdown(ChartOfAccountsPageData['TC_051_Chart_of_Accounts'].productLine);
+    })
+
+
+});
+
+test('NXGF-TC-2141: TC_052_ Chart of Accounts_Verify that the user is able to select the GL Account Type', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the user is able to select the GL Account Type", async () => {
+        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_052_Chart_of_Accounts'].GLdropdownvalue);
+    })
+
+});
+
+test('NXGF-TC-2142: TC_053_ Chart of Accounts_Verify that the start date selector has Arrows on top (< , >) to navigate from one month to the other', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the user is able to select the GL Account Type", async () => {
+        await chartOfAccountsPage.verifyCalenderArrow();
+    })
+
+});
+
+test('NXGF-TC-2143: TC_054_ Chart of Accounts_Verify that the start date selector has default select the current date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the start date selector has default select the current date", async () => {
+        await chartOfAccountsPage.verifyCurrentDateFromCalender();
+    })
+
+});
+
+test('NXGF-TC-2145: TC_057_ Chart of Accounts_Verify that the user is able to view only the Active accounts unless show stopped is selected', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Acc", async () => {
+        await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_057_Chart_of_Accounts'].accountName);
+    })
+
+    await test.step("User Click on Active Index", async () => {
+        await chartOfAccountsPage.clickOnActiveIndex();
+    })
+
+    await test.step("Verified that the user is able to view only the Active accounts", async () => {
+        await chartOfAccountsPage.verifyActiveAccounts();
+    })
+
+});
+

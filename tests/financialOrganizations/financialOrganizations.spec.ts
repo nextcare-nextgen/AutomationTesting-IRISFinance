@@ -10,8 +10,8 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access the IRIS Finance portal', async ({ page }) => {
 
-    await test.step("--------------Start the Testclass----------------------", async () => {
-        console.log("--------------Start the Testclass----------------------")
+    await test.step("--------------Start the Financial Organization Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization Testclass----------------------")
     })
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -742,8 +742,8 @@ test('NXGF-TC-1702: TC_046_Verify that the user is able to view the same search 
         await financialOrganizationsPage.verifyOrgNameAndCodeFromGrid();
     })
 
-    await test.step("--------------End the Testclass----------------------", async () => {
-        console.log("--------------End the Testclass----------------------")
+    await test.step("--------------End the Financial Organization Testclass----------------------", async () => {
+        console.log("--------------End the Financial Organization Testclass----------------------")
     })
 
 });

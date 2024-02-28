@@ -10,8 +10,8 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
-    await test.step("--------------Start the Testclass----------------------", async () => {
-        console.log("--------------Start the Testclass----------------------")
+    await test.step("--------------Start the Journal Voucher Lookup Testclass----------------------", async () => {
+        console.log("--------------Start the Journal Voucher Lookup Testclass----------------------")
     })
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1579,8 +1579,8 @@ test('NXGF-TC-2045: TC_067_Journal Voucher Lookup_Verify that the User is able t
         await journalVoucherLookupPage.enterinSearchbar(JournalVoucherLookupPageData['TC_067_Journal_Voucher_Lookup'].value);
     })
 
-    await test.step("--------------End the Testclass----------------------", async () => {
-        console.log("--------------End the Testclass----------------------")
+    await test.step("--------------End the Journal Voucher Lookup Testclass----------------------", async () => {
+        console.log("--------------End the Journal Voucher Lookup Testclass----------------------")
     })
 
 })

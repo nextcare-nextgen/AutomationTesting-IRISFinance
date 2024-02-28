@@ -60,11 +60,13 @@
         "GLdropdownvalue":"General ledger"
     },
     "TC_045_Chart_of_Accounts": {
-        "accountName": "TestAccount",
-        "accountNum": "13112024",
-        "value": "22 Feb 2024",
-        "dropdownvalue": "Gross written premium",
-        "GLdropdownvalue":"General ledger"
+        "accountNum": "13112024"
+    },
+    "TC_051_Chart_of_Accounts": {
+        "productLine": "Assistance"
+    },
+    "TC_057_Chart_of_Accounts": {
+        "accountName": "Gross Writen Premium"
     }
     
     

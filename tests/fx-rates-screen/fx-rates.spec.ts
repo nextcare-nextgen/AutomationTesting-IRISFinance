@@ -8,8 +8,8 @@ const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.j
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
-    await test.step("--------------Start the Testclass----------------------", async () => {
-        console.log("--------------Start the Testclass----------------------")
+    await test.step("--------------Start the FX Rates Testclass----------------------", async () => {
+        console.log("--------------Start the FX Rates Testclass----------------------")
     })
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -221,8 +221,8 @@ test('NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar 
     await sleep(2000);
     await fxRatesPage.verifySearchBar();
 
-    await test.step("--------------End the Testclass----------------------", async () => {
-        console.log("--------------End the Testclass----------------------")
+    await test.step("--------------End the FX Rates Testclass----------------------", async () => {
+        console.log("--------------End the FX Rates Testclass----------------------")
     })
 
 });

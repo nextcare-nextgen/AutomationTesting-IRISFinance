@@ -47,6 +47,12 @@ export class ChartOfAccountsPage {
     readonly selectstartDate: Locator;
     readonly selectglAccountTypee: Locator;
     readonly saveButton: Locator;
+    readonly accountnumFromGrid:Locator;
+    readonly closeButton:Locator;
+    readonly rightarrow:Locator;
+    readonly leftarrow:Locator;
+    readonly selectStartDatecalenderIcon:Locator;
+    readonly currentDateFromCalender:Locator;
 
 
     constructor(page: Page) {
@@ -93,6 +99,12 @@ export class ChartOfAccountsPage {
         this.selectglAccountTypee = page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
         //('//iris-gl-account-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.saveButton = page.locator('//button[@title="Save"]');
+        this.accountnumFromGrid = page.locator('//mat-table[@id="AccountsList"]//mat-cell[contains(@class,"accountnumber")][2]');
+        this.closeButton = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
+        this.rightarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_right"]');
+        this.leftarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_left"]');
+        this.selectStartDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
+        this.currentDateFromCalender=page.locator('//mat-month-view//td//button[contains(@class,"active")]');
 
     }
 
@@ -134,6 +146,10 @@ export class ChartOfAccountsPage {
 
     async enterAccountNumber(data: string) {
         await this.accountNumber.fill(data);
+    }
+
+    async enterAccountName(data: string) {
+        await this.accountName.fill(data);
     }
 
     async clickonSearchButton() {
@@ -301,25 +317,41 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountsinGrid(data: string) {
-    
+        const actual = await this.accountnumFromGrid.textContent();
+        expect(actual).toBe(data);
+    }
 
-        var accountNumber;
-        accountNumber = this.page.locator("//mat-table[@id='AccountsList']//mat-cell[2]").innerText();
-     accountNumber.then(function (result) {
-        console.log(result);
+    async clickOnCloseButton() {
+        await this.closeButton.click();
+    }
 
-    console.log(result.count());
-        for (let i = 0; i  < result.count(); i++) {
-            console.log("Testtt------------------")
-            console.log(accountNumber.innerText());
-            console.log(accountNumber.textContent());
-            const actual = accountNumber.nth[i].innerText(); 
-            console.log(actual[i]);
-            expect(actual).toBe(data);
+    async verifySaveButtonDisbled() {
+        await expect(this.saveButton).toBeDisabled()
+    }
+
+    async selectProductLineFromDropdown(data: string) {
+        await this.addAccountProductLine.click();
+        let checkboxOptions = await this.page.locator('//mat-option//div//span').all();
+        let chekboxes = await this.page.locator('//mat-option//div//mat-checkbox').all();
+        for (let i = 0; i < checkboxOptions.length && chekboxes.length ; i++) {
+            if (await checkboxOptions[i].textContent() === data) {
+                await chekboxes[i].click();
+                await this.addAccountCostCenter2.press('Tab');
+                break;
+            }
         }
-   
+    }
 
-    })
+
+    async verifyCalenderArrow() {
+        await this.selectStartDatecalenderIcon.click();
+        await expect(this.rightarrow).toBeVisible();
+        await expect(this.leftarrow).toBeVisible();
+    }
+
+    async verifyCurrentDateFromCalender() {
+        await this.selectStartDatecalenderIcon.click();
+        await expect(this.currentDateFromCalender).toBeVisible();
     }
 }
 
