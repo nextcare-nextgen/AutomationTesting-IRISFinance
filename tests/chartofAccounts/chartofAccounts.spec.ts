@@ -1067,7 +1067,7 @@ test('NXGF-TC-2133: TC_043_ Chart of Accounts_Verify that the user is able to vi
         await chartOfAccountsPage.clickOnAddAccountButton();
     })
 
-  
+
     await test.step("User Enter Account Number", async () => {
         await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_043_Chart_of_Accounts'].accountNum);
 
@@ -1093,7 +1093,7 @@ test('NXGF-TC-2133: TC_043_ Chart of Accounts_Verify that the user is able to vi
     await test.step("Verified that the user is able to view the Save button", async () => {
         await chartOfAccountsPage.verifySaveButton();
     })
-    
+
 
 });
 
@@ -1124,7 +1124,7 @@ test('NXGF-TC-2134: TC_044_ Chart of Accounts_Verify that the user is able to cl
         await chartOfAccountsPage.clickOnAddAccountButton();
     })
 
-  
+
     await test.step("User Enter Account Number", async () => {
         await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_044_Chart_of_Accounts'].accountNum);
 
@@ -1176,7 +1176,7 @@ test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify t
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
     })
-    
+
     await test.step("Search with Created Account number", async () => {
         await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_045_Chart_of_Accounts'].accountNum);
     })
@@ -1189,7 +1189,7 @@ test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify t
     await test.step("Verified that the user is able to save after entering the mandatory fields", async () => {
         await chartOfAccountsPage.verifyAccountsinGrid(ChartOfAccountsPageData['TC_045_Chart_of_Accounts'].accountNum);
     })
-    
+
 });
 
 test('NXGF-TC-2137: TC_047_ Chart of Accounts_Verify that the user is able to click on cancel to exit the form creation', async ({ page }) => {
@@ -1416,7 +1416,7 @@ test('NXGF-TC-2145: TC_057_ Chart of Accounts_Verify that the user is able to vi
         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
     })
 
-    await test.step("User Enter Acc", async () => {
+    await test.step("User Enter Account number", async () => {
         await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_057_Chart_of_Accounts'].accountName);
     })
 
@@ -1427,6 +1427,541 @@ test('NXGF-TC-2145: TC_057_ Chart of Accounts_Verify that the user is able to vi
     await test.step("Verified that the user is able to view only the Active accounts", async () => {
         await chartOfAccountsPage.verifyActiveAccounts();
     })
+
+});
+
+test('NXGF-TC-2146: TC_059_ Chart of Accounts_Verify that the user is able to click on Add (+) to create a new sub account for the selected parent account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Account number", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_059_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+    })
+
+    await test.step("Verified that the user is able to click on Add (+) to create a new sub account for the selected parent account", async () => {
+        await chartOfAccountsPage.clickAddChildAccountButton();
+    })
+
+});
+
+
+test('NXGF-TC-2147,NXGF-TC-2148: TC_060_ Chart of Accounts_Verify that the user is redirected to a Add Child Account screen to  create the sub account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Account number", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_060_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+        sleep(3000);
+    })
+
+    await test.step("User Click on Add Child Account button", async () => {
+        await chartOfAccountsPage.clickAddChildAccountButton();
+        sleep(3000);
+    })
+
+    await test.step("Verified that the user is redirected to a Add Child Account screen to  create the sub account", async () => {
+        await chartOfAccountsPage.verifyAddChildAccountTitle(ChartOfAccountsPageData['TC_060_Chart_of_Accounts'].title);
+    })
+
+
+});
+
+test('NXGF-TC-2149: TC_062_ Chart of Accounts_Verify that the user is able to see Account name, Account number,  Start date, Account Type, Product Line, GL Account Type', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Account number", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_062_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+        sleep(3000);
+    })
+
+    await test.step("User Click on Add Child Account button", async () => {
+        await chartOfAccountsPage.clickAddChildAccountButton();
+        sleep(5000);
+    })
+
+    await test.step("Verified that the user is able to see Account name, Account number,  Start date, Account Type, Product Line, GL Account Type", async () => {
+        await chartOfAccountsPage.verifyAddAccountAllFields();
+    })
+
+
+});
+
+test('NXGF-TC-2150: TC_063_ Chart of Accounts_Verify that the Account name, Account number, start date , Account Type, Product Line, GL Account Type are mandatory fields for the sub account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Account number", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_062_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+        sleep(3000);
+    })
+
+    await test.step("User Click on Add Child Account button", async () => {
+        await chartOfAccountsPage.clickAddChildAccountButton();
+        sleep(5000);
+    })
+
+    await test.step("Verified that the user is able to see Account name, Account number,  Start date, Account Type, Product Line, GL Account Type", async () => {
+        await chartOfAccountsPage.verifyAddAccountMandatoryFields();
+    })
+});
+
+test('NXGF-TC-2151,NXGF-TC-2152: TC_064_ Chart of Accounts_Verify that the user is unable to create a new sub account if there exist any journals under the parent account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Account number", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_062_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+        sleep(7000);
+    })
+
+    await test.step("User Click on Add Child Account button", async () => {
+        await chartOfAccountsPage.clickAddChildAccountButton();
+        sleep(5000);
+    })
+
+    await test.step("User Enter Account Number", async () => {
+        await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].accountNum);
+    })
+
+    await test.step("User Enter Account Name", async () => {
+        await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].accountName);
+
+    })
+
+    await test.step("User Select Date", async () => {
+        await chartOfAccountsPage.enterSelectStartDate(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].date);
+    })
+
+    await test.step("User Select Add Account type", async () => {
+        await chartOfAccountsPage.selectAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].dropdownvalue);
+    })
+
+    await test.step("User Select GL Account type", async () => {
+        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].GLdropdownvalue);
+    })
+
+    await test.step("Click on Save button", async () => {
+        await chartOfAccountsPage.clickOnSaveButton();
+    })
+
+    await test.step("Verify that the user is unable to create a new sub account if there exist any journals under the parent account", async () => {
+        await chartOfAccountsPage.verifyPopupForUniqueAccountNum(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].popup);
+    })
+
+
+});
+
+test('NXGF-TC-2153: TC_066_ Chart of Accounts_Verify that the user is able to click on save after entering the mandatory fields  for sub account creation', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User Enter Account number", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_062_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+        sleep(7000);
+    })
+
+    await test.step("User Click on Add Child Account button", async () => {
+        await chartOfAccountsPage.clickAddChildAccountButton();
+        sleep(5000);
+    })
+
+    await test.step("User Enter Account Number", async () => {
+        await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].accountNum);
+    })
+
+    await test.step("User Enter Account Name", async () => {
+        await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].accountName);
+
+    })
+
+    await test.step("User Select Date", async () => {
+        await chartOfAccountsPage.enterSelectStartDate(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].date);
+    })
+
+    await test.step("User Select Add Account type", async () => {
+        await chartOfAccountsPage.selectAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].dropdownvalue);
+    })
+
+    await test.step("User Select GL Account type", async () => {
+        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].GLdropdownvalue);
+    })
+
+    await test.step("Click on Save button", async () => {
+        await chartOfAccountsPage.clickOnSaveButton();
+    })
+});
+
+test('NXGF-TC-2154: TC_067_ Chart of Accounts_Verify that the Edit option is displayed in grid', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Verified that the Edit option is displayed in grid", async () => {
+        await chartOfAccountsPage.verifyEditIconInGrid();
+    })
+
+});
+
+test('NXGF-TC-2155: TC_068_ Chart of Accounts_Verify that the user is able to click on "Edit" to edit the sub account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Click on Edit Icon", async () => {
+        await chartOfAccountsPage.clickOnEditIcon();
+    })
+
+});
+
+test('NXGF-TC-2156: TC_070_ Chart of Accounts_Verify that the Account Name and Account Number are mandatory fields for Search', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Click on Edit Icon", async () => {
+        await chartOfAccountsPage.clickOnEditIcon();
+    })
+
+    await test.step("Verified that the Account Name and Account Number are mandatory fields for Search", async () => {
+        await chartOfAccountsPage.verifymandatoryFieldsfromChildAccount();
+    })
+
+});
+
+test('NXGF-TC-2157: TC_071_ Chart of Accounts_Verify that the user is able to edit Account number and start date for the subaccount', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Click on Edit Icon", async () => {
+        await chartOfAccountsPage.clickOnEditIcon();
+    })
+
+    await test.step("User Enter Account Number", async () => {
+        await chartOfAccountsPage.enterEditAddAccountNumber(ChartOfAccountsPageData['TC_071_Chart_of_Accounts'].accountNum);
+    })
+
+    await test.step("User Select Date", async () => {
+        await chartOfAccountsPage.enterEditSelectStartDate(ChartOfAccountsPageData['TC_071_Chart_of_Accounts'].date);
+    })
+
+});
+
+test('NXGF-TC-2158: TC_072_ Chart of Accounts_Verify that the user is able to edit the account name and account type for sub account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Click on Edit Icon", async () => {
+        await chartOfAccountsPage.clickOnEditIcon();
+    })
+
+    await test.step("User Enter Account Name", async () => {
+        await chartOfAccountsPage.enterEditchildAddAccountName(ChartOfAccountsPageData['TC_072_Chart_of_Accounts'].accountName);
+    })
+
+    await test.step("User Select account type", async () => {
+        await chartOfAccountsPage.selectEditChildAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_072_Chart_of_Accounts'].dropdownvalue);
+    })
+
+});
+
+test('NXGF-TC-2159: TC_073_ Chart of Accounts_Verify that the user is able to click on save after editing the details', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Click on Edit Icon", async () => {
+        await chartOfAccountsPage.clickOnEditIcon();
+    })
+
+    await test.step("User Enter Account Number", async () => {
+        await chartOfAccountsPage.enterEditAddAccountNumber(ChartOfAccountsPageData['TC_073_Chart_of_Accounts'].accountNum);
+    })
+
+    await test.step("User Select account type", async () => {
+        await chartOfAccountsPage.selectEditChildAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_073_Chart_of_Accounts'].dropdownvalue);
+    })
+
+    await test.step("User Select GL Account type", async () => {
+        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_073_Chart_of_Accounts'].GLdropdownvalue);
+    })
+
+    await test.step("Click on Save button", async () => {
+        await chartOfAccountsPage.clickOnSaveButton();
+    })
+
 
 });
 

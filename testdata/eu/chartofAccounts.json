@@ -50,14 +50,14 @@
         "accountNum": "1311202",
         "value": "22 Feb 2024",
         "dropdownvalue": "Gross written premium",
-        "GLdropdownvalue":"General ledger"
+        "GLdropdownvalue": "General ledger"
     },
     "TC_044_Chart_of_Accounts": {
         "accountName": "TestAccount",
         "accountNum": "1311202",
         "value": "22 Feb 2024",
         "dropdownvalue": "Gross written premium",
-        "GLdropdownvalue":"General ledger"
+        "GLdropdownvalue": "General ledger"
     },
     "TC_045_Chart_of_Accounts": {
         "accountNum": "13112024"
@@ -67,7 +67,43 @@
     },
     "TC_057_Chart_of_Accounts": {
         "accountName": "Gross Writen Premium"
+    },
+    "TC_059_Chart_of_Accounts": {
+        "accountNumber": "875421"
+    },
+    "TC_060_Chart_of_Accounts": {
+        "accountNumber": "875421",
+        "title": "Add  Child Account For Gross Writen Premium"
+    },
+    "TC_062_Chart_of_Accounts": {
+        "accountNumber": "875421"
+    },
+    "TC_064_Chart_of_Accounts": {
+        "accountName": "Gross Written Premium",
+        "accountNum": "987123",
+        "date": "22 Feb 2024",
+        "dropdownvalue": "Gross written premium",
+        "GLdropdownvalue": "General ledger",
+        "popup": "Account number must be unique per organization."
+    },
+    "TC_066_Chart_of_Accounts": {
+        "accountName": "TestAccount",
+        "accountNum": "4567",
+        "date": "22 Feb 2024",
+        "dropdownvalue": "Gross written premium",
+        "GLdropdownvalue": "General ledger"
+    },
+    "TC_071_Chart_of_Accounts": {
+        "accountNum": "87645",
+        "date": "26 Feb 2024"
+    },
+    "TC_072_Chart_of_Accounts": {
+        "accountName": "TestAccountName",
+        "dropdownvalue": "Gross written premium"
+    },
+    "TC_073_Chart_of_Accounts": {
+        "accountNum": "875421",
+        "dropdownvalue": "Gross written premium",
+        "GLdropdownvalue": "General ledger"
     }
-    
-    
 }

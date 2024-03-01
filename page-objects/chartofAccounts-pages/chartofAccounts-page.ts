@@ -53,6 +53,10 @@ export class ChartOfAccountsPage {
     readonly leftarrow:Locator;
     readonly selectStartDatecalenderIcon:Locator;
     readonly currentDateFromCalender:Locator;
+    readonly addchildAccount:Locator;
+    readonly addchildAccountTitle:Locator;
+    readonly warningPopup:Locator;
+    readonly expandArrow:Locator;
 
 
     constructor(page: Page) {
@@ -105,7 +109,10 @@ export class ChartOfAccountsPage {
         this.leftarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_left"]');
         this.selectStartDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
         this.currentDateFromCalender=page.locator('//mat-month-view//td//button[contains(@class,"active")]');
-
+        this.addchildAccount=page.locator('//mat-icon[@title="Add Child Account"]');
+        this.addchildAccountTitle=page.locator('//h2[@title="Add  Child Account For Gross Writen Premium"]');
+        this.warningPopup=page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
+        this.expandArrow=page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -263,6 +270,14 @@ export class ChartOfAccountsPage {
 
     }
 
+    async verifyAddAccountMandatoryFields() {
+        await expect(this.addAccountNumber).toBeVisible();
+        await expect(this.addAccountName).toBeVisible();
+        await expect(this.addAccountType).toBeVisible();
+        await expect(this.GLAccounttype).toBeVisible();
+
+    }
+
     async verifyasteriskmarkFormandatoryFields() {
         await expect(this.addAccountNumberMandatory).toBeVisible();
         await expect(this.addAccountNameMandatory).toBeVisible();
@@ -353,5 +368,65 @@ export class ChartOfAccountsPage {
         await this.selectStartDatecalenderIcon.click();
         await expect(this.currentDateFromCalender).toBeVisible();
     }
+
+    async clickAddChildAccountButton() {
+        sleep(3000);
+        await this.addchildAccount.first().click();
+    }
+
+    async verifyAddChildAccountTitle(data: string) {
+        const actual = await this.addchildAccountTitle.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyPopupForUniqueAccountNum(data: string) {
+        const actual = await this.warningPopup.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async clickOnExpandArrow() {
+        await this.expandArrow.click();
+    }
+
+    async verifyEditIconInGrid() {
+        const editIcon = this.page.locator('//button[@title="Edit Account"]');
+        for (let index = 0; index < await editIcon.count(); index++) {
+            expect(await editIcon.nth(index)).toBeVisible();
+        }
+    }
+
+    async clickOnEditIcon() {
+        let editicon = this.page.locator('//button[@title="Edit Account"]');
+        await editicon.first().click();
+    }
+    
+    async verifymandatoryFieldsfromChildAccount() {
+        await expect(this.addAccountNumberMandatory).toBeVisible();
+        await expect(this.addAccountNameMandatory).toBeVisible();
+    }
+
+    async enterEditAddAccountNumber(data: string) {
+        await this.addAccountNumber.clear();
+        await this.addAccountNumber.fill(data);
+    }
+
+    async enterEditSelectStartDate(data: string) {
+        await this.selectstartDate.clear();
+        await this.selectstartDate.fill(data);
+    }
+
+    async enterEditchildAddAccountName(data: string) {
+        await this.addAccountName.clear();
+        await this.addAccountName.fill(data);
+    }
+
+    async selectEditChildAddAccountTypeFromDropdown(data: string) {
+        await this.selectAddAccountType.click();
+        const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
+        AccountTypeinput.fill(data);
+        const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+        selectAccounttype.click();
+    }
+
 }
 

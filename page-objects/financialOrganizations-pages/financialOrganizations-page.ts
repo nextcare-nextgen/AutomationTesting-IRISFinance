@@ -21,8 +21,8 @@ export class FinancialOrganizationsPage {
     readonly search: Locator;
     readonly activeIndex: Locator;
     readonly stoppedIndex: Locator;
-    readonly recordsPerPage:Locator;
-    readonly recordPerPageDropdown:Locator;
+    readonly recordsPerPage: Locator;
+    readonly recordPerPageDropdown: Locator;
 
 
     constructor(page: Page) {
@@ -151,11 +151,42 @@ export class FinancialOrganizationsPage {
 
         }
         const code = this.page.locator('//mat-cell[contains(@class,"code")]');
-        for (let index = 0; index < await Name.count(); index++) {
-            expect(await Name.nth(index).innerText()).toBeTruthy();
+        for (let index = 0; index < await code.count(); index++) {
+            expect(await code.nth(index).innerText()).toBeTruthy();
 
         }
     }
-    
+
+    async verifyStopDateColumnNotDisplayed(data: string) {
+        let columnValue = await this.page.locator('//mat-header-cell[contains(@class,"header-cell")]//small[text()="Stop Date"]');
+        await expect(columnValue).not.toBeVisible();
+    }
+
+    async verifyStartDateFromGrid() {
+        const date = this.page.locator('//mat-cell[contains(@class,"startDate")]');
+        for (let index = 0; index < await date.count(); index++) {
+            expect(await date.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
+
+    async clickOnThreeDotsIcon() {
+        let columnValue = this.page.locator('//mat-cell[contains(@class,"button-cell")]//button');
+        columnValue.first().click();
+    }
+
+    async VerifyEditOrganizationButton(data: string){
+        const editOrgIcon = this.page.locator('//button//span[text()="' + data + '"]');
+        await expect(editOrgIcon).toBeVisible();
+    }
+
+    async clickOnEditOrganizationButton(data: string){
+        const editOrgIcon = this.page.locator('//button//span[text()="' + data + '"]');
+        await editOrgIcon.click();
+    }
 }
+
+
+
+
 

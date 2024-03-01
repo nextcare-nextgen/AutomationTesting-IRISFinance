@@ -34,6 +34,23 @@
     },
     "TC_046": {
         "organizationName": "Allianz Partners",
-        "organizationCode":"AZP"
+        "organizationCode": "AZP"
+    },
+    "TC_047": {
+        "columnName": "Stop Date"
+    },
+    "TC_048": {
+        "organizationName": "TEST",
+        "organizationCode": "AWC-TEST"
+    },
+    "TC_049": {
+        "organizationName": "TEST",
+        "organizationCode": "AWC-TEST",
+        "editOrgTitle":"Edit Organization"
+    },
+    "TC_050": {
+        "organizationName": "TEST",
+        "organizationCode": "AWC-TEST",
+        "editOrgTitle":"Edit Organization"
     }
 }
