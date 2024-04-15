@@ -113,6 +113,7 @@ export class ChartOfAccountsPage {
         this.addchildAccountTitle=page.locator('//h2[@title="Add  Child Account For Gross Writen Premium"]');
         this.warningPopup=page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
         this.expandArrow=page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
+        this.addAccountScreenText=page.locator("//iris-base-label//h2[@title='Add a new account']");
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -332,6 +333,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountsinGrid(data: string) {
+        sleep(3000);
         const actual = await this.accountnumFromGrid.textContent();
         expect(actual).toBe(data);
     }

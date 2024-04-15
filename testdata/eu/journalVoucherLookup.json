@@ -53,7 +53,7 @@
     },
     "TC_057_Journal_Voucher_Lookup": {
         "organization": "2024",
-        "expectedText": "Records per page:"
+        "expectedText": " Records per page: "
     },
     "TC_066_Journal_Voucher_Lookup": {
         "organization": "2024",

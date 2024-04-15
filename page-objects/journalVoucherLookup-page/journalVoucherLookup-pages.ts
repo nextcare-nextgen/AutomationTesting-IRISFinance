@@ -72,7 +72,7 @@ export class JournalVoucherLookupPage {
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
         this.journalVoucherText = page.locator('//div//h1[@title="Journal Vouchers"]');
         this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
-        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher lookup"]');
+        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher Lookup"]');
         this.journalVoucherLookupsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherLookupGridSection = page.locator('//section//mat-table[@id="JournalVoucherLookupList"]');
         this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
@@ -345,7 +345,7 @@ export class JournalVoucherLookupPage {
     async clickOnRecordsPerPageDropdown(data: string[]) {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ' , ' 200 ' , ' 250 ']);
     }
 
     async clickOnRecordsPerPageDropdownOption() {
@@ -354,7 +354,7 @@ export class JournalVoucherLookupPage {
 
         for (let i = 0; i < dropdownOptions.length; i++) {
             // Check if current value is Item 1
-            if (await dropdownOptions[i].textContent() === " 30 ") {
+            if (await dropdownOptions[i].textContent() === " 100 ") {
                 // Click if element with text found
                 await dropdownOptions[i].click();
                 break;

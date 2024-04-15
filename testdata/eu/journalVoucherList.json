@@ -85,12 +85,12 @@
     },
     "TC_047_Journal_Voucher_List":{
         "organization": "2024",
-        "voucherType":"VR",
-        "title": "Records per page:"
+        "voucherType":"COM",
+        "title": " Records per page: "
     },
     "TC_048_Journal_Voucher_List":{
         "organization": "2024",
-        "voucherType":"VR"
+        "voucherType":"COM"
     },
     "TC_055_Journal_Voucher_List": {
         "organization": "2024",

@@ -1357,7 +1357,7 @@ test('NXGF-TC-2089: TC_047_Journal Voucher List_Modify_Verify the the user is ab
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
+        await sleep(8000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1394,7 +1394,7 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
+    const countValues = [" 50 ", " 100 "," 150 "," 200 ", " 250 "];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);

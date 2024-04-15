@@ -54,7 +54,7 @@ export class JournalVoucherListPage {
         this.journalVoucherShortcut = page.locator('//div//span[@title="Journal Vouchers"]');
         this.breadCrumbs = page.locator('//iris-breadcrumb//li//iris-navigation-hyperlink');
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
-        this.journalVoucherListButton = page.locator('//a[@title="Journal Voucher list"]');
+        this.journalVoucherListButton = page.locator('//a[@title="Journal Voucher List"]');
         this.journalVoucherListsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherListGridSection = page.locator('//section//mat-table[@id="JournalVoucherListList"]');
         this.journalVouchertext = page.locator('//h1[@title="Journal Vouchers"]');
@@ -290,7 +290,7 @@ export class JournalVoucherListPage {
 
     async clickOnRecordsPerPageDropdown(data: string[]) {
         await this.recordPerPageDropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ' , ' 200 ' , ' 250 ']);
     }
 
     async verifyRecordsPerPageTitle(data: string) {
@@ -304,7 +304,7 @@ export class JournalVoucherListPage {
 
         for (let i = 0; i < dropdownOptions.length; i++) {
             // Check if current value is Item 1
-            if (await dropdownOptions[i].textContent() === " 30 ") {
+            if (await dropdownOptions[i].textContent() === " 100 ") {
                 // Click if element with text found
                 await dropdownOptions[i].click();
                 break;

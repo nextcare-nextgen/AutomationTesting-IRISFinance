@@ -1270,7 +1270,7 @@ test('NXGF-TC-2039: TC_058_Journal Voucher Lookup_Verify that the user is able t
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
+    const countValues = [' 50 ', ' 100 ', ' 150 ' , ' 200 ' , ' 250 '];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -1305,7 +1305,6 @@ test('NXGF-TC-2039: TC_058_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("Click On Records per page dropdown", async () => {
-
         await sleep(2000);
         await journalVoucherLookupPage.clickOnRecordsPerPageDropdown(countValues);
     })
