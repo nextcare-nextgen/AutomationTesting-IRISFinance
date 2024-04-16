@@ -176,3 +176,186 @@ test('NXGF-TC-3321: TC_005_Cash Allocation Dashboard_Verify that the Organizatio
 
 });
 
+test('NXGF-TC-3344: TC_028_Cash Allocation Dashboard_Verify that the "Details" button is available to view the Allocated payments', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Cleared status close button", async () => {
+        await cashAllocationPage.clickOnClearedstaus();
+    })
+
+    await test.step("User select Payment status", async () => {
+        await cashAllocationPage.selectPaymentStatus(CashAllocationPageData['TC_028_Cash_Allocation'].paymentStatus);
+
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButtonButton();
+    })
+
+    await test.step("Verified that the 'Details' button is available to view the Allocated payments", async () => {
+        await cashAllocationPage.verifyShowDetailsButtons();
+    })
+
+
+});
+
+test('NXGF-TC-3345: TC_029_Cash Allocation Dashboard_Verify that the allocation screen pops up when clicked on Allocate button and the screen is divided into 4 sections', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButtonButton();
+    })
+
+    await test.step("User Click on Policy Allocation  button", async () => {
+        await cashAllocationPage.clickOnpolicyAllocationButton();
+    })
+
+    await test.step("User select Payment status", async () => {
+        await cashAllocationPage.verifyManualAllocationTitle(CashAllocationPageData['TC_029_Cash_Allocation'].title);
+
+    })
+
+    await test.step("Verified Section", async () => {
+        await cashAllocationPage.verifyFirstSection(CashAllocationPageData['TC_029_Cash_Allocation'].firstSection);
+
+    })
+
+    await test.step("Verified Section", async () => {
+        await cashAllocationPage.verifySecondSection(CashAllocationPageData['TC_029_Cash_Allocation'].secondSection);
+
+    })
+
+    await test.step("Verified Section", async () => {
+        await cashAllocationPage.verifythirdSection();
+
+    })
+
+});
+
+test('NXGF-TC-3346,NXGF-TC-3347: TC_031_Cash Allocation Dashboard_Verify that the first section has the payment date, Payment reference, Amount, currency, Sender account name ,Remittance info', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButtonButton();
+    })
+
+    await test.step("User Click on Policy Allocation  button", async () => {
+        await cashAllocationPage.clickOnpolicyAllocationButton();
+    })
+
+    await test.step("Verified that the first section has the payment date, Payment reference, Amount, currency, Sender account name ,Remittance info ", async () => {
+        await cashAllocationPage.verifySelectPaymentsDetails();
+
+    })
+
+});
+
+test('NXGF-TC-3348: TC_032_Cash Allocation Dashboard_Verify that the user can entert he policy details using the policy refernce, policy holder name or effective date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButtonButton();
+    })
+
+    await test.step("User Click on Policy Allocation  button", async () => {
+        await cashAllocationPage.clickOnpolicyAllocationButton();
+    })
+
+    await test.step("User able to entert he policy details using the policy refernce", async () => {
+        await cashAllocationPage.enterPolicyRef(CashAllocationPageData['TC_032_Cash_Allocation'].policyRef);
+    })
+
+    await test.step("User able to entert he policy details using the policy holder name", async () => {
+        await cashAllocationPage.enterPolicyHolderName(CashAllocationPageData['TC_032_Cash_Allocation'].policyHolderName);
+    })
+
+    await test.step("User able to entert he policy details using the Effective date", async () => {
+        await cashAllocationPage.enterEffectiveDate(CashAllocationPageData['TC_032_Cash_Allocation'].date);
+    })
+
+});
+

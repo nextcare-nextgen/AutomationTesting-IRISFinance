@@ -47,16 +47,16 @@ export class ChartOfAccountsPage {
     readonly selectstartDate: Locator;
     readonly selectglAccountTypee: Locator;
     readonly saveButton: Locator;
-    readonly accountnumFromGrid:Locator;
-    readonly closeButton:Locator;
-    readonly rightarrow:Locator;
-    readonly leftarrow:Locator;
-    readonly selectStartDatecalenderIcon:Locator;
-    readonly currentDateFromCalender:Locator;
-    readonly addchildAccount:Locator;
-    readonly addchildAccountTitle:Locator;
-    readonly warningPopup:Locator;
-    readonly expandArrow:Locator;
+    readonly accountnumFromGrid: Locator;
+    readonly closeButton: Locator;
+    readonly rightarrow: Locator;
+    readonly leftarrow: Locator;
+    readonly selectStartDatecalenderIcon: Locator;
+    readonly currentDateFromCalender: Locator;
+    readonly addchildAccount: Locator;
+    readonly addchildAccountTitle: Locator;
+    readonly warningPopup: Locator;
+    readonly expandArrow: Locator;
 
 
     constructor(page: Page) {
@@ -108,12 +108,12 @@ export class ChartOfAccountsPage {
         this.rightarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_right"]');
         this.leftarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_left"]');
         this.selectStartDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
-        this.currentDateFromCalender=page.locator('//mat-month-view//td//button[contains(@class,"active")]');
-        this.addchildAccount=page.locator('//mat-icon[@title="Add Child Account"]');
-        this.addchildAccountTitle=page.locator('//h2[@title="Add  Child Account For Gross Writen Premium"]');
-        this.warningPopup=page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
-        this.expandArrow=page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
-        this.addAccountScreenText=page.locator("//iris-base-label//h2[@title='Add a new account']");
+        this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
+        this.addchildAccount = page.locator('//mat-icon[@title="Add Child Account"]');
+        this.addchildAccountTitle = page.locator('//h2[@title="Add  Child Account For Gross Writen Premium"]');
+        this.warningPopup = page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
+        this.expandArrow = page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
+        this.addAccountScreenText = page.locator("//iris-base-label//h2[@title='Add a new account']");
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -350,7 +350,7 @@ export class ChartOfAccountsPage {
         await this.addAccountProductLine.click();
         let checkboxOptions = await this.page.locator('//mat-option//div//span').all();
         let chekboxes = await this.page.locator('//mat-option//div//mat-checkbox').all();
-        for (let i = 0; i < checkboxOptions.length && chekboxes.length ; i++) {
+        for (let i = 0; i < checkboxOptions.length && chekboxes.length; i++) {
             if (await checkboxOptions[i].textContent() === data) {
                 await chekboxes[i].click();
                 await this.addAccountCostCenter2.press('Tab');
@@ -401,7 +401,7 @@ export class ChartOfAccountsPage {
         let editicon = this.page.locator('//button[@title="Edit Account"]');
         await editicon.first().click();
     }
-    
+
     async verifymandatoryFieldsfromChildAccount() {
         await expect(this.addAccountNumberMandatory).toBeVisible();
         await expect(this.addAccountNameMandatory).toBeVisible();

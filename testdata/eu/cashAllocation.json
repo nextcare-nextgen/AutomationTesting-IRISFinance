@@ -10,5 +10,18 @@
     },
     "TC_005_Cash_Allocation": {
         "orgName": "Allianz Partners - 2024"
+    },
+    "TC_028_Cash_Allocation": {
+        "paymentStatus": "Cleared-allocated"
+    },
+    "TC_029_Cash_Allocation": {
+        "title": "Manual Cash Allocation",
+        "firstSection": "Selected Payment Details",
+        "secondSection": "Policy Search"
+    },
+    "TC_032_Cash_Allocation": {
+        "policyRef": "VIS-AWPDE-6892-NB",
+        "policyHolderName": "test pol",
+        "date": "16 Jan 2004"
     }
 }

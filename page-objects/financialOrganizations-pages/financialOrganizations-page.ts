@@ -175,12 +175,12 @@ export class FinancialOrganizationsPage {
         columnValue.first().click();
     }
 
-    async VerifyEditOrganizationButton(data: string){
+    async VerifyEditOrganizationButton(data: string) {
         const editOrgIcon = this.page.locator('//button//span[text()="' + data + '"]');
         await expect(editOrgIcon).toBeVisible();
     }
 
-    async clickOnEditOrganizationButton(data: string){
+    async clickOnEditOrganizationButton(data: string) {
         const editOrgIcon = this.page.locator('//button//span[text()="' + data + '"]');
         await editOrgIcon.click();
     }
