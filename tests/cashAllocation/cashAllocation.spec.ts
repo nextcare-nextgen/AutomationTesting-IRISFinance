@@ -359,3 +359,56 @@ test('NXGF-TC-3348: TC_032_Cash Allocation Dashboard_Verify that the user can en
 
 });
 
+test('NXGF-TC-3370,NXGF-TC-3371: TC_055_Cash Allocation Dashboard_Verify that a confirmation messae popup is displayed Are you sure do you want to cancel the allocation?', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButtonButton();
+    })
+
+    await test.step("User Click on Policy Allocation  button", async () => {
+        await cashAllocationPage.clickOnpolicyAllocationButton();
+    })
+
+    await test.step("User able to entert he policy details using the policy refernce", async () => {
+        await cashAllocationPage.enterPolicyRef(CashAllocationPageData['TC_055_Cash_Allocation'].policyRef);
+    })
+
+    await test.step("User able to entert he policy details using the policy holder name", async () => {
+        await cashAllocationPage.enterPolicyHolderName(CashAllocationPageData['TC_055_Cash_Allocation'].policyHolderName);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButtonButton();
+    })
+
+    await test.step("User Click on Clear All button", async () => {
+        await cashAllocationPage.clickOnClearAllButton();
+    })
+
+    await test.step("Verified that a confirmation messae popup is displayed Are you sure do you want to cancel the allocation?", async () => {
+        await cashAllocationPage.verifyPopupMessasge(CashAllocationPageData['TC_055_Cash_Allocation'].popupMessage);
+    })
+});
+

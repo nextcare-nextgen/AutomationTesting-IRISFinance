@@ -58,6 +58,7 @@
     "TC_066_Journal_Voucher_Lookup": {
         "organization": "2024",
         "fromVoucherNumber": "23",
+        "voucherType":"Auto Premium Settlement Posting",
         "tovoucherNumber":"45",
         "accountName":"Test",
         "accountNumber":"3456"

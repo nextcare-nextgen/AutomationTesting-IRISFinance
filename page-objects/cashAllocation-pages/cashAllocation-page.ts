@@ -31,6 +31,8 @@ export class CashAllocationPage {
     readonly policyRef: Locator;
     readonly policyHolderName: Locator;
     readonly effectiveDate: Locator;
+    readonly clearAllbutton: Locator;
+    readonly popupMessage:Locator;
 
 
 
@@ -50,6 +52,8 @@ export class CashAllocationPage {
         this.policyRef = page.locator('//div[@role="region"]//input[@title="Policy Reference"]');
         this.policyHolderName = page.locator('//div[@role="region"]//input[@title="Policy Holder Name"]');
         this.effectiveDate = page.locator('//div[@role="region"]//input[@title="Effective Date"]');
+        this.clearAllbutton = page.locator('//button[@title="Clear all"]');
+        this.popupMessage =page.locator('//p[text()="Are you sure you want to cancel the allocation ?"]');
     }
 
 
@@ -155,5 +159,14 @@ export class CashAllocationPage {
 
     async enterEffectiveDate(data: string) {
         await this.effectiveDate.fill(data);
+    }
+
+    async clickOnClearAllButton() {
+        await this.clearAllbutton.click();
+    }
+
+    async verifyPopupMessasge(data: string) {
+        const actual = await this.popupMessage.textContent();
+        expect(actual).toBe(data);
     }
 }

@@ -1524,7 +1524,7 @@ test('NXGF-TC-2046: TC_066_Journal Voucher Lookup_Verify that the User is able t
     })
 
     await test.step("User Select Voucher type", async () => {
-        await journalVoucherLookupPage.selectVoucherType();
+        await journalVoucherLookupPage.selectVoucherType(JournalVoucherLookupPageData['TC_066_Journal_Voucher_Lookup'].voucherType);
     })
 
     await test.step("User Enter Account Name", async () => {

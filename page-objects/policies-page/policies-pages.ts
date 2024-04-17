@@ -100,7 +100,7 @@ export class PoliciesPage {
 
     async verifyBreadCrumbsText(data: string) {
         const actual = await this.breadCrumbs.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
     async clickOnPoliciesShrtcutsButton() {
@@ -115,7 +115,7 @@ export class PoliciesPage {
 
     async verifyDashboardText(data: string) {
         const actual = await this.dashboard.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
 
@@ -130,18 +130,26 @@ export class PoliciesPage {
 
     async verifyPoliciesText(data: string) {
         const actual = await this.policiesText.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
-    async verifyTextisinBold(text: string) {
+    async verifyTextisinBold() {
 
-        function selectionIsBold() {
-            var isBold = false;
-            // if () {
-            //     isBold = document.queryCommandState("bold");
-            // }
-            return isBold;
+        const textElementSelector = ':has-text("Policies")';
+
+        // Get the computed style of the element
+        const style = await this.page.$eval(textElementSelector, (element) => {
+            const computedStyle = getComputedStyle(element);
+            return computedStyle.fontWeight;
+        });
+
+        // Check if the font weight is bold
+        if (style === 'bold' || Number(style) >= 700) {
+            console.log('The text is bold.');
+        } else {
+            console.log('The text is not bold.');
         }
+
     }
 
     async verifyFromDate() {
@@ -162,7 +170,7 @@ export class PoliciesPage {
         await this.fromDate.fill(fromDates);
         this.page.keyboard.press("Enter")
         const actual = await this.errorText.textContent();
-			expect(actual).toBe(errorText);
+        expect(actual).toBe(errorText);
 
     }
 
@@ -251,7 +259,7 @@ export class PoliciesPage {
 
     async verifyPolicyJournalVocherTitle(data: string) {
         const actual = await this.policyJournalVochereText.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
     async clickOnViewJournalVoucherEyeIcon() {

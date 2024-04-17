@@ -23,5 +23,10 @@
         "policyRef": "VIS-AWPDE-6892-NB",
         "policyHolderName": "test pol",
         "date": "16 Jan 2004"
+    },
+    "TC_055_Cash_Allocation": {
+        "policyRef": "VIS-AWPDE-6892-NB",
+        "policyHolderName": "test pol",
+        "popupMessage": "Are you sure you want to cancel the allocation ?"
     }
 }

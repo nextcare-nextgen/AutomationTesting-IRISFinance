@@ -214,9 +214,9 @@ export class JournalVoucherLookupPage {
         await this.vouchertype.click();
     }
 
-    async selectVoucherType() {
+    async selectVoucherType(data:string) {
         await this.vouchertype.click();
-        const selectvouchertype = this.page.locator('//mat-option//span//mat-label[text()="Auto Commission Payable Posting"]');
+        const selectvouchertype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
         selectvouchertype.click();
     }
 

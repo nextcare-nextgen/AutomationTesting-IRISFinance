@@ -198,8 +198,7 @@ test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Po
     })
 
     await test.step("User Verify Text is in Bold", async () => {
-        // await policiesPage.verifyTextisinBold(policiesData['TC_006_Policies'].policiesText)
-
+         await policiesPage.verifyTextisinBold();
 
     })
 
