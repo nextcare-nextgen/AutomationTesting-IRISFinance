@@ -105,9 +105,7 @@ test('NXGF-TC-2063: TC_003_Journal Voucher List_Verify that the user is able to 
     })
 
     await test.step("Verified that the User is able to See Journal Voucher Shortcut Button", async () => {
-
         await journalVoucherListPage.verifyJournalVoucherShortcutButton();
-
     })
 
 });

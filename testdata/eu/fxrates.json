@@ -2,19 +2,32 @@
     "TC_000_FX_Rates": {
         "breadcrumbsText": "FX Rates"
     },
-
     "TC_002_FX_Rates": {
         "dashboardText": "Dashboard"
     },
-
+    "TC_005_FX_Rates": {
+        "fxRatesText": "FX Rates"
+    },
+    "TC_010_FX_Rates": {
+        "fromCurrency": "UAE Dirham-AED"
+    },
+    "TC_012_FX_Rates": {
+        "toCurrency": "UAE Dirham-AED"
+    },
+    "TC_016_FX_Rates": {
+        "toCurrency": "UAE Dirham-AED",
+        "fromCurrency": "Euro-EUR"
+    },
     "TC_028_FX_Rates": {
         "fromCurrency": "UAE"
     },
-
     "TC_031_FX_Rates": {
         "rate": "1.04"
     },
     "TC_034_FX_Rates": {
         "title": "Records per page:"
+    },
+    "TC_038_FX_Rates": {
+        "value": "FX Rates"
     }
 }

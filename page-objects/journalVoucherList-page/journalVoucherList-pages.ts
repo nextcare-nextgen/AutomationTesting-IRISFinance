@@ -313,7 +313,6 @@ export class JournalVoucherListPage {
     }
 
     async verifyCurrencyAndAmountFromGrid() {
-
         const currency = this.page.locator('//mat-cell[contains(@class,"amountName")]');
         for (let index = 0; index < await currency.count(); index++) {
             expect(await currency.nth(index).innerText()).toBeTruthy();

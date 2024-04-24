@@ -12,7 +12,7 @@ test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed'
     await test.step("--------------Start the Policies Testclass----------------------", async () => {
         console.log("--------------Start the Policies Testclass----------------------")
     })
-    
+
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const policiesPage: PoliciesPage = new PoliciesPage(page);
@@ -163,13 +163,8 @@ test('NXGF-TC-1915: TC_005_Policies_Verify that the user is redirected to the Po
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {
-        await policiesPage.verifyPoliciesText(policiesData['TC_005_Policies'].policiesText)
-
-
+        await policiesPage.verifyPoliciesText(policiesData['TC_005_Policies'].policiesText);
     })
-
-
-
 });
 
 test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Policies" title in bold', async ({ page }) => {
@@ -198,7 +193,7 @@ test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Po
     })
 
     await test.step("User Verify Text is in Bold", async () => {
-         await policiesPage.verifyTextisinBold();
+        await policiesPage.verifyTextisinBold();
 
     })
 
@@ -284,8 +279,6 @@ test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to select From 
     })
     await test.step("User Enter To Date", async () => {
         await policiesPage.enterValidToDate(policiesData['TC_008_Policies'].toDate);
-
-
     })
 
     await test.step("Verify Dates from Grid", async () => {
@@ -534,8 +527,6 @@ test('NXGF-TC-1924: TC_014_Policies_Verify that the Policy Reference filed is di
         await policiesPage.verifyPolicyReference();
     })
 
-
-
 })
 
 test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id field is displayed in Advanced search', async ({ page }) => {
@@ -616,10 +607,6 @@ test('NXGF-TC-1926: TC_016_Policies_Verify that the Policy Holder Name field is 
     await test.step("User Verify Policy Holder Name is displayed", async () => {
         await policiesPage.verifyPolicyHolderName();
     })
-
-
-
-
 })
 
 test('NXGF-TC-1927: TC_017_Policies_Verify that the Apply button is displayed in Advanced search', async ({ page }) => {
@@ -791,8 +778,6 @@ test('NXGF-TC-1930: TC_020_Policies_Verify that the user is able to search with 
         await policiesPage.verifySearchResultPolicyRef();
 
     })
-
-
 
 })
 
@@ -1140,8 +1125,6 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
-
-
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
 
@@ -1195,7 +1178,6 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
 
     })
 
-
     await test.step("Verify Account Records from Second grid", async () => {
         await sleep(2000);
         await policiesPage.verifyAccountRecordsFromSecondGrid();
@@ -1234,7 +1216,6 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
-
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
@@ -1326,7 +1307,6 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
         await policiesPage.clickOnPoliciesShrtcutsButton();
 
     })
-
 
     await test.step("Click On Records per page dropdown", async () => {
         await sleep(2000);
@@ -1581,7 +1561,7 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
 
     })
 
-   await test.step("--------------End the Policies Testclass----------------------", async () => {
+    await test.step("--------------End the Policies Testclass----------------------", async () => {
         console.log("--------------End the Policies Testclass----------------------")
     })
 })

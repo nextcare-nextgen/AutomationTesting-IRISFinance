@@ -15,8 +15,6 @@ test('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access t
     })
 
     const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -27,8 +25,6 @@ test('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access t
 test('NXGF-TC-1648: TC_001_Login_Access_Verify that the user is able to enter the username and password ', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -43,8 +39,6 @@ test('NXGF-TC-1648: TC_001_Login_Access_Verify that the user is able to enter th
 test('NXGF-TC-1650: TC_002_Login_Access_Verify that user is able to click on sign in button', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -59,9 +53,7 @@ test('NXGF-TC-1650: TC_002_Login_Access_Verify that user is able to click on sig
 test('NXGF-TC-1652: TC_003_Verify that the user is able to click on the Remember me checkbox', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
-
+    
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -74,9 +66,7 @@ test('NXGF-TC-1652: TC_003_Verify that the user is able to click on the Remember
 test('NXGF-TC-1658: TC_010_Verify that the user is able to see login UI', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
-
+   
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
