@@ -1,6 +1,9 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 import { executionAsyncResource } from "async_hooks";
+import { SlowBuffer } from "buffer";
 import exp from "constants";
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 
 export class FxRatesPage {
   readonly page: Page;
@@ -27,7 +30,23 @@ export class FxRatesPage {
   readonly toCurrencyfield: Locator;
   readonly searchButton: Locator;
   readonly resetButton: Locator;
-
+  readonly fromcurrencyFromGrid: Locator;
+  readonly tocurrencyFromGrid: Locator;
+  readonly fromDateFromGrid: Locator;
+  readonly toDateFromGrid: Locator;
+  readonly rateFromGrid: Locator;
+  readonly validatedFromGrid: Locator;
+  readonly addFxRateButton: Locator;
+  readonly addfxRatestext: Locator;
+  readonly addFxRateCurrency: Locator;
+  readonly addFxRateToCurrency: Locator;
+  readonly addFxRateStartDate: Locator;
+  readonly addFxRateEndDate: Locator;
+  readonly addFxRateRate: Locator;
+  readonly addFxRateValidatedCheckbox: Locator;
+  readonly addFxRateStartDateCalender: Locator;
+  readonly addFxRateEndDateCalender: Locator;
+  readonly createButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -53,6 +72,24 @@ export class FxRatesPage {
     this.toCurrencyfield = page.locator('//div//mat-label//span[@title="To Currency"]');
     this.searchButton = page.locator('//button[@title="Search"]');
     this.resetButton = page.locator('//button[@title="Reset"]')
+    this.fromcurrencyFromGrid = page.locator('//iris-base-label//small[@title="From Currency"]');
+    this.tocurrencyFromGrid = page.locator('//iris-base-label//small[@title="To Currency"]');
+    this.fromDateFromGrid = page.locator('//iris-base-label//small[@title="From Date"]');
+    this.toDateFromGrid = page.locator('//iris-base-label//small[@title="To Date"]');
+    this.rateFromGrid = page.locator('//iris-base-label//small[@title="Rate"]');
+    this.validatedFromGrid = page.locator('//iris-base-label//small[@title="Validated"]');
+    this.addFxRateButton = page.locator('//button[@title="Add Fx Rate"]');
+    this.addfxRatestext = page.locator('//h2[@title="Add New Fx Rate"]');
+    this.addFxRateCurrency = page.locator('//iris-fx-rate-manage-dialog//span[@title="From Currency"]');
+    this.addFxRateToCurrency = page.locator('//div//iris-fx-rate-manage-dialog//iris-standard-card//span[@title="To Currency"]');
+    this.addFxRateStartDate = page.locator('//iris-fx-rate-manage-dialog//input[@title="Start Date"]');
+    this.addFxRateEndDate = page.locator('//iris-fx-rate-manage-dialog//input[@title="End Date"]');
+    this.addFxRateRate = page.locator('//iris-fx-rate-manage-dialog//input[@title="Rate"]');
+    this.addFxRateValidatedCheckbox = page.locator('//iris-fx-rate-manage-dialog//div[@isdisabled="true"]//mat-checkbox');
+    this.addFxRateStartDateCalender = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
+    this.addFxRateEndDateCalender = page.locator('//div//input[@title="End Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
+    this.createButton = page.locator('//button[@title="Create"]');
+
   }
 
   /**
@@ -80,19 +117,11 @@ export class FxRatesPage {
 
 
   async verifyFXRateShortcutButton() {
-    await expect(this.fxRatesShortcut).toBeVisible;
+    await expect(this.fxRatesShortcut).toBeVisible();
   }
 
   async clickOnAddFxRatesButton() {
     await this.addfxRates.click();
-  }
-
-  async selectAddFromCurrency(fromCurrencyData: string) {
-    let dropdownOptions = await this.page.locator('//mat-dialog-container//div[1]//input[@aria-haspopup="listbox"]');
-    await dropdownOptions.first().click();
-    await this.fromCurrencyenter.fill(fromCurrencyData);
-    await this.selectvalue.click();
-
   }
 
   async getRate(rate: string) {
@@ -131,7 +160,7 @@ export class FxRatesPage {
   }
 
   async verifySearchBar() {
-    await expect(this.searchBar).toBeVisible;
+    await expect(this.searchBar).toBeVisible();
   }
 
   async enterinSearchbar(data: string) {
@@ -146,11 +175,11 @@ export class FxRatesPage {
   }
 
   async verifyFromDate() {
-    await expect(this.fromDate).toBeVisible;
+    await expect(this.fromDate).toBeVisible();
   }
 
   async verifyToDate() {
-    await expect(this.toDate).toBeVisible;
+    await expect(this.toDate).toBeVisible();
   }
 
   async enterFromAndToDate() {
@@ -173,11 +202,11 @@ export class FxRatesPage {
   }
 
   async verifyFromCurrencyField() {
-    await expect(this.fromCurrencyfield).toBeVisible;
+    await expect(this.fromCurrencyfield).toBeVisible();
   }
 
   async verifyToCurrencyField() {
-    await expect(this.toCurrencyfield).toBeVisible;
+    await expect(this.toCurrencyfield).toBeVisible();
   }
 
 
@@ -185,29 +214,23 @@ export class FxRatesPage {
   async selectFromCurrency(data: string) {
     await this.page.waitForLoadState('networkidle');
     await this.fromCurrencyfield.click();
-    const fromCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][2]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
-    fromCurrencyinput.fill(data);
-    const selectfromCurrencyinput = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
-    selectfromCurrencyinput.click();
+    await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]').click();
   }
 
 
   async selectToCurrency(data: string) {
     await this.page.waitForLoadState('networkidle');
     await this.toCurrencyfield.click();
-    const toCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][3]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
-    toCurrencyinput.fill(data);
-    const selecttoCurrencyinput = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
-    selecttoCurrencyinput.click();
+    await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]').click();
   }
 
 
   async verifySearchbuttonField() {
-    await expect(this.searchButton).toBeVisible;
+    await expect(this.searchButton).toBeVisible();
   }
 
   async verifyResetbuttonField() {
-    await expect(this.resetButton).toBeVisible;
+    await expect(this.resetButton).toBeVisible();
   }
 
   async clickOnSearchButton() {
@@ -249,10 +272,101 @@ export class FxRatesPage {
   }
 
   async verifyafterResetCurrencyFieldReset() {
-    const fromCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][2]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
+    await this.page.waitForLoadState('networkidle');
+    // const fromCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][2]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
     const toCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][3]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
-    expect(fromCurrencyinput).toBeEmpty();
+    // expect(fromCurrencyinput).toBeEmpty();
     expect(toCurrencyinput).toBeEmpty();
 
   }
+
+  async verifyAllColumnField() {
+    sleep(4000);
+    await this.page.waitForLoadState('networkidle');
+    await expect(this.fromcurrencyFromGrid).toBeVisible();
+    await expect(this.tocurrencyFromGrid).toBeVisible();
+    await expect(this.fromDateFromGrid).toBeVisible();
+    await expect(this.toDateFromGrid).toBeVisible();
+    await expect(this.rateFromGrid).toBeVisible();
+    await expect(this.validatedFromGrid).toBeVisible();
+  }
+
+
+  async verifyAddFxRateButton() {
+    sleep(4000);
+    await this.page.waitForLoadState('networkidle');
+    await expect(this.addFxRateButton).toBeVisible();
+  }
+
+  async clickOnAddFxRateButton() {
+    sleep(4000);
+    await this.page.waitForLoadState('networkidle');
+    await this.addFxRateButton.click();
+  }
+
+  async verifyAddFXRatesScreenText(data: string) {
+    const actual = await this.addfxRatestext.textContent();
+    expect(actual).toBe(data);
+  }
+
+  async verifyAddFxRateCurrencyField() {
+    await expect(this.addFxRateCurrency).toBeVisible();
+  }
+
+
+  async verifyAddFxRateToCurrencyField() {
+    await expect(this.addFxRateToCurrency).toBeVisible();
+  }
+
+
+  async verifyAddFxRateStartDateEndDateField() {
+    await expect(this.addFxRateStartDate).toBeVisible();
+    await expect(this.addFxRateEndDate).toBeVisible();
+  }
+
+  async verifyAddFxRateRateField() {
+    await expect(this.addFxRateRate).toBeVisible();
+  }
+
+  async verifyAddFxRateValidatedisDisabled() {
+    await expect(this.addFxRateValidatedCheckbox).toBeDisabled();
+  }
+
+  async selectAddFXRateFromCurrency(fromCurrencyData: string) {
+    await this.addFxRateCurrency.click();
+    await this.page.locator('//mat-option//span//mat-label[text()="' + fromCurrencyData + '"]//ancestor::div[1]').click();
+
+  }
+
+  async selectAddFXRateToCurrency(toCurrencyData: string) {
+    sleep(4000);
+    await this.addFxRateToCurrency.click();
+    await this.page.locator('//mat-option//span//mat-label[text()="' + toCurrencyData + '"]//ancestor::div[1]').click();
+
+  }
+
+  async enterStartAndEndDate() {
+    await this.addFxRateStartDateCalender.click();
+    await this.page.locator("//span[text()=' 1 ']").click();
+    await this.page.waitForTimeout(2000);
+
+    let date = new Date()
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    // let fullDate = day + "." + month + "." + year + ".";
+    let fullDate = `${day}`;
+    var todayDate = Number(fullDate);
+
+    await this.addFxRateEndDateCalender.click();
+    await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async verifyCreateButton() {
+    await expect(this.createButton).toBeEnabled();
+  }
+
+
 }

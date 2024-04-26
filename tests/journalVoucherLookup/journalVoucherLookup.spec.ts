@@ -867,7 +867,7 @@ test('NXGF-TC-2027: TC_045_Journal Voucher Lookup_Verify that after the search t
     })
 
     await test.step("User Verified Grid Header column name", async () => {
-        await journalVoucherLookupPage.verifyGridHeaderCloumnName();
+        await journalVoucherLookupPage.verifyGridHeaderColumnName();
     })
 
 });

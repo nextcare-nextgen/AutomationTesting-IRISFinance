@@ -153,11 +153,11 @@ export class PoliciesPage {
     }
 
     async verifyFromDate() {
-        await expect(this.fromDate).toBeVisible;
+        await expect(this.fromDate).toBeVisible();
     }
 
     async verifyToDate() {
-        await expect(this.toDate).toBeVisible;
+        await expect(this.toDate).toBeVisible();
     }
 
     async enterValidFromDate(fromDate: string) {
@@ -180,24 +180,24 @@ export class PoliciesPage {
     }
 
     async verifySearch() {
-        await expect(this.search).toBeVisible;
+        await expect(this.search).toBeVisible();
     }
 
     async verifyAdvancedSearch() {
-        await expect(this.advancedSearch).toBeVisible;
+        await expect(this.advancedSearch).toBeVisible();
     }
 
     async verifyReset() {
-        await expect(this.reset).toBeVisible;
+        await expect(this.reset).toBeVisible();
     }
 
     async verifyGridColumn() {
-        await expect(this.policyId).toBeVisible;
-        await expect(this.reference).toBeVisible;
-        await expect(this.holderName).toBeVisible;
-        await expect(this.startDate).toBeVisible;
-        await expect(this.endDate).toBeVisible;
-        await expect(this.brokerName).toBeVisible;
+        await expect(this.policyId).toBeVisible();
+        await expect(this.reference).toBeVisible();
+        await expect(this.holderName).toBeVisible();
+        await expect(this.startDate).toBeVisible();
+        await expect(this.endDate).toBeVisible();
+        await expect(this.brokerName).toBeVisible();
     }
 
     async clickOnSerach() {
@@ -234,23 +234,23 @@ export class PoliciesPage {
     }
 
     async verifyPolicyReference() {
-        await expect(this.policyRef).toBeVisible;
+        await expect(this.policyRef).toBeVisible();
     }
 
     async verifyPolicyId() {
-        await expect(this.policyId).toBeVisible;
+        await expect(this.policyId).toBeVisible();
     }
 
     async verifyPolicyHolderName() {
-        await expect(this.policyHolderName).toBeVisible;
+        await expect(this.policyHolderName).toBeVisible();
     }
 
     async verifyApplyButton() {
-        await expect(this.applybutton).toBeVisible;
+        await expect(this.applybutton).toBeVisible();
     }
 
     async verifyPolicyJournalVochereyeiconButton() {
-        await expect(this.policyJournalVochereyeicon).toBeVisible;
+        await expect(this.policyJournalVochereyeicon).toBeVisible();
     }
 
     async clickOnPolicyJournalVochereyeiconButton() {
@@ -277,11 +277,11 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVoucherListSection() {
-        await expect(this.policyJournalVoucherList).toBeVisible;
+        await expect(this.policyJournalVoucherList).toBeVisible();
     }
 
     async verifyPolicyJournalVoucherDtailsListSection() {
-        await expect(this.policyJournalVochereyeicon).toBeVisible;
+        await expect(this.policyJournalVochereyeicon).toBeVisible();
     }
 
     async enterPolicyReference(policyRef: string) {
@@ -306,13 +306,13 @@ export class PoliciesPage {
     async verifySearchResultPolicyRef() {
 
         const policyRef = this.page.locator('//mat-cell[contains(@class,"policyReference")]');
-        expect(await policyRef).toBeVisible;
+        expect(await policyRef).toBeVisible();
     }
 
     async verifySearchResultPolicyId() {
 
         const policyID = this.page.locator('//mat-cell[contains(@class,"policyId")]');
-        expect(await policyID).toBeVisible;
+        expect(await policyID).toBeVisible();
 
     }
 
@@ -328,22 +328,22 @@ export class PoliciesPage {
 
 
     async verifyPolicyJournalVoucherFirstSectionGridColumn() {
-        await expect(this.voucherNumber).toBeVisible;
-        await expect(this.voucherType).toBeVisible;
-        await expect(this.voucherRef).toBeVisible;
-        await expect(this.voucherDate).toBeVisible;
-        await expect(this.validated).toBeVisible;
-        await expect(this.validationDate).toBeVisible;
+        await expect(this.voucherNumber).toBeVisible();
+        await expect(this.voucherType).toBeVisible();
+        await expect(this.voucherRef).toBeVisible();
+        await expect(this.voucherDate).toBeVisible();
+        await expect(this.validated).toBeVisible();
+        await expect(this.validationDate).toBeVisible();
     }
 
     async verifyPolicyJournalVoucherSecondSectionGridColumn() {
-        await expect(this.account).toBeVisible;
-        await expect(this.description).toBeVisible;
-        await expect(this.currency).toBeVisible;
-        await expect(this.amount).toBeVisible;
-        await expect(this.amountCV1EUR).toBeVisible;
-        await expect(this.amountCV2EUR).toBeVisible;
-        await expect(this.valuedDate).toBeVisible;
+        await expect(this.account).toBeVisible();
+        await expect(this.description).toBeVisible();
+        await expect(this.currency).toBeVisible();
+        await expect(this.amount).toBeVisible();
+        await expect(this.amountCV1EUR).toBeVisible();
+        await expect(this.amountCV2EUR).toBeVisible();
+        await expect(this.valuedDate).toBeVisible();
     }
 
 
@@ -429,7 +429,6 @@ export class PoliciesPage {
 
 
         }
-        //console.log(await account.count());
     }
 
 }

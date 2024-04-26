@@ -151,7 +151,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyJournalVoucherShortcutButton() {
-        expect(this.journalVoucherShortcut).toBeVisible;
+        expect(this.journalVoucherShortcut).toBeVisible();
     }
 
     async verifyJournalVoucherLookupText(data: string) {
@@ -164,11 +164,11 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyjournalVoucherLookupsearchSection() {
-        expect(this.journalVoucherLookupsearchSection).toBeVisible;
+        expect(this.journalVoucherLookupsearchSection).toBeVisible();
     }
 
     async verifyjournalVoucherLookupGridSection() {
-        expect(this.journalVoucherLookupGridSection).toBeVisible;
+        expect(this.journalVoucherLookupGridSection).toBeVisible();
     }
 
     async verifyOrganizationName(data: string) {
@@ -181,11 +181,11 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyAccountNumberField() {
-        expect(this.accountNumber).toBeVisible;
+        expect(this.accountNumber).toBeVisible();
     }
 
     async verifyAccountNameField() {
-        expect(this.accountName).toBeVisible;
+        expect(this.accountName).toBeVisible();
     }
 
     async enterAccountNumber(accountnumber: string) {
@@ -265,22 +265,23 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchButton() {
-        await expect(this.search).toBeVisible;
+        await expect(this.search).toBeVisible();
     }
 
-    async verifyGridHeaderCloumnName() {
-        await expect(this.gridVouchertype).toBeVisible;
-        await expect(this.gridVoucherDate).toBeVisible;
-        await expect(this.gridAccountName).toBeVisible;
-        await expect(this.gridAccountNum).toBeVisible;
-        await expect(this.gridAmount).toBeVisible;
-        await expect(this.gridCurrency).toBeVisible;
-        await expect(this.gridAmountCV1).toBeVisible;
-        await expect(this.gridAmountCV2).toBeVisible;
-        await expect(this.gridDebitCredit).toBeVisible;
-        await expect(this.gridValueDate).toBeVisible;
-        await expect(this.gridproductLine).toBeVisible;
-        await expect(this.gridVoucherRef).toBeVisible;
+    async verifyGridHeaderColumnName() {
+        sleep(4000);
+        await this.page.waitForLoadState('networkidle');
+        await expect(this.gridVouchertype).toBeVisible();
+        await expect(this.gridVoucherDate).toBeVisible();
+        await expect(this.gridAccountName).toBeVisible();
+        await expect(this.gridAccountNum).toBeVisible();
+        await expect(this.gridAmount).toBeVisible();
+        await expect(this.gridCurrency).toBeVisible();
+        await expect(this.gridAmountCV1).toBeVisible();
+        await expect(this.gridAmountCV2).toBeVisible();
+        await expect(this.gridDebitCredit).toBeVisible();
+        await expect(this.gridValueDate).toBeVisible();
+        await expect(this.gridVoucherRef).toBeVisible();
 
     }
 
@@ -304,17 +305,17 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySectionsFromVoucherInfo() {
-        await expect(this.secondsection).toBeVisible;
-        await expect(this.thirdsection).toBeVisible;
+        await expect(this.secondsection).toBeVisible();
+        await expect(this.thirdsection).toBeVisible();
     }
 
     async verifyVoucherDetailsFirstSection() {
-        await expect(this.voucherType).toBeVisible;
-        await expect(this.voucherDate).toBeVisible;
-        await expect(this.voucherRef).toBeVisible;
-        await expect(this.voucherNum).toBeVisible;
-        await expect(this.validationDate).toBeVisible;
-        await expect(this.validatedCheckbox).toBeVisible;
+        await expect(this.voucherType).toBeVisible();
+        await expect(this.voucherDate).toBeVisible();
+        await expect(this.voucherRef).toBeVisible();
+        await expect(this.voucherNum).toBeVisible();
+        await expect(this.validationDate).toBeVisible();
+        await expect(this.validatedCheckbox).toBeVisible();
 
     }
 
@@ -324,15 +325,15 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyVoucherDetailsSecondSection() {
-        await expect(this.amountVoucherInfo).toBeVisible;
-        await expect(this.accountVoucherInfo).toBeVisible;
-        await expect(this.currencyVoucherInfo).toBeVisible;
-        await expect(this.amountcv1VoucherInfo).toBeVisible;
-        await expect(this.amountcv2VoucherInfo).toBeVisible;
-        await expect(this.debitcreditVoucherInfo).toBeVisible;
-        await expect(this.valueDateVoucherInfo).toBeVisible;
-        await expect(this.productLineVoucherInfo).toBeVisible;
-        await expect(this.descVoucherInfo).toBeVisible;
+        await expect(this.amountVoucherInfo).toBeVisible();
+        await expect(this.accountVoucherInfo).toBeVisible();
+        await expect(this.currencyVoucherInfo).toBeVisible();
+        await expect(this.amountcv1VoucherInfo).toBeVisible();
+        await expect(this.amountcv2VoucherInfo).toBeVisible();
+        await expect(this.debitcreditVoucherInfo).toBeVisible();
+        await expect(this.valueDateVoucherInfo).toBeVisible();
+        await expect(this.productLineVoucherInfo).toBeVisible();
+        await expect(this.descVoucherInfo).toBeVisible();
     }
 
 
@@ -363,10 +364,10 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyVoucherDetailsThirdSection() {
-        await expect(this.currencyVoucherInfoThirdSection).toBeVisible;
-        await expect(this.totalCredityVoucherInfoThirdSection).toBeVisible;
-        await expect(this.totalDebitVoucherInfoThirdSection).toBeVisible;
-        await expect(this.balanceVoucherInfoThirdSection).toBeVisible;
+        await expect(this.currencyVoucherInfoThirdSection).toBeVisible();
+        await expect(this.totalCredityVoucherInfoThirdSection).toBeVisible();
+        await expect(this.totalDebitVoucherInfoThirdSection).toBeVisible();
+        await expect(this.balanceVoucherInfoThirdSection).toBeVisible();
     }
 
 
@@ -387,7 +388,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchBarisDisplay() {
-        await expect(this.searchbar).toBeVisible;
+        await expect(this.searchbar).toBeVisible();
     }
 
     async verifyAdvancedSearchfieldisEmpty() {

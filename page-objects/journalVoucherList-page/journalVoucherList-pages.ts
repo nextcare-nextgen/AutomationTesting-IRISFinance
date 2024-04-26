@@ -112,7 +112,7 @@ export class JournalVoucherListPage {
     }
 
     async verifyJournalVoucherShortcutButton() {
-        expect(this.journalVoucherShortcut).toBeVisible;
+        expect(this.journalVoucherShortcut).toBeVisible();
     }
 
     async verifyJournalVoucherListText(data: string) {
@@ -125,11 +125,11 @@ export class JournalVoucherListPage {
     }
 
     async verifyjournalVoucherListsearchSection() {
-        expect(this.journalVoucherListsearchSection).toBeVisible;
+        expect(this.journalVoucherListsearchSection).toBeVisible();
     }
 
     async verifyjournalVoucherListGridSection() {
-        expect(this.journalVoucherListGridSection).toBeVisible;
+        expect(this.journalVoucherListGridSection).toBeVisible();
     }
 
     async verifyJournalVoucherText(data: string) {
@@ -138,17 +138,17 @@ export class JournalVoucherListPage {
     }
 
     async verifyjournalVoucherListAllFields() {
-        expect(this.fromDate).toBeVisible;
-        expect(this.toDate).toBeVisible;
-        expect(this.search).toBeVisible;
-        expect(this.filter).toBeVisible;
-        expect(this.reset).toBeVisible;
-        expect(this.voucherNumber).toBeVisible;
-        expect(this.voucherType).toBeVisible;
-        expect(this.voucherDate).toBeVisible;
-        expect(this.validated).toBeVisible;
-        expect(this.validationDate).toBeVisible;
-        expect(this.voucherRef).toBeVisible;
+        expect(this.fromDate).toBeVisible();
+        expect(this.toDate).toBeVisible();
+        expect(this.search).toBeVisible();
+        expect(this.filter).toBeVisible();
+        expect(this.reset).toBeVisible();
+        expect(this.voucherNumber).toBeVisible();
+        expect(this.voucherType).toBeVisible();
+        expect(this.voucherDate).toBeVisible();
+        expect(this.validated).toBeVisible();
+        expect(this.validationDate).toBeVisible();
+        expect(this.voucherRef).toBeVisible();
     }
 
     async verifyVoucherTypeDropdownList() {
@@ -182,7 +182,7 @@ export class JournalVoucherListPage {
     }
 
     async verifyFromVoucherNumber() {
-        expect(this.fromVoucherNumber).toBeVisible;
+        expect(this.fromVoucherNumber).toBeVisible();
     }
 
     async enterFromVoucherNumber(fromvoucherNumber: string) {
@@ -206,7 +206,7 @@ export class JournalVoucherListPage {
     }
 
     async verifyFromDate() {
-        expect(this.fromDate).toBeVisible;
+        expect(this.fromDate).toBeVisible();
     }
 
     async enterfromDate(fromDate: string) {
@@ -220,11 +220,11 @@ export class JournalVoucherListPage {
     }
 
     async verifyToDate() {
-        expect(this.toDate).toBeVisible;
+        expect(this.toDate).toBeVisible();
     }
 
     async verifySearchButton() {
-        expect(this.search).toBeVisible;
+        expect(this.search).toBeVisible();
     }
 
     async clickOnSearchButton() {
@@ -257,12 +257,12 @@ export class JournalVoucherListPage {
     }
 
     async verifyVoucherDetailsFirstSection() {
-        await expect(this.voucherType).toBeVisible;
-        await expect(this.voucherDate).toBeVisible;
-        await expect(this.voucherRef).toBeVisible;
-        await expect(this.voucherNum).toBeVisible;
-        await expect(this.validationDate).toBeVisible;
-        await expect(this.validatedCheckbox).toBeVisible;
+        await expect(this.voucherType).toBeVisible();
+        await expect(this.voucherDate).toBeVisible();
+        await expect(this.voucherRef).toBeVisible();
+        await expect(this.voucherNum).toBeVisible();
+        await expect(this.validationDate).toBeVisible();
+        await expect(this.validatedCheckbox).toBeVisible();
 
     }
 
@@ -281,11 +281,11 @@ export class JournalVoucherListPage {
     }
 
     async verifyEditTransactionScreen() {
-        await expect(this.amount).toBeVisible;
-        await expect(this.amountCV1).toBeVisible;
-        await expect(this.amountCV2).toBeVisible;
-        await expect(this.valueDate).toBeVisible;
-        await expect(this.description).toBeVisible;
+        await expect(this.amount).toBeVisible();
+        await expect(this.amountCV1).toBeVisible();
+        await expect(this.amountCV2).toBeVisible();
+        await expect(this.valueDate).toBeVisible();
+        await expect(this.description).toBeVisible();
     }
 
     async clickOnRecordsPerPageDropdown(data: string[]) {
@@ -328,7 +328,7 @@ export class JournalVoucherListPage {
     }
 
     async verifySearchBar() {
-        await expect(this.searchBar).toBeVisible;
+        await expect(this.searchBar).toBeVisible();
     }
 
     async enterinSearchbar(data: string) {
@@ -344,9 +344,9 @@ export class JournalVoucherListPage {
     }
 
     async verifyAdvancedSearchfieldisEmpty() {
-        await expect(this.fromVoucherNumber).toBeEmpty;
-        await expect(this.toVoucherNumber).toBeEmpty;
-        await expect(this.voucherType).toBeEmpty;
+        await expect(this.fromVoucherNumber).toBeEmpty();
+        await expect(this.toVoucherNumber).toBeEmpty();
+        await expect(this.voucherType).toBeEmpty();
 
     }
 

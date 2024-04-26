@@ -87,7 +87,7 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async verifyCashAllocationShortcutButton() {
-        expect(this.cashAllocationShortcut).toBeVisible;
+        expect(this.cashAllocationShortcut).toBeVisible();
     }
 
     async verifyCashAllocationText(data: string) {
@@ -143,22 +143,22 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async verifythirdSection() {
-        expect(this.thirdSection).toBeVisible;
+        expect(this.thirdSection).toBeVisible();
     }
 
     async verifySelectPaymentsDetails() {
-        expect(this.paymentDateTitle).toBeVisible;
-        expect(this.paymentDate).toBeVisible;
-        expect(this.paymentReferenceTitle).toBeVisible;
-        expect(this.paymentReference).toBeVisible;
-        expect(this.amountTitle).toBeVisible;
-        expect(this.amount).toBeVisible;
-        expect(this.currencyTitle).toBeVisible;
-        expect(this.currency).toBeVisible;
-        expect(this.senderAccountNameTitle).toBeVisible;
-        expect(this.senderAccountName).toBeVisible;
-        expect(this.remittanceInfoTitle).toBeVisible;
-        expect(this.remittanceInfo).toBeVisible;
+        expect(this.paymentDateTitle).toBeVisible();
+        expect(this.paymentDate).toBeVisible();
+        expect(this.paymentReferenceTitle).toBeVisible();
+        expect(this.paymentReference).toBeVisible();
+        expect(this.amountTitle).toBeVisible();
+        expect(this.amount).toBeVisible();
+        expect(this.currencyTitle).toBeVisible();
+        expect(this.currency).toBeVisible();
+        expect(this.senderAccountNameTitle).toBeVisible();
+        expect(this.senderAccountName).toBeVisible();
+        expect(this.remittanceInfoTitle).toBeVisible();
+        expect(this.remittanceInfo).toBeVisible();
     }
 
     async enterPolicyRef(data: string) {

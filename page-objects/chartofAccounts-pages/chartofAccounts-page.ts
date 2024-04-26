@@ -131,7 +131,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyChartsOfAccountsrShortcutButton() {
-        expect(this.chartOfAccountsShortcut).toBeVisible;
+        expect(this.chartOfAccountsShortcut).toBeVisible();
     }
 
     async verifyChartsOfAccountsShrtcutsButtonisClickable() {

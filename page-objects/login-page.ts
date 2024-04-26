@@ -55,10 +55,10 @@ export class LoginPage {
     }
 
     async verifyLoginUI() {
-        expect(this.userNameOrEmailInputField).toBeVisible;
-        expect(this.passwordInputField).toBeVisible;
-        expect(this.rememberMeCheckbox).toBeVisible;
-        expect(this.signinButton).toBeVisible;
+        expect(this.userNameOrEmailInputField).toBeVisible();
+        expect(this.passwordInputField).toBeVisible();
+        expect(this.rememberMeCheckbox).toBeVisible();
+        expect(this.signinButton).toBeVisible();
 
     }
 }

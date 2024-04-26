@@ -18,10 +18,21 @@
         "toCurrency": "UAE Dirham-AED",
         "fromCurrency": "Euro-EUR"
     },
+    "TC_021_FX_Rates": {
+        "addFxRateText": "Add New Fx Rate"
+    },
     "TC_028_FX_Rates": {
-        "fromCurrency": "UAE"
+        "fromCurrency": "UAE Dirham-AED"
+    },
+    "TC_029_FX_Rates": {
+        "toCurrency": "Euro-EUR"
     },
     "TC_031_FX_Rates": {
+        "rate": "1.04"
+    },
+    "TC_032_FX_Rates": {
+        "fromCurrency": "UAE Dirham-AED",
+        "toCurrency": "Euro-EUR",
         "rate": "1.04"
     },
     "TC_034_FX_Rates": {
