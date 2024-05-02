@@ -23,6 +23,20 @@ export class FinancialOrganizationsPage {
     readonly stoppedIndex: Locator;
     readonly recordsPerPage: Locator;
     readonly recordPerPageDropdown: Locator;
+    readonly stopOrg: Locator;
+    readonly activeFilter: Locator;
+    readonly stoppedFilter: Locator;
+    readonly addOrganizationButton: Locator;
+    readonly cv1: Locator;
+    readonly cv2: Locator;
+    readonly startDateCalendarIcon: Locator;
+    readonly name: Locator;
+    readonly code: Locator;
+    readonly createButton: Locator;
+    readonly closeButton: Locator;
+    readonly currentDateFromCalender: Locator;
+    readonly ACTSCode: Locator;
+
 
 
     constructor(page: Page) {
@@ -46,7 +60,19 @@ export class FinancialOrganizationsPage {
         this.stoppedIndex = page.locator('//iris-table-filter-tags//mat-chip-listbox//div//span[@title="Stopped"]');
         this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
-
+        this.stopOrg = page.locator('//button[@title="Stop"]');
+        this.activeFilter = page.locator('//iris-table-filter-tags//mat-chip-listbox//mat-chip-option[@chip-color="green"]');
+        this.stoppedFilter = page.locator('//iris-table-filter-tags//mat-chip-listbox//mat-chip-option[@chip-color="red"]');
+        this.addOrganizationButton = page.locator('//button[@title="Add Organization"]');
+        this.cv1 = page.locator('//mat-label//span[@title="CV1"]');
+        this.cv2 = page.locator('//mat-label//span[@title="CV2"]');
+        this.startDateCalendarIcon = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
+        this.name = page.locator('//iris-standard-card//div//input[@title="Name"]');
+        this.code = page.locator('//iris-standard-card//div//input[@title="Code"]');
+        this.createButton = page.locator('//button[@title="Create"]');
+        this.closeButton = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
+        this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
+        this.ACTSCode = page.locator('//input[@title="ACTS Code"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -175,15 +201,172 @@ export class FinancialOrganizationsPage {
         columnValue.first().click();
     }
 
-    async VerifyEditOrganizationButton(data: string) {
-        const editOrgIcon = this.page.locator('//button//span[text()="' + data + '"]');
+    async VerifyEditOrganizationButton() {
+        const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
         await expect(editOrgIcon).toBeVisible();
     }
 
-    async clickOnEditOrganizationButton(data: string) {
-        const editOrgIcon = this.page.locator('//button//span[text()="' + data + '"]');
-        await editOrgIcon.click();
+    async clickOnEditOrganizationButton() {
+        sleep(7000);
+        const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
+        await editOrgIcon.first().click();
     }
+
+    async VerifyStopOrganizationButtonIsClickable() {
+        await expect(this.stopOrg).toBeEnabled();
+    }
+
+    async clickOnActiveFilter() {
+        await this.activeFilter.click();
+    }
+
+    async clickOnStoppedFilter() {
+        await this.stoppedFilter.click();
+    }
+
+
+    async verifyActiveAccountsFromGrid() {
+        const activeaccounts = this.page.locator('//mat-cell//mat-chip-listbox//mat-chip-option[@chip-color="green"]');
+        for (let index = 0; index < await activeaccounts.count(); index++) {
+            expect(await activeaccounts.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
+
+    async verifyStoppedAccountsFromGrid() {
+        const stoppedaccounts = this.page.locator('//mat-cell//mat-chip-listbox//mat-chip-option[@chip-color="red"]');
+        for (let index = 0; index < await stoppedaccounts.count(); index++) {
+            expect(await stoppedaccounts.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
+
+
+    async verifyAccountsFromGrid() {
+        const accounts = this.page.locator('//mat-cell[contains(@class,"status")]');
+        for (let index = 0; index < await accounts.count(); index++) {
+            expect(await accounts.nth(index).innerText()).toBeTruthy();
+
+        }
+    }
+
+    async VerifyADDOrganizationButton() {
+        await expect(this.addOrganizationButton).toBeVisible();
+    }
+
+
+    async clickOnADDOrganizationButton() {
+        await this.addOrganizationButton.click();
+    }
+
+    async selectCV1(cv1: string) {
+        await this.cv1.click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + cv1 + '"]//ancestor::div[1]').click();
+
+    }
+
+    async selectCV2(cv2: string) {
+        sleep(5000);
+        await this.cv2.click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + cv2 + '"]//ancestor::div[1]').click();
+
+    }
+
+    async enterStartDate() {
+        await this.startDateCalendarIcon.click();
+        await this.page.locator("//span[text()=' 1 ']").click();
+        await this.page.waitForTimeout(2000);
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        // let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${day}`;
+        var todayDate = Number(fullDate);
+    }
+
+    async enterName(name: string) {
+        await this.name.fill(name);
+
+    }
+
+    async enterCode(code: string) {
+        await this.code.fill(code);
+
+    }
+
+    async VerifyCreateButtonIsClickable() {
+        await expect(this.createButton).toBeEnabled();
+    }
+
+    async VerifyCreateButtonIsdisable() {
+        await expect(this.createButton).toBeDisabled();
+    }
+
+    async clickOnCloseButton() {
+        await this.closeButton.click();
+    }
+
+    async verifyCurrentDateFromCalender() {
+        await this.startDateCalendarIcon.click();
+        await expect(this.currentDateFromCalender).toBeVisible();
+    }
+
+    async verifyDaysFromCalender() {
+        await this.startDateCalendarIcon.click();
+        await expect(this.page.locator('//thead//th//span[2]')).toHaveText(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']);
+    }
+
+    async verifyArrowsFromCalender() {
+        await this.startDateCalendarIcon.click();
+        const arrows = this.page.locator('//iris-date-keyin-header//button//span[@class="mat-mdc-focus-indicator"]');
+        for (let index = 0; index < await arrows.count(); index++) {
+            expect(arrows.nth(index)).toBeVisible();
+
+        }
+    }
+
+    async selectFutureDate() {
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() + 5;
+        let year = date.getFullYear();
+
+        // let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${month}`;
+        var todayDate = Number(fullDate);
+
+        await this.startDateCalendarIcon.click();
+        await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+        await this.page.waitForTimeout(2000);
+    }
+
+
+    async selectOldDate() {
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear() - 1;
+
+        //let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${year}`;
+        var todayDate = Number(fullDate);
+
+        await this.startDateCalendarIcon.click();
+        await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+        await this.page.waitForTimeout(2000);
+    }
+
+    async enterACTSCode(name: string) {
+        await this.ACTSCode.fill(name);
+
+    }
+
+
 }
 
 

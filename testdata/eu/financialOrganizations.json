@@ -46,11 +46,25 @@
     "TC_049": {
         "organizationName": "TEST",
         "organizationCode": "AWC-TEST",
-        "editOrgTitle":"Edit Organization"
+        "editOrgTitle": "Edit Organization"
     },
     "TC_050": {
         "organizationName": "TEST",
-        "organizationCode": "AWC-TEST",
-        "editOrgTitle":"Edit Organization"
+        "organizationCode": "AWC-TEST"
+    },
+    "TC_066": {
+        "cv1": "Euro-EUR"
+    },
+    "TC_067": {
+        "cv2": "UAE Dirham-AED"
+    },
+    "TC_069": {
+        "name": "Test",
+        "code": "123",
+        "cv1": "Euro-EUR",
+        "cv2": "UAE Dirham-AED"
+    },
+    "TC_080": {
+        "ACTScode": "Test12345"
     }
 }

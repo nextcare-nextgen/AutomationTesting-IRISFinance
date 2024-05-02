@@ -8,6 +8,7 @@ const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.j
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+    
     await test.step("--------------Start the FX Rates Testclass----------------------", async () => {
         console.log("--------------Start the FX Rates Testclass----------------------")
     })
@@ -1216,6 +1217,10 @@ test('NXGF-TC-1909: TC_038_FX_Rates_Add new FX Rates_Verify that the User is abl
 
     await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {
         await fxRatesPage.enterinSearchbar(fxRatesData['TC_038_FX_Rates'].value);
+    })
+
+    await test.step("--------------End the FX rates Testclass----------------------", async () => {
+        console.log("--------------End the FX rates Testclass----------------------")
     })
 
 });
