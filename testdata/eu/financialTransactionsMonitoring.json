@@ -1,0 +1,13 @@
+{
+    "TC_000_Transactions_Details_Screen": {
+        "breadcrumbsText": "Financial Transactions Monitoring"
+    },
+    "TC_003_Transactions_Details_Screen": {
+        "financialTransactionsMonitoringText": "Financial Transactions Monitoring"
+    },
+    "TC_005_Transactions_Details_Screen": {
+        "orgName": "Allianz Partners - 2024"
+    }
+
+    
+}

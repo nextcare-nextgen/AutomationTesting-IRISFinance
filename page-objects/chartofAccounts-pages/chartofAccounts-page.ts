@@ -1,5 +1,6 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 import { count } from "console";
+import exp from "constants";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class ChartOfAccountsPage {
@@ -57,7 +58,11 @@ export class ChartOfAccountsPage {
     readonly addchildAccountTitle: Locator;
     readonly warningPopup: Locator;
     readonly expandArrow: Locator;
-
+    readonly searchBar: Locator;
+    readonly label: Locator;
+    readonly childstartDateCalendarIcon: Locator;
+    readonly randomString: string;
+    readonly stoppedAccountpopup :Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -67,7 +72,7 @@ export class ChartOfAccountsPage {
         this.chartOfAccountText = page.locator('//div//h1[@title="Charts of Accounts"]');
         this.accountName = page.locator('//div//input[@title="Account Name"]');
         this.accountNumber = page.locator('//div//input[@title="Account Number"]');
-        this.search = page.locator('//div//button[@title="Search"]');
+        this.search = page.locator('//div//button//span[@title="Search"]');
         this.parentAccountNumber = page.locator('id=parentaccountnumber-Parent Account Number');
         this.accountNumberfromGrid = page.locator('//div//small[@title="Account Number"]');
         this.accountNamefromGrid = page.locator('//div//small[@title="Account Name"]');
@@ -84,7 +89,7 @@ export class ChartOfAccountsPage {
         this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         this.addAccount = page.locator('//div//button[@title="Add Account"]');
-        this.addAccountNumber = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Number"]');
+        this.addAccountNumber = page.locator('//iris-composed-dialog//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Number"]');
         this.addAccountName = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Name"]');
         this.addAccountSelectDate = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Start Date"]');
         this.addAccountType = page.locator('//div//span[@title="Account Type"]');
@@ -114,6 +119,11 @@ export class ChartOfAccountsPage {
         this.warningPopup = page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
         this.expandArrow = page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
         this.addAccountScreenText = page.locator("//iris-base-label//h2[@title='Add a new account']");
+        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.label = page.locator('//iris-menu-card//iris-base-label//span');
+        this.childstartDateCalendarIcon = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
+        this.randomString = `${Math.random().toString().slice(2, 8)}`;
+        this.stoppedAccountpopup = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -402,6 +412,11 @@ export class ChartOfAccountsPage {
         await editicon.first().click();
     }
 
+    async clickOnAddChildAccountIcon() {
+        let editicon = this.page.locator('//button[@title="Add Child Account"]');
+        await editicon.first().click();
+    }
+
     async verifymandatoryFieldsfromChildAccount() {
         await expect(this.addAccountNumberMandatory).toBeVisible();
         await expect(this.addAccountNameMandatory).toBeVisible();
@@ -429,6 +444,88 @@ export class ChartOfAccountsPage {
         const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
         selectAccounttype.click();
     }
+
+    async verifySearchBar() {
+        await expect(this.searchBar).toBeVisible();
+    }
+
+    async enterinSearchbar(data: string) {
+        await this.searchBar.fill(data);
+        await sleep(2000);
+        const actual = await this.label.textContent();
+        expect(actual).toBe(data);
+    }
+
+
+    async enterRandomChildAccountNumber() {
+        await this.page.waitForLoadState('networkidle');
+        await this.addAccountNumber.fill(this.randomString);
+
+    };
+
+    async getaccountNumber() {
+        await this.page.waitForLoadState('networkidle');
+        //await this.accountNumber.click();
+        sleep(6000);
+        await this.accountNumber.fill(this.randomString);
+        await this.search.click();
+        sleep(3000);
+        const getnumberfromgrid = await this.page.locator('//mat-cell[contains(@class,"accountnumber" )][2]').textContent();
+        console.log(getnumberfromgrid);
+        expect(this.randomString).toBe(getnumberfromgrid);
+
+    }
+
+
+    async enterStartDate() {
+        await this.childstartDateCalendarIcon.click();
+        await this.page.locator("//span[text()=' 1 ']").click();
+        await this.page.waitForTimeout(2000);
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        // let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${day}`;
+        var todayDate = Number(fullDate);
+    }
+
+    async verifyStopAccountsInGrid() {
+        const stopButton = this.page.locator('//button[@title="Stop Account"]');
+        for (let index = 0; index < await stopButton.count(); index++) {
+            expect(await stopButton.nth(index)).toBeVisible();
+        }
+    }
+
+    async clickOnStoppedAccount() {
+        const stopButton = this.page.locator('//button[@title="Stop Account"]');
+        await stopButton.first().click();
+    }
+
+    async verifyStopAccountPopup(data:string) {
+        const actual = await this.stoppedAccountpopup.textContent();
+        expect(actual).toBe(data);
+        }
+    
+        
+    async stopedAccounts() {
+        await this.page.waitForLoadState('networkidle');
+        //await this.accountNumber.click();
+        sleep(6000);
+        await this.accountNumber.fill(this.randomString);
+        await this.search.click();
+        sleep(3000);
+        const getnumberfromgrid = await this.page.locator('//button[@title="Stop Account"]');
+        await getnumberfromgrid.first().click();
+        const okbutton = this.page.locator('//iris-composed-dialog//button[@title="Ok"]');
+        okbutton.click();
+
+    }
+
+
+
 
 }
 
