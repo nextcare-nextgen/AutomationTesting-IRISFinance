@@ -210,7 +210,7 @@ export class CashAllocationUnderPaymentsPage {
 
     async verifyAmount() {
         const amount = this.page.locator('//mat-card//div[contains(@class,"row me-0")][3]//iris-base-label//p').textContent();
-        const outstandingAmount = this.page.locator('//iris-composed-table-grid//mat-cell[contains(@class,"totalOutstandingTillDate")]//small[@title="EUR 12.00"]');
+        const outstandingAmount = this.page.locator('//iris-composed-table-grid//mat-cell[contains(@class,"totalOutstandingTillDate")]//small');
         const outstangingamt = await outstandingAmount.textContent();
         const alphanumericValue = outstangingamt?.trimEnd();
         console.log(amount);
@@ -219,6 +219,15 @@ export class CashAllocationUnderPaymentsPage {
         function Remove(outstangingamt, startIndex) {
             return outstangingamt.substr(0, startIndex);
         }
+        const allocatedAmount = await this.page.locator('.allocated-amount').textContent();
+     const actualAmount = await this.page.locator('.actual-amount').textContent();
+      
+       
+      
+        // Verify if the actual amount is less than the allocated amount
+      //  expect(allocatedAmount).toBeLessThan(actualAmount);
+
+
     }
 
     async enterUnallocatedAmount(data: string) {

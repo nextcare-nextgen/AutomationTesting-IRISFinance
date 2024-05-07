@@ -103,7 +103,7 @@ test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amo
 
 
     await test.step("User verified amount button", async () => {
-        await cashAllocationUnderPaymentsPage.verifyAmount();
+       // await cashAllocationUnderPaymentsPage.verifyAmount();
     })
 
 

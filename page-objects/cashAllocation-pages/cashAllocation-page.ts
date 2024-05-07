@@ -53,7 +53,19 @@ export class CashAllocationPage {
         this.policyHolderName = page.locator('//div[@role="region"]//input[@title="Policy Holder Name"]');
         this.effectiveDate = page.locator('//div[@role="region"]//input[@title="Effective Date"]');
         this.clearAllbutton = page.locator('//button[@title="Clear all"]');
-        this.popupMessage =page.locator('//p[text()="Are you sure you want to cancel the allocation ?"]');
+        this.popupMessage =page.locator('//iris-composed-dialog//p[text()="Are you sure you want to cancel the allocation ?"]');
+        this.paymentDateTitle=page.locator('//h4[@title="Payment Date"]');
+        this.paymentDate=page.locator('//h4[@title="Payment Date"]//following::p[1]');
+        this.paymentReferenceTitle=page.locator('//h4[@title="Payment Reference"]');
+        this.paymentReference=page.locator('//h4[@title="Payment Reference"]//following::p[1]');
+        this.amountTitle=page.locator('//h4[@title="Amount"]');
+        this.amount=page.locator('//h4[@title="Amount"]//following::p[1]');
+        this.currencyTitle=page.locator('//h4[@title="Currency"]');
+        this.currency=page.locator('//h4[@title="Currency"]//following::p[1]');
+        this.senderAccountNameTitle=page.locator('//h4[@title="Sender A/C Name"]');
+        this.senderAccountName=page.locator('//h4[@title="Sender A/C Name"]//following::p[1]');
+        this.remittanceInfoTitle=page.locator('//h4[@title="Remittance Info"]');
+        this.remittanceInfo=page.locator('//h4[@title="Remittance Info"]//following::p[1]');
     }
 
 

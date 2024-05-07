@@ -150,7 +150,7 @@ test('NXGF-TC-3019: TC_005_Transactions Details Screen_Verify that the Organizat
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
 
-    await test.step("Uer Verified the organization name selected on the top of the page", async () => {
+    await test.step("User Verified the organization name selected on the top of the page", async () => {
         await financialTransactionsMonitoringPage.verifyOrganizationName(FinancialTransactionsMonitoringData['TC_005_Transactions_Details_Screen'].orgName);
 
     })
@@ -247,7 +247,7 @@ test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is a
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
 
-    await test.step("Uer Verified the organization name selected on the top of the page", async () => {
+    await test.step("User Verified the organization name selected on the top of the page", async () => {
         await financialTransactionsMonitoringPage.verifySearchfiltersButton();
 
     })
