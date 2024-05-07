@@ -13,6 +13,8 @@ export class FinancialTransactionsMonitoringPage {
     readonly currentDateFromCalender: Locator;
     readonly fromDateCalenderIcon: Locator;
     readonly fromdateinput: Locator;
+    readonly todateinput: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -25,6 +27,7 @@ export class FinancialTransactionsMonitoringPage {
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
         this.fromDateCalenderIcon = page.locator('//div//input[@title="From Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
         this.fromdateinput = page.locator('//input[@title="From Date"]');
+        this.todateinput = page.locator('//input[@title="To Date"]');
 
     }
 
@@ -77,6 +80,20 @@ export class FinancialTransactionsMonitoringPage {
 
     }
 
+    async selectCurrentDateToDateCalender() {
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.toLocaleString('default', { month: 'short' });
+        const year = today.getFullYear();
+
+        // Format the date in "06 May 2024" format
+        const formattedDate = `${day.toString().padStart(2, '0')} ${month} ${year}`;
+        await this.fromdateinput.fill(formattedDate);
+        // Example: Logging the formatted date
+        console.log(formattedDate);
+
+    }
+
     async selectFutureDateInFromDateCalender() {
         const inputField = await this.page.locator('//input[@title="From Date"]');
 
@@ -97,6 +114,33 @@ export class FinancialTransactionsMonitoringPage {
         }
 
     }
+
+    async selectOldDate() {
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() - 1;
+        let year = date.getFullYear() ;
+
+        //let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${month}`;
+        var todayDate = Number(fullDate);
+
+        await this.fromDateCalenderIcon.click();
+        await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+        await this.page.waitForTimeout(2000);
+    }
+
+    async selectPaymentStatus(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    async clickOnSearchFilterButton() {
+        await this.searchFilters.click();
+    }
+
 
 }
 

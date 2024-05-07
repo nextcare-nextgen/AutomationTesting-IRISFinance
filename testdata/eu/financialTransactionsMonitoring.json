@@ -7,6 +7,9 @@
     },
     "TC_005_Transactions_Details_Screen": {
         "orgName": "Allianz Partners - 2024"
+    },
+    "TC_012_Transactions_Details_Screen": {
+        "paymentStatus": "Cleared"
     }
 
     

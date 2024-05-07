@@ -419,8 +419,9 @@ test('NXGF-TC-1682: TC_035_Verify that the user is able to enter the organizatio
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
         await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_035'].organizationCode)
     })
+});
 
-    test('NXGF-TC-1684: TC_036_Verify that the user is able to enter the organization code in the "Search by Organization code" field', async ({ page }) => {
+test('NXGF-TC-1684: TC_036_Verify that the user is able to enter the organization code in the "Search by Organization code" field', async ({ page }) => {
 
         const loginPage: LoginPage = new LoginPage(page);
         const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -450,7 +451,6 @@ test('NXGF-TC-1682: TC_035_Verify that the user is able to enter the organizatio
 
     });
 
-});
 
 test('NXGF-TC-1687: TC_037_Verify that the user is able to click on search icon after entering the organization code in Search by Organization "Code" field', async ({ page }) => {
 
@@ -849,10 +849,6 @@ test('NXGF-TC-1708: TC_049_Verify that the user is able to view the "Edit Organi
     await test.step("User Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
         sleep(4000);
-    })
-
-    await test.step("Click on Three Dots", async () => {
-        await financialOrganizationsPage.clickOnThreeDotsIcon();
     })
 
     await test.step("Verify that the user is able to view the 'Edit Organization' button after the search", async () => {

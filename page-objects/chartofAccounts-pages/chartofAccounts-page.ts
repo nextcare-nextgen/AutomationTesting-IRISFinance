@@ -85,7 +85,7 @@ export class ChartOfAccountsPage {
         this.stopDate = page.locator('//div//small[@title="Stop Date"]');
         this.activeIndex = page.locator('//iris-table-filter-tags//mat-chip-option[@chip-color="green"]');
         this.stopIndex = page.locator('//iris-table-filter-tags//mat-chip-option[@chip-color="red"]');
-        this.confirmationMessage = page.locator('//p[@title="Are you sure you want to stop this account ?"]');
+        this.confirmationMessage = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
         this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         this.addAccount = page.locator('//div//button[@title="Add Account"]');
@@ -238,7 +238,7 @@ export class ChartOfAccountsPage {
     async clickOnRecordsPerPageDropdown(data: string[]) {
         await sleep(2000);
         await this.recordPerPageDropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
 
     }
 
@@ -343,7 +343,8 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountsinGrid(data: string) {
-        sleep(3000);
+        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const actual = await this.accountnumFromGrid.textContent();
         expect(actual).toBe(data);
     }

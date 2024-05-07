@@ -1183,7 +1183,7 @@ test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify t
 
     await test.step("Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(5000);
+        sleep(8000);
     })
 
     await test.step("Verified that the user is able to save after entering the mandatory fields", async () => {

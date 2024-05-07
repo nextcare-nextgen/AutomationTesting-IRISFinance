@@ -65,6 +65,9 @@
     "TC_051_Chart_of_Accounts": {
         "productLine": "Assistance"
     },
+    "TC_052_Chart_of_Accounts": {
+        "GLdropdownvalue": "General ledger"
+    },
     "TC_057_Chart_of_Accounts": {
         "accountName": "Gross Writen Premium"
     },

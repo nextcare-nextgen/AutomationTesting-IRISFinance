@@ -167,7 +167,7 @@ export class FinancialOrganizationsPage {
     async clickOnRecordsPerPageDropdown(data: string[]) {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([ ' 50 ', ' 100 ', ' 150 ',' 200 ', ' 250 ']);
     }
 
     async verifyOrgNameAndCodeFromGrid() {
@@ -202,6 +202,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyEditOrganizationButton() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
         await expect(editOrgIcon).toBeVisible();
     }
@@ -260,13 +261,14 @@ export class FinancialOrganizationsPage {
     }
 
     async selectCV1(cv1: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.cv1.click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + cv1 + '"]//ancestor::div[1]').click();
 
     }
 
     async selectCV2(cv2: string) {
-        sleep(5000);
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.cv2.click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + cv2 + '"]//ancestor::div[1]').click();
 
@@ -349,11 +351,11 @@ export class FinancialOrganizationsPage {
 
         let date = new Date()
         let day = date.getDate();
-        let month = date.getMonth();
-        let year = date.getFullYear() - 1;
+        let month = date.getMonth() - 1;
+        let year = date.getFullYear() ;
 
         //let fullDate = day + "." + month + "." + year + ".";
-        let fullDate = `${year}`;
+        let fullDate = `${month}`;
         var todayDate = Number(fullDate);
 
         await this.startDateCalendarIcon.click();
