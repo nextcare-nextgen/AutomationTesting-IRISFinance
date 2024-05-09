@@ -14,6 +14,13 @@ export class FinancialTransactionsMonitoringPage {
     readonly fromDateCalenderIcon: Locator;
     readonly fromdateinput: Locator;
     readonly todateinput: Locator;
+    readonly fromPaymentAmount: Locator;
+    readonly toPaymentAmount: Locator;
+    readonly policyRef: Locator;
+    readonly customerRef: Locator;
+    readonly transactionId : Locator;
+    readonly searchButton : Locator;
+    readonly applyButton : Locator;
 
 
     constructor(page: Page) {
@@ -28,6 +35,13 @@ export class FinancialTransactionsMonitoringPage {
         this.fromDateCalenderIcon = page.locator('//div//input[@title="From Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
         this.fromdateinput = page.locator('//input[@title="From Date"]');
         this.todateinput = page.locator('//input[@title="To Date"]');
+        this.fromPaymentAmount = page.locator('//div//input[@title="From Payment Amount"]');
+        this.toPaymentAmount = page.locator('//div//input[@title="To Payment Amount"]');
+        this.policyRef = page.locator('//div//input[@title="Policy Ref"]');
+        this.customerRef = page.locator('//div//input[@title="Document Reference"]');
+        this.transactionId = page.locator('//div//input[@title="Transaction Id"]');
+        this.searchButton = page.locator('//div//button[@title="Search"]');
+        this.applyButton = page.locator('//div//button[@title="Apply"]');
 
     }
 
@@ -88,7 +102,7 @@ export class FinancialTransactionsMonitoringPage {
 
         // Format the date in "06 May 2024" format
         const formattedDate = `${day.toString().padStart(2, '0')} ${month} ${year}`;
-        await this.fromdateinput.fill(formattedDate);
+        await this.todateinput.fill(formattedDate);
         // Example: Logging the formatted date
         console.log(formattedDate);
 
@@ -120,12 +134,11 @@ export class FinancialTransactionsMonitoringPage {
         let date = new Date()
         let day = date.getDate();
         let month = date.getMonth() - 1;
-        let year = date.getFullYear() ;
+        let year = date.getFullYear();
 
         //let fullDate = day + "." + month + "." + year + ".";
         let fullDate = `${month}`;
         var todayDate = Number(fullDate);
-
         await this.fromDateCalenderIcon.click();
         await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
         await this.page.waitForTimeout(2000);
@@ -141,8 +154,120 @@ export class FinancialTransactionsMonitoringPage {
         await this.searchFilters.click();
     }
 
+    async verifyListOfPaymentStatus() {
+        sleep(5000);
+        await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
+        const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
+
+        const expectedValues = ['Cleared', 'Cleared-allocated', 'Cleared-unallocated', 'Failed', 'Not Yet Processed', 'Partially Allocated', 'Pending',
+            'Re-processing', 'Requires Intervention', 'Returned', 'Unidentified', 'Unpaid'
+        ];
+
+        for (let i = 0; i < elements.length; i++) {
+            const text = await elements[i].textContent();
+            expect(text).toEqual(expectedValues[i]);
+        }
+    }
+
+    async selectTransactiontype(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    async verifyListOfTransactionType() {
+        sleep(5000);
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
+        const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
+
+        const expectedValues = ['Bank Charges', 'Blank', 'Cash Payment', 'Claim Adjustment', 'Claim Payment', 'Commission Payment', 'EC Premium Collection',
+            'EC Premium Refund', 'Failed Claim Payment Reversal', 'Premium Payment', 'Refund Payment'
+        ];
+
+        for (let i = 0; i < elements.length; i++) {
+            const text = await elements[i].textContent();
+            expect(text).toEqual(expectedValues[i]);
+        }
+    }
+
+    async selectPaymentMethod(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    async enterFromPaymentAmount(data: string) {
+        await this.fromPaymentAmount.fill(data);
+    }
+
+    async enterToPaymentAmount(data: string) {
+        await this.toPaymentAmount.fill(data);
+    }
+
+    async enterPolicyRef(data: string) {
+        await this.policyRef.fill(data);
+    }
+
+    async enterCustomerRef(data: string) {
+        await this.policyRef.fill(data);
+    }
+
+    async enterTransactionId(data: string) {
+        await this.transactionId.fill(data);
+    }
+
+    async clickOnSearchButton() {
+        await this.searchButton.click();
+    }
+
+    async verifyPaymentStatusFromGrid(data:string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
+        for (let index = 0; index < await paymentsstatus.count(); index++) {
+            const paymentStatus = await paymentsstatus.nth(index).textContent();
+            expect(paymentStatus).toBe(data);
+        }
+    }
+
+
+    async verifyPaymentMethodFromGrid(data:string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const paymentsmethod = this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
+        for (let index = 0; index < await paymentsmethod.count(); index++) {
+            const paymentMethod = await paymentsmethod.nth(index).textContent();
+            expect(paymentMethod).toBe(data);
+        }
+    }
+
+
+    async clickOnApplyButton() {
+        await this.applyButton.click();
+    }
+
+
+    async selectPaymentType(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    
+    async verifyPaymentTypeFromGrid(data:string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const paymenttype = this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
+        for (let index = 0; index < await paymenttype.count(); index++) {
+            const paymentType = await paymenttype.nth(index).textContent();
+            expect(paymentType).toBe(data);
+        }
+    }
+
+
 
 }
+
+
+
+
 
 
 

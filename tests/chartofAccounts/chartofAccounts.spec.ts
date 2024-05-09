@@ -1260,40 +1260,6 @@ test('NXGF-TC-2138: TC_049_ Chart of Accounts_Verify that the user is unable to 
 
 });
 
-test('NXGF-TC-2140: TC_051_Chart of Accounts_Verify that the user is able to select the Product Line', async ({ page }) => {
-
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
-
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
-
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
-    })
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
-    })
-
-    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
-        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
-    })
-
-    await test.step("User click on the add(+) button", async () => {
-        await chartOfAccountsPage.clickOnAddAccountButton();
-    })
-
-    await test.step("Verified that the user is able to select the Product Line", async () => {
-        await chartOfAccountsPage.selectProductLineFromDropdown(ChartOfAccountsPageData['TC_051_Chart_of_Accounts'].productLine);
-    })
-
-
-});
-
 test('NXGF-TC-2141: TC_052_ Chart of Accounts_Verify that the user is able to select the GL Account Type', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

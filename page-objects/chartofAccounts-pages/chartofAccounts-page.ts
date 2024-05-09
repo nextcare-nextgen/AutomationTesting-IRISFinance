@@ -62,7 +62,9 @@ export class ChartOfAccountsPage {
     readonly label: Locator;
     readonly childstartDateCalendarIcon: Locator;
     readonly randomString: string;
-    readonly stoppedAccountpopup :Locator;
+    readonly stoppedAccountpopup: Locator;
+    readonly addAccountCostCenter1: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -94,6 +96,7 @@ export class ChartOfAccountsPage {
         this.addAccountSelectDate = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Start Date"]');
         this.addAccountType = page.locator('//div//span[@title="Account Type"]');
         this.addAccountProductLine = page.locator('//div//span[@title="Product Line"]');
+        this.addAccountCostCenter1 = page.locator('//div//span[@title="Cost Center 1"]');
         this.addAccountCostCenter2 = page.locator('//div//span[@title="Cost Center 2"]');
         this.addAccountCostCenter3 = page.locator('//div//span[@title="Cost Center 3"]');
         this.addAccountGLAcoountType = page.locator('//div//span[@title="GL Account Type"]');
@@ -124,6 +127,7 @@ export class ChartOfAccountsPage {
         this.childstartDateCalendarIcon = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
         this.randomString = `${Math.random().toString().slice(2, 8)}`;
         this.stoppedAccountpopup = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
+
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -175,6 +179,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountNumberFromGrid() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const accountNum = this.page.locator('//mat-cell[contains(@class,"accountnumber")][2]');
         for (let index = 0; index < await accountNum.count(); index++) {
             expect(await accountNum.nth(index).innerText()).toBeTruthy();
@@ -198,6 +203,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyStatusInTheGrid() {
+        await new Promise(resolve => setTimeout(resolve, 4000));
         const status = this.page.locator('//mat-cell[contains(@class,"status")]');
         for (let index = 0; index < await status.count(); index++) {
             expect(await status.nth(index).innerText()).toBeTruthy();
@@ -274,10 +280,10 @@ export class ChartOfAccountsPage {
         await expect(this.addAccountName).toBeVisible();
         await expect(this.addAccountSelectDate).toBeVisible();
         await expect(this.addAccountType).toBeVisible();
-        await expect(this.productLine).toBeVisible();
-        await expect(this.costCenter2).toBeVisible();
-        await expect(this.costCenter3).toBeVisible();
-        await expect(this.GLAccounttype).toBeVisible();
+        await expect(this.addAccountCostCenter1).toBeVisible();
+        await expect(this.addAccountCostCenter2).toBeVisible();
+        await expect(this.addAccountCostCenter3).toBeVisible();
+        await expect(this.addAccountGLAcoountType).toBeVisible();
 
     }
 
@@ -467,10 +473,10 @@ export class ChartOfAccountsPage {
     async getaccountNumber() {
         await this.page.waitForLoadState('networkidle');
         //await this.accountNumber.click();
-        sleep(6000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.accountNumber.fill(this.randomString);
         await this.search.click();
-        sleep(3000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const getnumberfromgrid = await this.page.locator('//mat-cell[contains(@class,"accountnumber" )][2]').textContent();
         console.log(getnumberfromgrid);
         expect(this.randomString).toBe(getnumberfromgrid);
@@ -505,28 +511,25 @@ export class ChartOfAccountsPage {
         await stopButton.first().click();
     }
 
-    async verifyStopAccountPopup(data:string) {
+    async verifyStopAccountPopup(data: string) {
         const actual = await this.stoppedAccountpopup.textContent();
         expect(actual).toBe(data);
-        }
-    
-        
+    }
+
+
     async stopedAccounts() {
         await this.page.waitForLoadState('networkidle');
         //await this.accountNumber.click();
-        sleep(6000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.accountNumber.fill(this.randomString);
         await this.search.click();
-        sleep(3000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const getnumberfromgrid = await this.page.locator('//button[@title="Stop Account"]');
         await getnumberfromgrid.first().click();
         const okbutton = this.page.locator('//iris-composed-dialog//button[@title="Ok"]');
         okbutton.click();
 
     }
-
-
-
 
 }
 

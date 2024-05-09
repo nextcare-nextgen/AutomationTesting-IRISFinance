@@ -6,7 +6,7 @@
         "dashboardText": "Dashboard"
     },
     "TC_004_Journal_Voucher_List": {
-        "journalVocherText": "Journal Voucher list"
+        "journalVocherText": "Journal Voucher List"
     },
     "TC_006_Journal_Voucher_List":{
         "journalVocherText": "Journal Vouchers"
@@ -53,7 +53,7 @@
         "fromVoucherNumber":"10",
         "tovoucherNumber":"900",
         "voucherType":"Reverse TAX Posting",
-        "textContent":"Journal Voucher Modification"
+        "textContent":"Manage Journal Voucher"
     },
     "TC_038_Journal_Voucher_List":{
         "organization": "2024",
