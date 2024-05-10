@@ -102,7 +102,7 @@ export class JournalVoucherLookupPage {
         this.vocherInfoText = page.locator('//h2[text()="Voucher Information"]');
         this.secondsection = page.locator('//mat-table[@id="voucherTransactionList"]');
         this.thirdsection = page.locator('//mat-table[@id="pivot-grid-data"]');
-        this.voucherType = page.locator('//iris-standard-card//iris-select-formfield//div[contains(@class,"mat-form-field-flex")]');
+        this.voucherType = page.locator('//iris-voucher-type-autocomplete//iris-select-formfield');
         this.voucherDate = page.locator('//iris-standard-date//following::div//input[@title="Voucher Date"]');
         this.voucherRef = page.locator('//iris-standard-date//following::div//input[@title="Voucher Ref"]');
         this.voucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
@@ -310,6 +310,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyVoucherDetailsFirstSection() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await expect(this.voucherType).toBeVisible();
         await expect(this.voucherDate).toBeVisible();
         await expect(this.voucherRef).toBeVisible();

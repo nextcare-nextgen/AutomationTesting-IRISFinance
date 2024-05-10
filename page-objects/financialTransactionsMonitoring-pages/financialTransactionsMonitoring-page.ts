@@ -18,10 +18,10 @@ export class FinancialTransactionsMonitoringPage {
     readonly toPaymentAmount: Locator;
     readonly policyRef: Locator;
     readonly customerRef: Locator;
-    readonly transactionId : Locator;
-    readonly searchButton : Locator;
-    readonly applyButton : Locator;
-
+    readonly transactionId: Locator;
+    readonly searchButton: Locator;
+    readonly applyButton: Locator;
+    readonly resetButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -42,6 +42,7 @@ export class FinancialTransactionsMonitoringPage {
         this.transactionId = page.locator('//div//input[@title="Transaction Id"]');
         this.searchButton = page.locator('//div//button[@title="Search"]');
         this.applyButton = page.locator('//div//button[@title="Apply"]');
+        this.resetButton = page.locator('//div//button[@title="Reset"]');
 
     }
 
@@ -200,6 +201,7 @@ export class FinancialTransactionsMonitoringPage {
         await this.fromPaymentAmount.fill(data);
     }
 
+
     async enterToPaymentAmount(data: string) {
         await this.toPaymentAmount.fill(data);
     }
@@ -209,7 +211,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async enterCustomerRef(data: string) {
-        await this.policyRef.fill(data);
+        await this.customerRef.fill(data);
     }
 
     async enterTransactionId(data: string) {
@@ -220,7 +222,7 @@ export class FinancialTransactionsMonitoringPage {
         await this.searchButton.click();
     }
 
-    async verifyPaymentStatusFromGrid(data:string) {
+    async verifyPaymentStatusFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await paymentsstatus.count(); index++) {
@@ -230,7 +232,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
 
-    async verifyPaymentMethodFromGrid(data:string) {
+    async verifyPaymentMethodFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const paymentsmethod = this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
         for (let index = 0; index < await paymentsmethod.count(); index++) {
@@ -251,8 +253,8 @@ export class FinancialTransactionsMonitoringPage {
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
 
-    
-    async verifyPaymentTypeFromGrid(data:string) {
+
+    async verifyPaymentTypeFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const paymenttype = this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
         for (let index = 0; index < await paymenttype.count(); index++) {
@@ -261,6 +263,45 @@ export class FinancialTransactionsMonitoringPage {
         }
     }
 
+    async verifyPaymentAmountFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const paymentsamount = this.page.locator('//mat-cell[contains(@class,"paymentAmount")]//small');
+        for (let index = 0; index < await paymentsamount.count(); index++) {
+            const paymentAmount = await paymentsamount.nth(index).textContent();
+            expect(paymentAmount).toBe(data);
+        }
+    }
+
+    async verifyPolicyRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const policyref = this.page.locator('//mat-cell[contains(@class,"policyRef")]//small');
+        for (let index = 0; index < await policyref.count(); index++) {
+            const policyRef = await policyref.nth(index).textContent();
+            expect(policyRef).toBe(data);
+        }
+    }
+
+    async verifyCustomerRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const customerref = this.page.locator('//mat-cell[contains(@class,"customerRef")]//small');
+        for (let index = 0; index < await customerref.count(); index++) {
+            const customerRef = await customerref.nth(index).textContent();
+            expect(customerRef).toBe(data);
+        }
+    }
+
+    async verifyTransactionIdFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const transactdionId = this.page.locator('//mat-cell[contains(@class,"transactionId")]//small');
+        for (let index = 0; index < await transactdionId.count(); index++) {
+            const transactionID = await transactdionId.nth(index).textContent();
+            expect(transactionID).toBe(data);
+        }
+    }
+
+    async clickOnResetButton() {
+        await this.resetButton.click();
+    }
 
 
 }

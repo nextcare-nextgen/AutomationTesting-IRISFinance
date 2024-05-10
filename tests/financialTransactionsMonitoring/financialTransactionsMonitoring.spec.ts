@@ -702,7 +702,7 @@ test('NXGF-TC-3036: TC_022_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Apply button", async () => {
         await financialTransactionsMonitoringPage.clickOnApplyButton();
     })
-    
+
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
@@ -749,7 +749,7 @@ test('NXGF-TC-3037: TC_023_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Apply button", async () => {
         await financialTransactionsMonitoringPage.clickOnApplyButton();
     })
-    
+
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
@@ -796,7 +796,7 @@ test('NXGF-TC-3038: TC_024_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Apply button", async () => {
         await financialTransactionsMonitoringPage.clickOnApplyButton();
     })
-    
+
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
@@ -806,6 +806,246 @@ test('NXGF-TC-3038: TC_024_Transaction Details Screen_Verify that the user is ab
     })
 
 });
+
+test('NXGF-TC-3039: TC_025_Transaction Details Screen_Verify that the user is able to search with Payment Amount', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await financialTransactionsMonitoringPage.enterFromPaymentAmount(FinancialTransactionsMonitoringData['TC_025_Transactions_Details_Screen'].fromPaymentAmount);
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await financialTransactionsMonitoringPage.enterToPaymentAmount(FinancialTransactionsMonitoringData['TC_025_Transactions_Details_Screen'].toPaymentAmount);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await financialTransactionsMonitoringPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Payments Amount from grid", async () => {
+        await financialTransactionsMonitoringPage.verifyPaymentAmountFromGrid(FinancialTransactionsMonitoringData['TC_025_Transactions_Details_Screen'].toPaymentAmount);
+    })
+
+});
+
+test('NXGF-TC-3040: TC_026_Transaction Details Screen_Verify that the user is able to search with the Policy reference number', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await financialTransactionsMonitoringPage.enterPolicyRef(FinancialTransactionsMonitoringData['TC_026_Transactions_Details_Screen'].policyRef);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await financialTransactionsMonitoringPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Policy Ref from grid", async () => {
+        await financialTransactionsMonitoringPage.verifyPolicyRefFromGrid(FinancialTransactionsMonitoringData['TC_026_Transactions_Details_Screen'].policyRef);
+    })
+
+});
+
+test('NXGF-TC-3041: TC_027_Transaction Details Screen_Verify that the user is able to search with the customer reference number', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User enter the Customer Reference number", async () => {
+        await financialTransactionsMonitoringPage.enterCustomerRef(FinancialTransactionsMonitoringData['TC_027_Transactions_Details_Screen'].customerRef);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await financialTransactionsMonitoringPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Customer Ref from grid", async () => {
+        await financialTransactionsMonitoringPage.verifyCustomerRefFromGrid(FinancialTransactionsMonitoringData['TC_027_Transactions_Details_Screen'].customerRef);
+    })
+
+});
+
+
+test('NXGF-TC-3042,NXGF-TC-3044: TC_028_Transaction Details Screen_Verify that the user is able to search with the Transaction ID', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User enter the Transaction Id number", async () => {
+        await financialTransactionsMonitoringPage.enterTransactionId(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].transactionId);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await financialTransactionsMonitoringPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Transaction Id from grid", async () => {
+        await financialTransactionsMonitoringPage.verifyTransactionIdFromGrid(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].transactionId);
+    })
+
+});
+
+test('NXGF-TC-3043: TC_029_Transaction Details Screen_Verify that the user is able to click on "Reset" button to reset the search fields', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User enter the Transaction Id number", async () => {
+        await financialTransactionsMonitoringPage.enterTransactionId(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].transactionId);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await financialTransactionsMonitoringPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Transaction Id from grid", async () => {
+        await financialTransactionsMonitoringPage.verifyTransactionIdFromGrid(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].transactionId);
+    })
+
+    await test.step("User Click on Reset button", async () => {
+        await financialTransactionsMonitoringPage.clickOnResetButton();
+    })
+
+});
+
 
 
 

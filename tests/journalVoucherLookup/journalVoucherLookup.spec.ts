@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
-import { JournalVoucherLookupPage } from '../../page-objects/journalVoucherLookup-page/journalVoucherLookup-pages';
+import { JournalVoucherLookupPage } from '../../page-objects/journalVoucherLookup-pages/journalVoucherLookup-page';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const JournalVoucherLookupPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherLookup.json`) as Record<string, any>;
@@ -1270,7 +1270,7 @@ test('NXGF-TC-2039: TC_058_Journal Voucher Lookup_Verify that the user is able t
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
-    const countValues = [' 50 ', ' 100 ', ' 150 ' , ' 200 ' , ' 250 '];
+    const countValues = [' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 '];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);

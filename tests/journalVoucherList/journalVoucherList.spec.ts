@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
-import { JournalVoucherListPage } from '../../page-objects/journalVoucherList-page/journalVoucherList-pages';
+import { JournalVoucherListPage } from '../../page-objects/journalVoucherList-pages/journalVoucherList-page';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const JournalVoucherListPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherList.json`) as Record<string, any>;
@@ -603,7 +603,7 @@ test('NXGF-TC-2076: TC_018_Journal Voucher List_Search_Verify that user is able 
 
 });
 
-test('NXGF-TC-2076: TC_019_Journal Voucher List_Search_Verify that the user is able to select a date from the calendar form for To Date', async ({ page }) => {
+test('NXGF-TC-2077: TC_019_Journal Voucher List_Search_Verify that the user is able to select a date from the calendar form for To Date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);

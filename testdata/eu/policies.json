@@ -8,6 +8,10 @@
     "TC_005_Policies": {
         "policiesText": "Policies"
     },
+    "TC_007_Policies": {
+        "organization": "2024",
+        "policyRef": "MH-AWPDE-3673-NB"
+    },
     "TC_008_Policies": {
         "fromDate": "01 Jan 2024",
         "toDate": "08 Jan 2024"
@@ -18,11 +22,11 @@
     },
     "TC_020_Policies": {
         "organization": "2024",
-        "policyRef": "MH-AWPDE-3673-NB"
+        "policyRef": "MAE-AWPDE-8996-NB"
     },
     "TC_021_Policies": {
         "organization": "2024",
-        "policyId": "73581537"
+        "policyId": "110626796"
     },
     "TC_022_Policies": {
         "organization": "2024",

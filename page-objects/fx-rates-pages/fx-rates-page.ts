@@ -85,7 +85,7 @@ export class FxRatesPage {
     this.addFxRateStartDate = page.locator('//iris-fx-rate-manage-dialog//input[@title="Start Date"]');
     this.addFxRateEndDate = page.locator('//iris-fx-rate-manage-dialog//input[@title="End Date"]');
     this.addFxRateRate = page.locator('//iris-fx-rate-manage-dialog//input[@title="Rate"]');
-    this.addFxRateValidatedCheckbox = page.locator('//iris-fx-rate-manage-dialog//div[@isdisabled="true"]//mat-checkbox');
+    this.addFxRateValidatedCheckbox = page.locator('//iris-fx-rate-manage-dialog//div[@isdisabled="true"]//mat-checkbox//div[@class="mdc-checkbox"]');
     this.addFxRateStartDateCalender = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     this.addFxRateEndDateCalender = page.locator('//div//input[@title="End Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     this.createButton = page.locator('//button[@title="Create"]');
@@ -139,9 +139,10 @@ export class FxRatesPage {
   }
 
 
-  async clickOnRecordsPerPageDropdown(data: string[]) {
+  async clickOnRecordsPerPageDropdown() {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await this.recordPerPageDropdown.click();
-    await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+    await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ',' 150 ',' 200 ', ' 250 ']);
   }
 
 
@@ -209,10 +210,9 @@ export class FxRatesPage {
     await expect(this.toCurrencyfield).toBeVisible();
   }
 
-
-
   async selectFromCurrency(data: string) {
     await this.page.waitForLoadState('networkidle');
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await this.fromCurrencyfield.click();
     await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]').click();
   }
@@ -220,6 +220,7 @@ export class FxRatesPage {
 
   async selectToCurrency(data: string) {
     await this.page.waitForLoadState('networkidle');
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await this.toCurrencyfield.click();
     await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]').click();
   }
@@ -329,6 +330,7 @@ export class FxRatesPage {
   }
 
   async verifyAddFxRateValidatedisDisabled() {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await expect(this.addFxRateValidatedCheckbox).toBeDisabled();
   }
 
@@ -339,7 +341,7 @@ export class FxRatesPage {
   }
 
   async selectAddFXRateToCurrency(toCurrencyData: string) {
-    sleep(4000);
+    await new Promise(resolve => setTimeout(resolve, 5000));
     await this.addFxRateToCurrency.click();
     await this.page.locator('//mat-option//span//mat-label[text()="' + toCurrencyData + '"]//ancestor::div[1]').click();
 

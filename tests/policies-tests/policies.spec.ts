@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
-import { PoliciesPage } from '../../page-objects/policies-page/policies-pages';
+import { PoliciesPage } from '../../page-objects/policies-pages/policies-page';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const policiesData = require(`../../testdata/${process.env.ENV || 'eu'}/policies.json`) as Record<string, any>;
@@ -216,7 +216,7 @@ test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is dis
 
     await test.step("User Select Organization", async () => {
 
-        await dashboardPage.selectOrganization(policiesData['TC_020_Policies'].organization);
+        await dashboardPage.selectOrganization(policiesData['TC_007_Policies'].organization);
         await sleep(2000);
     })
 
@@ -1234,7 +1234,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const policiesPage: PoliciesPage = new PoliciesPage(page);
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
+
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -1271,7 +1271,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
     await test.step("Click On Records per page dropdown", async () => {
 
         await sleep(2000);
-        await policiesPage.clickOnRecordsPerPageDropdown(countValues);
+        await policiesPage.clickOnRecordsPerPageDropdown();
     })
 
 })
@@ -1282,7 +1282,6 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const policiesPage: PoliciesPage = new PoliciesPage(page);
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -1310,7 +1309,7 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
 
     await test.step("Click On Records per page dropdown", async () => {
         await sleep(2000);
-        await policiesPage.clickOnRecordsPerPageDropdown(countValues);
+        await policiesPage.clickOnRecordsPerPageDropdown();
     })
 
 })
@@ -1496,13 +1495,7 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
 
     })
 
-    await test.step("Click on three dots from organization edit screen", async () => {
-        await policiesPage.clickonthreedotsfromOrg();
-    })
-
     await test.step("Click on Edit Organization", async () => {
-
-        await sleep(2000);
         await policiesPage.clickOnEditOrganization();
 
     })

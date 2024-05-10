@@ -45,6 +45,7 @@ export class PoliciesPage {
     readonly orgShortcut: Locator;
     readonly threedotsfromOrg: Locator;
     readonly editOrganization: Locator;
+    readonly policyJournalVocherDeatils: Locator;
 
 
 
@@ -72,6 +73,7 @@ export class PoliciesPage {
         this.policyHolderName = page.locator('//div//input[@title="Policy Holder Name"]');
         this.applybutton = page.locator('//div//button[@title="Apply"]');
         this.policyJournalVochereyeicon = page.locator('//button[@title="View Policy Journal Voucher"]');
+        this.policyJournalVocherDeatils = page.locator('//mat-table[@id="policyJournalVoucherDtailsList"]');
         this.policyJournalVochereText = page.locator('//div//h1[@title="Policy Journal Voucher"]');
         this.policyJournalVoucherList = page.locator('//mat-table[@id="policyJournalVoucherList"]');
         this.policyJournalVoucherDtailsList = page.locator('//mat-table[@id="policyJournalVoucherDtailsList"]');
@@ -93,7 +95,7 @@ export class PoliciesPage {
         this.errorText = page.locator('//mat-label[text()="Exceeded maximum value"]');
         this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
         this.threedotsfromOrg = page.locator('//mat-cell[contains(@class,"table-button-cell")]//button//mat-icon');
-        this.editOrganization = page.locator('//span[@title="Edit Organization"]');
+        this.editOrganization = page.locator('//mat-icon[@title="Edit Organization"]');
 
     }
 
@@ -281,7 +283,7 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVoucherDtailsListSection() {
-        await expect(this.policyJournalVochereyeicon).toBeVisible();
+        await expect(this.policyJournalVocherDeatils).toBeVisible();
     }
 
     async enterPolicyReference(policyRef: string) {
@@ -304,20 +306,20 @@ export class PoliciesPage {
     }
 
     async verifySearchResultPolicyRef() {
-
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const policyRef = this.page.locator('//mat-cell[contains(@class,"policyReference")]');
-        expect(await policyRef).toBeVisible();
+        expect(policyRef).toBeVisible();
     }
 
     async verifySearchResultPolicyId() {
-
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const policyID = this.page.locator('//mat-cell[contains(@class,"policyId")]');
-        expect(await policyID).toBeVisible();
+        expect(policyID).toBeVisible();
 
     }
 
     async verifySearchResultPolicyHolderName() {
-
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const policyHolderName = this.page.locator('//mat-cell[contains(@class,"policyHolderName")]');
         for (let index = 0; index < await policyHolderName.count(); index++) {
             expect(await policyHolderName.nth(index).innerText()).toBeTruthy();
@@ -375,10 +377,10 @@ export class PoliciesPage {
         console.log(await recordsPerPageTitle.count());
     }
 
-    async clickOnRecordsPerPageDropdown(data: string[]) {
+    async clickOnRecordsPerPageDropdown() {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 10 ', ' 15 ', ' 20 ', ' 30 ', ' 50 ', ' 100 ', ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ',' 150 ',' 200 ', ' 250 ']);
     }
 
 
@@ -401,7 +403,9 @@ export class PoliciesPage {
     }
 
     async clickOnEditOrganization() {
-        this.editOrganization.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const org= this.page.locator('//mat-icon[@title="Edit Organization"]').first();
+        await  org.first().click();
     }
 
     async verifyCurrencyFromOrganization() {

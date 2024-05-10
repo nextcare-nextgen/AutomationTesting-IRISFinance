@@ -1112,7 +1112,6 @@ test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per
 
 test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
 
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
@@ -1136,7 +1135,7 @@ test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is abl
     })
 
     await test.step("User Click on Records per page dropdown", async () => {
-        await fxRatesPage.clickOnRecordsPerPageDropdown(countValues);
+        await fxRatesPage.clickOnRecordsPerPageDropdown();
     })
 
 });

@@ -38,6 +38,18 @@
     },
     "TC_024_Transactions_Details_Screen": {
         "paymentMethod": "Bank Transfer"
+    },
+    "TC_025_Transactions_Details_Screen": {
+        "fromPaymentAmount": "12.00",
+        "toPaymentAmount": "12.00"
+    },
+    "TC_026_Transactions_Details_Screen": {
+        "policyRef": "PRT-AWPDE-7901-NB/110625812"
+    },
+    "TC_027_Transactions_Details_Screen": {
+        "customerRef": "1690"
+    },
+    "TC_028_Transactions_Details_Screen": {
+        "transactionId": "6405"
     }
-    
 }
