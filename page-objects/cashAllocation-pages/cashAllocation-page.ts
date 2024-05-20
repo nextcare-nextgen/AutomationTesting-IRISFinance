@@ -11,6 +11,7 @@ export class CashAllocationPage {
     readonly cashAllocationText: Locator;
     readonly organizationName: Locator;
     readonly clearedPaymentStatus: Locator;
+    readonly clearedPaymentMethod: Locator;
     readonly searchButton: Locator;
     readonly manualAllocationTitle: Locator;
     readonly firstSection: Locator;
@@ -33,6 +34,9 @@ export class CashAllocationPage {
     readonly effectiveDate: Locator;
     readonly clearAllbutton: Locator;
     readonly popupMessage:Locator;
+    readonly searchFilter:Locator;
+    readonly fromdate:Locator;
+    readonly fromDateCalendarIcon:Locator;
 
 
 
@@ -44,6 +48,7 @@ export class CashAllocationPage {
         this.cashAllocationText = page.locator('//div//h1[@title="Cash Allocation"]');
         this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
         this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
+        this.clearedPaymentMethod = page.locator('//mat-label//span[@title="Payment Method"]//following::iris-icon-action[@role="button"][1]');
         this.searchButton = page.locator('//button[@title="Search"]');
         this.manualAllocationTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
         this.firstSection = page.locator('//h2[@title="Selected Payment Details"]');
@@ -66,6 +71,10 @@ export class CashAllocationPage {
         this.senderAccountName=page.locator('//h4[@title="Sender A/C Name"]//following::p[1]');
         this.remittanceInfoTitle=page.locator('//h4[@title="Remittance Info"]');
         this.remittanceInfo=page.locator('//h4[@title="Remittance Info"]//following::p[1]');
+        this.searchFilter = page.locator('//button[@title="Filter"]');
+        this.fromdate = page.locator('//input[@title="From Date"]');
+        this.fromDateCalendarIcon = page.locator('//input[@title="From Date"]//following::mat-icon[1]');
+
     }
 
 
@@ -98,11 +107,19 @@ export class CashAllocationPage {
     }
 
     async clickOnClearedstaus() {
-        sleep(10000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.waitForLoadState('networkidle');
         await this.clearedPaymentStatus.click();
 
     }
+
+    async clickOnClearedMethod() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.waitForLoadState('networkidle');
+        await this.clearedPaymentMethod.click();
+
+    }
+
 
     async selectPaymentStatus(data: string) {
         sleep(5000);
@@ -111,6 +128,10 @@ export class CashAllocationPage {
 
     async clickOnSearchButtonButton() {
         await this.searchButton.click();
+    }
+
+    async clickOnSearchFilterButton() {
+        await this.searchFilter.click();
     }
 
     async verifyShowDetailsButtons() {
@@ -180,5 +201,44 @@ export class CashAllocationPage {
     async verifyPopupMessasge(data: string) {
         const actual = await this.popupMessage.textContent();
         expect(actual).toBe(data);
+    }
+
+    async verifyListOfPaymentsMethods() {
+        await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
+        const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
+
+        const expectedValues = ['Bank Transfer', 'Credit Card', 'Direct Debit'];
+
+        for (let i = 0; i < elements.length; i++) {
+            const text = await elements[i].textContent();
+            expect(text).toEqual(expectedValues[i]);
+        }
+    }
+
+    async selectCurrentDateFromDateCalender() {
+        await this.page.locator('//input[@title="From Date"]//following::mat-icon[1]').click();
+        await this.page.locator('//button[contains(@class,"active")]').click()
+    
+    }
+
+    async selectCurrentDateToDateCalender() {
+        await this.page.locator('//input[@title="To Date"]//following::mat-icon[1]').click();
+        await this.page.locator('//button[contains(@class,"active")]').click()
+    
+    }
+
+    async selectOldDate() {
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() - 1;
+        let year = date.getFullYear();
+
+        //let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${month}`;
+        var todayDate = Number(fullDate);
+        await this.fromDateCalendarIcon.click();
+        await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+        await this.page.waitForTimeout(2000);
     }
 }

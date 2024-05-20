@@ -176,6 +176,157 @@ test('NXGF-TC-3321: TC_005_Cash Allocation Dashboard_Verify that the Organizatio
 
 });
 
+test('NXGF-TC-3327: TC_011_Cash Allocation Dashboard_Verify that the Payment method has default value as “Bank Transfer” and the dropdown values should have “Bank Transfer”, “SEPA Direct Debit” ,“Credit Card”', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Cleared Method", async () => {
+        await cashAllocationPage.clickOnClearedMethod();
+
+    })
+
+    await test.step("Verified that the Payment method has default value as “Bank Transfer” and the dropdown values should have “Bank Transfer”, “SEPA Direct Debit” ,“Credit Card”", async () => {
+        await cashAllocationPage.verifyListOfPaymentsMethods();
+
+    })
+
+});
+
+test('NXGF-TC-3328: TC_012_Cash Allocation Dashboard_Verify that the user is able to select todays date in the "from date" calendar selection', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await cashAllocationPage.clickOnSearchFilterButton();
+
+    })
+
+    await test.step("Verified that the user is able to select todays date in the 'from date' calendar selection", async () => {
+        await cashAllocationPage.selectCurrentDateFromDateCalender();
+
+    })
+
+});
+
+
+test('NXGF-TC-3330: TC_014_Cash Allocation Dashboard_Verify that the user should is be able to select past date in the "from date" calendar selection', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await cashAllocationPage.clickOnSearchFilterButton();
+
+    })
+
+    await test.step("Verified that the user should is be able to select past date in the 'from date' calendar selection", async () => {
+        await cashAllocationPage.selectOldDate();
+
+    })
+
+});
+
+test('NXGF-TC-3331: TC_015_Cash Allocation Dashboard_Verify that the from date is earlier or equal to the to date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await cashAllocationPage.clickOnSearchFilterButton();
+
+    })
+
+    await test.step("Verified that the from date is earlier or equal to the to date", async () => {
+        await cashAllocationPage.selectCurrentDateFromDateCalender();
+
+    })
+    
+    await test.step("Verified that the from date is earlier or equal to the to date", async () => {
+        await cashAllocationPage.selectCurrentDateToDateCalender();
+
+    })
+
+});
+
+
 test('NXGF-TC-3344: TC_028_Cash Allocation Dashboard_Verify that the "Details" button is available to view the Allocated payments', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
