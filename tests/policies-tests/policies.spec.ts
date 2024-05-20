@@ -1262,15 +1262,12 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
 
     })
 
-
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
 
     })
 
     await test.step("Click On Records per page dropdown", async () => {
-
-        await sleep(2000);
         await policiesPage.clickOnRecordsPerPageDropdown();
     })
 

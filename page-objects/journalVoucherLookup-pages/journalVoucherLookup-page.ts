@@ -133,7 +133,7 @@ export class JournalVoucherLookupPage {
 
     async verifyBreadCrumbsText(data: string) {
         const actual = await this.breadCrumbs.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
 
@@ -147,7 +147,7 @@ export class JournalVoucherLookupPage {
 
     async verifyDashboardText(data: string) {
         const actual = await this.dashboard.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
     async verifyJournalVoucherShortcutButton() {
@@ -156,7 +156,7 @@ export class JournalVoucherLookupPage {
 
     async verifyJournalVoucherLookupText(data: string) {
         const actual = await this.journalVoucherLookupButton.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
     async clickOnJournalVoucherLookupButton() {
@@ -173,7 +173,7 @@ export class JournalVoucherLookupPage {
 
     async verifyOrganizationName(data: string) {
         const actual = await this.organizationName.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
     async clickOnAdvancedSearchButton() {
@@ -214,7 +214,7 @@ export class JournalVoucherLookupPage {
         await this.vouchertype.click();
     }
 
-    async selectVoucherType(data:string) {
+    async selectVoucherType(data: string) {
         await this.vouchertype.click();
         const selectvouchertype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
         selectvouchertype.click();
@@ -347,7 +347,7 @@ export class JournalVoucherLookupPage {
     async clickOnRecordsPerPageDropdown(data: string[]) {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ' , ' 200 ' , ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async clickOnRecordsPerPageDropdownOption() {
@@ -405,7 +405,7 @@ export class JournalVoucherLookupPage {
         await this.searchbar.fill(data);
         await sleep(2000);
         const actual = await this.label.textContent();
-			expect(actual).toBe(data);
+        expect(actual).toBe(data);
     }
 
 }

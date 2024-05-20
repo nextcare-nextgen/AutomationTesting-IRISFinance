@@ -378,9 +378,10 @@ export class PoliciesPage {
     }
 
     async clickOnRecordsPerPageDropdown() {
-        const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
-        recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ',' 150 ',' 200 ', ' 250 ']);
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const recordsPerPagedropdown = this.page.locator('//section//mat-select[contains(@aria-label,"")]').first();
+        recordsPerPagedropdown.click();
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
 
@@ -404,8 +405,8 @@ export class PoliciesPage {
 
     async clickOnEditOrganization() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const org= this.page.locator('//mat-icon[@title="Edit Organization"]').first();
-        await  org.first().click();
+        const org = this.page.locator('//mat-icon[@title="Edit Organization"]').first();
+        await org.first().click();
     }
 
     async verifyCurrencyFromOrganization() {

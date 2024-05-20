@@ -2,8 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from "dotenv";
 
 dotenv.config({
-  //path: `./env/.env.${process.env.ENV}`
-   path: `./env/.env.${process.env.ENV || "eu"}`
+  path: `./env/.env.${process.env.ENV}`
+  // path: `./env/.env.${process.env.ENV || "data_test_uae"}`
 });
 /**
  * Read environment variables from file.
@@ -16,7 +16,7 @@ dotenv.config({
  */
 export default defineConfig({
   testDir: './',
-  timeout: 100 * 1000,
+  timeout: 300 * 1000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -27,6 +27,7 @@ export default defineConfig({
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'never', printSteps: true }], ['allure-playwright'],['junit', {outputFile:'junit-report/junit-report.xml'}]],
+ 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -39,19 +40,14 @@ export default defineConfig({
     headless: false
   },
   expect: {
-    timeout: 20 * 2000,
+    timeout: 10 * 1000,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] , viewport: { width: 1536 , height: 730 }  
-     // viewport:{width:1940,height:1080}
-      
-    },
-
-      
+      name: 'Pulse v3',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 559 } },
 
     },
     // {
@@ -105,3 +101,4 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+

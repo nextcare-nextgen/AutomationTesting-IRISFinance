@@ -51,5 +51,38 @@
     },
     "TC_028_Transactions_Details_Screen": {
         "transactionId": "6405"
+    },
+    "TC_030_Transactions_Details_Screen": {
+        "value": "Financial Transactions Monitoring"
+    },
+    "TC_036_Transactions_Details_Screen": {
+        "transactionId": "6405"
+    },
+    "TC_037_Transactions_Details_Screen": {
+        "transactionId": "6405"
+    },
+    "TC_039_Transactions_Details_Screen": {
+        "paymentMethod": "Bank Transfer",
+        "title": "Payment Details"
+    },
+    "TC_041_Transactions_Details_Screen": {
+        "paymentMethod": "Credit Card"
+    },
+    "TC_042_Transactions_Details_Screen": {
+        "paymentMethod": "Direct Debit"
+    },
+    "TC_045_Transactions_Details_Screen": {
+        "fromPaymentAmount": "12.00",
+        "toPaymentAmount": "12.00",
+        "customerRef": "1690",
+        "transactionId": "6405",
+        "policyRef": "PRT-AWPDE-7901-NB/110625812",
+        "paymentMethod": "Bank Transfer",
+        "paymentStatus": "Cleared",
+        "paymentType": "Premium Payment",
+        "transactionType": "Bank Charges"
+    },
+    "TC_046_Transactions_Details_Screen": {
+        "value": "1Financial Transactions Monitoring"
     }
 }

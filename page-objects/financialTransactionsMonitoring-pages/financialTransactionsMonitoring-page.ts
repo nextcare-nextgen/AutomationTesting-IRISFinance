@@ -22,6 +22,32 @@ export class FinancialTransactionsMonitoringPage {
     readonly searchButton: Locator;
     readonly applyButton: Locator;
     readonly resetButton: Locator;
+    readonly searchBar: Locator;
+    readonly label: Locator;
+    readonly exportToExcel: Locator;
+    readonly paymentDetailsTitle: Locator;
+    readonly nameOnCardField: Locator;
+    readonly ccNumber: Locator;
+    readonly expiryDate: Locator;
+    readonly token: Locator;
+    readonly transactionRef: Locator;
+    readonly remmitanceInfo: Locator;
+    readonly orgName: Locator;
+    readonly orgBankAC: Locator;
+    readonly orgSwiftCode: Locator;
+    readonly transactionReff: Locator;
+    readonly transactionFlow: Locator;
+    readonly benficiaryAccountName: Locator;
+    readonly benficiaryAccount: Locator;
+    readonly benficiaryAccountSwift: Locator;
+    readonly IBAN: Locator;
+    readonly remmitanceInfoDD: Locator;
+    readonly benficiaryBankName: Locator;
+    readonly DDMandateRef: Locator;
+    readonly DDsignDate: Locator;
+    readonly DDcollectionDate: Locator;
+    readonly clearAll: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -43,6 +69,31 @@ export class FinancialTransactionsMonitoringPage {
         this.searchButton = page.locator('//div//button[@title="Search"]');
         this.applyButton = page.locator('//div//button[@title="Apply"]');
         this.resetButton = page.locator('//div//button[@title="Reset"]');
+        this.searchBar = page.locator('//input[@placeholder="Search"]');
+        this.label = page.locator('//iris-menu-card//iris-base-label//span');
+        this.exportToExcel = page.locator('//button[@title="Export to excel"]');
+        this.paymentDetailsTitle = page.locator('//h2[@title="Payment Details"]');
+        this.nameOnCardField = page.locator('//mat-label//span[@title="Name On Card"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.ccNumber = page.locator('//mat-label//span[@title="CC Number"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.expiryDate = page.locator('//mat-label//span[@title="Expiry Date"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.token = page.locator('//mat-label//span[@title="Token"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.transactionRef = page.locator('//mat-label//span[@title="Transaction Reference"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.remmitanceInfo = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.orgName = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.orgBankAC = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.orgSwiftCode = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.transactionReff = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.transactionFlow = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.benficiaryAccountName = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.benficiaryAccount = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.benficiaryAccountSwift = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.IBAN = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.remmitanceInfoDD = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.benficiaryBankName = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.DDMandateRef = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.DDcollectionDate = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.DDsignDate = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
+        this.clearAll = page.locator('//div//button[@title="Clear All"]');
 
     }
 
@@ -303,6 +354,109 @@ export class FinancialTransactionsMonitoringPage {
         await this.resetButton.click();
     }
 
+    async clickOnExportToExcelButton() {
+        await this.exportToExcel.click();
+    }
+
+    async enterinSearchbar(data: string) {
+        await this.searchBar.fill(data);
+        const actual = await this.label.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifySearchResultFromGrid() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.page.locator('//mat-cell[contains(@class,"transactionDate")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentDate")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentType")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentMethod")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentAmount")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentCurrency")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentStatus")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"paymentRef")]')).toBeVisible();
+        await expect(this.page.locator('//mat-cell[contains(@class,"policyReference")]')).toBeVisible();
+
+    }
+
+    async verifyDetailsButton() {
+        const detailsButton = this.page.locator('//button[@title="View More Details"]');
+        for (let index = 0; index < await detailsButton.count(); index++) {
+            expect(detailsButton.nth(index)).toBeVisible();
+
+        }
+    }
+
+    async clickOnViewDeatilsButton() {
+        const detailsButton = this.page.locator('//button[@title="View More Details"]');
+        await detailsButton.first().click();
+    }
+
+    async verifyPaymentsDetailsTitle(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const actual = await this.paymentDetailsTitle.textContent();
+        expect(actual).toBe(data);
+
+    }
+
+    async verifyCCPaymentDetails() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.nameOnCardField).toBeVisible();
+        await expect(this.ccNumber).toBeVisible();
+        await expect(this.expiryDate).toBeVisible();
+        await expect(this.token).toBeVisible();
+        await expect(this.transactionRef).toBeVisible();
+        await expect(this.remmitanceInfo).toBeVisible();
+    }
+
+    async verifyDDPaymentDetails() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.orgName).toBeVisible();
+        await expect(this.orgBankAC).toBeVisible();
+        await expect(this.orgSwiftCode).toBeVisible();
+        await expect(this.transactionReff).toBeVisible();
+        await expect(this.transactionFlow).toBeVisible();
+        await expect(this.benficiaryAccountName).toBeVisible();
+        await expect(this.benficiaryAccount).toBeVisible();
+        await expect(this.benficiaryAccountSwift).toBeVisible();
+        await expect(this.IBAN).toBeVisible();
+        await expect(this.remmitanceInfo).toBeVisible();
+        await expect(this.benficiaryAccountName).toBeVisible();
+        await expect(this.DDMandateRef).toBeVisible();
+        await expect(this.DDsignDate).toBeVisible();
+        await expect(this.DDcollectionDate).toBeVisible();
+    }
+
+    async verifyListOfPaymentsMethods() {
+        await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
+        const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
+
+        const expectedValues = ['Bank Transfer', 'Credit Card', 'Direct Debit', 'Direct Payment', 'Entrusted Collection', 'Standing Order'];
+
+        for (let i = 0; i < elements.length; i++) {
+            const text = await elements[i].textContent();
+            expect(text).toEqual(expectedValues[i]);
+        }
+    }
+
+    async verifySearchBar() {
+        await expect(this.searchBar).toBeVisible();
+    }
+
+    async verifySearchFiltersAreEmptyAfterReset() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.page.locator('//mat-label//span[@title="Payment Status"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="Payment Method"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="Transaction Type"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="Document Reference"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="From Payment Amount"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="To Payment Amount"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="Policy Ref"]//following::input[1]')).toBeEmpty();
+        await expect(this.page.locator('//mat-label//span[@title="Transaction Id"]//following::input[1]')).toBeEmpty();
+    }
+
+    async clickOnClearAllButton() {
+        await this.clearAll.click();
+    }
 
 }
 

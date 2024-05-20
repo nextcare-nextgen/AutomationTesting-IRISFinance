@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "Tests":"npx playwright test || powershell -command Compress-Archive -Path playwright-report -DestinationPath playwright-report.zip -Force"},
+    "Tests": "npx playwright test || powershell -command Compress-Archive -Path playwright-report -DestinationPath playwright-report.zip -Force"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.44.0",
     "@types/node": "^20.10.7",
     "allure-playwright": "^2.3.0"
   },
