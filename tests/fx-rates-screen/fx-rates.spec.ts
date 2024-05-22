@@ -79,7 +79,6 @@ test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the 
 
 });
 
-
 test('NXGF-TC-1875: TC_003_FX_Rates_Verify that FX Rates shortcut buttons are clickable', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -105,7 +104,6 @@ test('NXGF-TC-1875: TC_003_FX_Rates_Verify that FX Rates shortcut buttons are cl
 
 });
 
-
 test('NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates shortcut menu button in the main menu page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -130,7 +128,6 @@ test('NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates
     })
 
 });
-
 
 test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX Rates page', async ({ page }) => {
 
@@ -163,7 +160,6 @@ test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX
     })
 
 });
-
 
 test('NXGF-TC-1878: TC_007_FX_Rates_Verify that the From date and To date is displayed', async ({ page }) => {
 
@@ -233,7 +229,6 @@ test('NXGF-TC-1879: TC_008_FX_Rates_Verify that the user is able to select From 
 
 });
 
-
 test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -264,7 +259,6 @@ test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displ
     })
 
 });
-
 
 test('NXGF-TC-1881: TC_010_FX_Rates_Verify that the user should able to select From Currency', async ({ page }) => {
 
@@ -421,7 +415,6 @@ test('NXGF-TC-1885: TC_013_FX_Rates_Verify that the Reset field is displayed', a
 
 });
 
-
 test('NXGF-TC-1886: TC_015_FX_Rates_Verify that the user is able to search with From date to To date and get record from the grid', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -462,7 +455,6 @@ test('NXGF-TC-1886: TC_015_FX_Rates_Verify that the user is able to search with 
     })
 
 });
-
 
 test('NXGF-TC-1887: TC_016_FX_Rates_Verify that the user is able to search with From Currency to To currency and get record from the grid', async ({ page }) => {
 
@@ -510,7 +502,6 @@ test('NXGF-TC-1887: TC_016_FX_Rates_Verify that the user is able to search with 
 
 });
 
-
 test('NXGF-TC-1888: TC_017_FX_Rates_Verify that the after click on Reset To currency and From currency should reset', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -555,7 +546,6 @@ test('NXGF-TC-1888: TC_017_FX_Rates_Verify that the after click on Reset To curr
     })
 
 });
-
 
 test('NXGF-TC-1889: TC_018_FX_Rates_Verify that the all column field should displayed from grid', async ({ page }) => {
 
@@ -715,7 +705,6 @@ test('NXGF-TC-1894: TC_023_FX_Rates_Add new FX Rates_Verify that the From curren
 
 });
 
-
 test('NXGF-TC-1895: TC_024_FX_Rates_Add new FX Rates_Verify that the To currency field is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -783,7 +772,6 @@ test('NXGF-TC-1896: TC_025_FX_Rates_Add new FX Rates_Verify that the Start date 
     })
 
 });
-
 
 test('NXGF-TC-1897: TC_026_FX_Rates_Add new FX Rates_Verify that the Rate field is displayed', async ({ page }) => {
 
@@ -853,7 +841,6 @@ test('NXGF-TC-1898: TC_027_FX_Rates_Add new FX Rates_Verify that the Validated c
 
 });
 
-
 test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select From Currency from dropdown', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -888,7 +875,6 @@ test('NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be 
 
 });
 
-
 test('NXGF-TC-1900: TC_029_FX_Rates_Add new FX Rates_Verify that user should be able to select To Currency from dropdown', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -922,7 +908,6 @@ test('NXGF-TC-1900: TC_029_FX_Rates_Add new FX Rates_Verify that user should be 
     })
 
 });
-
 
 test('NXGF-TC-1901: TC_030_FX_Rates_Add new FX Rates_Verify that user should be able to select start date and End Date', async ({ page }) => {
 
@@ -993,7 +978,6 @@ test('NXGF-TC-1902: TC_031_FX_Rates_Add new FX Rates_Verify that user should be 
 
 });
 
-
 test('NXGF-TC-1903: TC_032_FX_Rates_Add new FX Rates_Verify that Create Button should be enable after filling mandatory fields', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1043,8 +1027,6 @@ test('NXGF-TC-1903: TC_032_FX_Rates_Add new FX Rates_Verify that Create Button s
         await fxRatesPage.verifyCreateButton();
     })
 });
-
-
 
 test('NXGF-TC-1904: TC_033_FX_Rates_Add new FX Rates_Verify that user should able to click on Close button', async ({ page }) => {
 

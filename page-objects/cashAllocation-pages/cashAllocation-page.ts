@@ -33,11 +33,19 @@ export class CashAllocationPage {
     readonly policyHolderName: Locator;
     readonly effectiveDate: Locator;
     readonly clearAllbutton: Locator;
-    readonly popupMessage:Locator;
-    readonly searchFilter:Locator;
-    readonly fromdate:Locator;
-    readonly fromDateCalendarIcon:Locator;
-
+    readonly popupMessage: Locator;
+    readonly searchFilter: Locator;
+    readonly fromdate: Locator;
+    readonly fromDateCalendarIcon: Locator;
+    readonly paymentRef: Locator;
+    readonly applyButton: Locator;
+    readonly policyReference: Locator;
+    readonly fromAmount: Locator;
+    readonly toAmount: Locator;
+    readonly policyHolderNamefromFilter: Locator;
+    readonly resetButton: Locator;
+    readonly toDate: Locator;
+    readonly toDateCalendarIcon: Locator;
 
 
     constructor(page: Page) {
@@ -58,24 +66,33 @@ export class CashAllocationPage {
         this.policyHolderName = page.locator('//div[@role="region"]//input[@title="Policy Holder Name"]');
         this.effectiveDate = page.locator('//div[@role="region"]//input[@title="Effective Date"]');
         this.clearAllbutton = page.locator('//button[@title="Clear all"]');
-        this.popupMessage =page.locator('//iris-composed-dialog//p[text()="Are you sure you want to cancel the allocation ?"]');
-        this.paymentDateTitle=page.locator('//h4[@title="Payment Date"]');
-        this.paymentDate=page.locator('//h4[@title="Payment Date"]//following::p[1]');
-        this.paymentReferenceTitle=page.locator('//h4[@title="Payment Reference"]');
-        this.paymentReference=page.locator('//h4[@title="Payment Reference"]//following::p[1]');
-        this.amountTitle=page.locator('//h4[@title="Amount"]');
-        this.amount=page.locator('//h4[@title="Amount"]//following::p[1]');
-        this.currencyTitle=page.locator('//h4[@title="Currency"]');
-        this.currency=page.locator('//h4[@title="Currency"]//following::p[1]');
-        this.senderAccountNameTitle=page.locator('//h4[@title="Sender A/C Name"]');
-        this.senderAccountName=page.locator('//h4[@title="Sender A/C Name"]//following::p[1]');
-        this.remittanceInfoTitle=page.locator('//h4[@title="Remittance Info"]');
-        this.remittanceInfo=page.locator('//h4[@title="Remittance Info"]//following::p[1]');
+        this.popupMessage = page.locator('//iris-composed-dialog//p[text()="Are you sure you want to cancel the allocation ?"]');
+        this.paymentDateTitle = page.locator('//h4[@title="Payment Date"]');
+        this.paymentDate = page.locator('//h4[@title="Payment Date"]//following::p[1]');
+        this.paymentReferenceTitle = page.locator('//h4[@title="Payment Reference"]');
+        this.paymentReference = page.locator('//h4[@title="Payment Reference"]//following::p[1]');
+        this.amountTitle = page.locator('//h4[@title="Amount"]');
+        this.amount = page.locator('//h4[@title="Amount"]//following::p[1]');
+        this.currencyTitle = page.locator('//h4[@title="Currency"]');
+        this.currency = page.locator('//h4[@title="Currency"]//following::p[1]');
+        this.senderAccountNameTitle = page.locator('//h4[@title="Sender A/C Name"]');
+        this.senderAccountName = page.locator('//h4[@title="Sender A/C Name"]//following::p[1]');
+        this.remittanceInfoTitle = page.locator('//h4[@title="Remittance Info"]');
+        this.remittanceInfo = page.locator('//h4[@title="Remittance Info"]//following::p[1]');
         this.searchFilter = page.locator('//button[@title="Filter"]');
         this.fromdate = page.locator('//input[@title="From Date"]');
+        this.toDate = page.locator('//input[@title="To Date"]');
         this.fromDateCalendarIcon = page.locator('//input[@title="From Date"]//following::mat-icon[1]');
-
+        this.toDateCalendarIcon = page.locator('//input[@title="To Date"]//following::mat-icon[1]');
+        this.paymentRef = page.locator('//input[@title="Payment Reference"]');
+        this.applyButton = page.locator('//button[@title="Apply"]');
+        this.policyReference = page.locator('//input[@title="Policy Ref/Document Ref"]');
+        this.fromAmount = page.locator('//input[@title="From Amount"]');
+        this.toAmount = page.locator('//input[@title="To Amount"]');
+        this.policyHolderNamefromFilter = page.locator('//input[@title="Policy Holder Name"]');
+        this.resetButton = page.locator('//button[@title="Reset"]');
     }
+
 
 
     async verifyBreadCrumbsText(data: string) {
@@ -120,13 +137,12 @@ export class CashAllocationPage {
 
     }
 
-
     async selectPaymentStatus(data: string) {
         sleep(5000);
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
 
-    async clickOnSearchButtonButton() {
+    async clickOnSearchButton() {
         await this.searchButton.click();
     }
 
@@ -216,15 +232,15 @@ export class CashAllocationPage {
     }
 
     async selectCurrentDateFromDateCalender() {
-        await this.page.locator('//input[@title="From Date"]//following::mat-icon[1]').click();
+        await this.fromDateCalendarIcon.click();
         await this.page.locator('//button[contains(@class,"active")]').click()
-    
+
     }
 
     async selectCurrentDateToDateCalender() {
-        await this.page.locator('//input[@title="To Date"]//following::mat-icon[1]').click();
+        await this.toDateCalendarIcon.click();
         await this.page.locator('//button[contains(@class,"active")]').click()
-    
+
     }
 
     async selectOldDate() {
@@ -241,4 +257,115 @@ export class CashAllocationPage {
         await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
         await this.page.waitForTimeout(2000);
     }
+
+    async enterAndVerifyPaymentRef(data: string) {
+        await this.paymentRef.fill(data);
+    }
+
+    async verifyPaymentRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentReference")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentStatus = await elements.nth(index).textContent();
+            expect(paymentStatus).toBe(data);
+        }
+    }
+
+    async clickOnApplyButton() {
+        await this.applyButton.click();
+    }
+
+    async enterPolicyReference(data: string) {
+        await this.policyReference.fill(data);
+    }
+
+    async enterFromAmount(data: string) {
+        await this.fromAmount.fill(data);
+    }
+
+    async enterToAmount(data: string) {
+        await this.toAmount.fill(data);
+    }
+
+    async verifyAmountFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentAmount")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const amount = await elements.nth(index).textContent();
+            expect(amount).toBe(data);
+        }
+    }
+
+    async enterPolicyHolder(data: string) {
+        await this.policyHolderNamefromFilter.fill(data);
+    }
+
+
+    async verifyPolicyHolderNameFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentAmount")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const policyHolderName = await elements.nth(index).textContent();
+            expect(policyHolderName).toBe(data);
+        }
+    }
+
+    async verifyPolicyRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"policyReference")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const policyRef = await elements.nth(index).textContent();
+            expect(policyRef).toBe(data);
+        }
+    }
+
+    async verifyPaymentTypeFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentType = await elements.nth(index).textContent();
+            expect(paymentType).toBe(data);
+        }
+    }
+
+    async verifyPaymentStatusFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentStaus = await elements.nth(index).textContent();
+            expect(paymentStaus).toBe(data);
+        }
+    }
+
+    async verifyPaymentMethodFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentMethod = await elements.nth(index).textContent();
+            expect(paymentMethod).toBe(data);
+        }
+    }
+
+    async clickOnResetButton() {
+        await this.resetButton.click();
+    }
+
+
+    async verifyFieldsAreEmptyAfterReset() {
+        expect(this.policyHolderNamefromFilter).toBeEmpty();
+        expect(this.fromdate).toBeEmpty();
+        expect(this.toDate).toBeEmpty();
+        expect(this.paymentRef).toBeEmpty();
+        expect(this.fromAmount).toBeEmpty();
+        expect(this.toAmount).toBeEmpty();
+    }
+
+    async verifyAllocatePoliciesButtons() {
+        await this.page.waitForLoadState('networkidle');
+        const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
+        for (let index = 0; index < await policyAllocationButtons.count(); index++) {
+            expect(await policyAllocationButtons).toBeVisible();
+        }
+    }
+
 }

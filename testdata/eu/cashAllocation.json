@@ -11,6 +11,31 @@
     "TC_005_Cash_Allocation": {
         "orgName": "Allianz Partners - 2024"
     },
+    "TC_016_Cash_Allocation": {
+        "pymentRef": "ELVD52316411400002"
+    },
+    "TC_017_Cash_Allocation": {
+        "policyRef": "MH-AWPDE-3038-NB"
+    },
+    "TC_019_Cash_Allocation": {
+        "fromAmount": "25.00",
+        "toAmount": "25.00"
+    },
+    "TC_021_Cash_Allocation": {
+        "policyRef": "MH-AWPDE-3038-NB"
+    },
+    "TC_022_Cash_Allocation": {
+        "paymentType": "Cash Payment",
+        "paymentStatus": "Cleared-unallocated",
+        "paymentMethod": "Bank Transfer"
+    },
+    "TC_023_Cash_Allocation": {
+        "policyHolder": "test pol",
+        "policyRef": "MH-AWPDE-3038-NB",
+        "pymentRef": "ELVD52316411400002",
+        "fromAmount": "25.00",
+        "toAmount": "25.00"
+    },
     "TC_028_Cash_Allocation": {
         "paymentStatus": "Cleared-allocated"
     },

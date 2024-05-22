@@ -142,7 +142,7 @@ export class FxRatesPage {
   async clickOnRecordsPerPageDropdown() {
     await new Promise(resolve => setTimeout(resolve, 3000));
     await this.recordPerPageDropdown.click();
-    await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ',' 150 ',' 200 ', ' 250 ']);
+    await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
   }
 
 
