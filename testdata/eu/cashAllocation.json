@@ -36,6 +36,12 @@
         "fromAmount": "25.00",
         "toAmount": "25.00"
     },
+    "TC_026_Cash_Allocation": {
+        "title": "Manual Cash Allocation"
+    },
+    "TC_027_Cash_Allocation": {
+        "paymentStatus": "Cleared-allocated"
+    },
     "TC_028_Cash_Allocation": {
         "paymentStatus": "Cleared-allocated"
     },
@@ -47,6 +53,10 @@
     "TC_032_Cash_Allocation": {
         "policyRef": "VIS-AWPDE-6892-NB",
         "policyHolderName": "test pol",
+        "date": "16 Jan 2004"
+    }, 
+    "TC_033_Cash_Allocation": {
+        "policyRef": "VIS-AWPDE-6892-NB",
         "date": "16 Jan 2004"
     },
     "TC_055_Cash_Allocation": {

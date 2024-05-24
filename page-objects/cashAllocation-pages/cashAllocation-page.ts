@@ -46,7 +46,10 @@ export class CashAllocationPage {
     readonly resetButton: Locator;
     readonly toDate: Locator;
     readonly toDateCalendarIcon: Locator;
-
+    readonly ManualAllocationScreenTitle: Locator;
+    readonly manualAllocationSearchbutton: Locator;
+    readonly addPolicyButton: Locator;
+    readonly showDetailsButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -91,6 +94,11 @@ export class CashAllocationPage {
         this.toAmount = page.locator('//input[@title="To Amount"]');
         this.policyHolderNamefromFilter = page.locator('//input[@title="Policy Holder Name"]');
         this.resetButton = page.locator('//button[@title="Reset"]');
+        this.ManualAllocationScreenTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
+        this.manualAllocationSearchbutton = page.locator('//button[@title="Search"]');
+        this.addPolicyButton = page.locator('title="Add Policy"');
+        this.showDetailsButton = page.locator('//button[@title="Show Details"]');
+
     }
 
 
@@ -368,4 +376,40 @@ export class CashAllocationPage {
         }
     }
 
+    async clickOnAllocatePoliciesButton() {
+        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
+        await policyAllocationButtons.first().click();
+    }
+
+    async verifyManualAllocationScreenTitle(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const manualAllocationScreenTitle = await this.ManualAllocationScreenTitle.textContent();
+        expect(manualAllocationScreenTitle).toBe(data);
+    }
+
+    async verifyReverseAllocationsButtons() {
+        await this.page.waitForLoadState('networkidle');
+        const reversePolicyAllocationButtons = this.page.locator('//button[@title="Reverse Allocated Policies"]');
+        for (let index = 0; index < await reversePolicyAllocationButtons.count(); index++) {
+            expect(await reversePolicyAllocationButtons).toBeVisible();
+        }
+    }
+
+    async clickOnManualAllocationSearchButton() {
+        await this.manualAllocationSearchbutton.click();
+    }
+
+    async clickOnAddPolicyButton() {
+        await this.manualAllocationSearchbutton.click();
+    }
+
+    async verifyAddPolicyButton() {
+        expect(this.addPolicyButton).toBeVisible();
+    }
+
+    async verifyShowDetailsButton() {
+        expect(this.showDetailsButton).toBeVisible();
+    }
 }
