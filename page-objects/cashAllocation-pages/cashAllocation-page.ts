@@ -63,6 +63,7 @@ export class CashAllocationPage {
     readonly premiumandTaxtitle: Locator;
     readonly okButton : Locator;
     readonly policyIDFromGrid : Locator;
+    readonly alertErrorPopup : Locator;
     
 
 
@@ -126,7 +127,7 @@ export class CashAllocationPage {
         this.premiumandTaxtitle = page.locator("//h2[@title='Premium and Tax Dues']");
         this.okButton = page.locator('//button[@title="Ok"]');
         this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
-
+        this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 33.62']");
 
     }
 
@@ -460,8 +461,10 @@ export class CashAllocationPage {
     }
 
     async enterAmount(data: string) {
-        await this.addPolicyButton.scrollIntoViewIfNeeded();
-        this.amountFill.fill(data);
+        await this.amountFill.scrollIntoViewIfNeeded();
+        await this.amountFill.click();
+        await this.amountFill.clear();
+        await this.amountFill.fill(data);
     }
 
     async verifyAddPolicyPopup() {
@@ -501,6 +504,11 @@ export class CashAllocationPage {
             const actual = await elements.nth(index).textContent();
             expect(actual).toBe(data);
         }
+    }
+
+    async verifyAlertErrorPopup() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.alertErrorPopup).toBeVisible();
     }
 
 }

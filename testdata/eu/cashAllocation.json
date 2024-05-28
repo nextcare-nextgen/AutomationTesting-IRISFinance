@@ -78,6 +78,14 @@
         "policyRef": "PRT-AWPDE-6914-NB",
         "amount": "1"
     },
+    "TC_047_Cash_Allocation": {
+        "policyRef": "PRT-AWPDE-6914-NB",
+        "amount": "1"
+    },
+    "TC_049_Cash_Allocation": {
+        "policyRef": "PRT-AWPDE-6914-NB",
+        "amount": "33.63"
+    },
     "TC_055_Cash_Allocation": {
         "policyRef": "VIS-AWPDE-6892-NB",
         "policyHolderName": "test pol",
