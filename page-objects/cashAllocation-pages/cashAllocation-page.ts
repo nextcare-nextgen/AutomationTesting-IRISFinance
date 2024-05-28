@@ -50,6 +50,21 @@ export class CashAllocationPage {
     readonly manualAllocationSearchbutton: Locator;
     readonly addPolicyButton: Locator;
     readonly showDetailsButton: Locator;
+    readonly policyReferenceMCA: Locator;
+    readonly policyID: Locator;
+    readonly policyHolderNameMCA: Locator;
+    readonly outstandingTillDate: Locator;
+    readonly totalBal: Locator;
+    readonly amountMCA: Locator;
+    readonly effectiveDateMCA: Locator;
+    readonly expiryDate: Locator;
+    readonly amountFill: Locator;
+    readonly addPolicyPopup: Locator;
+    readonly premiumandTaxtitle: Locator;
+    readonly okButton : Locator;
+    readonly policyIDFromGrid : Locator;
+    
+
 
     constructor(page: Page) {
         this.page = page;
@@ -96,8 +111,22 @@ export class CashAllocationPage {
         this.resetButton = page.locator('//button[@title="Reset"]');
         this.ManualAllocationScreenTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
         this.manualAllocationSearchbutton = page.locator('//button[@title="Search"]');
-        this.addPolicyButton = page.locator('title="Add Policy"');
+        this.addPolicyButton = page.locator('//button[@title="Add Policy"]');
         this.showDetailsButton = page.locator('//button[@title="Show Details"]');
+        this.policyReferenceMCA = page.locator('//mat-header-cell[@id="policyReferences-Policy Reference"]');
+        this.policyID = page.locator('//mat-header-cell[@id="policyId-Policy Id"]');
+        this.policyHolderNameMCA = page.locator('//mat-header-cell[@id="policyHolderName-Policy Holder Name"]');
+        this.outstandingTillDate = page.locator('//mat-header-cell[@id="totalOutstandingTillDate-OutStanding till Date"]');
+        this.totalBal = page.locator('//mat-header-cell[@id="outstandingPolicyBalance-Total Balance"]');
+        this.amountMCA = page.locator('//mat-header-cell[@id="unallocatedAmount-Amount"]');
+        this.effectiveDateMCA = page.locator('//mat-header-cell[@id="policyEffectiveDate-Effective Date"]');
+        this.expiryDate = page.locator('//mat-header-cell[@id="policyExpiryDate-Expiry Date"]');
+        this.amountFill = page.locator('//mat-row//div//mat-form-field//input');
+        this.addPolicyPopup = page.locator('//iris-composed-dialog//iris-base-label//p');
+        this.premiumandTaxtitle = page.locator("//h2[@title='Premium and Tax Dues']");
+        this.okButton = page.locator('//button[@title="Ok"]');
+        this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
+
 
     }
 
@@ -402,14 +431,76 @@ export class CashAllocationPage {
     }
 
     async clickOnAddPolicyButton() {
-        await this.manualAllocationSearchbutton.click();
+        await this.addPolicyButton.scrollIntoViewIfNeeded();
+        await this.addPolicyButton.click();
     }
 
     async verifyAddPolicyButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.addPolicyButton.scrollIntoViewIfNeeded();
         expect(this.addPolicyButton).toBeVisible();
     }
 
     async verifyShowDetailsButton() {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        await this.addPolicyButton.scrollIntoViewIfNeeded();
         expect(this.showDetailsButton).toBeVisible();
     }
+
+    async verifyPolicySearchGrid() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.policyReferenceMCA).toBeVisible();
+        expect(this.policyID).toBeVisible();
+        expect(this.policyHolderNameMCA).toBeVisible();
+        expect(this.outstandingTillDate).toBeVisible();
+        expect(this.totalBal).toBeVisible();
+        expect(this.amountMCA).toBeVisible();
+        expect(this.effectiveDateMCA).toBeVisible();
+        expect(this.expiryDate).toBeVisible();
+    }
+
+    async enterAmount(data: string) {
+        await this.addPolicyButton.scrollIntoViewIfNeeded();
+        this.amountFill.fill(data);
+    }
+
+    async verifyAddPolicyPopup() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.showDetailsButton).toBeVisible();
+    }
+
+    async clickOnShowDetailsButton() {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        await this.addPolicyButton.scrollIntoViewIfNeeded();
+        await this.showDetailsButton.click();
+    }
+
+    async verifyPremiumandTaxAmountFromGrid() {
+        await this.page.waitForLoadState('networkidle');
+        const premiumAndTaxAmount = this.page.locator('//mat-cell[contains(@class,"premiumAndTaxDueAmount")]');
+        for (let index = 0; index < await premiumAndTaxAmount.count(); index++) {
+            expect(await premiumAndTaxAmount).toBeVisible();
+        }
+    }
+
+
+    async verifyPremiumandTaxTitle(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const actual = await this.premiumandTaxtitle.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async clickOnOkButton() {
+        await this.okButton.click();
+    }
+
+    async verifyUnallocatedPolicyID(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const elements = await this.page.locator('//div[contains(@class,"mat-row detail")]//mat-cell[contains(@class,"policyReferences")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const actual = await elements.nth(index).textContent();
+            expect(actual).toBe(data);
+        }
+    }
+
 }
