@@ -82,9 +82,21 @@
         "policyRef": "PRT-AWPDE-6914-NB",
         "amount": "1"
     },
+    "TC_048_Cash_Allocation": {
+        "policyRef": "PRT-AWPDE-6914-NB",
+        "policyRef1": "PRT-AWPDE-6913-NB",
+        "policyRef2": "PRT-AWPDE-10144-NB",
+        "amount": "11",
+        "amount1": "11",
+        "amount2": "11.62"
+    },
     "TC_049_Cash_Allocation": {
         "policyRef": "PRT-AWPDE-6914-NB",
         "amount": "33.63"
+    },
+    "TC_053_Cash_Allocation": {
+        "policyRef": "PRT-AWPDE-6914-NB",
+        "amount": "1"
     },
     "TC_055_Cash_Allocation": {
         "policyRef": "VIS-AWPDE-6892-NB",

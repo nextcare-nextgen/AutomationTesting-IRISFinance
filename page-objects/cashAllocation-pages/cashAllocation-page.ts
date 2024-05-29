@@ -64,6 +64,7 @@ export class CashAllocationPage {
     readonly okButton : Locator;
     readonly policyIDFromGrid : Locator;
     readonly alertErrorPopup : Locator;
+    readonly  deleteButton : Locator;
     
 
 
@@ -128,7 +129,7 @@ export class CashAllocationPage {
         this.okButton = page.locator('//button[@title="Ok"]');
         this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
         this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 33.62']");
-
+        this.deleteButton = page.locator('//button[@title="Remove Policy"]');
     }
 
 
@@ -237,6 +238,7 @@ export class CashAllocationPage {
     }
 
     async enterPolicyRef(data: string) {
+        await this.policyRef.clear();
         await this.policyRef.fill(data);
     }
 
@@ -509,6 +511,10 @@ export class CashAllocationPage {
     async verifyAlertErrorPopup() {
         await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.alertErrorPopup).toBeVisible();
+    }
+
+    async clickOnDeleteButton() {
+        await this.deleteButton.click();
     }
 
 }
