@@ -55,6 +55,9 @@
         "organizationName": "TEST",
         "organizationCode": "AWC-TEST"
     },
+    "TC_065": {
+        "orgCode": "Test"
+    },
     "TC_066": {
         "cv1": "Euro-EUR"
     },
@@ -69,5 +72,16 @@
     },
     "TC_080": {
         "ACTScode": "Test12345"
+    },
+    "TC_081": {
+        "localization": "EUROPE"
+    },
+    "TC_083": {
+        "text1": "Financial Information",
+        "cardTypes":"Card Types"
+    },
+    "TC_085": {
+        "value": "Organizations"
     }
+        
 }

@@ -61,11 +61,11 @@ export class CashAllocationPage {
     readonly amountFill: Locator;
     readonly addPolicyPopup: Locator;
     readonly premiumandTaxtitle: Locator;
-    readonly okButton : Locator;
-    readonly policyIDFromGrid : Locator;
-    readonly alertErrorPopup : Locator;
-    readonly  deleteButton : Locator;
-    
+    readonly okButton: Locator;
+    readonly policyIDFromGrid: Locator;
+    readonly alertErrorPopup: Locator;
+    readonly deleteButton: Locator;
+
 
 
     constructor(page: Page) {

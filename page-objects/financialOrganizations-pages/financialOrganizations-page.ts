@@ -36,7 +36,12 @@ export class FinancialOrganizationsPage {
     readonly closeButton: Locator;
     readonly currentDateFromCalender: Locator;
     readonly ACTSCode: Locator;
-
+    readonly orgCode: Locator;
+    readonly localization: Locator;
+    readonly financialsInformation: Locator;
+    readonly orgCardType: Locator;
+    readonly searchBar: Locator;
+    readonly label: Locator;
 
 
     constructor(page: Page) {
@@ -73,6 +78,12 @@ export class FinancialOrganizationsPage {
         this.closeButton = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
         this.ACTSCode = page.locator('//input[@title="ACTS Code"]');
+        this.orgCode = page.locator('//iris-composed-dialog//input[@title="Code"]');
+        this.localization = page.locator('//iris-composed-dialog//input[@title="Localization"]');
+        this.financialsInformation = page.locator('//iris-navigation-hyperlink//a[@title="Financial Information"]');
+        this.orgCardType = page.locator('//iris-navigation-hyperlink//a[@title="Card Types"]');
+        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.label = page.locator('//iris-menu-card//iris-base-label//span');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -167,7 +178,7 @@ export class FinancialOrganizationsPage {
     async clickOnRecordsPerPageDropdown(data: string[]) {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([ ' 50 ', ' 100 ', ' 150 ',' 200 ', ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async verifyOrgNameAndCodeFromGrid() {
@@ -352,7 +363,7 @@ export class FinancialOrganizationsPage {
         let date = new Date()
         let day = date.getDate();
         let month = date.getMonth() - 1;
-        let year = date.getFullYear() ;
+        let year = date.getFullYear();
 
         //let fullDate = day + "." + month + "." + year + ".";
         let fullDate = `${month}`;
@@ -368,10 +379,49 @@ export class FinancialOrganizationsPage {
 
     }
 
+    async enterAddOrgCode(code: string) {
+        await this.orgCode.fill(code);
+
+    }
+
+    async enterLocalization(name: string) {
+        await this.localization.fill(name);
+
+    }
+
+
+    async VerifyEditOrganizationsButtons() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
+        for (let index = 0; index < await editOrgIcon.count(); index++) {
+            await expect(editOrgIcon.nth(index)).toBeVisible();
+        }
+    }
+
+    async clickonEditOrganizationButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
+        await editOrgIcon.first().click();
+    }
+
+    async verifyFinancialInfo(data: string) {
+        await expect(this.financialsInformation).toBeVisible();
+    }
+
+    async verifyOrgCardType(data: string) {
+        await expect(this.orgCardType).toBeVisible();
+    }
+
+    async verifySearchBar() {
+        await expect(this.searchBar).toBeVisible();
+    }
+
+    async enterinSearchbar(data: string) {
+        await this.searchBar.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        const actual = await this.label.textContent();
+        expect(actual).toBe(data);
+    }
 
 }
-
-
-
-
 

@@ -54,7 +54,7 @@
         "policyRef": "VIS-AWPDE-6892-NB",
         "policyHolderName": "test pol",
         "date": "16 Jan 2004"
-    }, 
+    },
     "TC_033_Cash_Allocation": {
         "policyRef": "VIS-AWPDE-6892-NB",
         "date": "16 Jan 2004"
@@ -68,7 +68,7 @@
     },
     "TC_040_Cash_Allocation": {
         "policyRef": "PRT-AWPDE-6914-NB",
-        "title":"Premium and Tax Dues"
+        "title": "Premium and Tax Dues"
     },
     "TC_044_Cash_Allocation": {
         "policyRef": "PRT-AWPDE-6914-NB",

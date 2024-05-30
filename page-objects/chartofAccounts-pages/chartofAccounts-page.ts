@@ -458,7 +458,7 @@ export class ChartOfAccountsPage {
 
     async enterinSearchbar(data: string) {
         await this.searchBar.fill(data);
-        await sleep(2000);
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }
