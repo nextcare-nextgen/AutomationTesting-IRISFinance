@@ -563,6 +563,46 @@ test('NXGF-TC-2074: TC_016_Journal Voucher List_Search_Verify that the user is a
 
 });
 
+test('NXGF-TC-2075: TC_017_Journal Voucher List_Search_Verify that the user is not able to select old date from To date field.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Select Organization", async () => {
+        await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_017_Journal_Voucher_List'].organization);
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher List Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherListButton();
+        await sleep(5000);
+    })
+
+    await test.step("Verified that the user is not able to select old date from To date field.", async () => {
+        await journalVoucherListPage.verifyOldDateisDisabled(JournalVoucherListPageData['TC_017_Journal_Voucher_List'].date);
+    })
+
+});
+
 test('NXGF-TC-2076: TC_018_Journal Voucher List_Search_Verify that user is able to view To Date as a search field', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1392,7 +1432,7 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
-    const countValues = [" 50 ", " 100 "," 150 "," 200 ", " 250 "];
+    const countValues = [" 50 ", " 100 ", " 150 ", " 200 ", " 250 "];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);

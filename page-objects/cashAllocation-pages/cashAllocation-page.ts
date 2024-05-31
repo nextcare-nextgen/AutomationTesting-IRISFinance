@@ -260,6 +260,7 @@ export class CashAllocationPage {
     }
 
     async verifyListOfPaymentsMethods() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 

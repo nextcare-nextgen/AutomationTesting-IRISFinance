@@ -250,7 +250,7 @@ test('NXGF-TC-2013: TC_008_Journal Voucher Lookup_Verify that the Organization i
     })
 
 
-    await test.step("Uer Verified the organization name selected on the top of the page", async () => {
+    await test.step("User Verified the organization name selected on the top of the page", async () => {
         await journalVoucherLookupPage.verifyOrganizationName(JournalVoucherLookupPageData['TC_008_Journal_Voucher_Lookup'].orgName);
 
     })
@@ -288,8 +288,46 @@ test('NXGF-TC-2014: TC_009_Journal Voucher Lookup_Verify that the Organization n
     })
 
 
-    await test.step("Uer Verified the organization name selected on the top of the page", async () => {
+    await test.step("User Verified the organization name selected on the top of the page", async () => {
         await journalVoucherLookupPage.verifyOrganizationName(JournalVoucherLookupPageData['TC_008_Journal_Voucher_Lookup'].orgName);
+
+    })
+
+});
+
+test('NXGF-TC-2015: TC_011_Journal Voucher Lookup_Verify that the details of account are displayed as per the organization selected', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Select Organization", async () => {
+
+        await dashboardPage.selectOrganization(JournalVoucherLookupPageData['TC_011_Journal_Voucher_Lookup'].organization);
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+
+    await test.step("Verifid that the of account are displayed", async () => {
+        await journalVoucherLookupPage.verifyAccountNumberDisplayed();
 
     })
 

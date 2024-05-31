@@ -1132,6 +1132,107 @@ test('NXGF-TC-1724: TC_059_Verify that the user is able to view the Add Organiza
 
 });
 
+test('NXGF-TC-1726: TC_060_Verify that the user is able to click on the Add Organization button (+)', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
+        await financialOrganizationsPage.clickOnADDOrganizationButton();
+    })
+
+});
+
+test('NXGF-TC-1728: TC_061_Verify that the user is redirected to a new popup window once clicked on add button', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
+        await financialOrganizationsPage.clickOnADDOrganizationButton();
+    })
+
+    await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
+        await financialOrganizationsPage.verifyAddOrgPopUpWindow(FinancialOrganizationsData['TC_061'].text);
+    })
+
+
+});
+
+test('NXGF-TC-1730: TC_062_Verify that the user is able to view the mentioned details in the new window for creating a new organization', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
+        await financialOrganizationsPage.clickOnADDOrganizationButton();
+    })
+
+    await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
+        await financialOrganizationsPage.verifyAddOrgPopUpWindowFields();
+    })
+
+
+});
+
+
 test('NXGF-TC-1736: TC_065_Verify that the user is able to enter the Organization Code in the Organization Code field', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

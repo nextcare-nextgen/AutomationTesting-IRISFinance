@@ -513,7 +513,7 @@ test('NXGF-TC-3336: TC_020_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("Verified that the user is able to enter the From amount number and to amount number and search", async () => {
-        await cashAllocationPage.verifyPolicyHolderNameFromGrid(CashAllocationPageData['TC_020_Cash_Allocation'].toAmount);
+        await cashAllocationPage.verifyPolicyHolderNameFromGrid(CashAllocationPageData['TC_020_Cash_Allocation'].policyHolder);
 
     })
 

@@ -21,6 +21,9 @@
         "fromAmount": "25.00",
         "toAmount": "25.00"
     },
+    "TC_020_Cash_Allocation": {
+        "policyHolder": "test pol"
+    },
     "TC_021_Cash_Allocation": {
         "policyRef": "MH-AWPDE-3038-NB"
     },

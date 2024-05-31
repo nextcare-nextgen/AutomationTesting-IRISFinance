@@ -42,6 +42,11 @@ export class FinancialOrganizationsPage {
     readonly orgCardType: Locator;
     readonly searchBar: Locator;
     readonly label: Locator;
+    readonly addOrgpopupWindowLabel: Locator;
+    readonly startDate: Locator;
+    readonly costCenter1: Locator;
+    readonly costCenter2: Locator;
+    readonly costCenter3: Locator;
 
 
     constructor(page: Page) {
@@ -84,6 +89,13 @@ export class FinancialOrganizationsPage {
         this.orgCardType = page.locator('//iris-navigation-hyperlink//a[@title="Card Types"]');
         this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
+        this.addOrgpopupWindowLabel = page.locator('//iris-composed-dialog//h2[@title="Add a new organization"]');
+        this.startDate = page.locator('//input[@title="Start Date"]');
+        this.costCenter1 = page.locator('//input[@title="Cost Center 1"]');
+        this.costCenter2 = page.locator('//input[@title="Cost Center 2"]');
+        this.costCenter3 = page.locator('//input[@title="Cost Center 2"]');
+
+
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -422,6 +434,25 @@ export class FinancialOrganizationsPage {
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }
+
+    async verifyAddOrgPopUpWindow(data: string) {
+        const actual = await this.addOrgpopupWindowLabel.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyAddOrgPopUpWindowFields() {
+        await expect(this.orgCode).toBeVisible();
+        await expect(this.name).toBeVisible();
+        await expect(this.cv1).toBeVisible();
+        await expect(this.cv2).toBeVisible();
+        await expect(this.startDate).toBeVisible();
+        await expect(this.ACTSCode).toBeVisible();
+        await expect(this.costCenter1).toBeVisible();
+        await expect(this.costCenter2).toBeVisible();
+        await expect(this.costCenter3).toBeVisible();
+        await expect(this.localization).toBeVisible();
+    }
+
 
 }
 

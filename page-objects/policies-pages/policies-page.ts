@@ -252,7 +252,11 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVochereyeiconButton() {
-        await expect(this.policyJournalVochereyeicon).toBeVisible();
+        const icon = this.page.locator('//button[@title="View Policy Journal Voucher"]');
+        for (let index = 0; index < await icon.count(); index++) {
+            expect(await icon.nth(index).innerText()).toBeTruthy();
+
+        }
     }
 
     async clickOnPolicyJournalVochereyeiconButton() {

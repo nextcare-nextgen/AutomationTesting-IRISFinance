@@ -8,7 +8,7 @@
     "TC_004_Journal_Voucher_List": {
         "journalVocherText": "Journal Voucher List"
     },
-    "TC_006_Journal_Voucher_List":{
+    "TC_006_Journal_Voucher_List": {
         "journalVocherText": "Journal Vouchers"
     },
     "TC_008_Journal_Voucher_List": {
@@ -16,11 +16,11 @@
     },
     "TC_009_Journal_Voucher_List": {
         "organization": "2024",
-        "voucherType":"Bank Charges Posting"
+        "voucherType": "Bank Charges Posting"
     },
     "TC_011_Journal_Voucher_List": {
         "organization": "2024",
-        "voucherType":"Bank Charges Posting"
+        "voucherType": "Bank Charges Posting"
     },
     "TC_013_Journal_Voucher_List": {
         "organization": "2024",
@@ -30,81 +30,84 @@
     },
     "TC_016_Journal_Voucher_List": {
         "organization": "2024",
-        "fromDate":"04 Feb 2024"
+        "fromDate": "04 Feb 2024"
+    },
+    "TC_017_Journal_Voucher_List": {
+        "organization": "2024",
+        "date": "To Date"
     },
     "TC_020_Journal_Voucher_List": {
         "organization": "2024",
-        "fromDate":"31 Jan 2005",
-        "toDate":"31 Jan 2008"
+        "fromDate": "31 Jan 2005",
+        "toDate": "31 Jan 2008"
     },
     "TC_022_Journal_Voucher_List": {
         "organization": "2024",
-        "fromDate":"05 Feb 2024",
-        "toDate":"09 Feb 2024"
+        "fromDate": "05 Feb 2024",
+        "toDate": "09 Feb 2024"
     },
     "TC_024_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting"
     },
-    "TC_037_Journal_Voucher_List":{
+    "TC_037_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting",
-        "textContent":"Manage Journal Voucher"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting",
+        "textContent": "Manage Journal Voucher"
     },
-    "TC_038_Journal_Voucher_List":{
+    "TC_038_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting"
     },
-    "TC_041_Journal_Voucher_List":{
+    "TC_041_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting"
     },
-    "TC_043_Journal_Voucher_List":{
+    "TC_043_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting"
     },
-    "TC_044_Journal_Voucher_List":{
+    "TC_044_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting"
     },
-    "TC_045_Journal_Voucher_List":{
+    "TC_045_Journal_Voucher_List": {
         "organization": "2024",
-        "voucherType":"VR"
+        "voucherType": "VR"
     },
-    "TC_047_Journal_Voucher_List":{
+    "TC_047_Journal_Voucher_List": {
         "organization": "2024",
-        "voucherType":"COM",
+        "voucherType": "COM",
         "title": " Records per page: "
     },
-    "TC_048_Journal_Voucher_List":{
+    "TC_048_Journal_Voucher_List": {
         "organization": "2024",
-        "voucherType":"COM"
+        "voucherType": "COM"
     },
     "TC_055_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"5688",
-        "tovoucherNumber":"5688"
+        "fromVoucherNumber": "5688",
+        "tovoucherNumber": "5688"
     },
     "TC_057_Journal_Voucher_List": {
         "value": "Organizations"
     },
-    "TC_058_Journal_Voucher_List":{
+    "TC_058_Journal_Voucher_List": {
         "organization": "2024",
-        "fromVoucherNumber":"10",
-        "tovoucherNumber":"900",
-        "voucherType":"Reverse TAX Posting"
+        "fromVoucherNumber": "10",
+        "tovoucherNumber": "900",
+        "voucherType": "Reverse TAX Posting"
     }
-    
 }

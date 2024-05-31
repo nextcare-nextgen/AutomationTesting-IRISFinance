@@ -408,4 +408,11 @@ export class JournalVoucherLookupPage {
         expect(actual).toBe(data);
     }
 
+    async verifyAccountNumberDisplayed() {
+        const transaction = this.page.locator('//mat-cell[contains(@class,"account")]');
+        for (let index = 0; index < await transaction.count(); index++) {
+            expect(await transaction.nth(index).innerText()).toBeTruthy();
+        }
+    }
+
 }

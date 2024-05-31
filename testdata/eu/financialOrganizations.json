@@ -55,6 +55,9 @@
         "organizationName": "TEST",
         "organizationCode": "AWC-TEST"
     },
+    "TC_061": {
+        "text": "Add a new organization"
+    },
     "TC_065": {
         "orgCode": "Test"
     },

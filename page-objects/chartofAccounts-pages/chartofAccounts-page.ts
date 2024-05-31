@@ -334,9 +334,9 @@ export class ChartOfAccountsPage {
 
     async selectglAccountTypeFromDropdown(data: string) {
         await this.selectglAccountTypee.click();
-        const glAccountTypeinput = this.page.locator('//iris-gl-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
+        const glAccountTypeinput = this.page.locator('//mat-dialog-container//iris-gl-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         glAccountTypeinput.fill(data);
-        const selectGLAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+        const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]');
         selectGLAccounttype.click();
     }
 

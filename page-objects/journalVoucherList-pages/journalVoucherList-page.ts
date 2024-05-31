@@ -49,9 +49,10 @@ export class JournalVoucherListPage {
     readonly label: Locator;
     readonly clearAll: Locator;
     readonly editvouchertype: Locator;
-    readonly editVoucherDate : Locator;
-    readonly editVoucherRef : Locator;
-    readonly editValidationDate : Locator;
+    readonly editVoucherDate: Locator;
+    readonly editVoucherRef: Locator;
+    readonly editValidationDate: Locator;
+    readonly toDateCalendarIcon: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -98,9 +99,10 @@ export class JournalVoucherListPage {
         this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
         this.clearAll = page.locator('//div//button[@title="Clear All"]');
-        this.editVoucherDate=page.locator('//iris-standard-date//div//input[contains(@class,"input-element")]');
-        this.editVoucherRef=page.locator('//div//mat-label//span[@title="Voucher Ref"]');
-        this.editValidationDate=page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]//following::iris-standard-date//input');
+        this.editVoucherDate = page.locator('//iris-standard-date//div//input[contains(@class,"input-element")]');
+        this.editVoucherRef = page.locator('//div//mat-label//span[@title="Voucher Ref"]');
+        this.editValidationDate = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]//following::iris-standard-date//input');
+        this.toDateCalendarIcon = page.locator('//div//input[@title="To Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -295,7 +297,7 @@ export class JournalVoucherListPage {
 
     async clickOnRecordsPerPageDropdown(data: string[]) {
         await this.recordPerPageDropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ' , ' 200 ' , ' 250 ']);
+        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async verifyRecordsPerPageTitle(data: string) {
@@ -353,6 +355,31 @@ export class JournalVoucherListPage {
         await expect(this.toVoucherNumber).toBeEmpty();
         await expect(this.voucherType).toBeEmpty();
 
+    }
+
+    async verifyOldDateisDisabled(from: string) {
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() - 1;
+        let year = date.getFullYear();
+
+        // let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${month}`;
+        var todayDate = Number(fullDate);
+        var oldDate = todayDate - 1;
+
+        if (from == "From Date") {
+            await this.toDateCalendarIcon.click();
+            const isoldDateEnabled = await this.page.locator('//span[text()=" ' + oldDate + ' "]').isEnabled();
+            expect(isoldDateEnabled).toBeFalsy();
+        } else if (from == "To Date") {
+            await this.toDateCalendarIcon.click();
+            const isoldDateEnabled = await this.page.locator('//span[text()=" ' + oldDate + ' "]').isEnabled();
+            expect(isoldDateEnabled).toBeFalsy();
+        } else {
+            throw new Error("Data not match");
+        }
     }
 
 
