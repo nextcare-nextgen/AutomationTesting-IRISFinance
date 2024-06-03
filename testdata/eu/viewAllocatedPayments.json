@@ -1,0 +1,11 @@
+{
+    "TC_000_Cash_Allocation": {
+        "cashAllocationText": "Cash Allocation"
+    },
+    "TC_002_Cash_Allocation": {
+        "paymentStatus": "Cleared-unallocated"
+    },
+    "TC_004_Cash_Allocation": {
+        "title": "Manual Cash Allocation"
+    }
+}

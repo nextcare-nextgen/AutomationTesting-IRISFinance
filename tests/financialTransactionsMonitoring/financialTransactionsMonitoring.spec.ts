@@ -1193,7 +1193,6 @@ test('NXGF-TC-3050: TC_037_Transaction Details Screen_Verify that all the detail
         await financialTransactionsMonitoringPage.verifySearchResultFromGrid();
     })
 
-
     await test.step("Verified Transaction Id from grid", async () => {
         await financialTransactionsMonitoringPage.verifyTransactionIdFromGrid(FinancialTransactionsMonitoringData['TC_037_Transactions_Details_Screen'].transactionId);
     })
