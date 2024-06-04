@@ -1294,8 +1294,8 @@ test('NXGF-TC-2087: TC_044_Journal Voucher List_Modify_Verify that the second se
         await journalVoucherListPage.clickOnEditJournalVoucherButton();
     })
 
-    await test.step("Verified that if the voucher is validated user should not bel able to edit the validated checkbox", async () => {
-        await journalVoucherListPage.verifyEditTransactionScreen();
+    await test.step("Verified that the second section has a grid with balance and differences", async () => {
+        await journalVoucherListPage.verifyBalanceAndAmountsFromGrid();
     })
 
 });

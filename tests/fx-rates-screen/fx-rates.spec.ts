@@ -538,7 +538,6 @@ test('NXGF-TC-1888: TC_017_FX_Rates_Verify that the after click on Reset To curr
 
     await test.step("User Click on Reset button", async () => {
         await fxRatesPage.clickOnResetButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the after click on Reset To currency and From currency should reset", async () => {

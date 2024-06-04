@@ -211,16 +211,14 @@ export class FxRatesPage {
   }
 
   async selectFromCurrency(data: string) {
-    await this.page.waitForLoadState('networkidle');
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
     await this.fromCurrencyfield.click();
     await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]').click();
   }
 
 
   async selectToCurrency(data: string) {
-    await this.page.waitForLoadState('networkidle');
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
     await this.toCurrencyfield.click();
     await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]').click();
   }
@@ -240,6 +238,7 @@ export class FxRatesPage {
 
   async clickOnResetButton() {
     await this.resetButton.click();
+    await new Promise(resolve => setTimeout(resolve, 5000));
   }
 
   async verifyToDateFromGrid() {
@@ -282,8 +281,7 @@ export class FxRatesPage {
   }
 
   async verifyAllColumnField() {
-    sleep(4000);
-    await this.page.waitForLoadState('networkidle');
+    await new Promise(resolve => setTimeout(resolve, 5000));
     await expect(this.fromcurrencyFromGrid).toBeVisible();
     await expect(this.tocurrencyFromGrid).toBeVisible();
     await expect(this.fromDateFromGrid).toBeVisible();
@@ -294,14 +292,12 @@ export class FxRatesPage {
 
 
   async verifyAddFxRateButton() {
-    sleep(4000);
-    await this.page.waitForLoadState('networkidle');
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await expect(this.addFxRateButton).toBeVisible();
   }
 
   async clickOnAddFxRateButton() {
-    sleep(4000);
-    await this.page.waitForLoadState('networkidle');
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await this.addFxRateButton.click();
   }
 

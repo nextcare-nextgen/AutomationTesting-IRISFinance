@@ -349,7 +349,6 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountsinGrid(data: string) {
-        await this.page.waitForLoadState('networkidle');
         await new Promise(resolve => setTimeout(resolve, 5000));
         const actual = await this.accountnumFromGrid.textContent();
         expect(actual).toBe(data);
@@ -465,14 +464,12 @@ export class ChartOfAccountsPage {
 
 
     async enterRandomChildAccountNumber() {
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.addAccountNumber.fill(this.randomString);
 
     };
 
     async getaccountNumber() {
-        await this.page.waitForLoadState('networkidle');
-        //await this.accountNumber.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.accountNumber.fill(this.randomString);
         await this.search.click();

@@ -164,14 +164,12 @@ export class CashAllocationPage {
 
     async clickOnClearedstaus() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.waitForLoadState('networkidle');
         await this.clearedPaymentStatus.click();
 
     }
 
     async clickOnClearedMethod() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.waitForLoadState('networkidle');
         await this.clearedPaymentMethod.click();
 
     }
@@ -190,7 +188,6 @@ export class CashAllocationPage {
     }
 
     async verifyShowDetailsButtons() {
-        await this.page.waitForLoadState('networkidle');
         const showDetailsButtons = this.page.locator('//button[@title="Show Details"]');
         for (let index = 0; index < await showDetailsButtons.count(); index++) {
             expect(await showDetailsButtons).toBeVisible();
@@ -263,7 +260,6 @@ export class CashAllocationPage {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
-
         const expectedValues = ['Bank Transfer', 'Credit Card', 'Direct Debit'];
 
         for (let i = 0; i < elements.length; i++) {
@@ -402,7 +398,7 @@ export class CashAllocationPage {
     }
 
     async verifyAllocatePoliciesButtons() {
-        await this.page.waitForLoadState('networkidle');
+       
         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
         for (let index = 0; index < await policyAllocationButtons.count(); index++) {
             expect(await policyAllocationButtons).toBeVisible();
@@ -410,7 +406,6 @@ export class CashAllocationPage {
     }
 
     async clickOnAllocatePoliciesButton() {
-        await this.page.waitForLoadState('networkidle');
         await new Promise(resolve => setTimeout(resolve, 5000));
         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
         await policyAllocationButtons.first().click();
@@ -423,7 +418,6 @@ export class CashAllocationPage {
     }
 
     async verifyReverseAllocationsButtons() {
-        await this.page.waitForLoadState('networkidle');
         const reversePolicyAllocationButtons = this.page.locator('//button[@title="Reverse Allocated Policies"]');
         for (let index = 0; index < await reversePolicyAllocationButtons.count(); index++) {
             expect(await reversePolicyAllocationButtons).toBeVisible();
@@ -482,7 +476,6 @@ export class CashAllocationPage {
     }
 
     async verifyPremiumandTaxAmountFromGrid() {
-        await this.page.waitForLoadState('networkidle');
         const premiumAndTaxAmount = this.page.locator('//mat-cell[contains(@class,"premiumAndTaxDueAmount")]');
         for (let index = 0; index < await premiumAndTaxAmount.count(); index++) {
             expect(await premiumAndTaxAmount).toBeVisible();

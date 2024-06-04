@@ -101,8 +101,7 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async clickOnClearedstaus() {
-        sleep(10000);
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.clearedPaymentStatus.click();
 
     }
@@ -114,7 +113,6 @@ export class CashAllocationUnderPaymentsPage {
 
 
     async verifyShowDetailsButtons() {
-        await this.page.waitForLoadState('networkidle');
         const showDetailsButtons = this.page.locator('//button[@title="Show Details"]');
         for (let index = 0; index < await showDetailsButtons.count(); index++) {
             expect(await showDetailsButtons).toBeVisible();
@@ -205,7 +203,7 @@ export class CashAllocationUnderPaymentsPage {
 
     async clickOnSearchButtonButton() {
         await this.searchButton.click();
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async verifyAmount() {
@@ -260,13 +258,13 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async clickOnViewPolicyJournalVoucherButton() {
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.viewPolicyButton.first().click();
     }
 
 
     async clickOnVoucherType(data: string) {
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         let vouchertype = await this.page.locator('//mat-cell[contains(@class,"voucherTypeCode")]//small').all();
         for (let i = 0; i < vouchertype.length; i++) {
             if (await vouchertype[i].textContent() === data) {
@@ -278,7 +276,7 @@ export class CashAllocationUnderPaymentsPage {
 
 
     async verifyRecievedPayment() {
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const payments = this.page.locator('//mat-cell[contains(@class,"amount")]');
         for (let index = 0; index < await payments.count(); index++) {
             expect(await payments.nth(index)).toBeVisible();

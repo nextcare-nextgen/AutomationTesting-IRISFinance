@@ -53,6 +53,7 @@ export class JournalVoucherListPage {
     readonly editVoucherRef: Locator;
     readonly editValidationDate: Locator;
     readonly toDateCalendarIcon: Locator;
+    readonly filtervoucherType: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -78,6 +79,7 @@ export class JournalVoucherListPage {
         this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.fromVoucherNumber = page.locator('//div//input[@title="From voucher number"]');
         this.toVoucherNumber = page.locator('//div//input[@title="To voucher number"]');
+        this.filtervoucherType = page.locator('//div//input[@title="To voucher number"]//following::input[1]');
         this.voucherRefAdvancedFilter = page.locator('///div//input[@title="Voucher Reference"]');
         this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
         this.applybutton = page.locator('//div//button[@title="Apply"]');
@@ -353,19 +355,19 @@ export class JournalVoucherListPage {
     async verifyAdvancedSearchfieldisEmpty() {
         await expect(this.fromVoucherNumber).toBeEmpty();
         await expect(this.toVoucherNumber).toBeEmpty();
-        await expect(this.voucherType).toBeEmpty();
+        await expect(this.filtervoucherType).toBeEmpty();
 
     }
 
     async verifyOldDateisDisabled(from: string) {
 
         let date = new Date()
-        let day = date.getDate();
+        let day = date.getDate() - 5;
         let month = date.getMonth() - 1;
         let year = date.getFullYear();
 
         // let fullDate = day + "." + month + "." + year + ".";
-        let fullDate = `${month}`;
+        let fullDate = `${day}`;
         var todayDate = Number(fullDate);
         var oldDate = todayDate - 1;
 
@@ -382,5 +384,25 @@ export class JournalVoucherListPage {
         }
     }
 
+    async verifyBalanceAndAmountsFromGrid() {
+        const totalDebit = this.page.locator('//mat-cell[contains(@class,"debitTotal")]');
+        for (let index = 0; index < await totalDebit.count(); index++) {
+            expect(await totalDebit.nth(index).innerText()).toBeTruthy();
+
+        }
+
+        const totalCredit = this.page.locator('//mat-cell[contains(@class,"creditTotal")]');
+        for (let index = 0; index < await totalCredit.count(); index++) {
+            expect(await totalCredit.nth(index).innerText()).toBeTruthy();
+
+        }
+
+        const bal = this.page.locator('//mat-cell[contains(@class,"balance")]');
+        for (let index = 0; index < await bal.count(); index++) {
+            expect(await bal.nth(index).innerText()).toBeTruthy();
+
+        }
+
+    }
 
 }
