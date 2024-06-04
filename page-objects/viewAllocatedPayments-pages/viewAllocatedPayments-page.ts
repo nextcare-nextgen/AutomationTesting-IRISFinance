@@ -13,6 +13,10 @@ export class ViewAllocatedPaymentsPage {
     readonly reset: Locator;
     readonly resultGrid: Locator;
     readonly ManualAllocationScreenTitle: Locator;
+    readonly cashAllocation: Locator;
+    readonly clearedPaymentStatus: Locator;
+    readonly clearedTransactionType: Locator;
+    readonly clearedPaymentMethod: Locator;
 
 
     constructor(page: Page) {
@@ -25,6 +29,10 @@ export class ViewAllocatedPaymentsPage {
         this.search = page.locator('//button[@title="Search"]');
         this.reset = page.locator('//button[@title="Filter"]');
         this.ManualAllocationScreenTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
+        this.cashAllocation = page.locator('//a[@title="Cash Allocation"]');
+        this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
+        this.clearedTransactionType = page.locator('//mat-label//span[@title="Transaction Type"]//following::iris-icon-action[@role="button"][1]');
+        this.clearedPaymentMethod = page.locator('//mat-label//span[@title="Payment Method"]//following::iris-icon-action[@role="button"][1]');
 
     }
 
@@ -65,7 +73,7 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifyPaymentStatusFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const elements = await this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await elements.count(); index++) {
             const paymentStaus = await elements.nth(index).textContent();
@@ -75,13 +83,12 @@ export class ViewAllocatedPaymentsPage {
 
     async clickOnSearchFilterButton() {
         await this.search.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async verifyManualAllocationScreenTitle(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const manualAllocationScreenTitle = await this.ManualAllocationScreenTitle.
-        
-        textContent();
+        const manualAllocationScreenTitle = await this.ManualAllocationScreenTitle.textContent();
         expect(manualAllocationScreenTitle).toBe(data);
     }
 
@@ -90,6 +97,62 @@ export class ViewAllocatedPaymentsPage {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
         await policyAllocationButtons.first().click();
+    }
+
+    async clickOnClearedStatus() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.clearedPaymentStatus.click();
+
+    }
+
+    async selectPaymentStatus(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    async clickOnCashAllocationButton() {
+        await this.cashAllocation.click();
+    }
+
+    async verifyPaymentMethodFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 7000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentMethod = await elements.nth(index).textContent();
+            expect(paymentMethod).toBe(data);
+        }
+    }
+
+    async verifyPaymentTypeFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 7000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentType = await elements.nth(index).textContent();
+            expect(paymentType).toBe(data);
+        }
+    }
+
+
+    async selectPaymentMethod(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    async clickOnClearedtransactionType() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.clearedTransactionType.click();
+
+    }
+
+    async selectTransactionType(data: string) {
+        sleep(5000);
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+    }
+
+    async clickOnClearedPaymentMenthod() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.clearedPaymentMethod.click();
+
     }
 
 }

@@ -7,5 +7,22 @@
     },
     "TC_004_Cash_Allocation": {
         "title": "Manual Cash Allocation"
+    },
+    "TC_005_Cash_Allocation": {
+        "paymentStatus": "Cleared-unallocated",
+        "paymentStatus1": "Cleared-allocated"
+    },
+    "TC_006_Cash_Allocation": {
+        "paymentMethod": "Bank Transfer"
+    },
+    "TC_007_Cash_Allocation": {
+        "paymentMethod": "Bank Transfer",
+        "transactionType": "Premium Payment",
+        "paymentMethod1": "Credit Card",
+        "paymentMethod2": "Direct Debit",
+        "paymentStatus": "Cleared-allocated"
+    },
+    "TC_009_Cash_Allocation": {
+        "paymentType": "Cash Payment"
     }
 }
