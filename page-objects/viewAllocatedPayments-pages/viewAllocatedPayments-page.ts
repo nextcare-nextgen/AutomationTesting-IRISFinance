@@ -17,6 +17,12 @@ export class ViewAllocatedPaymentsPage {
     readonly clearedPaymentStatus: Locator;
     readonly clearedTransactionType: Locator;
     readonly clearedPaymentMethod: Locator;
+    readonly filter: Locator;
+    readonly paymentRef: Locator;
+    readonly fromAmount: Locator;
+    readonly toAmount: Locator;
+    readonly policyRef: Locator;
+    readonly apply: Locator;
 
 
     constructor(page: Page) {
@@ -33,7 +39,12 @@ export class ViewAllocatedPaymentsPage {
         this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
         this.clearedTransactionType = page.locator('//mat-label//span[@title="Transaction Type"]//following::iris-icon-action[@role="button"][1]');
         this.clearedPaymentMethod = page.locator('//mat-label//span[@title="Payment Method"]//following::iris-icon-action[@role="button"][1]');
-
+        this.filter = page.locator('//button[@title="Filter"]');
+        this.paymentRef = page.locator('//input[@title="Payment Reference"]');
+        this.fromAmount = page.locator('//input[@title="From Amount"]');
+        this.toAmount = page.locator('//input[@title="To Amount"]');
+        this.policyRef = page.locator('//input[@title="Policy Ref/Document Ref"]');
+        this.apply = page.locator('//button[@title="Apply"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -81,7 +92,7 @@ export class ViewAllocatedPaymentsPage {
         }
     }
 
-    async clickOnSearchFilterButton() {
+    async clickOnSearchButton() {
         await this.search.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
     }
@@ -153,6 +164,49 @@ export class ViewAllocatedPaymentsPage {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.clearedPaymentMethod.click();
 
+    }
+
+    async clickOnFilterButton() {
+        await this.filter.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    async enterPaymentReference(data: string) {
+        await this.paymentRef.fill(data);
+    }
+
+    async enterFromAmount(data: string) {
+        await this.fromAmount.fill(data);
+    }
+
+    async enterToAmount(data: string) {
+        await this.toAmount.fill(data);
+    }
+
+    async enterPolicyRef(data: string) {
+        await this.policyRef.fill(data);
+    }
+
+    async clickOnApplyButton() {
+        await this.apply.click();
+    }
+
+    async verifyPaymentRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentReference")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const paymentRef = await elements.nth(index).textContent();
+            expect(paymentRef).toBe(data);
+        }
+    }
+
+    async verifyFromAndToAmountFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentAmount")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const amount = await elements.nth(index).textContent();
+            expect(amount).toBe(data);
+        }
     }
 
 }
