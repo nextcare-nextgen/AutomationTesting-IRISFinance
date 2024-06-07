@@ -744,3 +744,73 @@ test('NXGF-TC-2908: TC_019_View allocated payments_Verify that the user is able 
 });
 
 
+test('NXGF-TC-2910: TC_021_View allocated payments_Vreify that the policy reference shows the payment  / part of the payment has been allocated against', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const viewAllocatedPaymentsPage: ViewAllocatedPaymentsPage = new ViewAllocatedPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await viewAllocatedPaymentsPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Cleared Payment Status Type", async () => {
+        await viewAllocatedPaymentsPage.clickOnClearedStatus();
+    })
+
+    await test.step("Select Payment Method", async () => {
+        await viewAllocatedPaymentsPage.selectPaymentStatus(ViewAllocatedPaymentsPageData['TC_021_Cash_Allocation'].paymentStatus);
+    })
+
+    await test.step("User Click on Filter button", async () => {
+        await viewAllocatedPaymentsPage.clickOnSearchButton();
+
+    })
+
+    await test.step("Verify\ied that the user is able to search the previoulsy allocated payments with Payment amount", async () => {
+        await viewAllocatedPaymentsPage.verifyPaymentStatusFromGrid(ViewAllocatedPaymentsPageData['TC_021_Cash_Allocation'].paymentStatus);
+
+    })
+
+});
+
+test('NXGF-TC-2914: TC_025_View allocated payments_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const viewAllocatedPaymentsPage: ViewAllocatedPaymentsPage = new ViewAllocatedPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Verified that the Search bar displayed in main menu screen", async () => {
+        await viewAllocatedPaymentsPage.verifySearchBar();
+    })
+
+});
+

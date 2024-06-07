@@ -48,5 +48,8 @@
     "TC_018_Cash_Allocation": {
         "paymentStatus": "Cleared-allocated",
         "afterResetpaymentStatus": "Cleared-unallocated"
-        }
+    },
+    "TC_021_Cash_Allocation": {
+        "paymentStatus": "Cleared-allocated"
+    }
 }

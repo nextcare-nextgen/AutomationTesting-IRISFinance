@@ -23,6 +23,7 @@ export class ViewAllocatedPaymentsPage {
     readonly toAmount: Locator;
     readonly policyRef: Locator;
     readonly apply: Locator;
+    readonly searchBar: Locator;
 
 
     constructor(page: Page) {
@@ -45,6 +46,7 @@ export class ViewAllocatedPaymentsPage {
         this.toAmount = page.locator('//input[@title="To Amount"]');
         this.policyRef = page.locator('//input[@title="Policy Ref/Document Ref"]');
         this.apply = page.locator('//button[@title="Apply"]');
+        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -233,4 +235,7 @@ export class ViewAllocatedPaymentsPage {
         await showDetails.first().click();
     }
 
+    async verifySearchBar() {
+        await expect(this.searchBar).toBeVisible();
+    }
 }
