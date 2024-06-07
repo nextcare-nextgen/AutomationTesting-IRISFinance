@@ -515,7 +515,6 @@ export class ChartOfAccountsPage {
 
 
     async stopedAccounts() {
-        await this.page.waitForLoadState('networkidle');
         //await this.accountNumber.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.accountNumber.fill(this.randomString);

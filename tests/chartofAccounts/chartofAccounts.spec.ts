@@ -1986,7 +1986,7 @@ test('NXGF-TC-2160: TC_074_ Chart of Accounts_Verify that the updated details ar
         await chartOfAccountsPage.clickOnSaveButton();
     })
 
-    await test.step("Click on Save button", async () => {
+    await test.step("Verified that the updated details are saved for subaccount", async () => {
         await chartOfAccountsPage.getaccountNumber();
     })
 

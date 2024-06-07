@@ -272,10 +272,7 @@ export class FxRatesPage {
   }
 
   async verifyafterResetCurrencyFieldReset() {
-    await this.page.waitForLoadState('networkidle');
-    // const fromCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][2]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
     const toCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][3]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
-    // expect(fromCurrencyinput).toBeEmpty();
     expect(toCurrencyinput).toBeEmpty();
 
   }

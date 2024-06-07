@@ -945,7 +945,7 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
     })
 
     await test.step("User Select Organization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+        await dashboardPage.selectOrganization(policiesData['TC_024_Policies'].organization);
         await sleep(2000);
     })
 

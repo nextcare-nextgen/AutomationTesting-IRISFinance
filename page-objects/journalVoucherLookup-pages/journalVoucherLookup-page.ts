@@ -139,6 +139,8 @@ export class JournalVoucherLookupPage {
 
     async clickOnJournalVoucherShrtcutsButton() {
         await this.journalVoucherShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 8000));
+
     }
 
     async clickOnOrganizationShrtcutsButton() {
@@ -161,6 +163,7 @@ export class JournalVoucherLookupPage {
 
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupButton.click();
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async verifyjournalVoucherLookupsearchSection() {
@@ -269,8 +272,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyGridHeaderColumnName() {
-        sleep(4000);
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await expect(this.gridVouchertype).toBeVisible();
         await expect(this.gridVoucherDate).toBeVisible();
         await expect(this.gridAccountName).toBeVisible();

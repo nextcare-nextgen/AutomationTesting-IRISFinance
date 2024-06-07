@@ -362,14 +362,14 @@ export class JournalVoucherListPage {
     async verifyOldDateisDisabled(from: string) {
 
         let date = new Date()
-        let day = date.getDate() - 5;
+        let day = date.getDate() - 15;
         let month = date.getMonth() - 1;
         let year = date.getFullYear();
 
         // let fullDate = day + "." + month + "." + year + ".";
         let fullDate = `${day}`;
         var todayDate = Number(fullDate);
-        var oldDate = todayDate - 1;
+        var oldDate = todayDate - 11;
 
         if (from == "From Date") {
             await this.toDateCalendarIcon.click();

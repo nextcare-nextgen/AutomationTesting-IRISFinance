@@ -56,10 +56,10 @@
         "value": "Financial Transactions Monitoring"
     },
     "TC_036_Transactions_Details_Screen": {
-        "transactionId": "6405"
+        "transactionId": "8112"
     },
     "TC_037_Transactions_Details_Screen": {
-        "transactionId": "6405"
+        "transactionId": "8112"
     },
     "TC_039_Transactions_Details_Screen": {
         "paymentMethod": "Bank Transfer",

@@ -572,4 +572,175 @@ test('NXGF-TC-2903: TC_014_View allocated payments_Verify that the user is able 
 
 });
 
+test('NXGF-TC-2904: TC_015_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Policy reference', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const viewAllocatedPaymentsPage: ViewAllocatedPaymentsPage = new ViewAllocatedPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await viewAllocatedPaymentsPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Cleared Payment Status Type", async () => {
+        await viewAllocatedPaymentsPage.clickOnClearedStatus();
+    })
+
+    await test.step("Select Payment Method", async () => {
+        await viewAllocatedPaymentsPage.selectPaymentStatus(ViewAllocatedPaymentsPageData['TC_015_Cash_Allocation'].paymentStatus);
+    })
+
+    await test.step("User Click on Filter button", async () => {
+        await viewAllocatedPaymentsPage.clickOnFilterButton();
+
+    })
+
+    await test.step("User Enter From amount", async () => {
+        await viewAllocatedPaymentsPage.enterPolicyRef(ViewAllocatedPaymentsPageData['TC_015_Cash_Allocation'].policyRef);
+
+    })
+
+    await test.step("User Click on Filter button", async () => {
+        await viewAllocatedPaymentsPage.clickOnApplyButton();
+
+    })
+
+    await test.step("User Click on Filter button", async () => {
+        await viewAllocatedPaymentsPage.clickOnSearchButton();
+
+    })
+
+    await test.step("Verify\ied that the user is able to search the previoulsy allocated payments with Payment amount", async () => {
+        await viewAllocatedPaymentsPage.verifyPolicyRefFromGrid(ViewAllocatedPaymentsPageData['TC_015_Cash_Allocation'].policyRef);
+
+    })
+
+});
+
+test('NXGF-TC-2906: TC_017_View allocated payments_Verify that the user clicks on the Reset button', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const viewAllocatedPaymentsPage: ViewAllocatedPaymentsPage = new ViewAllocatedPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await viewAllocatedPaymentsPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Verified that the user clicks on the Reset button", async () => {
+        await viewAllocatedPaymentsPage.clickOnResetButton();
+    })
+
+});
+
+test('NXGF-TC-2907: TC_018_View allocated payments_Verify that all the search fields are cleared', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const viewAllocatedPaymentsPage: ViewAllocatedPaymentsPage = new ViewAllocatedPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await viewAllocatedPaymentsPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Cleared Payment Status Type", async () => {
+        await viewAllocatedPaymentsPage.clickOnClearedStatus();
+    })
+
+    await test.step("Select Payment Method", async () => {
+        await viewAllocatedPaymentsPage.selectPaymentStatus(ViewAllocatedPaymentsPageData['TC_018_Cash_Allocation'].paymentStatus);
+    })
+
+    await test.step("User Click on Reset button", async () => {
+        await viewAllocatedPaymentsPage.clickOnResetButton();
+
+    })
+
+    await test.step("Verified that all the search fields are cleared", async () => {
+        await viewAllocatedPaymentsPage.verifyAfterRestPaymentStatus(ViewAllocatedPaymentsPageData['TC_018_Cash_Allocation'].afterResetpaymentStatus);
+
+    })
+
+});
+
+test('NXGF-TC-2908: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const viewAllocatedPaymentsPage: ViewAllocatedPaymentsPage = new ViewAllocatedPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await viewAllocatedPaymentsPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Cleared Payment Status Type", async () => {
+        await viewAllocatedPaymentsPage.clickOnClearedStatus();
+    })
+
+    await test.step("Select Payment Method", async () => {
+        await viewAllocatedPaymentsPage.selectPaymentStatus(ViewAllocatedPaymentsPageData['TC_019_Cash_Allocation'].paymentStatus);
+    })
+
+    await test.step("User Click on Details button", async () => {
+        await viewAllocatedPaymentsPage.clickOnDetailsButton();
+
+    })
+});
+
 

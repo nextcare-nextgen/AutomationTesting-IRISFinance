@@ -271,6 +271,7 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnSearchButton() {
         await this.searchButton.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async verifyPaymentStatusFromGrid(data: string) {

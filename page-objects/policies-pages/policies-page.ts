@@ -269,17 +269,8 @@ export class PoliciesPage {
     }
 
     async clickOnViewJournalVoucherEyeIcon() {
-
         let eyeIcons = this.page.locator('//button[@title="View Policy Journal Voucher"]');
         await eyeIcons.first().click();
-
-        // await eyeIcons.nth(5).click();
-        // for (let index = 0; index < await eyeIcons.count(); index++) {
-
-        //    await eyeIcons[index].click;
-        //     break;
-        // }
-
     }
 
     async verifyPolicyJournalVoucherListSection() {

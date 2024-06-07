@@ -26,11 +26,15 @@
     },
     "TC_021_Policies": {
         "organization": "2024",
-        "policyId": "110985390"
+        "policyId": "110985600"
     },
     "TC_022_Policies": {
         "organization": "2024",
         "policyHolderName": "Rami Zaklit"
+    },
+    "TC_024_Policies": {
+        "policyJournalVochereText": "Policy Journal Voucher",
+        "organization": "2024"
     },
     "TC_025_Policies": {
         "policyJournalVochereText": "Policy Journal Voucher",

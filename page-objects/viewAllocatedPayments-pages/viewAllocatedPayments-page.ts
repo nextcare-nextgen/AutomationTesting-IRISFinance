@@ -33,7 +33,7 @@ export class ViewAllocatedPaymentsPage {
         this.cashAllocationText = page.locator('//div//h1[@title="Cash Allocation"]');
         this.resultGrid = page.locator('//mat-table');
         this.search = page.locator('//button[@title="Search"]');
-        this.reset = page.locator('//button[@title="Filter"]');
+        this.reset = page.locator('//button[@title="Reset"]');
         this.ManualAllocationScreenTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
         this.cashAllocation = page.locator('//a[@title="Cash Allocation"]');
         this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
@@ -104,7 +104,6 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async clickOnAllocatePoliciesButton() {
-        await this.page.waitForLoadState('networkidle');
         await new Promise(resolve => setTimeout(resolve, 5000));
         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
         await policyAllocationButtons.first().click();
@@ -207,6 +206,31 @@ export class ViewAllocatedPaymentsPage {
             const amount = await elements.nth(index).textContent();
             expect(amount).toBe(data);
         }
+    }
+
+
+    async verifyPolicyRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const elements = await this.page.locator('//mat-cell[contains(@class,"policyReference")]//small');
+        for (let index = 0; index < await elements.count(); index++) {
+            const policyRef = await elements.nth(index).textContent();
+            expect(policyRef).toBe(data);
+        }
+    }
+
+    async clickOnResetButton() {
+        await this.reset.click();
+    }
+
+    async verifyAfterRestPaymentStatus(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const element = await this.page.locator('//mat-label[@title="Cleared-unallocated"]').textContent();;
+        expect(element).toBe(data);
+    }
+
+    async clickOnDetailsButton() {
+        const showDetails = this.page.locator('//button[@title="Show Details"]');
+        await showDetails.first().click();
     }
 
 }

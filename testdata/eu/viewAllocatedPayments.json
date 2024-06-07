@@ -40,5 +40,13 @@
         "paymentRef": "ELVD52316411400004",
         "fromAmount": "519.60",
         "toAmount": "519.60"
-    }
+    },
+    "TC_015_Cash_Allocation": {
+        "paymentStatus": "Cleared-allocated",
+        "policyRef": "MH-AWPDE-3449-NB"
+    },
+    "TC_018_Cash_Allocation": {
+        "paymentStatus": "Cleared-allocated",
+        "afterResetpaymentStatus": "Cleared-unallocated"
+        }
 }
