@@ -58,6 +58,9 @@
     "TC_061": {
         "text": "Add a new organization"
     },
+    "TC_064": {
+        "name": "Mawista"
+    },
     "TC_065": {
         "orgCode": "Test"
     },

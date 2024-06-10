@@ -213,6 +213,35 @@ test('NXGF-TC-2104: TC_007_Chart of Accounts_Verify that the user is redirected 
     })
 });
 
+test('NXGF-TC-2105: TC_008_Chart of Accounts_Verify that the user is able to view the "Chart of Accounts " title in bold', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Verified that the user is able to view the 'Chart of Accounts' title in bold", async () => {
+        await chartOfAccountsPage.verifyTitleinBold();
+
+    })
+});
+
 test('NXGF-TC-2106: TC_009_Chart of Accounts_Verify the that user is able to see two search fields "Account name" and " Account number"', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1257,8 +1286,41 @@ test('NXGF-TC-2138: TC_049_ Chart of Accounts_Verify that the user is unable to 
         await chartOfAccountsPage.verifySaveButtonDisbled();
     })
 
+});
+
+test('NXGF-TC-2139: TC_050_ Chart of Accounts_Verify that the start date selector displays current month with current date selected', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("Verified that the start date selector displays current month with current date selected", async () => {
+        await chartOfAccountsPage.selectCurrentDateStartDateCalender();
+    })
 
 });
+
 
 test('NXGF-TC-2141: TC_052_ Chart of Accounts_Verify that the user is able to select the GL Account Type', async ({ page }) => {
 
@@ -2116,6 +2178,43 @@ test('NXGF-TC-2164: TC_078_ Chart of Accounts_Verify that the user is able to vi
 
 });
 
+test('NXGF-TC-2165: TC_079_ Chart of Accounts_Verify that the user is able to edit the Product Line for Sub Account', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Extended Arrow", async () => {
+        await chartOfAccountsPage.clickOnExpandArrow();
+    })
+
+    await test.step("Click on Edit Icon", async () => {
+        await chartOfAccountsPage.clickOnEditIcon();
+    })
+
+    await test.step("User Select Product Line", async () => {
+        await chartOfAccountsPage.selectProductlineFromDropdown(ChartOfAccountsPageData['TC_079_Chart_of_Accounts'].productLine);
+    })
+
+});
+
 
 test('NXGF-TC-2166: TC_080_ Chart of Accounts_Verify that the user is able to edit the GL Account Type for sub account', async ({ page }) => {
 
@@ -2151,7 +2250,6 @@ test('NXGF-TC-2166: TC_080_ Chart of Accounts_Verify that the user is able to ed
     await test.step("User Select GL Account type", async () => {
         await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_080_Chart_of_Accounts'].GLdropdownvalue);
     })
-
 
 });
 

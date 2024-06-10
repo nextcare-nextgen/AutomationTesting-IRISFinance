@@ -64,6 +64,7 @@ export class ChartOfAccountsPage {
     readonly randomString: string;
     readonly stoppedAccountpopup: Locator;
     readonly addAccountCostCenter1: Locator;
+    readonly startDateCalendarIcon: Locator;
 
 
     constructor(page: Page) {
@@ -96,7 +97,7 @@ export class ChartOfAccountsPage {
         this.addAccountSelectDate = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Start Date"]');
         this.addAccountType = page.locator('//div//span[@title="Account Type"]');
         this.addAccountProductLine = page.locator('//div//span[@title="Product Line"]');
-        this.addAccountCostCenter1 = page.locator('//div//span[@title="Cost Center 1"]');
+        this.addAccountCostCenter1 = page.locator('//mat-dialog-container//iris-cost-center-autocomplete[1]//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         this.addAccountCostCenter2 = page.locator('//div//span[@title="Cost Center 2"]');
         this.addAccountCostCenter3 = page.locator('//div//span[@title="Cost Center 3"]');
         this.addAccountGLAcoountType = page.locator('//div//span[@title="GL Account Type"]');
@@ -127,7 +128,7 @@ export class ChartOfAccountsPage {
         this.childstartDateCalendarIcon = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
         this.randomString = `${Math.random().toString().slice(2, 8)}`;
         this.stoppedAccountpopup = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
-
+        this.startDateCalendarIcon = page.locator('//input[@title="Start Date"]//following::mat-icon[1]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -525,6 +526,33 @@ export class ChartOfAccountsPage {
         const okbutton = this.page.locator('//iris-composed-dialog//button[@title="Ok"]');
         okbutton.click();
 
+    }
+
+    async selectCurrentDateStartDateCalender() {
+        await this.startDateCalendarIcon.click();
+        await this.page.locator('//button[contains(@class,"active")]').click()
+
+    }
+
+    async verifyTitleinBold() {
+        const boldElement = await this.page.locator('//h1[@title="Charts of Accounts"]');
+
+        // Check if the font-weight is bold
+        const fontWeight = await boldElement.evaluate(element => {
+            return window.getComputedStyle(element).fontWeight;
+        });
+
+        // Assert that the font-weight is either 'bold' or a numeric value equal or greater than 700
+        expect(['bold', '700', '800', '900'].includes(fontWeight)).toBe(true);
+    }
+
+
+    async selectProductlineFromDropdown(data: string) {
+        await this.selectglAccountTypee.click();
+        const productLine = this.page.locator('//mat-dialog-container//iris-cost-center-autocomplete[1]//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
+        productLine.fill(data);
+        const selectproductLine = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]');
+        selectproductLine.click();
     }
 
 }

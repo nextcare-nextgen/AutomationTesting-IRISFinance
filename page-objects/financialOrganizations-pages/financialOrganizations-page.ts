@@ -47,6 +47,12 @@ export class FinancialOrganizationsPage {
     readonly costCenter1: Locator;
     readonly costCenter2: Locator;
     readonly costCenter3: Locator;
+    readonly mandateCode: Locator;
+    readonly mandateName: Locator;
+    readonly mandateStartDate: Locator;
+
+
+
 
 
     constructor(page: Page) {
@@ -94,6 +100,9 @@ export class FinancialOrganizationsPage {
         this.costCenter1 = page.locator('//input[@title="Cost Center 1"]');
         this.costCenter2 = page.locator('//input[@title="Cost Center 2"]');
         this.costCenter3 = page.locator('//input[@title="Cost Center 2"]');
+        this.mandateName = page.locator('//span[contains(@class,"required-marker")]//following::input[@title="Name"]');
+        this.mandateCode = page.locator('//span[contains(@class,"required-marker")]//following::input[@title="Code"]');
+        this.mandateStartDate = page.locator('//span[contains(@class,"required-marker")]//following::input[@title="Start Date"]');
 
 
     }
@@ -453,6 +462,29 @@ export class FinancialOrganizationsPage {
         await expect(this.localization).toBeVisible();
     }
 
+
+    async verifyAddOrgPopUpWindowManadatoryFields() {
+        await expect(this.mandateName).toBeVisible();
+        await expect(this.mandateName).toBeVisible();
+        await expect(this.mandateStartDate).toBeVisible();
+    }
+
+    async verifyTitleinBold() {
+        const boldElement = await this.page.locator('//h1[@title="Organizations"]');
+    
+        // Check if the font-weight is bold
+        const fontWeight = await boldElement.evaluate(element => {
+          return window.getComputedStyle(element).fontWeight;
+        });
+    
+        // Assert that the font-weight is either 'bold' or a numeric value equal or greater than 700
+        expect(['bold', '700', '800', '900'].includes(fontWeight)).toBe(true);
+      }
+    
+
+    async enterAddOrgName(code: string) {
+        await this.name.fill(code);
+    }
 
 }
 

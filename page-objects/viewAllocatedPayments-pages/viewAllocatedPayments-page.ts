@@ -69,6 +69,7 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifyCashAllocationText(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const actual = await this.cashAllocationText.textContent();
         expect(actual).toBe(data);
     }
@@ -96,7 +97,7 @@ export class ViewAllocatedPaymentsPage {
 
     async clickOnSearchButton() {
         await this.search.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async verifyManualAllocationScreenTitle(data: string) {
@@ -127,7 +128,7 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifyPaymentMethodFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
         const elements = await this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
         for (let index = 0; index < await elements.count(); index++) {
             const paymentMethod = await elements.nth(index).textContent();

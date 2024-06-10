@@ -167,6 +167,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyjournalVoucherLookupsearchSection() {
+        await new Promise(resolve => setTimeout(resolve, 9000));
         expect(this.journalVoucherLookupsearchSection).toBeVisible();
     }
 

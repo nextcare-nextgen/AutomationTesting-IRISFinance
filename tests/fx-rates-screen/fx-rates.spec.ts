@@ -161,6 +161,39 @@ test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX
 
 });
 
+test('NXGF-TC-1877: TC_006_FX_Rates_Verify that the user is able to view the "FX  Rates " title in bold', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
+
+    await test.step("Verified that the user is able to navigate to the FX Rates screen", async () => {
+        await fxRatesPage.verifyTitleinBold()
+
+    })
+
+});
+
+
 test('NXGF-TC-1878: TC_007_FX_Rates_Verify that the From date and To date is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

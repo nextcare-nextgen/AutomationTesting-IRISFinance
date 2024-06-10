@@ -363,5 +363,17 @@ export class FxRatesPage {
     await expect(this.createButton).toBeEnabled();
   }
 
+  async verifyTitleinBold() {
+    const boldElement = await this.page.locator('//h1[@title="FX Rates"]');
+
+    // Check if the font-weight is bold
+    const fontWeight = await boldElement.evaluate(element => {
+      return window.getComputedStyle(element).fontWeight;
+    });
+
+    // Assert that the font-weight is either 'bold' or a numeric value equal or greater than 700
+    expect(['bold', '700', '800', '900'].includes(fontWeight)).toBe(true);
+  }
+
 
 }

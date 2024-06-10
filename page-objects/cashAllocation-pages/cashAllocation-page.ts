@@ -398,7 +398,7 @@ export class CashAllocationPage {
     }
 
     async verifyAllocatePoliciesButtons() {
-       
+
         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
         for (let index = 0; index < await policyAllocationButtons.count(); index++) {
             expect(await policyAllocationButtons).toBeVisible();

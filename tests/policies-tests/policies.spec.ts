@@ -813,6 +813,11 @@ test('NXGF-TC-1931: TC_021_Policies_Verify that the user is able to search with 
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
 
+    await test.step("User Enter Date", async () => {
+        await policiesPage.enterValidFromDate(policiesData['TC_021_Policies'].date);
+    })
+
+
     await test.step("User Click on Advanced Search Button", async () => {
         await policiesPage.clickOnAdvancedSerach();
 

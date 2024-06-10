@@ -137,21 +137,14 @@ export class PoliciesPage {
 
     async verifyTextisinBold() {
 
-        const textElementSelector = ':has-text("Policies")';
-
-        // Get the computed style of the element
-        const style = await this.page.$eval(textElementSelector, (element) => {
-            const computedStyle = getComputedStyle(element);
-            return computedStyle.fontWeight;
+        const boldElement = await this.page.locator('//h1[@title="Policies"]');
+        // Check if the font-weight is bold
+        const fontWeight = await boldElement.evaluate(element => {
+            return window.getComputedStyle(element).fontWeight;
         });
 
-        // Check if the font weight is bold
-        if (style === 'bold' || Number(style) >= 700) {
-            console.log('The text is bold.');
-        } else {
-            console.log('The text is not bold.');
-        }
-
+        // Assert that the font-weight is either 'bold' or a numeric value equal or greater than 700
+        expect(['bold', '700', '800', '900'].includes(fontWeight)).toBe(true);
     }
 
     async verifyFromDate() {

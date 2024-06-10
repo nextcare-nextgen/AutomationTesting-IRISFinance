@@ -289,15 +289,7 @@ test('NXGF-TC-1674: TC_031_Verify that the user is able to view the "Organizatio
     })
 
     await test.step("Verified that the user is able to view the 'Organizations' title in bold", async () => {
-        const element = await page.waitForSelector(
-            "//h1[@title='Organizations']"
-        )
-        const fontWeight = await element.evaluate((el) => {
-            return window.getComputedStyle(el).getPropertyValue('font-weight')
-
-        })
-        console.log(fontWeight);
-        // await financialOrganizationsPage.verifyTextisinBold();
+        await financialOrganizationsPage.verifyTitleinBold();
     })
 });
 
@@ -1229,6 +1221,77 @@ test('NXGF-TC-1730: TC_062_Verify that the user is able to view the mentioned de
         await financialOrganizationsPage.verifyAddOrgPopUpWindowFields();
     })
 
+
+});
+
+
+test('NXGF-TC-1732: TC_063_Verify that the user is able to view the asterisk (*) for all the mandatory fields', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
+        await financialOrganizationsPage.clickOnADDOrganizationButton();
+    })
+
+    await test.step("Verified that the user is able to view the all the mandatory fields", async () => {
+        await financialOrganizationsPage.verifyAddOrgPopUpWindowManadatoryFields();
+    })
+
+
+});
+
+
+test('NXGF-TC-1734: TC_064_Verify that the user is able to enter the Organization name in the Organization name field', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+
+    })
+
+    await test.step("Click on the Add Organization Button", async () => {
+        await financialOrganizationsPage.clickOnADDOrganizationButton();
+    })
+
+    await test.step("Verified that the user is able to enter the Organization Name in the Organization Name field", async () => {
+        await financialOrganizationsPage.enterAddOrgName(FinancialOrganizationsData['TC_064'].name);
+    })
 
 });
 

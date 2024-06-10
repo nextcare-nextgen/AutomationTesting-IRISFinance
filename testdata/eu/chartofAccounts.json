@@ -111,7 +111,7 @@
     },
     "TC_074_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
-        "accountType":"Gross written premium",
+        "accountType": "Gross written premium",
         "GLdropdownvalue": "General ledger"
     },
     "TC_077_Chart_of_Accounts": {
@@ -119,8 +119,11 @@
     },
     "TC_078_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
-        "accountType":"Gross written premium",
+        "accountType": "Gross written premium",
         "GLdropdownvalue": "General ledger"
+    },
+    "TC_079_Chart_of_Accounts": {
+        "productLine": "Liability"
     },
     "TC_080_Chart_of_Accounts": {
         "GLdropdownvalue": "General ledger"
@@ -128,5 +131,4 @@
     "TC_082_Chart_of_Accounts": {
         "value": "Organizations"
     }
-    
 }
