@@ -75,10 +75,12 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifySearchFilterButton() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.search).toBeVisible();
     }
 
     async verifyResetButton() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.reset).toBeVisible();
     }
 

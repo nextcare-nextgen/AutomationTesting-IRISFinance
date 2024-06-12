@@ -176,6 +176,175 @@ test('NXGF-TC-3321: TC_005_Cash Allocation Dashboard_Verify that the Organizatio
 
 });
 
+test('NXGF-TC-3322: TC_006_Cash Allocation Dashboard_Verify that the mandatory search fields include Payment type, Payment status, Payment method', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Verified that the Manadtory Fields displayed", async () => {
+        await cashAllocationPage.verifyMadatoryFields();
+
+    })
+
+});
+
+test('NXGF-TC-3323: TC_007_Cash Allocation Dashboard_Verify that the non manadatory search fields include From Date ,To Date,Payment Reference,Payment Amount ,Policy Reference', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Click On Filter button", async () => {
+        await cashAllocationPage.clickOnSearchFilterButton();
+
+    })
+    await test.step("Verified that the Non Manadtory Fields displayed", async () => {
+        await cashAllocationPage.verifyNonManadateFields();
+
+    })
+
+});
+
+test('NXGF-TC-3324: TC_008_Cash Allocation Dashboard_Verify that the user is able to view and click on the the search button', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Verified that the user is able to view and click on the the search button", async () => {
+        await cashAllocationPage.verifySearchButton();
+
+    })
+
+});
+
+test('NXGF-TC-3325: TC_009_Cash Allocation Dashboard_Verify that the Payment type has default value as "CASH" and the dropdown list should have Cash,Premium as multi select option', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Cleared Transaction Type", async () => {
+        await cashAllocationPage.clickOnClearedTransactionType();
+
+    })
+
+    await test.step("Verified that the Payment type has default value as 'CASH' and the dropdown list should have Cash,Premium as multi select option", async () => {
+        await cashAllocationPage.verifyListOfTransactionType();
+
+    })
+
+});
+
+test('NXGF-TC-3326: TC_010_Cash Allocation Dashboard_Verify that the Payment status has default value as "Cash-allocated” and the dropdown list should have “Cash-Unallocated”, “Cash-allocated” as multi select values', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+        await sleep(2000);
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Cleared PaymentStatus", async () => {
+        await cashAllocationPage.clickOnClearedPaymentStatus();
+
+    })
+
+    await test.step("Verified that the Payment status has default value as 'Cash-allocated” and the dropdown list should have “Cash-Unallocated”, “Cash-allocated” as multi select values", async () => {
+        await cashAllocationPage.verifyListOfPaymentStatus();
+
+    })
+
+});
+
 test('NXGF-TC-3327: TC_011_Cash Allocation Dashboard_Verify that the Payment method has default value as “Bank Transfer” and the dropdown values should have “Bank Transfer”, “SEPA Direct Debit” ,“Credit Card”', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

@@ -1020,6 +1020,10 @@ test('NXGF-TC-3043: TC_029_Transaction Details Screen_Verify that the user is ab
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
 
+    await test.step("User Enter Date", async () => {
+        await financialTransactionsMonitoringPage.enterFromDate(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].date);
+    })
+
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })
@@ -1066,8 +1070,32 @@ test('NXGF-TC-3045: TC_030_Transaction Details Screen_Verify that the user is ab
         await sleep(2000);
     })
 
-    await test.step("Verified that the user is able to view the results after the search", async () => {
-        await financialTransactionsMonitoringPage.enterinSearchbar(FinancialTransactionsMonitoringData['TC_030_Transactions_Details_Screen'].transactionId);
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Enter Date", async () => {
+        await financialTransactionsMonitoringPage.enterFromDate(FinancialTransactionsMonitoringData['TC_030_Transactions_Details_Screen'].date);
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User enter the Transaction Id number", async () => {
+        await financialTransactionsMonitoringPage.enterTransactionId(FinancialTransactionsMonitoringData['TC_030_Transactions_Details_Screen'].transactionId);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await financialTransactionsMonitoringPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Transaction Id from grid", async () => {
+        await financialTransactionsMonitoringPage.verifyTransactionIdFromGrid(FinancialTransactionsMonitoringData['TC_030_Transactions_Details_Screen'].transactionId);
     })
 
 });

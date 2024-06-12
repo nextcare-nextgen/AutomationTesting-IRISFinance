@@ -65,6 +65,9 @@ export class CashAllocationPage {
     readonly policyIDFromGrid: Locator;
     readonly alertErrorPopup: Locator;
     readonly deleteButton: Locator;
+    readonly broker: Locator;
+    readonly clearedtransactionType: Locator;
+
 
 
 
@@ -77,6 +80,7 @@ export class CashAllocationPage {
         this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
         this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
         this.clearedPaymentMethod = page.locator('//mat-label//span[@title="Payment Method"]//following::iris-icon-action[@role="button"][1]');
+        this.clearedtransactionType = page.locator('//mat-label//span[@title="Transaction Type"]//following::iris-icon-action[@role="button"][1]');
         this.searchButton = page.locator('//button[@title="Search"]');
         this.manualAllocationTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
         this.firstSection = page.locator('//h2[@title="Selected Payment Details"]');
@@ -130,6 +134,7 @@ export class CashAllocationPage {
         this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
         this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 33.62']");
         this.deleteButton = page.locator('//button[@title="Remove Policy"]');
+        this.broker = page.locator('//input[@title="Broker"]');
     }
 
 
@@ -171,6 +176,18 @@ export class CashAllocationPage {
     async clickOnClearedMethod() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.clearedPaymentMethod.click();
+
+    }
+
+    async clickOnClearedTransactionType() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.clearedtransactionType.click();
+
+    }
+
+    async clickOnClearedPaymentStatus() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.clearedPaymentStatus.click();
 
     }
 
@@ -509,6 +526,55 @@ export class CashAllocationPage {
 
     async clickOnDeleteButton() {
         await this.deleteButton.click();
+    }
+
+    async verifyMadatoryFields() {
+        const mandateFields = this.page.locator('//form//div[contains(@class,"align-items-center")]//input');
+        for (let index = 0; index < await mandateFields.count(); index++) {
+            expect(await mandateFields).toBeVisible();
+        }
+    }
+
+    async verifyNonManadateFields() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.fromdate).toBeVisible();
+        expect(this.toDate).toBeVisible();
+        expect(this.paymentRef).toBeVisible();
+        expect(this.broker).toBeVisible();
+        expect(this.fromAmount).toBeVisible();
+        expect(this.toAmount).toBeVisible();
+        expect(this.policyReference).toBeVisible();
+        expect(this.policyHolderNamefromFilter).toBeVisible();
+    }
+
+    async verifySearchButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.searchButton).toBeVisible();
+        expect(this.searchButton).toBeEnabled();
+    }
+
+    async verifyListOfTransactionType() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
+        const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
+        const expectedValues = ['Cash Payment', 'Premium Payment'];
+
+        for (let i = 0; i < elements.length; i++) {
+            const text = await elements[i].textContent();
+            expect(text).toEqual(expectedValues[i]);
+        }
+    }
+
+    async verifyListOfPaymentStatus() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
+        const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
+        const expectedValues = ['Cleared-allocated', 'Cleared-unallocated', 'Partially Allocated', 'Re-processing', 'Returned', 'Unidentified'];
+
+        for (let i = 0; i < elements.length; i++) {
+            const text = await elements[i].textContent();
+            expect(text).toEqual(expectedValues[i]);
+        }
     }
 
 }

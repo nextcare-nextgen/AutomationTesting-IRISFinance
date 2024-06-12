@@ -322,10 +322,12 @@ export class ChartOfAccountsPage {
     }
 
     async selectAddAccountTypeFromDropdown(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.selectAddAccountType.click();
         const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         AccountTypeinput.fill(data);
         const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+        await new Promise(resolve => setTimeout(resolve, 2000));
         selectAccounttype.click();
     }
 
@@ -548,10 +550,12 @@ export class ChartOfAccountsPage {
 
 
     async selectProductlineFromDropdown(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.selectglAccountTypee.click();
         const productLine = this.page.locator('//mat-dialog-container//iris-cost-center-autocomplete[1]//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         productLine.fill(data);
         const selectproductLine = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         selectproductLine.click();
     }
 

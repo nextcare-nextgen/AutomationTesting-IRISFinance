@@ -248,6 +248,7 @@ export class JournalVoucherListPage {
     }
 
     async clickOnEditJournalVoucherButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         let editicon = this.page.locator('//mat-icon[@data-mat-icon-name="icon-edit"]');
         await editicon.first().click();
     }
@@ -290,6 +291,7 @@ export class JournalVoucherListPage {
     }
 
     async verifyEditTransactionScreen() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await expect(this.amount).toBeVisible();
         await expect(this.amountCV1).toBeVisible();
         await expect(this.amountCV2).toBeVisible();
@@ -297,7 +299,8 @@ export class JournalVoucherListPage {
         await expect(this.description).toBeVisible();
     }
 
-    async clickOnRecordsPerPageDropdown(data: string[]) {
+    async clickOnRecordsPerPageDropdown() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.recordPerPageDropdown.click();
         await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
@@ -362,14 +365,15 @@ export class JournalVoucherListPage {
     async verifyOldDateisDisabled(from: string) {
 
         let date = new Date()
-        let day = date.getDate() - 9;
+        let day = date.getDate();
         let month = date.getMonth();
         let year = date.getFullYear();
-
+   
         // let fullDate = day + "." + month + "." + year + ".";
         let fullDate = `${day}`;
         var todayDate = Number(fullDate);
-        var oldDate = todayDate - 7;
+        var oldDate = todayDate - 9;
+
 
         if (from == "From Date") {
             await this.toDateCalendarIcon.click();

@@ -85,7 +85,8 @@
     },
     "TC_045_Journal_Voucher_List": {
         "organization": "2024",
-        "voucherType": "VR"
+        "voucherType": "VR",
+        "date":"04 Jun 2023"
     },
     "TC_047_Journal_Voucher_List": {
         "organization": "2024",

@@ -459,6 +459,10 @@ export class FinancialTransactionsMonitoringPage {
         await this.clearAll.click();
     }
 
+    async enterFromDate(data: string) {
+        await this.fromdateinput.fill(data);
+    }
+
 }
 
 

@@ -1333,6 +1333,10 @@ test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transacti
         await sleep(5000);
     })
 
+    await test.step("Enter Date", async () => {
+        await journalVoucherListPage.enterfromDate(JournalVoucherListPageData['TC_045_Journal_Voucher_List'].date);
+    })
+
     await test.step("Click on Advanced Serch button", async () => {
         await journalVoucherListPage.clickOnAdvancedSearchButton();
     })
@@ -1432,7 +1436,6 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
-    const countValues = [" 50 ", " 100 ", " 150 ", " 200 ", " 250 "];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -1484,7 +1487,7 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
     })
 
     await test.step("Verified the the user is able to view below the grid, Records per page dropdown", async () => {
-        await journalVoucherListPage.clickOnRecordsPerPageDropdown(countValues);
+        await journalVoucherListPage.clickOnRecordsPerPageDropdown();
     })
 
 });

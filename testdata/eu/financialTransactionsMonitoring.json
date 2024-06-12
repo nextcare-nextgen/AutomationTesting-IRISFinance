@@ -50,10 +50,12 @@
         "customerRef": "1690"
     },
     "TC_028_Transactions_Details_Screen": {
-        "transactionId": "6405"
+        "transactionId": "6405",
+        "date": "04 Jun 2023"
     },
     "TC_030_Transactions_Details_Screen": {
-        "value": "Financial Transactions Monitoring"
+        "transactionId": "6405",
+        "date": "04 Jun 2023"
     },
     "TC_036_Transactions_Details_Screen": {
         "transactionId": "8112"
