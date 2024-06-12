@@ -5,7 +5,6 @@ import { FinancialTransactionsMonitoringPage } from '../../page-objects/financia
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const FinancialTransactionsMonitoringData = require(`../../testdata/${process.env.ENV || 'eu'}/financialTransactionsMonitoring.json`) as Record<string, any>;
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
 test('NXGF-TC-3014: TC_000_Transactions Details Screen_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
@@ -30,7 +29,6 @@ test('NXGF-TC-3014: TC_000_Transactions Details Screen_Verify that Valid breadcr
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -61,7 +59,6 @@ test('NXGF-TC-3015: TC_001_Transactions Details Screen_Verify that after logging
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
 });
@@ -78,12 +75,10 @@ test('NXGF-TC-3016: TC_002_Transactions Details Screen_Verify that the user is a
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to See Transactions Details Shortcut Button", async () => {
@@ -106,12 +101,10 @@ test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that 
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -138,12 +131,10 @@ test('NXGF-TC-3019: TC_005_Transactions Details Screen_Verify that the Organizat
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -152,7 +143,6 @@ test('NXGF-TC-3019: TC_005_Transactions Details Screen_Verify that the Organizat
 
     await test.step("User Verified the organization name selected on the top of the page", async () => {
         await financialTransactionsMonitoringPage.verifyOrganizationName(FinancialTransactionsMonitoringData['TC_005_Transactions_Details_Screen'].orgName);
-
     })
 
 
@@ -171,12 +161,10 @@ test('NXGF-TC-3021: TC_006_Transactions Details Screen_Verify that the user is a
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -187,7 +175,6 @@ test('NXGF-TC-3021: TC_006_Transactions Details Screen_Verify that the user is a
         await financialTransactionsMonitoringPage.selectCurrentDateFromDateCalender();
 
     })
-
 
 });
 
@@ -203,12 +190,10 @@ test('NXGF-TC-3022: TC_007_Transactions Details Screen_Verify that the user shou
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -217,9 +202,7 @@ test('NXGF-TC-3022: TC_007_Transactions Details Screen_Verify that the user shou
 
     await test.step("Select Future Date in From Date Field", async () => {
         await financialTransactionsMonitoringPage.selectFutureDateInFromDateCalender();
-
     })
-
 
 });
 
@@ -235,12 +218,10 @@ test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is a
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -249,9 +230,7 @@ test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is a
 
     await test.step("User Verified the organization name selected on the top of the page", async () => {
         await financialTransactionsMonitoringPage.verifySearchfiltersButton();
-
     })
-
 
 });
 
@@ -267,12 +246,10 @@ test('NXGF-TC-3023: TC_009_Transactions Details Screen_Verify that the user shou
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -281,9 +258,7 @@ test('NXGF-TC-3023: TC_009_Transactions Details Screen_Verify that the user shou
 
     await test.step("Verified that the user should is be able to select past date in the 'from date' calendar selection", async () => {
         await financialTransactionsMonitoringPage.selectOldDate();
-
     })
-
 
 });
 
@@ -299,12 +274,10 @@ test('NXGF-TC-3024: TC_010_Transactions Details Screen_Verify that the from date
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -314,9 +287,7 @@ test('NXGF-TC-3024: TC_010_Transactions Details Screen_Verify that the from date
     await test.step("Verified that the from date is earlier or equal to the to date", async () => {
         await financialTransactionsMonitoringPage.selectOldDate();
         await financialTransactionsMonitoringPage.selectCurrentDateToDateCalender();
-
     })
-
 
 });
 
@@ -332,12 +303,10 @@ test('NXGF-TC-3026: TC_012_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -366,12 +335,10 @@ test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment st
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -400,12 +367,10 @@ test('NXGF-TC-3028: TC_014_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -434,12 +399,10 @@ test('NXGF-TC-3029: TC_015_Transaction Details Screen_Verify that the Payment Ty
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -468,12 +431,10 @@ test('NXGF-TC-3030: TC_016_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -502,12 +463,10 @@ test('NXGF-TC-3031: TC_017_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -545,7 +504,6 @@ test('NXGF-TC-3032: TC_018_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -579,7 +537,6 @@ test('NXGF-TC-3033: TC_019_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -613,7 +570,6 @@ test('NXGF-TC-3034: TC_020_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -642,12 +598,10 @@ test('NXGF-TC-3035: TC_021_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -684,7 +638,6 @@ test('NXGF-TC-3036: TC_022_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -730,7 +683,6 @@ test('NXGF-TC-3037: TC_023_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -777,7 +729,6 @@ test('NXGF-TC-3038: TC_024_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -824,7 +775,6 @@ test('NXGF-TC-3039: TC_025_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -874,7 +824,6 @@ test('NXGF-TC-3040: TC_026_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -920,7 +869,6 @@ test('NXGF-TC-3041: TC_027_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -967,7 +915,6 @@ test('NXGF-TC-3042,NXGF-TC-3044: TC_028_Transaction Details Screen_Verify that t
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1013,7 +960,6 @@ test('NXGF-TC-3043: TC_029_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1067,7 +1013,6 @@ test('NXGF-TC-3045: TC_030_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1117,7 +1062,6 @@ test('NXGF-TC-3045: TC_031_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1148,7 +1092,6 @@ test('NXGF-TC-3049: TC_036_Transaction Details Screen_Verify that the search res
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1189,16 +1132,18 @@ test('NXGF-TC-3050: TC_037_Transaction Details Screen_Verify that all the detail
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User enter the Date", async () => {
+        await financialTransactionsMonitoringPage.enterFromDate(FinancialTransactionsMonitoringData['TC_037_Transactions_Details_Screen'].date);
     })
 
     await test.step("User Click on Search filter button", async () => {
@@ -1239,12 +1184,10 @@ test('NXGF-TC-3051: TC_038_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1270,12 +1213,10 @@ test('NXGF-TC-3052,NXGF-TC-3053: TC_039_Transaction Details Screen_Verify that t
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1325,7 +1266,6 @@ test('NXGF-TC-3054: TC_041_Transaction Details Screen_Verify that if the payemen
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1375,7 +1315,6 @@ test('NXGF-TC-3055: TC_042_Transaction Details Screen_Verify that if the payemen
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1425,7 +1364,6 @@ test('NXGF-TC-3056: TC_043_Transaction Details Screen_Verify that the Payment Me
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1460,7 +1398,6 @@ test('NXGF-TC-3057: TC_044_Transaction Details Screen_Verify that the Search bar
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the Search bar displayed in main menu screen", async () => {
@@ -1487,7 +1424,6 @@ test('NXGF-TC-3058: TC_045_Transaction Details Screen_Verify that the User is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
@@ -1561,7 +1497,6 @@ test('NXGF-TC-3059: TC_046_Transaction Details Screen_Verify that the User is ab
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {

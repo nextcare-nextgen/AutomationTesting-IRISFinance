@@ -164,6 +164,7 @@ export class FinancialOrganizationsPage {
 
     async clickOnSearch() {
         await this.search.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyOrganizationCodeFromGrid() {
@@ -196,7 +197,7 @@ export class FinancialOrganizationsPage {
         expect(actual).toBe(data);
     }
 
-    async clickOnRecordsPerPageDropdown(data: string[]) {
+    async clickOnRecordsPerPageDropdown() {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
         await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);

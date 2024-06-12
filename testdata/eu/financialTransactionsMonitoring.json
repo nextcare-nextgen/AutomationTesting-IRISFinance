@@ -61,7 +61,8 @@
         "transactionId": "8112"
     },
     "TC_037_Transactions_Details_Screen": {
-        "transactionId": "8112"
+        "transactionId": "8112",
+        "date":"04 Jun 2023"
     },
     "TC_039_Transactions_Details_Screen": {
         "paymentMethod": "Bank Transfer",

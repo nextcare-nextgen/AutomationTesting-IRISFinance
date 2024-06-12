@@ -1,7 +1,6 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 import { count } from "console";
 import exp from "constants";
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class ChartOfAccountsPage {
 
@@ -65,6 +64,7 @@ export class ChartOfAccountsPage {
     readonly stoppedAccountpopup: Locator;
     readonly addAccountCostCenter1: Locator;
     readonly startDateCalendarIcon: Locator;
+    readonly reset: Locator;
 
 
     constructor(page: Page) {
@@ -110,7 +110,6 @@ export class ChartOfAccountsPage {
         this.selectAddAccountType = page.locator('//iris-account-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.selectstartDate = page.locator('//div//input[contains(@class,"datepicker")]');
         this.selectglAccountTypee = page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
-        //('//iris-gl-account-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.saveButton = page.locator('//button[@title="Save"]');
         this.accountnumFromGrid = page.locator('//mat-table[@id="AccountsList"]//mat-cell[contains(@class,"accountnumber")][2]');
         this.closeButton = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
@@ -129,6 +128,8 @@ export class ChartOfAccountsPage {
         this.randomString = `${Math.random().toString().slice(2, 8)}`;
         this.stoppedAccountpopup = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
         this.startDateCalendarIcon = page.locator('//input[@title="Start Date"]//following::mat-icon[1]');
+        this.reset = page.locator('//button[@title="Reset"]');
+
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -177,6 +178,7 @@ export class ChartOfAccountsPage {
 
     async clickonSearchButton() {
         await this.search.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyAccountNumberFromGrid() {
@@ -242,8 +244,7 @@ export class ChartOfAccountsPage {
     }
 
 
-    async clickOnRecordsPerPageDropdown(data: string[]) {
-        await sleep(2000);
+    async clickOnRecordsPerPageDropdown() {
         await this.recordPerPageDropdown.click();
         await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
 
@@ -391,7 +392,6 @@ export class ChartOfAccountsPage {
     }
 
     async clickAddChildAccountButton() {
-        sleep(3000);
         await this.addchildAccount.first().click();
     }
 
@@ -559,5 +559,9 @@ export class ChartOfAccountsPage {
         selectproductLine.click();
     }
 
+    async verifyResetButtonEnabled() {
+        await expect(this.reset).toBeEnabled()
+
+    }
 }
 

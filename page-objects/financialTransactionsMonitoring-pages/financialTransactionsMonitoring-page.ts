@@ -272,10 +272,11 @@ export class FinancialTransactionsMonitoringPage {
     async clickOnSearchButton() {
         await this.searchButton.click();
         await new Promise(resolve => setTimeout(resolve, 8000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyPaymentStatusFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await paymentsstatus.count(); index++) {
             const paymentStatus = await paymentsstatus.nth(index).textContent();

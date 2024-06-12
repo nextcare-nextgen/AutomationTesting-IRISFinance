@@ -76,7 +76,7 @@ export class ViewAllocatedPaymentsPage {
 
     async verifySearchFilterButton() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        expect(this.search).toBeVisible();
+        expect(this.filter).toBeVisible();
     }
 
     async verifyResetButton() {
@@ -99,7 +99,8 @@ export class ViewAllocatedPaymentsPage {
 
     async clickOnSearchButton() {
         await this.search.click();
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        //await new Promise(resolve => setTimeout(resolve, 10000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyManualAllocationScreenTitle(data: string) {

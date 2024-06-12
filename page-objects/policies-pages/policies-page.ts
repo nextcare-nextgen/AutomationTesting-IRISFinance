@@ -197,6 +197,7 @@ export class PoliciesPage {
 
     async clickOnSerach() {
         await this.search.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async clickOnReset() {
@@ -226,6 +227,7 @@ export class PoliciesPage {
 
     async clickOnAdvancedSerach() {
         await this.advancedSearch.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyPolicyReference() {

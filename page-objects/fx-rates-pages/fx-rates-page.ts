@@ -234,6 +234,7 @@ export class FxRatesPage {
 
   async clickOnSearchButton() {
     await this.searchButton.click();
+    await this.page.waitForSelector('.loader', { state: 'hidden' });
   }
 
   async clickOnResetButton() {

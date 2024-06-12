@@ -134,6 +134,7 @@ export class JournalVoucherListPage {
 
     async clickOnJournalVoucherListButton() {
         await this.journalVoucherListButton.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyjournalVoucherListsearchSection() {
@@ -183,6 +184,7 @@ export class JournalVoucherListPage {
 
     async clickOnApplyButton() {
         await this.applybutton.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async selectVoucherType(data: string) {
@@ -238,6 +240,7 @@ export class JournalVoucherListPage {
 
     async clickOnSearchButton() {
         await this.search.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyVoucherNumFromGrid() {
@@ -345,7 +348,6 @@ export class JournalVoucherListPage {
 
     async enterinSearchbar(data: string) {
         await this.searchBar.fill(data);
-        await sleep(2000);
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }

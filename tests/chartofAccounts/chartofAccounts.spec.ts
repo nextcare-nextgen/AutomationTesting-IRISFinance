@@ -5,7 +5,6 @@ import { ChartOfAccountsPage } from '../../page-objects/chartofAccounts-pages/ch
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const ChartOfAccountsPageData = require(`../../testdata/${process.env.ENV || 'eu'}/chartOfAccounts.json`) as Record<string, any>;
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
 test('NXGF-TC-2097: TC_000_Chart of Accounts_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
@@ -29,7 +28,6 @@ test('NXGF-TC-2097: TC_000_Chart of Accounts_Verify that Valid breadcrumbs are d
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut Button", async () => {
@@ -58,7 +56,6 @@ test('NXGF-TC-2098: TC_001_Chart of Accounts_Verify that the user is able to nav
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
 });
@@ -79,7 +76,6 @@ test('NXGF-TC-2099: TC_002_Chart of Accounts_Verify that the user is able to lan
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verify Dashborad Text and land on dashboard page", async () => {
@@ -104,7 +100,6 @@ test('NXGF-TC-2100: TC_003_Chart of Accounts_Verify that the user is able to see
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to See Charts of Accounts Shortcut Button", async () => {
@@ -128,7 +123,6 @@ test('NXGF-TC-2101: TC_004_Chart of Accounts_Verify that all the shortcut button
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the shortcut buttons are clickable", async () => {
@@ -152,7 +146,6 @@ test('NXGF-TC-2102: TC_005_Chart of Accounts_Verify that the user is able to vie
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the user is able to view the Chart of Accounts  shortcut icon in the main menu page", async () => {
@@ -176,7 +169,6 @@ test('NXGF-TC-2103: TC_006_Chart of Accounts_Verify that the user is able to cli
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the user is able to click on the Chart of Accounts icon", async () => {
@@ -200,7 +192,6 @@ test('NXGF-TC-2104: TC_007_Chart of Accounts_Verify that the user is redirected 
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -229,7 +220,6 @@ test('NXGF-TC-2105: TC_008_Chart of Accounts_Verify that the user is able to vie
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -258,7 +248,6 @@ test('NXGF-TC-2106: TC_009_Chart of Accounts_Verify the that user is able to see
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -288,7 +277,6 @@ test('NXGF-TC-2107: TC_010_Chart of Accounts_Verify that the search icon is pres
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -318,7 +306,6 @@ test('NXGF-TC-2108: TC_011_Chart of Accounts_Verify that the user is able to ent
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -347,7 +334,6 @@ test('NXGF-TC-2109: TC_014_Chart of Accounts_Verify that the user is able to cli
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -379,7 +365,6 @@ test('NXGF-TC-2110: TC_015_Chart of Accounts_Verify that the user is able to vei
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -416,7 +401,6 @@ test('NXGF-TC-2111: TC_016_Chart of Accounts_Verify that the user is able to vie
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -453,7 +437,6 @@ test('NXGF-TC-2112: TC_017_Chart of Accounts_Verify that the user is able to see
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -482,7 +465,6 @@ test('NXGF-TC-2113: TC_018_Chart of Accounts_Verify that the user is able to vie
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -511,7 +493,6 @@ test('NXGF-TC-2114,NXGF-TC-2115: TC_019_Chart of Accounts_Verify that the user i
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -540,7 +521,6 @@ test('NXGF-TC-2116: TC_025_Chart of Accounts_Verify that the user is able to vie
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -573,7 +553,6 @@ test('NXGF-TC-2117: TC_027_Chart of Accounts_Verify that the user is able to cli
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -606,7 +585,6 @@ test('NXGF-TC-2118: TC_028_Chart of Accounts_Verify that the user is able to vie
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -639,7 +617,6 @@ test('NXGF-TC-2119: TC_029_Chart of Accounts_Verify that the is user is also abl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -672,7 +649,6 @@ test('NXGF-TC-2120: TC_030_Chart of Accounts_ Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -690,7 +666,6 @@ test('NXGF-TC-2121: TC_031_ Chart of Accounts_Verify that the user is able to vi
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -702,7 +677,6 @@ test('NXGF-TC-2121: TC_031_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -710,7 +684,7 @@ test('NXGF-TC-2121: TC_031_ Chart of Accounts_Verify that the user is able to vi
     })
 
     await test.step("Verified the the user is able to view below the grid, Records per page dropdown", async () => {
-        await chartOfAccountsPage.clickOnRecordsPerPageDropdown(countValues);
+        await chartOfAccountsPage.clickOnRecordsPerPageDropdown();
     })
 
 });
@@ -731,7 +705,6 @@ test('NXGF-TC-2122: TC_032_ Chart of Accounts_Verify that the user is able to ch
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -760,7 +733,6 @@ test('NXGF-TC-2123: TC_033_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -789,7 +761,6 @@ test('NXGF-TC-2124: TC_034_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -818,7 +789,6 @@ test("NXGF-TC-2125: TC_035_ Chart of Accounts_Verify that the user is able to na
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -852,7 +822,6 @@ test('NXGF-TC-2126: TC_036_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -885,7 +854,6 @@ test('NXGF-TC-2127: TC_037_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -921,13 +889,12 @@ test('NXGF-TC-2128: TC_038_ Chart of Accounts_Verify that the user is able to se
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(ChartOfAccountsPageData['TC_038_Chart_of_Accounts'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
+
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
     })
@@ -954,7 +921,6 @@ test('NXGF-TC-2129: TC_039_ Chart of Accounts_Verify that the user is able to en
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -964,6 +930,7 @@ test('NXGF-TC-2129: TC_039_ Chart of Accounts_Verify that the user is able to en
     await test.step("Verified that the user is able to click on the add(+) button", async () => {
         await chartOfAccountsPage.clickOnAddAccountButton();
     })
+
     await test.step("Uer Verified the organization name selected on the top of the page", async () => {
         await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_039_Chart_of_Accounts'].accountNum);
 
@@ -987,7 +954,6 @@ test('NXGF-TC-2130: TC_040_Chart of Accounts_Verify that the user is able to ent
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1020,7 +986,6 @@ test('NXGF-TC-2131: TC_041_ Chart of Accounts_Verify that the user is able to se
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1053,7 +1018,6 @@ test('NXGF-TC-2132: TC_042_ Chart of Accounts_Verify that the user is able to en
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1085,7 +1049,6 @@ test('NXGF-TC-2133: TC_043_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1096,7 +1059,6 @@ test('NXGF-TC-2133: TC_043_ Chart of Accounts_Verify that the user is able to vi
         await chartOfAccountsPage.clickOnAddAccountButton();
     })
 
-
     await test.step("User Enter Account Number", async () => {
         await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_043_Chart_of_Accounts'].accountNum);
 
@@ -1104,7 +1066,6 @@ test('NXGF-TC-2133: TC_043_ Chart of Accounts_Verify that the user is able to vi
 
     await test.step("User Enter Account Name", async () => {
         await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_043_Chart_of_Accounts'].accountName);
-
     })
 
     await test.step("User Select Date", async () => {
@@ -1142,7 +1103,6 @@ test('NXGF-TC-2134: TC_044_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1153,15 +1113,12 @@ test('NXGF-TC-2134: TC_044_ Chart of Accounts_Verify that the user is able to cl
         await chartOfAccountsPage.clickOnAddAccountButton();
     })
 
-
     await test.step("User Enter Account Number", async () => {
         await chartOfAccountsPage.enterAddAccountNumber(ChartOfAccountsPageData['TC_044_Chart_of_Accounts'].accountNum);
-
     })
 
     await test.step("User Enter Account Name", async () => {
         await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_044_Chart_of_Accounts'].accountName);
-
     })
 
     await test.step("User Select Date", async () => {
@@ -1199,7 +1156,6 @@ test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify t
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1212,7 +1168,6 @@ test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify t
 
     await test.step("Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(8000);
     })
 
     await test.step("Verified that the user is able to save after entering the mandatory fields", async () => {
@@ -1237,7 +1192,6 @@ test('NXGF-TC-2137: TC_047_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1271,7 +1225,6 @@ test('NXGF-TC-2138: TC_049_ Chart of Accounts_Verify that the user is unable to 
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1304,7 +1257,6 @@ test('NXGF-TC-2139: TC_050_ Chart of Accounts_Verify that the start date selecto
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1338,7 +1290,6 @@ test('NXGF-TC-2141: TC_052_ Chart of Accounts_Verify that the user is able to se
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1371,7 +1322,6 @@ test('NXGF-TC-2142: TC_053_ Chart of Accounts_Verify that the start date selecto
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1404,7 +1354,6 @@ test('NXGF-TC-2143: TC_054_ Chart of Accounts_Verify that the start date selecto
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1437,7 +1386,6 @@ test('NXGF-TC-2145: TC_057_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1474,7 +1422,6 @@ test('NXGF-TC-2146: TC_059_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1512,7 +1459,6 @@ test('NXGF-TC-2147,NXGF-TC-2148: TC_060_ Chart of Accounts_Verify that the user 
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1525,12 +1471,10 @@ test('NXGF-TC-2147,NXGF-TC-2148: TC_060_ Chart of Accounts_Verify that the user 
 
     await test.step("User Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(3000);
     })
 
     await test.step("User Click on Add Child Account button", async () => {
         await chartOfAccountsPage.clickAddChildAccountButton();
-        sleep(3000);
     })
 
     await test.step("Verified that the user is redirected to a Add Child Account screen to  create the sub account", async () => {
@@ -1556,7 +1500,6 @@ test('NXGF-TC-2149: TC_062_ Chart of Accounts_Verify that the user is able to se
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1569,12 +1512,10 @@ test('NXGF-TC-2149: TC_062_ Chart of Accounts_Verify that the user is able to se
 
     await test.step("User Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(3000);
     })
 
     await test.step("User Click on Add Child Account button", async () => {
         await chartOfAccountsPage.clickAddChildAccountButton();
-        sleep(5000);
     })
 
     await test.step("Verified that the user is able to see Account name, Account number,  Start date, Account Type, Product Line, GL Account Type", async () => {
@@ -1600,7 +1541,6 @@ test('NXGF-TC-2150: TC_063_ Chart of Accounts_Verify that the Account name, Acco
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1613,12 +1553,10 @@ test('NXGF-TC-2150: TC_063_ Chart of Accounts_Verify that the Account name, Acco
 
     await test.step("User Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(3000);
     })
 
     await test.step("User Click on Add Child Account button", async () => {
         await chartOfAccountsPage.clickAddChildAccountButton();
-        sleep(5000);
     })
 
     await test.step("Verified that the user is able to see Account name, Account number,  Start date, Account Type, Product Line, GL Account Type", async () => {
@@ -1642,7 +1580,6 @@ test('NXGF-TC-2151,NXGF-TC-2152: TC_064_ Chart of Accounts_Verify that the user 
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1655,12 +1592,10 @@ test('NXGF-TC-2151,NXGF-TC-2152: TC_064_ Chart of Accounts_Verify that the user 
 
     await test.step("User Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(7000);
     })
 
     await test.step("User Click on Add Child Account button", async () => {
         await chartOfAccountsPage.clickAddChildAccountButton();
-        sleep(5000);
     })
 
     await test.step("User Enter Account Number", async () => {
@@ -1711,7 +1646,6 @@ test('NXGF-TC-2153: TC_066_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1724,12 +1658,10 @@ test('NXGF-TC-2153: TC_066_ Chart of Accounts_Verify that the user is able to cl
 
     await test.step("User Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();
-        sleep(7000);
     })
 
     await test.step("User Click on Add Child Account button", async () => {
         await chartOfAccountsPage.clickAddChildAccountButton();
-        sleep(5000);
     })
 
     await test.step("User Enter Account Number", async () => {
@@ -1738,7 +1670,6 @@ test('NXGF-TC-2153: TC_066_ Chart of Accounts_Verify that the user is able to cl
 
     await test.step("User Enter Account Name", async () => {
         await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_064_Chart_of_Accounts'].accountName);
-
     })
 
     await test.step("User Select Date", async () => {
@@ -1774,7 +1705,6 @@ test('NXGF-TC-2154: TC_067_ Chart of Accounts_Verify that the Edit option is dis
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1807,7 +1737,6 @@ test('NXGF-TC-2155: TC_068_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1840,7 +1769,6 @@ test('NXGF-TC-2156: TC_070_ Chart of Accounts_Verify that the Account Name and A
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1877,7 +1805,6 @@ test('NXGF-TC-2157: TC_071_ Chart of Accounts_Verify that the user is able to ed
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1918,7 +1845,6 @@ test('NXGF-TC-2158: TC_072_ Chart of Accounts_Verify that the user is able to ed
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -1959,7 +1885,6 @@ test('NXGF-TC-2159: TC_073_ Chart of Accounts_Verify that the user is able to cl
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -2009,7 +1934,6 @@ test('NXGF-TC-2160: TC_074_ Chart of Accounts_Verify that the updated details ar
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -2070,13 +1994,11 @@ test('NXGF-TC-2161: TC_075_ Chart of Accounts_Verify that the Stop option to sto
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
     })
-
 
     await test.step("Click on Save button", async () => {
         await chartOfAccountsPage.verifyStopAccountsInGrid();
@@ -2100,7 +2022,6 @@ test('NXGF-TC-2162,NXGF-TC-2163: TC_077_ Chart of Accounts_Verify that the messa
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -2133,7 +2054,6 @@ test('NXGF-TC-2164: TC_078_ Chart of Accounts_Verify that the user is able to vi
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -2194,7 +2114,6 @@ test('NXGF-TC-2165: TC_079_ Chart of Accounts_Verify that the user is able to ed
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -2232,7 +2151,6 @@ test('NXGF-TC-2166: TC_080_ Chart of Accounts_Verify that the user is able to ed
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
@@ -2270,7 +2188,6 @@ test('NXGF-TC-2167: TC_081_ Chart of Accounts_Verify that the Search bar display
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the Search bar displayed in main menu screen", async () => {
@@ -2295,13 +2212,85 @@ test('NXGF-TC-2168: TC_082_ Chart of Accounts_Verify that the User is able to en
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {
         await chartOfAccountsPage.enterinSearchbar(ChartOfAccountsPageData['TC_080_Chart_of_Accounts'].value);
     })
 
+});
+
+test('NXGF-TC-6706: TC_83_ Chart of Accounts_Verify that when searching for a record, the account details or record should be displayed correctly', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Verify that the user is able to enter the Account number  in the 'Search by Account number' field", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_083_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+    })
+
+    await test.step("Verify that the user is able to enter the Account number  in the 'Search by Account number' field", async () => {
+        await chartOfAccountsPage.verifyAccountNumberFromGrid();
+    })
+
+    
+});
+
+test('NXGF-TC-6707: TC_84_ Chart of Accounts_Verify that after searching for an account number, the reset button should become active to allow users to clear or reset the search results.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Verify that the user is able to enter the Account number  in the 'Search by Account number' field", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_084_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+    })
+
+    await test.step("Verify that the user is able to enter the Account number  in the 'Search by Account number' field", async () => {
+        await chartOfAccountsPage.verifyResetButtonEnabled();
+    })
+  
 });
 
 

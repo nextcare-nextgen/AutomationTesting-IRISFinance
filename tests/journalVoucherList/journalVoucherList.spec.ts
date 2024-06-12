@@ -5,7 +5,6 @@ import { JournalVoucherListPage } from '../../page-objects/journalVoucherList-pa
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const JournalVoucherListPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherList.json`) as Record<string, any>;
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
 test('NXGF-TC-2060: TC_000_Journal Voucher List_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
@@ -29,7 +28,6 @@ test('NXGF-TC-2060: TC_000_Journal Voucher List_Verify that Valid breadcrumbs ar
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -59,7 +57,6 @@ test('NXGF-TC-2061: TC_001_Journal Voucher List_Verify that the main menu option
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
 });
@@ -101,7 +98,6 @@ test('NXGF-TC-2063: TC_003_Journal Voucher List_Verify that the user is able to 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to See Journal Voucher Shortcut Button", async () => {
@@ -127,7 +123,6 @@ test('NXGF-TC-2064: TC_004_Journal Voucher List_Verify that the user is able to 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -157,7 +152,6 @@ test('NXGF-TC-2065: TC_005_Journal Voucher List_Verify that the screen is divide
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -194,7 +188,6 @@ test('NXGF-TC-2066: TC_006_Journal Voucher List_Verify that the screen is titled
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -224,7 +217,6 @@ test('NXGF-TC-2067: TC_007_Journal Voucher List_Verify that all field is display
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -259,12 +251,10 @@ test('NXGF-TC-2068: TC_008_Journal Voucher List_Search_Verify that the Voucher t
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_008_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -273,7 +263,6 @@ test('NXGF-TC-2068: TC_008_Journal Voucher List_Search_Verify that the Voucher t
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("User Click on Filter Search Button", async () => {
@@ -307,12 +296,10 @@ test('NXGF-TC-2069: TC_009_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_009_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -321,7 +308,6 @@ test('NXGF-TC-2069: TC_009_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("User Click on Filter Search Button", async () => {
@@ -355,12 +341,10 @@ test('NXGF-TC-2070: TC_011_Journal Voucher List_Search_Verify that the user shou
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_011_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -369,7 +353,6 @@ test('NXGF-TC-2070: TC_011_Journal Voucher List_Search_Verify that the user shou
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("User Click on Filter Search Button", async () => {
@@ -403,12 +386,10 @@ test('NXGF-TC-2071: TC_013_Journal Voucher List_Search_Verify that the from vouc
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_011_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -417,7 +398,6 @@ test('NXGF-TC-2071: TC_013_Journal Voucher List_Search_Verify that the from vouc
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("User Click on Filter Search Button", async () => {
@@ -448,12 +428,10 @@ test('NXGF-TC-2072: TC_014_Journal Voucher List_Search_Verify that the From Vouc
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_013_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -462,7 +440,6 @@ test('NXGF-TC-2072: TC_014_Journal Voucher List_Search_Verify that the From Vouc
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("User Click on Filter Search Button", async () => {
@@ -500,12 +477,10 @@ test('NXGF-TC-2073: TC_015_Journal Voucher List_Search_Verify that user is able 
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_013_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -514,7 +489,6 @@ test('NXGF-TC-2073: TC_015_Journal Voucher List_Search_Verify that user is able 
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that user is able to view From Date as a search field", async () => {
@@ -540,12 +514,10 @@ test('NXGF-TC-2074: TC_016_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_016_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -554,7 +526,6 @@ test('NXGF-TC-2074: TC_016_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that the user is able to Enter a date for 'From Date'", async () => {
@@ -580,12 +551,10 @@ test('NXGF-TC-2075: TC_017_Journal Voucher List_Search_Verify that the user is n
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_017_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -594,7 +563,6 @@ test('NXGF-TC-2075: TC_017_Journal Voucher List_Search_Verify that the user is n
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that the user is not able to select old date from To date field.", async () => {
@@ -620,12 +588,10 @@ test('NXGF-TC-2076: TC_018_Journal Voucher List_Search_Verify that user is able 
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_013_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -634,7 +600,6 @@ test('NXGF-TC-2076: TC_018_Journal Voucher List_Search_Verify that user is able 
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that user is able to view To Date as a search field", async () => {
@@ -660,12 +625,10 @@ test('NXGF-TC-2077: TC_019_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_013_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -674,7 +637,6 @@ test('NXGF-TC-2077: TC_019_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that user is able to view To Date as a search field", async () => {
@@ -700,12 +662,10 @@ test('NXGF-TC-2078: TC_020_Journal Voucher List_Search_Verify that the To Date i
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_020_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -714,7 +674,6 @@ test('NXGF-TC-2078: TC_020_Journal Voucher List_Search_Verify that the To Date i
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that the user is able to Enter a date for 'From Date'", async () => {
@@ -743,12 +702,10 @@ test('NXGF-TC-2079: TC_021_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_020_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -757,7 +714,6 @@ test('NXGF-TC-2079: TC_021_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that the user is able to view the search option", async () => {
@@ -783,12 +739,10 @@ test('NXGF-TC-2080: TC_022_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_022_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -797,7 +751,6 @@ test('NXGF-TC-2080: TC_022_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Verified that the user is able to Enter a date for 'From Date'", async () => {
@@ -810,7 +763,6 @@ test('NXGF-TC-2080: TC_022_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Verified Voucher Number present from Entered Date", async () => {
@@ -835,12 +787,10 @@ test('NXGF-TC-2081: TC_024_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_024_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -849,7 +799,6 @@ test('NXGF-TC-2081: TC_024_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -870,12 +819,10 @@ test('NXGF-TC-2081: TC_024_Journal Voucher List_Search_Verify that the user is a
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Verified Voucher Number present from Entered Date", async () => {
@@ -900,12 +847,10 @@ test('NXGF-TC-2082: TC_037_Journal Voucher List_Search result_Verify that the us
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_037_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -914,7 +859,6 @@ test('NXGF-TC-2082: TC_037_Journal Voucher List_Search result_Verify that the us
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -935,12 +879,10 @@ test('NXGF-TC-2082: TC_037_Journal Voucher List_Search result_Verify that the us
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -970,12 +912,10 @@ test('NXGF-TC-2083: TC_038_Journal Voucher List_Search result_Verify that the us
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_038_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -984,7 +924,6 @@ test('NXGF-TC-2083: TC_038_Journal Voucher List_Search result_Verify that the us
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1005,12 +944,10 @@ test('NXGF-TC-2083: TC_038_Journal Voucher List_Search result_Verify that the us
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1040,12 +977,10 @@ test('NXGF-TC-2084: TC_040_Journal Voucher List_Search result_Verify that the de
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_037_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1054,7 +989,6 @@ test('NXGF-TC-2084: TC_040_Journal Voucher List_Search result_Verify that the de
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1075,12 +1009,10 @@ test('NXGF-TC-2084: TC_040_Journal Voucher List_Search result_Verify that the de
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1109,12 +1041,10 @@ test('NXGF-TC-2085: TC_041_Journal Voucher List_Modify_Verify that the user is u
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_041_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1123,7 +1053,6 @@ test('NXGF-TC-2085: TC_041_Journal Voucher List_Modify_Verify that the user is u
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1144,12 +1073,10 @@ test('NXGF-TC-2085: TC_041_Journal Voucher List_Modify_Verify that the user is u
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1178,12 +1105,10 @@ test('NXGF-TC-2086: TC_043_Journal Voucher List_Modify_Verfiy that the Voucher i
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_043_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1192,7 +1117,6 @@ test('NXGF-TC-2086: TC_043_Journal Voucher List_Modify_Verfiy that the Voucher i
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1213,12 +1137,10 @@ test('NXGF-TC-2086: TC_043_Journal Voucher List_Modify_Verfiy that the Voucher i
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1247,12 +1169,10 @@ test('NXGF-TC-2087: TC_044_Journal Voucher List_Modify_Verify that the second se
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_044_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1261,7 +1181,6 @@ test('NXGF-TC-2087: TC_044_Journal Voucher List_Modify_Verify that the second se
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1282,12 +1201,10 @@ test('NXGF-TC-2087: TC_044_Journal Voucher List_Modify_Verify that the second se
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1316,12 +1233,10 @@ test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transacti
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_045_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1330,7 +1245,6 @@ test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transacti
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Enter Date", async () => {
@@ -1347,12 +1261,10 @@ test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transacti
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1385,12 +1297,10 @@ test('NXGF-TC-2089: TC_047_Journal Voucher List_Modify_Verify the the user is ab
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_047_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1399,7 +1309,6 @@ test('NXGF-TC-2089: TC_047_Journal Voucher List_Modify_Verify the the user is ab
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(8000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1412,12 +1321,10 @@ test('NXGF-TC-2089: TC_047_Journal Voucher List_Modify_Verify the the user is ab
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1447,12 +1354,10 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_048_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1461,7 +1366,6 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1474,12 +1378,10 @@ test('NXGF-TC-2090: TC_048_Journal Voucher List_Modify_Verify that the user is a
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1508,12 +1410,10 @@ test('NXGF-TC-2091: TC_049_Journal Voucher List_Modify_Verify that the user is a
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_048_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1522,7 +1422,6 @@ test('NXGF-TC-2091: TC_049_Journal Voucher List_Modify_Verify that the user is a
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1535,12 +1434,10 @@ test('NXGF-TC-2091: TC_049_Journal Voucher List_Modify_Verify that the user is a
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1569,12 +1466,10 @@ test('NXGF-TC-2092: TC_053_Journal Voucher List_Verify that the differences are 
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_048_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1583,7 +1478,6 @@ test('NXGF-TC-2092: TC_053_Journal Voucher List_Verify that the differences are 
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1596,12 +1490,10 @@ test('NXGF-TC-2092: TC_053_Journal Voucher List_Verify that the differences are 
 
     await test.step("Click on Apply button", async () => {
         await journalVoucherListPage.clickOnApplyButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Search", async () => {
         await journalVoucherListPage.clickOnSearchButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Edit Vocher Details button", async () => {
@@ -1630,12 +1522,10 @@ test('NXGF-TC-2093: TC_055_Journal Voucher List_Search_Verify that the To Vouche
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_055_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1644,7 +1534,6 @@ test('NXGF-TC-2093: TC_055_Journal Voucher List_Search_Verify that the To Vouche
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("Click on Advanced Serch button", async () => {
@@ -1678,7 +1567,6 @@ test('NXGF-TC-2094: TC_056_Journal Voucher List_Search_Verify that the Search ba
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the Search bar displayed in main menu screen", async () => {
@@ -1703,7 +1591,6 @@ test('NXGF-TC-2095: TC_057_Journal Voucher List_Verify that the User is able to 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {
@@ -1729,12 +1616,10 @@ test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to 
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].organization);
-        await sleep(2000);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
@@ -1743,7 +1628,6 @@ test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to 
 
     await test.step("User Click on Journal Voucher List Button", async () => {
         await journalVoucherListPage.clickOnJournalVoucherListButton();
-        await sleep(5000);
     })
 
     await test.step("User Click on Advanced Search Button", async () => {

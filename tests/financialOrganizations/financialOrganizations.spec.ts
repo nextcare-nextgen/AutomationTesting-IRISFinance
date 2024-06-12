@@ -6,7 +6,6 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 import { FxRatesPage } from '../../page-objects/fx-rates-pages/fx-rates-page.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const FinancialOrganizationsData = require(`../../testdata/${process.env.ENV || 'eu'}/financialOrganizations.json`) as Record<string, any>;
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
 test('NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access the IRIS Finance portal', async ({ page }) => {
@@ -98,7 +97,6 @@ test('NXGF-TC-1660: TC_011_Verify that the main menu option is clickable', async
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
 });
@@ -141,7 +139,6 @@ test('NXGF-TC-1664: TC_013_Verify that the user is able to see shortcut menu but
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to See Journal Voucher Shortcut Button", async () => {
@@ -164,12 +161,10 @@ test('NXGF-TC-1666: TC_014_Verify that all the shortcut buttons are clickable', 
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the user is able to see shortcut menu buttons in the main menu page", async () => {
@@ -192,17 +187,14 @@ test('NXGF-TC-1668: TC_028_Verify that the user is able to view the Organization
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the user is able to view the Organization shortcut icon in the main menu page", async () => {
         await financialOrganizationsPage.verifyFinancialOrganizationShrtcutButton();
-
     })
 
 });
@@ -219,17 +211,14 @@ test('NXGF-TC-1670: TC_029_Verify that the user is able to click on the Organiza
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the user is able to click on the Organization icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
 });
@@ -250,12 +239,10 @@ test('NXGF-TC-1672: TC_030_Verift that the user is redirected to the Organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to navigate to the Journal Voucher Lookup screen", async () => {
@@ -280,12 +267,10 @@ test('NXGF-TC-1674: TC_031_Verify that the user is able to view the "Organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to view the 'Organizations' title in bold", async () => {
@@ -310,12 +295,10 @@ test('NXGF-TC-1676: TC_032_Verify the that user is able to see two search fields
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verify the that user is able to see two search fields Search by Organization 'Name' and Search by Organization 'Code'", async () => {
@@ -340,17 +323,14 @@ test('NXGF-TC-1678: TC_033_Verify that the search icon is present beside both th
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the search icon is present beside both the search fields", async () => {
         await financialOrganizationsPage.verifySearchField();
-
     })
 });
 
@@ -370,12 +350,10 @@ test('NXGF-TC-1680: TC_034_Verify that the user is able to enter the organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
@@ -400,12 +378,10 @@ test('NXGF-TC-1682: TC_035_Verify that the user is able to enter the organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
@@ -429,12 +405,10 @@ test('NXGF-TC-1684: TC_036_Verify that the user is able to enter the organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
@@ -460,12 +434,10 @@ test('NXGF-TC-1687: TC_037_Verify that the user is able to click on search icon 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
@@ -497,12 +469,10 @@ test('NXGF-TC-1689: TC_038_Verify that the user is able to view the results afte
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
@@ -534,16 +504,16 @@ test('NXGF-TC-1691: TC_039_Verify that the user is able to view the mentioned va
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
+
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
         await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_039'].organizationCode)
     })
+
     await test.step("Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
     })
@@ -569,12 +539,10 @@ test('NXGF-TC-1692: TC_040_Verify that the user is able to see the coloring inde
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to see the coloring indexes below the grid", async () => {
@@ -598,13 +566,12 @@ test('NXGF-TC-1694: TC_041_Verify that the user is able to view all the organiza
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
+
     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
         await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_041'].organizationCode)
     })
@@ -635,12 +602,10 @@ test('NXGF-TC-1696,NXGF-TC-1698: TC_042_Verify that the user is able to enter th
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to view all the organizations listed irrespective of the status", async () => {
@@ -654,7 +619,6 @@ test('NXGF-TC-1700: TC_045_Verify that the user is able to view the Records per 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
-    const countValues = [" 10 ", " 15 ", " 20 ", " 30 ", " 50 ", " 100 ", " 250 "];
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -666,12 +630,10 @@ test('NXGF-TC-1700: TC_045_Verify that the user is able to view the Records per 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that Records per page: is displayed", async () => {
@@ -679,8 +641,7 @@ test('NXGF-TC-1700: TC_045_Verify that the user is able to view the Records per 
     })
 
     await test.step("Click On Records per page dropdown", async () => {
-        await sleep(2000);
-        await financialOrganizationsPage.clickOnRecordsPerPageDropdown(countValues);
+        await financialOrganizationsPage.clickOnRecordsPerPageDropdown();
     })
 
 });
@@ -701,12 +662,10 @@ test('NXGF-TC-1702: TC_046_Verify that the user is able to view the same search 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("User Enter Organization Name", async () => {
@@ -744,17 +703,14 @@ test('NXGF-TC-1704: TC_047_Verify that the user is able to see the stop date col
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Active index", async () => {
         await financialOrganizationsPage.clickOnActiveIndex();
-
     })
 
     await test.step("Verify that the user is able to view the same search results for both the search criteria", async () => {
@@ -779,12 +735,10 @@ test('NXGF-TC-1706: TC_048_Verify that the user is able to view the start date f
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("User Enter Organization Name", async () => {
@@ -798,7 +752,6 @@ test('NXGF-TC-1706: TC_048_Verify that the user is able to view the start date f
     await test.step("User Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
     })
-
 
     await test.step("Verified that the user is able to view the start date for all the search results irrespective of their statusa", async () => {
         await financialOrganizationsPage.verifyStartDateFromGrid();
@@ -822,12 +775,10 @@ test('NXGF-TC-1708: TC_049_Verify that the user is able to view the "Edit Organi
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("User Enter Organization Name", async () => {
@@ -840,7 +791,6 @@ test('NXGF-TC-1708: TC_049_Verify that the user is able to view the "Edit Organi
 
     await test.step("User Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
-        sleep(4000);
     })
 
     await test.step("Verify that the user is able to view the 'Edit Organization' button after the search", async () => {
@@ -865,12 +815,10 @@ test('NXGF-TC-1710,NXGF-TC-1712: TC_050_Verify that the user is able to click on
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("User Enter Organization Name", async () => {
@@ -883,7 +831,6 @@ test('NXGF-TC-1710,NXGF-TC-1712: TC_050_Verify that the user is able to click on
 
     await test.step("User Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
-        sleep(4000);
     })
 
     await test.step("Verify that the user is able to view the 'Edit Organization' button after the search", async () => {
@@ -909,12 +856,10 @@ test('NXGF-TC-1714: TC_052_Verify that the user is able to edit any active organ
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("User Enter Organization Name", async () => {
@@ -927,7 +872,6 @@ test('NXGF-TC-1714: TC_052_Verify that the user is able to edit any active organ
 
     await test.step("User Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
-        sleep(4000);
     })
 
     await test.step("Click on Edit Organization", async () => {
@@ -953,12 +897,10 @@ test('NXGF-TC-1716: TC_053_Verify that the user is able to click on Stop Organiz
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("User Enter Organization Name", async () => {
@@ -971,7 +913,6 @@ test('NXGF-TC-1716: TC_053_Verify that the user is able to click on Stop Organiz
 
     await test.step("User Click on Search", async () => {
         await financialOrganizationsPage.clickOnSearch();
-        sleep(4000);
     })
 
     await test.step("Click on Edit Organization", async () => {
@@ -1001,12 +942,10 @@ test('NXGF-TC-1718: TC_056_Verify that the user is able click on the filter by i
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able click on the filter by icon and select any of the two status active or inactive'", async () => {
@@ -1035,12 +974,10 @@ test('NXGF-TC-1720: TC_057_Verify that the user is able to view the correspondin
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the filter by Active icon", async () => {
@@ -1058,8 +995,6 @@ test('NXGF-TC-1720: TC_057_Verify that the user is able to view the correspondin
     await test.step("Verified that the user is able to view the corresponding results on the grid", async () => {
         await financialOrganizationsPage.verifyStoppedAccountsFromGrid();
     })
-
-
 
 });
 
@@ -1080,12 +1015,10 @@ test('NXGF-TC-1722: TC_058_Verify that the user is able to view all the results 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to view all the results when no fitler is applied", async () => {
@@ -1110,12 +1043,10 @@ test('NXGF-TC-1724: TC_059_Verify that the user is able to view the Add Organiza
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to view the Add Organization button (+) in the organization page", async () => {
@@ -1140,12 +1071,10 @@ test('NXGF-TC-1726: TC_060_Verify that the user is able to click on the Add Orga
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
@@ -1170,12 +1099,10 @@ test('NXGF-TC-1728: TC_061_Verify that the user is redirected to a new popup win
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
@@ -1205,12 +1132,10 @@ test('NXGF-TC-1730: TC_062_Verify that the user is able to view the mentioned de
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
@@ -1241,12 +1166,10 @@ test('NXGF-TC-1732: TC_063_Verify that the user is able to view the asterisk (*)
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the user is able to click on the Add Organization button (+)", async () => {
@@ -1277,12 +1200,10 @@ test('NXGF-TC-1734: TC_064_Verify that the user is able to enter the Organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1312,12 +1233,10 @@ test('NXGF-TC-1736: TC_065_Verify that the user is able to enter the Organizatio
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1347,12 +1266,10 @@ test('NXGF-TC-1738: TC_066_Verify that the user is able to enter the CV Currency
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1381,12 +1298,10 @@ test('NXGF-TC-1740: TC_067_Verify that the user is able to enter the CV Currency
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1415,12 +1330,10 @@ test('NXGF-TC-1742: TC_068_Verify that the user is able to enter the Start date 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1449,12 +1362,10 @@ test('NXGF-TC-1744: TC_069_Verify that the user is able to click on Create after
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1503,12 +1414,10 @@ test('NXGF-TC-1746: TC_070_Verify that the user is able to click on create witho
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1537,12 +1446,10 @@ test('NXGF-TC-1748,NXGF-TC-1750: TC_071_Verify that the user is able to click on
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1571,12 +1478,10 @@ test('NXGF-TC-1752: TC_074_Verify that the start date selector displays current 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1606,12 +1511,10 @@ test('NXGF-TC-1754: TC_076_Verify that in the start date selector Weeks start wi
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1641,12 +1544,10 @@ test('NXGF-TC-1756: TC_077_Verify that the start date selector has Arrows on top
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1676,12 +1577,10 @@ test('NXGF-TC-1758: TC_078_Verify that the user is able to enter future date in 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1710,12 +1609,10 @@ test('NXGF-TC-1760: TC_079_Verify that the user is able to enter the old date fr
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1744,12 +1641,10 @@ test('NXGF-TC-1762: TC_080_Verify that the user is able to enter the ACTS code',
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1778,12 +1673,10 @@ test('NXGF-TC-1764: TC_081_Verify that the user is able to enter Localization in
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on the Add Organization Button", async () => {
@@ -1812,12 +1705,10 @@ test('NXGF-TC-1766: TC_082_Verify that the Edit Organization Button is displayed
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Verified that the Edit Organization Button is displayed", async () => {
@@ -1842,12 +1733,10 @@ test('NXGF-TC-1768: TC_083_Verify that the after click on details button Financi
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Click on the Organization shortcut icon", async () => {
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-
     })
 
     await test.step("Click on Edit Organization button", async () => {
@@ -1880,7 +1769,6 @@ test('NXGF-TC-1770: TC_084_Verify that the Search bar displayed in main menu scr
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the Search bar displayed in main menu screen", async () => {
@@ -1907,7 +1795,6 @@ test('NXGF-TC-1772: TC_085_Verify that the User is able to Search the shortcut m
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {

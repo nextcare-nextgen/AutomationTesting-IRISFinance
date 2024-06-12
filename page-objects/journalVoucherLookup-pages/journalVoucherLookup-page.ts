@@ -163,7 +163,8 @@ export class JournalVoucherLookupPage {
 
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupButton.click();
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyjournalVoucherLookupsearchSection() {
@@ -347,7 +348,7 @@ export class JournalVoucherLookupPage {
     }
 
 
-    async clickOnRecordsPerPageDropdown(data: string[]) {
+    async clickOnRecordsPerPageDropdown() {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
         await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
@@ -406,7 +407,6 @@ export class JournalVoucherLookupPage {
 
     async enterinSearchbar(data: string) {
         await this.searchbar.fill(data);
-        await sleep(2000);
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }

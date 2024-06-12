@@ -29,7 +29,6 @@ test('NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a st
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut Button", async () => {
@@ -61,7 +60,6 @@ test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amo
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut Button", async () => {
@@ -126,7 +124,6 @@ test('NXGF-TC-2976,NXGF-TC-2981: TC_004_one to one_Verify that a received paymen
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut Button", async () => {
@@ -204,7 +201,6 @@ test('NXGF-TC-2986: TC_014_Underpayment_Verify a received payment has been alloc
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Policies Shortcut Button", async () => {

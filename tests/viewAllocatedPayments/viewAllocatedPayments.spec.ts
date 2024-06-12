@@ -5,7 +5,6 @@ import { ViewAllocatedPaymentsPage } from '../../page-objects/viewAllocatedPayme
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const ViewAllocatedPaymentsPageData = require(`../../testdata/${process.env.ENV || 'eu'}/viewAllocatedPayments.json`) as Record<string, any>;
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
 test('NXGF-TC-2889: TC_000_View allocated payments_Verify that the user is able to navigate to cash allocation screen', async ({ page }) => {
@@ -25,7 +24,6 @@ test('NXGF-TC-2889: TC_000_View allocated payments_Verify that the user is able 
     })
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -56,7 +54,6 @@ test('NXGF-TC-2890: TC_001_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -95,7 +92,6 @@ test('NXGF-TC-2891,NXGF-TC-2892: TC_002_View allocated payments_Verify that the 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -131,7 +127,6 @@ test('NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -171,7 +166,6 @@ test('NXGF-TC-2894: TC_005_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -217,7 +211,6 @@ test('NXGF-TC-2895: TC_006_View allocated payments_Verify that user is able to v
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -227,7 +220,6 @@ test('NXGF-TC-2895: TC_006_View allocated payments_Verify that user is able to v
 
     await test.step("Verified that user is able to view the search results for payment method dropdown", async () => {
         await viewAllocatedPaymentsPage.verifyPaymentMethodFromGrid(ViewAllocatedPaymentsPageData['TC_006_Cash_Allocation'].paymentMethod);
-
     })
 
 });
@@ -249,7 +241,6 @@ test('NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -330,7 +321,6 @@ test('NXGF-TC-2898: TC_009_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -364,7 +354,6 @@ test('NXGF-TC-2899: TC_010_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -400,7 +389,6 @@ test('NXGF-TC-2900,NXGF-TC-2901: TC_011_View allocated payments_Verify that the 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -466,7 +454,6 @@ test('NXGF-TC-2902: TC_013_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -525,7 +512,6 @@ test('NXGF-TC-2903: TC_014_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -589,7 +575,6 @@ test('NXGF-TC-2904: TC_015_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -648,7 +633,6 @@ test('NXGF-TC-2906: TC_017_View allocated payments_Verify that the user clicks o
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -678,7 +662,6 @@ test('NXGF-TC-2907: TC_018_View allocated payments_Verify that all the search fi
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -722,7 +705,6 @@ test('NXGF-TC-2908: TC_019_View allocated payments_Verify that the user is able 
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -735,6 +717,10 @@ test('NXGF-TC-2908: TC_019_View allocated payments_Verify that the user is able 
 
     await test.step("Select Payment Method", async () => {
         await viewAllocatedPaymentsPage.selectPaymentStatus(ViewAllocatedPaymentsPageData['TC_019_Cash_Allocation'].paymentStatus);
+    })
+
+    await test.step("Click on Search button", async () => {
+        await viewAllocatedPaymentsPage.clickOnSearchButton();
     })
 
     await test.step("User Click on Details button", async () => {
@@ -761,7 +747,6 @@ test('NXGF-TC-2910: TC_021_View allocated payments_Vreify that the policy refere
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("User Click on Cash Allocation Shortcut button", async () => {
@@ -783,7 +768,6 @@ test('NXGF-TC-2910: TC_021_View allocated payments_Vreify that the policy refere
 
     await test.step("Verify\ied that the user is able to search the previoulsy allocated payments with Payment amount", async () => {
         await viewAllocatedPaymentsPage.verifyPaymentStatusFromGrid(ViewAllocatedPaymentsPageData['TC_021_Cash_Allocation'].paymentStatus);
-
     })
 
 });
@@ -805,7 +789,6 @@ test('NXGF-TC-2914: TC_025_View allocated payments_Verify that the Search bar di
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
-        await sleep(2000);
     })
 
     await test.step("Verified that the Search bar displayed in main menu screen", async () => {

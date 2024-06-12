@@ -1,6 +1,5 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 import { count } from "console";
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class CashAllocationPage {
 
@@ -192,7 +191,7 @@ export class CashAllocationPage {
     }
 
     async selectPaymentStatus(data: string) {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
 
