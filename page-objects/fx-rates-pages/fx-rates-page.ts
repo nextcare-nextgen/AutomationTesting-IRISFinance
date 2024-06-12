@@ -329,6 +329,7 @@ export class FxRatesPage {
   }
 
   async selectAddFXRateFromCurrency(fromCurrencyData: string) {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await this.addFxRateCurrency.click();
     await this.page.locator('//mat-option//span//mat-label[text()="' + fromCurrencyData + '"]//ancestor::div[1]').click();
 

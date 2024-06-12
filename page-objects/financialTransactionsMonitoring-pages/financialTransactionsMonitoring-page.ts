@@ -1,5 +1,4 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class FinancialTransactionsMonitoringPage {
 
@@ -197,7 +196,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectPaymentStatus(data: string) {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
@@ -207,7 +206,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyListOfPaymentStatus() {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 
@@ -222,13 +221,13 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectTransactiontype(data: string) {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
 
     async verifyListOfTransactionType() {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 
@@ -243,7 +242,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectPaymentMethod(data: string) {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
@@ -277,6 +276,7 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifyPaymentStatusFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await paymentsstatus.count(); index++) {
             const paymentStatus = await paymentsstatus.nth(index).textContent();
@@ -297,11 +297,12 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnApplyButton() {
         await this.applyButton.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
 
     async selectPaymentType(data: string) {
-        sleep(5000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
