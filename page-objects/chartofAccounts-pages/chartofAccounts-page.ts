@@ -65,7 +65,12 @@ export class ChartOfAccountsPage {
     readonly addAccountCostCenter1: Locator;
     readonly startDateCalendarIcon: Locator;
     readonly reset: Locator;
-
+    readonly accountnameFromGrid: Locator;
+    readonly journalVoucherLookupButton: Locator;
+    readonly journalVoucherShortcut: Locator;
+    readonly advancedSearch : Locator;
+    readonly JVaccountNum : Locator;
+    readonly apply : Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -129,7 +134,12 @@ export class ChartOfAccountsPage {
         this.stoppedAccountpopup = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
         this.startDateCalendarIcon = page.locator('//input[@title="Start Date"]//following::mat-icon[1]');
         this.reset = page.locator('//button[@title="Reset"]');
-
+        this.accountnameFromGrid = page.locator('//mat-table[@id="AccountsList"]//mat-cell[contains(@class,"accountname")]');
+        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher Lookup"]');
+        this.journalVoucherShortcut = page.locator('//div//span[@title="Journal Vouchers"]');
+        this.advancedSearch = page.locator('//div//button[@title="Filter"]');
+        this.JVaccountNum = page.locator('//iris-form-container//input[@title="Account number"]');
+        this.apply = page.locator('//button[@title="Apply"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -139,6 +149,12 @@ export class ChartOfAccountsPage {
 
     async clickOnChartsOfAccountsShrtcutsButton() {
         await this.chartOfAccountsShortcut.click();
+    }
+
+    async clickOnJournalVoucherShrtcutsButton() {
+        await this.journalVoucherShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 8000));
+
     }
 
     async verifyDashboardText(data: string) {
@@ -341,11 +357,12 @@ export class ChartOfAccountsPage {
         const glAccountTypeinput = this.page.locator('//mat-dialog-container//iris-gl-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         glAccountTypeinput.fill(data);
         const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         selectGLAccounttype.click();
     }
 
     async verifySaveButton() {
-        await expect(this.saveButton).toBeVisible();
+        await expect(this.saveButton).toBeEnabled();
     }
 
     async clickOnSaveButton() {
@@ -561,7 +578,46 @@ export class ChartOfAccountsPage {
 
     async verifyResetButtonEnabled() {
         await expect(this.reset).toBeEnabled()
+    }
 
+    async verifyStoppedAccountsNumberinGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const actual = await this.accountnumFromGrid.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyActiveAccountsNameinGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const actual = await this.accountnameFromGrid.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async getAddaccountNumber() {
+        await this.addAccountNumber.fill(this.randomString);
+    }
+
+    async clickOnJournalVoucherLookupButton() {
+        await this.journalVoucherLookupButton.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
+    }
+
+    async clickOnAdvancedSearchButton() {
+        await this.advancedSearch.click();
+    }
+
+    async getAddaccountNumberAndVerifyFromJV() {
+        const num = await this.JVaccountNum.fill(this.randomString);
+        await this.apply.click();
+        await this.search.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        expect(this.randomString).toBe(num);
+
+    }
+
+    async clickonResetButton() {
+        await this.reset.click();
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 }
 

@@ -51,6 +51,8 @@ export class DashboardPage {
     */
   async clickOnMenuIconButton() {
     await this.menuIcon.click();
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    await this.page.waitForSelector('.loader', { state: 'hidden' });
   }
 
   async selectOrganization(org: string) {

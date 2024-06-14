@@ -104,6 +104,8 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 7000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
 

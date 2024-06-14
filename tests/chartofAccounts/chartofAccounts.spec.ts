@@ -1137,7 +1137,6 @@ test('NXGF-TC-2134: TC_044_ Chart of Accounts_Verify that the user is able to cl
         await chartOfAccountsPage.clickOnSaveButton();
     })
 
-
 });
 
 test('NXGF-TC-2135,NXGF-TC-2136,NXGF-TC-2144: TC_045_ Chart of Accounts_Verify that the user is able to save after entering the mandatory fields', async ({ page }) => {
@@ -2254,7 +2253,7 @@ test('NXGF-TC-6706: TC_83_ Chart of Accounts_Verify that when searching for a re
         await chartOfAccountsPage.verifyAccountNumberFromGrid();
     })
 
-    
+
 });
 
 test('NXGF-TC-6707: TC_84_ Chart of Accounts_Verify that after searching for an account number, the reset button should become active to allow users to clear or reset the search results.', async ({ page }) => {
@@ -2290,7 +2289,206 @@ test('NXGF-TC-6707: TC_84_ Chart of Accounts_Verify that after searching for an 
     await test.step("Verify that the user is able to enter the Account number  in the 'Search by Account number' field", async () => {
         await chartOfAccountsPage.verifyResetButtonEnabled();
     })
-  
+
+});
+
+test("NXGF-TC-6708: TC_85_ Chart of Accounts_Verify that when the user selects 'Active' status, the resulting search should only display accounts with 'Active' status. If the user searches for additional data, matching accounts with active status should be displayed", async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Active account button", async () => {
+        await chartOfAccountsPage.clickOnActiveIndex();
+    })
+
+    await test.step("User enter the Account number  in the 'Search by Account name' field", async () => {
+        await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_085_Chart_of_Accounts'].accountName);
+    })
+
+    await test.step("Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+    })
+
+    await test.step("Verified that when the user selects 'Active' status, the resulting search should only display accounts with 'Active' status", async () => {
+        await chartOfAccountsPage.verifyActiveAccountsNameinGrid(ChartOfAccountsPageData['TC_085_Chart_of_Accounts'].accountName);
+    })
+
+});
+
+
+test('NXGF-TC-6709: TC_86_ Chart of Accounts_Verify that when an account is displayed in the default list, it should remain visible even after selecting a status from the bottom of the page, provided the status is relevant to the account.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Stopped account button", async () => {
+        await chartOfAccountsPage.clickOnStopIndex();
+    })
+
+    await test.step("Verify that the user is able to enter the Account number  in the 'Search by Account number' field", async () => {
+        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_086_Chart_of_Accounts'].accountNumber);
+    })
+
+    await test.step("Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+    })
+
+    await test.step("Verified that when an account is displayed in the default list, it should remain visible even after selecting a status from the bottom of the page, provided the status is relevant to the account.", async () => {
+        await chartOfAccountsPage.verifyStoppedAccountsNumberinGrid(ChartOfAccountsPageData['TC_086_Chart_of_Accounts'].accountNumber);
+    })
+
+});
+
+
+test('NXGF-TC-6710: TC_87_ Chart of Accounts_Verify that a newly created account is visible and selectable in the journal voucher. This ensures that accounts are correctly updated and integrated with the journal voucher system.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
+
+    await test.step("User Enter Account Number", async () => {
+        await chartOfAccountsPage.getAddaccountNumber();
+    })
+
+    await test.step("User Enter Account Name", async () => {
+        await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].accountName);
+    })
+
+    await test.step("User Select Date", async () => {
+        await chartOfAccountsPage.enterSelectStartDate(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].value);
+    })
+
+    await test.step("User Select Add Account type", async () => {
+        await chartOfAccountsPage.selectAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].dropdownvalue);
+    })
+
+    await test.step("User Select GL Account type", async () => {
+        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].GLdropdownvalue);
+    })
+
+    await test.step("Click on Save button", async () => {
+        await chartOfAccountsPage.clickOnSaveButton();
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await chartOfAccountsPage.clickOnJournalVoucherLookupButton();
+    })
+
+    await test.step("User Click on Advanced Search Button", async () => {
+        await chartOfAccountsPage.clickOnAdvancedSearchButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await chartOfAccountsPage.getAddaccountNumberAndVerifyFromJV();
+    })
+
+});
+
+test("NXGF-TC-6711: TC_88_ Chart of Accounts_Verify that the count of total records displayed in the chart of accounts is consistent and does not vary unexpectedly after performing certain activities or operations.", async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Click on Active account button", async () => {
+        await chartOfAccountsPage.clickOnActiveIndex();
+    })
+
+    await test.step("User enter the Account number  in the 'Search by Account name' field", async () => {
+        await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_085_Chart_of_Accounts'].accountName);
+    })
+
+    await test.step("Click on Search button", async () => {
+        await chartOfAccountsPage.clickonSearchButton();
+    })
+
+    await test.step("Verified that when the user selects 'Active' status, the resulting search should only display accounts with 'Active' status", async () => {
+        await chartOfAccountsPage.verifyActiveAccountsNameinGrid(ChartOfAccountsPageData['TC_085_Chart_of_Accounts'].accountName);
+    })
+
+    await test.step("Click on Reset button", async () => {
+        await chartOfAccountsPage.clickonResetButton();
+    })
+
+
 });
 
 

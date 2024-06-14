@@ -136,5 +136,17 @@
     },
     "TC_084_Chart_of_Accounts": {
         "accountNumber": "875421"
+    },
+    "TC_085_Chart_of_Accounts": {
+        "accountName": "NCP Clearing"
+    },
+    "TC_086_Chart_of_Accounts": {
+        "accountNumber": "7879788888"
+    },
+    "TC_087_Chart_of_Accounts": {
+        "accountName": "TestAccount",
+        "value": "22 Feb 2024",
+        "dropdownvalue": "Gross written premium",
+        "GLdropdownvalue": "General ledger"
     }
 }
