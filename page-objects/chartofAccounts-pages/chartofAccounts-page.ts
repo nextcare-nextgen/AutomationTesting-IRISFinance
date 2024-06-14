@@ -68,9 +68,9 @@ export class ChartOfAccountsPage {
     readonly accountnameFromGrid: Locator;
     readonly journalVoucherLookupButton: Locator;
     readonly journalVoucherShortcut: Locator;
-    readonly advancedSearch : Locator;
-    readonly JVaccountNum : Locator;
-    readonly apply : Locator;
+    readonly advancedSearch: Locator;
+    readonly JVaccountNum: Locator;
+    readonly apply: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -261,6 +261,8 @@ export class ChartOfAccountsPage {
 
 
     async clickOnRecordsPerPageDropdown() {
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.recordPerPageDropdown.click();
         await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
 

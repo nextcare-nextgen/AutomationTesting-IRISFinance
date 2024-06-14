@@ -1,0 +1,8 @@
+{
+    "TC_000_Journal_Voucher_Creation": {
+        "breadcrumbsText": "Journal Vouchers"
+    },
+    "TC_002_Journal_Voucher_Creation": {
+        "dashboardText": "Dashboard"
+    }
+}

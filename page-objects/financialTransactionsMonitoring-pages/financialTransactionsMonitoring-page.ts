@@ -272,7 +272,6 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnSearchButton() {
         await this.searchButton.click();
-        await new Promise(resolve => setTimeout(resolve, 8000));
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 

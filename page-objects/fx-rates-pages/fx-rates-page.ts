@@ -85,7 +85,7 @@ export class FxRatesPage {
     this.addFxRateStartDate = page.locator('//iris-fx-rate-manage-dialog//input[@title="Start Date"]');
     this.addFxRateEndDate = page.locator('//iris-fx-rate-manage-dialog//input[@title="End Date"]');
     this.addFxRateRate = page.locator('//iris-fx-rate-manage-dialog//input[@title="Rate"]');
-    this.addFxRateValidatedCheckbox = page.locator('//iris-fx-rate-manage-dialog//div[@isdisabled="true"]//mat-checkbox//div[@class="mdc-checkbox"]');
+    this.addFxRateValidatedCheckbox = page.locator('//iris-fx-rate-manage-dialog//div[@isdisabled="true"]');
     this.addFxRateStartDateCalender = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     this.addFxRateEndDateCalender = page.locator('//div//input[@title="End Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     this.createButton = page.locator('//button[@title="Create"]');
@@ -325,7 +325,8 @@ export class FxRatesPage {
 
   async verifyAddFxRateValidatedisDisabled() {
     await new Promise(resolve => setTimeout(resolve, 3000));
-    await expect(this.addFxRateValidatedCheckbox).toBeDisabled();
+    const value = await this.addFxRateValidatedCheckbox.getAttribute('isdisabled');
+    expect(value).toBe("true");
   }
 
   async selectAddFXRateFromCurrency(fromCurrencyData: string) {

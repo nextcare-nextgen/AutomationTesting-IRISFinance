@@ -548,6 +548,7 @@ export class CashAllocationPage {
 
     async verifySearchButton() {
         await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         expect(this.searchButton).toBeVisible();
         expect(this.searchButton).toBeEnabled();
     }

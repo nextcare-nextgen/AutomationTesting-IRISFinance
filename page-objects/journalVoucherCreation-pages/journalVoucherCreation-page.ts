@@ -1,10 +1,16 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export class JournalVoucherLookupPage {
+export class JournalVoucherCreationPage {
 
     readonly page: Page;
     readonly journalVoucherShortcut: Locator;
+    readonly cashAllocationShortcut: Locator;
+    readonly chartOfAccountsShortcut: Locator;
+    readonly FXRatesShorcut: Locator;
+    readonly organizationShortcut: Locator;
+    readonly policiesShortcut: Locator;
+    readonly FTMshortcut: Locator;
     readonly breadCrumbs: Locator;
     readonly dashboard: Locator;
     readonly journalVoucherText: Locator;
@@ -68,6 +74,12 @@ export class JournalVoucherLookupPage {
     constructor(page: Page) {
         this.page = page;
         this.journalVoucherShortcut = page.locator('//div//span[@title="Journal Vouchers"]');
+        this.cashAllocationShortcut = page.locator('//div//span[@title="Cash Allocation"]');
+        this.chartOfAccountsShortcut = page.locator('//div//span[@title="Charts of Accounts"]');
+        this.FXRatesShorcut = page.locator('//div//span[@title="FX Rates"]');
+        this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
+        this.policiesShortcut = page.locator('//div//span[@title="Policies"]');
+        this.FTMshortcut = page.locator('//div//span[@title="Financial Transactions Monitoring"]');
         this.breadCrumbs = page.locator('//iris-breadcrumb//li//iris-navigation-hyperlink');
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
         this.journalVoucherText = page.locator('//div//h1[@title="Journal Vouchers"]');
@@ -154,6 +166,16 @@ export class JournalVoucherLookupPage {
 
     async verifyJournalVoucherShortcutButton() {
         expect(this.journalVoucherShortcut).toBeVisible();
+    }
+
+    async verifyJShortcutButtonAreClickable() {
+        expect(this.journalVoucherShortcut).toBeEnabled();
+        expect(this.cashAllocationShortcut).toBeEnabled();
+        expect(this.chartOfAccountsShortcut).toBeEnabled();
+        expect(this.FXRatesShorcut).toBeEnabled();
+        expect(this.orgShortcut).toBeEnabled();
+        expect(this.policiesShortcut).toBeEnabled();
+        expect(this.FTMshortcut).toBeEnabled();
     }
 
     async verifyJournalVoucherLookupText(data: string) {
@@ -262,7 +284,6 @@ export class JournalVoucherLookupPage {
 
 
     async verifyAmountFromGrid() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
         const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
         for (let index = 0; index < await amount.count(); index++) {
             expect(await amount.nth(index).innerText()).toBeTruthy();

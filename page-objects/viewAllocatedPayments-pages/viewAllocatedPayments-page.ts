@@ -99,8 +99,8 @@ export class ViewAllocatedPaymentsPage {
 
     async clickOnSearchButton() {
         await this.search.click();
-        //await new Promise(resolve => setTimeout(resolve, 10000));
         await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyManualAllocationScreenTitle(data: string) {

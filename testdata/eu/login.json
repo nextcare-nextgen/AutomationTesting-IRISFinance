@@ -8,7 +8,7 @@
     "Login-Access": {
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestAdmin",
-        "passwordInput": "Quincy@2506",
+        "passwordInput": "QADev@2024",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     }
    }
