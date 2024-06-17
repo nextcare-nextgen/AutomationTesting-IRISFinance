@@ -99,7 +99,6 @@ export class ViewAllocatedPaymentsPage {
 
     async clickOnSearchButton() {
         await this.search.click();
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
@@ -132,6 +131,7 @@ export class ViewAllocatedPaymentsPage {
 
     async verifyPaymentMethodFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 10000));
+
         const elements = await this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
         for (let index = 0; index < await elements.count(); index++) {
             const paymentMethod = await elements.nth(index).textContent();

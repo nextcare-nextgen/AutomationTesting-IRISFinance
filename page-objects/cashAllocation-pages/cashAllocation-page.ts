@@ -85,7 +85,7 @@ export class CashAllocationPage {
         this.firstSection = page.locator('//h2[@title="Selected Payment Details"]');
         this.secondSection = page.locator('//h2[@title="Policy Search"]');
         this.thirdSection = page.locator('//section//mat-table');
-        this.policyRef = page.locator('//div[@role="region"]//input[@title="Policy Reference"]');
+        this.policyRef = page.locator('//section[contains(@class,"items-start")]//input[@title="Policy Reference"]');
         this.policyHolderName = page.locator('//div[@role="region"]//input[@title="Policy Holder Name"]');
         this.effectiveDate = page.locator('//div[@role="region"]//input[@title="Effective Date"]');
         this.clearAllbutton = page.locator('//button[@title="Clear all"]');
@@ -131,7 +131,7 @@ export class CashAllocationPage {
         this.premiumandTaxtitle = page.locator("//h2[@title='Premium and Tax Dues']");
         this.okButton = page.locator('//button[@title="Ok"]');
         this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
-        this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 33.62']");
+        this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 11.82']");
         this.deleteButton = page.locator('//button[@title="Remove Policy"]');
         this.broker = page.locator('//input[@title="Broker"]');
     }
@@ -251,8 +251,8 @@ export class CashAllocationPage {
     }
 
     async enterPolicyRef(data: string) {
-        await this.policyRef.clear();
-        await this.policyRef.fill(data);
+        await this.policyRef.first().clear();
+        await this.policyRef.first().fill(data);
     }
 
     async enterPolicyHolderName(data: string) {
@@ -441,7 +441,7 @@ export class CashAllocationPage {
     }
 
     async clickOnManualAllocationSearchButton() {
-        await this.manualAllocationSearchbutton.click();
+        await this.manualAllocationSearchbutton.first().click();
     }
 
     async clickOnAddPolicyButton() {

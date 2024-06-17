@@ -4,5 +4,11 @@
     },
     "TC_002_Journal_Voucher_Creation": {
         "dashboardText": "Dashboard"
+    },
+    "TC_005_Journal_Voucher_Creation": {
+        "title": "Manage Journal Voucher"
+    },
+    "TC_007_Journal_Voucher_Creation": {
+        "title": "Manage Journal Voucher"
     }
 }

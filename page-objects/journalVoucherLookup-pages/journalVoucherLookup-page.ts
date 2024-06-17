@@ -262,7 +262,7 @@ export class JournalVoucherLookupPage {
 
 
     async verifyAmountFromGrid() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
         for (let index = 0; index < await amount.count(); index++) {
             expect(await amount.nth(index).innerText()).toBeTruthy();

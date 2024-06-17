@@ -204,6 +204,7 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyOrgNameAndCodeFromGrid() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const Name = this.page.locator('//mat-cell[contains(@class,"name")]');
         for (let index = 0; index < await Name.count(); index++) {
             expect(await Name.nth(index).innerText()).toBeTruthy();

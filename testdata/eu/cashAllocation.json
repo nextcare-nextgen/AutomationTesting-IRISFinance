@@ -90,8 +90,8 @@
         "policyRef1": "PRT-AWPDE-6913-NB",
         "policyRef2": "PRT-AWPDE-10144-NB",
         "amount": "11",
-        "amount1": "11",
-        "amount2": "11.62"
+        "amount1": "0.72",
+        "amount2": "0.10"
     },
     "TC_049_Cash_Allocation": {
         "policyRef": "PRT-AWPDE-6914-NB",

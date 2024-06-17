@@ -1756,6 +1756,10 @@ test('NXGF-TC-3365,NXGF-TC-3366: TC_049_Cash Allocation Dashboard_Verify that th
         await cashAllocationPage.enterAmount(CashAllocationPageData['TC_049_Cash_Allocation'].amount);
     })
 
+    await test.step("User Click on Add policy Button", async () => {
+        await cashAllocationPage.clickOnAddPolicyButton();
+    })
+
     await test.step("Verified that the when click on add/allocate option in the second sction after the policy search a confirmation message pops up", async () => {
         await cashAllocationPage.verifyAlertErrorPopup();
     })
