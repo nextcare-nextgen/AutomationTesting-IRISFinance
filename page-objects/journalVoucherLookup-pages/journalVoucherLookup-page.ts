@@ -262,12 +262,11 @@ export class JournalVoucherLookupPage {
 
 
     async verifyAmountFromGrid() {
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 6000));
         const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
         for (let index = 0; index < await amount.count(); index++) {
             expect(await amount.nth(index).innerText()).toBeTruthy();
         }
-        console.log(await amount.count());
     }
 
     async verifySearchButton() {
@@ -357,6 +356,7 @@ export class JournalVoucherLookupPage {
 
     async clickOnRecordsPerPageDropdownOption() {
         await this.recordPerPageDropdown.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
         let dropdownOptions = await this.page.locator('//mat-option//span').all();
 
         for (let i = 0; i < dropdownOptions.length; i++) {
@@ -364,6 +364,7 @@ export class JournalVoucherLookupPage {
             if (await dropdownOptions[i].textContent() === " 100 ") {
                 // Click if element with text found
                 await dropdownOptions[i].click();
+                await new Promise(resolve => setTimeout(resolve, 3000));
                 break;
             }
         }

@@ -20,6 +20,10 @@ export class JournalVoucherCreationPage {
     readonly journalVoucherLookupGridSection: Locator;
     readonly addJournalVoucherLookupButton: Locator;
     readonly addJournalVoucherLookupTitle: Locator;
+    readonly vouchertype: Locator;
+    readonly addVoucherTransactionButton: Locator;
+    readonly description: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -39,6 +43,9 @@ export class JournalVoucherCreationPage {
         this.journalVoucherLookupGridSection = page.locator('//section//mat-table[@id="JournalVoucherLookupList"]');
         this.addJournalVoucherLookupButton = page.locator('//button[@title="Add Journal Voucher Lookup"]');
         this.addJournalVoucherLookupTitle = page.locator('//h1[@title="Manage Journal Voucher"]');
+        this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
+        this.addVoucherTransactionButton = page.locator('//button[@title="Add Voucher Transaction"]');
+        this.description = page.locator('//input[@title="Description"]');
 
     }
 
@@ -118,4 +125,39 @@ export class JournalVoucherCreationPage {
         await expect(thirdSection).toBeVisible();
 
     }
+
+    async verifyVoucherTypeDropdownList() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const dropdownLst = this.page.locator('//div//mat-option//span//iris-base-label');
+        for (let index = 0; index < await dropdownLst.count(); index++) {
+            expect(await dropdownLst.nth(index).innerText()).toBeTruthy();
+        }
+    }
+
+    async clickonVoucherType() {
+        await this.vouchertype.click();
+    }
+
+    async selectVoucherType(data: string) {
+        await this.vouchertype.click();
+        const selectvouchertype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+        selectvouchertype.click();
+    }
+
+    async clickOnAddVoucherTrancastionButton() {
+        await this.addVoucherTransactionButton.click();
+    }
+
+    async verifyDescriptionInputBox() {
+        await expect(this.description).toBeEditable();
+    }
+
+    async enterDescription(data: string) {
+        await this.description.fill(data);
+    }
+
+    async VerifyAddVoucherTrancastionButtonEnable() {
+        await expect(this.addVoucherTransactionButton).toBeEnabled();
+    }
+
 }

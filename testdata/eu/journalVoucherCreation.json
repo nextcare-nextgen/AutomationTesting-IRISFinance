@@ -10,5 +10,11 @@
     },
     "TC_007_Journal_Voucher_Creation": {
         "title": "Manage Journal Voucher"
+    },
+    "TC_020_Journal_Voucher_Creation": {
+        "voucherType": "Tax Posting"
+    },
+    "TC_023_Journal_Voucher_Creation": {
+        "description": "Testing"
     }
 }
