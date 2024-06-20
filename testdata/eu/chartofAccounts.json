@@ -102,7 +102,7 @@
     },
     "TC_072_Chart_of_Accounts": {
         "accountName": "TestAccountName",
-        "dropdownvalue": "Gross written premium"
+        "dropdownvalue": "Bank Charges"
     },
     "TC_073_Chart_of_Accounts": {
         "accountNum": "875421",

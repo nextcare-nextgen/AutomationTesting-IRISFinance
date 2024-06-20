@@ -16,5 +16,11 @@
     },
     "TC_023_Journal_Voucher_Creation": {
         "description": "Testing"
+    },
+    "TC_032_Journal_Voucher_Creation": {
+        "title": "Add Voucher Transaction"
+    },
+    "TC_035_Journal_Voucher_Creation": {
+        "value": "123456-Test"
     }
 }

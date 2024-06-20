@@ -23,7 +23,21 @@ export class JournalVoucherCreationPage {
     readonly vouchertype: Locator;
     readonly addVoucherTransactionButton: Locator;
     readonly description: Locator;
-
+    readonly addVoucherTransactionTitle: Locator;
+    readonly accountName: Locator;
+    readonly amount: Locator;
+    readonly currency: Locator;
+    readonly amountCV1: Locator;
+    readonly amountCV2: Locator;
+    readonly valueDate: Locator;
+    readonly productLine: Locator;
+    readonly manadteaccountName: Locator;
+    readonly manadteamount: Locator;
+    readonly manadtecurrency: Locator;
+    readonly manadteamountCV1: Locator;
+    readonly manadteamountCV2: Locator;
+    readonly manadtevalueDate: Locator;
+    readonly manadtedescription: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -46,6 +60,21 @@ export class JournalVoucherCreationPage {
         this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.addVoucherTransactionButton = page.locator('//button[@title="Add Voucher Transaction"]');
         this.description = page.locator('//input[@title="Description"]');
+        this.addVoucherTransactionTitle = page.locator('//h2[@title="Add Voucher Transaction"]');
+        this.accountName = page.locator('//iris-composed-dialog//iris-account-autocomplete//div//input[contains(@class,"input-element")]');
+        this.amount = page.locator('//iris-composed-dialog//input[@title="Amount"]');
+        this.currency = page.locator('//iris-composed-dialog//iris-currency-autocomplete//div//input[contains(@class,"input-element")]');
+        this.amountCV1 = page.locator('//iris-composed-dialog//input[@title="Amount CV1"]');
+        this.amountCV2 = page.locator('//iris-composed-dialog//input[@title="Amount CV2"]');
+        this.valueDate = page.locator('//iris-composed-dialog//input[@title="Value Date"]');
+        this.productLine = page.locator('//iris-composed-dialog//iris-cost-center-autocomplete//div//input[contains(@class,"input-element")]');
+        this.manadteaccountName = page.locator('//iris-composed-dialog//iris-account-autocomplete//div//input[contains(@class,"input-element")]');
+        this.manadteamount = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount"]');
+        this.manadtecurrency = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::iris-currency-autocomplete//input[contains(@class,"input-element")]');
+        this.manadteamountCV1 = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount CV1"]');
+        this.manadteamountCV2 = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount CV2"]');
+        this.manadtevalueDate = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Value Date"]');
+        this.manadtedescription = page.locator('//input[@title="Description"]');
 
     }
 
@@ -158,6 +187,39 @@ export class JournalVoucherCreationPage {
 
     async VerifyAddVoucherTrancastionButtonEnable() {
         await expect(this.addVoucherTransactionButton).toBeEnabled();
+    }
+
+    async verifyAddVoucherTrancastionTitle(data: string) {
+        const actual = await this.addVoucherTransactionTitle.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyAddVoucherTransactionFields() {
+        await expect(this.accountName).toBeVisible();
+        await expect(this.amount).toBeVisible();
+        await expect(this.currency).toBeVisible();
+        await expect(this.amountCV1).toBeVisible();
+        await expect(this.amountCV2).toBeVisible();
+        await expect(this.valueDate).toBeVisible();
+        await expect(this.description).toBeVisible();
+        await expect(this.productLine).toBeVisible();
+    }
+
+    async verifyMandatoryAddVoucherTransactionFields() {
+        await expect(this.manadteaccountName).toBeVisible();
+        await expect(this.manadteamount).toBeVisible();
+        await expect(this.manadtecurrency).toBeVisible();
+        await expect(this.manadteamountCV1).toBeVisible();
+        await expect(this.manadteamountCV2).toBeVisible();
+        await expect(this.manadtevalueDate).toBeVisible();
+        await expect(this.manadtedescription).toBeVisible();
+        
+    }
+
+
+    async selectAccountName(data: string) {
+        await this.accountName.click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
     }
 
 }
