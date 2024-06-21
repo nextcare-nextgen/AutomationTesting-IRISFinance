@@ -21,6 +21,13 @@
         "title": "Add Voucher Transaction"
     },
     "TC_035_Journal_Voucher_Creation": {
-        "value": "123456-Test"
+        "value": "298098-testt"
+    },
+    "TC_036_Journal_Voucher_Creation": {
+        "value": "298098-testt"
+    },
+    "TC_040_Journal_Voucher_Creation": {
+        "amount": "1000",
+        "currency": "UAE Dirham-AED"
     }
 }

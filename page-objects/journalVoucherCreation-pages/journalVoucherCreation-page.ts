@@ -38,6 +38,8 @@ export class JournalVoucherCreationPage {
     readonly manadteamountCV2: Locator;
     readonly manadtevalueDate: Locator;
     readonly manadtedescription: Locator;
+    readonly selectValueCalenderIcon: Locator;
+    readonly currentDateFromCalender: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -75,7 +77,8 @@ export class JournalVoucherCreationPage {
         this.manadteamountCV2 = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount CV2"]');
         this.manadtevalueDate = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Value Date"]');
         this.manadtedescription = page.locator('//input[@title="Description"]');
-
+        this.selectValueCalenderIcon = page.locator('//iris-composed-dialog//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
+        this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -213,13 +216,40 @@ export class JournalVoucherCreationPage {
         await expect(this.manadteamountCV2).toBeVisible();
         await expect(this.manadtevalueDate).toBeVisible();
         await expect(this.manadtedescription).toBeVisible();
-        
+
     }
 
 
     async selectAccountName(data: string) {
         await this.accountName.click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+    }
+
+    async enterAmount(data: string) {
+        await this.amount.fill(data);
+    }
+
+    async selectCurrency(data: string) {
+        await this.currency.click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    async verifyCV1Amount() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const value = await this.amountCV1.inputValue();
+        expect(value).toBeTruthy();
+    }
+
+    async verifyCV2Amount() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const value = await this.amountCV2.inputValue();
+        expect(value).toBeTruthy();
+    }
+
+    async verifyCurrentDateFromCalender() {
+        await this.selectValueCalenderIcon.click();
+        await expect(this.currentDateFromCalender).toBeVisible();
     }
 
 }
