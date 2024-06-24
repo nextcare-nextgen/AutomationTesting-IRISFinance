@@ -18,9 +18,9 @@ export class FinancialTransactionsMonitoringPage {
     readonly policyRef: Locator;
     readonly customerRef: Locator;
     readonly transactionId: Locator;
-    readonly searchButton: Locator;
-    readonly applyButton: Locator;
-    readonly resetButton: Locator;
+    readonly searchbtn: Locator;
+    readonly applybtn: Locator;
+    readonly resetbtn: Locator;
     readonly searchBar: Locator;
     readonly label: Locator;
     readonly exportToExcel: Locator;
@@ -65,9 +65,9 @@ export class FinancialTransactionsMonitoringPage {
         this.policyRef = page.locator('//div//input[@title="Policy Ref"]');
         this.customerRef = page.locator('//div//input[@title="Document Reference"]');
         this.transactionId = page.locator('//div//input[@title="Transaction Id"]');
-        this.searchButton = page.locator('//div//button[@title="Search"]');
-        this.applyButton = page.locator('//div//button[@title="Apply"]');
-        this.resetButton = page.locator('//div//button[@title="Reset"]');
+        this.searchbtn = page.locator('//div//button[@title="Search"]');
+        this.applybtn = page.locator('//div//button[@title="Apply"]');
+        this.resetbtn = page.locator('//div//button[@title="Reset"]');
         this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
         this.exportToExcel = page.locator('//button[@title="Export to excel"]');
@@ -110,7 +110,7 @@ export class FinancialTransactionsMonitoringPage {
 
 
     async verifyFinancialTransactionsMonitoringShrtcutButton() {
-        await expect(this.financialTransactionsMonitoringShortcut).toBeVisible();
+        expect(this.financialTransactionsMonitoringShortcut).toBeVisible();
 
     }
 
@@ -130,7 +130,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifySearchfiltersButton() {
-        await expect(this.searchFilters).toBeVisible();
+        expect(this.searchFilters).toBeVisible();
     }
 
     async selectCurrentDateFromDateCalender() {
@@ -271,7 +271,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async clickOnSearchButton() {
-        await this.searchButton.click();
+        await this.searchbtn.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
@@ -297,7 +297,7 @@ export class FinancialTransactionsMonitoringPage {
 
 
     async clickOnApplyButton() {
-        await this.applyButton.click();
+        await this.applybtn.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
@@ -355,7 +355,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async clickOnResetButton() {
-        await this.resetButton.click();
+        await this.resetbtn.click();
     }
 
     async clickOnExportToExcelButton() {
@@ -370,15 +370,15 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifySearchResultFromGrid() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.page.locator('//mat-cell[contains(@class,"transactionDate")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentDate")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentType")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentMethod")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentAmount")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentCurrency")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentStatus")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"paymentRef")]')).toBeVisible();
-        await expect(this.page.locator('//mat-cell[contains(@class,"policyReference")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"transactionDate")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentDate")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentType")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentMethod")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentAmount")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentCurrency")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentStatus")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"paymentRef")]')).toBeVisible();
+        expect(this.page.locator('//mat-cell[contains(@class,"policyReference")]')).toBeVisible();
 
     }
 
@@ -391,8 +391,8 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async clickOnViewDeatilsButton() {
-        const detailsButton = this.page.locator('//button[@title="View More Details"]');
-        await detailsButton.first().click();
+        const detailsbtn = this.page.locator('//button[@title="View More Details"]');
+        await detailsbtn.first().click();
     }
 
     async verifyPaymentsDetailsTitle(data: string) {
@@ -404,30 +404,30 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifyCCPaymentDetails() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.nameOnCardField).toBeVisible();
-        await expect(this.ccNumber).toBeVisible();
-        await expect(this.expiryDate).toBeVisible();
-        await expect(this.token).toBeVisible();
-        await expect(this.transactionRef).toBeVisible();
-        await expect(this.remmitanceInfo).toBeVisible();
+        expect(this.nameOnCardField).toBeVisible();
+        expect(this.ccNumber).toBeVisible();
+        expect(this.expiryDate).toBeVisible();
+        expect(this.token).toBeVisible();
+        expect(this.transactionRef).toBeVisible();
+        expect(this.remmitanceInfo).toBeVisible();
     }
 
     async verifyDDPaymentDetails() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.orgName).toBeVisible();
-        await expect(this.orgBankAC).toBeVisible();
-        await expect(this.orgSwiftCode).toBeVisible();
-        await expect(this.transactionReff).toBeVisible();
-        await expect(this.transactionFlow).toBeVisible();
-        await expect(this.benficiaryAccountName).toBeVisible();
-        await expect(this.benficiaryAccount).toBeVisible();
-        await expect(this.benficiaryAccountSwift).toBeVisible();
-        await expect(this.IBAN).toBeVisible();
-        await expect(this.remmitanceInfo).toBeVisible();
-        await expect(this.benficiaryAccountName).toBeVisible();
-        await expect(this.DDMandateRef).toBeVisible();
-        await expect(this.DDsignDate).toBeVisible();
-        await expect(this.DDcollectionDate).toBeVisible();
+        expect(this.orgName).toBeVisible();
+        expect(this.orgBankAC).toBeVisible();
+        expect(this.orgSwiftCode).toBeVisible();
+        expect(this.transactionReff).toBeVisible();
+        expect(this.transactionFlow).toBeVisible();
+        expect(this.benficiaryAccountName).toBeVisible();
+        expect(this.benficiaryAccount).toBeVisible();
+        expect(this.benficiaryAccountSwift).toBeVisible();
+        expect(this.IBAN).toBeVisible();
+        expect(this.remmitanceInfo).toBeVisible();
+        expect(this.benficiaryAccountName).toBeVisible();
+        expect(this.DDMandateRef).toBeVisible();
+        expect(this.DDsignDate).toBeVisible();
+        expect(this.DDcollectionDate).toBeVisible();
     }
 
     async verifyListOfPaymentsMethods() {
@@ -443,19 +443,19 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifySearchBar() {
-        await expect(this.searchBar).toBeVisible();
+        expect(this.searchBar).toBeVisible();
     }
 
     async verifySearchFiltersAreEmptyAfterReset() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.page.locator('//mat-label//span[@title="Payment Status"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="Payment Method"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="Transaction Type"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="Document Reference"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="From Payment Amount"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="To Payment Amount"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="Policy Ref"]//following::input[1]')).toBeEmpty();
-        await expect(this.page.locator('//mat-label//span[@title="Transaction Id"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="Payment Status"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="Payment Method"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="Transaction Type"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="Document Reference"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="From Payment Amount"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="To Payment Amount"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="Policy Ref"]//following::input[1]')).toBeEmpty();
+        expect(this.page.locator('//mat-label//span[@title="Transaction Id"]//following::input[1]')).toBeEmpty();
     }
 
     async clickOnClearAllButton() {

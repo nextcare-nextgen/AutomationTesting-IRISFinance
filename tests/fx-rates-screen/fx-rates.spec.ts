@@ -394,7 +394,7 @@ test('NXGF-TC-1884: TC_014_FX_Rates_Verify that the search icon and field is dis
     })
 
     await test.step("Verified that the search icon and field is displayed", async () => {
-        await fxRatesPage.verifySearchbuttonField();
+        await fxRatesPage.verifySearchbtnField();
 
     })
 

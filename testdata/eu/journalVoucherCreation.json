@@ -29,5 +29,43 @@
     "TC_040_Journal_Voucher_Creation": {
         "amount": "1000",
         "currency": "UAE Dirham-AED"
+    },
+    "TC_050_Journal_Voucher_Creation": {
+        "value": "298098-testt",
+        "amount": "1000",
+        "currency": "UAE Dirham-AED",
+        "description": "Testing"
+    },
+    "TC_051_Journal_Voucher_Creation": {
+        "value": "298098-testt",
+        "amount": "1000",
+        "currency": "UAE Dirham-AED",
+        "description": "Testing",
+        "amount1": "100",
+        "currency1": "Euro-EUR",
+        "description1": "Testing Edit"
+    },
+    "TC_053_Journal_Voucher_Creation": {
+        "value": "298098-testt",
+        "amount": "100",
+        "currency": "UAE Dirham-AED",
+        "description": "Testing"
+    },
+    "TC_057_Journal_Voucher_Creation": {
+        "value": "298098-testt",
+        "amount": "100",
+        "currency": "UAE Dirham-AED",
+        "errorpopup": "Field is required"
+    },
+    "TC_060_Journal_Voucher_Creation": {
+        "value": "298098-testt",
+        "amount": "100",
+        "currency": "UAE Dirham-AED",
+        "description": "Testing",
+        "value1": "298098-testt",
+        "amount1": "1000",
+        "currency1": "UAE Dirham-AED",
+        "description1": "Testing",
+        "errorpopup": "Total Debit and Total Credit should be equal."
     }
 }

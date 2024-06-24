@@ -240,6 +240,6 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifySearchBar() {
-        await expect(this.searchBar).toBeVisible();
+        expect(this.searchBar).toBeVisible();
     }
 }

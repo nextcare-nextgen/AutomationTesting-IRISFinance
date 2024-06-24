@@ -26,14 +26,14 @@ export class FinancialOrganizationsPage {
     readonly stopOrg: Locator;
     readonly activeFilter: Locator;
     readonly stoppedFilter: Locator;
-    readonly addOrganizationButton: Locator;
+    readonly addOrganizationbtn: Locator;
     readonly cv1: Locator;
     readonly cv2: Locator;
     readonly startDateCalendarIcon: Locator;
     readonly name: Locator;
     readonly code: Locator;
-    readonly createButton: Locator;
-    readonly closeButton: Locator;
+    readonly createbtn: Locator;
+    readonly closebtn: Locator;
     readonly currentDateFromCalender: Locator;
     readonly ACTSCode: Locator;
     readonly orgCode: Locator;
@@ -79,14 +79,14 @@ export class FinancialOrganizationsPage {
         this.stopOrg = page.locator('//button[@title="Stop"]');
         this.activeFilter = page.locator('//iris-table-filter-tags//mat-chip-listbox//mat-chip-option[@chip-color="green"]');
         this.stoppedFilter = page.locator('//iris-table-filter-tags//mat-chip-listbox//mat-chip-option[@chip-color="red"]');
-        this.addOrganizationButton = page.locator('//button[@title="Add Organization"]');
+        this.addOrganizationbtn = page.locator('//button[@title="Add Organization"]');
         this.cv1 = page.locator('//mat-label//span[@title="CV1"]');
         this.cv2 = page.locator('//mat-label//span[@title="CV2"]');
         this.startDateCalendarIcon = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
         this.name = page.locator('//iris-standard-card//div//input[@title="Name"]');
         this.code = page.locator('//iris-standard-card//div//input[@title="Code"]');
-        this.createButton = page.locator('//button[@title="Create"]');
-        this.closeButton = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
+        this.createbtn = page.locator('//button[@title="Create"]');
+        this.closebtn = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
         this.ACTSCode = page.locator('//input[@title="ACTS Code"]');
         this.orgCode = page.locator('//iris-composed-dialog//input[@title="Code"]');
@@ -119,7 +119,7 @@ export class FinancialOrganizationsPage {
 
 
     async verifyFinancialOrganizationShrtcutButton() {
-        await expect(this.financialOrganizationShortcut).toBeVisible();
+        expect(this.financialOrganizationShortcut).toBeVisible();
 
     }
 
@@ -134,24 +134,24 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyAllShrtcutButtonIsClickable() {
-        await expect(this.financialOrganizationShortcut).toBeEnabled();
-        await expect(this.dashboardShortcut).toBeEnabled();
-        await expect(this.cashAllocationShortcut).toBeEnabled();
-        await expect(this.chartOfAccountsShortcut).toBeEnabled();
-        await expect(this.FXratesShortcut).toBeEnabled();
-        await expect(this.journalVoucherText).toBeEnabled();
-        await expect(this.reportsShortcut).toBeEnabled();
-        await expect(this.FTMShortcut).toBeEnabled();
+        expect(this.financialOrganizationShortcut).toBeEnabled();
+        expect(this.dashboardShortcut).toBeEnabled();
+        expect(this.cashAllocationShortcut).toBeEnabled();
+        expect(this.chartOfAccountsShortcut).toBeEnabled();
+        expect(this.FXratesShortcut).toBeEnabled();
+        expect(this.journalVoucherText).toBeEnabled();
+        expect(this.reportsShortcut).toBeEnabled();
+        expect(this.FTMShortcut).toBeEnabled();
 
     }
 
     async verifyOrgNameAndOrgCodeField() {
-        await expect(this.organizationName).toBeVisible();
-        await expect(this.organizationCode).toBeVisible();
+        expect(this.organizationName).toBeVisible();
+        expect(this.organizationCode).toBeVisible();
     }
 
     async verifySearchField() {
-        await expect(this.search).toBeVisible();
+        expect(this.search).toBeVisible();
     }
 
     async enterOrganizationCode(data: string) {
@@ -176,8 +176,8 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyIndexStatus() {
-        await expect(this.activeIndex).toBeVisible();
-        await expect(this.stoppedIndex).toBeVisible();
+        expect(this.activeIndex).toBeVisible();
+        expect(this.stoppedIndex).toBeVisible();
     }
 
     async clickOnActiveIndex() {
@@ -200,7 +200,7 @@ export class FinancialOrganizationsPage {
     async clickOnRecordsPerPageDropdown() {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async verifyOrgNameAndCodeFromGrid() {
@@ -219,7 +219,7 @@ export class FinancialOrganizationsPage {
 
     async verifyStopDateColumnNotDisplayed(data: string) {
         let columnValue = await this.page.locator('//mat-header-cell[contains(@class,"header-cell")]//small[text()="Stop Date"]');
-        await expect(columnValue).not.toBeVisible();
+        expect(columnValue).not.toBeVisible();
     }
 
     async verifyStartDateFromGrid() {
@@ -238,7 +238,7 @@ export class FinancialOrganizationsPage {
     async VerifyEditOrganizationButton() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
-        await expect(editOrgIcon).toBeVisible();
+        expect(editOrgIcon).toBeVisible();
     }
 
     async clickOnEditOrganizationButton() {
@@ -248,7 +248,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyStopOrganizationButtonIsClickable() {
-        await expect(this.stopOrg).toBeEnabled();
+        expect(this.stopOrg).toBeEnabled();
     }
 
     async clickOnActiveFilter() {
@@ -286,12 +286,12 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyADDOrganizationButton() {
-        await expect(this.addOrganizationButton).toBeVisible();
+        expect(this.addOrganizationbtn).toBeVisible();
     }
 
 
     async clickOnADDOrganizationButton() {
-        await this.addOrganizationButton.click();
+        await this.addOrganizationbtn.click();
     }
 
     async selectCV1(cv1: string) {
@@ -334,25 +334,25 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyCreateButtonIsClickable() {
-        await expect(this.createButton).toBeEnabled();
+        expect(this.createbtn).toBeEnabled();
     }
 
     async VerifyCreateButtonIsdisable() {
-        await expect(this.createButton).toBeDisabled();
+        expect(this.createbtn).toBeDisabled();
     }
 
     async clickOnCloseButton() {
-        await this.closeButton.click();
+        await this.closebtn.click();
     }
 
     async verifyCurrentDateFromCalender() {
         await this.startDateCalendarIcon.click();
-        await expect(this.currentDateFromCalender).toBeVisible();
+        expect(this.currentDateFromCalender).toBeVisible();
     }
 
     async verifyDaysFromCalender() {
         await this.startDateCalendarIcon.click();
-        await expect(this.page.locator('//thead//th//span[2]')).toHaveText(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']);
+        expect(this.page.locator('//thead//th//span[2]')).toHaveText(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']);
     }
 
     async verifyArrowsFromCalender() {
@@ -417,7 +417,7 @@ export class FinancialOrganizationsPage {
         await new Promise(resolve => setTimeout(resolve, 3000));
         const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
         for (let index = 0; index < await editOrgIcon.count(); index++) {
-            await expect(editOrgIcon.nth(index)).toBeVisible();
+            expect(editOrgIcon.nth(index)).toBeVisible();
         }
     }
 
@@ -428,15 +428,15 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyFinancialInfo(data: string) {
-        await expect(this.financialsInformation).toBeVisible();
+        expect(this.financialsInformation).toBeVisible();
     }
 
     async verifyOrgCardType(data: string) {
-        await expect(this.orgCardType).toBeVisible();
+        expect(this.orgCardType).toBeVisible();
     }
 
     async verifySearchBar() {
-        await expect(this.searchBar).toBeVisible();
+        expect(this.searchBar).toBeVisible();
     }
 
     async enterinSearchbar(data: string) {
@@ -452,37 +452,37 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyAddOrgPopUpWindowFields() {
-        await expect(this.orgCode).toBeVisible();
-        await expect(this.name).toBeVisible();
-        await expect(this.cv1).toBeVisible();
-        await expect(this.cv2).toBeVisible();
-        await expect(this.startDate).toBeVisible();
-        await expect(this.ACTSCode).toBeVisible();
-        await expect(this.costCenter1).toBeVisible();
-        await expect(this.costCenter2).toBeVisible();
-        await expect(this.costCenter3).toBeVisible();
-        await expect(this.localization).toBeVisible();
+        expect(this.orgCode).toBeVisible();
+        expect(this.name).toBeVisible();
+        expect(this.cv1).toBeVisible();
+        expect(this.cv2).toBeVisible();
+        expect(this.startDate).toBeVisible();
+        expect(this.ACTSCode).toBeVisible();
+        expect(this.costCenter1).toBeVisible();
+        expect(this.costCenter2).toBeVisible();
+        expect(this.costCenter3).toBeVisible();
+        expect(this.localization).toBeVisible();
     }
 
 
     async verifyAddOrgPopUpWindowManadatoryFields() {
-        await expect(this.mandateName).toBeVisible();
-        await expect(this.mandateName).toBeVisible();
-        await expect(this.mandateStartDate).toBeVisible();
+        expect(this.mandateName).toBeVisible();
+        expect(this.mandateName).toBeVisible();
+        expect(this.mandateStartDate).toBeVisible();
     }
 
     async verifyTitleinBold() {
         const boldElement = await this.page.locator('//h1[@title="Organizations"]');
-    
+
         // Check if the font-weight is bold
         const fontWeight = await boldElement.evaluate(element => {
-          return window.getComputedStyle(element).fontWeight;
+            return window.getComputedStyle(element).fontWeight;
         });
-    
+
         // Assert that the font-weight is either 'bold' or a numeric value equal or greater than 700
         expect(['bold', '700', '800', '900'].includes(fontWeight)).toBe(true);
-      }
-    
+    }
+
 
     async enterAddOrgName(code: string) {
         await this.name.fill(code);

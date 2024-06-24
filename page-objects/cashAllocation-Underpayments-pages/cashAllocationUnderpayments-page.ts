@@ -9,7 +9,7 @@ export class CashAllocationUnderPaymentsPage {
     readonly cashAllocationText: Locator;
     readonly organizationName: Locator;
     readonly clearedPaymentStatus: Locator;
-    readonly searchButton: Locator;
+    readonly searchbtn: Locator;
     readonly manualAllocationTitle: Locator;
     readonly firstSection: Locator;
     readonly secondSection: Locator;
@@ -29,18 +29,17 @@ export class CashAllocationUnderPaymentsPage {
     readonly policyRef: Locator;
     readonly policyHolderName: Locator;
     readonly effectiveDate: Locator;
-    readonly clearAllbutton: Locator;
+    readonly clearAllbtn: Locator;
     readonly popupMessage: Locator;
-    //code
     readonly filter: Locator;
-    readonly applyButton: Locator;
+    readonly applybtn: Locator;
     readonly unallocatedAmount: Locator;
-    readonly allocateButton: Locator;
-    readonly okButton: Locator;
+    readonly allocatebtn: Locator;
+    readonly okbtn: Locator;
     readonly policiesShortcut: Locator;
     readonly fromDate: Locator;
     readonly policyReference: Locator;
-    readonly viewPolicyButton: Locator;
+    readonly viewPolicyBtn: Locator;
 
 
 
@@ -51,7 +50,7 @@ export class CashAllocationUnderPaymentsPage {
         this.cashAllocationText = page.locator('//div//h1[@title="Cash Allocation"]');
         this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
         this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
-        this.searchButton = page.locator('//button[@title="Search"]');
+        this.searchbtn = page.locator('//button[@title="Search"]');
         this.manualAllocationTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
         this.firstSection = page.locator('//h2[@title="Selected Payment Details"]');
         this.secondSection = page.locator('//h2[@title="Policy Search"]');
@@ -59,19 +58,18 @@ export class CashAllocationUnderPaymentsPage {
         this.policyRef = page.locator('//div[@role="region"]//input[@title="Policy Reference"]');
         this.policyHolderName = page.locator('//div[@role="region"]//input[@title="Policy Holder Name"]');
         this.effectiveDate = page.locator('//div[@role="region"]//input[@title="Effective Date"]');
-        this.clearAllbutton = page.locator('//button[@title="Clear all"]');
+        this.clearAllbtn = page.locator('//button[@title="Clear all"]');
         this.popupMessage = page.locator('//p[text()="Are you sure you want to cancel the allocation ?"]');
-        //code
         this.filter = page.locator('//button[@title="Filter"]');
         this.paymentReference = page.locator('//div//input[@title="Payment Reference"]');
-        this.applyButton = page.locator('//div//button[@title="Apply"]');
+        this.applybtn = page.locator('//div//button[@title="Apply"]');
         this.unallocatedAmount = page.locator('//mat-cell[contains(@class,"unallocatedAmount")]//div//input[@type="text"]');
-        this.allocateButton = page.locator('//button[@title="Allocate"]');
-        this.okButton = page.locator('//button[@title="Ok"]')
+        this.allocatebtn = page.locator('//button[@title="Allocate"]');
+        this.okbtn = page.locator('//button[@title="Ok"]')
         this.policiesShortcut = page.locator('//div//span[@title="Policies"]');
         this.fromDate = page.locator('//div//input[@title="From Date"]');
         this.policyReference = page.locator('//div//input[@title="Policy Reference"]');
-        this.viewPolicyButton = page.locator('//div//button[@title="View Policy Journal Voucher"]')
+        this.viewPolicyBtn = page.locator('//div//button[@title="View Policy Journal Voucher"]')
 
     }
 
@@ -110,7 +108,6 @@ export class CashAllocationUnderPaymentsPage {
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }
 
-
     async verifyShowDetailsButtons() {
         const showDetailsButtons = this.page.locator('//button[@title="Show Details"]');
         for (let index = 0; index < await showDetailsButtons.count(); index++) {
@@ -132,7 +129,6 @@ export class CashAllocationUnderPaymentsPage {
         const actual = await this.firstSection.textContent();
         expect(actual).toBe(data);
     }
-
 
     async verifySecondSection(data: string) {
         const actual = await this.secondSection.textContent();
@@ -171,14 +167,13 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async clickOnClearAllButton() {
-        await this.clearAllbutton.click();
+        await this.clearAllbtn.click();
     }
 
     async verifyPopupMessasge(data: string) {
         const actual = await this.popupMessage.textContent();
         expect(actual).toBe(data);
     }
-
 
     //start underpayment code
     async verifyUnAllocatedData() {
@@ -197,11 +192,11 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async clickOnApplyButton() {
-        await this.applyButton.click();
+        await this.applybtn.click();
     }
 
     async clickOnSearchButtonButton() {
-        await this.searchButton.click();
+        await this.searchbtn.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
@@ -217,13 +212,7 @@ export class CashAllocationUnderPaymentsPage {
             return outstangingamt.substr(0, startIndex);
         }
         const allocatedAmount = await this.page.locator('.allocated-amount').textContent();
-     const actualAmount = await this.page.locator('.actual-amount').textContent();
-      
-       
-      
-        // Verify if the actual amount is less than the allocated amount
-      //  expect(allocatedAmount).toBeLessThan(actualAmount);
-
+        const actualAmount = await this.page.locator('.actual-amount').textContent();
 
     }
 
@@ -237,11 +226,11 @@ export class CashAllocationUnderPaymentsPage {
     }
 
     async clickOnOKButtonButton() {
-        await this.okButton.click();
+        await this.okbtn.click();
     }
 
     async verifyAllocateButtonIsClickable() {
-        expect(this.allocateButton).toBeEnabled();
+        expect(this.allocatebtn).toBeEnabled();
     }
 
     async clickOnPoliciesShrtcutsButton() {
@@ -258,7 +247,7 @@ export class CashAllocationUnderPaymentsPage {
 
     async clickOnViewPolicyJournalVoucherButton() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await this.viewPolicyButton.first().click();
+        await this.viewPolicyBtn.first().click();
     }
 
 
@@ -272,7 +261,6 @@ export class CashAllocationUnderPaymentsPage {
             }
         }
     }
-
 
     async verifyRecievedPayment() {
         await new Promise(resolve => setTimeout(resolve, 3000));

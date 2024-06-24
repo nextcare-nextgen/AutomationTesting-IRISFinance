@@ -8,7 +8,7 @@ export class JournalVoucherListPage {
     readonly dashboard: Locator;
     readonly journalVoucherText: Locator
     readonly journalVoucherShortcut: Locator;
-    readonly journalVoucherListButton: Locator;
+    readonly journalVoucherListbtn: Locator;
     readonly journalVoucherListsearchSection: Locator;
     readonly journalVoucherListGridSection: Locator;
     readonly journalVouchertext: Locator;
@@ -28,7 +28,7 @@ export class JournalVoucherListPage {
     readonly toVoucherNumber: Locator;
     readonly voucherRefAdvancedFilter: Locator;
     readonly errorMessageVochernumber: Locator;
-    readonly applybutton: Locator;
+    readonly applybtn: Locator;
     readonly journalVoucherDeatilsText: Locator;
     readonly editvoucherNum: Locator;
     readonly validatedCheckbox: Locator;
@@ -60,7 +60,7 @@ export class JournalVoucherListPage {
         this.journalVoucherShortcut = page.locator('//div//span[@title="Journal Vouchers"]');
         this.breadCrumbs = page.locator('//iris-breadcrumb//li//iris-navigation-hyperlink');
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
-        this.journalVoucherListButton = page.locator('//a[@title="Journal Voucher List"]');
+        this.journalVoucherListbtn = page.locator('//a[@title="Journal Voucher List"]');
         this.journalVoucherListsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherListGridSection = page.locator('//section//mat-table[@id="JournalVoucherListList"]');
         this.journalVouchertext = page.locator('//h1[@title="Journal Vouchers"]');
@@ -82,7 +82,7 @@ export class JournalVoucherListPage {
         this.filtervoucherType = page.locator('//div//input[@title="To voucher number"]//following::input[1]');
         this.voucherRefAdvancedFilter = page.locator('///div//input[@title="Voucher Reference"]');
         this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
-        this.applybutton = page.locator('//div//button[@title="Apply"]');
+        this.applybtn = page.locator('//div//button[@title="Apply"]');
         this.journalVoucherDeatilsText = page.locator('//h1[@title="Manage Journal Voucher"]');
         this.editvoucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
         this.validatedCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
@@ -128,12 +128,12 @@ export class JournalVoucherListPage {
     }
 
     async verifyJournalVoucherListText(data: string) {
-        const actual = await this.journalVoucherListButton.textContent();
+        const actual = await this.journalVoucherListbtn.textContent();
         expect(actual).toBe(data);
     }
 
     async clickOnJournalVoucherListButton() {
-        await this.journalVoucherListButton.click();
+        await this.journalVoucherListbtn.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
@@ -183,7 +183,7 @@ export class JournalVoucherListPage {
     }
 
     async clickOnApplyButton() {
-        await this.applybutton.click();
+        await this.applybtn.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
@@ -271,16 +271,16 @@ export class JournalVoucherListPage {
 
     async verifyVoucherDetailsFirstSection() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.editvouchertype).toBeVisible();
-        await expect(this.editVoucherRef).toBeVisible();
-        await expect(this.editvoucherNum).toBeVisible();
-        await expect(this.editValidationDate).toBeVisible();
-        await expect(this.validatedCheckbox).toBeVisible();
+        expect(this.editvouchertype).toBeVisible();
+        expect(this.editVoucherRef).toBeVisible();
+        expect(this.editvoucherNum).toBeVisible();
+        expect(this.editValidationDate).toBeVisible();
+        expect(this.validatedCheckbox).toBeVisible();
 
     }
 
     async verifyValidatedCheckboxDisabled() {
-        await expect(this.validatedCheckbox).toBeDisabled;
+        expect(this.validatedCheckbox).toBeDisabled;
 
     }
 
@@ -295,17 +295,17 @@ export class JournalVoucherListPage {
 
     async verifyEditTransactionScreen() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.amount).toBeVisible();
-        await expect(this.amountCV1).toBeVisible();
-        await expect(this.amountCV2).toBeVisible();
-        await expect(this.valueDate).toBeVisible();
-        await expect(this.description).toBeVisible();
+        expect(this.amount).toBeVisible();
+        expect(this.amountCV1).toBeVisible();
+        expect(this.amountCV2).toBeVisible();
+        expect(this.valueDate).toBeVisible();
+        expect(this.description).toBeVisible();
     }
 
     async clickOnRecordsPerPageDropdown() {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.recordPerPageDropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async verifyRecordsPerPageTitle(data: string) {
@@ -343,7 +343,7 @@ export class JournalVoucherListPage {
     }
 
     async verifySearchBar() {
-        await expect(this.searchBar).toBeVisible();
+        expect(this.searchBar).toBeVisible();
     }
 
     async enterinSearchbar(data: string) {
@@ -358,9 +358,9 @@ export class JournalVoucherListPage {
     }
 
     async verifyAdvancedSearchfieldisEmpty() {
-        await expect(this.fromVoucherNumber).toBeEmpty();
-        await expect(this.toVoucherNumber).toBeEmpty();
-        await expect(this.filtervoucherType).toBeEmpty();
+        expect(this.fromVoucherNumber).toBeEmpty();
+        expect(this.toVoucherNumber).toBeEmpty();
+        expect(this.filtervoucherType).toBeEmpty();
 
     }
 
@@ -370,7 +370,7 @@ export class JournalVoucherListPage {
         let day = date.getDate();
         let month = date.getMonth();
         let year = date.getFullYear();
-   
+
         // let fullDate = day + "." + month + "." + year + ".";
         let fullDate = `${day}`;
         var todayDate = Number(fullDate);

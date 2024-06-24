@@ -2,6 +2,8 @@ import { DynamicName } from "./dynamicNaming";
 import { expect, test } from "@playwright/test";
 import path from "path";
 import fs from 'fs';
+import { LoginPage } from "../../page-objects/login-page";
+const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 
 test.afterEach(async ({ page, request, baseURL }, testInfo) => {
     if (testInfo.status !== testInfo.expectedStatus) {
@@ -27,3 +29,16 @@ test.afterEach(async ({ page, request, baseURL }, testInfo) => {
         });
     }
 });
+
+/*test.beforeEach(async ({ page }, testInfo) => {
+    const loginPage: LoginPage = new LoginPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await page.goto('https://test-finance-eu.tatsh.cloud/');
+     })
+ 
+     await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data["Login-Access"].userNameInput, data["Login-Access"].passwordInput);
+     })
+    
+  });*/

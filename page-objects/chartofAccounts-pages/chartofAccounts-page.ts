@@ -46,9 +46,9 @@ export class ChartOfAccountsPage {
     readonly selectAddAccountType: Locator;
     readonly selectstartDate: Locator;
     readonly selectglAccountTypee: Locator;
-    readonly saveButton: Locator;
+    readonly savebtn: Locator;
     readonly accountnumFromGrid: Locator;
-    readonly closeButton: Locator;
+    readonly closebtn: Locator;
     readonly rightarrow: Locator;
     readonly leftarrow: Locator;
     readonly selectStartDatecalenderIcon: Locator;
@@ -66,7 +66,7 @@ export class ChartOfAccountsPage {
     readonly startDateCalendarIcon: Locator;
     readonly reset: Locator;
     readonly accountnameFromGrid: Locator;
-    readonly journalVoucherLookupButton: Locator;
+    readonly journalVoucherLookupbtn: Locator;
     readonly journalVoucherShortcut: Locator;
     readonly advancedSearch: Locator;
     readonly JVaccountNum: Locator;
@@ -115,9 +115,9 @@ export class ChartOfAccountsPage {
         this.selectAddAccountType = page.locator('//iris-account-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.selectstartDate = page.locator('//div//input[contains(@class,"datepicker")]');
         this.selectglAccountTypee = page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
-        this.saveButton = page.locator('//button[@title="Save"]');
+        this.savebtn = page.locator('//button[@title="Save"]');
         this.accountnumFromGrid = page.locator('//mat-table[@id="AccountsList"]//mat-cell[contains(@class,"accountnumber")][2]');
-        this.closeButton = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
+        this.closebtn = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
         this.rightarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_right"]');
         this.leftarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_left"]');
         this.selectStartDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
@@ -135,7 +135,7 @@ export class ChartOfAccountsPage {
         this.startDateCalendarIcon = page.locator('//input[@title="Start Date"]//following::mat-icon[1]');
         this.reset = page.locator('//button[@title="Reset"]');
         this.accountnameFromGrid = page.locator('//mat-table[@id="AccountsList"]//mat-cell[contains(@class,"accountname")]');
-        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher Lookup"]');
+        this.journalVoucherLookupbtn = page.locator('//a[@title="Journal Voucher Lookup"]');
         this.journalVoucherShortcut = page.locator('//div//span[@title="Journal Vouchers"]');
         this.advancedSearch = page.locator('//div//button[@title="Filter"]');
         this.JVaccountNum = page.locator('//iris-form-container//input[@title="Account number"]');
@@ -167,7 +167,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyChartsOfAccountsShrtcutsButtonisClickable() {
-        await expect(this.chartOfAccountsShortcut).toBeEnabled;
+        expect(this.chartOfAccountsShortcut).toBeEnabled;
     }
 
     async verifychartOfAccountText(data: string) {
@@ -176,12 +176,12 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountNameAccountNumberField() {
-        await expect(this.accountName).toBeVisible();
-        await expect(this.accountNumber).toBeVisible();
+        expect(this.accountName).toBeVisible();
+        expect(this.accountNumber).toBeVisible();
     }
 
     async verifySearchField() {
-        await expect(this.search).toBeVisible();
+        expect(this.search).toBeVisible();
     }
 
     async enterAccountNumber(data: string) {
@@ -206,19 +206,19 @@ export class ChartOfAccountsPage {
     }
 
     async verifyColumnNameFromGrid() {
-        await expect(this.parentAccountNumber).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.parentAccountNumber).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
     }
 
     async verifyActiveandStoppedIndex() {
-        await expect(this.parentAccountNumber).toBeVisible();
-        await expect(this.accountNumberfromGrid).toBeVisible();
+        expect(this.parentAccountNumber).toBeVisible();
+        expect(this.accountNumberfromGrid).toBeVisible();
     }
 
     async verifyStatusInTheGrid() {
@@ -264,7 +264,7 @@ export class ChartOfAccountsPage {
         await this.page.waitForSelector('.loader', { state: 'hidden' });
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.recordPerPageDropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
 
     }
 
@@ -283,7 +283,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAddAccountButton() {
-        await expect(this.addAccount).toBeVisible();
+        expect(this.addAccount).toBeVisible();
     }
 
     async clickOnAddAccountButton() {
@@ -296,30 +296,30 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAddAccountAllFields() {
-        await expect(this.addAccountNumber).toBeVisible();
-        await expect(this.addAccountName).toBeVisible();
-        await expect(this.addAccountSelectDate).toBeVisible();
-        await expect(this.addAccountType).toBeVisible();
-        await expect(this.addAccountCostCenter1).toBeVisible();
-        await expect(this.addAccountCostCenter2).toBeVisible();
-        await expect(this.addAccountCostCenter3).toBeVisible();
-        await expect(this.addAccountGLAcoountType).toBeVisible();
+        expect(this.addAccountNumber).toBeVisible();
+        expect(this.addAccountName).toBeVisible();
+        expect(this.addAccountSelectDate).toBeVisible();
+        expect(this.addAccountType).toBeVisible();
+        expect(this.addAccountCostCenter1).toBeVisible();
+        expect(this.addAccountCostCenter2).toBeVisible();
+        expect(this.addAccountCostCenter3).toBeVisible();
+        expect(this.addAccountGLAcoountType).toBeVisible();
 
     }
 
     async verifyAddAccountMandatoryFields() {
-        await expect(this.addAccountNumber).toBeVisible();
-        await expect(this.addAccountName).toBeVisible();
-        await expect(this.addAccountType).toBeVisible();
-        await expect(this.GLAccounttype).toBeVisible();
+        expect(this.addAccountNumber).toBeVisible();
+        expect(this.addAccountName).toBeVisible();
+        expect(this.addAccountType).toBeVisible();
+        expect(this.GLAccounttype).toBeVisible();
 
     }
 
     async verifyasteriskmarkFormandatoryFields() {
-        await expect(this.addAccountNumberMandatory).toBeVisible();
-        await expect(this.addAccountNameMandatory).toBeVisible();
-        await expect(this.addAccountTypeMandatory).toBeVisible();
-        await expect(this.addAccountGLAcoountTypeMandatory).toBeVisible();
+        expect(this.addAccountNumberMandatory).toBeVisible();
+        expect(this.addAccountNameMandatory).toBeVisible();
+        expect(this.addAccountTypeMandatory).toBeVisible();
+        expect(this.addAccountGLAcoountTypeMandatory).toBeVisible();
     }
 
     async selectOrganization(org: string) {
@@ -364,11 +364,11 @@ export class ChartOfAccountsPage {
     }
 
     async verifySaveButton() {
-        await expect(this.saveButton).toBeEnabled();
+        expect(this.savebtn).toBeEnabled();
     }
 
     async clickOnSaveButton() {
-        await this.saveButton.click();
+        await this.savebtn.click();
     }
 
     async verifyAccountsinGrid(data: string) {
@@ -378,11 +378,11 @@ export class ChartOfAccountsPage {
     }
 
     async clickOnCloseButton() {
-        await this.closeButton.click();
+        await this.closebtn.click();
     }
 
     async verifySaveButtonDisbled() {
-        await expect(this.saveButton).toBeDisabled()
+        expect(this.savebtn).toBeDisabled()
     }
 
     async selectProductLineFromDropdown(data: string) {
@@ -401,13 +401,13 @@ export class ChartOfAccountsPage {
 
     async verifyCalenderArrow() {
         await this.selectStartDatecalenderIcon.click();
-        await expect(this.rightarrow).toBeVisible();
-        await expect(this.leftarrow).toBeVisible();
+        expect(this.rightarrow).toBeVisible();
+        expect(this.leftarrow).toBeVisible();
     }
 
     async verifyCurrentDateFromCalender() {
         await this.selectStartDatecalenderIcon.click();
-        await expect(this.currentDateFromCalender).toBeVisible();
+        expect(this.currentDateFromCalender).toBeVisible();
     }
 
     async clickAddChildAccountButton() {
@@ -446,8 +446,8 @@ export class ChartOfAccountsPage {
     }
 
     async verifymandatoryFieldsfromChildAccount() {
-        await expect(this.addAccountNumberMandatory).toBeVisible();
-        await expect(this.addAccountNameMandatory).toBeVisible();
+        expect(this.addAccountNumberMandatory).toBeVisible();
+        expect(this.addAccountNameMandatory).toBeVisible();
     }
 
     async enterEditAddAccountNumber(data: string) {
@@ -474,7 +474,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifySearchBar() {
-        await expect(this.searchBar).toBeVisible();
+        expect(this.searchBar).toBeVisible();
     }
 
     async enterinSearchbar(data: string) {
@@ -551,8 +551,7 @@ export class ChartOfAccountsPage {
 
     async selectCurrentDateStartDateCalender() {
         await this.startDateCalendarIcon.click();
-        await this.page.locator('//button[contains(@class,"active")]').click()
-
+        await this.page.locator('//button[contains(@class,"active")]').click();
     }
 
     async verifyTitleinBold() {
@@ -579,7 +578,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyResetButtonEnabled() {
-        await expect(this.reset).toBeEnabled()
+        expect(this.reset).toBeEnabled()
     }
 
     async verifyStoppedAccountsNumberinGrid(data: string) {
@@ -599,7 +598,7 @@ export class ChartOfAccountsPage {
     }
 
     async clickOnJournalVoucherLookupButton() {
-        await this.journalVoucherLookupButton.click();
+        await this.journalVoucherLookupbtn.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }

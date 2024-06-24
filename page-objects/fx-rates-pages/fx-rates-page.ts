@@ -16,7 +16,7 @@ export class FxRatesPage {
   readonly selectvalue: Locator;
   readonly fromCurrencyenter: Locator;
   readonly rate: Locator;
-  readonly closebutton: Locator;
+  readonly closebtn: Locator;
   readonly recordPerPage: Locator;
   readonly recordPerPageDropdown: Locator;
   readonly searchBar: Locator;
@@ -28,15 +28,15 @@ export class FxRatesPage {
   readonly toDateCalenderIcon: Locator;
   readonly fromCurrencyfield: Locator;
   readonly toCurrencyfield: Locator;
-  readonly searchButton: Locator;
-  readonly resetButton: Locator;
+  readonly searchbtn: Locator;
+  readonly resetbtn: Locator;
   readonly fromcurrencyFromGrid: Locator;
   readonly tocurrencyFromGrid: Locator;
   readonly fromDateFromGrid: Locator;
   readonly toDateFromGrid: Locator;
   readonly rateFromGrid: Locator;
   readonly validatedFromGrid: Locator;
-  readonly addFxRateButton: Locator;
+  readonly addFxRatebtn: Locator;
   readonly addfxRatestext: Locator;
   readonly addFxRateCurrency: Locator;
   readonly addFxRateToCurrency: Locator;
@@ -46,7 +46,7 @@ export class FxRatesPage {
   readonly addFxRateValidatedCheckbox: Locator;
   readonly addFxRateStartDateCalender: Locator;
   readonly addFxRateEndDateCalender: Locator;
-  readonly createButton: Locator;
+  readonly createbtn: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -58,7 +58,7 @@ export class FxRatesPage {
     this.fromCurrencyenter = page.locator('//iris-select-formfield//div[contains(@class,"mat-form-field-infix")]//input[@aria-expanded="true"][1]');
     this.selectvalue = page.locator('(//mat-label[@class="ng-star-inserted"])[1]');
     this.rate = page.locator('//div//input[@title="Rate"]');
-    this.closebutton = page.locator('//iris-icon-action[@class="close-icon"]');
+    this.closebtn = page.locator('//iris-icon-action[@class="close-icon"]');
     this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
     this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
     this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
@@ -70,15 +70,15 @@ export class FxRatesPage {
     this.toDateCalenderIcon = page.locator('//div//input[@title="To Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     this.fromCurrencyfield = page.locator('//div//mat-label//span[@title="From Currency"]');
     this.toCurrencyfield = page.locator('//div//mat-label//span[@title="To Currency"]');
-    this.searchButton = page.locator('//button[@title="Search"]');
-    this.resetButton = page.locator('//button[@title="Reset"]')
+    this.searchbtn = page.locator('//button[@title="Search"]');
+    this.resetbtn = page.locator('//button[@title="Reset"]')
     this.fromcurrencyFromGrid = page.locator('//iris-base-label//small[@title="From Currency"]');
     this.tocurrencyFromGrid = page.locator('//iris-base-label//small[@title="To Currency"]');
     this.fromDateFromGrid = page.locator('//iris-base-label//small[@title="From Date"]');
     this.toDateFromGrid = page.locator('//iris-base-label//small[@title="To Date"]');
     this.rateFromGrid = page.locator('//iris-base-label//small[@title="Rate"]');
     this.validatedFromGrid = page.locator('//iris-base-label//small[@title="Validated"]');
-    this.addFxRateButton = page.locator('//button[@title="Add Fx Rate"]');
+    this.addFxRatebtn = page.locator('//button[@title="Add Fx Rate"]');
     this.addfxRatestext = page.locator('//h2[@title="Add New Fx Rate"]');
     this.addFxRateCurrency = page.locator('//iris-fx-rate-manage-dialog//span[@title="From Currency"]');
     this.addFxRateToCurrency = page.locator('//div//iris-fx-rate-manage-dialog//iris-standard-card//span[@title="To Currency"]');
@@ -88,7 +88,7 @@ export class FxRatesPage {
     this.addFxRateValidatedCheckbox = page.locator('//iris-fx-rate-manage-dialog//div[@isdisabled="true"]');
     this.addFxRateStartDateCalender = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
     this.addFxRateEndDateCalender = page.locator('//div//input[@title="End Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
-    this.createButton = page.locator('//button[@title="Create"]');
+    this.createbtn = page.locator('//button[@title="Create"]');
 
   }
 
@@ -117,7 +117,7 @@ export class FxRatesPage {
 
 
   async verifyFXRateShortcutButton() {
-    await expect(this.fxRatesShortcut).toBeVisible();
+    expect(this.fxRatesShortcut).toBeVisible();
   }
 
   async clickOnAddFxRatesButton() {
@@ -130,7 +130,7 @@ export class FxRatesPage {
   }
 
   async clickOnCloseButton() {
-    await this.closebutton.click();
+    await this.closebtn.click();
   }
 
   async verifyRecordsPerPageTitle(data: string) {
@@ -142,7 +142,7 @@ export class FxRatesPage {
   async clickOnRecordsPerPageDropdown() {
     await new Promise(resolve => setTimeout(resolve, 3000));
     await this.recordPerPageDropdown.click();
-    await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+    expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
   }
 
 
@@ -161,7 +161,7 @@ export class FxRatesPage {
   }
 
   async verifySearchBar() {
-    await expect(this.searchBar).toBeVisible();
+    expect(this.searchBar).toBeVisible();
   }
 
   async enterinSearchbar(data: string) {
@@ -176,11 +176,11 @@ export class FxRatesPage {
   }
 
   async verifyFromDate() {
-    await expect(this.fromDate).toBeVisible();
+    expect(this.fromDate).toBeVisible();
   }
 
   async verifyToDate() {
-    await expect(this.toDate).toBeVisible();
+    expect(this.toDate).toBeVisible();
   }
 
   async enterFromAndToDate() {
@@ -203,11 +203,11 @@ export class FxRatesPage {
   }
 
   async verifyFromCurrencyField() {
-    await expect(this.fromCurrencyfield).toBeVisible();
+    expect(this.fromCurrencyfield).toBeVisible();
   }
 
   async verifyToCurrencyField() {
-    await expect(this.toCurrencyfield).toBeVisible();
+    expect(this.toCurrencyfield).toBeVisible();
   }
 
   async selectFromCurrency(data: string) {
@@ -224,21 +224,21 @@ export class FxRatesPage {
   }
 
 
-  async verifySearchbuttonField() {
-    await expect(this.searchButton).toBeVisible();
+  async verifySearchbtnField() {
+    expect(this.searchbtn).toBeVisible();
   }
 
   async verifyResetbuttonField() {
-    await expect(this.resetButton).toBeVisible();
+    expect(this.resetbtn).toBeVisible();
   }
 
   async clickOnSearchButton() {
-    await this.searchButton.click();
+    await this.searchbtn.click();
     await this.page.waitForSelector('.loader', { state: 'hidden' });
   }
 
   async clickOnResetButton() {
-    await this.resetButton.click();
+    await this.resetbtn.click();
     await new Promise(resolve => setTimeout(resolve, 5000));
   }
 
@@ -280,23 +280,23 @@ export class FxRatesPage {
 
   async verifyAllColumnField() {
     await new Promise(resolve => setTimeout(resolve, 5000));
-    await expect(this.fromcurrencyFromGrid).toBeVisible();
-    await expect(this.tocurrencyFromGrid).toBeVisible();
-    await expect(this.fromDateFromGrid).toBeVisible();
-    await expect(this.toDateFromGrid).toBeVisible();
-    await expect(this.rateFromGrid).toBeVisible();
-    await expect(this.validatedFromGrid).toBeVisible();
+    expect(this.fromcurrencyFromGrid).toBeVisible();
+    expect(this.tocurrencyFromGrid).toBeVisible();
+    expect(this.fromDateFromGrid).toBeVisible();
+    expect(this.toDateFromGrid).toBeVisible();
+    expect(this.rateFromGrid).toBeVisible();
+    expect(this.validatedFromGrid).toBeVisible();
   }
 
 
   async verifyAddFxRateButton() {
     await new Promise(resolve => setTimeout(resolve, 3000));
-    await expect(this.addFxRateButton).toBeVisible();
+    expect(this.addFxRatebtn).toBeVisible();
   }
 
   async clickOnAddFxRateButton() {
     await new Promise(resolve => setTimeout(resolve, 3000));
-    await this.addFxRateButton.click();
+    await this.addFxRatebtn.click();
   }
 
   async verifyAddFXRatesScreenText(data: string) {
@@ -305,22 +305,22 @@ export class FxRatesPage {
   }
 
   async verifyAddFxRateCurrencyField() {
-    await expect(this.addFxRateCurrency).toBeVisible();
+    expect(this.addFxRateCurrency).toBeVisible();
   }
 
 
   async verifyAddFxRateToCurrencyField() {
-    await expect(this.addFxRateToCurrency).toBeVisible();
+    expect(this.addFxRateToCurrency).toBeVisible();
   }
 
 
   async verifyAddFxRateStartDateEndDateField() {
-    await expect(this.addFxRateStartDate).toBeVisible();
-    await expect(this.addFxRateEndDate).toBeVisible();
+    expect(this.addFxRateStartDate).toBeVisible();
+    expect(this.addFxRateEndDate).toBeVisible();
   }
 
   async verifyAddFxRateRateField() {
-    await expect(this.addFxRateRate).toBeVisible();
+    expect(this.addFxRateRate).toBeVisible();
   }
 
   async verifyAddFxRateValidatedisDisabled() {
@@ -363,7 +363,7 @@ export class FxRatesPage {
   }
 
   async verifyCreateButton() {
-    await expect(this.createButton).toBeEnabled();
+    expect(this.createbtn).toBeEnabled();
   }
 
   async verifyTitleinBold() {

@@ -15,13 +15,13 @@ export class JournalVoucherCreationPage {
     readonly dashboard: Locator;
     readonly journalVoucherText: Locator;
     readonly orgShortcut: Locator;
-    readonly journalVoucherLookupButton: Locator;
+    readonly journalVoucherLookupbtn: Locator;
     readonly journalVoucherLookupsearchSection: Locator;
     readonly journalVoucherLookupGridSection: Locator;
-    readonly addJournalVoucherLookupButton: Locator;
+    readonly addJournalVoucherLookupbtn: Locator;
     readonly addJournalVoucherLookupTitle: Locator;
     readonly vouchertype: Locator;
-    readonly addVoucherTransactionButton: Locator;
+    readonly addVoucherTransactionbtn: Locator;
     readonly description: Locator;
     readonly addVoucherTransactionTitle: Locator;
     readonly accountName: Locator;
@@ -40,6 +40,12 @@ export class JournalVoucherCreationPage {
     readonly manadtedescription: Locator;
     readonly selectValueCalenderIcon: Locator;
     readonly currentDateFromCalender: Locator;
+    readonly savebtn: Locator;
+    readonly editTransaction: Locator;
+    readonly editJournalVoucher: Locator;
+    readonly validateCheckbox: Locator;
+    readonly errorpopup: Locator;
+    readonly debitCreditErrorpopup: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -54,13 +60,13 @@ export class JournalVoucherCreationPage {
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
         this.journalVoucherText = page.locator('//div//h1[@title="Journal Vouchers"]');
         this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
-        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher Lookup"]');
+        this.journalVoucherLookupbtn = page.locator('//a[@title="Journal Voucher Lookup"]');
         this.journalVoucherLookupsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherLookupGridSection = page.locator('//section//mat-table[@id="JournalVoucherLookupList"]');
-        this.addJournalVoucherLookupButton = page.locator('//button[@title="Add Journal Voucher Lookup"]');
+        this.addJournalVoucherLookupbtn = page.locator('//button[@title="Add Journal Voucher Lookup"]');
         this.addJournalVoucherLookupTitle = page.locator('//h1[@title="Manage Journal Voucher"]');
         this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
-        this.addVoucherTransactionButton = page.locator('//button[@title="Add Voucher Transaction"]');
+        this.addVoucherTransactionbtn = page.locator('//button[@title="Add Voucher Transaction"]');
         this.description = page.locator('//input[@title="Description"]');
         this.addVoucherTransactionTitle = page.locator('//h2[@title="Add Voucher Transaction"]');
         this.accountName = page.locator('//iris-composed-dialog//iris-account-autocomplete//div//input[contains(@class,"input-element")]');
@@ -79,6 +85,12 @@ export class JournalVoucherCreationPage {
         this.manadtedescription = page.locator('//input[@title="Description"]');
         this.selectValueCalenderIcon = page.locator('//iris-composed-dialog//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
+        this.savebtn = page.locator('//button[@title="Save"]');
+        this.editTransaction = page.locator('//button[@title="Edit Transaction"]');
+        this.editJournalVoucher = page.locator('//button[@title="Edit Journal Voucher"]');
+        this.validateCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
+        this.errorpopup = page.locator('//mat-label[@title="Field is required"]');
+        this.debitCreditErrorpopup = page.locator('//mat-label[@title="Total Debit and Total Credit should be equal."]')
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -117,18 +129,18 @@ export class JournalVoucherCreationPage {
     }
 
     async verifyJournalVoucherLookupText(data: string) {
-        const actual = await this.journalVoucherLookupButton.textContent();
+        const actual = await this.journalVoucherLookupbtn.textContent();
         expect(actual).toBe(data);
     }
 
     async clickOnJournalVoucherLookupButton() {
-        await this.journalVoucherLookupButton.click();
+        await this.journalVoucherLookupbtn.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async clickOnAddLookupVoucherCreationButton() {
-        await this.addJournalVoucherLookupButton.click();
+        await this.addJournalVoucherLookupbtn.click();
     }
 
     async verifyAddJournalVoucherLookupTitle(data: string) {
@@ -150,11 +162,11 @@ export class JournalVoucherCreationPage {
     async verifyAddJournalVoucherLookupScections() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const fisrtSection = this.page.locator('//div[contains(@class,"items-start")]');
-        await expect(fisrtSection).toBeVisible();
+        expect(fisrtSection).toBeVisible();
         const secondSection = this.page.locator('//iris-composed-table-grid[contains(@class,"mb-4")]');
-        await expect(secondSection).toBeVisible();
+        expect(secondSection).toBeVisible();
         const thirdSection = this.page.locator('//iris-composed-table-grid[contains(@class,"pivotGrid")]');
-        await expect(thirdSection).toBeVisible();
+        expect(thirdSection).toBeVisible();
 
     }
 
@@ -177,11 +189,11 @@ export class JournalVoucherCreationPage {
     }
 
     async clickOnAddVoucherTrancastionButton() {
-        await this.addVoucherTransactionButton.click();
+        await this.addVoucherTransactionbtn.click();
     }
 
     async verifyDescriptionInputBox() {
-        await expect(this.description).toBeEditable();
+        expect(this.description).toBeEditable();
     }
 
     async enterDescription(data: string) {
@@ -189,7 +201,7 @@ export class JournalVoucherCreationPage {
     }
 
     async VerifyAddVoucherTrancastionButtonEnable() {
-        await expect(this.addVoucherTransactionButton).toBeEnabled();
+        expect(this.addVoucherTransactionbtn).toBeEnabled();
     }
 
     async verifyAddVoucherTrancastionTitle(data: string) {
@@ -198,24 +210,24 @@ export class JournalVoucherCreationPage {
     }
 
     async verifyAddVoucherTransactionFields() {
-        await expect(this.accountName).toBeVisible();
-        await expect(this.amount).toBeVisible();
-        await expect(this.currency).toBeVisible();
-        await expect(this.amountCV1).toBeVisible();
-        await expect(this.amountCV2).toBeVisible();
-        await expect(this.valueDate).toBeVisible();
-        await expect(this.description).toBeVisible();
-        await expect(this.productLine).toBeVisible();
+        expect(this.accountName).toBeVisible();
+        expect(this.amount).toBeVisible();
+        expect(this.currency).toBeVisible();
+        expect(this.amountCV1).toBeVisible();
+        expect(this.amountCV2).toBeVisible();
+        expect(this.valueDate).toBeVisible();
+        expect(this.description).toBeVisible();
+        expect(this.productLine).toBeVisible();
     }
 
     async verifyMandatoryAddVoucherTransactionFields() {
-        await expect(this.manadteaccountName).toBeVisible();
-        await expect(this.manadteamount).toBeVisible();
-        await expect(this.manadtecurrency).toBeVisible();
-        await expect(this.manadteamountCV1).toBeVisible();
-        await expect(this.manadteamountCV2).toBeVisible();
-        await expect(this.manadtevalueDate).toBeVisible();
-        await expect(this.manadtedescription).toBeVisible();
+        expect(this.manadteaccountName).toBeVisible();
+        expect(this.manadteamount).toBeVisible();
+        expect(this.manadtecurrency).toBeVisible();
+        expect(this.manadteamountCV1).toBeVisible();
+        expect(this.manadteamountCV2).toBeVisible();
+        expect(this.manadtevalueDate).toBeVisible();
+        expect(this.manadtedescription).toBeVisible();
 
     }
 
@@ -249,7 +261,42 @@ export class JournalVoucherCreationPage {
 
     async verifyCurrentDateFromCalender() {
         await this.selectValueCalenderIcon.click();
-        await expect(this.currentDateFromCalender).toBeVisible();
+        expect(this.currentDateFromCalender).toBeVisible();
     }
 
+    async selectCurrentDateCalender() {
+        await this.selectValueCalenderIcon.click();
+        await this.page.locator('//button[contains(@class,"active")]').click();
+    }
+
+    async clickOnSave() {
+        await this.savebtn.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    async clickOnEditTransaction() {
+        await this.editTransaction.click();
+    }
+
+    async clickOnEditJournalVoucher() {
+        await this.editJournalVoucher.first().click();
+    }
+
+    async verifyValidatedCheckboxDisabled() {
+        expect(this.validateCheckbox).toBeDisabled;
+    }
+
+
+    async verifyErrorPopupAlert(data: string) {
+        await this.description.click();
+        await this.page.keyboard.press('Tab');
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const actual = await this.errorpopup.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyDebitCreditErrorPopupAlert(data: string) {
+        const actual = await this.debitCreditErrorpopup.textContent();
+        expect(actual).toBe(data);
+    }
 }

@@ -11,7 +11,7 @@ export class CashAllocationPage {
     readonly organizationName: Locator;
     readonly clearedPaymentStatus: Locator;
     readonly clearedPaymentMethod: Locator;
-    readonly searchButton: Locator;
+    readonly searchbtn: Locator;
     readonly manualAllocationTitle: Locator;
     readonly firstSection: Locator;
     readonly secondSection: Locator;
@@ -31,24 +31,24 @@ export class CashAllocationPage {
     readonly policyRef: Locator;
     readonly policyHolderName: Locator;
     readonly effectiveDate: Locator;
-    readonly clearAllbutton: Locator;
+    readonly clearAllbtn: Locator;
     readonly popupMessage: Locator;
     readonly searchFilter: Locator;
     readonly fromdate: Locator;
     readonly fromDateCalendarIcon: Locator;
     readonly paymentRef: Locator;
-    readonly applyButton: Locator;
+    readonly applybtn: Locator;
     readonly policyReference: Locator;
     readonly fromAmount: Locator;
     readonly toAmount: Locator;
     readonly policyHolderNamefromFilter: Locator;
-    readonly resetButton: Locator;
+    readonly resetbtn: Locator;
     readonly toDate: Locator;
     readonly toDateCalendarIcon: Locator;
     readonly ManualAllocationScreenTitle: Locator;
-    readonly manualAllocationSearchbutton: Locator;
-    readonly addPolicyButton: Locator;
-    readonly showDetailsButton: Locator;
+    readonly manualAllocationSearchbtn: Locator;
+    readonly addPolicybtn: Locator;
+    readonly showDetailsbtn: Locator;
     readonly policyReferenceMCA: Locator;
     readonly policyID: Locator;
     readonly policyHolderNameMCA: Locator;
@@ -60,10 +60,10 @@ export class CashAllocationPage {
     readonly amountFill: Locator;
     readonly addPolicyPopup: Locator;
     readonly premiumandTaxtitle: Locator;
-    readonly okButton: Locator;
+    readonly okbtn: Locator;
     readonly policyIDFromGrid: Locator;
     readonly alertErrorPopup: Locator;
-    readonly deleteButton: Locator;
+    readonly deletebtn: Locator;
     readonly broker: Locator;
     readonly clearedtransactionType: Locator;
 
@@ -80,7 +80,7 @@ export class CashAllocationPage {
         this.clearedPaymentStatus = page.locator('//mat-label//span[@title="Payment Status"]//following::iris-icon-action[@role="button"][1]');
         this.clearedPaymentMethod = page.locator('//mat-label//span[@title="Payment Method"]//following::iris-icon-action[@role="button"][1]');
         this.clearedtransactionType = page.locator('//mat-label//span[@title="Transaction Type"]//following::iris-icon-action[@role="button"][1]');
-        this.searchButton = page.locator('//button[@title="Search"]');
+        this.searchbtn = page.locator('//button[@title="Search"]');
         this.manualAllocationTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
         this.firstSection = page.locator('//h2[@title="Selected Payment Details"]');
         this.secondSection = page.locator('//h2[@title="Policy Search"]');
@@ -88,7 +88,7 @@ export class CashAllocationPage {
         this.policyRef = page.locator('//section[contains(@class,"items-start")]//input[@title="Policy Reference"]');
         this.policyHolderName = page.locator('//div[@role="region"]//input[@title="Policy Holder Name"]');
         this.effectiveDate = page.locator('//div[@role="region"]//input[@title="Effective Date"]');
-        this.clearAllbutton = page.locator('//button[@title="Clear all"]');
+        this.clearAllbtn = page.locator('//button[@title="Clear all"]');
         this.popupMessage = page.locator('//iris-composed-dialog//p[text()="Are you sure you want to cancel the allocation ?"]');
         this.paymentDateTitle = page.locator('//h4[@title="Payment Date"]');
         this.paymentDate = page.locator('//h4[@title="Payment Date"]//following::p[1]');
@@ -108,16 +108,16 @@ export class CashAllocationPage {
         this.fromDateCalendarIcon = page.locator('//input[@title="From Date"]//following::mat-icon[1]');
         this.toDateCalendarIcon = page.locator('//input[@title="To Date"]//following::mat-icon[1]');
         this.paymentRef = page.locator('//input[@title="Payment Reference"]');
-        this.applyButton = page.locator('//button[@title="Apply"]');
+        this.applybtn = page.locator('//button[@title="Apply"]');
         this.policyReference = page.locator('//input[@title="Policy Ref/Document Ref"]');
         this.fromAmount = page.locator('//input[@title="From Amount"]');
         this.toAmount = page.locator('//input[@title="To Amount"]');
         this.policyHolderNamefromFilter = page.locator('//input[@title="Policy Holder Name"]');
-        this.resetButton = page.locator('//button[@title="Reset"]');
+        this.resetbtn = page.locator('//button[@title="Reset"]');
         this.ManualAllocationScreenTitle = page.locator('//h1[@title="Manual Cash Allocation"]');
-        this.manualAllocationSearchbutton = page.locator('//button[@title="Search"]');
-        this.addPolicyButton = page.locator('//button[@title="Add Policy"]');
-        this.showDetailsButton = page.locator('//button[@title="Show Details"]');
+        this.manualAllocationSearchbtn = page.locator('//button[@title="Search"]');
+        this.addPolicybtn = page.locator('//button[@title="Add Policy"]');
+        this.showDetailsbtn = page.locator('//button[@title="Show Details"]');
         this.policyReferenceMCA = page.locator('//mat-header-cell[@id="policyReferences-Policy Reference"]');
         this.policyID = page.locator('//mat-header-cell[@id="policyId-Policy Id"]');
         this.policyHolderNameMCA = page.locator('//mat-header-cell[@id="policyHolderName-Policy Holder Name"]');
@@ -129,13 +129,12 @@ export class CashAllocationPage {
         this.amountFill = page.locator('//mat-row//div//mat-form-field//input');
         this.addPolicyPopup = page.locator('//iris-composed-dialog//iris-base-label//p');
         this.premiumandTaxtitle = page.locator("//h2[@title='Premium and Tax Dues']");
-        this.okButton = page.locator('//button[@title="Ok"]');
+        this.okbtn = page.locator('//button[@title="Ok"]');
         this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
         this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 11.82']");
-        this.deleteButton = page.locator('//button[@title="Remove Policy"]');
+        this.deletebtn = page.locator('//button[@title="Remove Policy"]');
         this.broker = page.locator('//input[@title="Broker"]');
     }
-
 
 
     async verifyBreadCrumbsText(data: string) {
@@ -196,7 +195,7 @@ export class CashAllocationPage {
     }
 
     async clickOnSearchButton() {
-        await this.searchButton.click();
+        await this.searchbtn.click();
     }
 
     async clickOnSearchFilterButton() {
@@ -204,9 +203,9 @@ export class CashAllocationPage {
     }
 
     async verifyShowDetailsButtons() {
-        const showDetailsButtons = this.page.locator('//button[@title="Show Details"]');
-        for (let index = 0; index < await showDetailsButtons.count(); index++) {
-            expect(await showDetailsButtons).toBeVisible();
+        const showDetailsbtn = this.page.locator('//button[@title="Show Details"]');
+        for (let index = 0; index < await showDetailsbtn.count(); index++) {
+            expect(await showDetailsbtn).toBeVisible();
         }
     }
 
@@ -264,7 +263,7 @@ export class CashAllocationPage {
     }
 
     async clickOnClearAllButton() {
-        await this.clearAllbutton.click();
+        await this.clearAllbtn.click();
     }
 
     async verifyPopupMessasge(data: string) {
@@ -325,7 +324,7 @@ export class CashAllocationPage {
     }
 
     async clickOnApplyButton() {
-        await this.applyButton.click();
+        await this.applybtn.click();
     }
 
     async enterPolicyReference(data: string) {
@@ -400,7 +399,7 @@ export class CashAllocationPage {
     }
 
     async clickOnResetButton() {
-        await this.resetButton.click();
+        await this.resetbtn.click();
     }
 
 
@@ -441,24 +440,24 @@ export class CashAllocationPage {
     }
 
     async clickOnManualAllocationSearchButton() {
-        await this.manualAllocationSearchbutton.first().click();
+        await this.manualAllocationSearchbtn.first().click();
     }
 
     async clickOnAddPolicyButton() {
-        await this.addPolicyButton.scrollIntoViewIfNeeded();
-        await this.addPolicyButton.click();
+        await this.addPolicybtn.scrollIntoViewIfNeeded();
+        await this.addPolicybtn.click();
     }
 
     async verifyAddPolicyButton() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await this.addPolicyButton.scrollIntoViewIfNeeded();
-        expect(this.addPolicyButton).toBeVisible();
+        await this.addPolicybtn.scrollIntoViewIfNeeded();
+        expect(this.addPolicybtn).toBeVisible();
     }
 
     async verifyShowDetailsButton() {
         await new Promise(resolve => setTimeout(resolve, 2000));
-        await this.addPolicyButton.scrollIntoViewIfNeeded();
-        expect(this.showDetailsButton).toBeVisible();
+        await this.addPolicybtn.scrollIntoViewIfNeeded();
+        expect(this.showDetailsbtn).toBeVisible();
     }
 
     async verifyPolicySearchGrid() {
@@ -482,13 +481,13 @@ export class CashAllocationPage {
 
     async verifyAddPolicyPopup() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        expect(this.showDetailsButton).toBeVisible();
+        expect(this.showDetailsbtn).toBeVisible();
     }
 
     async clickOnShowDetailsButton() {
         await new Promise(resolve => setTimeout(resolve, 2000));
-        await this.addPolicyButton.scrollIntoViewIfNeeded();
-        await this.showDetailsButton.click();
+        await this.addPolicybtn.scrollIntoViewIfNeeded();
+        await this.showDetailsbtn.click();
     }
 
     async verifyPremiumandTaxAmountFromGrid() {
@@ -506,7 +505,7 @@ export class CashAllocationPage {
     }
 
     async clickOnOkButton() {
-        await this.okButton.click();
+        await this.okbtn.click();
     }
 
     async verifyUnallocatedPolicyID(data: string) {
@@ -524,7 +523,7 @@ export class CashAllocationPage {
     }
 
     async clickOnDeleteButton() {
-        await this.deleteButton.click();
+        await this.deletebtn.click();
     }
 
     async verifyMadatoryFields() {
@@ -549,8 +548,8 @@ export class CashAllocationPage {
     async verifySearchButton() {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.waitForSelector('.loader', { state: 'hidden' });
-        expect(this.searchButton).toBeVisible();
-        expect(this.searchButton).toBeEnabled();
+        expect(this.searchbtn).toBeVisible();
+        expect(this.searchbtn).toBeEnabled();
     }
 
     async verifyListOfTransactionType() {

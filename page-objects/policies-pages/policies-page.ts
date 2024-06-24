@@ -21,7 +21,7 @@ export class PoliciesPage {
     readonly policyRef: Locator;
     readonly advancedSearchPolicyId: Locator;
     readonly policyHolderName: Locator;
-    readonly applybutton: Locator;
+    readonly applybtn: Locator;
     readonly policyJournalVochereyeicon: Locator;
     readonly policyJournalVochereText: Locator;
     readonly policyJournalVoucherList: Locator;
@@ -71,7 +71,7 @@ export class PoliciesPage {
         this.policyRef = page.locator('//div//input[@title="Policy Reference"]');
         this.advancedSearchPolicyId = page.locator('//div//input[@title="Policy Id"]');
         this.policyHolderName = page.locator('//div//input[@title="Policy Holder Name"]');
-        this.applybutton = page.locator('//div//button[@title="Apply"]');
+        this.applybtn = page.locator('//div//button[@title="Apply"]');
         this.policyJournalVochereyeicon = page.locator('//button[@title="View Policy Journal Voucher"]');
         this.policyJournalVocherDeatils = page.locator('//mat-table[@id="policyJournalVoucherDtailsList"]');
         this.policyJournalVochereText = page.locator('//div//h1[@title="Policy Journal Voucher"]');
@@ -148,11 +148,11 @@ export class PoliciesPage {
     }
 
     async verifyFromDate() {
-        await expect(this.fromDate).toBeVisible();
+        expect(this.fromDate).toBeVisible();
     }
 
     async verifyToDate() {
-        await expect(this.toDate).toBeVisible();
+        expect(this.toDate).toBeVisible();
     }
 
     async enterValidFromDate(fromDate: string) {
@@ -175,24 +175,24 @@ export class PoliciesPage {
     }
 
     async verifySearch() {
-        await expect(this.search).toBeVisible();
+        expect(this.search).toBeVisible();
     }
 
     async verifyAdvancedSearch() {
-        await expect(this.advancedSearch).toBeVisible();
+        expect(this.advancedSearch).toBeVisible();
     }
 
     async verifyReset() {
-        await expect(this.reset).toBeVisible();
+        expect(this.reset).toBeVisible();
     }
 
     async verifyGridColumn() {
-        await expect(this.policyId).toBeVisible();
-        await expect(this.reference).toBeVisible();
-        await expect(this.holderName).toBeVisible();
-        await expect(this.startDate).toBeVisible();
-        await expect(this.endDate).toBeVisible();
-        await expect(this.brokerName).toBeVisible();
+        expect(this.policyId).toBeVisible();
+        expect(this.reference).toBeVisible();
+        expect(this.holderName).toBeVisible();
+        expect(this.startDate).toBeVisible();
+        expect(this.endDate).toBeVisible();
+        expect(this.brokerName).toBeVisible();
     }
 
     async clickOnSerach() {
@@ -231,19 +231,19 @@ export class PoliciesPage {
     }
 
     async verifyPolicyReference() {
-        await expect(this.policyRef).toBeVisible();
+        expect(this.policyRef).toBeVisible();
     }
 
     async verifyPolicyId() {
-        await expect(this.policyId).toBeVisible();
+        expect(this.policyId).toBeVisible();
     }
 
     async verifyPolicyHolderName() {
-        await expect(this.policyHolderName).toBeVisible();
+        expect(this.policyHolderName).toBeVisible();
     }
 
     async verifyApplyButton() {
-        await expect(this.applybutton).toBeVisible();
+        expect(this.applybtn).toBeVisible();
     }
 
     async verifyPolicyJournalVochereyeiconButton() {
@@ -269,11 +269,11 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVoucherListSection() {
-        await expect(this.policyJournalVoucherList).toBeVisible();
+        expect(this.policyJournalVoucherList).toBeVisible();
     }
 
     async verifyPolicyJournalVoucherDtailsListSection() {
-        await expect(this.policyJournalVocherDeatils).toBeVisible();
+        expect(this.policyJournalVocherDeatils).toBeVisible();
     }
 
     async enterPolicyReference(policyRef: string) {
@@ -292,7 +292,7 @@ export class PoliciesPage {
     }
 
     async clickOnApplyButton() {
-        await this.applybutton.click();
+        await this.applybtn.click();
     }
 
     async verifySearchResultPolicyRef() {
@@ -320,22 +320,22 @@ export class PoliciesPage {
 
 
     async verifyPolicyJournalVoucherFirstSectionGridColumn() {
-        await expect(this.voucherNumber).toBeVisible();
-        await expect(this.voucherType).toBeVisible();
-        await expect(this.voucherRef).toBeVisible();
-        await expect(this.voucherDate).toBeVisible();
-        await expect(this.validated).toBeVisible();
-        await expect(this.validationDate).toBeVisible();
+        expect(this.voucherNumber).toBeVisible();
+        expect(this.voucherType).toBeVisible();
+        expect(this.voucherRef).toBeVisible();
+        expect(this.voucherDate).toBeVisible();
+        expect(this.validated).toBeVisible();
+        expect(this.validationDate).toBeVisible();
     }
 
     async verifyPolicyJournalVoucherSecondSectionGridColumn() {
-        await expect(this.account).toBeVisible();
-        await expect(this.description).toBeVisible();
-        await expect(this.currency).toBeVisible();
-        await expect(this.amount).toBeVisible();
-        await expect(this.amountCV1EUR).toBeVisible();
-        await expect(this.amountCV2EUR).toBeVisible();
-        await expect(this.valuedDate).toBeVisible();
+        expect(this.account).toBeVisible();
+        expect(this.description).toBeVisible();
+        expect(this.currency).toBeVisible();
+        expect(this.amount).toBeVisible();
+        expect(this.amountCV1EUR).toBeVisible();
+        expect(this.amountCV2EUR).toBeVisible();
+        expect(this.valuedDate).toBeVisible();
     }
 
 
@@ -371,7 +371,7 @@ export class PoliciesPage {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const recordsPerPagedropdown = this.page.locator('//section//mat-select[contains(@aria-label,"")]').first();
         recordsPerPagedropdown.click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
 

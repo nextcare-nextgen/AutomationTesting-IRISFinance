@@ -9,14 +9,14 @@ export class JournalVoucherLookupPage {
     readonly dashboard: Locator;
     readonly journalVoucherText: Locator;
     readonly orgShortcut: Locator;
-    readonly journalVoucherLookupButton: Locator;
+    readonly journalVoucherLookupbtn: Locator;
     readonly journalVoucherLookupsearchSection: Locator;
     readonly journalVoucherLookupGridSection: Locator;
     readonly organizationName: Locator;
     readonly advancedSearch: Locator;
     readonly accountNumber: Locator;
     readonly accountName: Locator;
-    readonly applybutton: Locator;
+    readonly applybtn: Locator;
     readonly search: Locator;
     readonly vouchertype: Locator;
     readonly fromVoucherNumber: Locator;
@@ -72,14 +72,14 @@ export class JournalVoucherLookupPage {
         this.dashboard = page.locator('//div//h1[@title="Dashboard"]');
         this.journalVoucherText = page.locator('//div//h1[@title="Journal Vouchers"]');
         this.orgShortcut = page.locator('//div//span[@title="Organizations"]');
-        this.journalVoucherLookupButton = page.locator('//a[@title="Journal Voucher Lookup"]');
+        this.journalVoucherLookupbtn = page.locator('//a[@title="Journal Voucher Lookup"]');
         this.journalVoucherLookupsearchSection = page.locator('//iris-table-header//iris-composed-grid-search-criteria');
         this.journalVoucherLookupGridSection = page.locator('//section//mat-table[@id="JournalVoucherLookupList"]');
         this.organizationName = page.locator('//mat-select//div[text()="Allianz Partners - 2024"]');
         this.advancedSearch = page.locator('//div//button[@title="Filter"]');
         this.accountNumber = page.locator('//div//input[@title="Account number"]');
         this.accountName = page.locator('//div//input[@title="Account name"]');
-        this.applybutton = page.locator('//div//button[@title="Apply"]');
+        this.applybtn = page.locator('//div//button[@title="Apply"]');
         this.search = page.locator('//div//button[@title="Search"]');
         this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.fromVoucherNumber = page.locator('//div//input[@title="From voucher number"]');
@@ -157,12 +157,12 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyJournalVoucherLookupText(data: string) {
-        const actual = await this.journalVoucherLookupButton.textContent();
+        const actual = await this.journalVoucherLookupbtn.textContent();
         expect(actual).toBe(data);
     }
 
     async clickOnJournalVoucherLookupButton() {
-        await this.journalVoucherLookupButton.click();
+        await this.journalVoucherLookupbtn.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
@@ -204,7 +204,7 @@ export class JournalVoucherLookupPage {
     }
 
     async clickonApplyButton() {
-        await this.applybutton.click();
+        await this.applybtn.click();
     }
 
     async clickonClearAllButton() {
@@ -270,22 +270,22 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchButton() {
-        await expect(this.search).toBeVisible();
+        expect(this.search).toBeVisible();
     }
 
     async verifyGridHeaderColumnName() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        await expect(this.gridVouchertype).toBeVisible();
-        await expect(this.gridVoucherDate).toBeVisible();
-        await expect(this.gridAccountName).toBeVisible();
-        await expect(this.gridAccountNum).toBeVisible();
-        await expect(this.gridAmount).toBeVisible();
-        await expect(this.gridCurrency).toBeVisible();
-        await expect(this.gridAmountCV1).toBeVisible();
-        await expect(this.gridAmountCV2).toBeVisible();
-        await expect(this.gridDebitCredit).toBeVisible();
-        await expect(this.gridValueDate).toBeVisible();
-        await expect(this.gridVoucherRef).toBeVisible();
+        expect(this.gridVouchertype).toBeVisible();
+        expect(this.gridVoucherDate).toBeVisible();
+        expect(this.gridAccountName).toBeVisible();
+        expect(this.gridAccountNum).toBeVisible();
+        expect(this.gridAmount).toBeVisible();
+        expect(this.gridCurrency).toBeVisible();
+        expect(this.gridAmountCV1).toBeVisible();
+        expect(this.gridAmountCV2).toBeVisible();
+        expect(this.gridDebitCredit).toBeVisible();
+        expect(this.gridValueDate).toBeVisible();
+        expect(this.gridVoucherRef).toBeVisible();
 
     }
 
@@ -309,36 +309,36 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySectionsFromVoucherInfo() {
-        await expect(this.secondsection).toBeVisible();
-        await expect(this.thirdsection).toBeVisible();
+        expect(this.secondsection).toBeVisible();
+        expect(this.thirdsection).toBeVisible();
     }
 
     async verifyVoucherDetailsFirstSection() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.voucherType).toBeVisible();
-        await expect(this.voucherDate).toBeVisible();
-        await expect(this.voucherRef).toBeVisible();
-        await expect(this.voucherNum).toBeVisible();
-        await expect(this.validationDate).toBeVisible();
-        await expect(this.validatedCheckbox).toBeVisible();
+        expect(this.voucherType).toBeVisible();
+        expect(this.voucherDate).toBeVisible();
+        expect(this.voucherRef).toBeVisible();
+        expect(this.voucherNum).toBeVisible();
+        expect(this.validationDate).toBeVisible();
+        expect(this.validatedCheckbox).toBeVisible();
 
     }
 
     async verifyValidatedCheckboxDisabled() {
-        await expect(this.validatedCheckbox).toBeDisabled;
+        expect(this.validatedCheckbox).toBeDisabled;
 
     }
 
     async verifyVoucherDetailsSecondSection() {
-        await expect(this.amountVoucherInfo).toBeVisible();
-        await expect(this.accountVoucherInfo).toBeVisible();
-        await expect(this.currencyVoucherInfo).toBeVisible();
-        await expect(this.amountcv1VoucherInfo).toBeVisible();
-        await expect(this.amountcv2VoucherInfo).toBeVisible();
-        await expect(this.debitcreditVoucherInfo).toBeVisible();
-        await expect(this.valueDateVoucherInfo).toBeVisible();
-        await expect(this.productLineVoucherInfo).toBeVisible();
-        await expect(this.descVoucherInfo).toBeVisible();
+        expect(this.amountVoucherInfo).toBeVisible();
+        expect(this.accountVoucherInfo).toBeVisible();
+        expect(this.currencyVoucherInfo).toBeVisible();
+        expect(this.amountcv1VoucherInfo).toBeVisible();
+        expect(this.amountcv2VoucherInfo).toBeVisible();
+        expect(this.debitcreditVoucherInfo).toBeVisible();
+        expect(this.valueDateVoucherInfo).toBeVisible();
+        expect(this.productLineVoucherInfo).toBeVisible();
+        expect(this.descVoucherInfo).toBeVisible();
     }
 
 
@@ -351,7 +351,7 @@ export class JournalVoucherLookupPage {
     async clickOnRecordsPerPageDropdown() {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        await expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async clickOnRecordsPerPageDropdownOption() {
@@ -371,10 +371,10 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyVoucherDetailsThirdSection() {
-        await expect(this.currencyVoucherInfoThirdSection).toBeVisible();
-        await expect(this.totalCredityVoucherInfoThirdSection).toBeVisible();
-        await expect(this.totalDebitVoucherInfoThirdSection).toBeVisible();
-        await expect(this.balanceVoucherInfoThirdSection).toBeVisible();
+        expect(this.currencyVoucherInfoThirdSection).toBeVisible();
+        expect(this.totalCredityVoucherInfoThirdSection).toBeVisible();
+        expect(this.totalDebitVoucherInfoThirdSection).toBeVisible();
+        expect(this.balanceVoucherInfoThirdSection).toBeVisible();
     }
 
 
@@ -395,15 +395,15 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchBarisDisplay() {
-        await expect(this.searchbar).toBeVisible();
+        expect(this.searchbar).toBeVisible();
     }
 
     async verifyAdvancedSearchfieldisEmpty() {
-        await expect(this.fromVoucherNumber).toBeEmpty;
-        await expect(this.toVoucherNumber).toBeEmpty;
-        await expect(this.voucherType).toBeEmpty;
-        await expect(this.accountName).toBeEmpty;
-        await expect(this.accountNumber).toBeEmpty;
+        expect(this.fromVoucherNumber).toBeEmpty;
+        expect(this.toVoucherNumber).toBeEmpty;
+        expect(this.voucherType).toBeEmpty;
+        expect(this.accountName).toBeEmpty;
+        expect(this.accountNumber).toBeEmpty;
 
     }
 
