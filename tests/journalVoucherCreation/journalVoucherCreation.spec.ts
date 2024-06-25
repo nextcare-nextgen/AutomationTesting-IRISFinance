@@ -1165,7 +1165,7 @@ test('NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a 
 
 });
 
-test('NXGF-TC-3890: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value', async ({ page }) => {
+test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1256,8 +1256,283 @@ test('NXGF-TC-3890: TC_060_Journal Voucher creation_Verify that the user is unab
         await journalVoucherCreationPage.verifyDebitCreditErrorPopupAlert(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].errorpopup);
     })
 
+});
+
+test('NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
+    })
+
+    await test.step("User Click on Add Voucher transaction Button", async () => {
+        await journalVoucherCreationPage.clickOnAddVoucherTrancastionButton();
+    })
+
+    await test.step("Verified that the Account name is a auto complete smart search field", async () => {
+        await journalVoucherCreationPage.selectAccountName(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].value);
+    })
+
+    await test.step("User Enter Amount", async () => {
+        await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount);
+    })
+
+    await test.step("User Select Currency", async () => {
+        await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency);
+    })
+
+    await test.step("Select Value Date", async () => {
+        await journalVoucherCreationPage.selectCurrentDateCalender();
+    })
+
+    await test.step("User Enter Description", async () => {
+        await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description);
+    })
+
+    await test.step("Verified that the user is able to click on Save", async () => {
+        await journalVoucherCreationPage.clickOnSave();
+    })
+
+    await test.step("User Click on Add Voucher transaction Button", async () => {
+        await journalVoucherCreationPage.clickOnAddVoucherTrancastionButton();
+    })
+
+    await test.step("Verified that the Account name is a auto complete smart search field", async () => {
+        await journalVoucherCreationPage.selectAccountName(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].value1);
+    })
+
+    await test.step("User Enter Amount", async () => {
+        await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount1);
+    })
+
+    await test.step("User Select Currency", async () => {
+        await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency1);
+    })
+
+    await test.step("Select Value Date", async () => {
+        await journalVoucherCreationPage.selectCurrentDateCalender();
+    })
+
+    await test.step("User Enter Description", async () => {
+        await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
+    })
+
+    await test.step("Verified that the user is able to click on Save", async () => {
+        await journalVoucherCreationPage.clickOnSave();
+    })
+
+    await test.step("Verify that the user is able to view a section indicating the totals", async () => {
+        await journalVoucherCreationPage.verifySectionIndicatingTotals();
+    })
 
 });
+
+test('NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
+    })
+
+    await test.step("Verify that the user is able to view a section indicating the totals", async () => {
+        await journalVoucherCreationPage.verifyGridSection();
+    })
+
+});
+
+test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
+    })
+
+    await test.step("User Click on Add Voucher transaction Button", async () => {
+        await journalVoucherCreationPage.clickOnAddVoucherTrancastionButton();
+    })
+
+    await test.step("Verified that the Account name is a auto complete smart search field", async () => {
+        await journalVoucherCreationPage.selectAccountName(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].value);
+    })
+
+    await test.step("User Enter Amount", async () => {
+        await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount);
+    })
+
+    await test.step("User Select Currency", async () => {
+        await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency);
+    })
+
+    await test.step("Select Value Date", async () => {
+        await journalVoucherCreationPage.selectCurrentDateCalender();
+    })
+
+    await test.step("User Enter Description", async () => {
+        await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description);
+    })
+
+    await test.step("Verified that the user is able to click on Save", async () => {
+        await journalVoucherCreationPage.clickOnSave();
+    })
+
+    await test.step("User Click on Add Voucher transaction Button", async () => {
+        await journalVoucherCreationPage.clickOnAddVoucherTrancastionButton();
+    })
+
+    await test.step("Verified that the Account name is a auto complete smart search field", async () => {
+        await journalVoucherCreationPage.selectAccountName(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].value1);
+    })
+
+    await test.step("User Enter Amount", async () => {
+        await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount1);
+    })
+
+    await test.step("User Select Currency", async () => {
+        await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency1);
+    })
+
+    await test.step("Select Value Date", async () => {
+        await journalVoucherCreationPage.selectCurrentDateCalender();
+    })
+
+    await test.step("User Enter Description", async () => {
+        await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
+    })
+
+    await test.step("Verified that the user is able to click on Save", async () => {
+        await journalVoucherCreationPage.clickOnSave();
+    })
+
+    await test.step("Verify that the user is able to view a section indicating the totals", async () => {
+        await journalVoucherCreationPage.verifyCurrencyDebitCredit();
+    })
+
+});
+
+test('NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Verified that the Search bar displayed in main menu screen", async () => {
+        await journalVoucherCreationPage.verifySearchBar();
+    })
+
+});
+
+test('NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {
+        await journalVoucherCreationPage.enterinSearchbar(JournalVoucherCreationPageData['TC_066_Journal_Voucher_Creation'].value);
+    })
+
+
+});
+
+
 
 
 

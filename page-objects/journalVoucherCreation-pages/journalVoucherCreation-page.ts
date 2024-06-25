@@ -46,6 +46,13 @@ export class JournalVoucherCreationPage {
     readonly validateCheckbox: Locator;
     readonly errorpopup: Locator;
     readonly debitCreditErrorpopup: Locator;
+    readonly gridCurrency : Locator;
+    readonly gridTotalDebit : Locator;
+    readonly gridTotalCredit : Locator;
+    readonly gridBalance : Locator;
+    readonly searchBar: Locator;
+    readonly  label : Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -91,6 +98,15 @@ export class JournalVoucherCreationPage {
         this.validateCheckbox = page.locator('//iris-checkbox-select//mat-checkbox');
         this.errorpopup = page.locator('//mat-label[@title="Field is required"]');
         this.debitCreditErrorpopup = page.locator('//mat-label[@title="Total Debit and Total Credit should be equal."]')
+        this.gridBalance = page.locator('//mat-header-cell[contains(@class,"balance")]');
+        this.gridCurrency = page.locator('//mat-header-cell[contains(@class,"amountName")]');
+        this.gridTotalCredit = page.locator('//mat-header-cell[contains(@class,"creditTotal")]');
+        this.gridTotalDebit = page.locator('//mat-header-cell[contains(@class,"debitTotal")]')
+        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.label = page.locator('//iris-menu-card//iris-base-label//span');
+
+    
+    
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -297,6 +313,39 @@ export class JournalVoucherCreationPage {
 
     async verifyDebitCreditErrorPopupAlert(data: string) {
         const actual = await this.debitCreditErrorpopup.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifySectionIndicatingTotals() {
+       const display = this.page.locator('//iris-composed-table-grid//mat-table[@id="pivot-grid-data"]');
+        expect(display).toBeVisible();
+    }
+
+    async verifyGridSection() {
+         expect(this.gridBalance).toBeVisible();
+         expect(this.gridCurrency).toBeVisible();
+         expect(this.gridTotalCredit).toBeVisible();
+         expect(this.gridTotalDebit).toBeVisible();
+     }
+    
+     async verifyCurrencyDebitCredit() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const currency = this.page.locator('//mat-header-cell[contains(@class,"debitTotal")]');
+        const currency1 = this.page.locator('//mat-header-cell[contains(@class,"creditTotal")]');
+
+        for (let index = 0; index < await currency.count() && currency1.count(); index++) {
+            expect(await currency.nth(index).innerText() && await currency1.nth(index).innerText()).toBeTruthy();
+        }
+    }
+
+    async verifySearchBar() {
+        expect(this.searchBar).toBeVisible();
+    }
+
+    async enterinSearchbar(data: string) {
+        await this.searchBar.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }
 }
