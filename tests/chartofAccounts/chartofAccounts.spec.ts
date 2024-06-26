@@ -3,7 +3,7 @@ import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { ChartOfAccountsPage } from '../../page-objects/chartofAccounts-pages/chartofAccounts-page';
 import '../../page-objects/utilities-pages/global-setup.ts';
-const ChartOfAccountsPageData = require(`../../testdata/${process.env.ENV || 'eu'}/chartOfAccounts.json`) as Record<string, any>;
+const ChartOfAccountsPageData = require(`../../testdata/${process.env.ENV || 'eu'}/chartofAccounts.json`) as Record<string, any>;
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 
 
