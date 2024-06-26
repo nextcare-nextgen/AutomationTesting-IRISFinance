@@ -146,11 +146,13 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyOrgNameAndOrgCodeField() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.organizationName).toBeVisible();
         expect(this.organizationCode).toBeVisible();
     }
 
     async verifySearchField() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.search).toBeVisible();
     }
 
@@ -159,6 +161,7 @@ export class FinancialOrganizationsPage {
     }
 
     async enterOrganizationName(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.organizationName.fill(data);
     }
 
@@ -176,11 +179,13 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyIndexStatus() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.activeIndex).toBeVisible();
         expect(this.stoppedIndex).toBeVisible();
     }
 
     async clickOnActiveIndex() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.activeIndex.click();
     }
 
@@ -193,6 +198,7 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyRecordsPerPageText(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const actual = await this.recordsPerPage.textContent();
         expect(actual).toBe(data);
     }
@@ -248,6 +254,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyStopOrganizationButtonIsClickable() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.stopOrg).toBeEnabled();
     }
 
@@ -286,6 +293,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyADDOrganizationButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.addOrganizationbtn).toBeVisible();
     }
 
