@@ -176,11 +176,13 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountNameAccountNumberField() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.accountName).toBeVisible();
         expect(this.accountNumber).toBeVisible();
     }
 
     async verifySearchField() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.search).toBeVisible();
     }
 
@@ -217,6 +219,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyActiveandStoppedIndex() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.parentAccountNumber).toBeVisible();
         expect(this.accountNumberfromGrid).toBeVisible();
     }
@@ -283,6 +286,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAddAccountButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.addAccount).toBeVisible();
     }
 
@@ -342,12 +346,15 @@ export class ChartOfAccountsPage {
 
     async selectAddAccountTypeFromDropdown(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await this.selectAddAccountType.click();
+       // await this.selectAddAccountType.nth(0).press('tab');
+        const key = this.page.locator('//mat-label//span[@title="Account Type"]');
+        await key.click();
         const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         AccountTypeinput.fill(data);
         const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
         await new Promise(resolve => setTimeout(resolve, 2000));
         selectAccounttype.click();
+
     }
 
     async enterSelectStartDate(data: string) {
@@ -361,6 +368,9 @@ export class ChartOfAccountsPage {
         const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]');
         await new Promise(resolve => setTimeout(resolve, 3000));
         selectGLAccounttype.click();
+        selectGLAccounttype.click();
+       // await this.page.keyboard.press('enter');
+        //await selectGLAccounttype.press('enter');
     }
 
     async verifySaveButton() {

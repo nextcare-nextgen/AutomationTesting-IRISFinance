@@ -198,7 +198,8 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectPaymentStatus(data: string) {
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
         await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
     }

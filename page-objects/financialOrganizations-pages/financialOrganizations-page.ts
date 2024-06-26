@@ -293,7 +293,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyADDOrganizationButton() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.addOrganizationbtn).toBeVisible();
     }
 

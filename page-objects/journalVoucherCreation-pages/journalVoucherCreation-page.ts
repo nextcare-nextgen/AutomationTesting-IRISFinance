@@ -46,12 +46,19 @@ export class JournalVoucherCreationPage {
     readonly validateCheckbox: Locator;
     readonly errorpopup: Locator;
     readonly debitCreditErrorpopup: Locator;
-    readonly gridCurrency : Locator;
-    readonly gridTotalDebit : Locator;
-    readonly gridTotalCredit : Locator;
-    readonly gridBalance : Locator;
+    readonly gridCurrency: Locator;
+    readonly gridTotalDebit: Locator;
+    readonly gridTotalCredit: Locator;
+    readonly gridBalance: Locator;
     readonly searchBar: Locator;
-    readonly  label : Locator;
+    readonly label: Locator;
+    readonly voucherType: Locator;
+    readonly VoucherDate: Locator;
+    readonly voucherRef: Locator;
+    readonly voucherNumber: Locator;
+    readonly validationDate: Locator;
+    readonly validated: Locator;
+    readonly voucherDateMandate: Locator;
 
 
     constructor(page: Page) {
@@ -104,9 +111,16 @@ export class JournalVoucherCreationPage {
         this.gridTotalDebit = page.locator('//mat-header-cell[contains(@class,"debitTotal")]')
         this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
+        this.voucherType = page.locator('//iris-voucher-type-autocomplete//mat-form-field');
+        this.VoucherDate = page.locator('//iris-standard-date//mat-form-field//input[@title="Voucher Date"]');
+        this.voucherRef = page.locator('//iris-text-input//mat-form-field//input[@title="Voucher Ref"]');
+        this.voucherNumber = page.locator('//iris-text-input//mat-form-field//input[@title="Voucher Number"]');
+        this.validationDate = page.locator('//iris-standard-date//mat-form-field//input[@title="Validation Date"]');
+        this.validated = page.locator('//iris-checkbox-select//mat-checkbox');
+        this.voucherDateMandate = page.locator('//label//span[contains(@class,"required-marker")]');
 
-    
-    
+
+
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -317,18 +331,18 @@ export class JournalVoucherCreationPage {
     }
 
     async verifySectionIndicatingTotals() {
-       const display = this.page.locator('//iris-composed-table-grid//mat-table[@id="pivot-grid-data"]');
+        const display = this.page.locator('//iris-composed-table-grid//mat-table[@id="pivot-grid-data"]');
         expect(display).toBeVisible();
     }
 
     async verifyGridSection() {
-         expect(this.gridBalance).toBeVisible();
-         expect(this.gridCurrency).toBeVisible();
-         expect(this.gridTotalCredit).toBeVisible();
-         expect(this.gridTotalDebit).toBeVisible();
-     }
-    
-     async verifyCurrencyDebitCredit() {
+        expect(this.gridBalance).toBeVisible();
+        expect(this.gridCurrency).toBeVisible();
+        expect(this.gridTotalCredit).toBeVisible();
+        expect(this.gridTotalDebit).toBeVisible();
+    }
+
+    async verifyCurrencyDebitCredit() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const currency = this.page.locator('//mat-header-cell[contains(@class,"debitTotal")]');
         const currency1 = this.page.locator('//mat-header-cell[contains(@class,"creditTotal")]');
@@ -347,5 +361,18 @@ export class JournalVoucherCreationPage {
         await new Promise(resolve => setTimeout(resolve, 2000));
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
+    }
+
+    async verifyFirstScections() {
+        expect(this.voucherType).toBeVisible();
+        expect(this.VoucherDate).toBeVisible();
+        expect(this.voucherRef).toBeVisible();
+        expect(this.voucherNumber).toBeVisible();
+        expect(this.validationDate).toBeVisible();
+        expect(this.validated).toBeVisible();
+    }
+
+    async verifyVoucherDateMandate() {
+        expect(this.voucherDateMandate).toBeVisible();
     }
 }

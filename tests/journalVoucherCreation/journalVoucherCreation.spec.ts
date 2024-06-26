@@ -316,6 +316,83 @@ test('NXGF-TC-3861: TC_009_Journal Voucher creation_Verify that the screen is di
 
 });
 
+test('NXGF-TC-3862: TC_010_Journal Voucher creation_Verify that in the first section - shows the options "Voucher Type, Voucher Date, Voucher Ref, Voucher Number, Validation Date, Validated Checkbox"', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
+
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
+    })
+
+    await test.step("User Click on Edit Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnEditJournalVoucher();
+    })
+
+    await test.step("Verified that in the first section - shows the options Voucher Type, Voucher Date, Voucher Ref, Voucher Number, Validation Date, Validated Checkbox", async () => {
+        await journalVoucherCreationPage.verifyFirstScections();
+    })
+
+});
+
+test('NXGF-TC-3863: TC_016_Journal Voucher creation_Verify that the Voucher Date is a mandatory field', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
+
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
+    })
+
+    await test.step("User Click on Add Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
+    })
+
+    await test.step("Verified that the Voucher Date is a mandatory field", async () => {
+        await journalVoucherCreationPage.verifyVoucherDateMandate();
+    })
+
+});
+
+
 test('NXGF-TC-3866: TC_019_Journal Voucher creation_Verify that the Voucher type has predefinded dropdown values', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
