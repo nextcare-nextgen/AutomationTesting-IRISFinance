@@ -1,4 +1,5 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import { appendFile } from "fs";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class JournalVoucherCreationPage {
@@ -59,6 +60,8 @@ export class JournalVoucherCreationPage {
     readonly validationDate: Locator;
     readonly validated: Locator;
     readonly voucherDateMandate: Locator;
+    readonly voucherDatecalenderIcon : Locator;
+    readonly voucherTypeMandate : Locator;
 
 
     constructor(page: Page) {
@@ -118,8 +121,8 @@ export class JournalVoucherCreationPage {
         this.validationDate = page.locator('//iris-standard-date//mat-form-field//input[@title="Validation Date"]');
         this.validated = page.locator('//iris-checkbox-select//mat-checkbox');
         this.voucherDateMandate = page.locator('//label//span[contains(@class,"required-marker")]');
-
-
+        this.voucherDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
+        this.voucherTypeMandate = page.locator('//iris-voucher-type-autocomplete//mat-form-field//label');
 
     }
 
@@ -375,4 +378,16 @@ export class JournalVoucherCreationPage {
     async verifyVoucherDateMandate() {
         expect(this.voucherDateMandate).toBeVisible();
     }
+
+    async verifyCurrentVoucherDateFromCalender() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.voucherDatecalenderIcon.click();
+        expect(this.currentDateFromCalender).toBeVisible();
+    }
+
+    async verifyVoucherTypeMandate() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.voucherTypeMandate).toBeVisible();
+    }
+    
 }

@@ -224,9 +224,10 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectTransactiontype(data: string) {
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
-        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+       const value = await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+        //ancestor::div[1]//mat-checkbox//input
     }
 
     async verifyListOfTransactionType() {
@@ -245,9 +246,9 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectPaymentMethod(data: string) {
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
-        await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.locator('//mat-label//span[@title="Payment Method"]').dblclick();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
     }
 
     async enterFromPaymentAmount(data: string) {
@@ -299,14 +300,14 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnApplyButton() {
         await this.applybtn.click();
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 8000));
     }
 
 
     async selectPaymentType(data: string) {
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
-        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
     }
 
 

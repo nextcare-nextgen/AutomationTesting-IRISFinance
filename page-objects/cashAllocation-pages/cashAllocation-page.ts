@@ -168,6 +168,7 @@ export class CashAllocationPage {
     async clickOnClearedstaus() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.clearedPaymentStatus.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
 
     }
 
@@ -235,6 +236,7 @@ export class CashAllocationPage {
     }
 
     async verifySelectPaymentsDetails() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.paymentDateTitle).toBeVisible();
         expect(this.paymentDate).toBeVisible();
         expect(this.paymentReferenceTitle).toBeVisible();

@@ -10,5 +10,11 @@
         "userNameInput": "vTestAdmin",
         "passwordInput": "QADev@2024",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
+    },
+    "LoginB2C-Access": {
+        "url": "https://test-syncrob2c-eu.tatsh.cloud/",
+        "userNameInput": "vTestAdmin",
+        "passwordInput": "QADev@2024",
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
     }
-   }
+}

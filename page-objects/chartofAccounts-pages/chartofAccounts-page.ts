@@ -346,7 +346,7 @@ export class ChartOfAccountsPage {
 
     async selectAddAccountTypeFromDropdown(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
-       // await this.selectAddAccountType.nth(0).press('tab');
+        // await this.selectAddAccountType.nth(0).press('tab');
         const key = this.page.locator('//mat-label//span[@title="Account Type"]');
         await key.click();
         const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
@@ -362,15 +362,14 @@ export class ChartOfAccountsPage {
     }
 
     async selectglAccountTypeFromDropdown(data: string) {
-        await this.selectglAccountTypee.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const key = this.page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
+        await key.click();
         const glAccountTypeinput = this.page.locator('//mat-dialog-container//iris-gl-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         glAccountTypeinput.fill(data);
-        const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]');
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        selectGLAccounttype.click();
-        selectGLAccounttype.click();
-       // await this.page.keyboard.press('enter');
-        //await selectGLAccounttype.press('enter');
+        const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]').click();
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
     }
 
     async verifySaveButton() {

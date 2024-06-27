@@ -995,7 +995,7 @@ test('NXGF-TC-2131: TC_041_ Chart of Accounts_Verify that the user is able to se
     await test.step("Verified that the user is able to click on the add(+) button", async () => {
         await chartOfAccountsPage.clickOnAddAccountButton();
     })
-    
+
     await test.step("Uer Verified the organization name selected on the top of the page", async () => {
         await chartOfAccountsPage.selectAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_041_Chart_of_Accounts'].value);
     })

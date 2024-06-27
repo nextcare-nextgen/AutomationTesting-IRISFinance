@@ -102,6 +102,7 @@ export class FxRatesPage {
     */
   async clickOnFxRatesShrtcutsButton() {
     await this.fxRatesShortcut.first().click();
+    await new Promise(resolve => setTimeout(resolve, 5000));
   }
 
   async verifyBreadCrumbsText(data: string) {
@@ -176,6 +177,7 @@ export class FxRatesPage {
   }
 
   async verifyFromDate() {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     expect(this.fromDate).toBeVisible();
   }
 
@@ -239,7 +241,7 @@ export class FxRatesPage {
 
   async clickOnResetButton() {
     await this.resetbtn.click();
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 8000));
   }
 
   async verifyToDateFromGrid() {

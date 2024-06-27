@@ -168,11 +168,12 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyjournalVoucherLookupsearchSection() {
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
         expect(this.journalVoucherLookupsearchSection).toBeVisible();
     }
 
     async verifyjournalVoucherLookupGridSection() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.journalVoucherLookupGridSection).toBeVisible();
     }
 
@@ -349,6 +350,7 @@ export class JournalVoucherLookupPage {
 
 
     async clickOnRecordsPerPageDropdown() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
         expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);

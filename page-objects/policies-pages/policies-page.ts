@@ -106,12 +106,12 @@ export class PoliciesPage {
     }
 
     async clickOnPoliciesShrtcutsButton() {
-        // await this.policiesShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.policiesShortcut.first().click();
     }
 
     async clickOnOrganizationShrtcutsButton() {
-        // await this.policiesShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.orgShortcut.last().click();
     }
 
@@ -148,10 +148,12 @@ export class PoliciesPage {
     }
 
     async verifyFromDate() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.fromDate).toBeVisible();
     }
 
     async verifyToDate() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.toDate).toBeVisible();
     }
 
@@ -175,14 +177,17 @@ export class PoliciesPage {
     }
 
     async verifySearch() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.search).toBeVisible();
     }
 
     async verifyAdvancedSearch() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.advancedSearch).toBeVisible();
     }
 
     async verifyReset() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.reset).toBeVisible();
     }
 

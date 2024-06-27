@@ -475,7 +475,6 @@ export class FinancialOrganizationsPage {
 
     async verifyAddOrgPopUpWindowManadatoryFields() {
         expect(this.mandateName).toBeVisible();
-        expect(this.mandateName).toBeVisible();
         expect(this.mandateStartDate).toBeVisible();
     }
 
