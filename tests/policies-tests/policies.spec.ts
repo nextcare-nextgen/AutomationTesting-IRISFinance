@@ -382,13 +382,11 @@ test('NXGF-TC-1922: TC_012_Policies_Verify that the all the column name should d
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Select Organization", async () => {
         await dashboardPage.selectOrganization(policiesData['TC_020_Policies'].organization);
     })
-
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();

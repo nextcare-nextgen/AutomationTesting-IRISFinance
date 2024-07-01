@@ -61,7 +61,7 @@ export class FxRatesPage {
     this.closebtn = page.locator('//iris-icon-action[@class="close-icon"]');
     this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
     this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
-    this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+    this.searchBar = page.locator('//input[@placeholder="Search"]');
     this.label = page.locator('//iris-menu-card//iris-base-label//span');
     this.fxRatestext = page.locator('//h1[@title="FX Rates"]');
     this.fromDate = page.locator('//div//input[@title="From Date"]');
@@ -167,6 +167,7 @@ export class FxRatesPage {
 
   async enterinSearchbar(data: string) {
     await this.searchBar.fill(data);
+    await new Promise(resolve => setTimeout(resolve, 3000));
     const actual = await this.label.textContent();
     expect(actual).toBe(data);
   }

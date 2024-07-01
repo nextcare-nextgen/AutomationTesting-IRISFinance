@@ -174,3 +174,61 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
 
     page.close();
 });
+
+test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can click on cancel  and they return to the previous page', async ({ page }) => {
+    const onePayPage: OnePayPage = new OnePayPage(page);
+
+    await test.step("Load the URL in Browser", async () => {
+        await onePayPage.gotoHomePage(onePayData["TC_001_OnePay"].url);
+    })
+
+    await test.step("Enter Policyholder's details,Policyholder's address in Germany,Are you the insured person details and Enter your date of birth and gender", async () => {
+        await onePayPage.expatcareFirstTab(onePayData["TC_001_OnePay"].firstNameInput, onePayData["TC_001_OnePay"].lastNameInput, onePayData["TC_001_OnePay"].passportInput, onePayData["TC_001_OnePay"].mobileNumbercodeInput, onePayData["TC_001_OnePay"].mobileNumberInput, onePayData["TC_001_OnePay"].emailInput, onePayData["TC_001_OnePay"].streetNameInput, onePayData["TC_001_OnePay"].streetNumberInput, onePayData["TC_001_OnePay"].postalCodeInput, onePayData["TC_001_OnePay"].additionalAddressInput, onePayData["TC_001_OnePay"].cityInput, onePayData["TC_001_OnePay"].dayInput, onePayData["TC_001_OnePay"].monthInput, onePayData["TC_001_OnePay"].yearInput);
+    })
+
+    await test.step("Click on First Tab Next Button ", async () => {
+        await onePayPage.clickOnFirstTabNextButton();
+    })
+
+    await test.step("Click on Second Tab  Button ", async () => {
+        await onePayPage.clickOnsecondtabNextButton();
+    })
+
+    await test.step("Enter Start Date and End Date  on Third Tab ", async () => {
+        await onePayPage.expatcaresStartandEnddateonThirdtTab(onePayData["TC_001_OnePay"].StartdateInput, onePayData["TC_001_OnePay"].EnddateInput);
+    })
+
+    await test.step("Click on Classic Plan ", async () => {
+        await onePayPage.clickOnClassiccTile();
+    })
+
+    await test.step("Click on Third Tab Next Button ", async () => {
+        await onePayPage.clickOnThirdTabNextButton();
+    })
+
+    await test.step("Click on  Credit card radio Button on fourth tab", async () => {
+        await onePayPage.clickOnCreditcardradioButton();
+    })
+
+    await test.step("Select checkboxes on  fourth tab", async () => {
+        await onePayPage.clickOnCheckboxesonfourthtab();
+    })
+
+    await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
+        await onePayPage.clickOnApplyandPayButton();
+    })
+
+    await test.step("Enter all details of credit card ", async () => {
+        await onePayPage.expatcareFilldetailsoncreditcardTab();
+    })
+
+    await test.step("Click On Cancel button", async () => {
+        await onePayPage.clickOnCancelButton();
+    })
+
+    await test.step("Verified Prevoius page title as 'Payment method and checkout'", async () => {
+        await onePayPage.verifyPrevoiusPageTitle(onePayData["TC_001_OnePay"].title);
+    })
+
+    page.close();
+});

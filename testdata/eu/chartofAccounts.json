@@ -112,14 +112,14 @@
     "TC_074_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
         "accountType": "Gross written premium",
-        "GLdropdownvalue": "General ledger"
+        "GLdropdownvalue": "Account Payable"
     },
     "TC_077_Chart_of_Accounts": {
         "popup": "Are you sure you want to stop this account ?"
     },
     "TC_078_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
-        "accountType": "Gross written premium",
+        "accountType": "Bank Charges",
         "GLdropdownvalue": "General ledger"
     },
     "TC_079_Chart_of_Accounts": {
@@ -129,7 +129,7 @@
         "GLdropdownvalue": "General ledger"
     },
     "TC_082_Chart_of_Accounts": {
-        "value": "Organizations"
+        "value": "Charts of Accounts"
     },
     "TC_083_Chart_of_Accounts": {
         "accountNumber": "875421"

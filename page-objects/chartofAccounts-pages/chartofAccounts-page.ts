@@ -127,7 +127,7 @@ export class ChartOfAccountsPage {
         this.warningPopup = page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
         this.expandArrow = page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
         this.addAccountScreenText = page.locator("//iris-base-label//h2[@title='Add a new account']");
-        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
         this.childstartDateCalendarIcon = page.locator('//div//input[@title="Start Date"]/following::mat-icon[@data-mat-icon-name="icon-calendar"][1]');
         this.randomString = `${Math.random().toString().slice(2, 8)}`;
@@ -362,6 +362,7 @@ export class ChartOfAccountsPage {
     }
 
     async selectglAccountTypeFromDropdown(data: string) {
+
         await new Promise(resolve => setTimeout(resolve, 3000));
         const key = this.page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
         await key.click();
@@ -475,11 +476,9 @@ export class ChartOfAccountsPage {
     }
 
     async selectEditChildAddAccountTypeFromDropdown(data: string) {
-        await this.selectAddAccountType.click();
-        const AccountTypeinput = this.page.locator('//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
-        AccountTypeinput.fill(data);
+        await this.page.locator('//span[text()="Account Type"]').click();
         const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
-        selectAccounttype.click();
+        selectAccounttype.dblclick();
     }
 
     async verifySearchBar() {

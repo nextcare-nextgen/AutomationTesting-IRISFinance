@@ -46,7 +46,7 @@ export class ViewAllocatedPaymentsPage {
         this.toAmount = page.locator('//input[@title="To Amount"]');
         this.policyRef = page.locator('//input[@title="Policy Ref/Document Ref"]');
         this.apply = page.locator('//button[@title="Apply"]');
-        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.searchBar = page.locator('//input[@placeholder="Search"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -130,8 +130,7 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifyPaymentMethodFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 10000));
-
+        await new Promise(resolve => setTimeout(resolve, 9000));
         const elements = await this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
         for (let index = 0; index < await elements.count(); index++) {
             const paymentMethod = await elements.nth(index).textContent();

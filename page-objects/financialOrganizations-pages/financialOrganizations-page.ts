@@ -93,7 +93,7 @@ export class FinancialOrganizationsPage {
         this.localization = page.locator('//iris-composed-dialog//input[@title="Localization"]');
         this.financialsInformation = page.locator('//iris-navigation-hyperlink//a[@title="Financial Information"]');
         this.orgCardType = page.locator('//iris-navigation-hyperlink//a[@title="Card Types"]');
-        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
         this.addOrgpopupWindowLabel = page.locator('//iris-composed-dialog//h2[@title="Add a new organization"]');
         this.startDate = page.locator('//input[@title="Start Date"]');

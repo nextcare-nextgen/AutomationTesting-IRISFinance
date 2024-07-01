@@ -98,7 +98,7 @@ export class JournalVoucherListPage {
         this.description = page.locator('//div//input[@title="Description"]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
-        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
         this.clearAll = page.locator('//div//button[@title="Clear All"]');
         this.editVoucherDate = page.locator('//iris-standard-date//div//input[contains(@class,"input-element")]');
@@ -348,6 +348,7 @@ export class JournalVoucherListPage {
 
     async enterinSearchbar(data: string) {
         await this.searchBar.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }

@@ -112,7 +112,7 @@ export class JournalVoucherCreationPage {
         this.gridCurrency = page.locator('//mat-header-cell[contains(@class,"amountName")]');
         this.gridTotalCredit = page.locator('//mat-header-cell[contains(@class,"creditTotal")]');
         this.gridTotalDebit = page.locator('//mat-header-cell[contains(@class,"debitTotal")]')
-        this.searchBar = page.locator('//iris-text-input[contains(@class,"search-menu-input")]');
+        this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
         this.voucherType = page.locator('//iris-voucher-type-autocomplete//mat-form-field');
         this.VoucherDate = page.locator('//iris-standard-date//mat-form-field//input[@title="Voucher Date"]');

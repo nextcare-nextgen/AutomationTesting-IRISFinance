@@ -108,6 +108,7 @@ export class PoliciesPage {
     async clickOnPoliciesShrtcutsButton() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.policiesShortcut.first().click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickOnOrganizationShrtcutsButton() {
@@ -192,6 +193,7 @@ export class PoliciesPage {
     }
 
     async verifyGridColumn() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.policyId).toBeVisible();
         expect(this.reference).toBeVisible();
         expect(this.holderName).toBeVisible();

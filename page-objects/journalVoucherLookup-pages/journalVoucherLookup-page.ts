@@ -123,7 +123,7 @@ export class JournalVoucherLookupPage {
         this.totalCredityVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"debitTotal")]//div//small[@title="Total Debit"]');
         this.totalDebitVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"creditTotal")]//div//small[@title="Total Credit"]');
         this.balanceVoucherInfoThirdSection = page.locator('//mat-header-cell[contains(@class,"balance")]//div//small[@title="Balance"]');
-        this.searchbar = page.locator('//div//input[@placeholder="Search"]');
+        this.searchbar = page.locator('//input[@placeholder="Search"]');
         this.toAmount = page.locator('//div//input[@title="To Amount"]');
         this.clearAll = page.locator('//div//button[@title="Clear All"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
@@ -214,6 +214,7 @@ export class JournalVoucherLookupPage {
 
     async clickonSearchButton() {
         await this.search.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickonVoucherType() {
@@ -263,7 +264,7 @@ export class JournalVoucherLookupPage {
 
 
     async verifyAmountFromGrid() {
-        await new Promise(resolve => setTimeout(resolve, 6000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
         for (let index = 0; index < await amount.count(); index++) {
             expect(await amount.nth(index).innerText()).toBeTruthy();
@@ -411,6 +412,7 @@ export class JournalVoucherLookupPage {
 
     async enterinSearchbar(data: string) {
         await this.searchbar.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const actual = await this.label.textContent();
         expect(actual).toBe(data);
     }

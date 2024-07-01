@@ -2215,7 +2215,7 @@ test('NXGF-TC-2168: TC_082_ Chart of Accounts_Verify that the User is able to en
     })
 
     await test.step("Verified that the User is able to enter and Search the shortcut menu from search bar", async () => {
-        await chartOfAccountsPage.enterinSearchbar(ChartOfAccountsPageData['TC_080_Chart_of_Accounts'].value);
+        await chartOfAccountsPage.enterinSearchbar(ChartOfAccountsPageData['TC_082_Chart_of_Accounts'].value);
     })
 
 });

@@ -249,7 +249,7 @@ export class OnePayPage {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").fill("10");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").click();
-        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("4111111111111111");
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("41111111111111116");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").fill("28");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cvc']").click();
@@ -320,4 +320,16 @@ export class OnePayPage {
         expect(actual).toBeEnabled();
     }
 
+    async clickOnCancelButton() {
+        this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//button[@type='button']").click();
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(10000);
+        await new Promise(resolve => setTimeout(resolve, 9000));
+    }
+
+    async verifyPrevoiusPageTitle(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 9000));
+        const actual = await this.page.locator("//h1[text()=' Payment method and checkout ']");
+        expect(actual).toBe(data);
+    }
 }
