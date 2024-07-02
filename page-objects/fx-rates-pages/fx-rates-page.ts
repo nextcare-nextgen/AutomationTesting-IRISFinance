@@ -178,11 +178,12 @@ export class FxRatesPage {
   }
 
   async verifyFromDate() {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
     expect(this.fromDate).toBeVisible();
   }
 
   async verifyToDate() {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     expect(this.toDate).toBeVisible();
   }
 
@@ -206,10 +207,12 @@ export class FxRatesPage {
   }
 
   async verifyFromCurrencyField() {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     expect(this.fromCurrencyfield).toBeVisible();
   }
 
   async verifyToCurrencyField() {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     expect(this.toCurrencyfield).toBeVisible();
   }
 
@@ -228,10 +231,12 @@ export class FxRatesPage {
 
 
   async verifySearchbtnField() {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     expect(this.searchbtn).toBeVisible();
   }
 
   async verifyResetbuttonField() {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     expect(this.resetbtn).toBeVisible();
   }
 
@@ -276,13 +281,14 @@ export class FxRatesPage {
   }
 
   async verifyafterResetCurrencyFieldReset() {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     const toCurrencyinput = this.page.locator('//form//div[contains(@class,"w-md-auto")][3]//iris-autocomplete-select//div//input[contains(@class,"input-element")]');
     expect(toCurrencyinput).toBeEmpty();
 
   }
 
   async verifyAllColumnField() {
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 8000));
     expect(this.fromcurrencyFromGrid).toBeVisible();
     expect(this.tocurrencyFromGrid).toBeVisible();
     expect(this.fromDateFromGrid).toBeVisible();

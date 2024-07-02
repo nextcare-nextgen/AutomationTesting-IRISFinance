@@ -277,7 +277,7 @@ export class JournalVoucherCreationPage {
     async selectCurrency(data: string) {
         await this.currency.click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 7000));
     }
 
     async verifyCV1Amount() {
@@ -309,6 +309,7 @@ export class JournalVoucherCreationPage {
 
     async clickOnEditTransaction() {
         await this.editTransaction.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickOnEditJournalVoucher() {

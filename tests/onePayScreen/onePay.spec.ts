@@ -58,7 +58,7 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
         await onePayPage.clickOnSaveCardDetails();
     })
 
-    await test.step("Vaerified all details on Thank you page ", async () => {
+    await test.step("Verified all details on Thank you page ", async () => {
         await onePayPage.verifyThankyoupageText(onePayData["TC_003_OnePay"].thankyouText, onePayData["TC_003_OnePay"].requestText, onePayData["TC_003_OnePay"].questionText, onePayData["TC_003_OnePay"].infoText);
     })
 
@@ -168,7 +168,7 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
         await onePayPage.expatcareFilldetailsoncreditcardTab();
     })
 
-    await test.step("Vaerified all details on Thank you page ", async () => {
+    await test.step("Verified Save button Enabled", async () => {
         await onePayPage.verifySaveDetailsButtonEnabled();
     })
 

@@ -249,7 +249,7 @@ export class OnePayPage {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").fill("10");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").click();
-        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("41111111111111116");
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("4111111111111111");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").fill("28");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cvc']").click();
@@ -267,15 +267,11 @@ export class OnePayPage {
 
     async verifyThankyoupageText(expectedthankyouText: string, expectedfirstText: string, expectedThirdText: string, expecteddistributornameText: string) {
         // await this.page.waitForTimeout(10000);
-        // async verifyThankyoupageText(expectedthankyouText: string,expectedfirstText: string,expectedpolicyidText: string,expectedThirdText: string,expecteddistributornameText: string) {
         await this.page.waitForLoadState('networkidle');
         const actualfirtliText = await (await this.page.waitForSelector("//div[@id='row-12889']//h3[contains(text(),'Thank you')]")).textContent();
-        // const actualfirtliText = await this.page.locator("//div[@id='row-12889']//h3[contains(text(),'Thank you')]").textContent();
         expect(actualfirtliText).toContain(expectedthankyouText);
         const actualsecondliText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]").textContent();
         expect(actualsecondliText).toContain(expectedfirstText);
-        //  const actualpolicyidText = await this.page.locator("//div[@id='row-12889']//b[contains(text(),'MAE-AWPDE-6028-NB')]").textContent();
-        // expect("MAE-AWPDE").toContain(expectedpolicyidText);
         const actualthirdText = await this.page.locator("(//p[contains(text(),'If you have any questions please contact the below')])[1]").textContent();
         expect(actualthirdText).toContain(expectedThirdText);
         const actualdisText = await this.page.locator("//div[@id='row-12889']//p[@class='ng-star-inserted']").textContent();
@@ -315,15 +311,14 @@ export class OnePayPage {
 
     async verifySaveDetailsButtonEnabled() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const actual = await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']");
-        await actual.scrollIntoViewIfNeeded();
+        const actual =  this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']");
+        //await actual.scrollIntoViewIfNeeded();
         expect(actual).toBeEnabled();
     }
 
     async clickOnCancelButton() {
         this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//button[@type='button']").click();
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(10000);
         await new Promise(resolve => setTimeout(resolve, 9000));
     }
 

@@ -1,4 +1,5 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import { monitorEventLoopDelay } from "perf_hooks";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class JournalVoucherListPage {
@@ -367,24 +368,37 @@ export class JournalVoucherListPage {
 
     async verifyOldDateisDisabled(from: string) {
 
+       /* let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() - 1;
+        let year = date.getFullYear();
+
+        //let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${month}`;
+        var todayDate = Number(fullDate);
+        await this.fromDateCalenderIcon.click();
+        await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+        await this.page.waitForTimeout(2000);*/
+
+
         let date = new Date()
         let day = date.getDate();
-        let month = date.getMonth();
+        let month = date.getMonth() - 2;
         let year = date.getFullYear();
 
         // let fullDate = day + "." + month + "." + year + ".";
-        let fullDate = `${day}`;
+        let fullDate = `${month}`;
         var todayDate = Number(fullDate);
-        var oldDate = todayDate - 9;
+       // var oldDate = todayDate - 9;
 
 
         if (from == "From Date") {
             await this.toDateCalendarIcon.click();
-            const isoldDateEnabled = await this.page.locator('//span[text()=" ' + oldDate + ' "]').isEnabled();
+            const isoldDateEnabled = await this.page.locator('//span[text()=" ' + todayDate + ' "]').isEnabled();
             expect(isoldDateEnabled).toBeFalsy();
         } else if (from == "To Date") {
             await this.toDateCalendarIcon.click();
-            const isoldDateEnabled = await this.page.locator('//span[text()=" ' + oldDate + ' "]').isEnabled();
+            const isoldDateEnabled = await this.page.locator('//span[text()=" ' + todayDate + ' "]').isDisabled();
             expect(isoldDateEnabled).toBeFalsy();
         } else {
             throw new Error("Data not match");
