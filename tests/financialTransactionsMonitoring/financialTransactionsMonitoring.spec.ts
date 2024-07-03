@@ -262,7 +262,7 @@ test('NXGF-TC-3023: TC_009_Transactions Details Screen_Verify that the user shou
 
 });
 
-test('NXGF-TC-3024: TC_010_Transactions Details Screen_Verify that the from date is earlier or equal to the to date', async ({ page }) => {
+test('NXGF-TC-3024,NXGF-TC-3025: TC_010_Transactions Details Screen_Verify that the from date is earlier or equal to the to date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1505,6 +1505,104 @@ test('NXGF-TC-3059: TC_046_Transaction Details Screen_Verify that the User is ab
 
 
 });
+
+test('NXGF-TC-6712: TC_47_Transaction Details Screen_Verify the to click on Export to Excel downloads', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Export to excel button", async () => {
+        await financialTransactionsMonitoringPage.clickOnExportToExcelButton();
+    })
+
+    await test.step("User Click on Export to Current Page button", async () => {
+        await financialTransactionsMonitoringPage.clickExportTOcurrentPage();
+    })
+
+});
+
+
+test('NXGF-TC-6713: TC_48_Transaction Details Screen_To verify that the transaction type either shows matching records or rejects invalid manual input.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("Verified that the transaction type either shows matching records or rejects invalid manual input.", async () => {
+        await financialTransactionsMonitoringPage.verifyErrorMessage(FinancialTransactionsMonitoringData['TC_048_Transactions_Details_Screen'].errorMessage,FinancialTransactionsMonitoringData['TC_048_Transactions_Details_Screen'].transactionType);
+    })
+});
+
+
+test('NXGF-TC-6714: TC_49_Transaction Details Screen_Verify that when the user clicks on search without applying any filters or making changes to the existing ones, the count of search results remains consistent', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("Verified that the transaction type either shows matching records or rejects invalid manual input.", async () => {
+        await financialTransactionsMonitoringPage.verifyexistingRecordBeforeSearch();
+    })
+});
+
+
+
 
 
 

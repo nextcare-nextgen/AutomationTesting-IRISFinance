@@ -46,6 +46,8 @@ export class FinancialTransactionsMonitoringPage {
     readonly DDsignDate: Locator;
     readonly DDcollectionDate: Locator;
     readonly clearAll: Locator;
+    readonly exportTOCurrentPage: Locator;
+    readonly errorMessage: Locator;
 
 
     constructor(page: Page) {
@@ -93,6 +95,8 @@ export class FinancialTransactionsMonitoringPage {
         this.DDcollectionDate = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
         this.DDsignDate = page.locator('//mat-label//span[@title="Remittance Info"]//following::div[contains(@class,mdc-notched-outline)][2]');
         this.clearAll = page.locator('//div//button[@title="Clear All"]');
+        this.exportTOCurrentPage = page.locator('//button[@title="Export Current Page"]');
+        this.errorMessage = page.locator('//mat-label[@title="No results found"]');
 
     }
 
@@ -225,7 +229,7 @@ export class FinancialTransactionsMonitoringPage {
 
     async selectTransactiontype(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
-       const value = await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
+        const value = await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
         //ancestor::div[1]//mat-checkbox//input
     }
@@ -402,7 +406,6 @@ export class FinancialTransactionsMonitoringPage {
         await new Promise(resolve => setTimeout(resolve, 3000));
         const actual = await this.paymentDetailsTitle.textContent();
         expect(actual).toBe(data);
-
     }
 
     async verifyCCPaymentDetails() {
@@ -468,6 +471,29 @@ export class FinancialTransactionsMonitoringPage {
     async enterFromDate(data: string) {
         await this.fromdateinput.fill(data);
     }
+
+    async clickExportTOcurrentPage() {
+        await this.exportTOCurrentPage.click();
+    }
+
+    async verifyErrorMessage(data: string, data1: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const value = await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
+        const fill = await this.page.locator('//iris-transaction-type-autocomplete//input').fill(data1);
+        // await this.page.keyboard.press('Enter');
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const actual = await this.errorMessage.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async verifyexistingRecordBeforeSearch() {
+        const before  = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').textContent();
+        await this.searchbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 9000));
+        const after  = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').first().textContent();
+        expect(before).toBe(after);
+    }
+   
 
 }
 
