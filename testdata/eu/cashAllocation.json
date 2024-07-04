@@ -73,6 +73,10 @@
         "policyRef": "PRT-AWPDE-6914-NB",
         "title": "Premium and Tax Dues"
     },
+    "TC_043_Cash_Allocation": {
+        "policyRef": "PRT-AWPDE-10144-NB",
+        "amount": "12"
+    },
     "TC_044_Cash_Allocation": {
         "policyRef": "PRT-AWPDE-6914-NB",
         "amount": "1"

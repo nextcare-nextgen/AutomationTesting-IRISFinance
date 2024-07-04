@@ -175,7 +175,7 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
     page.close();
 });
 
-test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can click on cancel  and they return to the previous page', async ({ page }) => {
+test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can click on cancel and they return to the previous page', async ({ page }) => {
     const onePayPage: OnePayPage = new OnePayPage(page);
 
     await test.step("Load the URL in Browser", async () => {

@@ -249,7 +249,6 @@ test('NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the 
 
     await test.step("Verified that user is able to view the search results for payment method dropdown", async () => {
         await viewAllocatedPaymentsPage.verifyPaymentMethodFromGrid(ViewAllocatedPaymentsPageData['TC_007_Cash_Allocation'].paymentMethod);
-
     })
 
     await test.step("Cleared Tansaction Type", async () => {
@@ -295,6 +294,7 @@ test('NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the 
 
     await test.step("User Click on Search button", async () => {
         await viewAllocatedPaymentsPage.clickOnSearchButton();
+        await new Promise(resolve => setTimeout(resolve, 10000));
     })
 
     await test.step("Verified that user is able to view the search results for payment method dropdown", async () => {

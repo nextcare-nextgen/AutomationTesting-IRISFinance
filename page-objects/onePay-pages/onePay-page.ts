@@ -240,13 +240,14 @@ export class OnePayPage {
     }
     async clickOnApplyandPayButton() {
         await this.applyandpayButton.click();
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async expatcareFilldetailsoncreditcardTab() {
         await this.page.waitForTimeout(10000);
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").fill("10");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("4111111111111111");
@@ -267,7 +268,7 @@ export class OnePayPage {
 
     async verifyThankyoupageText(expectedthankyouText: string, expectedfirstText: string, expectedThirdText: string, expecteddistributornameText: string) {
         // await this.page.waitForTimeout(10000);
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 9000));
         const actualfirtliText = await (await this.page.waitForSelector("//div[@id='row-12889']//h3[contains(text(),'Thank you')]")).textContent();
         expect(actualfirtliText).toContain(expectedthankyouText);
         const actualsecondliText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]").textContent();
@@ -317,14 +318,17 @@ export class OnePayPage {
     }
 
     async clickOnCancelButton() {
-        this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//button[@type='button']").click();
-        await this.page.waitForLoadState('networkidle');
+       // const actual =    this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//div[@id='bottom-actions']//button[@type='button']").first();
+        const framePage=    await this.page.frameLocator("#CreditCardIframe");
+        const actual= await framePage.getByRole('button',{name:'Cancel '});
+        await actual.scrollIntoViewIfNeeded();
+        await actual.dblclick({force:true});
         await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyPrevoiusPageTitle(data: string) {
         await new Promise(resolve => setTimeout(resolve, 9000));
-        const actual = await this.page.locator("//h1[text()=' Payment method and checkout ']");
+        const actual = await this.page.frameLocator("//h1[text()=' Payment method and checkout ']");
         expect(actual).toBe(data);
     }
 }

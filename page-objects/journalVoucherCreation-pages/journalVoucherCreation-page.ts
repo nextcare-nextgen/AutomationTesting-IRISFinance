@@ -168,12 +168,12 @@ export class JournalVoucherCreationPage {
 
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 8000));
     }
 
     async clickOnAddLookupVoucherCreationButton() {
         await this.addJournalVoucherLookupbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 7000));
     }
 
     async verifyAddJournalVoucherLookupTitle(data: string) {
@@ -200,7 +200,7 @@ export class JournalVoucherCreationPage {
         expect(secondSection).toBeVisible();
         const thirdSection = this.page.locator('//iris-composed-table-grid[contains(@class,"pivotGrid")]');
         expect(thirdSection).toBeVisible();
-
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyVoucherTypeDropdownList() {
@@ -223,6 +223,8 @@ export class JournalVoucherCreationPage {
 
     async clickOnAddVoucherTrancastionButton() {
         await this.addVoucherTransactionbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        
     }
 
     async verifyDescriptionInputBox() {
@@ -368,6 +370,7 @@ export class JournalVoucherCreationPage {
     }
 
     async verifyFirstScections() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.voucherType).toBeVisible();
         expect(this.VoucherDate).toBeVisible();
         expect(this.voucherRef).toBeVisible();

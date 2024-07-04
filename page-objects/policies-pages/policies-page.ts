@@ -254,6 +254,7 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVochereyeiconButton() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const icon = this.page.locator('//button[@title="View Policy Journal Voucher"]');
         expect(icon).toBeVisible();
     }

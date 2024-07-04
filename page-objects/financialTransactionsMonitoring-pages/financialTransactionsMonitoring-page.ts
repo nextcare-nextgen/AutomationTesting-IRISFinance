@@ -108,8 +108,8 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
-        await new Promise(resolve => setTimeout(resolve, 7000));
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 9000));
+        
     }
 
 
@@ -210,10 +210,12 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnSearchFilterButton() {
         await this.searchFilters.click();
+        await new Promise(resolve => setTimeout(resolve, 7000));
     }
 
     async verifyListOfPaymentStatus() {
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        //await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 7000));
         await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 
@@ -235,7 +237,8 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyListOfTransactionType() {
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+       // await this.page.waitForSelector('.loader', { state: 'hidden' });
+       await new Promise(resolve => setTimeout(resolve, 7000));
         await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 
@@ -278,12 +281,12 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnSearchButton() {
         await this.searchbtn.click();
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async verifyPaymentStatusFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 8000));
+       // await this.page.waitForSelector('.loader', { state: 'hidden' });
         const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await paymentsstatus.count(); index++) {
             const paymentStatus = await paymentsstatus.nth(index).textContent();

@@ -405,7 +405,6 @@ test('NXGF-TC-3864: TC_017_Journal Voucher creation_Verify that the Voucher date
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -414,7 +413,6 @@ test('NXGF-TC-3864: TC_017_Journal Voucher creation_Verify that the Voucher date
 
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
-
     })
 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {

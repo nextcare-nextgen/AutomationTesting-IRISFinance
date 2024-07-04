@@ -102,7 +102,7 @@ export class FxRatesPage {
     */
   async clickOnFxRatesShrtcutsButton() {
     await this.fxRatesShortcut.first().click();
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 9000));
   }
 
   async verifyBreadCrumbsText(data: string) {

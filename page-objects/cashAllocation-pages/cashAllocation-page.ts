@@ -312,6 +312,21 @@ export class CashAllocationPage {
         await this.page.waitForTimeout(2000);
     }
 
+    async selectFutureDate() {
+
+        let date = new Date()
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        //let fullDate = day + "." + month + "." + year + ".";
+        let fullDate = `${month}`;
+        var todayDate = Number(fullDate);
+        await this.fromDateCalendarIcon.click();
+        await this.page.locator('//span[text()=" ' + todayDate + ' "]').click();
+        await this.page.waitForTimeout(2000);
+    }
+
     async enterAndVerifyPaymentRef(data: string) {
         await this.paymentRef.fill(data);
     }
@@ -374,7 +389,7 @@ export class CashAllocationPage {
     }
 
     async verifyPaymentTypeFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 8000));
         const elements = await this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
         for (let index = 0; index < await elements.count(); index++) {
             const paymentType = await elements.nth(index).textContent();
@@ -577,5 +592,11 @@ export class CashAllocationPage {
             expect(text).toEqual(expectedValues[i]);
         }
     }
+
+    async verifyAmountErrorMessage() {
+        const premiumAndTaxAmount = this.page.locator('//mat-label[contains(@title,"Please enter a value less than or equal to")]');
+            expect(premiumAndTaxAmount).toBeVisible();
+        }
+    
 
 }

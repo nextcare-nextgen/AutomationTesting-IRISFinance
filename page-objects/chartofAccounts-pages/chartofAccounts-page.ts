@@ -149,6 +149,7 @@ export class ChartOfAccountsPage {
 
     async clickOnChartsOfAccountsShrtcutsButton() {
         await this.chartOfAccountsShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 8000));
     }
 
     async clickOnJournalVoucherShrtcutsButton() {
@@ -176,13 +177,13 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAccountNameAccountNumberField() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         expect(this.accountName).toBeVisible();
         expect(this.accountNumber).toBeVisible();
     }
 
     async verifySearchField() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         expect(this.search).toBeVisible();
     }
 

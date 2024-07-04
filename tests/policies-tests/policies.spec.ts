@@ -850,12 +850,10 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
 
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("Verify Policy Journal Voucher Eye Icon Displayed", async () => {
         await policiesPage.verifyPolicyJournalVochereyeiconButton();
-
     })
 
 })

@@ -163,8 +163,7 @@ export class JournalVoucherLookupPage {
 
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyjournalVoucherLookupsearchSection() {
@@ -205,11 +204,13 @@ export class JournalVoucherLookupPage {
     }
 
     async clickonApplyButton() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.applybtn.click();
     }
 
     async clickonClearAllButton() {
         await this.clearAll.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickonSearchButton() {
@@ -272,6 +273,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchButton() {
+        await new Promise(resolve => setTimeout(resolve, 6000));
         expect(this.search).toBeVisible();
     }
 
@@ -402,6 +404,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyAdvancedSearchfieldisEmpty() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.fromVoucherNumber).toBeEmpty;
         expect(this.toVoucherNumber).toBeEmpty;
         expect(this.voucherType).toBeEmpty;

@@ -141,7 +141,7 @@ test('NXGF-TC-1664: TC_013_Verify that the user is able to see shortcut menu but
         await dashboardPage.clickOnMenuIconButton();
     })
 
-    await test.step("Verified that the User is able to See Journal Voucher Shortcut Button", async () => {
+    await test.step("Verified that the User is able to See Organization Shortcut Button", async () => {
         await financialOrganizationsPage.verifyFinancialOrganizationShrtcutButton();
 
     })
@@ -245,7 +245,7 @@ test('NXGF-TC-1672: TC_030_Verift that the user is redirected to the Organizatio
         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
     })
 
-    await test.step("Verified that the user is able to navigate to the Journal Voucher Lookup screen", async () => {
+    await test.step("Verified that the user is able to navigate to the Organization screen", async () => {
         await financialOrganizationsPage.verifyOrganizationText(FinancialOrganizationsData['TC_030'].organizationText)
     })
 

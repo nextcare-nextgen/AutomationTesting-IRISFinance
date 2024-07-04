@@ -403,6 +403,39 @@ test('NXGF-TC-3328: TC_012_Cash Allocation Dashboard_Verify that the user is abl
 
 });
 
+test('NXGF-TC-3329: TC_013_Cash Allocation Dashboard_Verify that the user should be able to select future date in the "from date" calendar', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await cashAllocationPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("Verified that the user is able to select todays date in the 'from date' calendar selection", async () => {
+        await cashAllocationPage.selectFutureDate();
+    })
+
+});
+
 
 test('NXGF-TC-3330: TC_014_Cash Allocation Dashboard_Verify that the user should is be able to select past date in the "from date" calendar selection', async ({ page }) => {
 
@@ -1454,6 +1487,57 @@ test('NXGF-TC-3356: TC_040_Cash Allocation Dashboard_Verify that the Premium and
 });
 
 
+test('NXGF-TC-3359,NXGF-TC-3367: TC_043_Cash Allocation Dashboard_Verify that the an error message is displayed "Please enter a value less than or equal to "Total Balance"', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnSearchButton();
+    })
+
+    await test.step("User Click on Policy Allocation  button", async () => {
+        await cashAllocationPage.clickOnpolicyAllocationButton();
+    })
+
+    await test.step("User able to entert he policy details using the policy refernce", async () => {
+        await cashAllocationPage.enterPolicyRef(CashAllocationPageData['TC_043_Cash_Allocation'].policyRef);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnManualAllocationSearchButton();
+    })
+
+    await test.step("User Ener Amount", async () => {
+        await cashAllocationPage.enterAmount(CashAllocationPageData['TC_043_Cash_Allocation'].amount);
+    })
+
+    await test.step("Verified that the an error message is displayed 'Please enter a value less than or equal to 'Total Balance'", async () => {
+        await cashAllocationPage.verifyAmountErrorMessage();
+    })
+
+
+});
+
+
 test('NXGF-TC-3360: TC_044_Cash Allocation Dashboard_Verify that if the Outstanding Policy Balance > 0, theuser is allowed to add the policy to section 4 (allocated amounts)', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1507,7 +1591,7 @@ test('NXGF-TC-3360: TC_044_Cash Allocation Dashboard_Verify that if the Outstand
 
 });
 
-test('NXGF-TC-3361: TC_045_Cash Allocation Dashboard_Verify that once the user adds a record (Policy Reference + Policy ID) to Allocated amounts, this record should be removed from the unallocated grid results', async ({ page }) => {
+test('NXGF-TC-3361,NXGF-TC-3362: TC_045_Cash Allocation Dashboard_Verify that once the user adds a record (Policy Reference + Policy ID) to Allocated amounts, this record should be removed from the unallocated grid results', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1519,7 +1603,6 @@ test('NXGF-TC-3361: TC_045_Cash Allocation Dashboard_Verify that once the user a
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1553,7 +1636,6 @@ test('NXGF-TC-3361: TC_045_Cash Allocation Dashboard_Verify that once the user a
     await test.step("User Click on Add policy Button", async () => {
         await cashAllocationPage.clickOnAddPolicyButton();
     })
-
 
     await test.step("User Click on OK Button", async () => {
         await cashAllocationPage.clickOnOkButton();
@@ -1618,7 +1700,7 @@ test('NXGF-TC-3363: TC_047_Cash Allocation Dashboard_Verify that the Allocated a
 
 });
 
-test('NXGF-TC-3364: TC_048_Cash Allocation Dashboard_Verify that the Allocated amounts section displays the Total Amount Allocated which should display sum of the Allocated Amounts for each policy', async ({ page }) => {
+test('NXGF-TC-3364,NXGF-TC-3368: TC_048_Cash Allocation Dashboard_Verify that the Allocated amounts section displays the Total Amount Allocated which should display sum of the Allocated Amounts for each policy', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);

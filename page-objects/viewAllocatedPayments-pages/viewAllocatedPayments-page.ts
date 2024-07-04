@@ -130,8 +130,10 @@ export class ViewAllocatedPaymentsPage {
     }
 
     async verifyPaymentMethodFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 9000));
-        const elements = await this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 20000));
+        await this.page.waitForLoadState('load');
+        const elements = this.page.locator('//mat-cell[contains(@class,"paymentMethod")]//small');
         for (let index = 0; index < await elements.count(); index++) {
             const paymentMethod = await elements.nth(index).textContent();
             expect(paymentMethod).toBe(data);
