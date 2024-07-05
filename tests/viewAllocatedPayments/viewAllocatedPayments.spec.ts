@@ -236,7 +236,6 @@ test('NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the 
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -281,7 +280,6 @@ test('NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the 
 
     await test.step("Verified that user is able to view the search results for payment method dropdown", async () => {
         await viewAllocatedPaymentsPage.verifyPaymentMethodFromGrid(ViewAllocatedPaymentsPageData['TC_007_Cash_Allocation'].paymentMethod1);
-
     })
 
     await test.step("Cleared Tansaction Type", async () => {
