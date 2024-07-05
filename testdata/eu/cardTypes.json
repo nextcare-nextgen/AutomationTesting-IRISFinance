@@ -1,5 +1,16 @@
 {
     "TC_000_card types": {
         "organizationText": "Organizations"
+    },
+    "TC_002_card types": {
+        "organizationName": "Allianz Partners",
+        "organizationCode": "AZP"
+    },
+    "TC_004_card types": {
+        "financialInfo": "Financial Information",
+        "cardTypes":"Card Types"
+    },
+    "TC_005_card types":{
+        "breadcrumbsCardType":"Card Types"
     }
 }
