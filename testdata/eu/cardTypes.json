@@ -8,9 +8,25 @@
     },
     "TC_004_card types": {
         "financialInfo": "Financial Information",
-        "cardTypes":"Card Types"
+        "cardTypes": "Card Types"
     },
-    "TC_005_card types":{
-        "breadcrumbsCardType":"Card Types"
+    "TC_005_card types": {
+        "breadcrumbsCardType": "Card Types"
+    },
+    "TC_007_card types": {
+        "dropdownValue": "Diners Club"
+    },
+    "TC_009_card types": {
+        "value": "Diners Club"
+    },
+    "TC_010_card types": {
+        "value": "Electron"
+    },
+    "TC_011_card types": {
+        "value": "Electron",
+        "popupMessage": "Are you sure you want to change the status of the card ?"
+    },
+    "TC_012_card types": {
+        "value": "Electron"
     }
 }

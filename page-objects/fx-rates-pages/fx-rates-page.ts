@@ -269,7 +269,7 @@ export class FxRatesPage {
     const fromCurrency = this.page.locator('//mat-cell[contains(@class,"fromCurrLongDesc")]');
     for (let i = 0; i < await fromCurrency.count(); i++) {
       expect(fromCurrency.nth(i).innerText()).toBeTruthy();
-    } fromCurrency
+    } 
   }
 
 

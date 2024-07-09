@@ -15,6 +15,11 @@ export class CardTypesPage {
     readonly orgCardType: Locator;
     readonly breadcrumbsCardType: Locator;
     readonly addOrgCardType: Locator;
+    readonly cardTypedropdown: Locator;
+    readonly savebtn: Locator;
+    readonly popupMessage: Locator;
+    readonly okbtn: Locator;
+    readonly cancelbtn: Locator;
 
 
 
@@ -31,6 +36,11 @@ export class CardTypesPage {
         this.orgCardType = page.locator('//iris-navigation-hyperlink//a[@title="Card Types"]');
         this.breadcrumbsCardType = page.locator('//iris-breadcrumb//li//iris-navigation-hyperlink//a[@href="/organization/details/card-types"]');
         this.addOrgCardType = page.locator('//button[@title="Add Organization Card Type"]');
+        this.cardTypedropdown = page.locator('//iris-card-type-autocomplete//div//input');
+        this.savebtn = page.locator('//button[@title="Save"]');
+        this.popupMessage = page.locator('//iris-composed-dialog//iris-base-label//p');
+        this.okbtn = page.locator('//button[@title="Ok"]');
+        this.cancelbtn = page.locator('//button[@title="Cancel"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -132,7 +142,53 @@ export class CardTypesPage {
         await this.addOrgCardType.click();
     }
 
+    async selectCardType(value: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.cardTypedropdown.click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + value + '"]//ancestor::div[1]').click();
 
+    }
+    async verifySaveButton() {
+        expect(this.savebtn).toBeEnabled();
+    }
+
+    async VerifyCardTypeFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const actual = this.page.locator('//mat-cell[contains(@class,"cardTypeName")]//small');
+        for (let index = 0; index < await actual.count(); index++) {
+            const expected = await actual.nth(index).textContent();
+            if (expected === data) {
+                expect(expected).toBe(data);
+            }
+
+        }
+    }
+
+    async clickOnStoppedCard(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const actual = this.page.locator('//mat-cell[contains(@class,"cardTypeName")]//small[text()="' + data + '"]//following::button[@role="switch"]');
+        await actual.click();
+    }
+
+    async verifyPopupMeassage(data: string) {
+        const actual = await this.popupMessage.textContent();
+        expect(actual).toBe(data);
+    }
+
+    async clickOnOK() {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        await this.okbtn.click();
+    }
+
+    async clickOnCancel() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.cancelbtn.click();
+    }
+
+    async verifyStoppedDateFromGrid() {
+        const actual = this.page.locator('//mat-cell[contains(@class,"stopDate")]//small[contains(@title,"20")]');
+        expect(actual).toBeVisible();
+    }
 }
 
 

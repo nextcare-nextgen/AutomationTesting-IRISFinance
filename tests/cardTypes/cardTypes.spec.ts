@@ -244,5 +244,253 @@ test('NXGF-TC-1862: TC_006_card types_Verify that the user is able to add a new 
 
 });
 
+test('NXGF-TC-1863,NXGF-TC-1864: TC_007_card types_Verify that the user is able to view and select the required card type from the dropdown and click on Save', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cardTypesPage: CardTypesPage = new CardTypesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await cardTypesPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Click on Edit Organization button", async () => {
+        await cardTypesPage.clickonEditOrganizationButton();
+    })
+
+    await test.step("Click on Card Types", async () => {
+        await cardTypesPage.clickonCardType();
+    })
+
+    await test.step("Click on Add organization card type", async () => {
+        await cardTypesPage.clickonAddCardType();
+    })
+
+    await test.step("Verified that the user is able to view and select the required card type from the dropdown and click on Save", async () => {
+        await cardTypesPage.selectCardType(CardTypesData['TC_007_card types'].dropdownValue);
+    })
+
+    await test.step("Verified Save Button", async () => {
+        await cardTypesPage.verifySaveButton();
+    })
+
+});
+
+test('NXGF-TC-1865: TC_009_card types_Verify that the user is able to view the selected card in the result grid', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cardTypesPage: CardTypesPage = new CardTypesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await cardTypesPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Click on Edit Organization button", async () => {
+        await cardTypesPage.clickonEditOrganizationButton();
+    })
+
+    await test.step("Click on Card Types", async () => {
+        await cardTypesPage.clickonCardType();
+    })
+
+    await test.step("Verified that the user is able to view the card in the result grid", async () => {
+        await cardTypesPage.VerifyCardTypeFromGrid(CardTypesData['TC_009_card types'].value);
+    })
+
+});
+
+test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on Unstopped to stop the card from usage', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cardTypesPage: CardTypesPage = new CardTypesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await cardTypesPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Click on Edit Organization button", async () => {
+        await cardTypesPage.clickonEditOrganizationButton();
+    })
+
+    await test.step("Click on Card Types", async () => {
+        await cardTypesPage.clickonCardType();
+    })
+
+    await test.step("Verified that the user is able to click on Unstopped to stop the card from usage", async () => {
+        await cardTypesPage.clickOnStoppedCard(CardTypesData['TC_010_card types'].value);
+    })
+
+});
+
+test('NXGF-TC-1867: TC_011_card types_Verify that the user is able to see a popup message"Are you sure you want to change the status of card', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cardTypesPage: CardTypesPage = new CardTypesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await cardTypesPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Click on Edit Organization button", async () => {
+        await cardTypesPage.clickonEditOrganizationButton();
+    })
+
+    await test.step("Click on Card Types", async () => {
+        await cardTypesPage.clickonCardType();
+    })
+
+    await test.step("Click On stopped card", async () => {
+        await cardTypesPage.clickOnStoppedCard(CardTypesData['TC_011_card types'].value);
+    })
+
+    await test.step("Verify that the user is able to see a popup message'Are you sure you want to change the status of card'", async () => {
+        await cardTypesPage.verifyPopupMeassage(CardTypesData['TC_011_card types'].popupMessage);
+    })
+
+});
+
+
+test('NXGF-TC-1868: TC_012_card types_Verify that the user is able to click on "ok" to proceed or "cancel" the status change', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cardTypesPage: CardTypesPage = new CardTypesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await cardTypesPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Click on Edit Organization button", async () => {
+        await cardTypesPage.clickonEditOrganizationButton();
+    })
+
+    await test.step("Click on Card Types", async () => {
+        await cardTypesPage.clickonCardType();
+    })
+
+    await test.step("Click On stopped card", async () => {
+        await cardTypesPage.clickOnStoppedCard(CardTypesData['TC_012_card types'].value);
+    })
+
+    await test.step("Verify that the user is able to click on OK button", async () => {
+        await cardTypesPage.clickOnOK();
+    })
+
+    await test.step("Click On stopped card", async () => {
+        await cardTypesPage.clickOnStoppedCard(CardTypesData['TC_012_card types'].value);
+    })
+
+    await test.step("Verify that the user is able to click on Cancel button", async () => {
+        await cardTypesPage.clickOnCancel();
+    })
+});
+
+test('NXGF-TC-1870: TC_014_card types_Verify that the user is able to view the stop date for the stopped cards', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cardTypesPage: CardTypesPage = new CardTypesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await cardTypesPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Click on Edit Organization button", async () => {
+        await cardTypesPage.clickonEditOrganizationButton();
+    })
+
+    await test.step("Click on Card Types", async () => {
+        await cardTypesPage.clickonCardType();
+    })
+
+    await test.step("Click On stopped card", async () => {
+        await cardTypesPage.clickOnStoppedCard(CardTypesData['TC_012_card types'].value);
+    })
+
+    await test.step("Verify that the user is able to click on OK button", async () => {
+        await cardTypesPage.clickOnOK();
+    })
+
+    await test.step("Verified that the user is able to view the stop date for the stopped cards", async () => {
+        await cardTypesPage.verifyStoppedDateFromGrid();
+    })
+
+});
+
 
 
