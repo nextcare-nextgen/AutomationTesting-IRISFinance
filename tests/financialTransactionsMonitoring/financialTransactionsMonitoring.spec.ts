@@ -111,12 +111,10 @@ test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that 
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
 
-    await test.step("Verified that the user is able to navigate to the Journal Voucher Lookup screen", async () => {
-        await financialTransactionsMonitoringPage.verifyJournalVoucherListText(FinancialTransactionsMonitoringData['TC_003_Transactions_Details_Screen'].financialTransactionsMonitoringText)
+    await test.step("Verified that the user is able to navigate to the Transaction details screen", async () => {
+        await financialTransactionsMonitoringPage.verifyfinancialTransactionsMonitoringText(FinancialTransactionsMonitoringData['TC_003_Transactions_Details_Screen'].financialTransactionsMonitoringText)
 
     })
-
-
 });
 
 test('NXGF-TC-3019: TC_005_Transactions Details Screen_Verify that the Organization is already selected on the top of the page (header)', async ({ page }) => {
@@ -1568,7 +1566,7 @@ test('NXGF-TC-6713: TC_48_Transaction Details Screen_To verify that the transact
     })
 
     await test.step("Verified that the transaction type either shows matching records or rejects invalid manual input.", async () => {
-        await financialTransactionsMonitoringPage.verifyErrorMessage(FinancialTransactionsMonitoringData['TC_048_Transactions_Details_Screen'].errorMessage,FinancialTransactionsMonitoringData['TC_048_Transactions_Details_Screen'].transactionType);
+        await financialTransactionsMonitoringPage.verifyErrorMessage(FinancialTransactionsMonitoringData['TC_048_Transactions_Details_Screen'].errorMessage, FinancialTransactionsMonitoringData['TC_048_Transactions_Details_Screen'].transactionType);
     })
 });
 
@@ -1600,12 +1598,3 @@ test('NXGF-TC-6714: TC_49_Transaction Details Screen_Verify that when the user c
         await financialTransactionsMonitoringPage.verifyexistingRecordBeforeSearch();
     })
 });
-
-
-
-
-
-
-
-
-

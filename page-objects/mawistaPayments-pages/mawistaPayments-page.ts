@@ -1,6 +1,6 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 
-export class FinancialTransactionsMonitoringPage {
+export class MawistaPaymentsPage {
 
     readonly page: Page;
     readonly financialTransactionsMonitoringShortcut: Locator;
@@ -50,6 +50,19 @@ export class FinancialTransactionsMonitoringPage {
     readonly errorMessage: Locator;
 
 
+
+    readonly paymentstatus: Locator;
+    readonly transctionType: Locator;
+    readonly paymentMethod: Locator;
+    readonly documentRef: Locator;
+    readonly transactionID: Locator;
+    readonly paymentCurrency: Locator;
+    readonly ramittanceInfo: Locator;
+    readonly benficiaryAccName: Locator;
+    readonly benficiaryAccNo: Locator;
+    readonly paymentFileRef: Locator;
+    readonly paymentRef: Locator;
+
     constructor(page: Page) {
         this.page = page;
         this.financialTransactionsMonitoringShortcut = page.locator('//div//span[@title="Financial Transactions Monitoring"]');
@@ -98,44 +111,47 @@ export class FinancialTransactionsMonitoringPage {
         this.exportTOCurrentPage = page.locator('//button[@title="Export Current Page"]');
         this.errorMessage = page.locator('//mat-label[@title="No results found"]');
 
-    }
+        this.paymentstatus = page.locator('//mat-label//span[@title="Payment Status"]//following::input[1]');
+        this.transctionType = page.locator('//mat-label//span[@title="Transaction Type"]//following::input[1]');
+        this.paymentMethod = page.locator('//mat-label//span[@title="Payment Method"]//following::input[1]');
+        this.documentRef = page.locator('//mat-label//span[@title="Document Reference"]//following::input[1]');
+        this.policyRef = page.locator('//mat-label//span[@title="Policy Ref"]//following::input[1]');
+        this.transactionID = page.locator('//mat-label//span[@title="Transaction Id"]//following::input[1]');
+        this.paymentCurrency = page.locator('//mat-label//span[@title="Payment Currency"]//following::input[1]');
+        this.benficiaryAccName = page.locator('//mat-label//span[@title="Beneficiary Account Name"]//following::input[1]');
+        this.benficiaryAccNo = page.locator('//mat-label//span[@title="Beneficiary Account Number"]//following::input[1]');
+        this.paymentRef = page.locator('//mat-label//span[@title="Payment Reference"]//following::input[1]');
 
-    async verifyBreadCrumbsText(data: string) {
-        const actual = await this.breadCrumbs.textContent();
-        expect(actual).toBe(data);
-    }
 
+    }
 
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
         await new Promise(resolve => setTimeout(resolve, 9000));
-        
-    }
-
-
-    async verifyFinancialTransactionsMonitoringShrtcutButton() {
-        expect(this.financialTransactionsMonitoringShortcut).toBeVisible();
 
     }
 
-    async verifyDashboardText(data: string) {
-        const actual = await this.dashboard.textContent();
-        expect(actual).toBe(data);
+    async verifyFromDateandToDate() {
+        expect(this.fromdateinput).toBeVisible();
+        expect(this.todateinput).toBeVisible();
     }
 
-    async verifyfinancialTransactionsMonitoringText(data: string) {
-        const actual = await this.financialTransactionsMonitoringLabel.textContent();
-        expect(actual).toBe(data);
+
+    async verifyDatesFromGrid() {
+        const dates = this.page.locator('//mat-cell[contains(@class,"transactionDate")]');
+        for (let i = 0; i < await dates.count(); i++) {
+            expect(dates.nth(i).innerText).toBeTruthy();
+        }
+
     }
 
-    async verifyOrganizationName(data: string) {
-        const actual = await this.organizationName.textContent();
-        expect(actual).toBe(data);
-    }
-
-    async verifySearchfiltersButton() {
+    async verifySeatchFilter() {
         expect(this.searchFilters).toBeVisible();
     }
+
+
+
+
 
     async selectCurrentDateFromDateCalender() {
         const today = new Date();
@@ -237,8 +253,8 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyListOfTransactionType() {
-       // await this.page.waitForSelector('.loader', { state: 'hidden' });
-       await new Promise(resolve => setTimeout(resolve, 7000));
+        // await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 7000));
         await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 
@@ -261,7 +277,6 @@ export class FinancialTransactionsMonitoringPage {
     async enterFromPaymentAmount(data: string) {
         await this.fromPaymentAmount.fill(data);
     }
-
 
     async enterToPaymentAmount(data: string) {
         await this.toPaymentAmount.fill(data);
@@ -286,7 +301,7 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifyPaymentStatusFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 8000));
-       // await this.page.waitForSelector('.loader', { state: 'hidden' });
+        // await this.page.waitForSelector('.loader', { state: 'hidden' });
         const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await paymentsstatus.count(); index++) {
             const paymentStatus = await paymentsstatus.nth(index).textContent();
@@ -421,23 +436,6 @@ export class FinancialTransactionsMonitoringPage {
         expect(this.remmitanceInfo).toBeVisible();
     }
 
-    async verifyDDPaymentDetails() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        expect(this.orgName).toBeVisible();
-        expect(this.orgBankAC).toBeVisible();
-        expect(this.orgSwiftCode).toBeVisible();
-        expect(this.transactionReff).toBeVisible();
-        expect(this.transactionFlow).toBeVisible();
-        expect(this.benficiaryAccountName).toBeVisible();
-        expect(this.benficiaryAccount).toBeVisible();
-        expect(this.benficiaryAccountSwift).toBeVisible();
-        expect(this.IBAN).toBeVisible();
-        expect(this.remmitanceInfo).toBeVisible();
-        expect(this.benficiaryAccountName).toBeVisible();
-        expect(this.DDMandateRef).toBeVisible();
-        expect(this.DDsignDate).toBeVisible();
-        expect(this.DDcollectionDate).toBeVisible();
-    }
 
     async verifyListOfPaymentsMethods() {
         await this.page.locator('//mat-label//span[@title="Payment Method"]').click();
@@ -490,13 +488,30 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyexistingRecordBeforeSearch() {
-        const before  = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').textContent();
+        const before = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').textContent();
         await this.searchbtn.click();
         await new Promise(resolve => setTimeout(resolve, 9000));
-        const after  = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').first().textContent();
+        const after = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').first().textContent();
         expect(before).toBe(after);
     }
-   
+
+
+
+
+    async verifyAdvanceSearchOption() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(this.paymentstatus).toBeVisible();
+        expect(this.transctionType).toBeVisible();
+        expect(this.paymentMethod).toBeVisible();
+        expect(this.documentRef).toBeVisible();
+        expect(this.fromPaymentAmount).toBeVisible();
+        expect(this.toPaymentAmount).toBeVisible();
+        expect(this.policyRef).toBeVisible();
+        expect(this.transactionID).toBeVisible();
+        expect(this.paymentCurrency).toBeVisible();
+        expect(this.remmitanceInfo).toBeVisible();
+    }
+
 
 }
 
