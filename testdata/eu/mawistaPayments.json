@@ -1,3 +1,18 @@
 {
-    
+    "TC_006_Mawista_payments": {
+        "transactionId": "8112",
+        "date": "04 Jun 2023"
+    },
+    "TC_007_Mawista_payments": {
+        "paymentStatus": "Not Yet Processed",
+        "paymentMethod": "Direct Debit"
+    },
+    "TC_008_Mawista_payments": {
+        "fileRef": "IRIS_GFE_SIT_DD_20240710_143002.xml"
+    },
+    "TC_009_Mawista_payments": {
+        "paymentType": "Claim Payment",
+        "paymentType1": "Premium Payment",
+        "paymentType2": "Bank Charges"
+    }
 }

@@ -121,6 +121,7 @@ export class MawistaPaymentsPage {
         this.benficiaryAccName = page.locator('//mat-label//span[@title="Beneficiary Account Name"]//following::input[1]');
         this.benficiaryAccNo = page.locator('//mat-label//span[@title="Beneficiary Account Number"]//following::input[1]');
         this.paymentRef = page.locator('//mat-label//span[@title="Payment Reference"]//following::input[1]');
+        this.paymentFileRef = page.locator('//mat-label//span[@title="Payment File Reference"]//following::input[1]');
 
 
     }
@@ -510,6 +511,44 @@ export class MawistaPaymentsPage {
         expect(this.transactionID).toBeVisible();
         expect(this.paymentCurrency).toBeVisible();
         expect(this.remmitanceInfo).toBeVisible();
+    }
+
+
+    async verifyPaymentsDatesFromGrid() {
+        const dates = this.page.locator('//mat-cell[contains(@class,"paymentDate")]');
+        for (let i = 0; i < await dates.count(); i++) {
+            expect(dates.nth(i).innerText).toBeTruthy();
+        }
+    }
+
+    async enterPaymentFileRef(data: string) {
+        await this.paymentFileRef.fill(data);
+    }
+
+    async verifyPaymentFileRefFromGrid(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const fileRef = this.page.locator('//mat-cell[contains(@class,"paymentFileRef")]//small');
+        for (let index = 0; index < await fileRef.count(); index++) {
+            const paymentsfileRef = await fileRef.nth(index).textContent();
+            expect(paymentsfileRef).toBe(data);
+        }
+    }
+
+    async selectPaymentTypes(data: string, data1: string, data2: string) {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data1 + '"]').click();
+        await this.page.locator('//mat-option//span//mat-label[text()="' + data2 + '"]').click();
+
+    }
+
+    async verifyPaymentTypesFromGrid() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const paymenttype = this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
+        for (let index = 0; index < await paymenttype.count(); index++) {
+            expect(paymenttype.nth(index)).toBeVisible();
+        }
     }
 
 

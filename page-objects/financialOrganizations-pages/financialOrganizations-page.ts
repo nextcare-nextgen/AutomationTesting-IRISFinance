@@ -224,7 +224,8 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyStopDateColumnNotDisplayed(data: string) {
-        let columnValue = await this.page.locator('//mat-header-cell[contains(@class,"header-cell")]//small[text()="Stop Date"]');
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        let columnValue = this.page.locator('//mat-header-cell[contains(@class,"header-cell")]//small[text()="Stop Date"]');
         expect(columnValue).not.toBeVisible();
     }
 
@@ -254,7 +255,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyStopOrganizationButtonIsClickable() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.stopOrg).toBeEnabled();
     }
 

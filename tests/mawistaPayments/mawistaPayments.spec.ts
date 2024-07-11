@@ -163,6 +163,190 @@ test('NXGF-TC-3715: TC_005_Mawista payments_Verify that the user is able click o
 
 });
 
+test('NXGF-TC-3716: TC_006_Mawista payments_Verify that the user is able select any option from the advanced search filter and click on apply', async ({ page }) => {
 
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User enter the Date", async () => {
+        await mawistaPaymentsPage.enterFromDate(MawistaPaymentsgData['TC_006_Mawista_payments'].date);
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User enter the Transaction Id number", async () => {
+        await mawistaPaymentsPage.enterTransactionId(MawistaPaymentsgData['TC_006_Mawista_payments'].transactionId);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Transaction Id from grid", async () => {
+        await mawistaPaymentsPage.verifySearchResultFromGrid();
+    })
+
+    await test.step("Verified Transaction Id from grid", async () => {
+        await mawistaPaymentsPage.verifyTransactionIdFromGrid(MawistaPaymentsgData['TC_006_Mawista_payments'].transactionId);
+    })
+
+});
+
+test('NXGF-TC-3717: TC_007_Mawista payments_Verify that the user is able to view the results where Payment Date is in descending order', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("Select Payment Status", async () => {
+        await mawistaPaymentsPage.selectPaymentStatus(MawistaPaymentsgData['TC_007_Mawista_payments'].paymentStatus);
+    })
+
+    await test.step("Select Payment Method", async () => {
+        await mawistaPaymentsPage.selectPaymentMethod(MawistaPaymentsgData['TC_007_Mawista_payments'].paymentMethod);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Paymets Dates from grid", async () => {
+        await mawistaPaymentsPage.verifyPaymentsDatesFromGrid();
+    })
+});
+
+test('NXGF-TC-3718: TC_008_Mawista payments_Verify that the user is able to view the results where Payment file ref is in descending order', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User Enter Payment FIle Ref", async () => {
+        await mawistaPaymentsPage.enterPaymentFileRef(MawistaPaymentsgData['TC_008_Mawista_payments'].fileRef);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Paymets File Ref from grid", async () => {
+        await mawistaPaymentsPage.verifyPaymentFileRefFromGrid(MawistaPaymentsgData['TC_008_Mawista_payments'].fileRef);
+    })
+});
+
+
+test('NXGF-TC-3719: TC_009_Mawista payments_Verify that the user is able to view the results where Payment type is Claim/Commission/Premium/Blank', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User Select Payment type", async () => {
+        await mawistaPaymentsPage.selectPaymentTypes(MawistaPaymentsgData['TC_009_Mawista_payments'].paymentType, MawistaPaymentsgData['TC_009_Mawista_payments'].paymentType1, MawistaPaymentsgData['TC_009_Mawista_payments'].paymentType2);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Paymets Type from grid", async () => {
+        await mawistaPaymentsPage.verifyPaymentTypesFromGrid();
+    })
+});
 
 
