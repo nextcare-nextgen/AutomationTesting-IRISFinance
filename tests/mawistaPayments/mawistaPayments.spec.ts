@@ -349,4 +349,146 @@ test('NXGF-TC-3719: TC_009_Mawista payments_Verify that the user is able to view
     })
 });
 
+test('NXGF-TC-3720: TC_010_Mawista payments_Verify that the user is able to view the results where Payment Currency Amount is in descending order', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await mawistaPaymentsPage.enterFromPaymentAmount(MawistaPaymentsgData['TC_010_Mawista_payments'].fromPaymentAmount);
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await mawistaPaymentsPage.enterToPaymentAmount(MawistaPaymentsgData['TC_010_Mawista_payments'].toPaymentAmount);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Payments Amount from grid", async () => {
+        await mawistaPaymentsPage.verifyPaymentAmountFromGrid(MawistaPaymentsgData['TC_010_Mawista_payments'].toPaymentAmount);
+    })
+
+});
+
+test('NXGF-TC-3721: TC_011_Mawista payments_Verify that the user is able to navigate back to Search Payments Screen to select different run parameters for query', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await mawistaPaymentsPage.enterFromPaymentAmount(MawistaPaymentsgData['TC_011_Mawista_payments'].fromPaymentAmount);
+    })
+
+    await test.step("select from the Payment Method from the dropdown", async () => {
+        await mawistaPaymentsPage.enterToPaymentAmount(MawistaPaymentsgData['TC_011_Mawista_payments'].toPaymentAmount);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+
+    await test.step("Verified Payments Amount from grid", async () => {
+        await mawistaPaymentsPage.verifyPaymentAmountFromGrid(MawistaPaymentsgData['TC_011_Mawista_payments'].toPaymentAmount);
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await mawistaPaymentsPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("User Select Payment Status", async () => {
+        await mawistaPaymentsPage.selectPaymentStatus(MawistaPaymentsgData['TC_011_Mawista_payments'].paymentStatus);
+    })
+
+    await test.step("User Click on Apply button", async () => {
+        await mawistaPaymentsPage.clickOnApplyButton();
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await mawistaPaymentsPage.clickOnSearchButton();
+    })
+});
+
+test('NXGF-TC-3722: TC_012_Mawista payments_Verify that the user is able to export the results to excel', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const mawistaPaymentsPage: MawistaPaymentsPage = new MawistaPaymentsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Export to excel", async () => {
+        await mawistaPaymentsPage.clickOnExportToExcelButton();
+    })
+
+    await test.step("User Click on Export to Current page", async () => {
+        await mawistaPaymentsPage.clickExportTOcurrentPage();
+    })
+});
+
 

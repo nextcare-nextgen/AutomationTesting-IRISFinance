@@ -168,7 +168,7 @@ test('NXGF-TC-3857: TC_005_Journal Voucher creation_Verify that the user is able
 
 });
 
-test('NXGF-TC-3858: TC_006_Journal Voucher creation_Verify that the user is able to click on the Journal Voucher creation  icon', async ({ page }) => {
+test('NXGF-TC-3858: TC_006_Journal Voucher creation_Verify that the user is able to click on the Journal Voucher creation icon', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);

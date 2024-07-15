@@ -272,6 +272,7 @@ export class MawistaPaymentsPage {
     async selectPaymentMethod(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.locator('//mat-label//span[@title="Payment Method"]').dblclick();
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
     }
 

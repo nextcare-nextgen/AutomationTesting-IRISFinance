@@ -490,11 +490,11 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyexistingRecordBeforeSearch() {
-        const before  = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').textContent();
+        const before  = await this.page.locator('//div[contains(@class,"paginator-range")]//div[text()]').allTextContents();
         await this.searchbtn.click();
         await new Promise(resolve => setTimeout(resolve, 9000));
-        const after  = this.page.locator('//div[@class="mat-mdc-paginator-range-label"]').first().textContent();
-        expect(before).toBe(after);
+        const after  = await this.page.locator('//div[contains(@class,"paginator-range")]//div[text()]').allTextContents();
+        expect(before).toStrictEqual(after);
     }
    
 

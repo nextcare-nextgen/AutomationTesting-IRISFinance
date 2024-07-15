@@ -221,12 +221,9 @@ export class PoliciesPage {
 
 
     async verifySearchResultFromDate() {
-
         const pendingReasonLocator = this.page.locator('//mat-cell[contains(@class,"policyStartDate")]');
-
         for (let index = 0; index < await pendingReasonLocator.count(); index++) {
             expect(await pendingReasonLocator.nth(index).innerText()).toBeTruthy();
-
         }
         console.log(await pendingReasonLocator.count());
     }
@@ -256,7 +253,11 @@ export class PoliciesPage {
     async verifyPolicyJournalVochereyeiconButton() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const icon = this.page.locator('//button[@title="View Policy Journal Voucher"]');
-        expect(icon).toBeVisible();
+        for (let index = 0; index < await icon.count(); index++) {
+            //expect(await policyHolderName.nth(index).innerText()).toBeTruthy();
+            expect(await icon.nth(index)).toBeVisible();
+        }
+        
     }
 
     async clickOnPolicyJournalVochereyeiconButton() {

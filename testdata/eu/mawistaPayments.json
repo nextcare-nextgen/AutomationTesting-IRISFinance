@@ -14,5 +14,14 @@
         "paymentType": "Claim Payment",
         "paymentType1": "Premium Payment",
         "paymentType2": "Bank Charges"
+    },
+    "TC_010_Mawista_payments": {
+        "fromPaymentAmount": "279.28",
+        "toPaymentAmount": "279.28"
+    },
+    "TC_011_Mawista_payments": {
+        "fromPaymentAmount": "279.28",
+        "toPaymentAmount": "279.28",
+        "paymentStatus": "Cleared-allocated"
     }
 }

@@ -503,8 +503,8 @@ export class CashAllocationPage {
 
     async clickOnShowDetailsButton() {
         await new Promise(resolve => setTimeout(resolve, 2000));
-        await this.addPolicybtn.scrollIntoViewIfNeeded();
         await this.showDetailsbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 4000));
     }
 
     async verifyPremiumandTaxAmountFromGrid() {

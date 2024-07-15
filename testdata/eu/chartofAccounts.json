@@ -111,7 +111,7 @@
     },
     "TC_074_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
-        "accountType": "Gross written premium",
+        "accountType": "CC Incoming Clearing",
         "GLdropdownvalue": "Account Payable"
     },
     "TC_077_Chart_of_Accounts": {

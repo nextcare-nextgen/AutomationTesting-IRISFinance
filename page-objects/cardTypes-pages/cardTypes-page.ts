@@ -168,6 +168,7 @@ export class CardTypesPage {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const actual = this.page.locator('//mat-cell[contains(@class,"cardTypeName")]//small[text()="' + data + '"]//following::button[@role="switch"]');
         await actual.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyPopupMeassage(data: string) {

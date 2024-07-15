@@ -663,7 +663,6 @@ test('NXGF-TC-3336: TC_020_Cash Allocation Dashboard_Verify that the user is abl
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -676,27 +675,22 @@ test('NXGF-TC-3336: TC_020_Cash Allocation Dashboard_Verify that the user is abl
 
     await test.step("User Click on Search filter button", async () => {
         await cashAllocationPage.clickOnSearchFilterButton();
-
     })
 
     await test.step("User Enter Policy holder name", async () => {
         await cashAllocationPage.enterPolicyHolder(CashAllocationPageData['TC_020_Cash_Allocation'].policyHolder);
-
     })
 
     await test.step("User Click on Apply button", async () => {
         await cashAllocationPage.clickOnApplyButton();
-
     })
 
     await test.step("User Click on Search button", async () => {
         await cashAllocationPage.clickOnSearchButton();
-
     })
 
     await test.step("Verified that the user is able to enter the From amount number and to amount number and search", async () => {
         await cashAllocationPage.verifyPolicyHolderNameFromGrid(CashAllocationPageData['TC_020_Cash_Allocation'].policyHolder);
-
     })
 
 });

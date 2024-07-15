@@ -61,8 +61,8 @@ test('NXGF-TC-2890: TC_001_View allocated payments_Verify that the user is able 
     })
 
     await test.step("Verify Search filter button", async () => {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await viewAllocatedPaymentsPage.verifySearchFilterButton();
-
     })
 
     await test.step("Verify Reset filter button", async () => {

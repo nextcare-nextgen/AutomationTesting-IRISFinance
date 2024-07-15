@@ -174,7 +174,7 @@ export class JournalVoucherCreationPage {
     async clickOnAddLookupVoucherCreationButton() {
         await new Promise(resolve => setTimeout(resolve, 7000));
         await this.addJournalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyAddJournalVoucherLookupTitle(data: string) {

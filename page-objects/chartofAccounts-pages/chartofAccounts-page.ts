@@ -477,9 +477,17 @@ export class ChartOfAccountsPage {
     }
 
     async selectEditChildAddAccountTypeFromDropdown(data: string) {
-        await this.page.locator('//span[text()="Account Type"]').click();
-        const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
-        selectAccounttype.dblclick();
+      //  await this.page.locator('//span[text()="Account Type"]').click();
+       // const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
+      //  selectAccounttype.click();
+
+        const key = this.page.locator('//iris-account-type-autocomplete//div//span[text()="Account Type"]');
+        await key.click();
+        const glAccountTypeinput = this.page.locator('//mat-dialog-container//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
+        glAccountTypeinput.fill(data);
+        const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]').dblclick();
+
+
     }
 
     async verifySearchBar() {
