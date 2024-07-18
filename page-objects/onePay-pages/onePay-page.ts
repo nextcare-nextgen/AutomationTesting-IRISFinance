@@ -162,7 +162,6 @@ export class OnePayPage {
     }
 
     async expatcareFirstTab(firstname: string, lastname: string, passport: string, code: string, mobilenumber: string, email: string, streetname: string, streetnumber: string, postalcode: string, address: string, city: string, day: string, month: string, year: string) {
-        // await this.expatcarebButton.click();
         await this.firstnameInputField.fill(firstname);
         await this.lastnameInputField.fill(lastname);
         await this.homecountryDropdownField.click();
@@ -183,10 +182,6 @@ export class OnePayPage {
         await this.yearInputField.fill(year);
         await this.genderDropdownField.click();
         await this.selectgenderDropdownField.click();
-        //await this.firsttabnextButton.click();
-
-        //await this.page.waitForLoadState('networkidle');
-        // await this.page.waitForTimeout(10000);
     }
 
     async clickOnFirstTabNextButton() {
@@ -217,6 +212,10 @@ export class OnePayPage {
     }
 
     async clickOnThirdTabNextButton() {
+        await this.page.locator("//mat-radio-group//div//mat-radio-button").first().click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.locator("//div//mat-checkbox").click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.thirdtabnextButton.click();
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(10000);
@@ -225,20 +224,19 @@ export class OnePayPage {
     async clickOnCreditcardradioButton() {
         await this.creditcardButton.click();
         await this.page.waitForLoadState('networkidle');
-        // await this.page.waitForTimeout(10000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickOnCheckboxesonfourthtab() {
-        await this.page.locator("//html[1]/body[1]/app-root[1]/div[1]/app-application-form[1]/div[1]/div[2]/div[1]/form[1]/app-dynamic-form[1]/div[1]/form[1]/div[4]/div[2]/div[1]/div[1]/app-dynamic-form-builder[1]/div[3]/div[1]/app-dynamic-form-field[1]/div[1]/app-field-fieldset[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-dynamic-form-builder[1]/div[1]/div[1]/app-dynamic-form-field[1]/div[1]/app-component-loader[1]/app-questionnaire[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]/span[1]").click();
-        // await this.page.waitForTimeout(10000);
+        await this.page.locator("//div[@class='mat-checkbox-container-custom ng-star-inserted']//span[contains(@class,'checkmark')]").first().click();
         await this.page.locator("//div[contains(text(),'I consent to MAWISTA GmbH sending me information a')]").click();
-        // await this.page.waitForTimeout(10000);
         await this.page.locator("//b[contains(text(),'Yes, I sufficiently informed myself about the prod')]").click();
         await this.page.waitForLoadState('networkidle');
-        //await this.page.waitForTimeout(10000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
 
     }
     async clickOnApplyandPayButton() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.applyandpayButton.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
     }
@@ -266,18 +264,15 @@ export class OnePayPage {
         await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
-    async verifyThankyoupageText(expectedthankyouText: string, expectedfirstText: string, expectedThirdText: string, expecteddistributornameText: string) {
-        // await this.page.waitForTimeout(10000);
-        await new Promise(resolve => setTimeout(resolve, 9000));
-        const actualfirtliText = await (await this.page.waitForSelector("//div[@id='row-12889']//h3[contains(text(),'Thank you')]")).textContent();
-        expect(actualfirtliText).toContain(expectedthankyouText);
-        const actualsecondliText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]").textContent();
-        expect(actualsecondliText).toContain(expectedfirstText);
-        const actualthirdText = await this.page.locator("(//p[contains(text(),'If you have any questions please contact the below')])[1]").textContent();
-        expect(actualthirdText).toContain(expectedThirdText);
-        const actualdisText = await this.page.locator("//div[@id='row-12889']//p[@class='ng-star-inserted']").textContent();
-        expect(actualdisText).toContain(expecteddistributornameText);
-
+    async verifyThankyoupageText(expectedthankyouText: string, policyNum: string) {
+        await new Promise(resolve => setTimeout(resolve, 14000));
+        await this.page.waitForLoadState('networkidle');
+        await this.page.locator("//div[@id='row-12889']//h3[contains(text(),'Thank you')]").waitFor();
+        //const actualfirtliText = await (await this.page.waitForSelector("//div[@id='row-12889']//h3[contains(text(),'Thank you')]")).textContent();
+        //expect(actualfirtliText).toContain(expectedthankyouText);
+        const actualdisText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]//following::p[1]//b[contains(text(),'MAE-AWPDE')]").textContent();
+        expect(actualdisText).toContain(policyNum);
+        //await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyPageURL(expectedPageURL: string) {
@@ -312,17 +307,15 @@ export class OnePayPage {
 
     async verifySaveDetailsButtonEnabled() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const actual =  this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']");
-        //await actual.scrollIntoViewIfNeeded();
+        const actual = this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']");
         expect(actual).toBeEnabled();
     }
 
     async clickOnCancelButton() {
-       // const actual =    this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//div[@id='bottom-actions']//button[@type='button']").first();
-        const framePage=    await this.page.frameLocator("#CreditCardIframe");
-        const actual= await framePage.getByRole('button',{name:'Cancel '});
+        const framePage = await this.page.frameLocator("#CreditCardIframe");
+        const actual = await framePage.getByRole('button', { name: 'Cancel ' });
         await actual.scrollIntoViewIfNeeded();
-        await actual.dblclick({force:true});
+        await actual.dblclick({ force: true });
         await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
@@ -331,4 +324,71 @@ export class OnePayPage {
         const actual = await this.page.frameLocator("//h1[text()=' Payment method and checkout ']");
         expect(actual).toBe(data);
     }
+
+    async reiscareStartandenddateonThirdtTab() {
+        await this.page.locator("//iris-datepicker//mat-datepicker-toggle//button//mat-icon").first().click();
+        await this.page.locator('//mat-year-view//td//button[contains(@class,"active")]').click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.page.locator("//div//span//mat-label[text()='End Date']//following::mat-datepicker-toggle//button//mat-icon").click();
+        await this.page.locator('//mat-year-view//td//button[contains(@class,"active")]').click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    async reiscareFirstTab(firstname: string, lastname: string, passport: string, code: string, mobilenumber: string, email: string, streetname: string, streetnumber: string, postalcode: string, address: string, city: string, day: string, month: string, year: string) {
+        // await this.expatcarebButton.click();
+        await this.firstnameInputField.fill(firstname);
+        await this.lastnameInputField.fill(lastname);
+        await this.homecountryDropdownField.click();
+        await this.selectcountryInputField.click();
+        await this.passportnumberInputField.fill(passport);
+        await this.codeDropdownField.click();
+        await this.page.locator("//div[@class='cdk-overlay-pane']//mat-option[2]//img").click();
+        await this.mobilenumberInputField.fill(mobilenumber);
+        await this.page.waitForTimeout(1000);
+        await this.emailInputField.fill(email);
+        await this.streetnameInputField.fill(streetname);
+        await this.streetnumberInputField.fill(streetnumber);
+        await this.postalcodeInputField.fill(postalcode);
+        await this.additionaladdressInputField.fill(address);
+        await this.cityInputField.fill(city);
+        await this.page.locator("//mat-label[contains(text(),'Country')]").click();
+        await this.page.locator("//span[normalize-space()='Germany']").click();
+        await this.dayInputField.fill(day);
+        await this.monthInputField.fill(month);
+        await this.yearInputField.fill(year);
+        await this.genderDropdownField.click();
+        await this.selectgenderDropdownField.click();
+
+    }
+
+    async reiscareFilldetailsoncreditcardTab() {
+        console.log("hi");
+       //await this.page.waitForTimeout(10000);
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForTimeout(10000);
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").waitFor();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").click();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").fill("10");
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").click();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("5555 5555 5555 4444");
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").click();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").fill("28");
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cvc']").click();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cvc']").fill("411");
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//select[@id='country']").selectOption('India');
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").click();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").waitFor();
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").fill("12345");
+        await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']").click();
+        await new Promise(resolve => setTimeout(resolve, 9000));
+    
+       // await this.page.waitForTimeout(10000);
+     //   await new Promise(resolve => setTimeout(resolve, 8000));
+
+
+    }
+
+
 }

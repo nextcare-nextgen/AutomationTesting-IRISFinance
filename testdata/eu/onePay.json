@@ -44,7 +44,7 @@
         "StartdateInput": "01/12/25",
         "EnddateInput": "31/12/25",
         "cardholdernametext": "pallavi.katke@vtestcorp.com",
-        "data":"452343",
+        "data": "452343",
         "errormessage": "Invalid"
     },
     "TC_001_OnePay": {
@@ -66,7 +66,31 @@
         "StartdateInput": "01/12/25",
         "EnddateInput": "31/12/25",
         "cardholdernametext": "pallavi.katke@vtestcorp.com",
-        "data":"4111111111111111",
+        "data": "4111111111111111",
         "title": "Payment method and checkout"
+    },
+    "TC_000_long_term": {
+        "url": "https://test-syncrob2c-eu.tatsh.cloud/online-application?KEY=MtywX6ask6X7STU8otfGPg%3D%3D&BRK=MAW&PT=MAE&LANG=en",
+        "firstNameInput": "Test",
+        "lastNameInput": "Character",
+        "passportInput": "123",
+        "mobileNumbercodeInput": "91",
+        "mobileNumberInput": "123456",
+        "emailInput": "pravina@vtestcorp.com",
+        "streetNameInput": "Charac",
+        "streetNumberInput": "12345",
+        "postalCodeInput": "34567",
+        "additionalAddressInput": "Jb road",
+        "cityInput": "NBN",
+        "dayInput": "05",
+        "monthInput": "08",
+        "yearInput": "2000",
+        "excludeclassictext": "13.5",
+        "DayInput": "05",
+        "MonthInput": "08",
+        "YearInput": "1955",
+        "excludeclassicsecondtext": "65",
+        "thankyouText": "Thank you",
+        "policyidText": "MAE-AWPDE"
     }
 }
