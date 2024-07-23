@@ -873,6 +873,10 @@ test('NXGF-TC-3041: TC_027_Transaction Details Screen_Verify that the user is ab
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
 
+    await test.step("User Enter Date", async () => {
+        await financialTransactionsMonitoringPage.enterFromDate(FinancialTransactionsMonitoringData['TC_027_Transactions_Details_Screen'].date);
+    })
+
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })

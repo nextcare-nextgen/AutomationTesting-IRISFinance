@@ -47,7 +47,8 @@
         "policyRef": "PRT-AWPDE-7901-NB/110625812"
     },
     "TC_027_Transactions_Details_Screen": {
-        "customerRef": "1690"
+        "customerRef": "1690",
+        "date":"04 Jan 2024"
     },
     "TC_028_Transactions_Details_Screen": {
         "transactionId": "6405",

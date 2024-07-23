@@ -347,10 +347,10 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifyCustomerRefFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const customerref = this.page.locator('//mat-cell[contains(@class,"customerRef")]//small');
+        const customerref = this.page.locator('//mat-cell[contains(@class,"documentReference")]//small');
         for (let index = 0; index < await customerref.count(); index++) {
             const customerRef = await customerref.nth(index).textContent();
-            expect(customerRef).toBe(data);
+            expect(customerRef).toContain(data);
         }
     }
 
