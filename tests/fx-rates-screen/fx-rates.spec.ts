@@ -130,14 +130,12 @@ test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -149,8 +147,7 @@ test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX
     })
 
     await test.step("Verified that the user is able to navigate to the FX Rates screen", async () => {
-        await fxRatesPage.verifyFXRatesText(fxRatesData['TC_005_FX_Rates'].fxRatesText)
-
+        await fxRatesPage.verifyFXRatesText(fxRatesData['TC_005_FX_Rates'].fxRatesText);
     })
 
 });
@@ -168,7 +165,6 @@ test('NXGF-TC-1877: TC_006_FX_Rates_Verify that the user is able to view the "FX
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -181,7 +177,6 @@ test('NXGF-TC-1877: TC_006_FX_Rates_Verify that the user is able to view the "FX
 
     await test.step("Verified that the user is able to navigate to the FX Rates screen", async () => {
         await fxRatesPage.verifyTitleinBold()
-
     })
 
 });
@@ -199,7 +194,6 @@ test('NXGF-TC-1878: TC_007_FX_Rates_Verify that the From date and To date is dis
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -232,7 +226,6 @@ test('NXGF-TC-1879: TC_008_FX_Rates_Verify that the user is able to select From 
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -262,7 +255,6 @@ test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displ
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -275,7 +267,6 @@ test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displ
 
     await test.step("Verified that the From Currency", async () => {
         await fxRatesPage.verifyFromCurrencyField();
-
     })
 
 });
@@ -292,7 +283,6 @@ test('NXGF-TC-1881: TC_010_FX_Rates_Verify that the user should able to select F
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -305,7 +295,6 @@ test('NXGF-TC-1881: TC_010_FX_Rates_Verify that the user should able to select F
 
     await test.step("Verified that the From Currency", async () => {
         await fxRatesPage.selectFromCurrency(fxRatesData['TC_010_FX_Rates'].fromCurrency);
-
     })
 
 });
@@ -322,7 +311,6 @@ test('NXGF-TC-1882: TC_011_FX_Rates_Verify that the To Currency field is display
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -332,10 +320,10 @@ test('NXGF-TC-1882: TC_011_FX_Rates_Verify that the To Currency field is display
     await test.step("User Click on FX Rates Shortcut Button", async () => {
         await fxRatesPage.clickOnFxRatesShrtcutsButton();
     })
+    page.pause();
 
     await test.step("Verified that the To Currency", async () => {
         await fxRatesPage.verifyToCurrencyField();
-
     })
 
 });
@@ -382,7 +370,6 @@ test('NXGF-TC-1884: TC_014_FX_Rates_Verify that the search icon and field is dis
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -392,10 +379,9 @@ test('NXGF-TC-1884: TC_014_FX_Rates_Verify that the search icon and field is dis
     await test.step("User Click on FX Rates Shortcut Button", async () => {
         await fxRatesPage.clickOnFxRatesShrtcutsButton();
     })
-
+    page.pause();
     await test.step("Verified that the search icon and field is displayed", async () => {
         await fxRatesPage.verifySearchbtnField();
-
     })
 
 });
@@ -412,7 +398,6 @@ test('NXGF-TC-1885: TC_013_FX_Rates_Verify that the Reset field is displayed', a
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -422,10 +407,9 @@ test('NXGF-TC-1885: TC_013_FX_Rates_Verify that the Reset field is displayed', a
     await test.step("User Click on FX Rates Shortcut Button", async () => {
         await fxRatesPage.clickOnFxRatesShrtcutsButton();
     })
-
+    page.pause();
     await test.step("Verified that the Reset icon and field is displayed", async () => {
         await fxRatesPage.verifyResetbuttonField();
-
     })
 
 });

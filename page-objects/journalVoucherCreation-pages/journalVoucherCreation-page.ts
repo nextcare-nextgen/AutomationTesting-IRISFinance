@@ -60,8 +60,8 @@ export class JournalVoucherCreationPage {
     readonly validationDate: Locator;
     readonly validated: Locator;
     readonly voucherDateMandate: Locator;
-    readonly voucherDatecalenderIcon : Locator;
-    readonly voucherTypeMandate : Locator;
+    readonly voucherDatecalenderIcon: Locator;
+    readonly voucherTypeMandate: Locator;
 
 
     constructor(page: Page) {
@@ -225,7 +225,7 @@ export class JournalVoucherCreationPage {
     async clickOnAddVoucherTrancastionButton() {
         await this.addVoucherTransactionbtn.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
-        
+
     }
 
     async verifyDescriptionInputBox() {
@@ -233,6 +233,7 @@ export class JournalVoucherCreationPage {
     }
 
     async enterDescription(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.description.fill(data);
     }
 
@@ -274,13 +275,16 @@ export class JournalVoucherCreationPage {
     }
 
     async enterAmount(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.amount.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async selectCurrency(data: string) {
         await this.currency.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyCV1Amount() {
@@ -301,13 +305,15 @@ export class JournalVoucherCreationPage {
     }
 
     async selectCurrentDateCalender() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.selectValueCalenderIcon.click();
         await this.page.locator('//button[contains(@class,"active")]').click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickOnSave() {
         await this.savebtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 7000));
     }
 
     async clickOnEditTransaction() {
@@ -385,8 +391,9 @@ export class JournalVoucherCreationPage {
     }
 
     async verifyCurrentVoucherDateFromCalender() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.voucherDatecalenderIcon.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.currentDateFromCalender).toBeVisible();
     }
 
@@ -394,5 +401,5 @@ export class JournalVoucherCreationPage {
         await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.voucherTypeMandate).toBeVisible();
     }
-    
+
 }

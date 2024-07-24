@@ -225,7 +225,7 @@ test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is a
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-
+    page.pause();
     await test.step("User Verified the organization name selected on the top of the page", async () => {
         await financialTransactionsMonitoringPage.verifySearchfiltersButton();
     })

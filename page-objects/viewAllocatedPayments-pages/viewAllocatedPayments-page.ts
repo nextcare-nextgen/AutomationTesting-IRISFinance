@@ -24,6 +24,8 @@ export class ViewAllocatedPaymentsPage {
     readonly policyRef: Locator;
     readonly apply: Locator;
     readonly searchBar: Locator;
+    readonly policyRefInput: Locator;
+    readonly searchbtn: Locator;
 
 
     constructor(page: Page) {
@@ -47,6 +49,10 @@ export class ViewAllocatedPaymentsPage {
         this.policyRef = page.locator('//input[@title="Policy Ref/Document Ref"]');
         this.apply = page.locator('//button[@title="Apply"]');
         this.searchBar = page.locator('//input[@placeholder="Search"]');
+        this.policyRefInput = page.locator('//iris-composed-dialog//iris-composed-grid-search-criteria//input');
+        this.searchbtn = page.locator('//iris-composed-dialog//iris-composed-grid-search-criteria//button[@title="Search"]');
+
+
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -242,4 +248,41 @@ export class ViewAllocatedPaymentsPage {
     async verifySearchBar() {
         expect(this.searchBar).toBeVisible();
     }
+
+    async selectPolicyRef(data: string) {
+        await this.policyRefInput.fill(data);
+        const policyrefoption = this.page.locator("//div//mat-option");
+        await policyrefoption.first().click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.searchbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    async verifyPremiumAndTAxDuesGrid() {
+        expect(this.page.locator("//mat-cell[contains(@class,'premiumAndTaxAmount')]")).toBeVisible();
+        expect(this.page.locator("//iris-composed-dialog//mat-cell[contains(@class,'allocatedAmount')]")).toBeVisible();
+        expect(this.page.locator("//iris-composed-dialog//mat-cell[contains(@class,'outstandingAmount')]")).toBeVisible();
+        expect(this.page.locator("//iris-composed-dialog//mat-cell[contains(@class,'currency')]")).toBeVisible();
+        expect(this.page.locator("//iris-composed-dialog//mat-cell[contains(@class,'dueDate')]")).toBeVisible();
+        expect(this.page.locator("//iris-composed-dialog//mat-cell[contains(@class,'status')]")).toBeVisible();
+    }
+
+    async verifyPremiumandTaxAmount(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const element = await this.page.locator('//mat-cell[contains(@class,"premiumAndTaxAmount")]//small').textContent();
+        expect(element).toBe(data);
+    }
+
+    async verifyDueDate() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const element = await this.page.locator('//iris-composed-dialog//mat-cell[contains(@class,"dueDate")]//small');
+        expect(element).toBeVisible();
+    }
+
+    async verifyStatus(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const element = await this.page.locator('//iris-composed-dialog//mat-cell[contains(@class,"status")]//small').textContent();
+        expect(element).toBe(data);
+    }
+
 }

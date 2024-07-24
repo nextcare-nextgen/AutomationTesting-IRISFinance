@@ -1055,7 +1055,6 @@ test('NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1121,7 +1120,7 @@ test('NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_051_Journal_Voucher_Creation'].description1);
     })
-
+    page.pause();
     await test.step("Click On Save Transaction", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1155,7 +1154,7 @@ test('NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-
+    page.pause();
     await test.step("User Click on Edit Journal Voucher Button", async () => {
         await journalVoucherCreationPage.clickOnEditJournalVoucher();
     })
@@ -1216,10 +1215,11 @@ test('NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_053_Journal_Voucher_Creation'].description);
     })
-
+    page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
+  
 
 });
 
@@ -1372,7 +1372,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description);
     })
-
+    page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1400,7 +1400,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
     })
-
+    page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1595,7 +1595,7 @@ test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences 
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description);
     })
-
+    page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1623,7 +1623,7 @@ test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences 
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
     })
-
+    page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })

@@ -137,7 +137,6 @@ export class MawistaPaymentsPage {
         expect(this.todateinput).toBeVisible();
     }
 
-
     async verifyDatesFromGrid() {
         const dates = this.page.locator('//mat-cell[contains(@class,"transactionDate")]');
         for (let i = 0; i < await dates.count(); i++) {
@@ -147,12 +146,9 @@ export class MawistaPaymentsPage {
     }
 
     async verifySeatchFilter() {
+        await new Promise(resolve => setTimeout(resolve, 9000));
         expect(this.searchFilters).toBeVisible();
     }
-
-
-
-
 
     async selectCurrentDateFromDateCalender() {
         const today = new Date();
@@ -298,7 +294,7 @@ export class MawistaPaymentsPage {
 
     async clickOnSearchButton() {
         await this.searchbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
     }
 
     async verifyPaymentStatusFromGrid(data: string) {

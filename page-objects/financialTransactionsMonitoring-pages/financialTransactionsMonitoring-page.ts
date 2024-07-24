@@ -109,7 +109,6 @@ export class FinancialTransactionsMonitoringPage {
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
         await new Promise(resolve => setTimeout(resolve, 9000));
-        
     }
 
 
@@ -134,6 +133,7 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifySearchfiltersButton() {
+        await new Promise(resolve => setTimeout(resolve, 10000));
         expect(this.searchFilters).toBeVisible();
     }
 

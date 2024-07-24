@@ -242,7 +242,6 @@ export class JournalVoucherLookupPage {
         await this.fromVoucherNumber.fill(fromvoucherNumber);
     }
 
-
     async enterToVoucherNumber(tovoucherNumber: string) {
         await this.toVoucherNumber.clear();
         await this.toVoucherNumber.fill(tovoucherNumber);
@@ -273,7 +272,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchButton() {
-        await new Promise(resolve => setTimeout(resolve, 6000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         expect(this.search).toBeVisible();
     }
 
