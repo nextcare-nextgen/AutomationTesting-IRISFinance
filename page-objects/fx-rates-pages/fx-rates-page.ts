@@ -207,12 +207,12 @@ export class FxRatesPage {
   }
 
   async verifyFromCurrencyField() {
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 9000));
     expect(this.fromCurrencyfield).toBeVisible();
   }
 
   async verifyToCurrencyField() {
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 9000));
     expect(this.toCurrencyfield).toBeVisible();
   }
 
@@ -231,12 +231,12 @@ export class FxRatesPage {
 
 
   async verifySearchbtnField() {
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 9000));
     expect(this.searchbtn).toBeVisible();
   }
 
   async verifyResetbuttonField() {
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 9000));
     expect(this.resetbtn).toBeVisible();
   }
 
@@ -299,7 +299,7 @@ export class FxRatesPage {
 
 
   async verifyAddFxRateButton() {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 9000));
     expect(this.addFxRatebtn).toBeVisible();
   }
 

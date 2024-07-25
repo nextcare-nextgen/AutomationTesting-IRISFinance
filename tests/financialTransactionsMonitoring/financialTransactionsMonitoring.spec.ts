@@ -197,7 +197,7 @@ test('NXGF-TC-3022: TC_007_Transactions Details Screen_Verify that the user shou
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-
+    page.pause();
     await test.step("Select Future Date in From Date Field", async () => {
         await financialTransactionsMonitoringPage.selectFutureDateInFromDateCalender();
     })
@@ -310,7 +310,7 @@ test('NXGF-TC-3026: TC_012_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-
+page.pause();
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })
@@ -342,7 +342,7 @@ test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment st
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-
+    page.pause();
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })
@@ -374,7 +374,7 @@ test('NXGF-TC-3028: TC_014_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-
+    page.pause();
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })

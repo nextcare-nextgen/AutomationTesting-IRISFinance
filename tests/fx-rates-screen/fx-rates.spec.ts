@@ -7,7 +7,7 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.json`) as Record<string, any>;
 
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
-    
+
     await test.step("--------------Start the FX Rates Testclass----------------------", async () => {
         console.log("--------------Start the FX Rates Testclass----------------------")
     })
@@ -264,7 +264,7 @@ test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displ
     await test.step("User Click on FX Rates Shortcut Button", async () => {
         await fxRatesPage.clickOnFxRatesShrtcutsButton();
     })
-
+    page.pause();
     await test.step("Verified that the From Currency", async () => {
         await fxRatesPage.verifyFromCurrencyField();
     })
@@ -321,7 +321,6 @@ test('NXGF-TC-1882: TC_011_FX_Rates_Verify that the To Currency field is display
         await fxRatesPage.clickOnFxRatesShrtcutsButton();
     })
     page.pause();
-
     await test.step("Verified that the To Currency", async () => {
         await fxRatesPage.verifyToCurrencyField();
     })
@@ -591,7 +590,7 @@ test('NXGF-TC-1890: TC_019_FX_Rates_Verify that the Add FX rates (+) button shou
     await test.step("User Click on FX Rates Shortcut Button", async () => {
         await fxRatesPage.clickOnFxRatesShrtcutsButton();
     })
-
+    page.pause();
     await test.step("Verified that the Add FX rates (+) button should displayed", async () => {
         await fxRatesPage.verifyAddFxRateButton();
     })

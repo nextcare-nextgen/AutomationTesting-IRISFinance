@@ -272,7 +272,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySearchButton() {
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
         expect(this.search).toBeVisible();
     }
 

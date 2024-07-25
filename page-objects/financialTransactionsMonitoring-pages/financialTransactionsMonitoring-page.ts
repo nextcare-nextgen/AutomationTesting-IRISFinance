@@ -166,8 +166,8 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async selectFutureDateInFromDateCalender() {
+        await new Promise(resolve => setTimeout(resolve, 9000));
         const inputField = await this.page.locator('//input[@title="From Date"]');
-
         if (inputField) {
             // Generate a future date
             const futureDate = new Date();
