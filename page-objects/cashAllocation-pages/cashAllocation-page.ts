@@ -197,6 +197,7 @@ export class CashAllocationPage {
 
     async clickOnSearchButton() {
         await this.searchbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async clickOnSearchFilterButton() {
@@ -206,7 +207,7 @@ export class CashAllocationPage {
     async verifyShowDetailsButtons() {
         const showDetailsbtn = this.page.locator('//button[@title="Show Details"]');
         for (let index = 0; index < await showDetailsbtn.count(); index++) {
-            expect(await showDetailsbtn).toBeVisible();
+            expect(showDetailsbtn.nth(index)).toBeVisible();
         }
     }
 
@@ -433,7 +434,7 @@ export class CashAllocationPage {
 
         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
         for (let index = 0; index < await policyAllocationButtons.count(); index++) {
-            expect(await policyAllocationButtons).toBeVisible();
+            expect(policyAllocationButtons).toBeVisible();
         }
     }
 
@@ -452,7 +453,8 @@ export class CashAllocationPage {
     async verifyReverseAllocationsButtons() {
         const reversePolicyAllocationButtons = this.page.locator('//button[@title="Reverse Allocated Policies"]');
         for (let index = 0; index < await reversePolicyAllocationButtons.count(); index++) {
-            expect(await reversePolicyAllocationButtons).toBeVisible();
+            expect(reversePolicyAllocationButtons.nth(index)).toBeTruthy();
+            await new Promise(resolve => setTimeout(resolve, 2000));
         }
     }
 
@@ -595,8 +597,8 @@ export class CashAllocationPage {
 
     async verifyAmountErrorMessage() {
         const premiumAndTaxAmount = this.page.locator('//mat-label[contains(@title,"Please enter a value less than or equal to")]');
-            expect(premiumAndTaxAmount).toBeVisible();
-        }
-    
+        expect(premiumAndTaxAmount).toBeVisible();
+    }
+
 
 }

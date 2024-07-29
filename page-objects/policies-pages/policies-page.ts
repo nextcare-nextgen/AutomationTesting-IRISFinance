@@ -107,8 +107,9 @@ export class PoliciesPage {
 
     async clickOnPoliciesShrtcutsButton() {
         await new Promise(resolve => setTimeout(resolve, 5000));
+        this.page.pause();
         await this.policiesShortcut.first().click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async clickOnOrganizationShrtcutsButton() {
@@ -257,7 +258,7 @@ export class PoliciesPage {
             //expect(await policyHolderName.nth(index).innerText()).toBeTruthy();
             expect(await icon.nth(index)).toBeVisible();
         }
-        
+
     }
 
     async clickOnPolicyJournalVochereyeiconButton() {
@@ -368,7 +369,6 @@ export class PoliciesPage {
 
         for (let index = 0; index < await recordsPerPageTitle.count(); index++) {
             expect(await recordsPerPageTitle.nth(index).innerText()).toBeTruthy();
-
         }
         console.log(await recordsPerPageTitle.count());
     }
@@ -389,14 +389,12 @@ export class PoliciesPage {
             //expect(await account.nth(index).innerText()).toBeTruthy();
             const currency = await account.nth(index).innerText();
             console.log("currency first:" + currency);
-
         }
         console.log(await account.count());
     }
 
     async clickonthreedotsfromOrg() {
         this.threedotsfromOrg.first().click();
-
     }
 
     async clickOnEditOrganization() {
@@ -413,7 +411,6 @@ export class PoliciesPage {
             //expect(await account.nth(index).innerText()).toBeTruthy();
             const currencies = await currency.nth(index).innerText();
             console.log("currency CV:" + currencies);
-
         }
     }
 
@@ -427,7 +424,6 @@ export class PoliciesPage {
         for (let index = 0; index < await amount.count() || await amountcv1.count(); index++) {
             //const amountcv1 = this.page.locator('//mat-cell[contains(@class,"amountCV1")]');
             expect(await amount.nth(index).innerText()).toEqual(amountcv1.nth(index).innerText());
-
 
         }
     }

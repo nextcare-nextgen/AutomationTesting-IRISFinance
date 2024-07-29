@@ -129,10 +129,13 @@ export class MawistaPaymentsPage {
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
         await new Promise(resolve => setTimeout(resolve, 9000));
+        this.page.pause();
 
     }
 
     async verifyFromDateandToDate() {
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        this.page.pause();
         expect(this.fromdateinput).toBeVisible();
         expect(this.todateinput).toBeVisible();
     }
@@ -468,6 +471,7 @@ export class MawistaPaymentsPage {
     }
 
     async enterFromDate(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 10000));
         await this.fromdateinput.fill(data);
     }
 

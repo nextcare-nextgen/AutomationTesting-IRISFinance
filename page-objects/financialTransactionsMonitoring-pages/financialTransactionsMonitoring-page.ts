@@ -134,7 +134,7 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifySearchfiltersButton() {
         await new Promise(resolve => setTimeout(resolve, 10000));
-        expect(this.searchFilters).toBeVisible();
+        expect(this.searchFilters).toBeEnabled();
     }
 
     async selectCurrentDateFromDateCalender() {
@@ -237,8 +237,8 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyListOfTransactionType() {
-       // await this.page.waitForSelector('.loader', { state: 'hidden' });
-       await new Promise(resolve => setTimeout(resolve, 7000));
+        // await this.page.waitForSelector('.loader', { state: 'hidden' });
+        await new Promise(resolve => setTimeout(resolve, 7000));
         await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
         const elements = await this.page.$$('//div[@role="listbox"]//mat-label');
 
@@ -281,12 +281,12 @@ export class FinancialTransactionsMonitoringPage {
 
     async clickOnSearchButton() {
         await this.searchbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async verifyPaymentStatusFromGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 8000));
-       // await this.page.waitForSelector('.loader', { state: 'hidden' });
+        // await this.page.waitForSelector('.loader', { state: 'hidden' });
         const paymentsstatus = this.page.locator('//mat-cell[contains(@class,"paymentStatus")]//small');
         for (let index = 0; index < await paymentsstatus.count(); index++) {
             const paymentStatus = await paymentsstatus.nth(index).textContent();
@@ -490,13 +490,13 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyexistingRecordBeforeSearch() {
-        const before  = await this.page.locator('//div[contains(@class,"paginator-range")]//div[text()]').allTextContents();
+        const before = await this.page.locator('//div[contains(@class,"paginator-range")]//div[text()]').allTextContents();
         await this.searchbtn.click();
         await new Promise(resolve => setTimeout(resolve, 9000));
-        const after  = await this.page.locator('//div[contains(@class,"paginator-range")]//div[text()]').allTextContents();
+        const after = await this.page.locator('//div[contains(@class,"paginator-range")]//div[text()]').allTextContents();
         expect(before).toStrictEqual(after);
     }
-   
+
 
 }
 

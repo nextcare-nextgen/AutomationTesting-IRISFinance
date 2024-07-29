@@ -134,7 +134,7 @@ export class JournalVoucherCreationPage {
 
     async clickOnJournalVoucherShrtcutsButton() {
         await this.journalVoucherShortcut.click();
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
 
     }
 
@@ -168,7 +168,7 @@ export class JournalVoucherCreationPage {
 
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async clickOnAddLookupVoucherCreationButton() {
@@ -229,12 +229,14 @@ export class JournalVoucherCreationPage {
     }
 
     async verifyDescriptionInputBox() {
+        await new Promise(resolve => setTimeout(resolve, 9000));
         expect(this.description).toBeEditable();
     }
 
     async enterDescription(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.description.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async VerifyAddVoucherTrancastionButtonEnable() {

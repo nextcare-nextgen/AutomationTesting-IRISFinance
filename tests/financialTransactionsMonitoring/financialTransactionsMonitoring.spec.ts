@@ -310,7 +310,7 @@ test('NXGF-TC-3026: TC_012_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-page.pause();
+    page.pause();
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })
@@ -657,7 +657,7 @@ test('NXGF-TC-3036: TC_022_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified payments status from grid", async () => {
         await financialTransactionsMonitoringPage.verifyPaymentStatusFromGrid(FinancialTransactionsMonitoringData['TC_022_Transactions_Details_Screen'].paymentStatus);
     })
@@ -676,7 +676,6 @@ test('NXGF-TC-3037: TC_023_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -695,7 +694,6 @@ test('NXGF-TC-3037: TC_023_Transaction Details Screen_Verify that the user is ab
         await financialTransactionsMonitoringPage.selectPaymentType(FinancialTransactionsMonitoringData['TC_023_Transactions_Details_Screen'].paymentType);
     })
 
-
     await test.step("User Click on Apply button", async () => {
         await financialTransactionsMonitoringPage.clickOnApplyButton();
     })
@@ -703,7 +701,7 @@ test('NXGF-TC-3037: TC_023_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Payments Method from grid", async () => {
         await financialTransactionsMonitoringPage.verifyPaymentTypeFromGrid(FinancialTransactionsMonitoringData['TC_023_Transactions_Details_Screen'].paymentType);
     })
@@ -722,7 +720,6 @@ test('NXGF-TC-3038: TC_024_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -741,7 +738,6 @@ test('NXGF-TC-3038: TC_024_Transaction Details Screen_Verify that the user is ab
         await financialTransactionsMonitoringPage.selectPaymentMethod(FinancialTransactionsMonitoringData['TC_024_Transactions_Details_Screen'].paymentMethod);
     })
 
-
     await test.step("User Click on Apply button", async () => {
         await financialTransactionsMonitoringPage.clickOnApplyButton();
     })
@@ -749,7 +745,7 @@ test('NXGF-TC-3038: TC_024_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Payments Method from grid", async () => {
         await financialTransactionsMonitoringPage.verifyPaymentMethodFromGrid(FinancialTransactionsMonitoringData['TC_024_Transactions_Details_Screen'].paymentMethod);
     })
@@ -768,7 +764,6 @@ test('NXGF-TC-3039: TC_025_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -798,7 +793,7 @@ test('NXGF-TC-3039: TC_025_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Payments Amount from grid", async () => {
         await financialTransactionsMonitoringPage.verifyPaymentAmountFromGrid(FinancialTransactionsMonitoringData['TC_025_Transactions_Details_Screen'].toPaymentAmount);
     })
@@ -817,7 +812,6 @@ test('NXGF-TC-3040: TC_026_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -843,7 +837,7 @@ test('NXGF-TC-3040: TC_026_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+page.pause();
     await test.step("Verified Policy Ref from grid", async () => {
         await financialTransactionsMonitoringPage.verifyPolicyRefFromGrid(FinancialTransactionsMonitoringData['TC_026_Transactions_Details_Screen'].policyRef);
     })
@@ -862,7 +856,6 @@ test('NXGF-TC-3041: TC_027_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -892,7 +885,7 @@ test('NXGF-TC-3041: TC_027_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Customer Ref from grid", async () => {
         await financialTransactionsMonitoringPage.verifyCustomerRefFromGrid(FinancialTransactionsMonitoringData['TC_027_Transactions_Details_Screen'].customerRef);
     })
@@ -912,7 +905,6 @@ test('NXGF-TC-3042,NXGF-TC-3044: TC_028_Transaction Details Screen_Verify that t
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -938,7 +930,7 @@ test('NXGF-TC-3042,NXGF-TC-3044: TC_028_Transaction Details Screen_Verify that t
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Transaction Id from grid", async () => {
         await financialTransactionsMonitoringPage.verifyTransactionIdFromGrid(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].transactionId);
     })
@@ -957,7 +949,6 @@ test('NXGF-TC-3043: TC_029_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -975,7 +966,7 @@ test('NXGF-TC-3043: TC_029_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })
-
+    page.pause();
     await test.step("User enter the Transaction Id number", async () => {
         await financialTransactionsMonitoringPage.enterTransactionId(FinancialTransactionsMonitoringData['TC_028_Transactions_Details_Screen'].transactionId);
     })
@@ -1010,7 +1001,6 @@ test('NXGF-TC-3045: TC_030_Transaction Details Screen_Verify that the user is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1040,7 +1030,7 @@ test('NXGF-TC-3045: TC_030_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Transaction Id from grid", async () => {
         await financialTransactionsMonitoringPage.verifyTransactionIdFromGrid(FinancialTransactionsMonitoringData['TC_030_Transactions_Details_Screen'].transactionId);
     })
@@ -1089,7 +1079,6 @@ test('NXGF-TC-3049: TC_036_Transaction Details Screen_Verify that the search res
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1163,7 +1152,7 @@ test('NXGF-TC-3050: TC_037_Transaction Details Screen_Verify that all the detail
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("Verified Transaction Id from grid", async () => {
         await financialTransactionsMonitoringPage.verifySearchResultFromGrid();
     })
@@ -1240,7 +1229,7 @@ test('NXGF-TC-3052,NXGF-TC-3053: TC_039_Transaction Details Screen_Verify that t
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("click On View Deatils Button", async () => {
         await financialTransactionsMonitoringPage.clickOnViewDeatilsButton();
     })
@@ -1263,7 +1252,6 @@ test('NXGF-TC-3054: TC_041_Transaction Details Screen_Verify that if the payemen
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1289,7 +1277,7 @@ test('NXGF-TC-3054: TC_041_Transaction Details Screen_Verify that if the payemen
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("click On View Deatils Button", async () => {
         await financialTransactionsMonitoringPage.clickOnViewDeatilsButton();
     })
@@ -1312,7 +1300,6 @@ test('NXGF-TC-3055: TC_042_Transaction Details Screen_Verify that if the payemen
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1338,7 +1325,7 @@ test('NXGF-TC-3055: TC_042_Transaction Details Screen_Verify that if the payemen
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-
+    page.pause();
     await test.step("click On View Deatils Button", async () => {
         await financialTransactionsMonitoringPage.clickOnViewDeatilsButton();
     })
@@ -1421,7 +1408,6 @@ test('NXGF-TC-3058: TC_045_Transaction Details Screen_Verify that the User is ab
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1474,8 +1460,7 @@ test('NXGF-TC-3058: TC_045_Transaction Details Screen_Verify that the User is ab
     await test.step("User Click on Search filter button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
     })
-
-
+    page.pause();
     await test.step("User enter the Transaction Id number", async () => {
         await financialTransactionsMonitoringPage.verifySearchFiltersAreEmptyAfterReset();
     })
@@ -1587,7 +1572,6 @@ test('NXGF-TC-6714: TC_49_Transaction Details Screen_Verify that when the user c
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1597,7 +1581,7 @@ test('NXGF-TC-6714: TC_49_Transaction Details Screen_Verify that when the user c
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-
+    page.pause();
     await test.step("Verified that the transaction type either shows matching records or rejects invalid manual input.", async () => {
         await financialTransactionsMonitoringPage.verifyexistingRecordBeforeSearch();
     })

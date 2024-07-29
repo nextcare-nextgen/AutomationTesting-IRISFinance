@@ -877,7 +877,6 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
         await dashboardPage.selectOrganization(policiesData['TC_024_Policies'].organization);
     })
 
-
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -885,7 +884,7 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
-
+    page.pause();
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
 
@@ -905,7 +904,6 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -918,17 +916,14 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
 
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
-
     })
 
     await test.step("Verify Policy Journal Voucher Title Displayed", async () => {
         await policiesPage.verifyPolicyJournalVocherTitle(policiesData['TC_025_Policies'].policyJournalVochereText);
-
     })
 
 })
@@ -945,7 +940,6 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -967,7 +961,6 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
     await test.step("Verify Two sections are Displayed", async () => {
         await policiesPage.verifyPolicyJournalVoucherListSection();;
         await policiesPage.verifyPolicyJournalVoucherDtailsListSection();
-
     })
 
 })
@@ -984,7 +977,6 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -997,7 +989,6 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
 
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
@@ -1006,7 +997,6 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
 
     await test.step("Verify First sections Grid Column are Displayed", async () => {
         await policiesPage.verifyPolicyJournalVoucherFirstSectionGridColumn();
-
     })
 
 })
@@ -1023,7 +1013,6 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1040,12 +1029,10 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
     })
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
-
     })
 
     await test.step("Verify Second sections Grid Column are Displayed", async () => {
         await policiesPage.verifyPolicyJournalVoucherSecondSectionGridColumn();
-
     })
 
 })
@@ -1062,7 +1049,6 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1077,19 +1063,16 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
 
-
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
     })
 
     await test.step("Click On Vocher Reference from Grid", async () => {
         await policiesPage.clickOnVoucherRef();
-
     })
 
     await test.step("Verify Account Records from Second grid", async () => {
         await policiesPage.verifyAccountRecordsFromSecondGrid();
-
     })
 
 })
@@ -1106,7 +1089,6 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1144,7 +1126,6 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1182,7 +1163,6 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1215,7 +1195,6 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1248,7 +1227,6 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1280,7 +1258,6 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1295,7 +1272,6 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
 
-
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
     })
@@ -1307,7 +1283,6 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
 
     await test.step("Verify Account Records from Second grid", async () => {
         await policiesPage.verifyAccountRecordsFromSecondGrid();
-
     })
 
 })
@@ -1325,7 +1300,6 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1338,29 +1312,23 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
 
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
-
     })
 
     await test.step("Click On Vocher Reference from Grid", async () => {
         await policiesPage.clickOnVoucherRef();
-
     })
-
 
     await test.step("Verify Currency Records from Second grid", async () => {
         await policiesPage.verifyCurrencyRecordsFromSecondGrid();
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-
 
     await test.step("User Click on Organzation Shortcut Button", async () => {
         await policiesPage.clickOnOrganizationShrtcutsButton();
@@ -1389,7 +1357,6 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User select oragnization", async () => {
@@ -1402,22 +1369,18 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
 
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
-
     })
 
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
-
     })
 
     await test.step("Click On Vocher Reference from Grid", async () => {
         await policiesPage.clickOnVoucherRef();
-
     })
 
     await test.step("Verify Currency Records from Second grid", async () => {
         await policiesPage.verifyAmountEqulestoCV();
-
     })
 
     await test.step("--------------End the Policies Testclass----------------------", async () => {

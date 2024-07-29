@@ -34,7 +34,6 @@ test('NXGF-TC-3712: TC_002_Mawista payments_Verify that the user is able to view
 
     await test.step("Verify that the user is able to view the default and mandatory search option of 'from date' and 'To date'", async () => {
         await mawistaPaymentsPage.verifyFromDateandToDate();
-
     })
 
 });

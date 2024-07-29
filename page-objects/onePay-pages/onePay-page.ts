@@ -78,6 +78,17 @@ export class OnePayPage {
     readonly applyandpayButton: Locator;
     readonly creditcardNumber: Locator;
     readonly creditcardNumberr: Locator;
+    readonly contractNumber: Locator;
+    readonly policynum: Locator;
+    readonly userNameInputField : Locator;
+    readonly passwordInputField : Locator;
+    readonly signinButton : Locator;
+    readonly searchbtn : Locator;
+    readonly editbtn : Locator;
+    readonly acceptbtn : Locator;
+    readonly confirmbtn : Locator;
+    readonly fullDeatailsbtn : Locator;
+    readonly financtialInfobtn : Locator;
 
 
     constructor(page: Page) {
@@ -151,6 +162,19 @@ export class OnePayPage {
         this.creditcardButton = page.locator("//div[normalize-space()='Credit Card']");
         this.applyandpayButton = page.locator("//span[normalize-space()='Apply & Pay']");
         this.creditcardNumber = page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']");
+        this.contractNumber = page.locator('//div//input[@name="contractnumber"]');
+        this.policynum = page.locator('//div[@id="row-12889"]//app-message-screen//p[1]//following::p[1]//b[contains(text(),"MAE-AWPDE")]');
+        this.userNameInputField = page.locator('//div//input[@title="username"]');
+        this.passwordInputField = page.locator('//div//input[@title="password"]')
+        this.signinButton = page.locator('//div//button[@id="button_login"]');
+        this.searchbtn = page.locator('//div[@class="search-action"]');
+        this.editbtn = page.locator('//div[@class="tooltip  result_search_edit"]');
+        this.acceptbtn = page.locator('//div//a[@id="accept_quotation_btn"]');
+        this.confirmbtn = page.locator('//button[@class="btn btn_custom_pad confirm"]');
+        this.fullDeatailsbtn = page.locator('//div//a[contains(@href,"../Endorsement/FullDetails")]');
+        this.financtialInfobtn = page.locator('//div//a[@class="financialInfoBtn"]');
+
+
     }
 
 
@@ -363,7 +387,7 @@ export class OnePayPage {
 
     async reiscareFilldetailsoncreditcardTab() {
         console.log("hi");
-       //await this.page.waitForTimeout(10000);
+        //await this.page.waitForTimeout(10000);
         await new Promise(resolve => setTimeout(resolve, 10000));
         await this.page.waitForLoadState('networkidle');
         //await this.page.waitForTimeout(10000);
@@ -383,12 +407,37 @@ export class OnePayPage {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").fill("12345");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']").click();
         await new Promise(resolve => setTimeout(resolve, 9000));
-    
-       // await this.page.waitForTimeout(10000);
-     //   await new Promise(resolve => setTimeout(resolve, 8000));
+
+        // await this.page.waitForTimeout(10000);
+        //   await new Promise(resolve => setTimeout(resolve, 8000));
 
 
     }
 
+    async getPolicyNumber(superUser: string, password: string) {
+        await new Promise(resolve => setTimeout(resolve, 14000));
+        await this.page.waitForLoadState('networkidle');
+        await this.page.locator("//div[@id='row-12889']//h3[contains(text(),'Thank you')]").waitFor();
+        //let actualdisText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]//following::p[1]//b[contains(text(),'MAE-AWPDE')]").textContent();
+        const pn = await this.policynum.innerText();
+        await this.page.goto("https://test-syncro-eu.tatsh.cloud/Account/Login");
+        await this.page.waitForLoadState('networkidle');
+        await this.userNameInputField.fill(superUser);
+        await this.passwordInputField.fill(password);
+        await this.signinButton.click();
+        await this.page.waitForLoadState('networkidle');
+        await this.contractNumber.fill(pn);
+        await this.searchbtn.click();
+        await this.editbtn.click();
+        await this.page.waitForLoadState('networkidle');
+        await this.acceptbtn.click();
+        this.page.pause();
+        await this.page.waitForLoadState('networkidle');
+        await this.confirmbtn.click();
+        await this.page.waitForLoadState('networkidle');
+        /*  await this.fullDeatailsbtn.click();
+        await this.page.waitForLoadState('networkidle');
+        await this.financtialInfobtn.click();*/  
+        }
 
 }

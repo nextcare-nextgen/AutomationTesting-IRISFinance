@@ -937,7 +937,6 @@ test('NXGF-TC-3343: TC_027_Cash Allocation Dashboard_Verify that the payment rec
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -964,7 +963,6 @@ test('NXGF-TC-3343: TC_027_Cash Allocation Dashboard_Verify that the payment rec
         await cashAllocationPage.verifyReverseAllocationsButtons();
     })
 
-
 });
 
 
@@ -980,7 +978,6 @@ test('NXGF-TC-3344: TC_028_Cash Allocation Dashboard_Verify that the "Details" b
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -997,7 +994,6 @@ test('NXGF-TC-3344: TC_028_Cash Allocation Dashboard_Verify that the "Details" b
 
     await test.step("User select Payment status", async () => {
         await cashAllocationPage.selectPaymentStatus(CashAllocationPageData['TC_028_Cash_Allocation'].paymentStatus);
-
     })
 
     await test.step("User Click on Search button", async () => {

@@ -92,5 +92,31 @@
         "excludeclassicsecondtext": "65",
         "thankyouText": "Thank you",
         "policyidText": "MAE-AWPDE"
+    },
+    "TC_005_long_term": {
+        "url": "https://test-syncrob2c-eu.tatsh.cloud/online-application?KEY=MtywX6ask6X7STU8otfGPg%3D%3D&BRK=MAW&PT=MAE&LANG=en",
+        "firstNameInput": "Test",
+        "lastNameInput": "Character",
+        "passportInput": "123",
+        "mobileNumbercodeInput": "91",
+        "mobileNumberInput": "123456",
+        "emailInput": "pravina@vtestcorp.com",
+        "streetNameInput": "Charac",
+        "streetNumberInput": "12345",
+        "postalCodeInput": "34567",
+        "additionalAddressInput": "Jb road",
+        "cityInput": "NBN",
+        "dayInput": "05",
+        "monthInput": "08",
+        "yearInput": "2000",
+        "excludeclassictext": "13.5",
+        "DayInput": "05",
+        "MonthInput": "08",
+        "YearInput": "1955",
+        "excludeclassicsecondtext": "65",
+        "thankyouText": "Thank you",
+        "policyidText": "MAE-AWPDE",
+        "username":"vTestBroker",
+        "password":"Combination@1"
     }
 }

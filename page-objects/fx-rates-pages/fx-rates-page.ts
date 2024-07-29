@@ -103,6 +103,7 @@ export class FxRatesPage {
   async clickOnFxRatesShrtcutsButton() {
     await this.fxRatesShortcut.first().click();
     await new Promise(resolve => setTimeout(resolve, 9000));
+    this.page.pause();
   }
 
   async verifyBreadCrumbsText(data: string) {
@@ -242,12 +243,14 @@ export class FxRatesPage {
 
   async clickOnSearchButton() {
     await this.searchbtn.click();
-    await this.page.waitForSelector('.loader', { state: 'hidden' });
+    await new Promise(resolve => setTimeout(resolve, 9000));
+    this.page.pause();
   }
 
   async clickOnResetButton() {
     await this.resetbtn.click();
     await new Promise(resolve => setTimeout(resolve, 8000));
+    this.page.pause();
   }
 
   async verifyToDateFromGrid() {
@@ -304,6 +307,7 @@ export class FxRatesPage {
   }
 
   async clickOnAddFxRateButton() {
+    this.page.pause();
     await new Promise(resolve => setTimeout(resolve, 3000));
     await this.addFxRatebtn.click();
   }

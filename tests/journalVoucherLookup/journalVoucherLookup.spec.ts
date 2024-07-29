@@ -156,7 +156,7 @@ test('NXGF-TC-2011: TC_005_Journal Voucher Lookup_Verify that the screen is divi
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
     })
-    page.pause();
+
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
     })
@@ -443,7 +443,6 @@ test('NXGF-TC-2019: TC_016_Journal Voucher Lookup_Verify that the user is able t
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Select Organization", async () => {
@@ -468,7 +467,6 @@ test('NXGF-TC-2019: TC_016_Journal Voucher Lookup_Verify that the user is able t
 
     await test.step("User Enter Account Name ", async () => {
         await journalVoucherLookupPage.enterAccountName(JournalVoucherLookupPageData['TC_016_Journal_Voucher_Lookup'].accountName);
-
     })
 
     await test.step("User Click on Apply Button", async () => {
@@ -732,11 +730,11 @@ test('NXGF-TC-2025: TC_023_Journal Voucher Lookup_Verify that the user is able t
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
     })
-    page.pause();
+
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+ 
     await test.step("User Click on Advanced Search Button", async () => {
         await journalVoucherLookupPage.clickOnAdvancedSearchButton();
     })
@@ -784,11 +782,11 @@ test('NXGF-TC-2026: TC_031_Journal Voucher Lookup_Verify that the user is able t
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
     })
-    page.pause();
+
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    
     await test.step("User Verified Search Button displayed", async () => {
         await journalVoucherLookupPage.verifySearchButton();
     })
@@ -820,11 +818,11 @@ test('NXGF-TC-2027: TC_045_Journal Voucher Lookup_Verify that after the search t
     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
     })
-    page.pause();
+ 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+   
     await test.step("User Verified Grid Header column name", async () => {
         await journalVoucherLookupPage.verifyGridHeaderColumnName();
     })
