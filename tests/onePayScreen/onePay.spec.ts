@@ -67,6 +67,94 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
     page.close();
 });
 
+
+test('NXGF-TC-2828: TC_004_OnePay payment journey_Validate that the user is able to select the payment method as Credit card for long term policy and short term policies', async ({ page }) => {
+    const onePayPage: OnePayPage = new OnePayPage(page);
+
+    await test.step("Load the URL in Browser", async () => {
+        await onePayPage.gotoHomePage(onePayData["TC_004_OnePay"].url);
+    })
+
+    await test.step("Enter Policyholder's details,Policyholder's address in Germany,Are you the insured person details and Enter your date of birth and gender", async () => {
+        await onePayPage.expatcareFirstTab(onePayData["TC_004_OnePay"].firstNameInput, onePayData["TC_004_OnePay"].lastNameInput, onePayData["TC_004_OnePay"].passportInput, onePayData["TC_004_OnePay"].mobileNumbercodeInput, onePayData["TC_004_OnePay"].mobileNumberInput, onePayData["TC_004_OnePay"].emailInput, onePayData["TC_004_OnePay"].streetNameInput, onePayData["TC_004_OnePay"].streetNumberInput, onePayData["TC_004_OnePay"].postalCodeInput, onePayData["TC_004_OnePay"].additionalAddressInput, onePayData["TC_004_OnePay"].cityInput, onePayData["TC_004_OnePay"].dayInput, onePayData["TC_004_OnePay"].monthInput, onePayData["TC_004_OnePay"].yearInput);
+    })
+
+    await test.step("Click on First Tab Next Button ", async () => {
+        await onePayPage.clickOnFirstTabNextButton();
+    })
+
+    await test.step("Click on Second Tab  Button ", async () => {
+        await onePayPage.clickOnsecondtabNextButton();
+    })
+
+    await test.step("Enter Start Date and End Date  on Third Tab ", async () => {
+        await onePayPage.expatcaresStartandEnddateonThirdtTab(onePayData["TC_004_OnePay"].StartdateInput, onePayData["TC_004_OnePay"].EnddateInput);
+    })
+
+    await test.step("Click on Classic Plan ", async () => {
+        await onePayPage.clickOnClassiccTile();
+    })
+
+    await test.step("Click on Third Tab Next Button ", async () => {
+        await onePayPage.clickOnThirdTabNextButton();
+    })
+
+    await test.step("Validated that the user is able to select the payment method as Credit card for short term policies", async () => {
+        await onePayPage.clickOnCreditcardradioButton();
+    })
+    page.close();
+});
+
+test('NXGF-TC-2829: TC_005_OnePay payment journey_Validate that the user is navigated to One pay iframe once the credit card payment method is selected', async ({ page }) => {
+    const onePayPage: OnePayPage = new OnePayPage(page);
+
+    await test.step("Load the URL in Browser", async () => {
+        await onePayPage.gotoHomePage(onePayData["TC_005_OnePay"].url);
+    })
+
+    await test.step("Enter Policyholder's details,Policyholder's address in Germany,Are you the insured person details and Enter your date of birth and gender", async () => {
+        await onePayPage.expatcareFirstTab(onePayData["TC_005_OnePay"].firstNameInput, onePayData["TC_005_OnePay"].lastNameInput, onePayData["TC_005_OnePay"].passportInput, onePayData["TC_005_OnePay"].mobileNumbercodeInput, onePayData["TC_005_OnePay"].mobileNumberInput, onePayData["TC_005_OnePay"].emailInput, onePayData["TC_005_OnePay"].streetNameInput, onePayData["TC_005_OnePay"].streetNumberInput, onePayData["TC_005_OnePay"].postalCodeInput, onePayData["TC_005_OnePay"].additionalAddressInput, onePayData["TC_005_OnePay"].cityInput, onePayData["TC_005_OnePay"].dayInput, onePayData["TC_005_OnePay"].monthInput, onePayData["TC_005_OnePay"].yearInput);
+    })
+
+    await test.step("Click on First Tab Next Button ", async () => {
+        await onePayPage.clickOnFirstTabNextButton();
+    })
+
+    await test.step("Click on Second Tab  Button ", async () => {
+        await onePayPage.clickOnsecondtabNextButton();
+    })
+
+    await test.step("Enter Start Date and End Date  on Third Tab ", async () => {
+        await onePayPage.expatcaresStartandEnddateonThirdtTab(onePayData["TC_005_OnePay"].StartdateInput, onePayData["TC_005_OnePay"].EnddateInput);
+    })
+
+    await test.step("Click on Classic Plan ", async () => {
+        await onePayPage.clickOnClassiccTile();
+    })
+
+    await test.step("Click on Third Tab Next Button ", async () => {
+        await onePayPage.clickOnThirdTabNextButton();
+    })
+
+    await test.step("Click on  Credit card radio Button on fourth tab", async () => {
+        await onePayPage.clickOnCreditcardradioButton();
+    })
+
+    await test.step("Select checkboxes on  fourth tab", async () => {
+        await onePayPage.clickOnCheckboxesonfourthtab();
+    })
+    page.pause();
+    await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
+        await onePayPage.clickOnApplyandPayButton();
+    })
+
+    await test.step("Validated that the user is navigated to One pay iframe once the credit card payment method is selected", async () => {
+        await onePayPage.verifyexpatcaredetailsoncreditcardTab();
+    })
+
+});
+
+
 test('NXGF-TC-2831: TC_006_OnePay payment journey_Validate that when the incorrect card number is entered the user is able to view the valid error message', async ({ page }) => {
 
     const onePayPage: OnePayPage = new OnePayPage(page);
@@ -235,6 +323,64 @@ test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can cli
     page.close();
 });
 
+test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the user can view a payment successful message along with the policy number and the one pay iframe is closed', async ({ page }) => {
+    const onePayPage: OnePayPage = new OnePayPage(page);
+
+    await test.step("Load the URL in Browser", async () => {
+        await onePayPage.gotoHomePage(onePayData["TC_003_OnePay"].url);
+    })
+
+    await test.step("Enter Policyholder's details,Policyholder's address in Germany,Are you the insured person details and Enter your date of birth and gender", async () => {
+        await onePayPage.expatcareFirstTab(onePayData["TC_002_OnePay"].firstNameInput, onePayData["TC_002_OnePay"].lastNameInput, onePayData["TC_002_OnePay"].passportInput, onePayData["TC_002_OnePay"].mobileNumbercodeInput, onePayData["TC_002_OnePay"].mobileNumberInput, onePayData["TC_002_OnePay"].emailInput, onePayData["TC_002_OnePay"].streetNameInput, onePayData["TC_002_OnePay"].streetNumberInput, onePayData["TC_002_OnePay"].postalCodeInput, onePayData["TC_002_OnePay"].additionalAddressInput, onePayData["TC_002_OnePay"].cityInput, onePayData["TC_002_OnePay"].dayInput, onePayData["TC_002_OnePay"].monthInput, onePayData["TC_002_OnePay"].yearInput);
+    })
+
+    await test.step("Click on First Tab Next Button ", async () => {
+        await onePayPage.clickOnFirstTabNextButton();
+    })
+
+    await test.step("Click on Second Tab  Button ", async () => {
+        await onePayPage.clickOnsecondtabNextButton();
+    })
+
+    await test.step("Enter Start Date and End Date  on Third Tab ", async () => {
+        await onePayPage.expatcaresStartandEnddateonThirdtTab(onePayData["TC_002_OnePay"].StartdateInput, onePayData["TC_002_OnePay"].EnddateInput);
+    })
+
+    await test.step("Click on Classic Plan ", async () => {
+        await onePayPage.clickOnClassiccTile();
+    })
+
+    await test.step("Click on Third Tab Next Button ", async () => {
+        await onePayPage.clickOnThirdTabNextButton();
+    })
+
+    await test.step("Click on  Credit card radio Button on fourth tab", async () => {
+        await onePayPage.clickOnCreditcardradioButton();
+    })
+
+    await test.step("Select checkboxes on  fourth tab", async () => {
+        await onePayPage.clickOnCheckboxesonfourthtab();
+    })
+    page.pause();
+    await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
+        await onePayPage.clickOnApplyandPayButton();
+    })
+
+    await test.step("Enter all details of credit card ", async () => {
+        await onePayPage.expatcareFilldetailsoncreditcardTab();
+    })
+
+    await test.step("Click on Save card details", async () => {
+        await onePayPage.clickOnSaveCardDetails();
+    })
+
+    await test.step("Verified all details on Thank you page ", async () => {
+        await onePayPage.verifyThankyoupageText(onePayData["TC_002_OnePay"].thankyouText, onePayData["TC_002_OnePay"].policyidText);
+    })
+
+    page.close();
+});
+
 test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able to create a long term policy with Credit card as the payment method', async ({ page }) => {
     const onePayPage: OnePayPage = new OnePayPage(page);
     await test.step("Load the URL in Browser", async () => {
@@ -369,7 +515,7 @@ test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able t
 
 test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the saved card details in Syncro "financial info page" after validating the policy', async ({ page }) => {
     const onePayPage: OnePayPage = new OnePayPage(page);
-    
+
     await test.step("Load the URL in Browser", async () => {
         await onePayPage.gotoHomePage(onePayData["TC_005_long_term"].url);
     })
@@ -412,7 +558,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
 
     await test.step("Verified all details on Thank you page ", async () => {
         await page.waitForLoadState('networkidle');
-        await onePayPage.getPolicyNumber(onePayData["TC_005_long_term"].username,onePayData["TC_005_long_term"].password);
+        await onePayPage.getPolicyNumber(onePayData["TC_005_long_term"].username, onePayData["TC_005_long_term"].password);
     })
 
     page.close();

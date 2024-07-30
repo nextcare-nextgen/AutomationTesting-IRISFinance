@@ -80,15 +80,15 @@ export class OnePayPage {
     readonly creditcardNumberr: Locator;
     readonly contractNumber: Locator;
     readonly policynum: Locator;
-    readonly userNameInputField : Locator;
-    readonly passwordInputField : Locator;
-    readonly signinButton : Locator;
-    readonly searchbtn : Locator;
-    readonly editbtn : Locator;
-    readonly acceptbtn : Locator;
-    readonly confirmbtn : Locator;
-    readonly fullDeatailsbtn : Locator;
-    readonly financtialInfobtn : Locator;
+    readonly userNameInputField: Locator;
+    readonly passwordInputField: Locator;
+    readonly signinButton: Locator;
+    readonly searchbtn: Locator;
+    readonly editbtn: Locator;
+    readonly acceptbtn: Locator;
+    readonly confirmbtn: Locator;
+    readonly fullDeatailsbtn: Locator;
+    readonly financtialInfobtn: Locator;
 
 
     constructor(page: Page) {
@@ -437,7 +437,14 @@ export class OnePayPage {
         await this.page.waitForLoadState('networkidle');
         /*  await this.fullDeatailsbtn.click();
         await this.page.waitForLoadState('networkidle');
-        await this.financtialInfobtn.click();*/  
-        }
+        await this.financtialInfobtn.click();*/
+    }
+
+
+    async verifyexpatcaredetailsoncreditcardTab() {
+        await this.page.waitForTimeout(10000);
+        const actual = this.page.frameLocator("//iframe[@id='CreditCardIframe']");
+        expect(actual).toBeTruthy();
+    }
 
 }

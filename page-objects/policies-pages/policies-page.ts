@@ -106,8 +106,7 @@ export class PoliciesPage {
     }
 
     async clickOnPoliciesShrtcutsButton() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        this.page.pause();
+        await new Promise(resolve => setTimeout(resolve, 9000));
         await this.policiesShortcut.first().click();
         await new Promise(resolve => setTimeout(resolve, 10000));
     }

@@ -163,13 +163,11 @@ export class JournalVoucherLookupPage {
 
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 9000));
-        this.page.pause();
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async verifyjournalVoucherLookupsearchSection() {
         await new Promise(resolve => setTimeout(resolve, 10000));
-        this.page.pause();
         expect(this.journalVoucherLookupsearchSection).toBeVisible();
     }
 
@@ -217,7 +215,6 @@ export class JournalVoucherLookupPage {
 
     async clickonSearchButton() {
         await this.search.click();
-        this.page.pause();
         await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
@@ -276,7 +273,6 @@ export class JournalVoucherLookupPage {
 
     async verifySearchButton() {
         await new Promise(resolve => setTimeout(resolve, 10000));
-        this.page.pause();
         expect(this.search).toBeVisible();
     }
 

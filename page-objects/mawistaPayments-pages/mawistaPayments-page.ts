@@ -128,14 +128,11 @@ export class MawistaPaymentsPage {
 
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
-        await new Promise(resolve => setTimeout(resolve, 9000));
-        this.page.pause();
-
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
     async verifyFromDateandToDate() {
         await new Promise(resolve => setTimeout(resolve, 10000));
-        this.page.pause();
         expect(this.fromdateinput).toBeVisible();
         expect(this.todateinput).toBeVisible();
     }
