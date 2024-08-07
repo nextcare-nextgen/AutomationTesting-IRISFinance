@@ -428,18 +428,31 @@ export class OnePayPage {
         await this.page.waitForLoadState('networkidle');
         await this.contractNumber.fill(pn);
         await this.searchbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 8000));
         await this.editbtn.click();
+        await new Promise(resolve => setTimeout(resolve, 20000));
         await this.page.waitForLoadState('networkidle');
+        await this.page.locator("//div[text()=' Details']").waitFor();
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        await this.page.locator("//div//a[text()='Save & continue ']").waitFor();
         await this.acceptbtn.click();
-        this.page.pause();
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        await this.acceptbtn.click();
         await this.page.waitForLoadState('networkidle');
         await this.confirmbtn.click();
         await this.page.waitForLoadState('networkidle');
-        /*  await this.fullDeatailsbtn.click();
+        await this.fullDeatailsbtn.click();
         await this.page.waitForLoadState('networkidle');
-        await this.financtialInfobtn.click();*/
+        await this.financtialInfobtn.click();
+
     }
 
+    async verifyFinancialInfo() {
+        await this.page.waitForTimeout(7000);
+        const actual = this.page.locator("//iris-field-label//div//div");
+        for(let i=0; i < await actual.count();i++)
+        expect(actual.nth(i)).toBeVisible();
+    }
 
     async verifyexpatcaredetailsoncreditcardTab() {
         await this.page.waitForTimeout(10000);

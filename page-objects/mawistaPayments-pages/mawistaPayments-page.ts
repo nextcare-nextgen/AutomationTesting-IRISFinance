@@ -147,6 +147,7 @@ export class MawistaPaymentsPage {
 
     async verifySeatchFilter() {
         await new Promise(resolve => setTimeout(resolve, 9000));
+        await this.searchFilters.waitFor();
         expect(this.searchFilters).toBeVisible();
     }
 

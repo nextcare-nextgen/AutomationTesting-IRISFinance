@@ -531,6 +531,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
     await test.step("Click on Second Tab  Button ", async () => {
         await onePayPage.clickOnsecondtabNextButton();
     })
+
     await test.step("Select Start and End Date on Third Tab ", async () => {
         await onePayPage.reiscareStartandenddateonThirdtTab();
     })
@@ -555,10 +556,14 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
         await onePayPage.reiscareFilldetailsoncreditcardTab();
         await page.waitForLoadState('networkidle');
     })
-
-    await test.step("Verified all details on Thank you page ", async () => {
+    page.pause();
+    await test.step("Get the policy number and validate it", async () => {
         await page.waitForLoadState('networkidle');
         await onePayPage.getPolicyNumber(onePayData["TC_005_long_term"].username, onePayData["TC_005_long_term"].password);
+    })
+
+    await test.step("user is able to view the saved card details in Syncro 'financial info page' after validating the policy", async () => {
+        await onePayPage.verifyFinancialInfo();
     })
 
     page.close();
