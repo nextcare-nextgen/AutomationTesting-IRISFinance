@@ -657,9 +657,9 @@ test('NXGF-TC-3036: TC_022_Transaction Details Screen_Verify that the user is ab
     await test.step("User Click on Search button", async () => {
         await financialTransactionsMonitoringPage.clickOnSearchButton();
     })
-    page.pause();
+
     await test.step("Verified payments status from grid", async () => {
-        await financialTransactionsMonitoringPage.verifyPaymentStatusFromGrid(FinancialTransactionsMonitoringData['TC_022_Transactions_Details_Screen'].paymentStatus);
+        await financialTransactionsMonitoringPage.verifyPaymentStatusFromGrid(FinancialTransactionsMonitoringData['TC_022_Transactions_Details_Screen'].paymentStatus1);
     })
 
 });

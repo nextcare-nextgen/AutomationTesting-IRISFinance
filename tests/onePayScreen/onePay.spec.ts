@@ -556,7 +556,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
         await onePayPage.reiscareFilldetailsoncreditcardTab();
         await page.waitForLoadState('networkidle');
     })
-    page.pause();
+
     await test.step("Get the policy number and validate it", async () => {
         await page.waitForLoadState('networkidle');
         await onePayPage.getPolicyNumber(onePayData["TC_005_long_term"].username, onePayData["TC_005_long_term"].password);
@@ -567,4 +567,23 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
     })
 
     page.close();
+});
+
+
+test('NXGF-TC-2834: TC_008_OnePay payment journey_Validate the the user can click on pay and proceed with the payment', async ({ page }) => {
+
+    const onePayPage: OnePayPage = new OnePayPage(page);
+
+    await test.step("Load the URL in Browser", async () => {
+        await onePayPage.gotoHomePage(onePayData["TC_008_OnePay"].url);
+    })
+
+    await test.step("Enter Policyholder's details,Policyholder's address in Germany,Are you the insured person details and Enter your date of birth and gender", async () => {
+        await onePayPage.reiscareFirstTab(onePayData["TC_008_OnePay"].firstNameInput, onePayData["TC_008_OnePay"].lastNameInput, onePayData["TC_008_OnePay"].passportInput, onePayData["TC_008_OnePay"].mobileNumbercodeInput, onePayData["TC_008_OnePay"].mobileNumberInput, onePayData["TC_008_OnePay"].emailInput, onePayData["TC_008_OnePay"].streetNameInput, onePayData["TC_008_OnePay"].streetNumberInput, onePayData["TC_008_OnePay"].postalCodeInput, onePayData["TC_008_OnePay"].additionalAddressInput, onePayData["TC_008_OnePay"].cityInput, onePayData["TC_008_OnePay"].DayInput, onePayData["TC_008_OnePay"].MonthInput, onePayData["TC_008_OnePay"].yearInput);
+    })
+
+    await test.step("Click on First Tab Next Button ", async () => {
+        await onePayPage.clickOnFirstTabNextButton();
+    })
+
 });

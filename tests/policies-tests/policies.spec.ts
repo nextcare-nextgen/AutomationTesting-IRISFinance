@@ -884,7 +884,7 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
     await test.step("User Click on Policies Shortcut Button", async () => {
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
-    page.pause();
+    
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
 

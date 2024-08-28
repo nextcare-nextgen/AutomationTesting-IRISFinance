@@ -31,7 +31,8 @@
         "transactionId": "6405"
     },
     "TC_022_Transactions_Details_Screen": {
-        "paymentStatus": "Cleared-allocated"
+        "paymentStatus": "Cleared-allocated",
+        "paymentStatus1": "Cleared-allocated"
     },
     "TC_023_Transactions_Details_Screen": {
         "paymentType": "Premium Payment"
@@ -48,7 +49,7 @@
     },
     "TC_027_Transactions_Details_Screen": {
         "customerRef": "1690",
-        "date":"04 Jan 2024"
+        "date": "04 Jan 2024"
     },
     "TC_028_Transactions_Details_Screen": {
         "transactionId": "6405",
@@ -63,7 +64,7 @@
     },
     "TC_037_Transactions_Details_Screen": {
         "transactionId": "8112",
-        "date":"04 Jun 2023"
+        "date": "04 Jun 2023"
     },
     "TC_039_Transactions_Details_Screen": {
         "paymentMethod": "Bank Transfer",
@@ -91,6 +92,6 @@
     },
     "TC_048_Transactions_Details_Screen": {
         "transactionType": "cash deposite ",
-        "errorMessage":"No results found"
+        "errorMessage": "No results found"
     }
 }
