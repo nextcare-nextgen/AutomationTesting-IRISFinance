@@ -31,7 +31,7 @@ export class premiumDuePosting {
         this.account = page.locator("//mat-header-cell[contains(@class, 'accountName')]");
         this.amount = page.locator("//mat-header-cell[@id = 'amount-Amount']");
         this.reverseTaxPosting = page.locator("//iris-base-label//small[@title = 'Reverse TAX Posting']");
-        //this.AccountName = this.page.locator("//mat-cell[contains(@id, 'Suspense Receivables B2C')]");
+        
     }
 
         async clickOnPolicyMenuIcon() {
