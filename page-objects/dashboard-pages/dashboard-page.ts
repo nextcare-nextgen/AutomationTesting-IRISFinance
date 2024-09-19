@@ -61,4 +61,11 @@ export class DashboardPage {
     await this.page.waitForSelector('.loader', { state: 'hidden' });
   }
 
+  // 09-09-2024 yet to check into GIT
+  async selectOrganizationAndYear(org: string, year: string) {
+    await this.organization.click();
+    await this.page.locator('//span[text()="'+org+'"]/ancestor::span/following-sibling::mat-option/descendant::mat-label[text()="' +year+ '"]').click();
+    await this.page.waitForSelector('.loader', { state: 'hidden' });
+}
+
 }

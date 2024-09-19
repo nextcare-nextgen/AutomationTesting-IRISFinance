@@ -1,0 +1,28 @@
+{
+    "TC_0000_PremiumDuePostings": {
+        "fromDate": "01 Jan 2023",
+        "policyRef": "PRT-AWPDE-4798-NB"
+    },
+
+    "TC_0001_PremiumDuePostings": {
+        "fromDate": "01 APR 2024",
+        "policyRef": "MAE-AWPDE-5128-NB",
+        "CreditAccountName": "Suspense Receivables B2C",
+        "DebitAccountName" : "GWP Negative Premium"
+    },
+
+    "TC_0002_PremiumDuePostings": {
+        "fromDate": "01 Jan 2023",
+        "policyRef": "PRT-AWPDE-9988-NB",
+        "debitAccountName": "Suspense IPT",
+        "accountType": "DB"
+
+    },
+
+    "TC_0003_PremiumDuePostings": {
+        "fromDate": "01 Jan 2023",
+        "policyRef": "PRT-AWPDE-9988-NB",
+        "creditAccountName": "Suspense Receivables B2C",
+        "accountType": "CR"
+    }
+}

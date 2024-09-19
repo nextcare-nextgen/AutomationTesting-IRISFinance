@@ -1,5 +1,11 @@
 {
     "TC_000_Policies": {
         "breadcrumbsText": "Policies"
+    },
+    
+    "TC_001_Policies": {
+        "org": "Allianz Partners ",
+        "year": "2024"
+
     }
 }
