@@ -6,7 +6,7 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const CardTypesData = require(`../../testdata/${process.env.ENV || 'eu'}/cardTypes.json`) as Record<string, any>;
 
-
+//test code
 test('NXGF-TC-1856: TC_000_card types_Verify that the user is able to navigate to the Organization screen', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
