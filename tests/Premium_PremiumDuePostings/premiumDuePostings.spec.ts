@@ -4,16 +4,16 @@ import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page
 import { premiumDuePosting } from '../../page-objects/Premium_PremiumduePostings/premiumDuePosting-page.ts';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
-const dashboardData =  require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const policyData = require(`../../testdata/${process.env.ENV || 'eu'}/premiumDuePosting.json`) as Record<string, any>;
 
-//code committ
+
 test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the reverse premium postings are posted in IRIS Finance', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
-    
+
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -30,11 +30,11 @@ test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the revers
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-    
+
     await test.step("User click on Policies Menu Icon", async () => {
         await PremiumDuePosting.clickOnPolicyMenuIcon();
     })
-    
+
     await test.step("Enter valid from date", async () => {
         await PremiumDuePosting.ProvideFromDate(policyData['TC_0000_PremiumDuePostings'].fromDate);
     })
@@ -56,15 +56,15 @@ test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the revers
     })
 
     await test.step("Verify Account, Amount detail are displaying", async () => {
-        await PremiumDuePosting.verifyReversePremiumPostingGrid();    
+        await PremiumDuePosting.verifyReversePremiumPostingGrid();
     })
-});  
+});
 
 test('NXGF-TC-7461: TC_04_410_LT_reverse premium postings_LT_Verify that for reverse premium postings credit account is Suspense Receivable B2C', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
-    
+
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -81,11 +81,11 @@ test('NXGF-TC-7461: TC_04_410_LT_reverse premium postings_LT_Verify that for rev
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-    
+
     await test.step("User click on Policies Menu Icon", async () => {
         await PremiumDuePosting.clickOnPolicyMenuIcon();
     })
-    
+
     await test.step("Enter valid from date", async () => {
         await PremiumDuePosting.ProvideFromDate(policyData['TC_0001_PremiumDuePostings'].fromDate);
     })
@@ -106,7 +106,7 @@ test('NXGF-TC-7461: TC_04_410_LT_reverse premium postings_LT_Verify that for rev
         await PremiumDuePosting.clickOnReversePremiumPostings();
     })
 
-    await test.step("Verify the Account name in the displayed grid",async () => {
+    await test.step("Verify the Account name in the displayed grid", async () => {
         await PremiumDuePosting.verifyAccountName(policyData['TC_0001_PremiumDuePostings'].CreditAccountName);
     })
 });
@@ -114,7 +114,7 @@ test('NXGF-TC-7462: TC_05_410_reverse premium postings_LT_Verify that for revers
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
-    
+
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -131,11 +131,11 @@ test('NXGF-TC-7462: TC_05_410_reverse premium postings_LT_Verify that for revers
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-    
+
     await test.step("User click on Policies Menu Icon", async () => {
         await PremiumDuePosting.clickOnPolicyMenuIcon();
     })
-    
+
     await test.step("Enter valid from date", async () => {
         await PremiumDuePosting.ProvideFromDate(policyData['TC_0001_PremiumDuePostings'].fromDate);
     })
@@ -156,7 +156,7 @@ test('NXGF-TC-7462: TC_05_410_reverse premium postings_LT_Verify that for revers
         await PremiumDuePosting.clickOnReversePremiumPostings();
     })
 
-    await test.step("Verify the Account name in the displayed grid",async () => {
+    await test.step("Verify the Account name in the displayed grid", async () => {
         await PremiumDuePosting.verifyAccountName(policyData['TC_0001_PremiumDuePostings'].DebitAccountName);
     })
 });
@@ -165,7 +165,7 @@ test('NXGF-TC-7463: TC_06_410_Partial Cancellation_LT_Verify that the Reverse pr
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
-    
+
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -182,11 +182,11 @@ test('NXGF-TC-7463: TC_06_410_Partial Cancellation_LT_Verify that the Reverse pr
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-    
+
     await test.step("User click on Policies Menu Icon", async () => {
         await PremiumDuePosting.clickOnPolicyMenuIcon();
     })
-    
+
     await test.step("Enter valid from date", async () => {
         await PremiumDuePosting.ProvideFromDate(policyData['TC_0002_PremiumDuePostings'].fromDate);
     })
@@ -207,7 +207,7 @@ test('NXGF-TC-7463: TC_06_410_Partial Cancellation_LT_Verify that the Reverse pr
         await PremiumDuePosting.clickOnReverseTaxPosting();
     })
 
-   await test.step("Verify the Reverse Tax Postings in the grid",async () => {
+    await test.step("Verify the Reverse Tax Postings in the grid", async () => {
         await PremiumDuePosting.verifyReverseTaxPostingGrid();
     })
 });
@@ -216,7 +216,7 @@ test('NXGF-TC-7464: TC_07_410_Partial Cancellation_LT_Verify that for Reverse pr
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
-    
+
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -233,11 +233,11 @@ test('NXGF-TC-7464: TC_07_410_Partial Cancellation_LT_Verify that for Reverse pr
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-    
+
     await test.step("User click on Policies Menu Icon", async () => {
         await PremiumDuePosting.clickOnPolicyMenuIcon();
     })
-    
+
     await test.step("Enter valid from date", async () => {
         await PremiumDuePosting.ProvideFromDate(policyData['TC_0001_PremiumDuePostings'].fromDate);
     })
@@ -258,7 +258,7 @@ test('NXGF-TC-7464: TC_07_410_Partial Cancellation_LT_Verify that for Reverse pr
         await PremiumDuePosting.clickOnReverseTaxPosting();
     })
 
-    await test.step("Verify the Debit Account name dislayed in the grid",async () => {
+    await test.step("Verify the Debit Account name dislayed in the grid", async () => {
         await PremiumDuePosting.verifyReversePostingAccountName(policyData['TC_0002_PremiumDuePostings'].debitAccountName, policyData['TC_0002_PremiumDuePostings'].accountType);
     })
 });
@@ -267,7 +267,7 @@ test('NXGF-TC-7465: TC_08_410_Partial Cancellation_LT_Verify that for Reverse pr
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
-    
+
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
@@ -284,11 +284,11 @@ test('NXGF-TC-7465: TC_08_410_Partial Cancellation_LT_Verify that for Reverse pr
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-    
+
     await test.step("User click on Policies Menu Icon", async () => {
         await PremiumDuePosting.clickOnPolicyMenuIcon();
     })
-    
+
     await test.step("Enter valid from date", async () => {
         await PremiumDuePosting.ProvideFromDate(policyData['TC_0003_PremiumDuePostings'].fromDate);
     })
@@ -309,7 +309,7 @@ test('NXGF-TC-7465: TC_08_410_Partial Cancellation_LT_Verify that for Reverse pr
         await PremiumDuePosting.clickOnReverseTaxPosting();
     })
 
-    await test.step("Verify the credit Account name dislayed in the grid",async () => {
+    await test.step("Verify the credit Account name dislayed in the grid", async () => {
         await PremiumDuePosting.verifyReversePostingAccountName(policyData['TC_0003_PremiumDuePostings'].creditAccountName, policyData['TC_0003_PremiumDuePostings'].accountType);
     })
 });
