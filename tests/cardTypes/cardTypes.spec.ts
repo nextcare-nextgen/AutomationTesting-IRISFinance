@@ -360,6 +360,7 @@ test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on U
 
 });
 
+
 test('NXGF-TC-1867: TC_011_card types_Verify that the user is able to see a popup message"Are you sure you want to change the status of card', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

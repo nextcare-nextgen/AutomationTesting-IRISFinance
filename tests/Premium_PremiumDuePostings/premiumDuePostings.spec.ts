@@ -7,7 +7,7 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const policyData = require(`../../testdata/${process.env.ENV || 'eu'}/premiumDuePosting.json`) as Record<string, any>;
 
-
+//code commit
 test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the reverse premium postings are posted in IRIS Finance', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
