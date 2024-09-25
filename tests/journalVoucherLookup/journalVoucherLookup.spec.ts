@@ -12,6 +12,7 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
     await test.step("--------------Start the Journal Voucher Lookup Testclass----------------------", async () => {
         console.log("--------------Start the Journal Voucher Lookup Testclass----------------------")
     })
+
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
@@ -22,7 +23,6 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -33,9 +33,9 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
         await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
 
     })
+
     await test.step("Verify Breadcrumbs Text", async () => {
         await journalVoucherLookupPage.verifyBreadCrumbsText(JournalVoucherLookupPageData['TC_000_Journal_Voucher_Lookup'].breadcrumbsText);
-
     })
 
 });
