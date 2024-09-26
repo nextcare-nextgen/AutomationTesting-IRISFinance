@@ -16,7 +16,7 @@ test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the revers
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
-        
+
     })
 
     await test.step("User Enter Username and Password", async () => {
@@ -313,4 +313,5 @@ test('NXGF-TC-7465: TC_08_410_Partial Cancellation_LT_Verify that for Reverse pr
     await test.step("Verify the credit Account name dislayed in the grid", async () => {
         await PremiumDuePosting.verifyReversePostingAccountName(policyData['TC_0003_PremiumDuePostings'].creditAccountName, policyData['TC_0003_PremiumDuePostings'].accountType);
     })
+    //code complete
 });
