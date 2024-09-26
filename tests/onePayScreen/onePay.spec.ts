@@ -567,6 +567,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
     })
 
     page.close();
+    
 });
 
 
