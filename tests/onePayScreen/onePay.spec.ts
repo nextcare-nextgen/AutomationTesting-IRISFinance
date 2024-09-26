@@ -64,7 +64,7 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
         await onePayPage.verifyThankyoupageText(onePayData["TC_003_OnePay"].thankyouText, onePayData["TC_003_OnePay"].policyidText);
     })
 
-    page.close();
+    //page.close();
 });
 
 
@@ -102,7 +102,7 @@ test('NXGF-TC-2828: TC_004_OnePay payment journey_Validate that the user is able
     await test.step("Validated that the user is able to select the payment method as Credit card for short term policies", async () => {
         await onePayPage.clickOnCreditcardradioButton();
     })
-    page.close();
+   // page.close();
 });
 
 test('NXGF-TC-2829: TC_005_OnePay payment journey_Validate that the user is navigated to One pay iframe once the credit card payment method is selected', async ({ page }) => {
@@ -208,7 +208,7 @@ test('NXGF-TC-2831: TC_006_OnePay payment journey_Validate that when the incorre
         await onePayPage.verifyInvalidErrormessage(onePayData["TC_006_OnePay"].errormessage);
     })
 
-    page.close();
+   // page.close();
 });
 
 test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button is enabled once all the required fields are filled', async ({ page }) => {
@@ -262,7 +262,7 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
         await onePayPage.verifySaveDetailsButtonEnabled();
     })
 
-    page.close();
+    //page.close();
 });
 
 test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can click on cancel and they return to the previous page', async ({ page }) => {
@@ -320,7 +320,7 @@ test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can cli
         await onePayPage.verifyPrevoiusPageTitle(onePayData["TC_001_OnePay"].title);
     })
 
-    page.close();
+//page.close();
 });
 
 test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the user can view a payment successful message along with the policy number and the one pay iframe is closed', async ({ page }) => {
@@ -378,7 +378,7 @@ test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the
         await onePayPage.verifyThankyoupageText(onePayData["TC_002_OnePay"].thankyouText, onePayData["TC_002_OnePay"].policyidText);
     })
 
-    page.close();
+    //page.close();
 });
 
 test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able to create a long term policy with Credit card as the payment method', async ({ page }) => {
@@ -428,7 +428,7 @@ test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able t
         await onePayPage.verifyThankyoupageText(onePayData["TC_000_long_term"].thankyouText, onePayData["TC_000_long_term"].policyidText);
     })
 
-    page.close();
+   // page.close();
 });
 
 test('NXGF-TC-3924: TC_001_long term_Verify that the user is redirected to One Pay Iframe when the Credit card option is selected', async ({ page }) => {
@@ -463,7 +463,7 @@ test('NXGF-TC-3924: TC_001_long term_Verify that the user is redirected to One P
         await onePayPage.clickOnCreditcardradioButton();
     })
 
-    page.close();
+    //page.close();
 });
 
 test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able to enter all the card details on the One pay Iframe', async ({ page }) => {
@@ -510,7 +510,7 @@ test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able t
         await onePayPage.reiscareFilldetailsoncreditcardTab();
     })
 
-    page.close();
+    //page.close();
 });
 
 test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the saved card details in Syncro "financial info page" after validating the policy', async ({ page }) => {
@@ -566,8 +566,8 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
         await onePayPage.verifyFinancialInfo();
     })
 
-    page.close();
-    
+   // page.close();
+
 });
 
 
