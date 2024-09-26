@@ -16,6 +16,7 @@ test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the revers
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
+        
     })
 
     await test.step("User Enter Username and Password", async () => {
