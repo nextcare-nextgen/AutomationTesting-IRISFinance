@@ -17,6 +17,8 @@ export class premiumDuePosting {
     readonly amountCV2: Locator;
     readonly AccountName: Locator;
     readonly reverseTaxPosting: Locator;
+    readonly positiveInstallmentposting: Locator;
+    readonly premiumPosting: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -31,7 +33,9 @@ export class premiumDuePosting {
         this.account = page.locator("//mat-header-cell[contains(@class, 'accountName')]");
         this.amount = page.locator("//mat-header-cell[@id = 'amount-Amount']");
         this.reverseTaxPosting = page.locator("//iris-base-label//small[@title = 'Reverse TAX Posting']");
-        
+        //this.positiveInstallmentposting = page.locator("//mat-cell[@id= '9-Positive Instalment Posting']");
+      this.positiveInstallmentposting = page.locator("//mat-cell[contains(@id, 'Positive Instalment Posting')]//small");
+      this.premiumPosting = page.locator("//iris-base-label//small[@title = 'Premium Posting']");
     }
 
         async clickOnPolicyMenuIcon() {
@@ -61,7 +65,7 @@ export class premiumDuePosting {
         async clickOnViewPolicyJournalvoucher() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.viewPolicyJournalVoucher.click();
-        //await new Promise(resolve => setTimeout(resolve, 5000));
+       // await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async clickOnReversePremiumPostings() {
@@ -96,14 +100,17 @@ export class premiumDuePosting {
         }
     }     
 
-     async verifyAccountName(data: string) {
+     async verifyAccountName(data: string, data1: string) {
         let flag = 0;
         await new Promise(resolve => setTimeout(resolve, 2000));
        const AccountName = this.page.locator("//mat-cell[contains(@class,'accountName')]//small");
-        //const AccountNameValue = await this.AccountName.textContent();
+       const AccountType = this.page.locator("//mat-cell[contains(@class,'debitdescription')]//small");
+      // const AccountNameValue = await this.AccountName.textContent();
+
        for (let index = 0; index < await AccountName.count(); index++) {
-            const AccountNameValue = await AccountName.nth(index).textContent(); 
-            if (AccountNameValue == data){
+            const AccountNameValue = await AccountName.nth(index).textContent();
+            const AccountTypeValue = await AccountType.nth(index).textContent();
+            if (AccountNameValue == data && AccountTypeValue == data1) {
                 flag = 1;
                 break;
             }
@@ -161,6 +168,16 @@ export class premiumDuePosting {
         }
          expect(flag).toStrictEqual(1);
     }
-        
- }
 
+    async clickOnPositiveInstallmentPosting() {
+        const positiveInstalment = this.positiveInstallmentposting;
+        let index = 0
+        await positiveInstalment.nth(index).click();
+            
+    }  
+    
+    async clickOnPremiumPosting() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.premiumPosting.click();
+    }
+}
