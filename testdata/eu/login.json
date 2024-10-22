@@ -16,5 +16,11 @@
         "userNameInput": "vTestAdmin",
         "passwordInput": "QADev@2024",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
+    },
+    "Login-AccessAcc": {
+        "url": "https://test-finance-eu.tatsh.cloud/",
+        "userNameInput": "AccentureTemp admin",
+        "passwordInput": "0000",
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
     }
 }
