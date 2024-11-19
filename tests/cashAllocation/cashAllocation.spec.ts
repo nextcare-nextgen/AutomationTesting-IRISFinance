@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { CashAllocationPage } from '../../page-objects/cashAllocation-pages/cashAllocation-page';
@@ -1948,5 +1948,5 @@ test('NXGF-TC-3370,NXGF-TC-3371: TC_055_Cash Allocation Dashboard_Verify that a 
     await test.step("Verified that a confirmation messae popup is displayed Are you sure do you want to cancel the allocation?", async () => {
         await cashAllocationPage.verifyPopupMessasge(CashAllocationPageData['TC_055_Cash_Allocation'].popupMessage);
     })
-});*/
+});
 
