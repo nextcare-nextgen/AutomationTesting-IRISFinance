@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+/*import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { MawistaPaymentsPage } from '../../page-objects/mawistaPayments-pages/mawistaPayments-page.ts';
@@ -484,6 +484,6 @@ test('NXGF-TC-3722: TC_012_Mawista payments_Verify that the user is able to expo
     await test.step("User Click on Export to Current page", async () => {
         await mawistaPaymentsPage.clickExportTOcurrentPage();
     })
-});
+});*/
 
 

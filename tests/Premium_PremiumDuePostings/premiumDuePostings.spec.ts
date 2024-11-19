@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+/*import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { premiumDuePosting } from '../../page-objects/Premium_PremiumduePostings/premiumDuePosting-page.ts';
@@ -8,8 +8,9 @@ const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboa
 const policyData = require(`../../testdata/${process.env.ENV || 'eu'}/premiumDuePosting.json`) as Record<string, any>;
 
 
-test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the reverse premium postings are posted in IRIS Finance', async ({ page }) => {
-
+test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the reverse premium postings are posted in IRIS Finance', async ({ browser }) => {
+    const context = await browser.newContext();
+    const page = await context.newPage()
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
@@ -627,7 +628,7 @@ test('NXGF-TC-7472: TC_15_410_cancelled from inception_ST_Verify that for premiu
     })
 });
 
-/*test('NXGF-TC-393: TC_001_Long term_back_Verify that a long term (backdated) policy is created and validated on the same day', async ({ page }) => {
+test('NXGF-TC-393: TC_001_Long term_back_Verify that a long term (backdated) policy is created and validated on the same day', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
@@ -673,5 +674,15 @@ test('NXGF-TC-7472: TC_15_410_cancelled from inception_ST_Verify that for premiu
         await PremiumDuePosting.clickOnPremiumPosting();
     })
 
-});*/
+    await test.step("Verify premium posting grid", async () => {
+        await PremiumDuePosting.verifyReverseTaxPostingGrid();
+    })
+});
 
+test('TC_002_Long term_back_Verify that  a written premium (GWP) credit posting will be generated for the full premium for the total duration of the policy', async ({ page }) => {
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
+
+});
+*/

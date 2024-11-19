@@ -2,6 +2,7 @@
 import { Keyboard, Locator, LocatorScreenshotOptions, Page, expect } from "@playwright/test";
 
 export class premiumDuePosting {
+    
     readonly page: Page;
     readonly policyMenuIcon: Locator;
     readonly fromDate: Locator;
@@ -21,7 +22,10 @@ export class premiumDuePosting {
     readonly premiumPosting: Locator;
 
     constructor(page: Page) {
+       // this.context = context;
         this.page = page;
+       // this.newPage = page;
+        //this.page = page;
         this.policyMenuIcon = page.locator("//mat-icon[@data-mat-icon-name = 'icon-policy-jv']");
         this.fromDate = page.locator("//div//input[@title='From Date']");
         this.filterButton = page.locator("//span//iris-icon-action//iris-action-base//mat-icon[@data-mat-icon-name='icon-filter-horizontal']")

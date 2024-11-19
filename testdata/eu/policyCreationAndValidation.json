@@ -1,0 +1,24 @@
+{
+    "TC_001_policyCreation": {
+        "url": "https://test-syncrob2c-eu.tatsh.cloud/client/",
+        "firstName": "Chaitra",
+        "lastName": "Nanjundaswamy",
+        "passport": "passport123",
+        "mobileNumbercode": "91",
+        "mobileNumber": "1234567890",
+        "email": "c.a.nanjundaswamy@accenture.com",
+        "streetName": "Test1",
+        "streetNumber": "3",
+        "postalCodeInput": "101150",
+        "additionalAddress": "Test",
+        "city": "Berlin",
+        "day": "30",
+        "month": "07",
+        "yearInput": "1994",
+        "cardholdernametext": "c.a.nanjundaswamy@accenture.com",
+        "iban": "DE89370400440532013000",
+        "BDPolicy_startDateDuration": 90,
+        "BDPolicy_endDateDuration": 90
+
+    }
+}

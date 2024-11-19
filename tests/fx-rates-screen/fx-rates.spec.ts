@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+/*import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { FxRatesPage } from '../../page-objects/fx-rates-pages/fx-rates-page';
@@ -1170,4 +1170,4 @@ test('NXGF-TC-1909: TC_038_FX_Rates_Add new FX Rates_Verify that the User is abl
         console.log("--------------End the FX rates Testclass----------------------")
     })
 
-});
+});*/

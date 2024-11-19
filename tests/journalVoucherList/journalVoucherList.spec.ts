@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+/*import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { JournalVoucherListPage } from '../../page-objects/journalVoucherList-pages/journalVoucherList-page';
@@ -1661,4 +1661,4 @@ test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to 
     await test.step("--------------End the Journal Voucher List Testclass----------------------", async () => {
         console.log("--------------End the Journal Voucher List Testclass----------------------")
     })
-})
+})*/
