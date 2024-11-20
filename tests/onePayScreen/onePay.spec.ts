@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { OnePayPage } from '../../page-objects/onePay-pages/onePay-page.ts';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const onePayData = require(`../../testdata/${process.env.ENV || 'eu'}/onePay.json`) as Record<string, any>;
@@ -587,4 +587,4 @@ test('NXGF-TC-2834: TC_008_OnePay payment journey_Validate the the user can clic
         await onePayPage.clickOnFirstTabNextButton();
     })
 
-});*/
+});

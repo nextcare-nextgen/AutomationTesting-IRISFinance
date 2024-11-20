@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { JournalVoucherCreationPage } from '../../page-objects/journalVoucherCreation-pages/journalVoucherCreation-page';
@@ -1666,4 +1666,3 @@ test('NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able
 
 
 });
-*/

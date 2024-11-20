@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+/*import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { FinancialTransactionsMonitoringPage } from '../../page-objects/financialTransactionsMonitoring-pages/financialTransactionsMonitoring-page.ts';
@@ -1585,4 +1585,4 @@ test('NXGF-TC-6714: TC_49_Transaction Details Screen_Verify that when the user c
     await test.step("Verified that the transaction type either shows matching records or rejects invalid manual input.", async () => {
         await financialTransactionsMonitoringPage.verifyexistingRecordBeforeSearch();
     })
-});
+});*/

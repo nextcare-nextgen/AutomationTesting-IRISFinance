@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { ViewAllocatedPaymentsPage } from '../../page-objects/viewAllocatedPayments-pages/viewAllocatedPayments-page.ts';
@@ -989,4 +989,3 @@ test('NXGF-TC-2914: TC_025_View allocated payments_Verify that the Search bar di
     })
 
 });
-*/

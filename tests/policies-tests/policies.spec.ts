@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { PoliciesPage } from '../../page-objects/policies-pages/policies-page';
@@ -1386,4 +1386,4 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
     await test.step("--------------End the Policies Testclass----------------------", async () => {
         console.log("--------------End the Policies Testclass----------------------")
     })
-})*/
+})
