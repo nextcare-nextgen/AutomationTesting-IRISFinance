@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { FinancialOrganizationsPage } from '../../page-objects/financialOrganizations-pages/financialOrganizations-page.ts';
@@ -1802,5 +1802,5 @@ test('NXGF-TC-1772: TC_085_Verify that the User is able to Search the shortcut m
     })
 
 
-});*/
+});
 
