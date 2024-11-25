@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+/*import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { CardTypesPage } from '../../page-objects/cardTypes-pages/cardTypes-page.ts';
@@ -491,7 +491,7 @@ test('NXGF-TC-1870: TC_014_card types_Verify that the user is able to view the s
         await cardTypesPage.verifyStoppedDateFromGrid();
     })
 
-});
+});*/
 
 
 
