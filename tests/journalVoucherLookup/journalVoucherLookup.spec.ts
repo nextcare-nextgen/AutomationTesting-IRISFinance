@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page';
 import { JournalVoucherLookupPage } from '../../page-objects/journalVoucherLookup-pages/journalVoucherLookup-page';
@@ -1489,4 +1489,4 @@ test('NXGF-TC-2045: TC_067_Journal Voucher Lookup_Verify that the User is able t
         console.log("--------------End the Journal Voucher Lookup Testclass----------------------")
     })
 
-}); */
+}); 
