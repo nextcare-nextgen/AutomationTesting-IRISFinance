@@ -13,7 +13,7 @@ export class LoginPage {
         this.page = page;
         this.userNameOrEmailInputField = page.locator('input[title="Email or Username"]');
         this.passwordInputField = page.locator('input[title="Password"]');
-        this.signinButton = page.locator('span[title="Sign in"]');
+        this.signinButton = page.locator("//button[@title='Sign in']");
         this.rememberMeCheckbox = page.locator('//mat-checkbox');
     }
 

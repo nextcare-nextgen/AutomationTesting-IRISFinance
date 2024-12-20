@@ -1,4 +1,4 @@
-/*import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from "../../page-objects/login-page.ts";
 import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page.ts';
 import { premiumDuePosting } from '../../page-objects/Premium_PremiumduePostings/premiumDuePosting-page.ts';
@@ -684,4 +684,4 @@ test('TC_002_Long term_back_Verify that  a written premium (GWP) credit posting 
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
-});*/
+});
