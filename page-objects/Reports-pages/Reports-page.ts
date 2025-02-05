@@ -115,7 +115,7 @@ export class Reports {
         await this.clickOnFOB.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         await expect(this.page.locator("//div//span//iris-base-label//mat-label[@title= 'Life']")).toBeVisible();
-        this.page.locator("//div//span//iris-base-label//mat-label[@title= 'Life']").click;
+        this.page.locator("//div//span//iris-base-label//mat-label[@title= 'Cobra']").click;
         await new Promise(resolve => setTimeout(resolve, 5000));
     }
 

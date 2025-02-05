@@ -300,6 +300,7 @@ test('NXGF-TC-3826: TC_009_IPT_Verify that the user is able to select the Produc
     await test.step("Click on the FOB and select a value from the drop down", async () => {
     await reportsPage.selectFOB();
     })
+
 })
 
 test('NXGF-TC-3826: TC_010_IPT_Verify that the user is able to click on search based on the product line only', async ({ page }) => {
