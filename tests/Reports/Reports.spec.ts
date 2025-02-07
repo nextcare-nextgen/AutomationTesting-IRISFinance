@@ -466,7 +466,7 @@ test('NXGF-TC-3826: TC_012_IPT_Verify that click on Clear all clears the advance
     })
 })
 
-test('NXGF-TC-3826: TC_013_IPT_Verify that the turn over is the sum of net premium amount and the IPT amount', async ({ page }) => {
+test('NXGF-TC-3826: TC_013_IPT_Verify that the turn over is the sum of net premium amount and the IPT amount, NXGF-TC-3833: TC_014_IPT_Verify that the the totals are separated by the Product line', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const reportsPage: Reports = new Reports(page);
