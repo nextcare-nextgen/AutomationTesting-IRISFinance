@@ -1,8 +1,10 @@
 {
     "TC_Reports_001": {
         "FutureDate_Duration": 10,
-        "PastDate_Duration": 10
+        "PastDate_Duration": 10,
+        "FOB_Value": "Life"
     }
+
 
     
 }

@@ -1,120 +1,13 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="120.56321299999952">
-<testsuite name="tests\Reports\Reports.spec.ts" timestamp="2025-02-05T08:23:04.574Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="101.014" errors="0">
-<testcase name="NXGF-TC-3826: TC_009_IPT_Verify that the user is able to select the Product line and the FOB values from the dropdown" classname="tests\Reports\Reports.spec.ts" time="101.014">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="Reports.spec.ts:255:5 NXGF-TC-3826: TC_009_IPT_Verify that the user is able to select the Product line and the FOB values from the dropdown" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\Reports\Reports.spec.ts:255:5 › NXGF-TC-3826: TC_009_IPT_Verify that the user is able to select the Product line and the FOB values from the dropdown 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//span[@title=\'Apply\'][contains(.,\'Apply\')]')
-      -   locator resolved to <span title="Apply" iristexthandler="" class="ng-star-…>Apply</span>
-      - attempting click action
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #1
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #2
-      -   waiting 20ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #3
-      -   waiting 100ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #4
-      -   waiting 100ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #5
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #6
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #7
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #8
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <mat-option role="option" id="mat-option-13" aria-selected="…>…</mat-option> from <div dir="ltr" class="cdk-overlay-connected-position-…>…</div> subtree intercepts pointer events
-      - retrying click action, attempt #9
-      -   waiting 500ms
-
-
-       at page-objects\Reports-pages\Reports-page.ts:125
-
-      123 |     {
-      124 |         
-    > 125 |         await this.clickOnApplyBtn.click();
-          |                                    ^
-      126 |         await this.page.locator("//div[@class='cdk-overlay-container']").click();
-      127 |     }
-      128 | }
-
-        at Reports.addValueAndClickOnApplyBtn (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\Reports-pages\Reports-page.ts:125:36)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\Reports\Reports.spec.ts:305:27
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\Reports\Reports.spec.ts:304:16
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-Reports-Reports-NXGF-28b9e-OB-values-from-the-dropdown-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="107.88303000000026">
+<testsuite name="tests\Reports\Reports.spec.ts" timestamp="2025-02-06T12:16:17.480Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="93.17" errors="0">
+<testcase name="NXGF-TC-3826: TC_015_IPT_Verify that the the totals are separated by the Product line" classname="tests\Reports\Reports.spec.ts" time="93.17">
 <system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-Reports-Reports-NXGF-28b9e-OB-values-from-the-dropdown-Mawista-EU\test-failed-1.png]]
+<![CDATA[Net Premium: 2.11
+IPT Amount: 0
+Calculated Turnover: 2.11
+Net Premium matches the displayed value.
+IPT Amount matches the displayed value.
+Turnover matches the displayed value.
 ]]>
 </system-out>
 </testcase>
