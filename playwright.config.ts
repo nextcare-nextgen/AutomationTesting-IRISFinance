@@ -49,7 +49,7 @@ export default defineConfig({
       name: 'Mawista-EU',
       //name: 'chromium',
       //use: { ...devices['Desktop Chrome'] , viewport: { width: 1519, height: 730 }
-      use: { ...devices['Desktop Chrome'] , viewport: { width: 1280, height: 720 }  
+      use: { ...devices['Desktop Chrome'] , viewport: { width: 1280, height: 650 }  
      // viewport:{width:1940,height:1080}
     // viewport: { width: 1280, height: 720 }
       

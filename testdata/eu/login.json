@@ -20,7 +20,7 @@
     "Login-AccessAcc": {
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "AccentureTempAdmin",
-        "passwordInput": "Coverage@1",
+        "passwordInput": "Coverage@4",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     }
 }

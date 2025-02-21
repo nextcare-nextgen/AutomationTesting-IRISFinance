@@ -1,13 +1,443 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="107.88303000000026">
-<testsuite name="tests\Reports\Reports.spec.ts" timestamp="2025-02-06T12:16:17.480Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="93.17" errors="0">
-<testcase name="NXGF-TC-3826: TC_015_IPT_Verify that the the totals are separated by the Product line" classname="tests\Reports\Reports.spec.ts" time="93.17">
+<testsuites id="" name="" tests="38" failures="7" skipped="0" errors="0" time="1804.0531360000002">
+<testsuite name="tests\fx-rates-screen\fx-rates.spec.ts" timestamp="2025-02-21T05:05:21.689Z" hostname="Mawista-EU" tests="38" failures="7" skipped="0" time="1685" errors="0">
+<testcase name="NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="101.067">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:9:5 NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:9:5 › NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:28:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:27:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-1edb5-d-breadcrumbs-are-displayed-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
 <system-out>
-<![CDATA[Net Premium: 2.11
-IPT Amount: 0
-Calculated Turnover: 2.11
-Net Premium matches the displayed value.
-IPT Amount matches the displayed value.
-Turnover matches the displayed value.
+<![CDATA[--------------Start the FX Rates Testclass----------------------
+
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-1edb5-d-breadcrumbs-are-displayed-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to main menu" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="100.589">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:41:5 NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to main menu" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:41:5 › NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to main menu 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:55:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:54:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-2670c-le-to-navigate-to-main-menu-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-2670c-le-to-navigate-to-main-menu-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login." classname="tests\fx-rates-screen\fx-rates.spec.ts" time="12.692">
+</testcase>
+<testcase name="NXGF-TC-1875: TC_003_FX_Rates_Verify that FX Rates shortcut buttons are clickable" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="25.297">
+</testcase>
+<testcase name="NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates shortcut menu button in the main menu page" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="17.078">
+</testcase>
+<testcase name="NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX Rates page" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="22.316">
+</testcase>
+<testcase name="NXGF-TC-1877: TC_006_FX_Rates_Verify that the user is able to view the &quot;FX  Rates &quot; title in bold" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="25.09">
+</testcase>
+<testcase name="NXGF-TC-1878: TC_007_FX_Rates_Verify that the From date and To date is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="37.709">
+</testcase>
+<testcase name="NXGF-TC-1879: TC_008_FX_Rates_Verify that the user is able to select From date and To date" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="26.793">
+</testcase>
+<testcase name="NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="35.547">
+</testcase>
+<testcase name="NXGF-TC-1881: TC_010_FX_Rates_Verify that the user should able to select From Currency" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="30.775">
+</testcase>
+<testcase name="NXGF-TC-1882: TC_011_FX_Rates_Verify that the To Currency field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="39.14">
+</testcase>
+<testcase name="NXGF-TC-1883: TC_012_FX_Rates_Verify that the user should able to select To Currency" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="29.008">
+</testcase>
+<testcase name="NXGF-TC-1884: TC_014_FX_Rates_Verify that the search icon and field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="35.637">
+</testcase>
+<testcase name="NXGF-TC-1885: TC_013_FX_Rates_Verify that the Reset field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="32.505">
+</testcase>
+<testcase name="NXGF-TC-1886: TC_015_FX_Rates_Verify that the user is able to search with From date to To date and get record from the grid" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="38.614">
+</testcase>
+<testcase name="NXGF-TC-1887: TC_016_FX_Rates_Verify that the user is able to search with From Currency to To currency and get record from the grid" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="43.067">
+</testcase>
+<testcase name="NXGF-TC-1888: TC_017_FX_Rates_Verify that the after click on Reset To currency and From currency should reset" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="51.956">
+</testcase>
+<testcase name="NXGF-TC-1889: TC_018_FX_Rates_Verify that the all column field should displayed from grid" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="28.611">
+</testcase>
+<testcase name="NXGF-TC-1890: TC_019_FX_Rates_Verify that the Add FX rates (+) button should displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="31.528">
+</testcase>
+<testcase name="NXGF-TC-1891: TC_020_FX_Rates_Add new FX Rates_Verify that the user is able to click on Add new FX rate (+) button" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="30.897">
+</testcase>
+<testcase name="NXGF-TC-1892,NXGF-TC-1893: TC_021_FX_Rates_Add new FX Rates_Verify that the user is able to redirect to Add new FX rate screen" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="33.64">
+</testcase>
+<testcase name="NXGF-TC-1894: TC_023_FX_Rates_Add new FX Rates_Verify that the From currency field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="32.916">
+</testcase>
+<testcase name="NXGF-TC-1895: TC_024_FX_Rates_Add new FX Rates_Verify that the To currency field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="34.719">
+</testcase>
+<testcase name="NXGF-TC-1896: TC_025_FX_Rates_Add new FX Rates_Verify that the Start date and End Date field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="30.73">
+</testcase>
+<testcase name="NXGF-TC-1897: TC_026_FX_Rates_Add new FX Rates_Verify that the Rate field is displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="34.688">
+</testcase>
+<testcase name="NXGF-TC-1898: TC_027_FX_Rates_Add new FX Rates_Verify that the Validated checkbox should disabled" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="36.075">
+</testcase>
+<testcase name="NXGF-TC-1899: TC_028_FX_Rates_Add new FX Rates_Verify that user should be able to select From Currency from dropdown" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="26.272">
+</testcase>
+<testcase name="NXGF-TC-1900: TC_029_FX_Rates_Add new FX Rates_Verify that user should be able to select To Currency from dropdown" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="29.239">
+</testcase>
+<testcase name="NXGF-TC-1901: TC_030_FX_Rates_Add new FX Rates_Verify that user should be able to select start date and End Date" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="30.017">
+</testcase>
+<testcase name="NXGF-TC-1902: TC_031_FX_Rates_Add new FX Rates_Verify that user should be able to Enter Rate" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="24.196">
+</testcase>
+<testcase name="NXGF-TC-1903: TC_032_FX_Rates_Add new FX Rates_Verify that Create Button should be enable after filling mandatory fields" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="40.762">
+</testcase>
+<testcase name="NXGF-TC-1904: TC_033_FX_Rates_Add new FX Rates_Verify that user should able to click on Close button" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="25.488">
+</testcase>
+<testcase name="NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="104.307">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:1036:5 NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:1036:5 › NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1052:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1051:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-2ad47-page-title-should-displayed-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-2ad47-page-title-should-displayed-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="101.7">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:1065:5 NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:1065:5 › NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1081:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1080:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-52b86-ts-5-10-25-in-the-drop-down-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-52b86-ts-5-10-25-in-the-drop-down-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="101.523">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:1094:5 NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:1094:5 › NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1110:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1109:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-eb2dc-he-dropdown-the-item-counts-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-eb2dc-he-dropdown-the-item-counts-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar displayed in main menu screen" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="101.539">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:1122:5 NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar displayed in main menu screen" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:1122:5 › NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar displayed in main menu screen 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1138:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1137:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-b7e12-splayed-in-main-menu-screen-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-b7e12-splayed-in-main-menu-screen-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1909: TC_038_FX_Rates_Add new FX Rates_Verify that the User is able to enter and Search the shortcut menu from search bar" classname="tests\fx-rates-screen\fx-rates.spec.ts" time="101.273">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="fx-rates.spec.ts:1147:5 NXGF-TC-1909: TC_038_FX_Rates_Add new FX Rates_Verify that the User is able to enter and Search the shortcut menu from search bar" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\fx-rates-screen\fx-rates.spec.ts:1147:5 › NXGF-TC-1909: TC_038_FX_Rates_Add new FX Rates_Verify that the User is able to enter and Search the shortcut menu from search bar 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-top-bar//iris-action-base//mat-icon[@data-mat-icon-name="icon-menu-grid"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:56
+
+      54 |     */
+      55 |   async clickOnMenuIconButton() {
+    > 56 |     await this.menuIcon.click();
+         |                         ^
+      57 |     await new Promise(resolve => setTimeout(resolve, 3000));
+      58 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      59 |   }
+
+        at DashboardPage.clickOnMenuIconButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:56:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1162:29
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\fx-rates-screen\fx-rates.spec.ts:1161:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-fx-rates-screen-fx-r-f8439-ortcut-menu-from-search-bar-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-fx-rates-screen-fx-r-f8439-ortcut-menu-from-search-bar-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>

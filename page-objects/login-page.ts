@@ -7,6 +7,7 @@ export class LoginPage {
     readonly passwordInputField: Locator;
     readonly signinButton: Locator;
     readonly rememberMeCheckbox: Locator;
+    readonly checkBoxSelector: Locator;
 
 
     constructor(page: Page) {
@@ -17,6 +18,7 @@ export class LoginPage {
        // code updated 19-12-2024
        this.signinButton = page.locator("//button[@title='Sign in']");
         this.rememberMeCheckbox = page.locator('//mat-checkbox');
+        this.checkBoxSelector= page.locator("//input[contains(@type,'checkbox')]");
     }
 
     async gotoLoginPage(url: string) {
@@ -27,6 +29,13 @@ export class LoginPage {
     async loginToApplication(superUser: string, password: string) {
         await this.userNameOrEmailInputField.fill(superUser);
         await this.passwordInputField.fill(password);
+        await this.signinButton.click();
+    }
+
+    async loginToApplicationAndClickOnCheckbox(superUser: string, password: string) {
+        await this.userNameOrEmailInputField.fill(superUser);
+        await this.passwordInputField.fill(password);
+        await this.checkBoxSelector.click(); 
         await this.signinButton.click();
     }
 

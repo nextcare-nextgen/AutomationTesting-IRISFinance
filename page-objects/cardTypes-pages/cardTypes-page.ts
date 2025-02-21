@@ -166,7 +166,7 @@ export class CardTypesPage {
 
     async clickOnStoppedCard(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const actual = this.page.locator('//mat-cell[contains(@class,"cardTypeName")]//small[text()="' + data + '"]//following::button[@role="switch"]');
+        const actual = this.page.locator("(//div[contains(@class,'mdc-switch__track')])[1]");
         await actual.click();
         await new Promise(resolve => setTimeout(resolve, 3000));
     }
@@ -187,7 +187,7 @@ export class CardTypesPage {
     }
 
     async verifyStoppedDateFromGrid() {
-        const actual = this.page.locator('//mat-cell[contains(@class,"stopDate")]//small[contains(@title,"20")]');
+        const actual = this.page.locator("//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-stopDate mat-column-stopDate ng-star-inserted'][contains(.,'10-10-2024')]");
         expect(actual).toBeVisible();
     }
 }
