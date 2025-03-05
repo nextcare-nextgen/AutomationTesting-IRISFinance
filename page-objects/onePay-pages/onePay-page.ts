@@ -96,10 +96,10 @@ export class OnePayPage {
         this.expatcarebButton = page.locator("//button[normalize-space()='Expatcare']");
         this.firstnameInputField = page.locator("//input[@id='mat-input-0']");
         this.lastnameInputField = page.locator("//input[@id='mat-input-1']");
-        this.homecountryDropdownField = page.locator("//html[1]/body[1]/app-root[1]/div[1]/app-application-form[1]/div[1]/div[2]/div[1]/form[1]/app-dynamic-form[1]/div[1]/form[1]/div[1]/div[2]/div[1]/div[1]/app-dynamic-form-builder[1]/div[1]/div[1]/app-dynamic-form-field[1]/div[1]/app-field-fieldset[1]/div[1]/div[2]/div[1]/div[1]/div[1]/app-dynamic-form-builder[1]/div[2]/div[1]/app-dynamic-form-field[1]/div[1]/app-field-autocomplete[1]/form[1]/iris-autocomplete[1]/mat-form-field[1]/div[1]/div[1]/div[3]/span[1]/label[1]/mat-label[1]");
+        this.homecountryDropdownField = page.locator("//div[@class='mat-mdc-form-field-infix ng-tns-c14-2' or @aria-haspopup='listbox']");
         this.selectcountryInputField = page.locator("//span[normalize-space()='Afghanistan']");
         this.passportnumberInputField = page.locator("//input[@id='mat-input-3']");
-        this.codeDropdownField = page.locator("//div[@id='mat-select-value-1']");
+        this.codeDropdownField = page.locator("//mat-icon[@class='mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color ng-tns-c14-7' and @data-mat-icon-name='keyboard_arrow_down']");
         this.mobilecodeInputField = page.locator("//input[@class='mat-select-search-input mat-input-element ng-valid ng-touched ng-dirty']");
         this.selectmobilecodeInputField = page.locator("//mat-option[@id='mat-option-2944']//span[@class='mat-option-text']//span[1]");
         this.mobilenumberInputField = page.locator("//input[@id='mat-input-4']");
@@ -113,9 +113,9 @@ export class OnePayPage {
         this.dayInputField = page.locator("//input[@id='mat-input-12']");
         this.monthInputField = page.locator("//input[@id='mat-input-13']");
         this.yearInputField = page.locator("//input[@id='mat-input-14']");
-        this.genderDropdownField = page.locator("//body/app-root[1]/div[1]/app-application-form[1]/div[1]/div[2]/div[1]/form[1]/app-dynamic-form[1]/div[1]/form[1]/div[1]/div[2]/div[1]/div[1]/app-dynamic-form-builder[1]/div[3]/div[2]/app-dynamic-form-field[1]/div[1]/app-field-fieldset[1]/div[1]/div[2]/div[1]/div[1]/div[1]/app-dynamic-form-builder[1]/div[1]/div[2]/app-dynamic-form-field[1]/div[1]/app-field-autocomplete[1]/form[1]/iris-autocomplete[1]/mat-form-field[1]/div[1]/div[1]/div[3]/span[1]/label[1]/mat-label[1]");
+        this.genderDropdownField = page.locator("//input[@id='mat-input-15' and @role='combobox']");
         this.selectgenderDropdownField = page.locator("//span[normalize-space()='Female']");
-        this.firsttabnextButton = page.locator("//span[@class='mat-button-wrapper']");
+        this.firsttabnextButton = page.locator("//span[normalize-space()='Next']");
         this.addirionalinsuredPersonText = page.locator("//h1[normalize-space()='Additional insured person']");
         this.noteText = page.locator("//div[@class='fieldset-note']");
         this.addanotherinsuredPersonButton = page.locator("//a[normalize-space()='Add another insured person']");
@@ -127,7 +127,7 @@ export class OnePayPage {
         this.daYInputField = page.locator("//input[@id='mat-input-18']");
         this.montHInputField = page.locator("//input[@id='mat-input-19']");
         this.yeaRInputField = page.locator("//input[@id='mat-input-20']");
-        this.gendeRDropdownField = page.locator("//body/app-root[1]/div[1]/app-application-form[1]/div[1]/div[2]/div[1]/form[1]/app-dynamic-form[1]/div[1]/form[1]/div[1]/div[2]/div[1]/div[1]/app-dynamic-form-builder[1]/div[4]/div[1]/app-dynamic-form-field[1]/div[1]/app-field-fieldset[1]/div[1]/div[2]/div[1]/div[1]/div[1]/app-dynamic-form-builder[1]/div[2]/div[2]/app-dynamic-form-field[1]/div[1]/app-field-autocomplete[1]/form[1]/iris-autocomplete[1]/mat-form-field[1]/div[1]/div[1]/div[3]/span[1]/label[1]/mat-label[1]");
+        this.gendeRDropdownField = page.locator("//input[@id='mat-input-15' and @role='combobox']");
         this.selectgendeRDropdownField = page.locator("//span[normalize-space()='Male']");
         this.homecountrYDropdownField = page.locator("//body/app-root[1]/div[1]/app-application-form[1]/div[1]/div[2]/div[1]/form[1]/app-dynamic-form[1]/div[1]/form[1]/div[1]/div[2]/div[1]/div[1]/app-dynamic-form-builder[1]/div[4]/div[1]/app-dynamic-form-field[1]/div[1]/app-field-fieldset[1]/div[1]/div[2]/div[1]/div[1]/div[1]/app-dynamic-form-builder[1]/div[3]/div[1]/app-dynamic-form-field[1]/div[1]/app-field-autocomplete[1]/form[1]/iris-autocomplete[1]/mat-form-field[1]/div[1]/div[1]/div[3]/span[1]/label[1]/mat-label[1]");
         this.selectcountrYInputField = page.locator("//span[normalize-space()='Afghanistan']");
@@ -173,16 +173,12 @@ export class OnePayPage {
         this.confirmbtn = page.locator('//button[@class="btn btn_custom_pad confirm"]');
         this.fullDeatailsbtn = page.locator('//div//a[contains(@href,"../Endorsement/FullDetails")]');
         this.financtialInfobtn = page.locator('//div//a[@class="financialInfoBtn"]');
-
-
-    }
-
+ }
 
     async gotoHomePage(url: string) {
         await this.page.goto(url);
         await this.page.waitForLoadState('networkidle');
         await this.page.setViewportSize({ width: 1536, height: 730 });
-
     }
 
     async expatcareFirstTab(firstname: string, lastname: string, passport: string, code: string, mobilenumber: string, email: string, streetname: string, streetnumber: string, postalcode: string, address: string, city: string, day: string, month: string, year: string) {
@@ -192,7 +188,7 @@ export class OnePayPage {
         await this.selectcountryInputField.click();
         await this.passportnumberInputField.fill(passport);
         await this.codeDropdownField.click();
-        await this.page.locator("//div[@class='cdk-overlay-pane']//mat-option[2]//img").click();
+        await this.page.locator("//img[@src='assets/country-flag-icons/IN.svg']").click();
         await this.mobilenumberInputField.fill(mobilenumber);
         await this.page.waitForTimeout(1000);
         await this.emailInputField.fill(email);
@@ -230,7 +226,8 @@ export class OnePayPage {
     }
 
     async clickOnClassiccTile() {
-        await this.page.locator("//label[@for='mat-radio-8-input']//span[@class='mat-radio-label-content']").click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.locator("//label[@for='mat-radio-8-input']/span").click();
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(10000);
     }

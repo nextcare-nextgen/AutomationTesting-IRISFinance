@@ -128,7 +128,7 @@ export class MawistaPaymentsPage {
 
     async clickOnFinancialTransactionsMonitoringShortcutButton() {
         await this.financialTransactionsMonitoringShortcut.click();
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     async verifyFromDateandToDate() {
@@ -216,15 +216,17 @@ export class MawistaPaymentsPage {
     }
 
     async selectPaymentStatus(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
-        await this.page.locator('//mat-label//span[@title="Payment Status"]').click();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]//ancestor::div[1]//mat-checkbox//input').click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.locator("//mat-label[@class='mat-form-field-label ng-star-inserted'][contains(.,'Not Yet Processed')]").click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.page.locator("//div[contains(@class,'cdk-overlay-container')]").click();
     }
 
     async clickOnSearchFilterButton() {
         await this.searchFilters.click();
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyListOfPaymentStatus() {
@@ -268,9 +270,9 @@ export class MawistaPaymentsPage {
 
     async selectPaymentMethod(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.locator('//mat-label//span[@title="Payment Method"]').dblclick();
+        await this.page.locator("//span[@title='Payment Method'][contains(.,'Payment Method')]").click();
         await new Promise(resolve => setTimeout(resolve, 2000));
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+        await this.page.locator("//mat-label[@class='mat-form-field-label ng-star-inserted'][contains(.,'Direct Debit')]").click();
     }
 
     async enterFromPaymentAmount(data: string) {
@@ -295,7 +297,7 @@ export class MawistaPaymentsPage {
 
     async clickOnSearchButton() {
         await this.searchbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyPaymentStatusFromGrid(data: string) {
@@ -321,7 +323,7 @@ export class MawistaPaymentsPage {
 
     async clickOnApplyButton() {
         await this.applybtn.click();
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
 
@@ -342,7 +344,7 @@ export class MawistaPaymentsPage {
     }
 
     async verifyPaymentAmountFromGrid(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const paymentsamount = this.page.locator('//mat-cell[contains(@class,"paymentAmount")]//small');
         for (let index = 0; index < await paymentsamount.count(); index++) {
             const paymentAmount = await paymentsamount.nth(index).textContent();
@@ -469,8 +471,20 @@ export class MawistaPaymentsPage {
     }
 
     async enterFromDate(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.fromdateinput.fill(data);
+        await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    async fillfromDate_PastDate() {
+        const pastDate = new Date(2023, 5, 4); 
+        const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        const formattedPastDate = pastDate.getDate().toString().padStart(2, '0') + "-" + monthNumber[pastDate.getMonth()] + "-" + pastDate.getFullYear();
+        const fromDateInput = this.page.locator("//span[@title='From Date'][contains(.,'From Date')]");
+        await fromDateInput.waitFor({ state: 'visible' });
+        await fromDateInput.click();  
+        await fromDateInput.fill(formattedPastDate);
+        await fromDateInput.waitFor({ state: 'attached' });  
     }
 
     async clickExportTOcurrentPage() {
@@ -535,15 +549,15 @@ export class MawistaPaymentsPage {
 
     async selectPaymentTypes(data: string, data1: string, data2: string) {
         await new Promise(resolve => setTimeout(resolve, 2000));
-        await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data1 + '"]').click();
-        await this.page.locator('//mat-option//span//mat-label[text()="' + data2 + '"]').click();
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
+        await this.page.locator("//mat-label[@class='mat-form-field-label ng-star-inserted'][contains(.,'Bank Charges')]").click();
+        await this.page.locator("//mat-label[@title='Claim Payment']").click();
+        await this.page.locator("//mat-label[@class='mat-form-field-label ng-star-inserted'][contains(.,'Premium Payment')]").click();
 
     }
 
     async verifyPaymentTypesFromGrid() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const paymenttype = this.page.locator('//mat-cell[contains(@class,"paymentType")]//small');
         for (let index = 0; index < await paymenttype.count(); index++) {
             expect(paymenttype.nth(index)).toBeVisible();

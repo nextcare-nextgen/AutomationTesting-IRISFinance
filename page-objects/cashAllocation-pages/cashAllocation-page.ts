@@ -67,9 +67,6 @@ export class CashAllocationPage {
     readonly broker: Locator;
     readonly clearedtransactionType: Locator;
 
-
-
-
     constructor(page: Page) {
         this.page = page;
         this.cashAllocationShortcut = page.locator('//div//span[@title="Cash Allocation"]');
@@ -144,6 +141,7 @@ export class CashAllocationPage {
 
     async clickOnCashAllocationShrtcutsButton() {
         await this.cashAllocationShortcut.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyDashboardText(data: string) {
@@ -546,9 +544,10 @@ export class CashAllocationPage {
     }
 
     async verifyMadatoryFields() {
+        await new Promise(resolve => setTimeout(resolve, 7000));
         const mandateFields = this.page.locator('//form//div[contains(@class,"align-items-center")]//input');
         for (let index = 0; index < await mandateFields.count(); index++) {
-            expect(await mandateFields).toBeVisible();
+            expect(mandateFields).toBeVisible();
         }
     }
 

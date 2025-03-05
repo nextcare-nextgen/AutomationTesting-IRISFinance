@@ -63,8 +63,7 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
     await test.step("Verified all details on Thank you page ", async () => {
         await onePayPage.verifyThankyoupageText(onePayData["TC_003_OnePay"].thankyouText, onePayData["TC_003_OnePay"].policyidText);
     })
-
-    //page.close();
+  //page.close();
 });
 
 

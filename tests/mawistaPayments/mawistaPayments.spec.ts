@@ -5,6 +5,7 @@ import { MawistaPaymentsPage } from '../../page-objects/mawistaPayments-pages/ma
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const MawistaPaymentsgData = require(`../../testdata/${process.env.ENV || 'eu'}/mawistaPayments.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 
 test('NXGF-TC-3712: TC_002_Mawista payments_Verify that the user is able to view the default and mandatory search option of "from date" and "To date"', async ({ page }) => {
 
@@ -172,6 +173,10 @@ test('NXGF-TC-3716: TC_006_Mawista payments_Verify that the user is able select 
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+            await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -181,7 +186,7 @@ test('NXGF-TC-3716: TC_006_Mawista payments_Verify that the user is able select 
     })
 
     await test.step("User enter the Date", async () => {
-        await mawistaPaymentsPage.enterFromDate(MawistaPaymentsgData['TC_006_Mawista_payments'].date);
+        await mawistaPaymentsPage.fillfromDate_PastDate();
     })
 
     await test.step("User Click on Search filter button", async () => {
@@ -207,7 +212,6 @@ test('NXGF-TC-3716: TC_006_Mawista payments_Verify that the user is able select 
     await test.step("Verified Transaction Id from grid", async () => {
         await mawistaPaymentsPage.verifyTransactionIdFromGrid(MawistaPaymentsgData['TC_006_Mawista_payments'].transactionId);
     })
-
 });
 
 test('NXGF-TC-3717: TC_007_Mawista payments_Verify that the user is able to view the results where Payment Date is in descending order', async ({ page }) => {
@@ -222,6 +226,10 @@ test('NXGF-TC-3717: TC_007_Mawista payments_Verify that the user is able to view
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -315,6 +323,10 @@ test('NXGF-TC-3719: TC_009_Mawista payments_Verify that the user is able to view
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -404,6 +416,10 @@ test('NXGF-TC-3721: TC_011_Mawista payments_Verify that the user is able to navi
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {

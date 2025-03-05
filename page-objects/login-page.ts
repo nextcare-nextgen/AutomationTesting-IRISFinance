@@ -29,6 +29,7 @@ export class LoginPage {
     async loginToApplication(superUser: string, password: string) {
         await this.userNameOrEmailInputField.fill(superUser);
         await this.passwordInputField.fill(password);
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.signinButton.click();
     }
 
@@ -36,6 +37,7 @@ export class LoginPage {
         await this.userNameOrEmailInputField.fill(superUser);
         await this.passwordInputField.fill(password);
         await this.checkBoxSelector.click(); 
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.signinButton.click();
     }
 

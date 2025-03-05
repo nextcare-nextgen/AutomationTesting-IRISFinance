@@ -5,6 +5,7 @@ import { CashAllocationPage } from '../../page-objects/cashAllocation-pages/cash
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const CashAllocationPageData = require(`../../testdata/${process.env.ENV || 'eu'}/cashAllocation.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
@@ -24,6 +25,10 @@ test('NXGF-TC-3316: TC_000_Cash Allocation Dashboard_Verify that Valid breadcrum
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -162,11 +167,9 @@ test('NXGF-TC-3321: TC_005_Cash Allocation Dashboard_Verify that the Organizatio
         await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
     })
 
-    await test.step("User Verified the organization name selected on the top of the page", async () => {
-        await cashAllocationPage.verifyOrganizationName(CashAllocationPageData['TC_005_Cash_Allocation'].orgName);
-
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
-
 });
 
 test('NXGF-TC-3322: TC_006_Cash Allocation Dashboard_Verify that the mandatory search fields include Payment type, Payment status, Payment method', async ({ page }) => {
@@ -182,6 +185,10 @@ test('NXGF-TC-3322: TC_006_Cash Allocation Dashboard_Verify that the mandatory s
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -212,6 +219,10 @@ test('NXGF-TC-3323: TC_007_Cash Allocation Dashboard_Verify that the non manadat
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -248,6 +259,10 @@ test('NXGF-TC-3324: TC_008_Cash Allocation Dashboard_Verify that the user is abl
 
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -276,6 +291,10 @@ test('NXGF-TC-3325: TC_009_Cash Allocation Dashboard_Verify that the Payment typ
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -346,6 +365,10 @@ test('NXGF-TC-3327: TC_011_Cash Allocation Dashboard_Verify that the Payment met
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {

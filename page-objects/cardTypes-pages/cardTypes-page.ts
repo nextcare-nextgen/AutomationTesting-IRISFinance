@@ -48,11 +48,9 @@ export class CardTypesPage {
         expect(actual).toBe(data);
     }
 
-
     async clickOnFinancialOrganizationShrtcutsButton() {
         await this.financialOrganizationShortcut.click();
     }
-
 
     async verifyFinancialOrganizationShrtcutButton() {
         expect(this.financialOrganizationShortcut).toBeVisible();

@@ -22,7 +22,7 @@ test('NXGF-TC-1856: TC_000_card types_Verify that the user is able to navigate t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -50,7 +50,7 @@ test('NXGF-TC-1857: TC_001_card types_Verify that the user is able to view the a
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -79,7 +79,7 @@ test('NXGF-TC-1858: TC_002_card types_Verify that the user is able to search for
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -119,7 +119,7 @@ test('NXGF-TC-1859: TC_003_card types_Verify that the user is able to view the d
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -147,7 +147,7 @@ test('NXGF-TC-1860: TC_004_card types_Verify that the user is able to view two o
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -183,7 +183,7 @@ test('NXGF-TC-1861: TC_005_card types_Verify that the user is able to click on t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -219,7 +219,7 @@ test('NXGF-TC-1862: TC_006_card types_Verify that the user is able to add a new 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -255,7 +255,7 @@ test('NXGF-TC-1863,NXGF-TC-1864: TC_007_card types_Verify that the user is able 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -299,7 +299,7 @@ test('NXGF-TC-1865: TC_009_card types_Verify that the user is able to view the s
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -335,7 +335,7 @@ test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on U
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -372,7 +372,7 @@ test('NXGF-TC-1867: TC_011_card types_Verify that the user is able to see a popu
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -413,7 +413,7 @@ test('NXGF-TC-1868: TC_012_card types_Verify that the user is able to click on "
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -460,7 +460,7 @@ test('NXGF-TC-1870: TC_014_card types_Verify that the user is able to view the s
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
