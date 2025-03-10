@@ -6,7 +6,6 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const JournalVoucherCreationPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherCreation.json`) as Record<string, any>;
 
-
 test('NXGF-TC-3852: TC_000_Journal Voucher creation_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
     await test.step("--------------Start the Journal Voucher Creation Testclass----------------------", async () => {
@@ -153,11 +152,11 @@ test('NXGF-TC-3857: TC_005_Journal Voucher creation_Verify that the user is able
         await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
 
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Add Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -418,7 +417,7 @@ test('NXGF-TC-3864: TC_017_Journal Voucher creation_Verify that the Voucher date
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Add Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -455,7 +454,7 @@ test('NXGF-TC-3865: TC_018_Journal Voucher creation_Verify that the Voucher type
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Add Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -492,7 +491,7 @@ test('NXGF-TC-3866: TC_019_Journal Voucher creation_Verify that the Voucher type
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -574,7 +573,7 @@ test('NXGF-TC-3868: TC_022_Journal Voucher creation_Verify that the Description 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -614,7 +613,7 @@ test('NXGF-TC-3869: TC_023_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
@@ -695,7 +694,7 @@ test('NXGF-TC-3871: TC_032_Journal Voucher lookup_Verify that once clicked on + 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -736,7 +735,7 @@ test('NXGF-TC-3872: TC_033_Journal Voucher lookup_Verify that the Account name, 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -777,7 +776,7 @@ test('NXGF-TC-3873: TC_034_Journal Voucher lookup_Verify that the Amount, Curren
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -831,7 +830,6 @@ test('NXGF-TC-3874: TC_035_Journal Voucher creation_Verify that the Account name
     await test.step("Verified that the Account name is a auto complete smart search field", async () => {
         await journalVoucherCreationPage.selectAccountName(JournalVoucherCreationPageData['TC_035_Journal_Voucher_Creation'].value);
     })
-
 });
 
 test('NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name', async ({ page }) => {
@@ -861,7 +859,7 @@ test('NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Ve
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -901,7 +899,7 @@ test('NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -949,7 +947,7 @@ test('NXGF-TC-3880: TC_044_Journal Voucher creation_Verify that the Value date i
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -989,7 +987,7 @@ test('NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1053,7 +1051,7 @@ test('NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1069,7 +1067,7 @@ test('NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_051_Journal_Voucher_Creation'].amount);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_051_Journal_Voucher_Creation'].currency);
     })
@@ -1093,7 +1091,7 @@ test('NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_051_Journal_Voucher_Creation'].amount1);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_051_Journal_Voucher_Creation'].currency1);
     })
@@ -1105,7 +1103,7 @@ test('NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_051_Journal_Voucher_Creation'].description1);
     })
-    page.pause();
+    //page.pause();
     await test.step("Click On Save Transaction", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1138,7 +1136,7 @@ test('NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Edit Journal Voucher Button", async () => {
         await journalVoucherCreationPage.clickOnEditJournalVoucher();
     })
@@ -1170,7 +1168,7 @@ test('NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1186,7 +1184,8 @@ test('NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_053_Journal_Voucher_Creation'].amount);
     })
-    page.pause();
+    
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_053_Journal_Voucher_Creation'].currency);
     })
@@ -1198,7 +1197,7 @@ test('NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_053_Journal_Voucher_Creation'].description);
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1233,7 +1232,7 @@ test('NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-page.pause();
+    //page.pause();
     await test.step("User Click on Edit Journal Voucher Button", async () => {
         await journalVoucherCreationPage.clickOnEditJournalVoucher();
     })
@@ -1270,7 +1269,7 @@ test('NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1286,7 +1285,7 @@ test('NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a 
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_057_Journal_Voucher_Creation'].amount);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_057_Journal_Voucher_Creation'].currency);
     })
@@ -1294,7 +1293,7 @@ test('NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a 
     await test.step("Select Value Date", async () => {
         await journalVoucherCreationPage.selectCurrentDateCalender();
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user gets a pop up message to fill the missing cells if any", async () => {
         await journalVoucherCreationPage.verifyErrorPopupAlert(JournalVoucherCreationPageData['TC_057_Journal_Voucher_Creation'].errorpopup);
     })
@@ -1327,7 +1326,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1343,7 +1342,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency);
     })
@@ -1355,7 +1354,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description);
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1371,7 +1370,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount1);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency1);
     })
@@ -1383,7 +1382,7 @@ test('NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1419,7 +1418,7 @@ test('NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1435,7 +1434,7 @@ test('NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency);
     })
@@ -1463,7 +1462,7 @@ test('NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount1);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency1);
     })
@@ -1475,7 +1474,7 @@ test('NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1512,7 +1511,7 @@ test('NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows t
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1549,7 +1548,7 @@ test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences 
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("User Click on Journal Voucher Lookup Button", async () => {
         await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
     })
@@ -1577,7 +1576,7 @@ test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences 
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description);
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })
@@ -1593,7 +1592,7 @@ test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences 
     await test.step("User Enter Amount", async () => {
         await journalVoucherCreationPage.enterAmount(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].amount1);
     })
-    page.pause();
+    //page.pause();
     await test.step("User Select Currency", async () => {
         await journalVoucherCreationPage.selectCurrency(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].currency1);
     })
@@ -1605,7 +1604,7 @@ test('NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences 
     await test.step("User Enter Description", async () => {
         await journalVoucherCreationPage.enterDescription(JournalVoucherCreationPageData['TC_060_Journal_Voucher_Creation'].description1);
     })
-    page.pause();
+   // page.pause();
     await test.step("Verified that the user is able to click on Save", async () => {
         await journalVoucherCreationPage.clickOnSave();
     })

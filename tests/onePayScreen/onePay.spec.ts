@@ -47,7 +47,7 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -142,7 +142,7 @@ test('NXGF-TC-2829: TC_005_OnePay payment journey_Validate that the user is navi
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -194,7 +194,7 @@ test('NXGF-TC-2831: TC_006_OnePay payment journey_Validate that when the incorre
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -248,7 +248,7 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -302,7 +302,7 @@ test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can cli
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -360,7 +360,7 @@ test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -412,7 +412,7 @@ test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able t
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -500,7 +500,7 @@ test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able t
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -546,7 +546,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    page.pause();
+    //page.pause();
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })

@@ -545,7 +545,7 @@ export class CashAllocationPage {
 
     async verifyMadatoryFields() {
         await new Promise(resolve => setTimeout(resolve, 7000));
-        const mandateFields = this.page.locator('//form//div[contains(@class,"align-items-center")]//input');
+        const mandateFields = this.page.locator('//form//div[contains(@class,"align-items-center")]//input[@id="mat-input-3"]');
         for (let index = 0; index < await mandateFields.count(); index++) {
             expect(mandateFields).toBeVisible();
         }

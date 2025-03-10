@@ -1,736 +1,752 @@
-<testsuites id="" name="" tests="12" failures="1" skipped="0" errors="0" time="695.329868999999">
-<testsuite name="tests\mawistaPayments\mawistaPayments.spec.ts" timestamp="2025-03-05T09:22:18.771Z" hostname="Mawista-EU" tests="12" failures="1" skipped="0" time="671.789" errors="0">
-<testcase name="NXGF-TC-3712: TC_002_Mawista payments_Verify that the user is able to view the default and mandatory search option of &quot;from date&quot; and &quot;To date&quot;" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="45.204">
-<system-out>
-<![CDATA[--------------Start the Mawista Payments Testclass----------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3711: TC_001_Mawista payments_Verify that the IRIS user will be presented with the initial Search Payments query screen and fields" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="200.054">
-<failure message="mawistaPayments.spec.ts:42:5 NXGF-TC-3711: TC_001_Mawista payments_Verify that the IRIS user will be presented with the initial Search Payments query screen and fields" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\mawistaPayments\mawistaPayments.spec.ts:42:5 › NXGF-TC-3711: TC_001_Mawista payments_Verify that the IRIS user will be presented with the initial Search Payments query screen and fields 
+<testsuites id="" name="" tests="15" failures="14" skipped="0" errors="0" time="1090.186664999999">
+<testsuite name="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" timestamp="2025-03-07T13:28:51.075Z" hostname="Mawista-EU" tests="15" failures="14" skipped="0" time="982.689" errors="0">
+<testcase name="NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.574">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:837:5 NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:837:5 › NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name 
 
     Test timeout of 100000ms exceeded.
 
-    Test timeout of 100000ms exceeded while running "afterEach" hook.
+    TypeError: apiRequestContext.post: Invalid URL
 
-       at page-objects\utilities-pages\global-setup.ts:8
+       at page-objects\utilities-pages\global-setup.ts:17
 
-       6 | const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
-       7 |
-    >  8 | test.afterEach(async ({ page, request, baseURL }, testInfo) => {
-         |      ^
-       9 |     if (testInfo.status !== testInfo.expectedStatus) {
-      10 |         let scPath: string = `test-results/screenshots/sc.png`;
-      11 |         await page.screenshot({ path: scPath });
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
 
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:8:6
-
-    Error: page.screenshot: Test timeout of 100000ms exceeded.
-    Call log:
-      - taking page screenshot
-      - waiting for fonts to load...
-      - fonts loaded
-
-
-       at page-objects\utilities-pages\global-setup.ts:11
-
-       9 |     if (testInfo.status !== testInfo.expectedStatus) {
-      10 |         let scPath: string = `test-results/screenshots/sc.png`;
-    > 11 |         await page.screenshot({ path: scPath });
-         |                    ^
-      12 |         testInfo.annotations.push({ type: 'Screen shot on Failure', description: scPath });
-      13 |         const file = path.resolve(scPath);
-      14 |         const image = fs.readFileSync(file);
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:11:20
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
 
     Error: locator.click: Test timeout of 100000ms exceeded.
     Call log:
-      - waiting for locator('//button[@title=\'Sign in\']')
-      -   locator resolved to <button type="button" title="Sign in" mat-raised-button=…>…</button>
-      - attempting click action
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #1
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #2
-      -   waiting 20ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #3
-      -   waiting 100ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #4
-      -   waiting 100ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #5
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #6
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #7
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #8
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #9
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #10
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #11
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #12
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #13
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #14
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #15
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #16
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #17
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #18
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #19
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #20
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #21
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #22
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #23
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #24
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #25
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #26
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #27
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #28
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #29
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #30
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #31
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #32
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #33
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #34
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #35
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #36
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #37
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #38
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #39
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #40
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #41
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #42
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #43
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #44
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #45
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #46
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #47
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #48
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #49
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #50
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #51
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #52
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #53
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #54
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #55
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #56
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #57
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #58
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #59
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #60
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #61
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #62
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #63
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #64
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #65
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #66
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #67
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #68
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #69
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #70
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #71
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #72
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #73
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #74
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #75
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #76
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #77
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #78
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #79
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #80
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #81
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #82
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #83
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #84
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #85
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #86
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #87
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #88
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #89
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #90
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #91
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
-      -   element is visible, enabled and stable
-      -   scrolling into view if needed
-      -   done scrolling
-      -   <div class="cdk-overlay-backdrop cdk-overlay-dark-bac…></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
-      - retrying click action, attempt #92
-      -   waiting 500ms
-      -   waiting for element to be visible, enabled and stable
+      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
 
 
-       at page-objects\login-page.ts:33
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
 
-      31 |         await this.passwordInputField.fill(password);
-      32 |         await new Promise(resolve => setTimeout(resolve, 3000));
-    > 33 |         await this.signinButton.click();
-         |                                 ^
-      34 |     }
-      35 |
-      36 |     async loginToApplicationAndClickOnCheckbox(superUser: string, password: string) {
+      276 |     async selectAccountName(data: string) {
+      277 |         await this.accountName.click();
+    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+          |                                                                                         ^
+      279 |     }
+      280 |
+      281 |     async enterAmount(data: string) {
 
-        at LoginPage.loginToApplication (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:33:33)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\mawistaPayments\mawistaPayments.spec.ts:53:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\mawistaPayments\mawistaPayments.spec.ts:52:5
+        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:874:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:873:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-08e58-t-the-required-Account-name-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-08e58-t-the-required-Account-name-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3713: TC_003_Mawista payments_Verify that the user is able to search and view the relevant payments with search option of &quot;from date&quot; and &quot;To date&quot;" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="47.896">
+<testcase name="NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the CV1 and CV2 (Counter Value) is dependent on the Amount currency" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.642">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:879:5 NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the CV1 and CV2 (Counter Value) is dependent on the Amount currency" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:879:5 › NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the CV1 and CV2 (Counter Value) is dependent on the Amount currency 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.inputValue: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-composed-dialog//input[@title="Amount CV1"]')
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:296
+
+      294 |     async verifyCV1Amount() {
+      295 |         await new Promise(resolve => setTimeout(resolve, 5000));
+    > 296 |         const value = await this.amountCV1.inputValue();
+          |                                            ^
+      297 |         expect(value).toBeTruthy();
+      298 |     }
+      299 |
+
+        at JournalVoucherCreationPage.verifyCV1Amount (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:296:44)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:922:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:921:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-ae993-dent-on-the-Amount-currency-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-ae993-dent-on-the-Amount-currency-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3714: TC_004_Mawista payments_Verify that the user is able to reset the  search option of &quot;from date&quot; and &quot;To date&quot;" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="23.815">
+<testcase name="NXGF-TC-3880: TC_044_Journal Voucher creation_Verify that the Value date is set to system date as default value" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="61.643">
 </testcase>
-<testcase name="NXGF-TC-3715: TC_005_Mawista payments_Verify that the user is able click on the filters for advance search" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="39.669">
+<testcase name="NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able to click on Edit" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.534">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:967:5 NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able to click on Edit" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:967:5 › NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able to click on Edit 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+
+      276 |     async selectAccountName(data: string) {
+      277 |         await this.accountName.click();
+    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+          |                                                                                         ^
+      279 |     }
+      280 |
+      281 |     async enterAmount(data: string) {
+
+        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1002:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1001:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-06f41-er-is-able-to-click-on-Edit-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-06f41-er-is-able-to-click-on-Edit-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3716: TC_006_Mawista payments_Verify that the user is able select any option from the advanced search filter and click on apply" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="52.579">
+<testcase name="NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.664">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1031:5 NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1031:5 › NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+
+      276 |     async selectAccountName(data: string) {
+      277 |         await this.accountName.click();
+    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+          |                                                                                         ^
+      279 |     }
+      280 |
+      281 |     async enterAmount(data: string) {
+
+        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1066:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1065:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-44c22-viously-entered-information-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-44c22-viously-entered-information-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3717: TC_007_Mawista payments_Verify that the user is able to view the results where Payment Date is in descending order" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="55.091">
+<testcase name="NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able to view the Save link if the voucher is not validated" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.485">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1115:5 NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able to view the Save link if the voucher is not validated" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1115:5 › NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able to view the Save link if the voucher is not validated 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//button[@title="Edit Journal Voucher"]').first()
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329
+
+      327 |
+      328 |     async clickOnEditJournalVoucher() {
+    > 329 |         await this.editJournalVoucher.first().click();
+          |                                               ^
+      330 |     }
+      331 |
+      332 |     async verifyValidatedCheckboxDisabled() {
+
+        at JournalVoucherCreationPage.clickOnEditJournalVoucher (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329:47)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1143:42
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1142:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-46e7b-he-voucher-is-not-validated-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-46e7b-he-voucher-is-not-validated-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3718: TC_008_Mawista payments_Verify that the user is able to view the results where Payment file ref is in descending order" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="39.587">
+<testcase name="NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.573">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1148:5 NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1148:5 › NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+
+      276 |     async selectAccountName(data: string) {
+      277 |         await this.accountName.click();
+    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+          |                                                                                         ^
+      279 |     }
+      280 |
+      281 |     async enterAmount(data: string) {
+
+        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1183:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1182:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-6585d-er-is-able-to-click-on-Save-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-6585d-er-is-able-to-click-on-Save-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3719: TC_009_Mawista payments_Verify that the user is able to view the results where Payment type is Claim/Commission/Premium/Blank" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="43.344">
+<testcase name="NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the user is able to view the Validate checkbox as disabled" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.506">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1210:5 NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the user is able to view the Validate checkbox as disabled" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1210:5 › NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the user is able to view the Validate checkbox as disabled 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//button[@title="Edit Journal Voucher"]').first()
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329
+
+      327 |
+      328 |     async clickOnEditJournalVoucher() {
+    > 329 |         await this.editJournalVoucher.first().click();
+          |                                               ^
+      330 |     }
+      331 |
+      332 |     async verifyValidatedCheckboxDisabled() {
+
+        at JournalVoucherCreationPage.clickOnEditJournalVoucher (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329:47)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1239:42
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1238:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-75fb4-lidate-checkbox-as-disabled-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-75fb4-lidate-checkbox-as-disabled-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3720: TC_010_Mawista payments_Verify that the user is able to view the results where Payment Currency Amount is in descending order" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="35.516">
+<testcase name="NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a pop up message to fill the missing cells if any" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="101.079">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1249:5 NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a pop up message to fill the missing cells if any" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1249:5 › NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a pop up message to fill the missing cells if any 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+
+      276 |     async selectAccountName(data: string) {
+      277 |         await this.accountName.click();
+    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
+          |                                                                                         ^
+      279 |     }
+      280 |
+      281 |     async enterAmount(data: string) {
+
+        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1284:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1283:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-1c441-ll-the-missing-cells-if-any-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-1c441-ll-the-missing-cells-if-any-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3721: TC_011_Mawista payments_Verify that the user is able to navigate back to Search Payments Screen to select different run parameters for query" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="62.929">
+<testcase name="NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="101.252">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1305:5 NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1305:5 › NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.waitFor: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//button[@title="Add Journal Voucher Lookup"]') to be visible
+
+
+       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:177
+
+      175 |     async clickOnAddLookupVoucherCreationButton() {
+      176 |         await new Promise(resolve => setTimeout(resolve, 7000));
+    > 177 |         await this.addJournalVoucherLookupbtn.waitFor();
+          |                                               ^
+      178 |         await this.addJournalVoucherLookupbtn.click();
+      179 |         await new Promise(resolve => setTimeout(resolve, 9000));
+      180 |     }
+
+        at JournalVoucherCreationPage.clickOnAddLookupVoucherCreationButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:177:47)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1333:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1332:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-e2050--total-credit-counter-value-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-e2050--total-credit-counter-value-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-3722: TC_012_Mawista payments_Verify that the user is able to export the results to excel" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="26.105">
+<testcase name="NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="2.307">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1398:5 NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1398:5 › NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals 
+
+    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
+    Call log:
+      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
+
+
+       at page-objects\login-page.ts:25
+
+      23 |
+      24 |     async gotoLoginPage(url: string) {
+    > 25 |         await this.page.goto(process.env.URL as string || url);
+         |                         ^
+      26 |         await this.page.waitForLoadState('networkidle');
+      27 |     }
+      28 |
+
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1405:25
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1404:16
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-7e705-ction-indicating-the-totals-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-7e705-ction-indicating-the-totals-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="2.713">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1490:5 NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1490:5 › NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency 
+
+    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
+    Call log:
+      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
+
+
+       at page-objects\login-page.ts:25
+
+      23 |
+      24 |     async gotoLoginPage(url: string) {
+    > 25 |         await this.page.goto(process.env.URL as string || url);
+         |                         ^
+      26 |         await this.page.waitForLoadState('networkidle');
+      27 |     }
+      28 |
+
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1497:25
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1496:16
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-48419-l-Currency-Foreign-Currency-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-48419-l-Currency-Foreign-Currency-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="3.837">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1527:5 NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1527:5 › NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency 
+
+    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
+    Call log:
+      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
+
+
+       at page-objects\login-page.ts:25
+
+      23 |
+      24 |     async gotoLoginPage(url: string) {
+    > 25 |         await this.page.goto(process.env.URL as string || url);
+         |                         ^
+      26 |         await this.page.waitForLoadState('networkidle');
+      27 |     }
+      28 |
+
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1534:25
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1533:16
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-25675-the-amount-and-the-currency-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-25675-the-amount-and-the-currency-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="2.87">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1620:5 NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1620:5 › NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen 
+
+    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
+    Call log:
+      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
+
+
+       at page-objects\login-page.ts:25
+
+      23 |
+      24 |     async gotoLoginPage(url: string) {
+    > 25 |         await this.page.goto(process.env.URL as string || url);
+         |                         ^
+      26 |         await this.page.waitForLoadState('networkidle');
+      27 |     }
+      28 |
+
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1627:25
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1626:16
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-a3e76-splayed-in-main-menu-screen-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-a3e76-splayed-in-main-menu-screen-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="3.01">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherCreation.spec.ts:1645:5 NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1645:5 › NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar 
+
+    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
+    Call log:
+      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
+
+
+       at page-objects\login-page.ts:25
+
+      23 |
+      24 |     async gotoLoginPage(url: string) {
+    > 25 |         await this.page.goto(process.env.URL as string || url);
+         |                         ^
+      26 |         await this.page.waitForLoadState('networkidle');
+      27 |     }
+      28 |
+
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1652:25
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1651:16
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherCreati-e6a9f-ortcut-menu-from-search-bar-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-e6a9f-ortcut-menu-from-search-bar-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

@@ -60,7 +60,7 @@ test('NXGF-TC-3711: TC_001_Mawista payments_Verify that the IRIS user will be pr
     await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
         await mawistaPaymentsPage.clickOnFinancialTransactionsMonitoringShortcutButton();
     })
-    page.pause();
+    //page.pause();
     await test.step("Verified that the user is able view the Search filters", async () => {
         await mawistaPaymentsPage.verifySeatchFilter();
     })
