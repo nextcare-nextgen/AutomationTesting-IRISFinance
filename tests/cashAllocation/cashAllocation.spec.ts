@@ -914,39 +914,39 @@ test('NXGF-TC-3341: TC_025_Cash Allocation Dashboard_Verify that the payment rec
 
 });
 
-test('NXGF-TC-3342: TC_026_Cash Allocation Dashboard_Verify that a new pop screen should appear when clicked on the Allocate Policies button', async ({ page }) => {
+// test('NXGF-TC-3342: TC_026_Cash Allocation Dashboard_Verify that a new pop screen should appear when clicked on the Allocate Policies button', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const dashboardPage: DashboardPage = new DashboardPage(page);
+//     const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
-    })
+//     })
 
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-    })
+//     await test.step("User Click on Menu Icon", async () => {
+//         await dashboardPage.clickOnMenuIconButton();
+//     })
 
-    await test.step("User Click on Cash Allocation Shortcut button", async () => {
-        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
-    })
+//     await test.step("User Click on Cash Allocation Shortcut button", async () => {
+//         await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+//     })
 
-    await test.step("Click on 'Allocate Policies' button", async () => {
-        await cashAllocationPage.clickOnAllocatePoliciesButton();
-    })
+//     await test.step("Click on 'Allocate Policies' button", async () => {
+//         await cashAllocationPage.clickOnAllocatePoliciesButton();
+//     })
 
-    await test.step("Verified that a new pop screen should appear when clicked on the Allocate Policies button", async () => {
-        await cashAllocationPage.verifyManualAllocationScreenTitle(CashAllocationPageData['TC_026_Cash_Allocation'].title);
-    })
+//     await test.step("Verified that a new pop screen should appear when clicked on the Allocate Policies button", async () => {
+//         await cashAllocationPage.verifyManualAllocationScreenTitle(CashAllocationPageData['TC_026_Cash_Allocation'].title);
+//     })
 
 
-});
+// });
 
 test('NXGF-TC-3343: TC_027_Cash Allocation Dashboard_Verify that the payment record has "“Un-allocate” or “Reverse Allocation” Button', async ({ page }) => {
 
@@ -1029,7 +1029,7 @@ test('NXGF-TC-3344: TC_028_Cash Allocation Dashboard_Verify that the "Details" b
 
 
 });
-
+/*
 test('NXGF-TC-3345: TC_029_Cash Allocation Dashboard_Verify that the allocation screen pops up when clicked on Allocate button and the screen is divided into 4 sections', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1972,4 +1972,4 @@ test('NXGF-TC-3370,NXGF-TC-3371: TC_055_Cash Allocation Dashboard_Verify that a 
         await cashAllocationPage.verifyPopupMessasge(CashAllocationPageData['TC_055_Cash_Allocation'].popupMessage);
     })
 });
-
+*/

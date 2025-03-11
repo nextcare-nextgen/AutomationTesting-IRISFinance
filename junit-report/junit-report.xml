@@ -1,12 +1,18 @@
-<testsuites id="" name="" tests="15" failures="14" skipped="0" errors="0" time="1090.186664999999">
-<testsuite name="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" timestamp="2025-03-07T13:28:51.075Z" hostname="Mawista-EU" tests="15" failures="14" skipped="0" time="982.689" errors="0">
-<testcase name="NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.574">
+<testsuites id="" name="" tests="21" failures="5" skipped="0" errors="0" time="1210.7174290000014">
+<testsuite name="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" timestamp="2025-03-10T15:30:29.743Z" hostname="Mawista-EU" tests="21" failures="5" skipped="0" time="1170.983" errors="0">
+<testcase name="NXGF-TC-2889: TC_000_View allocated payments_Verify that the user is able to navigate to cash allocation screen" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="35.445">
+</testcase>
+<testcase name="NXGF-TC-2890: TC_001_View allocated payments_Verify that the user is able to view the search option and the fileds along with Reset option and the result grid" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="37.913">
+</testcase>
+<testcase name="NXGF-TC-2891,NXGF-TC-2892: TC_002_View allocated payments_Verify that the user is able to search with default payment status" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="32.68">
+</testcase>
+<testcase name="NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able to click on details for the unallocated payments" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.196">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="journalVoucherCreation.spec.ts:837:5 NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:837:5 › NXGF-TC-3875,NXGF-TC-3876,NXGF-TC-3877: TC_036_Journal Voucher creation_Verify that the user is able to select the required Account name 
+<failure message="viewAllocatedPayments.spec.ts:113:5 NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able to click on details for the unallocated payments" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:113:5 › NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able to click on details for the unallocated payments 
 
     Test timeout of 100000ms exceeded.
 
@@ -26,259 +32,63 @@
 
     Error: locator.click: Test timeout of 100000ms exceeded.
     Call log:
-      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+      - waiting for locator('//button[@title="Policy Allocation"]').first()
 
 
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:120
 
-      276 |     async selectAccountName(data: string) {
-      277 |         await this.accountName.click();
-    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-          |                                                                                         ^
-      279 |     }
-      280 |
-      281 |     async enterAmount(data: string) {
-
-        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:874:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:873:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-08e58-t-the-required-Account-name-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-08e58-t-the-required-Account-name-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the CV1 and CV2 (Counter Value) is dependent on the Amount currency" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.642">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:879:5 NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the CV1 and CV2 (Counter Value) is dependent on the Amount currency" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:879:5 › NXGF-TC-3878,NXGF-TC-3879: TC_040_Journal Voucher creation_Verify that the CV1 and CV2 (Counter Value) is dependent on the Amount currency 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.inputValue: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//iris-composed-dialog//input[@title="Amount CV1"]')
-
-
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:296
-
-      294 |     async verifyCV1Amount() {
-      295 |         await new Promise(resolve => setTimeout(resolve, 5000));
-    > 296 |         const value = await this.amountCV1.inputValue();
-          |                                            ^
-      297 |         expect(value).toBeTruthy();
-      298 |     }
-      299 |
-
-        at JournalVoucherCreationPage.verifyCV1Amount (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:296:44)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:922:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:921:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-ae993-dent-on-the-Amount-currency-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-ae993-dent-on-the-Amount-currency-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3880: TC_044_Journal Voucher creation_Verify that the Value date is set to system date as default value" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="61.643">
-</testcase>
-<testcase name="NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able to click on Edit" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.534">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:967:5 NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able to click on Edit" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:967:5 › NXGF-TC-3881: TC_050_Journal Voucher creation_Verify that the user is able to click on Edit 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
-
-
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
-
-      276 |     async selectAccountName(data: string) {
-      277 |         await this.accountName.click();
-    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-          |                                                                                         ^
-      279 |     }
-      280 |
-      281 |     async enterAmount(data: string) {
-
-        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1002:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1001:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-06f41-er-is-able-to-click-on-Edit-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-06f41-er-is-able-to-click-on-Edit-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.664">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1031:5 NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1031:5 › NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
-
-
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
-
-      276 |     async selectAccountName(data: string) {
-      277 |         await this.accountName.click();
-    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-          |                                                                                         ^
-      279 |     }
-      280 |
-      281 |     async enterAmount(data: string) {
-
-        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1066:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1065:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-44c22-viously-entered-information-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-44c22-viously-entered-information-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able to view the Save link if the voucher is not validated" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.485">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1115:5 NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able to view the Save link if the voucher is not validated" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1115:5 › NXGF-TC-3883: TC_052_Journal Voucher creation_Verify that the user is able to view the Save link if the voucher is not validated 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//button[@title="Edit Journal Voucher"]').first()
-
-
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329
-
-      327 |
-      328 |     async clickOnEditJournalVoucher() {
-    > 329 |         await this.editJournalVoucher.first().click();
+      118 |         await new Promise(resolve => setTimeout(resolve, 5000));
+      119 |         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
+    > 120 |         await policyAllocationButtons.first().click();
           |                                               ^
-      330 |     }
-      331 |
-      332 |     async verifyValidatedCheckboxDisabled() {
+      121 |     }
+      122 |
+      123 |     async clickOnClearedStatus() {
 
-        at JournalVoucherCreationPage.clickOnEditJournalVoucher (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329:47)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1143:42
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1142:16
+        at ViewAllocatedPaymentsPage.clickOnAllocatePoliciesButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:120:47)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:142:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:141:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-46e7b-he-voucher-is-not-validated-Mawista-EU\test-failed-1.png
+    test-results\tests-viewAllocatedPayment-e76bd-or-the-unallocated-payments-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-46e7b-he-voucher-is-not-validated-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-e76bd-or-the-unallocated-payments-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.573">
+<testcase name="NXGF-TC-2894: TC_005_View allocated payments_Verify that the user is able to search with both allocated and unallocated payments" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="37.864">
+</testcase>
+<testcase name="NXGF-TC-2895: TC_006_View allocated payments_Verify that user is able to view the search results for payment method dropdown" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="48.57">
+</testcase>
+<testcase name="NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the list shows the results for all the three options based on the search" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="150.153">
+</testcase>
+<testcase name="NXGF-TC-2898: TC_009_View allocated payments_Verify that the user is able to search with payment type cash or premium" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="37.581">
+</testcase>
+<testcase name="NXGF-TC-2899: TC_010_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with the default values for payment type, payment status, payment method" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="32.539">
+</testcase>
+<testcase name="NXGF-TC-2900,NXGF-TC-2901: TC_011_View allocated payments_Verify that the user is able to search with the secondary search from date, to date, Payment reference, From and To amount number, policy reference, policy holder name and these should not be the mandatory search fields" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="41.356">
+</testcase>
+<testcase name="NXGF-TC-2902: TC_013_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Payment reference" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="39.618">
+</testcase>
+<testcase name="NXGF-TC-2903: TC_014_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Payment amount" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="39.54">
+</testcase>
+<testcase name="NXGF-TC-2904: TC_015_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Policy reference" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="39.244">
+</testcase>
+<testcase name="NXGF-TC-2906: TC_017_View allocated payments_Verify that the user clicks on the Reset button" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="20.843">
+</testcase>
+<testcase name="NXGF-TC-2907: TC_018_View allocated payments_Verify that all the search fields are cleared" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="22.602">
+</testcase>
+<testcase name="NXGF-TC-2908,NXGF-TC-2909: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.213">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="journalVoucherCreation.spec.ts:1148:5 NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1148:5 › NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save 
+<failure message="viewAllocatedPayments.spec.ts:689:5 NXGF-TC-2908,NXGF-TC-2909: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:689:5 › NXGF-TC-2908,NXGF-TC-2909: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments 
 
     Test timeout of 100000ms exceeded.
 
@@ -298,41 +108,43 @@
 
     Error: locator.click: Test timeout of 100000ms exceeded.
     Call log:
-      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+      - waiting for locator('//button[@title="Show Details"]').first()
 
 
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
 
-      276 |     async selectAccountName(data: string) {
-      277 |         await this.accountName.click();
-    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-          |                                                                                         ^
-      279 |     }
-      280 |
-      281 |     async enterAmount(data: string) {
+      243 |     async clickOnDetailsButton() {
+      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
+    > 245 |         await showDetails.first().click();
+          |                                   ^
+      246 |     }
+      247 |
+      248 |     async verifySearchBar() {
 
-        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1183:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1182:5
+        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:736:41
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:735:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-6585d-er-is-able-to-click-on-Save-Mawista-EU\test-failed-1.png
+    test-results\tests-viewAllocatedPayment-5f7d7-tails-of-Allocated-payments-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-6585d-er-is-able-to-click-on-Save-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-5f7d7-tails-of-Allocated-payments-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the user is able to view the Validate checkbox as disabled" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="100.506">
+<testcase name="NXGF-TC-2910: TC_021_View allocated payments_Vreify that the policy reference shows the payment  / part of the payment has been allocated against" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="36.945">
+</testcase>
+<testcase name="NXGF-TC-2911: TC_022_View allocated payments_Verify that the Premium and Tax amount is the Amount of the payment that has been allocated against a specific premium (&amp; tax) due installment" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.214">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="journalVoucherCreation.spec.ts:1210:5 NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the user is able to view the Validate checkbox as disabled" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1210:5 › NXGF-TC-3885,NXGF-TC-3889: TC_055_Journal Voucher creation_Verify that the user is able to view the Validate checkbox as disabled 
+<failure message="viewAllocatedPayments.spec.ts:791:5 NXGF-TC-2911: TC_022_View allocated payments_Verify that the Premium and Tax amount is the Amount of the payment that has been allocated against a specific premium (&amp; tax) due installment" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:791:5 › NXGF-TC-2911: TC_022_View allocated payments_Verify that the Premium and Tax amount is the Amount of the payment that has been allocated against a specific premium (& tax) due installment 
 
     Test timeout of 100000ms exceeded.
 
@@ -352,41 +164,41 @@
 
     Error: locator.click: Test timeout of 100000ms exceeded.
     Call log:
-      - waiting for locator('//button[@title="Edit Journal Voucher"]').first()
+      - waiting for locator('//button[@title="Show Details"]').first()
 
 
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329
+       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
 
-      327 |
-      328 |     async clickOnEditJournalVoucher() {
-    > 329 |         await this.editJournalVoucher.first().click();
-          |                                               ^
-      330 |     }
-      331 |
-      332 |     async verifyValidatedCheckboxDisabled() {
+      243 |     async clickOnDetailsButton() {
+      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
+    > 245 |         await showDetails.first().click();
+          |                                   ^
+      246 |     }
+      247 |
+      248 |     async verifySearchBar() {
 
-        at JournalVoucherCreationPage.clickOnEditJournalVoucher (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:329:47)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1239:42
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1238:16
+        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:838:41
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:837:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-75fb4-lidate-checkbox-as-disabled-Mawista-EU\test-failed-1.png
+    test-results\tests-viewAllocatedPayment-3bbff-premium-tax-due-installment-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-75fb4-lidate-checkbox-as-disabled-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-3bbff-premium-tax-due-installment-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a pop up message to fill the missing cells if any" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="101.079">
+<testcase name="NXGF-TC-2912: TC_023_View allocated payments_Verify that the user is able to view the Due date of the specific premium (&amp; tax) due installment" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.187">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="journalVoucherCreation.spec.ts:1249:5 NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a pop up message to fill the missing cells if any" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1249:5 › NXGF-TC-3887: TC_057_Journal Voucher creation_Verify that the user gets a pop up message to fill the missing cells if any 
+<failure message="viewAllocatedPayments.spec.ts:850:5 NXGF-TC-2912: TC_023_View allocated payments_Verify that the user is able to view the Due date of the specific premium (&amp; tax) due installment" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:850:5 › NXGF-TC-2912: TC_023_View allocated payments_Verify that the user is able to view the Due date of the specific premium (& tax) due installment 
 
     Test timeout of 100000ms exceeded.
 
@@ -406,41 +218,41 @@
 
     Error: locator.click: Test timeout of 100000ms exceeded.
     Call log:
-      - waiting for locator('//mat-option//span//mat-label[text()="298098-testt"]')
+      - waiting for locator('//button[@title="Show Details"]').first()
 
 
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278
+       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
 
-      276 |     async selectAccountName(data: string) {
-      277 |         await this.accountName.click();
-    > 278 |         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-          |                                                                                         ^
-      279 |     }
-      280 |
-      281 |     async enterAmount(data: string) {
+      243 |     async clickOnDetailsButton() {
+      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
+    > 245 |         await showDetails.first().click();
+          |                                   ^
+      246 |     }
+      247 |
+      248 |     async verifySearchBar() {
 
-        at JournalVoucherCreationPage.selectAccountName (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:278:89)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1284:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1283:5
+        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:897:41
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:896:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-1c441-ll-the-missing-cells-if-any-Mawista-EU\test-failed-1.png
+    test-results\tests-viewAllocatedPayment-7f9d2-premium-tax-due-installment-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-1c441-ll-the-missing-cells-if-any-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-7f9d2-premium-tax-due-installment-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="101.252">
+<testcase name="NXGF-TC-2913: TC_024_View allocated payments_Verify that the user is able to view the status Paid/ partially paid" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.203">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="journalVoucherCreation.spec.ts:1305:5 NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1305:5 › NXGF-TC-3890,NXGF-TC-3891: TC_060_Journal Voucher creation_Verify that the user is unable to validate a voucher is the total Total debit counter value is not equal to total credit counter value 
+<failure message="viewAllocatedPayments.spec.ts:909:5 NXGF-TC-2913: TC_024_View allocated payments_Verify that the user is able to view the status Paid/ partially paid" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:909:5 › NXGF-TC-2913: TC_024_View allocated payments_Verify that the user is able to view the status Paid/ partially paid 
 
     Test timeout of 100000ms exceeded.
 
@@ -458,295 +270,37 @@
 
         at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
 
-    Error: locator.waitFor: Test timeout of 100000ms exceeded.
+    Error: locator.click: Test timeout of 100000ms exceeded.
     Call log:
-      - waiting for locator('//button[@title="Add Journal Voucher Lookup"]') to be visible
+      - waiting for locator('//button[@title="Show Details"]').first()
 
 
-       at page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:177
+       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
 
-      175 |     async clickOnAddLookupVoucherCreationButton() {
-      176 |         await new Promise(resolve => setTimeout(resolve, 7000));
-    > 177 |         await this.addJournalVoucherLookupbtn.waitFor();
-          |                                               ^
-      178 |         await this.addJournalVoucherLookupbtn.click();
-      179 |         await new Promise(resolve => setTimeout(resolve, 9000));
-      180 |     }
+      243 |     async clickOnDetailsButton() {
+      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
+    > 245 |         await showDetails.first().click();
+          |                                   ^
+      246 |     }
+      247 |
+      248 |     async verifySearchBar() {
 
-        at JournalVoucherCreationPage.clickOnAddLookupVoucherCreationButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherCreation-pages\journalVoucherCreation-page.ts:177:47)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1333:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1332:5
+        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:956:41
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:955:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-e2050--total-credit-counter-value-Mawista-EU\test-failed-1.png
+    test-results\tests-viewAllocatedPayment-81a4a--status-Paid-partially-paid-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-e2050--total-credit-counter-value-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-81a4a--status-Paid-partially-paid-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="2.307">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1398:5 NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1398:5 › NXGF-TC-3892: TC_062_Journal Voucher creation_Verify that the user is able to view a section indicating the totals 
-
-    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
-    Call log:
-      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
-
-
-       at page-objects\login-page.ts:25
-
-      23 |
-      24 |     async gotoLoginPage(url: string) {
-    > 25 |         await this.page.goto(process.env.URL as string || url);
-         |                         ^
-      26 |         await this.page.waitForLoadState('networkidle');
-      27 |     }
-      28 |
-
-        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1405:25
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1404:16
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-7e705-ction-indicating-the-totals-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-7e705-ction-indicating-the-totals-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="2.713">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1490:5 NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1490:5 › NXGF-TC-3893: TC_063_Journal Voucher creation_Verify that the grid shows the Total Debit CV,Total Credit CV,Difference,Local Currency,Foreign Currency 
-
-    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
-    Call log:
-      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
-
-
-       at page-objects\login-page.ts:25
-
-      23 |
-      24 |     async gotoLoginPage(url: string) {
-    > 25 |         await this.page.goto(process.env.URL as string || url);
-         |                         ^
-      26 |         await this.page.waitForLoadState('networkidle');
-      27 |     }
-      28 |
-
-        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1497:25
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1496:16
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-48419-l-Currency-Foreign-Currency-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-48419-l-Currency-Foreign-Currency-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="3.837">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1527:5 NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1527:5 › NXGF-TC-3894: TC_064_Journal Voucher creation_Verify that the differences are indicated as per the amount and the currency 
-
-    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
-    Call log:
-      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
-
-
-       at page-objects\login-page.ts:25
-
-      23 |
-      24 |     async gotoLoginPage(url: string) {
-    > 25 |         await this.page.goto(process.env.URL as string || url);
-         |                         ^
-      26 |         await this.page.waitForLoadState('networkidle');
-      27 |     }
-      28 |
-
-        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1534:25
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1533:16
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-25675-the-amount-and-the-currency-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-25675-the-amount-and-the-currency-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="2.87">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1620:5 NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1620:5 › NXGF-TC-3895: TC_065_Journal Voucher creation_Verify that the Search bar displayed in main menu screen 
-
-    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
-    Call log:
-      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
-
-
-       at page-objects\login-page.ts:25
-
-      23 |
-      24 |     async gotoLoginPage(url: string) {
-    > 25 |         await this.page.goto(process.env.URL as string || url);
-         |                         ^
-      26 |         await this.page.waitForLoadState('networkidle');
-      27 |     }
-      28 |
-
-        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1627:25
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1626:16
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-a3e76-splayed-in-main-menu-screen-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-a3e76-splayed-in-main-menu-screen-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
-</testcase>
-<testcase name="NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="3.01">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="journalVoucherCreation.spec.ts:1645:5 NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1645:5 › NXGF-TC-3896: TC_066_Journal Voucher creation_Verify that the User is able to enter and Search the shortcut menu from search bar 
-
-    Error: page.goto: net::ERR_INTERNET_DISCONNECTED at https://test-finance-eu.tatsh.cloud/
-    Call log:
-      - navigating to "https://test-finance-eu.tatsh.cloud/", waiting until "load"
-
-
-       at page-objects\login-page.ts:25
-
-      23 |
-      24 |     async gotoLoginPage(url: string) {
-    > 25 |         await this.page.goto(process.env.URL as string || url);
-         |                         ^
-      26 |         await this.page.waitForLoadState('networkidle');
-      27 |     }
-      28 |
-
-        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:25:25)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1652:25
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherCreation\journalVoucherCreation.spec.ts:1651:16
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-journalVoucherCreati-e6a9f-ortcut-menu-from-search-bar-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-journalVoucherCreati-e6a9f-ortcut-menu-from-search-bar-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
+<testcase name="NXGF-TC-2914: TC_025_View allocated payments_Verify that the Search bar displayed in main menu screen" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="17.077">
 </testcase>
 </testsuite>
 </testsuites>

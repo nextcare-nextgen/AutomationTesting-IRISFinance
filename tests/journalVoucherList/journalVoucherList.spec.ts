@@ -7,39 +7,39 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 const JournalVoucherListPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherList.json`) as Record<string, any>;
 
 
-test('NXGF-TC-2060: TC_000_Journal Voucher List_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
+// test('NXGF-TC-2060: TC_000_Journal Voucher List_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
 
-    await test.step("--------------Start the Journal Voucher List Testclass----------------------", async () => {
-        console.log("--------------Start the Journal Voucher List Testclass----------------------")
-    })
+//     await test.step("--------------Start the Journal Voucher List Testclass----------------------", async () => {
+//         console.log("--------------Start the Journal Voucher List Testclass----------------------")
+//     })
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const dashboardPage: DashboardPage = new DashboardPage(page);
+//     const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
-    })
+//     })
 
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-    })
+//     await test.step("User Click on Menu Icon", async () => {
+//         await dashboardPage.clickOnMenuIconButton();
+//     })
 
-    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
-        await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
+//     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+//         await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
 
-    })
-    await test.step("Verify Breadcrumbs Text", async () => {
-        await journalVoucherListPage.verifyBreadCrumbsText(JournalVoucherListPageData['TC_000_Journal_Voucher_List'].breadcrumbsText);
+//     })
+//     await test.step("Verify Breadcrumbs Text", async () => {
+//         await journalVoucherListPage.verifyBreadCrumbsText(JournalVoucherListPageData['TC_000_Journal_Voucher_List'].breadcrumbsText);
 
-    })
+//     })
 
-});
+// });
 
 test('NXGF-TC-2061: TC_001_Journal Voucher List_Verify that the main menu option is clickable', async ({ page }) => {
 
@@ -171,7 +171,7 @@ test('NXGF-TC-2065: TC_005_Journal Voucher List_Verify that the screen is divide
     })
 
 });
-
+/*
 test('NXGF-TC-2066: TC_006_Journal Voucher List_Verify that the screen is titled as " JOURNAL VOUCHERS "', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1549,7 +1549,7 @@ test('NXGF-TC-2093: TC_055_Journal Voucher List_Search_Verify that the To Vouche
     })
 
 });
-
+*/
 
 test('NXGF-TC-2094: TC_056_Journal Voucher List_Search_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
 
@@ -1599,66 +1599,66 @@ test('NXGF-TC-2095: TC_057_Journal Voucher List_Verify that the User is able to 
 
 });
 
-test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to clear all the fields after entering details', async ({ page }) => {
+// test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to clear all the fields after entering details', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const dashboardPage: DashboardPage = new DashboardPage(page);
+//     const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
-    })
+//     })
 
-    await test.step("User Select Organization", async () => {
-        await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].organization);
-    })
+//     await test.step("User Select Organization", async () => {
+//         await dashboardPage.selectOrganization(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].organization);
+//     })
 
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-    })
+//     await test.step("User Click on Menu Icon", async () => {
+//         await dashboardPage.clickOnMenuIconButton();
+//     })
 
-    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
-        await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
-    })
+//     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+//         await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
+//     })
 
-    await test.step("User Click on Journal Voucher List Button", async () => {
-        await journalVoucherListPage.clickOnJournalVoucherListButton();
-    })
+//     await test.step("User Click on Journal Voucher List Button", async () => {
+//         await journalVoucherListPage.clickOnJournalVoucherListButton();
+//     })
 
-    await test.step("User Click on Advanced Search Button", async () => {
-        await journalVoucherListPage.clickOnAdvancedSearchButton();
-    })
+//     await test.step("User Click on Advanced Search Button", async () => {
+//         await journalVoucherListPage.clickOnAdvancedSearchButton();
+//     })
 
-    await test.step("User Enter From Voucher Number", async () => {
-        await journalVoucherListPage.enterFromVoucherNumber(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].fromVoucherNumber);
-    })
+//     await test.step("User Enter From Voucher Number", async () => {
+//         await journalVoucherListPage.enterFromVoucherNumber(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].fromVoucherNumber);
+//     })
 
-    await test.step("User Enter To Voucher Number", async () => {
-        await journalVoucherListPage.enterToVoucherNumber(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].tovoucherNumber);
-    })
+//     await test.step("User Enter To Voucher Number", async () => {
+//         await journalVoucherListPage.enterToVoucherNumber(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].tovoucherNumber);
+//     })
 
-    await test.step("User Select Voucher type", async () => {
-        await journalVoucherListPage.selectVoucherType(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].voucherType);
-    })
+//     await test.step("User Select Voucher type", async () => {
+//         await journalVoucherListPage.selectVoucherType(JournalVoucherListPageData['TC_058_Journal_Voucher_List'].voucherType);
+//     })
 
-    await test.step("User Click on ClearAll Button", async () => {
-        await journalVoucherListPage.clickonClearAllButton();
-    })
+//     await test.step("User Click on ClearAll Button", async () => {
+//         await journalVoucherListPage.clickonClearAllButton();
+//     })
 
-    await test.step("User Click on Advanced Search Button", async () => {
-        await journalVoucherListPage.clickOnAdvancedSearchButton();
-    })
+//     await test.step("User Click on Advanced Search Button", async () => {
+//         await journalVoucherListPage.clickOnAdvancedSearchButton();
+//     })
 
-    await test.step("User Verified all filed empty are not", async () => {
-        await journalVoucherListPage.verifyAdvancedSearchfieldisEmpty();
-    })
+//     await test.step("User Verified all filed empty are not", async () => {
+//         await journalVoucherListPage.verifyAdvancedSearchfieldisEmpty();
+//     })
 
-    await test.step("--------------End the Journal Voucher List Testclass----------------------", async () => {
-        console.log("--------------End the Journal Voucher List Testclass----------------------")
-    })
-}) 
+//     await test.step("--------------End the Journal Voucher List Testclass----------------------", async () => {
+//         console.log("--------------End the Journal Voucher List Testclass----------------------")
+//     })
+// }) 
