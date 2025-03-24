@@ -72,14 +72,14 @@
         "accountName": "Gross Writen Premium"
     },
     "TC_059_Chart_of_Accounts": {
-        "accountNumber": "875421"
+        "accountNumber": "784512345"
     },
     "TC_060_Chart_of_Accounts": {
-        "accountNumber": "875421",
-        "title": "Add  Child Account For Gross Writen Premium"
+        "accountNumber": "5114001",
+        "title": "Add  Child Account For Gross Written Premium"
     },
     "TC_062_Chart_of_Accounts": {
-        "accountNumber": "875421"
+        "accountNumber": "5114001"
     },
     "TC_064_Chart_of_Accounts": {
         "accountName": "Gross Written Premium",
@@ -141,7 +141,7 @@
         "accountName": "NCP Clearing"
     },
     "TC_086_Chart_of_Accounts": {
-        "accountNumber": "7879788888"
+        "accountNumber": "8288888000"
     },
     "TC_087_Chart_of_Accounts": {
         "accountName": "TestAccount",

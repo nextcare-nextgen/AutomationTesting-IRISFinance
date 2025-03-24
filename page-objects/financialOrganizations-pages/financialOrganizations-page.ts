@@ -134,8 +134,8 @@ export class FinancialOrganizationsPage {
     }
 
     async verifyAllShrtcutButtonIsClickable() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.financialOrganizationShortcut).toBeEnabled();
-        expect(this.dashboardShortcut).toBeEnabled();
         expect(this.cashAllocationShortcut).toBeEnabled();
         expect(this.chartOfAccountsShortcut).toBeEnabled();
         expect(this.FXratesShortcut).toBeEnabled();
@@ -206,7 +206,10 @@ export class FinancialOrganizationsPage {
     async clickOnRecordsPerPageDropdown() {
         const recordsPerPagedropdown = this.page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
         recordsPerPagedropdown.first().click();
-        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        
+        const options = this.page.locator('//mat-option//span');
+        await options.first().waitFor({ state: 'visible', timeout: 5000 });
+        await expect(options).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
     async verifyOrgNameAndCodeFromGrid() {

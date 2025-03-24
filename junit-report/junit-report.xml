@@ -1,18 +1,40 @@
-<testsuites id="" name="" tests="21" failures="5" skipped="0" errors="0" time="1210.7174290000014">
-<testsuite name="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" timestamp="2025-03-10T15:30:29.743Z" hostname="Mawista-EU" tests="21" failures="5" skipped="0" time="1170.983" errors="0">
-<testcase name="NXGF-TC-2889: TC_000_View allocated payments_Verify that the user is able to navigate to cash allocation screen" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="35.445">
+<testsuites id="" name="" tests="58" failures="3" skipped="0" errors="0" time="1832.1630650000013">
+<testsuite name="tests\financialOrganizations\financialOrganizations.spec.ts" timestamp="2025-03-19T08:57:44.773Z" hostname="Mawista-EU" tests="58" failures="3" skipped="0" time="1806.857" errors="0">
+<testcase name="NXGF-TC-1647: TC_000_Login_Access_Verify that the user is able to access the IRIS Finance portal" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="9.393">
+<system-out>
+<![CDATA[--------------Start the Financial Organization Testclass----------------------
+]]>
+</system-out>
 </testcase>
-<testcase name="NXGF-TC-2890: TC_001_View allocated payments_Verify that the user is able to view the search option and the fileds along with Reset option and the result grid" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="37.913">
+<testcase name="NXGF-TC-1648: TC_001_Login_Access_Verify that the user is able to enter the username and password " classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="8.321">
 </testcase>
-<testcase name="NXGF-TC-2891,NXGF-TC-2892: TC_002_View allocated payments_Verify that the user is able to search with default payment status" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="32.68">
+<testcase name="NXGF-TC-1650: TC_002_Login_Access_Verify that user is able to click on sign in button" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="9.044">
 </testcase>
-<testcase name="NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able to click on details for the unallocated payments" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.196">
+<testcase name="NXGF-TC-1652: TC_003_Verify that the user is able to click on the Remember me checkbox" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="5.454">
+</testcase>
+<testcase name="NXGF-TC-1658: TC_010_Verify that the user is able to see login UI" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="5.684">
+<system-out>
+<![CDATA[Iris Finance Portal | Login
+]]>
+</system-out>
+</testcase>
+<testcase name="NXGF-TC-1660: TC_011_Verify that the main menu option is clickable" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="26.152">
+</testcase>
+<testcase name="NXGF-TC-1662: TC_012_Verify that the user is able to land on the dashboard after successful login." classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="15.984">
+</testcase>
+<testcase name="NXGF-TC-1664: TC_013_Verify that the user is able to see shortcut menu buttons in the main menu page" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="23.641">
+</testcase>
+<testcase name="NXGF-TC-1666: TC_014_Verify that all the shortcut buttons are clickable" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="27.842">
+</testcase>
+<testcase name="NXGF-TC-1668: TC_028_Verify that the user is able to view the Organization shortcut icon in the main menu page" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="25.771">
+</testcase>
+<testcase name="NXGF-TC-1670: TC_029_Verify that the user is able to click on the Organization icon" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="100.497">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="viewAllocatedPayments.spec.ts:113:5 NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able to click on details for the unallocated payments" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:113:5 › NXGF-TC-2893: TC_004_View allocated payments_Verify that the user is able to click on details for the unallocated payments 
+<failure message="financialOrganizations.spec.ts:210:5 NXGF-TC-1670: TC_029_Verify that the user is able to click on the Organization icon" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\financialOrganizations\financialOrganizations.spec.ts:210:5 › NXGF-TC-1670: TC_029_Verify that the user is able to click on the Organization icon 
 
     Test timeout of 100000ms exceeded.
 
@@ -30,65 +52,46 @@
 
         at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
 
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//button[@title="Policy Allocation"]').first()
+    Error: page.waitForLoadState: Test timeout of 100000ms exceeded.
 
+       at page-objects\login-page.ts:26
 
-       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:120
+      24 |     async gotoLoginPage(url: string) {
+      25 |         await this.page.goto(process.env.URL as string || url);
+    > 26 |         await this.page.waitForLoadState('networkidle');
+         |                         ^
+      27 |     }
+      28 |
+      29 |     async loginToApplication(superUser: string, password: string) {
 
-      118 |         await new Promise(resolve => setTimeout(resolve, 5000));
-      119 |         const policyAllocationButtons = this.page.locator('//button[@title="Policy Allocation"]');
-    > 120 |         await policyAllocationButtons.first().click();
-          |                                               ^
-      121 |     }
-      122 |
-      123 |     async clickOnClearedStatus() {
-
-        at ViewAllocatedPaymentsPage.clickOnAllocatePoliciesButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:120:47)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:142:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:141:5
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:26:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialOrganizations\financialOrganizations.spec.ts:217:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialOrganizations\financialOrganizations.spec.ts:216:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-viewAllocatedPayment-e76bd-or-the-unallocated-payments-Mawista-EU\test-failed-1.png
+    test-results\tests-financialOrganizatio-09569-ck-on-the-Organization-icon-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-e76bd-or-the-unallocated-payments-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-financialOrganizatio-09569-ck-on-the-Organization-icon-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-2894: TC_005_View allocated payments_Verify that the user is able to search with both allocated and unallocated payments" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="37.864">
+<testcase name="NXGF-TC-1672: TC_030_Verift that the user is redirected to the Organizations page" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="24.972">
 </testcase>
-<testcase name="NXGF-TC-2895: TC_006_View allocated payments_Verify that user is able to view the search results for payment method dropdown" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="48.57">
+<testcase name="NXGF-TC-1674: TC_031_Verify that the user is able to view the &quot;Organizations&quot; title in bold" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="28.198">
 </testcase>
-<testcase name="NXGF-TC-2896,NXGF-TC-2897: TC_007_View allocated payments_verify that the list shows the results for all the three options based on the search" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="150.153">
+<testcase name="NXGF-TC-1676: TC_032_Verify the that user is able to see two search fields Search by Organization &quot;Name&quot; and Search by Organization &quot;Code&quot;" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="36.696">
 </testcase>
-<testcase name="NXGF-TC-2898: TC_009_View allocated payments_Verify that the user is able to search with payment type cash or premium" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="37.581">
-</testcase>
-<testcase name="NXGF-TC-2899: TC_010_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with the default values for payment type, payment status, payment method" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="32.539">
-</testcase>
-<testcase name="NXGF-TC-2900,NXGF-TC-2901: TC_011_View allocated payments_Verify that the user is able to search with the secondary search from date, to date, Payment reference, From and To amount number, policy reference, policy holder name and these should not be the mandatory search fields" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="41.356">
-</testcase>
-<testcase name="NXGF-TC-2902: TC_013_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Payment reference" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="39.618">
-</testcase>
-<testcase name="NXGF-TC-2903: TC_014_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Payment amount" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="39.54">
-</testcase>
-<testcase name="NXGF-TC-2904: TC_015_View allocated payments_Verify that the user is able to search the previoulsy allocated payments with Policy reference" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="39.244">
-</testcase>
-<testcase name="NXGF-TC-2906: TC_017_View allocated payments_Verify that the user clicks on the Reset button" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="20.843">
-</testcase>
-<testcase name="NXGF-TC-2907: TC_018_View allocated payments_Verify that all the search fields are cleared" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="22.602">
-</testcase>
-<testcase name="NXGF-TC-2908,NXGF-TC-2909: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.213">
+<testcase name="NXGF-TC-1678: TC_033_Verify that the search icon is present beside both the search fields" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="100.447">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="viewAllocatedPayments.spec.ts:689:5 NXGF-TC-2908,NXGF-TC-2909: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:689:5 › NXGF-TC-2908,NXGF-TC-2909: TC_019_View allocated payments_Verify that the user is able to view all the details of Allocated payments 
+<failure message="financialOrganizations.spec.ts:331:5 NXGF-TC-1678: TC_033_Verify that the search icon is present beside both the search fields" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\financialOrganizations\financialOrganizations.spec.ts:331:5 › NXGF-TC-1678: TC_033_Verify that the search icon is present beside both the search fields 
 
     Test timeout of 100000ms exceeded.
 
@@ -106,45 +109,112 @@
 
         at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
 
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//button[@title="Show Details"]').first()
+    Error: page.waitForLoadState: Test timeout of 100000ms exceeded.
 
+       at page-objects\login-page.ts:26
 
-       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
+      24 |     async gotoLoginPage(url: string) {
+      25 |         await this.page.goto(process.env.URL as string || url);
+    > 26 |         await this.page.waitForLoadState('networkidle');
+         |                         ^
+      27 |     }
+      28 |
+      29 |     async loginToApplication(superUser: string, password: string) {
 
-      243 |     async clickOnDetailsButton() {
-      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
-    > 245 |         await showDetails.first().click();
-          |                                   ^
-      246 |     }
-      247 |
-      248 |     async verifySearchBar() {
-
-        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:736:41
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:735:16
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:26:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialOrganizations\financialOrganizations.spec.ts:338:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialOrganizations\financialOrganizations.spec.ts:337:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-viewAllocatedPayment-5f7d7-tails-of-Allocated-payments-Mawista-EU\test-failed-1.png
+    test-results\tests-financialOrganizatio-7e623-side-both-the-search-fields-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-5f7d7-tails-of-Allocated-payments-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-financialOrganizatio-7e623-side-both-the-search-fields-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-2910: TC_021_View allocated payments_Vreify that the policy reference shows the payment  / part of the payment has been allocated against" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="36.945">
+<testcase name="NXGF-TC-1680: TC_034_Verify that the user is able to enter the organization code in the Search by Organization &quot;Code&quot; field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="30.49">
 </testcase>
-<testcase name="NXGF-TC-2911: TC_022_View allocated payments_Verify that the Premium and Tax amount is the Amount of the payment that has been allocated against a specific premium (&amp; tax) due installment" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.214">
+<testcase name="NXGF-TC-1682: TC_035_Verify that the user is able to enter the organization code (alphanumeric) in the &quot;Search by Organization code&quot; field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="27.973">
+</testcase>
+<testcase name="NXGF-TC-1684: TC_036_Verify that the user is able to enter the organization code in the &quot;Search by Organization code&quot; field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.062">
+</testcase>
+<testcase name="NXGF-TC-1687: TC_037_Verify that the user is able to click on search icon after entering the organization code in Search by Organization &quot;Code&quot; field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="31.806">
+</testcase>
+<testcase name="NXGF-TC-1689: TC_038_Verify that the user is able to view the results after the search with Organization code" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.506">
+</testcase>
+<testcase name="NXGF-TC-1691: TC_039_Verify that the user is able to view the mentioned values in the grid" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="27.275">
+</testcase>
+<testcase name="NXGF-TC-1692: TC_040_Verify that the user is able to see the coloring indexes below the grid" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="37.175">
+</testcase>
+<testcase name="NXGF-TC-1694: TC_041_Verify that the user is able to view all the organizations listed irrespective of the status" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="30.943">
+</testcase>
+<testcase name="NXGF-TC-1696,NXGF-TC-1698: TC_042_Verify that the user is able to enter the organization name in the Search by Organization &quot;Name&quot; field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="33.448">
+</testcase>
+<testcase name="NXGF-TC-1700: TC_045_Verify that the user is able to view the Records per page for the search results and select the number of rows from the dropdown" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="26.315">
+</testcase>
+<testcase name="NXGF-TC-1702: TC_046_Verify that the user is able to view the same search results for both the search criteria" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.157">
+</testcase>
+<testcase name="NXGF-TC-1704: TC_047_Verify that the user is able to see the stop date column for active and inactive organizations" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="34.33">
+</testcase>
+<testcase name="NXGF-TC-1706: TC_048_Verify that the user is able to view the start date for all the search results irrespective of their status" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.232">
+</testcase>
+<testcase name="NXGF-TC-1708: TC_049_Verify that the user is able to view the &quot;Edit Organization&quot; button after the search" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="35.538">
+</testcase>
+<testcase name="NXGF-TC-1710,NXGF-TC-1712: TC_050_Verify that the user is able to click on &quot;edit organization&quot; button" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.597">
+</testcase>
+<testcase name="NXGF-TC-1714: TC_052_Verify that the user is able to edit any active organization" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="31.382">
+</testcase>
+<testcase name="NXGF-TC-1718: TC_056_Verify that the user is able click on the filter by icon and select any of the two status active or inactive" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="26.464">
+</testcase>
+<testcase name="NXGF-TC-1720: TC_057_Verify that the user is able to view the corresponding results on the grid" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="25.745">
+</testcase>
+<testcase name="NXGF-TC-1722: TC_058_Verify that the user is able to view all the results when no fitler is applied" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="23.933">
+</testcase>
+<testcase name="NXGF-TC-1724: TC_059_Verify that the user is able to view the Add Organization button (+) in the organization page" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="28.171">
+</testcase>
+<testcase name="NXGF-TC-1726: TC_060_Verify that the user is able to click on the Add Organization button (+)" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="33.243">
+</testcase>
+<testcase name="NXGF-TC-1728: TC_061_Verify that the user is redirected to a new popup window once clicked on add button" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="28.097">
+</testcase>
+<testcase name="NXGF-TC-1730: TC_062_Verify that the user is able to view the mentioned details in the new window for creating a new organization" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="25.81">
+</testcase>
+<testcase name="NXGF-TC-1732: TC_063_Verify that the user is able to view the asterisk (*) for all the mandatory fields" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="26.836">
+</testcase>
+<testcase name="NXGF-TC-1734: TC_064_Verify that the user is able to enter the Organization name in the Organization name field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="27.719">
+</testcase>
+<testcase name="NXGF-TC-1736: TC_065_Verify that the user is able to enter the Organization Code in the Organization Code field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="24.394">
+</testcase>
+<testcase name="NXGF-TC-1738: TC_066_Verify that the user is able to enter the CV Currency1 in the CV Currency1 field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="31.744">
+</testcase>
+<testcase name="NXGF-TC-1740: TC_067_Verify that the user is able to enter the CV Currency2 in CV Currency2 field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="33.196">
+</testcase>
+<testcase name="NXGF-TC-1742: TC_068_Verify that the user is able to enter the Start date in the Start date field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="33.874">
+</testcase>
+<testcase name="NXGF-TC-1744: TC_069_Verify that the user is able to click on Create after entering the mandatory fields" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="36.412">
+</testcase>
+<testcase name="NXGF-TC-1746: TC_070_Verify that the user is able to click on create without entering the mandatory fields" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="25.695">
+</testcase>
+<testcase name="NXGF-TC-1748,NXGF-TC-1750: TC_071_Verify that the user is able to click on close option to exit the form creation" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="26.677">
+</testcase>
+<testcase name="NXGF-TC-1752: TC_074_Verify that the start date selector displays current month with system date selected" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="28.381">
+</testcase>
+<testcase name="NXGF-TC-1754: TC_076_Verify that in the start date selector Weeks start with Monday and ends on Sunday" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="33.085">
+</testcase>
+<testcase name="NXGF-TC-1756: TC_077_Verify that the start date selector has Arrows on top (&lt; , &gt;) to navigate from one month to the other" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="29.491">
+</testcase>
+<testcase name="NXGF-TC-1758: TC_078_Verify that the user is able to enter future date in start date" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="25.556">
+</testcase>
+<testcase name="NXGF-TC-1760: TC_079_Verify that the user is able to enter the old date from start date field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="100.478">
 <properties>
 <property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
 </property>
 </properties>
-<failure message="viewAllocatedPayments.spec.ts:791:5 NXGF-TC-2911: TC_022_View allocated payments_Verify that the Premium and Tax amount is the Amount of the payment that has been allocated against a specific premium (&amp; tax) due installment" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:791:5 › NXGF-TC-2911: TC_022_View allocated payments_Verify that the Premium and Tax amount is the Amount of the payment that has been allocated against a specific premium (& tax) due installment 
+<failure message="financialOrganizations.spec.ts:1724:5 NXGF-TC-1760: TC_079_Verify that the user is able to enter the old date from start date field" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\financialOrganizations\financialOrganizations.spec.ts:1724:5 › NXGF-TC-1760: TC_079_Verify that the user is able to enter the old date from start date field 
 
     Test timeout of 100000ms exceeded.
 
@@ -162,145 +232,44 @@
 
         at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
 
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//button[@title="Show Details"]').first()
+    Error: page.waitForLoadState: Test timeout of 100000ms exceeded.
 
+       at page-objects\login-page.ts:26
 
-       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
+      24 |     async gotoLoginPage(url: string) {
+      25 |         await this.page.goto(process.env.URL as string || url);
+    > 26 |         await this.page.waitForLoadState('networkidle');
+         |                         ^
+      27 |     }
+      28 |
+      29 |     async loginToApplication(superUser: string, password: string) {
 
-      243 |     async clickOnDetailsButton() {
-      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
-    > 245 |         await showDetails.first().click();
-          |                                   ^
-      246 |     }
-      247 |
-      248 |     async verifySearchBar() {
-
-        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:838:41
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:837:16
+        at LoginPage.gotoLoginPage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\login-page.ts:26:25)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialOrganizations\financialOrganizations.spec.ts:1731:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialOrganizations\financialOrganizations.spec.ts:1730:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-viewAllocatedPayment-3bbff-premium-tax-due-installment-Mawista-EU\test-failed-1.png
+    test-results\tests-financialOrganizatio-12021--date-from-start-date-field-Mawista-EU\test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-3bbff-premium-tax-due-installment-Mawista-EU\test-failed-1.png]]
+[[ATTACHMENT|..\test-results\tests-financialOrganizatio-12021--date-from-start-date-field-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="NXGF-TC-2912: TC_023_View allocated payments_Verify that the user is able to view the Due date of the specific premium (&amp; tax) due installment" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.187">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="viewAllocatedPayments.spec.ts:850:5 NXGF-TC-2912: TC_023_View allocated payments_Verify that the user is able to view the Due date of the specific premium (&amp; tax) due installment" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:850:5 › NXGF-TC-2912: TC_023_View allocated payments_Verify that the user is able to view the Due date of the specific premium (& tax) due installment 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//button[@title="Show Details"]').first()
-
-
-       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
-
-      243 |     async clickOnDetailsButton() {
-      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
-    > 245 |         await showDetails.first().click();
-          |                                   ^
-      246 |     }
-      247 |
-      248 |     async verifySearchBar() {
-
-        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:897:41
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:896:16
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-viewAllocatedPayment-7f9d2-premium-tax-due-installment-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-7f9d2-premium-tax-due-installment-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
+<testcase name="NXGF-TC-1762: TC_080_Verify that the user is able to enter the ACTS code" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.839">
 </testcase>
-<testcase name="NXGF-TC-2913: TC_024_View allocated payments_Verify that the user is able to view the status Paid/ partially paid" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="100.203">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="viewAllocatedPayments.spec.ts:909:5 NXGF-TC-2913: TC_024_View allocated payments_Verify that the user is able to view the status Paid/ partially paid" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:909:5 › NXGF-TC-2913: TC_024_View allocated payments_Verify that the user is able to view the status Paid/ partially paid 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//button[@title="Show Details"]').first()
-
-
-       at page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245
-
-      243 |     async clickOnDetailsButton() {
-      244 |         const showDetails = this.page.locator('//button[@title="Show Details"]');
-    > 245 |         await showDetails.first().click();
-          |                                   ^
-      246 |     }
-      247 |
-      248 |     async verifySearchBar() {
-
-        at ViewAllocatedPaymentsPage.clickOnDetailsButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\viewAllocatedPayments-pages\viewAllocatedPayments-page.ts:245:35)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:956:41
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts:955:16
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-viewAllocatedPayment-81a4a--status-Paid-partially-paid-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-viewAllocatedPayment-81a4a--status-Paid-partially-paid-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
+<testcase name="NXGF-TC-1764: TC_081_Verify that the user is able to enter Localization in Localization field" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="27.114">
 </testcase>
-<testcase name="NXGF-TC-2914: TC_025_View allocated payments_Verify that the Search bar displayed in main menu screen" classname="tests\viewAllocatedPayments\viewAllocatedPayments.spec.ts" time="17.077">
+<testcase name="NXGF-TC-1766: TC_082_Verify that the Edit Organization Button is displayed" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="32.102">
+</testcase>
+<testcase name="NXGF-TC-1768: TC_083_Verify that the after click on details button Financials information and Organization card type is displayed" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="29.127">
+</testcase>
+<testcase name="NXGF-TC-1770: TC_084_Verify that the Search bar displayed in main menu screen" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="24.843">
+</testcase>
+<testcase name="NXGF-TC-1772: TC_085_Verify that the User is able to Search the shortcut menu from search bar " classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="29.506">
 </testcase>
 </testsuite>
 </testsuites>

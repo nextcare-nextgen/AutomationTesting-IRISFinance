@@ -4,6 +4,7 @@ import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page
 import { FinancialTransactionsMonitoringPage } from '../../page-objects/financialTransactionsMonitoring-pages/financialTransactionsMonitoring-page.ts';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const FinancialTransactionsMonitoringData = require(`../../testdata/${process.env.ENV || 'eu'}/financialTransactionsMonitoring.json`) as Record<string, any>;
 
 
@@ -17,14 +18,16 @@ test('NXGF-TC-3014: TC_000_Transactions Details Screen_Verify that Valid breadcr
     const dashboardPage: DashboardPage = new DashboardPage(page);
     const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
 
-
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -37,11 +40,8 @@ test('NXGF-TC-3014: TC_000_Transactions Details Screen_Verify that Valid breadcr
     })
     await test.step("Verify Breadcrumbs Text", async () => {
         await financialTransactionsMonitoringPage.verifyBreadCrumbsText(FinancialTransactionsMonitoringData['TC_000_Transactions_Details_Screen'].breadcrumbsText);
-
     })
-
 });
-
 
 test('NXGF-TC-3015: TC_001_Transactions Details Screen_Verify that after logging the user lands on the main menu', async ({ page }) => {
 
@@ -54,13 +54,15 @@ test('NXGF-TC-3015: TC_001_Transactions Details Screen_Verify that after logging
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
-
 });
 
 test('NXGF-TC-3016: TC_002_Transactions Details Screen_Verify that the user is able to see shortcut menu buttons in the main menu page', async ({ page }) => {
@@ -77,6 +79,10 @@ test('NXGF-TC-3016: TC_002_Transactions Details Screen_Verify that the user is a
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -84,10 +90,7 @@ test('NXGF-TC-3016: TC_002_Transactions Details Screen_Verify that the user is a
     await test.step("Verified that the User is able to See Transactions Details Shortcut Button", async () => {
         await financialTransactionsMonitoringPage.verifyFinancialTransactionsMonitoringShrtcutButton();
     })
-
-
 });
-
 
 test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that the user is able to navigate to the Transaction details screen', async ({ page }) => {
 
@@ -103,6 +106,10 @@ test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that 
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -113,7 +120,6 @@ test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that 
 
     await test.step("Verified that the user is able to navigate to the Transaction details screen", async () => {
         await financialTransactionsMonitoringPage.verifyfinancialTransactionsMonitoringText(FinancialTransactionsMonitoringData['TC_003_Transactions_Details_Screen'].financialTransactionsMonitoringText)
-
     })
 });
 
@@ -131,6 +137,10 @@ test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that 
 //         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 //     })
 
+//     await test.step("Set the organization to Allianz partners 2024", async () => {
+//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+//     })
+
 //     await test.step("User Click on Menu Icon", async () => {
 //         await dashboardPage.clickOnMenuIconButton();
 //     })
@@ -142,10 +152,7 @@ test('NXGF-TC-3017,NXGF-TC-3018: TC_003_Transactions Details Screen_Verify that 
 //     await test.step("User Verified the organization name selected on the top of the page", async () => {
 //         await financialTransactionsMonitoringPage.verifyOrganizationName(FinancialTransactionsMonitoringData['TC_005_Transactions_Details_Screen'].orgName);
 //     })
-
-
 // });
-
 
 test('NXGF-TC-3021: TC_006_Transactions Details Screen_Verify that the user is able to select todays date in the "from date" calendar selections', async ({ page }) => {
 
@@ -161,6 +168,10 @@ test('NXGF-TC-3021: TC_006_Transactions Details Screen_Verify that the user is a
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -171,9 +182,7 @@ test('NXGF-TC-3021: TC_006_Transactions Details Screen_Verify that the user is a
 
     await test.step("Verified that the user is able to select todays date in the 'from date' calendar selections", async () => {
         await financialTransactionsMonitoringPage.selectCurrentDateFromDateCalender();
-
     })
-
 });
 
 test('NXGF-TC-3022: TC_007_Transactions Details Screen_Verify that the user should not be able to select future date in the "from date" calendar selection', async ({ page }) => {
@@ -190,6 +199,10 @@ test('NXGF-TC-3022: TC_007_Transactions Details Screen_Verify that the user shou
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -201,7 +214,6 @@ test('NXGF-TC-3022: TC_007_Transactions Details Screen_Verify that the user shou
     await test.step("Select Future Date in From Date Field", async () => {
         await financialTransactionsMonitoringPage.selectFutureDateInFromDateCalender();
     })
-
 });
 
 test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is able to view the search filters', async ({ page }) => {
@@ -218,6 +230,10 @@ test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is a
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -229,7 +245,6 @@ test('NXGF-TC-3020: TC_008_Transactions Details Screen_Verify that the user is a
     await test.step("User Verified the organization name selected on the top of the page", async () => {
         await financialTransactionsMonitoringPage.verifySearchfiltersButton();
     })
-
 });
 
 test('NXGF-TC-3023: TC_009_Transactions Details Screen_Verify that the user should is be able to select past date in the "from date" calendar selection', async ({ page }) => {
@@ -246,6 +261,10 @@ test('NXGF-TC-3023: TC_009_Transactions Details Screen_Verify that the user shou
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -257,7 +276,6 @@ test('NXGF-TC-3023: TC_009_Transactions Details Screen_Verify that the user shou
     await test.step("Verified that the user should is be able to select past date in the 'from date' calendar selection", async () => {
         await financialTransactionsMonitoringPage.selectOldDate();
     })
-
 });
 
 test('NXGF-TC-3024,NXGF-TC-3025: TC_010_Transactions Details Screen_Verify that the from date is earlier or equal to the to date', async ({ page }) => {
@@ -274,6 +292,10 @@ test('NXGF-TC-3024,NXGF-TC-3025: TC_010_Transactions Details Screen_Verify that 
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -286,7 +308,6 @@ test('NXGF-TC-3024,NXGF-TC-3025: TC_010_Transactions Details Screen_Verify that 
         await financialTransactionsMonitoringPage.selectOldDate();
         await financialTransactionsMonitoringPage.selectCurrentDateToDateCalender();
     })
-
 });
 
 // test('NXGF-TC-3026: TC_012_Transaction Details Screen_Verify that the user is able to select from the Payment Status dropdown', async ({ page }) => {
@@ -301,6 +322,10 @@ test('NXGF-TC-3024,NXGF-TC-3025: TC_010_Transactions Details Screen_Verify that 
 
 //     await test.step("User Enter Username and Password", async () => {
 //         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Set the organization to Allianz partners 2024", async () => {
+//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
 //     })
 
 //     await test.step("User Click on Menu Icon", async () => {
@@ -318,7 +343,6 @@ test('NXGF-TC-3024,NXGF-TC-3025: TC_010_Transactions Details Screen_Verify that 
 //     await test.step("Verified that the user is able to select from the Payment Status dropdown", async () => {
 //         await financialTransactionsMonitoringPage.selectPaymentStatus(FinancialTransactionsMonitoringData['TC_012_Transactions_Details_Screen'].paymentStatus);
 //     })
-
 // });
 
 test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment status has the mentioned values', async ({ page }) => {
@@ -333,6 +357,10 @@ test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment st
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -350,7 +378,6 @@ test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment st
     await test.step("Verified that the Payment status has the mentioned values", async () => {
         await financialTransactionsMonitoringPage.verifyListOfPaymentStatus();
     })
-
 });
 
 // test('NXGF-TC-3028: TC_014_Transaction Details Screen_Verify that the user is able to select from the Payment Type dropdown', async ({ page }) => {
@@ -365,6 +392,10 @@ test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment st
 
 //     await test.step("User Enter Username and Password", async () => {
 //         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Set the organization to Allianz partners 2024", async () => {
+//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
 //     })
 
 //     await test.step("User Click on Menu Icon", async () => {
@@ -382,7 +413,6 @@ test('NXGF-TC-3027: TC_013_Transaction Details Screen_Verify that the Payment st
 //     await test.step("Verified that the user is able to select from the Payment Type dropdown", async () => {
 //         await financialTransactionsMonitoringPage.selectTransactiontype(FinancialTransactionsMonitoringData['TC_014_Transactions_Details_Screen'].transactionType);
 //     })
-
 // });
 
 test('NXGF-TC-3029: TC_015_Transaction Details Screen_Verify that the Payment Type has the mentioned values', async ({ page }) => {

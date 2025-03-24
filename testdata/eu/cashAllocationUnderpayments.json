@@ -3,11 +3,11 @@
         "paymentStatus": "Cleared-unallocated"
     },
     "TC_002_Cash_Allocation": {
-        "paymentRef": "ELVD62316411400238",
+        "paymentRef": "ELVD62332623000107",
         "policyRef": "PRT-AWPDE-6914-NB"
     },
     "TC_004_Cash_Allocation": {
-        "paymentRef": "ELVD62316411400238",
+        "paymentRef": "ELVD62332623000107",
         "policyRef": "PRT-AWPDE-6914-NB",
         "unallocatedAmount": "4"
     },

@@ -5,6 +5,7 @@ import { CashAllocationUnderPaymentsPage } from '../../page-objects/cashAllocati
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const CashAllocationUnderPaymentsPageData = require(`../../testdata/${process.env.ENV || 'eu'}/cashAllocationUnderpayments.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 
@@ -24,7 +25,10 @@ test('NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a st
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+            await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -37,12 +41,9 @@ test('NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a st
     })
     await test.step("Verified that a received payment with a status of cleared-unallocated", async () => {
         await cashAllocationUnderPaymentsPage.verifyUnAllocatedData();
-
     })
-
-
 });
-/*
+
 test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amount is less than the premium due for the policy', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -55,7 +56,10 @@ test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amo
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -64,31 +68,26 @@ test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amo
 
     await test.step("User Click on Cash Allocation Shortcut Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnCashAllocationShrtcutsButton();
-
     })
+
     await test.step("User Click on Filter Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnFilterButton();
-
     })
 
     await test.step("User enter Payment Refernce", async () => {
         await cashAllocationUnderPaymentsPage.enterPaymentRef(CashAllocationUnderPaymentsPageData['TC_002_Cash_Allocation'].paymentRef);
-
     })
 
     await test.step("User Click on Apply Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnApplyButton();
-
     })
 
     await test.step("User Click on Search Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnSearchButtonButton();
-
     })
 
     await test.step("User Click on Policy Allocation Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnpolicyAllocationButton();
-
     })
 
     await test.step("User able to entert he policy details using the policy refernce", async () => {
@@ -99,12 +98,9 @@ test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amo
         await cashAllocationUnderPaymentsPage.clickOnSearchButtonButton();
     })
 
-
     await test.step("User verified amount button", async () => {
-        // await cashAllocationUnderPaymentsPage.verifyAmount();
+        //await cashAllocationUnderPaymentsPage.verifyAmount();
     })
-
-
 });
 
 test('NXGF-TC-2976,NXGF-TC-2981: TC_004_one to one_Verify that a received payment has been allocated to a policy', async ({ page }) => {
@@ -119,7 +115,10 @@ test('NXGF-TC-2976,NXGF-TC-2981: TC_004_one to one_Verify that a received paymen
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -128,31 +127,26 @@ test('NXGF-TC-2976,NXGF-TC-2981: TC_004_one to one_Verify that a received paymen
 
     await test.step("User Click on Cash Allocation Shortcut Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnCashAllocationShrtcutsButton();
-
     })
+
     await test.step("User Click on Filter Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnFilterButton();
-
     })
 
     await test.step("User enter Payment Refernce", async () => {
         await cashAllocationUnderPaymentsPage.enterPaymentRef(CashAllocationUnderPaymentsPageData['TC_004_Cash_Allocation'].paymentRef);
-
     })
 
     await test.step("User Click on Apply Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnApplyButton();
-
     })
 
     await test.step("User Click on Search Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnSearchButtonButton();
-
     })
 
     await test.step("User Click on Policy Allocation Button", async () => {
         await cashAllocationUnderPaymentsPage.clickOnpolicyAllocationButton();
-
     })
 
     await test.step("User able to entert he policy details using the policy refernce", async () => {
@@ -178,7 +172,6 @@ test('NXGF-TC-2976,NXGF-TC-2981: TC_004_one to one_Verify that a received paymen
     await test.step("User Verify Aloocate button is Clickable", async () => {
         await cashAllocationUnderPaymentsPage.verifyAllocateButtonIsClickable();
     })
-
 });
 
 test('NXGF-TC-2986: TC_014_Underpayment_Verify a received payment has been allocated to a policy where commission is applicable', async ({ page }) => {
@@ -193,6 +186,10 @@ test('NXGF-TC-2986: TC_014_Underpayment_Verify a received payment has been alloc
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -234,7 +231,4 @@ test('NXGF-TC-2986: TC_014_Underpayment_Verify a received payment has been alloc
     await test.step("User Verify Received Payment amounts", async () => {
         await cashAllocationUnderPaymentsPage.verifyRecievedPayment();
     })
-
-
 });
-*/

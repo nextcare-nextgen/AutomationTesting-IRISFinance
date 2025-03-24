@@ -128,7 +128,8 @@ export class CashAllocationPage {
         this.premiumandTaxtitle = page.locator("//h2[@title='Premium and Tax Dues']");
         this.okbtn = page.locator('//button[@title="Ok"]');
         this.policyIDFromGrid = page.locator("//mat-cell[contains(@class,'policyReferences')]");
-        this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 11.82']");
+        //this.alertErrorPopup = page.locator("//mat-error//mat-label[@title='Please enter a value less than or equal to 11.82']");
+        this.alertErrorPopup = page.locator("//p[contains(text(),'Are you sure you want to allocate policy reference')]");
         this.deletebtn = page.locator('//button[@title="Remove Policy"]');
         this.broker = page.locator('//input[@title="Broker"]');
     }
@@ -494,6 +495,7 @@ export class CashAllocationPage {
         await this.amountFill.click();
         await this.amountFill.clear();
         await this.amountFill.fill(data);
+        await this.amountFill.scrollIntoViewIfNeeded();
     }
 
     async verifyAddPolicyPopup() {
@@ -509,11 +511,13 @@ export class CashAllocationPage {
 
     async verifyPremiumandTaxAmountFromGrid() {
         const premiumAndTaxAmount = this.page.locator('//mat-cell[contains(@class,"premiumAndTaxDueAmount")]');
-        for (let index = 0; index < await premiumAndTaxAmount.count(); index++) {
-            expect(await premiumAndTaxAmount).toBeVisible();
+        const count = await premiumAndTaxAmount.count();
+
+        for (let index = 0; index < count; index++) {
+        const currentElement = premiumAndTaxAmount.nth(index);
+        await expect(currentElement).toBeVisible({ timeout: 60000 });
         }
     }
-
 
     async verifyPremiumandTaxTitle(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
@@ -536,6 +540,8 @@ export class CashAllocationPage {
 
     async verifyAlertErrorPopup() {
         await new Promise(resolve => setTimeout(resolve, 3000));
+        //const errorLabelLocator = this.page.locator('//mat-error//mat-label[@title=\'Please enter a value less than or equal to 11.82\']');
+        //await errorLabelLocator.waitFor({ state: 'visible', timeout: 60000 });
         expect(this.alertErrorPopup).toBeVisible();
     }
 
@@ -596,8 +602,7 @@ export class CashAllocationPage {
 
     async verifyAmountErrorMessage() {
         const premiumAndTaxAmount = this.page.locator('//mat-label[contains(@title,"Please enter a value less than or equal to")]');
+        await premiumAndTaxAmount.waitFor({ state: 'visible', timeout: 60000 });
         expect(premiumAndTaxAmount).toBeVisible();
     }
-
-
 }

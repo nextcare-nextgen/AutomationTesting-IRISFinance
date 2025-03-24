@@ -123,7 +123,7 @@ export class ChartOfAccountsPage {
         this.selectStartDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
         this.addchildAccount = page.locator('//mat-icon[@title="Add Child Account"]');
-        this.addchildAccountTitle = page.locator('//h2[@title="Add  Child Account For Gross Writen Premium"]');
+        this.addchildAccountTitle = page.locator('//h2[@title="Add  Child Account For Gross Written Premium"]');
         this.warningPopup = page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
         this.expandArrow = page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
         this.addAccountScreenText = page.locator("//iris-base-label//h2[@title='Add a new account']");
@@ -196,8 +196,9 @@ export class ChartOfAccountsPage {
     }
 
     async clickonSearchButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.search.click();
-        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        //await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
 
     async verifyAccountNumberFromGrid() {
@@ -426,6 +427,7 @@ export class ChartOfAccountsPage {
     }
 
     async verifyAddChildAccountTitle(data: string) {
+        //await this.addchildAccountTitle.waitFor({ state: 'visible', timeout: 10000 });
         const actual = await this.addchildAccountTitle.textContent();
         expect(actual).toBe(data);
     }
@@ -480,12 +482,12 @@ export class ChartOfAccountsPage {
       //  await this.page.locator('//span[text()="Account Type"]').click();
        // const selectAccounttype = this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]');
       //  selectAccounttype.click();
-
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const key = this.page.locator('//iris-account-type-autocomplete//div//span[text()="Account Type"]');
         await key.click();
         const glAccountTypeinput = this.page.locator('//mat-dialog-container//iris-account-type-autocomplete//iris-select-formfield//mat-form-field[contains(@class,"type")]//input[1]');
         glAccountTypeinput.fill(data);
-        const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]').dblclick();
+        const selectGLAccounttype = this.page.locator('//div//mat-option//span//mat-label[text()="' + data + '"]').click();
 
 
     }

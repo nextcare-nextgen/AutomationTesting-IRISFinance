@@ -4,6 +4,7 @@ import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page
 import { JournalVoucherLookupPage } from '../../page-objects/journalVoucherLookup-pages/journalVoucherLookup-page';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const JournalVoucherLookupPageData = require(`../../testdata/${process.env.ENV || 'eu'}/journalVoucherLookup.json`) as Record<string, any>;
 
 
@@ -147,6 +148,10 @@ test('NXGF-TC-2011: TC_005_Journal Voucher Lookup_Verify that the screen is divi
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+            await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {

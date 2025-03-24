@@ -4,6 +4,7 @@ import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page
 import { CardTypesPage } from '../../page-objects/cardTypes-pages/cardTypes-page.ts';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const CardTypesData = require(`../../testdata/${process.env.ENV || 'eu'}/cardTypes.json`) as Record<string, any>;
 
 //test code
@@ -148,6 +149,10 @@ test('NXGF-TC-1860: TC_004_card types_Verify that the user is able to view two o
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
