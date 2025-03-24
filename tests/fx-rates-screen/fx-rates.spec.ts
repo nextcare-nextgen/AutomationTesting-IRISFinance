@@ -38,24 +38,24 @@ test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed'
 
 });
 
-// test('NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to main menu', async ({ page }) => {
+test('NXGF-TC-1872: TC_001_FX_Rates_Verify that the user is able to navigate to main menu', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-// });
+});
 
 test('NXGF-TC-1873: TC_002_FX_Rates_Verify that the user is able to land on the dashboard page after successful login.', async ({ page }) => {
 
@@ -124,33 +124,33 @@ test('NXGF-TC-1874: TC_004_FX_Rates_Verify that the user is able to see FX Rates
 
 });
 
-// test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX Rates page', async ({ page }) => {
+test('NXGF-TC-1876: TC_005_FX_Rates_Verify that the user is redirected to the FX Rates page', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
 
-//     await test.step("Verified that the user is able to navigate to the FX Rates screen", async () => {
-//         await fxRatesPage.verifyFXRatesText(fxRatesData['TC_005_FX_Rates'].fxRatesText);
-//     })
+    await test.step("Verified that the user is able to navigate to the FX Rates screen", async () => {
+        await fxRatesPage.verifyFXRatesText(fxRatesData['TC_005_FX_Rates'].fxRatesText);
+    })
 
-// });
+});
 
 test('NXGF-TC-1877: TC_006_FX_Rates_Verify that the user is able to view the "FX  Rates " title in bold', async ({ page }) => {
 
@@ -214,118 +214,118 @@ test('NXGF-TC-1878: TC_007_FX_Rates_Verify that the From date and To date is dis
 
 });
 
-// test('NXGF-TC-1879: TC_008_FX_Rates_Verify that the user is able to select From date and To date', async ({ page }) => {
+test('NXGF-TC-1879: TC_008_FX_Rates_Verify that the user is able to select From date and To date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
 
-//     await test.step("User From Date and To Date", async () => {
-//         await fxRatesPage.enterFromAndToDate();
-//     })
+    await test.step("User From Date and To Date", async () => {
+        await fxRatesPage.enterFromAndToDate();
+    })
 
 
-// });
+});
 
-// test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displayed', async ({ page }) => {
+test('NXGF-TC-1880: TC_009_FX_Rates_Verify that the From Currency field is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
     
-//     await test.step("Verified that the From Currency", async () => {
-//         await fxRatesPage.verifyFromCurrencyField();
-//     })
+    await test.step("Verified that the From Currency", async () => {
+        await fxRatesPage.verifyFromCurrencyField();
+    })
 
-// });
+});
 
-// test('NXGF-TC-1881: TC_010_FX_Rates_Verify that the user should able to select From Currency', async ({ page }) => {
+test('NXGF-TC-1881: TC_010_FX_Rates_Verify that the user should able to select From Currency', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
 
-//     await test.step("Verified that the From Currency", async () => {
-//         await fxRatesPage.selectFromCurrency(fxRatesData['TC_010_FX_Rates'].fromCurrency);
-//     })
+    await test.step("Verified that the From Currency", async () => {
+        await fxRatesPage.selectFromCurrency(fxRatesData['TC_010_FX_Rates'].fromCurrency);
+    })
 
-// });
+});
 
-// test('NXGF-TC-1882: TC_011_FX_Rates_Verify that the To Currency field is displayed', async ({ page }) => {
+test('NXGF-TC-1882: TC_011_FX_Rates_Verify that the To Currency field is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
    
-//     await test.step("Verified that the To Currency", async () => {
-//         await fxRatesPage.verifyToCurrencyField();
-//     })
+    await test.step("Verified that the To Currency", async () => {
+        await fxRatesPage.verifyToCurrencyField();
+    })
 
-// });
+});
 
 test('NXGF-TC-1883: TC_012_FX_Rates_Verify that the user should able to select To Currency', async ({ page }) => {
 
@@ -1062,62 +1062,62 @@ test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per
 
 });
 
-// test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
+test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
-//     })
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
 
-//     await test.step("User Click on Records per page dropdown", async () => {
-//         await fxRatesPage.clickOnRecordsPerPageDropdown();
-//     })
+    await test.step("User Click on Records per page dropdown", async () => {
+        await fxRatesPage.clickOnRecordsPerPageDropdown();
+    })
 
-// });
+});
 
-// test('NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts', async ({ page }) => {
+test('NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 
-//     })
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on FX Rates Shortcut Button", async () => {
-//         await fxRatesPage.clickOnFxRatesShrtcutsButton();
-//     })
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
 
-//     await test.step("User Click on Records per page dropdown options", async () => {
-//         await fxRatesPage.clickOnRecordsPerPageDropdownOption();
-//     })
-// });
+    await test.step("User Click on Records per page dropdown options", async () => {
+        await fxRatesPage.clickOnRecordsPerPageDropdownOption();
+    })
+});
 
 test('NXGF-TC-1908: TC_037_FX_Rates_Add new FX Rates_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
 

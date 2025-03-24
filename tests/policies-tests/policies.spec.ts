@@ -191,7 +191,7 @@ test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Po
     })
 
 });
-/*
+
 test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -828,7 +828,7 @@ test('NXGF-TC-1932: TC_022_Policies_Verify that the user is able to search with 
     })
 
 })
-    */
+    
 
 test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher eye icon is displayed', async ({ page }) => {
 
@@ -858,7 +858,7 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
     })
 
 })
-/*
+
 test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected on Policy Journal Voucher screen after click on view policy journal voucher', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1388,4 +1388,4 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
         console.log("--------------End the Policies Testclass----------------------")
     })
 })
-    */
+    

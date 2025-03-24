@@ -4,7 +4,7 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 const onePayData = require(`../../testdata/${process.env.ENV || 'eu'}/onePay.json`) as Record<string, any>;
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 
-/*
+
 test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the user is able to create any long term and short term policies in Mawista B2C portal', async ({ page }) => {
     const onePayPage: OnePayPage = new OnePayPage(page);
 
@@ -587,4 +587,3 @@ test('NXGF-TC-2834: TC_008_OnePay payment journey_Validate the the user can clic
     })
 
 });
-*/

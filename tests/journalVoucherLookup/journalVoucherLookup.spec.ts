@@ -209,7 +209,7 @@ test('NXGF-TC-2012: TC_006_Journal Voucher Lookup_Verify that the screen is titl
     })
 
 });
-/*
+
 test('NXGF-TC-2013: TC_008_Journal Voucher Lookup_Verify that the Organization is already selected on the top of the page (header)', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1495,4 +1495,3 @@ test('NXGF-TC-2045: TC_067_Journal Voucher Lookup_Verify that the User is able t
     })
 
 }); 
-*/
