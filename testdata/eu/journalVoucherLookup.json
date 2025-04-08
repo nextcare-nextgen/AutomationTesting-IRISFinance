@@ -32,13 +32,13 @@
         "organization": "2024",
         "fromVoucherNumber": "100",
         "toVoucherNumber": "50",
-        "errorMessage": "Please enter a value greater than or equal to 100"
+        "errorMessage": "Please enter a value greater than or equal to 100."
     },
     "TC_021_Journal_Voucher_Lookup": {
         "organization": "2024",
         "fromVoucherNumber": "100",
         "toVoucherNumber": "50",
-        "errorMessage": "Please enter a value greater than or equal to 100"
+        "errorMessage": "Please enter a value greater than or equal to 100."
     },
     "TC_022_Journal_Voucher_Lookup": {
         "organization": "2024",

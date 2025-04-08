@@ -1,34 +1,6 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="105.07458399999886">
-<testsuite name="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" timestamp="2025-03-24T09:31:46.256Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="93.967" errors="0">
-<testcase name="NXGF-TC-3050: TC_037_Transaction Details Screen_Verify that all the details are reflecting as per the headers respectively" classname="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" time="93.967">
-<failure message="financialTransactionsMonitoring.spec.ts:1189:5 NXGF-TC-3050: TC_037_Transaction Details Screen_Verify that all the details are reflecting as per the headers respectively" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts:1189:5 › NXGF-TC-3050: TC_037_Transaction Details Screen_Verify that all the details are reflecting as per the headers respectively 
-
-    Error: expect(locator).toBeVisible()
-
-    Locator: locator('//mat-cell[contains(@class,"transactionDate")]')
-    Expected: visible
-    Received: <element(s) not found>
-    Call log:
-      - expect.toBeVisible with timeout 40000ms
-      - waiting for locator('//mat-cell[contains(@class,"transactionDate")]')
-
-
-       at page-objects\financialTransactionsMonitoring-pages\financialTransactionsMonitoring-page.ts:383
-
-      381 |     async verifySearchResultFromGrid() {
-      382 |         await new Promise(resolve => setTimeout(resolve, 3000));
-    > 383 |         expect(this.page.locator('//mat-cell[contains(@class,"transactionDate")]')).toBeVisible();
-          |                                                                                     ^
-      384 |         expect(this.page.locator('//mat-cell[contains(@class,"paymentDate")]')).toBeVisible();
-      385 |         expect(this.page.locator('//mat-cell[contains(@class,"paymentType")]')).toBeVisible();
-      386 |         expect(this.page.locator('//mat-cell[contains(@class,"paymentMethod")]')).toBeVisible();
-
-        at FinancialTransactionsMonitoringPage.verifySearchResultFromGrid (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\financialTransactionsMonitoring-pages\financialTransactionsMonitoring-page.ts:383:85)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts:1236:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts:1235:5
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="30.112586999997497">
+<testsuite name="tests\mawistaPayments\mawistaPayments.spec.ts" timestamp="2025-04-07T12:29:04.504Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="24.499" errors="0">
+<testcase name="NXGF-TC-3713: TC_003_Mawista payments_Verify that the user is able to search and view the relevant payments with search option of &quot;from date&quot; and &quot;To date&quot;" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="24.499">
 </testcase>
 </testsuite>
 </testsuites>

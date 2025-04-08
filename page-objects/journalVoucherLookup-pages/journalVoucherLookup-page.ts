@@ -30,8 +30,8 @@ export class JournalVoucherLookupPage {
     readonly gridAccountNum: Locator;
     readonly gridAmount: Locator;
     readonly gridCurrency: Locator;
-    readonly gridAmountCV1: Locator;
-    readonly gridAmountCV2: Locator;
+    readonly gridAmountEUR: Locator;
+    readonly gridAmountEUR2: Locator;
     readonly gridDebitCredit: Locator;
     readonly gridValueDate: Locator;
     readonly gridproductLine: Locator;
@@ -84,7 +84,7 @@ export class JournalVoucherLookupPage {
         this.vouchertype = page.locator('//iris-voucher-type-autocomplete//div//input[contains(@class,"input-element")]');
         this.fromVoucherNumber = page.locator('//div//input[@title="From voucher number"]');
         this.toVoucherNumber = page.locator('//div//input[@title="To voucher number"]');
-        this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
+        this.errorMessageVochernumber = page.locator("//mat-label[@title='Please enter a value greater than or equal to 100.']");
         this.amount = page.locator('//div//input[@title="From Amount"]');
         this.gridVoucherNum = page.locator('//small[text()="Voucher Number"]');
         this.gridVouchertype = page.locator('//small[text()="Voucher Type"]');
@@ -93,8 +93,8 @@ export class JournalVoucherLookupPage {
         this.gridAccountName = page.locator('//small[text()="Account Name"]');
         this.gridAmount = page.locator('//small[text()="Amount"]');
         this.gridCurrency = page.locator('//small[text()="Currency"]');
-        this.gridAmountCV1 = page.locator('//small[text()="Amount CV1 (EUR)"]');
-        this.gridAmountCV2 = page.locator('//small[text()="Amount CV2 (EUR)"]');
+        this.gridAmountEUR = page.locator("//mat-header-cell[@id='amountCV1-Amount EUR']/div/div//small[@title='Amount EUR']");
+        this.gridAmountEUR2 = page.locator("//mat-header-cell[@id='amountCV2-Amount EUR']/div/div//small[@title='Amount EUR']");
         this.gridDebitCredit = page.locator('//small[text()="Debit/Credit"]');
         this.gridValueDate = page.locator('//small[text()="Value Date"]');
         this.gridproductLine = page.locator('//small[text()="Product Line"]');
@@ -278,14 +278,15 @@ export class JournalVoucherLookupPage {
 
     async verifyGridHeaderColumnName() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        expect(this.gridVouchertype).toBeVisible();
+        expect(this.gridVoucherNum).toBeVisible();
         expect(this.gridVoucherDate).toBeVisible();
         expect(this.gridAccountName).toBeVisible();
         expect(this.gridAccountNum).toBeVisible();
         expect(this.gridAmount).toBeVisible();
         expect(this.gridCurrency).toBeVisible();
-        expect(this.gridAmountCV1).toBeVisible();
-        expect(this.gridAmountCV2).toBeVisible();
+        expect(this.gridproductLine).toBeVisible();
+        expect(this.gridAmountEUR).toBeVisible();
+        expect(this.gridAmountEUR2).toBeVisible();
         expect(this.gridDebitCredit).toBeVisible();
         expect(this.gridValueDate).toBeVisible();
         expect(this.gridVoucherRef).toBeVisible();
@@ -312,6 +313,7 @@ export class JournalVoucherLookupPage {
     }
 
     async verifySectionsFromVoucherInfo() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.secondsection).toBeVisible();
         expect(this.thirdsection).toBeVisible();
     }
@@ -375,12 +377,12 @@ export class JournalVoucherLookupPage {
     }
 
     async verifyVoucherDetailsThirdSection() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(this.currencyVoucherInfoThirdSection).toBeVisible();
         expect(this.totalCredityVoucherInfoThirdSection).toBeVisible();
         expect(this.totalDebitVoucherInfoThirdSection).toBeVisible();
         expect(this.balanceVoucherInfoThirdSection).toBeVisible();
     }
-
 
     async verifyCurrencyAndAmountFromGrid() {
 

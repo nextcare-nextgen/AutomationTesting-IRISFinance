@@ -2,13 +2,13 @@
     "Login-Access1": {
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
-        "passwordInput": "Coverage@2",
+        "passwordInput": "Syncro@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-Access": {
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestAdmin",
-        "passwordInput": "Coverage@3",
+        "passwordInput": "Coverage@5",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "LoginB2C-Access": {
