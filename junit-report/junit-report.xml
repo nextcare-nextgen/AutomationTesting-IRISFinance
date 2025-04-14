@@ -1,6 +1,58 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="30.112586999997497">
-<testsuite name="tests\mawistaPayments\mawistaPayments.spec.ts" timestamp="2025-04-07T12:29:04.504Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="24.499" errors="0">
-<testcase name="NXGF-TC-3713: TC_003_Mawista payments_Verify that the user is able to search and view the relevant payments with search option of &quot;from date&quot; and &quot;To date&quot;" classname="tests\mawistaPayments\mawistaPayments.spec.ts" time="24.499">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="112.51062600000016">
+<testsuite name="tests\journalVoucherList\journalVoucherList.spec.ts" timestamp="2025-04-14T06:30:27.700Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="100.644" errors="0">
+<testcase name="NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transaction fields under the voucher reference are available on the details page" classname="tests\journalVoucherList\journalVoucherList.spec.ts" time="100.644">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="journalVoucherList.spec.ts:1203:5 NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transaction fields under the voucher reference are available on the details page" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\journalVoucherList\journalVoucherList.spec.ts:1203:5 › NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transaction fields under the voucher reference are available on the details page 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//mat-icon[@data-mat-icon-name="icon-edit"]').first()
+
+
+       at page-objects\journalVoucherList-pages\journalVoucherList-page.ts:263
+
+      261 |         await new Promise(resolve => setTimeout(resolve, 3000));
+      262 |         let editicon = this.page.locator('//mat-icon[@data-mat-icon-name="icon-edit"]');
+    > 263 |         await editicon.first().click();
+          |                                ^
+      264 |     }
+      265 |
+      266 |
+
+        at JournalVoucherListPage.clickOnEditJournalVoucherButton (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\journalVoucherList-pages\journalVoucherList-page.ts:263:32)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherList\journalVoucherList.spec.ts:1254:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\journalVoucherList\journalVoucherList.spec.ts:1253:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-journalVoucherList-j-f6b61-ailable-on-the-details-page-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-journalVoucherList-j-f6b61-ailable-on-the-details-page-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

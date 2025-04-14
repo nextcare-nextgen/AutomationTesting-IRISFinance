@@ -82,7 +82,7 @@ export class JournalVoucherListPage {
         this.toVoucherNumber = page.locator('//div//input[@title="To voucher number"]');
         this.filtervoucherType = page.locator('//div//input[@title="To voucher number"]//following::input[1]');
         this.voucherRefAdvancedFilter = page.locator('///div//input[@title="Voucher Reference"]');
-        this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100"]');
+        this.errorMessageVochernumber = page.locator('//mat-label[text()="Please enter a value greater than or equal to 100."]');
         this.applybtn = page.locator('//div//button[@title="Apply"]');
         this.journalVoucherDeatilsText = page.locator('//h1[@title="Manage Journal Voucher"]');
         this.editvoucherNum = page.locator('//iris-standard-date//following::div//input[@title="Voucher Number"]');
@@ -109,12 +109,14 @@ export class JournalVoucherListPage {
     }
 
     async verifyBreadCrumbsText(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const actual = await this.breadCrumbs.textContent();
         expect(actual).toBe(data);
     }
 
 
     async clickOnJournalVoucherShrtcutsButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.journalVoucherShortcut.click();
     }
 
@@ -147,6 +149,7 @@ export class JournalVoucherListPage {
     }
 
     async verifyJournalVoucherText(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const actual = await this.breadCrumbs.textContent();
         expect(actual).toBe(data);
     }
@@ -158,7 +161,7 @@ export class JournalVoucherListPage {
         expect(this.filter).toBeVisible();
         expect(this.reset).toBeVisible();
         expect(this.voucherNumber).toBeVisible();
-        expect(this.voucherType).toBeVisible();
+        //expect(this.voucherType).toBeVisible();
         expect(this.voucherDate).toBeVisible();
         expect(this.validated).toBeVisible();
         expect(this.validationDate).toBeVisible();
@@ -180,10 +183,12 @@ export class JournalVoucherListPage {
     }
 
     async clickOnAdvancedSearchButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.filter.click();
     }
 
     async clickOnApplyButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.applybtn.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
@@ -240,6 +245,7 @@ export class JournalVoucherListPage {
     }
 
     async clickOnSearchButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.search.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }

@@ -139,7 +139,7 @@ export class JournalVoucherLookupPage {
 
     async clickOnJournalVoucherShrtcutsButton() {
         await this.journalVoucherShortcut.click();
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
 
     }
 
