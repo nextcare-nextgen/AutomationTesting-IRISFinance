@@ -1,6 +1,10 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="57.66052599999998">
-<testsuite name="tests\journalVoucherList\journalVoucherList.spec.ts" timestamp="2025-04-17T04:52:09.938Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="44.077" errors="0">
-<testcase name="NXGF-TC-2089: TC_047_Journal Voucher List_Modify_Verify the the user is able to view below the grid, Records per page dropdown" classname="tests\journalVoucherList\journalVoucherList.spec.ts" time="44.077">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="46.37654000000097">
+<testsuite name="tests\chartofAccounts\chartofAccounts.spec.ts" timestamp="2025-04-22T08:01:59.042Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="32.424" errors="0">
+<testcase name="NXGF-TC-2097: TC_000_Chart of Accounts_Verify that Valid breadcrumbs are displayed" classname="tests\chartofAccounts\chartofAccounts.spec.ts" time="32.424">
+<system-out>
+<![CDATA[--------------Start the Charts of Accounts Testclass----------------------
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

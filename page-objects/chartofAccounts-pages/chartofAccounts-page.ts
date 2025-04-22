@@ -359,10 +359,15 @@ export class ChartOfAccountsPage {
 
     }
 
-    async enterSelectStartDate(data: string) {
-        await this.selectstartDate.fill(data);
+    async enterSelectStartDate(date: string) {
+        await this.selectstartDate.clear();
+        const today = new Date();
+        const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        const formattedDate = today.getDate().toString().padStart(2, '0') + "-" + monthNumber[today.getMonth()] + "-" + today.getFullYear();
+        await this.selectstartDate.fill(formattedDate);
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
-
+      
     async selectglAccountTypeFromDropdown(data: string) {
 
         await new Promise(resolve => setTimeout(resolve, 3000));

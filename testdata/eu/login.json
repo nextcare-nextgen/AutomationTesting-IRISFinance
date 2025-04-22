@@ -2,7 +2,7 @@
     "Login-Access1": {
         "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
-        "passwordInput": "SyncroQA@25",
+        "passwordInput": "FinanceQA@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-Access": {
