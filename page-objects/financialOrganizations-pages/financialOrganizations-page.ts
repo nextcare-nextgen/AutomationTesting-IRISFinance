@@ -76,7 +76,7 @@ export class FinancialOrganizationsPage {
         this.stoppedIndex = page.locator('//iris-table-filter-tags//mat-chip-listbox//div//span[@title="Stopped"]');
         this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
-        this.stopOrg = page.locator('//button[@title="Stop"]');
+        this.stopOrg = page.locator('//span[@title="Stopped"]');
         this.activeFilter = page.locator('//iris-table-filter-tags//mat-chip-listbox//mat-chip-option[@chip-color="green"]');
         this.stoppedFilter = page.locator('//iris-table-filter-tags//mat-chip-listbox//mat-chip-option[@chip-color="red"]');
         this.addOrganizationbtn = page.locator('//button[@title="Add Organization"]');

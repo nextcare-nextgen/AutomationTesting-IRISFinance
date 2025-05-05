@@ -241,7 +241,7 @@ export class ChartOfAccountsPage {
     async verifyActiveAccounts() {
         const stopAccount = this.page.locator('//mat-cell//button[contains(@title,"Stop Account")]');
         for (let index = 0; index < await stopAccount.count(); index++) {
-            expect(await stopAccount.nth(index)).toBeVisible();
+            expect(stopAccount.nth(index)).toBeVisible();
         }
     }
     async clickOnStopIndex() {

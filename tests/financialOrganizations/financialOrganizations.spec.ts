@@ -993,10 +993,6 @@ test('NXGF-TC-1716: TC_053_Verify that the user is able to click on Stop Organiz
         await financialOrganizationsPage.clickOnSearch();
     })
 
-    await test.step("Click on Edit Organization", async () => {
-        await financialOrganizationsPage.clickOnEditOrganizationButton();
-    })
-
     await test.step("Verified Stop Organization button is clickable", async () => {
         await financialOrganizationsPage.VerifyStopOrganizationButtonIsClickable();
     })

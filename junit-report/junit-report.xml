@@ -1,10 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="46.37654000000097">
-<testsuite name="tests\chartofAccounts\chartofAccounts.spec.ts" timestamp="2025-04-22T08:01:59.042Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="32.424" errors="0">
-<testcase name="NXGF-TC-2097: TC_000_Chart of Accounts_Verify that Valid breadcrumbs are displayed" classname="tests\chartofAccounts\chartofAccounts.spec.ts" time="32.424">
-<system-out>
-<![CDATA[--------------Start the Charts of Accounts Testclass----------------------
-]]>
-</system-out>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="52.67683199999854">
+<testsuite name="tests\financialOrganizations\financialOrganizations.spec.ts" timestamp="2025-05-02T12:28:08.853Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="41.613" errors="0">
+<testcase name="NXGF-TC-1710,NXGF-TC-1712: TC_050_Verify that the user is able to click on &quot;edit organization&quot; button" classname="tests\financialOrganizations\financialOrganizations.spec.ts" time="41.613">
 </testcase>
 </testsuite>
 </testsuites>

@@ -58,7 +58,7 @@ export class FxRatesPage {
     this.fromCurrencyenter = page.locator('//iris-select-formfield//div[contains(@class,"mat-form-field-infix")]//input[@aria-expanded="true"][1]');
     this.selectvalue = page.locator('(//mat-label[@class="ng-star-inserted"])[1]');
     this.rate = page.locator('//div//input[@title="Rate"]');
-    this.closebtn = page.locator('//iris-icon-action[@class="close-icon"]');
+    this.closebtn = page.locator("//mat-icon[@title='Cancel']//*[name()='svg']");
     this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
     this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
     this.searchBar = page.locator('//input[@placeholder="Search"]');
@@ -71,7 +71,7 @@ export class FxRatesPage {
     this.fromCurrencyfield = page.locator('//div//mat-label//span[@title="From Currency"]');
     this.toCurrencyfield = page.locator('//div//mat-label//span[@title="To Currency"]');
     this.searchbtn = page.locator('//button[@title="Search"]');
-    this.resetbtn = page.locator('//button[@title="Reset"]')
+    this.resetbtn = page.locator('//button[@title="Reset"]');
     this.fromcurrencyFromGrid = page.locator('//iris-base-label//small[@title="From Currency"]');
     this.tocurrencyFromGrid = page.locator('//iris-base-label//small[@title="To Currency"]');
     this.fromDateFromGrid = page.locator('//iris-base-label//small[@title="From Date"]');

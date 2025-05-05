@@ -4,6 +4,7 @@ import { DashboardPage } from '../../page-objects/dashboard-pages/dashboard-page
 import { FxRatesPage } from '../../page-objects/fx-rates-pages/fx-rates-page';
 import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
+const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const fxRatesData = require(`../../testdata/${process.env.ENV || 'eu'}/fxrates.json`) as Record<string, any>;
 
 test('NXGF-TC-1871: TC_000_FX_Rates_Verify that Valid breadcrumbs are displayed', async ({ page }) => {
@@ -1012,7 +1013,10 @@ test('NXGF-TC-1904: TC_033_FX_Rates_Add new FX Rates_Verify that user should abl
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1030,7 +1034,6 @@ test('NXGF-TC-1904: TC_033_FX_Rates_Add new FX Rates_Verify that user should abl
     await test.step("User Click on Close Button", async () => {
         await fxRatesPage.clickOnCloseButton();
     })
-
 });
 
 test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per page title should displayed', async ({ page }) => {
@@ -1045,7 +1048,10 @@ test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1059,7 +1065,6 @@ test('NXGF-TC-1905: TC_034_FX_Rates_Add new FX Rates_Verify that the Records per
     await test.step("Verified that the Records per page title should displayed", async () => {
         await fxRatesPage.verifyRecordsPerPageTitle(fxRatesData['TC_034_FX_Rates'].title);
     })
-
 });
 
 test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is able to view the item counts (5,10,25) in the drop down', async ({ page }) => {
@@ -1074,7 +1079,10 @@ test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is abl
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1088,7 +1096,6 @@ test('NXGF-TC-1906: TC_035_FX_Rates_Add new FX Rates_Verify that the user is abl
     await test.step("User Click on Records per page dropdown", async () => {
         await fxRatesPage.clickOnRecordsPerPageDropdown();
     })
-
 });
 
 test('NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is able to choose from the dropdown the item counts', async ({ page }) => {
@@ -1103,7 +1110,10 @@ test('NXGF-TC-1907: TC_036_FX_Rates_Add new FX Rates_Verify that the user is abl
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
