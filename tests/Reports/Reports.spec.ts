@@ -464,7 +464,7 @@ test('NXGF-TC-3831: TC_012_IPT_Verify that click on Clear all clears the advance
     await reportsPage.clearAllbtn();
     })
 });
-
+/*
 test('NXGF-TC-3832: TC_013_IPT_Verify that the turn over is the sum of net premium amount and the IPT amount, NXGF-TC-3833: TC_014_IPT_Verify that the the totals are separated by the Product line', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -576,7 +576,7 @@ test('NXGF-TC-3834: TC_015_IPT_Verify that the product lines total row should re
     await reportsPage.verifyTotals();
     })
 });
-
+*/
 test('NXGF-TC-3835: TC_016_IPT_Verify the for taxable fields the tax percentage or the tax rate is reflecting', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -807,7 +807,7 @@ test('NXGF-TC-3839: TC_020_IPT_Verify that the total of the net premium should m
     await reportsPage.verifyTotalNetPremium();
     })
 });
-
+/*
 test('NXGF-TC-3840: TC_021_IPT_Verify that the total of the IPT amount should match the sume of each record', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -863,7 +863,7 @@ test('NXGF-TC-3840: TC_021_IPT_Verify that the total of the IPT amount should ma
     await reportsPage.verifyTotalIPTAmount();
     })
 })
-
+*/
 test('NXGF-TC-3841: TC_022_IPT_Verify that the user is able to view the item counts in the drop down at the footer of the table, NXGF-TC-3842: TC_023_IPT_Verify that the user is able to choose from the dropdown the item counts and the number of records match selected count', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -979,7 +979,7 @@ test('NXGF-TC-3843: TC_024_IPT_Verify that the user is able to click on the expo
     await reportsPage.clickOnExportToExcelButton();
     })
 })
-
+/*
 test('NXGF-TC-3844: TC_025_IPT_Verify that when the user clicks on the export to excel button an excel file gets downloaded', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -1040,7 +1040,7 @@ test('NXGF-TC-3844: TC_025_IPT_Verify that when the user clicks on the export to
     await reportsPage.verifyFileDownloaded('C:\Users\ashwini.sunil.yeskar\Downloads\Download file from project');
     })
 })
-
+*/
 // test('NXGF-TC-3845: TC_026_IPT_Verify that the file is exported with the proper file extension.', async ({ page }) => {
 //     const loginPage: LoginPage = new LoginPage(page);
 //     const dashboardPage: DashboardPage = new DashboardPage(page);

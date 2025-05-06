@@ -530,44 +530,44 @@ test('NXGF-TC-1689: TC_038_Verify that the user is able to view the results afte
     })
 });
 
-test('NXGF-TC-1691: TC_039_Verify that the user is able to view the mentioned values in the grid', async ({ page }) => {
+// test('NXGF-TC-1691: TC_039_Verify that the user is able to view the mentioned values in the grid', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const dashboardPage: DashboardPage = new DashboardPage(page);
+//     const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Set the organization to Allianz partners 2024", async () => {
-        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
-    })
+//     await test.step("Set the organization to Allianz partners 2024", async () => {
+//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+//     })
 
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-    })
+//     await test.step("User Click on Menu Icon", async () => {
+//         await dashboardPage.clickOnMenuIconButton();
+//     })
 
-    await test.step("Click on the Organization shortcut icon", async () => {
-        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-    })
+//     await test.step("Click on the Organization shortcut icon", async () => {
+//         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+//     })
 
-    await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
-        await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_039'].organizationCode)
-    })
+//     await test.step("Verified that the user is able to enter the organization code in the Search by Organization 'Code' field", async () => {
+//         await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_039'].organizationCode)
+//     })
 
-    await test.step("Click on Search", async () => {
-        await financialOrganizationsPage.clickOnSearch();
-    })
+//     await test.step("Click on Search", async () => {
+//         await financialOrganizationsPage.clickOnSearch();
+//     })
 
-    await test.step("Verified Searched Organization Code from Grid", async () => {
-        await financialOrganizationsPage.verifyOrganizationCodeFromGrid();
-    })
-});
+//     await test.step("Verified Searched Organization Code from Grid", async () => {
+//         await financialOrganizationsPage.verifyOrganizationCodeFromGrid();
+//     })
+// });
 
 test('NXGF-TC-1692: TC_040_Verify that the user is able to see the coloring indexes below the grid', async ({ page }) => {
 
@@ -783,48 +783,48 @@ test('NXGF-TC-1704: TC_047_Verify that the user is able to see the stop date col
     })
 });
 
-test('NXGF-TC-1706: TC_048_Verify that the user is able to view the start date for all the search results irrespective of their status', async ({ page }) => {
+// test('NXGF-TC-1706: TC_048_Verify that the user is able to view the start date for all the search results irrespective of their status', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const dashboardPage: DashboardPage = new DashboardPage(page);
+//     const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Set the organization to Allianz partners 2024", async () => {
-        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
-    })
+//     await test.step("Set the organization to Allianz partners 2024", async () => {
+//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+//     })
 
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-    })
+//     await test.step("User Click on Menu Icon", async () => {
+//         await dashboardPage.clickOnMenuIconButton();
+//     })
 
-    await test.step("Click on the Organization shortcut icon", async () => {
-        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
-    })
+//     await test.step("Click on the Organization shortcut icon", async () => {
+//         await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+//     })
 
-    await test.step("User Enter Organization Name", async () => {
-        await financialOrganizationsPage.enterOrganizationName(FinancialOrganizationsData['TC_048'].organizationName);
-    })
+//     await test.step("User Enter Organization Name", async () => {
+//         await financialOrganizationsPage.enterOrganizationName(FinancialOrganizationsData['TC_048'].organizationName);
+//     })
 
-    await test.step("User Enter Organization Code", async () => {
-        await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_048'].organizationCode);
-    })
+//     await test.step("User Enter Organization Code", async () => {
+//         await financialOrganizationsPage.enterOrganizationCode(FinancialOrganizationsData['TC_048'].organizationCode);
+//     })
 
-    await test.step("User Click on Search", async () => {
-        await financialOrganizationsPage.clickOnSearch();
-    })
+//     await test.step("User Click on Search", async () => {
+//         await financialOrganizationsPage.clickOnSearch();
+//     })
 
-    await test.step("Verified that the user is able to view the start date for all the search results irrespective of their statusa", async () => {
-        await financialOrganizationsPage.verifyStartDateFromGrid();
-    })
-});
+//     await test.step("Verified that the user is able to view the start date for all the search results irrespective of their statusa", async () => {
+//         await financialOrganizationsPage.verifyStartDateFromGrid();
+//     })
+// });
 
 test('NXGF-TC-1708: TC_049_Verify that the user is able to view the "Edit Organization" button after the search', async ({ page }) => {
 

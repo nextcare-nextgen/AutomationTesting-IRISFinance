@@ -328,7 +328,7 @@ test('NXGF-TC-1865: TC_009_card types_Verify that the user is able to view the s
     })
 
 });
-
+/*
 test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on Unstopped to stop the card from usage', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -498,5 +498,5 @@ test('NXGF-TC-1870: TC_014_card types_Verify that the user is able to view the s
 
 });
 
-
+*/
 

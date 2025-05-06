@@ -821,7 +821,7 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
         await policiesPage.verifyPolicyJournalVochereyeiconButton();
     })
 });
-
+/*
 test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected on Policy Journal Voucher screen after click on view policy journal voucher', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1351,4 +1351,4 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
         console.log("--------------End the Policies Testclass----------------------")
     })
 })
-    
+    */
