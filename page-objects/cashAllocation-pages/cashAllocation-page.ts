@@ -495,7 +495,9 @@ export class CashAllocationPage {
         await this.amountFill.click();
         await this.amountFill.clear();
         await this.amountFill.fill(data);
-        await this.amountFill.scrollIntoViewIfNeeded();
+        await this.amountFill.scrollIntoViewIfNeeded(); 
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.amountFill.click();
     }
 
     async verifyAddPolicyPopup() {

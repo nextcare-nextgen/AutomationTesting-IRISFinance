@@ -28,8 +28,8 @@ export class JournalVoucherCreationPage {
     readonly accountName: Locator;
     readonly amount: Locator;
     readonly currency: Locator;
-    readonly amountCV1: Locator;
-    readonly amountCV2: Locator;
+    readonly amountEUR1: Locator;
+    readonly amountEUR2: Locator;
     readonly valueDate: Locator;
     readonly productLine: Locator;
     readonly manadteaccountName: Locator;
@@ -89,8 +89,8 @@ export class JournalVoucherCreationPage {
         this.accountName = page.locator('//iris-composed-dialog//iris-account-autocomplete//div//input[contains(@class,"input-element")]');
         this.amount = page.locator('//iris-composed-dialog//input[@title="Amount"]');
         this.currency = page.locator('//iris-composed-dialog//iris-currency-autocomplete//div//input[contains(@class,"input-element")]');
-        this.amountCV1 = page.locator('//iris-composed-dialog//input[@title="Amount CV1"]');
-        this.amountCV2 = page.locator('//iris-composed-dialog//input[@title="Amount CV2"]');
+        this.amountEUR1 = page.locator('(//iris-composed-dialog//input[@title="Amount EUR"])[1]');
+        this.amountEUR2 = page.locator('(//iris-composed-dialog//input[@title="Amount EUR"])[2]');
         this.valueDate = page.locator('//iris-composed-dialog//input[@title="Value Date"]');
         this.productLine = page.locator('//iris-composed-dialog//iris-cost-center-autocomplete//div//input[contains(@class,"input-element")]');
         this.manadteaccountName = page.locator('//iris-composed-dialog//iris-account-autocomplete//div//input[contains(@class,"input-element")]');
@@ -134,7 +134,7 @@ export class JournalVoucherCreationPage {
 
     async clickOnJournalVoucherShrtcutsButton() {
         await this.journalVoucherShortcut.click();
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
 
     }
 
@@ -169,14 +169,14 @@ export class JournalVoucherCreationPage {
     async clickOnJournalVoucherLookupButton() {
         await this.journalVoucherLookupbtn.waitFor();
         await this.journalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clickOnAddLookupVoucherCreationButton() {
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.addJournalVoucherLookupbtn.waitFor();
         await this.addJournalVoucherLookupbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async verifyAddJournalVoucherLookupTitle(data: string) {
@@ -226,7 +226,7 @@ export class JournalVoucherCreationPage {
 
     async clickOnAddVoucherTrancastionButton() {
         await this.addVoucherTransactionbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
 
     }
 
@@ -238,7 +238,7 @@ export class JournalVoucherCreationPage {
     async enterDescription(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.description.fill(data);
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async VerifyAddVoucherTrancastionButtonEnable() {
@@ -254,8 +254,8 @@ export class JournalVoucherCreationPage {
         expect(this.accountName).toBeVisible();
         expect(this.amount).toBeVisible();
         expect(this.currency).toBeVisible();
-        expect(this.amountCV1).toBeVisible();
-        expect(this.amountCV2).toBeVisible();
+        expect(this.amountEUR1).toBeVisible();
+        expect(this.amountEUR2).toBeVisible();
         expect(this.valueDate).toBeVisible();
         expect(this.description).toBeVisible();
         expect(this.productLine).toBeVisible();
@@ -274,32 +274,33 @@ export class JournalVoucherCreationPage {
 
 
     async selectAccountName(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.accountName.click();
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
     }
 
     async enterAmount(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.amount.fill(data);
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async selectCurrency(data: string) {
         await this.currency.click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async verifyCV1Amount() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const value = await this.amountCV1.inputValue();
+        const value = await this.amountEUR1.inputValue();
         expect(value).toBeTruthy();
     }
 
     async verifyCV2Amount() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const value = await this.amountCV2.inputValue();
+        const value = await this.amountEUR2.inputValue();
         expect(value).toBeTruthy();
     }
 
@@ -309,20 +310,20 @@ export class JournalVoucherCreationPage {
     }
 
     async selectCurrentDateCalender() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.selectValueCalenderIcon.click();
         await this.page.locator('//button[contains(@class,"active")]').click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async clickOnSave() {
         await this.savebtn.click();
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clickOnEditTransaction() {
         await this.editTransaction.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clickOnEditJournalVoucher() {

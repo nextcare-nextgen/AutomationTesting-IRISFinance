@@ -185,40 +185,40 @@ test('NXGF-TC-2011: TC_005_Journal Voucher Lookup_Verify that the screen is divi
     })
 });
 
-// test('NXGF-TC-2012: TC_006_Journal Voucher Lookup_Verify that the screen is titled as "Journal Voucher " and the Journal Voucher lookup tab selected ', async ({ page }) => {
+test('NXGF-TC-2012: TC_006_Journal Voucher Lookup_Verify that the screen is titled as "Journal Voucher " and the Journal Voucher lookup tab selected ', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Set the organization to Allianz partners 2024", async () => {
-//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
-//     })
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on Journal Voucher Shortcut Button", async () => {
-//         await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
-//     })
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherLookupPage.clickOnJournalVoucherShrtcutsButton();
+    })
 
-//     await test.step("Verified that the user is able to navigate to the Journal Voucher Lookup screen", async () => {
-//         await journalVoucherLookupPage.verifyJournalVoucherLookupText(JournalVoucherLookupPageData['TC_004_Journal_Voucher_Lookup'].journalVocherText);
-//     })
+    await test.step("Verified that the user is able to navigate to the Journal Voucher Lookup screen", async () => {
+        await journalVoucherLookupPage.verifyJournalVoucherLookupText(JournalVoucherLookupPageData['TC_004_Journal_Voucher_Lookup'].journalVocherText);
+    })
 
-//     await test.step("User Click on Journal Voucher Lookup Button", async () => {
-//         await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
-//     })
-// });
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherLookupPage.clickOnJournalVoucherLookupButton();
+    })
+});
 
 test('NXGF-TC-2013: TC_008_Journal Voucher Lookup_Verify that the Organization is already selected on the top of the page (header)', async ({ page }) => {
 

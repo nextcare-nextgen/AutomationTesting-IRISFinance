@@ -21,48 +21,49 @@
         "title": "Add Voucher Transaction"
     },
     "TC_035_Journal_Voucher_Creation": {
-        "value": "298098-testt"
+        "value": "43210-sub acc test"
     },
     "TC_036_Journal_Voucher_Creation": {
-        "value": "298098-testt"
+        "value": "43210-sub acc test"
     },
     "TC_040_Journal_Voucher_Creation": {
         "amount": "1000",
         "currency": "UAE Dirham-AED"
     },
     "TC_050_Journal_Voucher_Creation": {
-        "value": "298098-testt",
+        "value": "43210-sub acc test",
         "amount": "1000",
         "currency": "UAE Dirham-AED",
         "description": "Testing"
     },
     "TC_051_Journal_Voucher_Creation": {
-        "value": "298098-testt",
+        "value": "43210-sub acc test",
         "amount": "1000",
         "currency": "UAE Dirham-AED",
         "description": "Testing",
+        "value1": "51111-Demo Child",
         "amount1": "100",
         "currency1": "Euro-EUR",
         "description1": "Testing Edit"
     },
     "TC_053_Journal_Voucher_Creation": {
-        "value": "298098-testt",
+        "value": "43210-sub acc test",
         "amount": "100",
         "currency": "UAE Dirham-AED",
         "description": "Testing"
     },
     "TC_057_Journal_Voucher_Creation": {
-        "value": "298098-testt",
+        "value": "43210-sub acc test",
         "amount": "100",
         "currency": "UAE Dirham-AED",
         "errorpopup": "Field is required"
     },
     "TC_060_Journal_Voucher_Creation": {
-        "value": "298098-testt",
+        "value": "43210-sub acc test",
         "amount": "100",
         "currency": "UAE Dirham-AED",
         "description": "Testing",
-        "value1": "298098-testt",
+        "value1": "43210-sub acc test",
         "amount1": "1000",
         "currency1": "UAE Dirham-AED",
         "description1": "Testing",
