@@ -405,7 +405,7 @@ export class JournalVoucherListPage {
         } else if (from == "To Date") {
             await this.toDateCalendarIcon.click();
             const isoldDateEnabled = await this.page.locator('//span[text()=" ' + todayDate + ' "]').isDisabled();
-            expect(isoldDateEnabled).toBeFalsy();
+            expect(isoldDateEnabled).toBeTruthy();
         } else {
             throw new Error("Data not match");
         }

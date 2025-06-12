@@ -238,7 +238,7 @@ export class JournalVoucherCreationPage {
     async enterDescription(data: string) {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.description.fill(data);
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async VerifyAddVoucherTrancastionButtonEnable() {
@@ -282,14 +282,14 @@ export class JournalVoucherCreationPage {
     async enterAmount(data: string) {
         await new Promise(resolve => setTimeout(resolve, 2000));
         await this.amount.fill(data);
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        //await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async selectCurrency(data: string) {
         await this.currency.click();
         await new Promise(resolve => setTimeout(resolve, 2000));
         await this.page.locator('//mat-option//span//mat-label[text()="' + data + '"]').click();
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        //await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async verifyCV1Amount() {
@@ -310,20 +310,20 @@ export class JournalVoucherCreationPage {
     }
 
     async selectCurrentDateCalender() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.selectValueCalenderIcon.click();
         await this.page.locator('//button[contains(@class,"active")]').click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async clickOnSave() {
         await this.savebtn.click();
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        //await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clickOnEditTransaction() {
         await this.editTransaction.click();
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        //await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clickOnEditJournalVoucher() {
