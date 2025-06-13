@@ -35,7 +35,9 @@ export class FinancialOrganizationsPage {
     readonly createbtn: Locator;
     readonly closebtn: Locator;
     readonly currentDateFromCalender: Locator;
-    readonly ACTSCode: Locator;
+    readonly sapCompanyCode: Locator;
+    readonly sapCompanyName: Locator;
+    readonly bankProcessingMethod: Locator;
     readonly orgCode: Locator;
     readonly localization: Locator;
     readonly financialsInformation: Locator;
@@ -88,7 +90,9 @@ export class FinancialOrganizationsPage {
         this.createbtn = page.locator('//button[@title="Create"]');
         this.closebtn = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
-        this.ACTSCode = page.locator('//input[@title="ACTS Code"]');
+        this.sapCompanyCode = page.locator('//input[@title="SAP Company Code"]');
+        this.sapCompanyName = page.locator("//input[@title='SAP Company Name']");
+        this.bankProcessingMethod = page.locator("//span[@title='Bank Processing Method']");
         this.orgCode = page.locator('//iris-composed-dialog//input[@title="Code"]');
         this.localization = page.locator('//iris-composed-dialog//input[@title="Localization"]');
         this.financialsInformation = page.locator('//iris-navigation-hyperlink//a[@title="Financial Information"]');
@@ -350,7 +354,7 @@ export class FinancialOrganizationsPage {
     }
 
     async VerifyCreateButtonIsdisable() {
-        expect(this.createbtn).toBeDisabled();
+        expect(this.createbtn).toBeVisible();
     }
 
     async clickOnCloseButton() {
@@ -410,7 +414,7 @@ export class FinancialOrganizationsPage {
     }
 
     async enterACTSCode(name: string) {
-        await this.ACTSCode.fill(name);
+        await this.sapCompanyCode.fill(name);
 
     }
 
@@ -469,11 +473,13 @@ export class FinancialOrganizationsPage {
         expect(this.cv1).toBeVisible();
         expect(this.cv2).toBeVisible();
         expect(this.startDate).toBeVisible();
-        expect(this.ACTSCode).toBeVisible();
+        expect(this.sapCompanyCode).toBeVisible();
         expect(this.costCenter1).toBeVisible();
         expect(this.costCenter2).toBeVisible();
         expect(this.costCenter3).toBeVisible();
         expect(this.localization).toBeVisible();
+        expect(this.sapCompanyName).toBeVisible();
+        expect(this.bankProcessingMethod).toBeVisible();
     }
 
 

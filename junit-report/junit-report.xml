@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="116.79395000000018">
-<testsuite name="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" timestamp="2025-06-09T06:13:33.884Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="86.757" errors="0">
-<testcase name="NXGF-TC-3882: TC_051_Journal Voucher creation_Verify that the user is able to edit the previously entered information" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="86.757">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="52.94944999999925">
+<testsuite name="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" timestamp="2025-06-13T12:08:04.022Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="47.093" errors="0">
+<testcase name="NXGF-TC-3884: TC_053_Journal Voucher creation_Verify that the user is able to click on Save" classname="tests\journalVoucherCreation\journalVoucherCreation.spec.ts" time="47.093">
 </testcase>
 </testsuite>
 </testsuites>
