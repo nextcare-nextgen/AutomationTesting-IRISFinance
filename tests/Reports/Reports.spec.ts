@@ -16,7 +16,6 @@ test('NXGF-TC-3820: TC_001_IPT_Verify that the user is able to login to the IRIS
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
-
     })
 });
 
@@ -50,8 +49,7 @@ test('NXGF-TC-3821: TC_002_IPT_Verify that user is able to view all the shortcut
     await test.step("User Click on Reports Menu Icon", async () => {
         await reportsPage.clickOnIPToption();
     })
-    
-})
+});
 
 test('NXGF-TC-3823: TC_004_IPT_Verify that the user is able to select todays date in the "from date" calendar selection', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -63,31 +61,29 @@ test('NXGF-TC-3823: TC_004_IPT_Verify that the user is able to select todays dat
     })
 
     await test.step("User Enter Username and Password", async () => {
-    await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
-
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
-    await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
-    await dashboardPage.clickOnMenuIconButton();
-
+        await dashboardPage.clickOnMenuIconButton();
     })
 
     await test.step("User Click on Reports Menu Icon", async () => {
-    await reportsPage.clickOnReportsMenuIcon();
-
+        await reportsPage.clickOnReportsMenuIcon();
     })
+
     await test.step("User Selects Insurance Premim Tax option", async () => {
         await reportsPage.clickOnIPToption();
     })
+
     await test.step("User selects the today's date as the from date value", async () => {
         await reportsPage.fillFromDate();
     })
-    
-})
+});
 
 test('NXGF-TC-3824: TC_005_IPT_Verify that the user should not be able to select future date in the "from date" calendar selection', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -100,7 +96,6 @@ test('NXGF-TC-3824: TC_005_IPT_Verify that the user should not be able to select
 
     await test.step("User Enter Username and Password", async () => {
     await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
-
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -113,7 +108,7 @@ test('NXGF-TC-3824: TC_005_IPT_Verify that the user should not be able to select
 
     await test.step("User Click on Reports Menu Icon", async () => {
     await reportsPage.clickOnReportsMenuIcon();
-     })
+    })
     
      await test.step("User Selects Insurance Premim Tax option", async () => {
         await reportsPage.clickOnIPToption();
@@ -122,8 +117,7 @@ test('NXGF-TC-3824: TC_005_IPT_Verify that the user should not be able to select
     await test.step("User selects the future date as the from date value", async () => {
         await reportsPage.ensureFromDateIsNotInFuture();
     })
-    
-})
+});
 
 test('NXGF-TC-3825: TC_006_IPT_Verify that the user should is be able to select past date in the "from date" calendar selection', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);

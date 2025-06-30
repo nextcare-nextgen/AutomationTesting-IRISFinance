@@ -96,10 +96,10 @@ export class OnePayPage {
         this.expatcarebButton = page.locator("//button[normalize-space()='Expatcare']");
         this.firstnameInputField = page.locator("//input[@id='mat-input-0']");
         this.lastnameInputField = page.locator("//input[@id='mat-input-1']");
-        this.homecountryDropdownField = page.locator("//div[@class='mat-mdc-form-field-infix ng-tns-c14-2' or @aria-haspopup='listbox']");
+        this.homecountryDropdownField = page.locator("//input[@id='mat-input-2']");
         this.selectcountryInputField = page.locator("//span[normalize-space()='Afghanistan']");
         this.passportnumberInputField = page.locator("//input[@id='mat-input-3']");
-        this.codeDropdownField = page.locator("//mat-icon[@class='mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color ng-tns-c14-7' and @data-mat-icon-name='keyboard_arrow_down']");
+        this.codeDropdownField = page.locator("(//mat-icon[@data-mat-icon-name='keyboard_arrow_down'])[2]");
         this.mobilecodeInputField = page.locator("//input[@class='mat-select-search-input mat-input-element ng-valid ng-touched ng-dirty']");
         this.selectmobilecodeInputField = page.locator("//mat-option[@id='mat-option-2944']//span[@class='mat-option-text']//span[1]");
         this.mobilenumberInputField = page.locator("//input[@id='mat-input-4']");
@@ -159,7 +159,7 @@ export class OnePayPage {
         this.thirdtabnextButton = page.locator("//mat-icon[@aria-label='Mat Arrow Forward']");
         this.fourttabApplyandPayButton = page.locator("//span[normalize-space()='Apply & Pay']");
         this.directdebitButton = page.locator("//label[@for='mat-radio-13-input']//div[@class='mat-h2 mb-none']");
-        this.creditcardButton = page.locator("//div[normalize-space()='Credit Card']");
+        this.creditcardButton = page.locator("//div[contains(text(),'Credit Card')]");
         this.applyandpayButton = page.locator("//span[normalize-space()='Apply & Pay']");
         this.creditcardNumber = page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']");
         this.contractNumber = page.locator('//div//input[@name="contractnumber"]');
@@ -207,13 +207,13 @@ export class OnePayPage {
     async clickOnFirstTabNextButton() {
         await this.firsttabnextButton.click();
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(1000);
+        //await this.page.waitForTimeout(1000);
     }
 
     async clickOnsecondtabNextButton() {
         await this.secondtabNextButton.click();
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(10000);
+        //await this.page.waitForTimeout(3000);
     }
 
     async expatcaresStartandEnddateonThirdtTab(startdate: string, enddate: string) {
@@ -222,30 +222,30 @@ export class OnePayPage {
         await this.page.locator("//input[@id='mat-input-28']").fill(enddate);
         await this.page.locator("//div[@id='row-12896']").click();
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(3000);
     }
 
     async clickOnClassiccTile() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        await this.page.locator("//label[@for='mat-radio-8-input']/span").click();
+        await this.page.locator("//b[normalize-space()='Mawista Expatcare Classic']").click();
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
     }
 
     async clickOnThirdTabNextButton() {
         await this.page.locator("//mat-radio-group//div//mat-radio-button").first().click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.locator("//div//mat-checkbox").click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
         await this.thirdtabnextButton.click();
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(2000);
     }
 
     async clickOnCreditcardradioButton() {
         await this.creditcardButton.click();
         await this.page.waitForLoadState('networkidle');
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async clickOnCheckboxesonfourthtab() {
@@ -253,20 +253,20 @@ export class OnePayPage {
         await this.page.locator("//div[contains(text(),'I consent to MAWISTA GmbH sending me information a')]").click();
         await this.page.locator("//b[contains(text(),'Yes, I sufficiently informed myself about the prod')]").click();
         await this.page.waitForLoadState('networkidle');
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        //await new Promise(resolve => setTimeout(resolve, 2000));
 
     }
     async clickOnApplyandPayButton() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.applyandpayButton.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        //await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async expatcareFilldetailsoncreditcardTab() {
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(2000);
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").fill("10");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("4111111111111111");
@@ -277,18 +277,18 @@ export class OnePayPage {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//select[@id='country']").selectOption('India');
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").fill("12345");
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(3000);
     }
 
     async clickOnSaveCardDetails() {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']").click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyThankyoupageText(expectedthankyouText: string, policyNum: string) {
-        await new Promise(resolve => setTimeout(resolve, 14000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.waitForLoadState('networkidle');
-        await this.page.locator("//div[@id='row-12889']//h3[contains(text(),'Thank you')]").waitFor();
+        await this.page.locator("(//h2[contains(text(),'Thank you')])[1]").waitFor();
         //const actualfirtliText = await (await this.page.waitForSelector("//div[@id='row-12889']//h3[contains(text(),'Thank you')]")).textContent();
         //expect(actualfirtliText).toContain(expectedthankyouText);
         const actualdisText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]//following::p[1]//b[contains(text(),'MAE-AWPDE')]").textContent();
@@ -341,18 +341,18 @@ export class OnePayPage {
     }
 
     async verifyPrevoiusPageTitle(data: string) {
-        await new Promise(resolve => setTimeout(resolve, 9000));
-        const actual = await this.page.frameLocator("//h1[text()=' Payment method and checkout ']");
-        expect(actual).toBe(data);
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const actualText = await this.page.locator("//h1[text()=' Payment method and checkout ']").textContent();
+        expect(actualText?.trim()).toBe(data.trim());
     }
 
     async reiscareStartandenddateonThirdtTab() {
         await this.page.locator("//iris-datepicker//mat-datepicker-toggle//button//mat-icon").first().click();
         await this.page.locator('//mat-year-view//td//button[contains(@class,"active")]').click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.locator("//div//span//mat-label[text()='End Date']//following::mat-datepicker-toggle//button//mat-icon").click();
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        await this.page.locator("//iris-datepicker//mat-datepicker-toggle//button//mat-icon").nth(1).click();
         await this.page.locator('//mat-year-view//td//button[contains(@class,"active")]').click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async reiscareFirstTab(firstname: string, lastname: string, passport: string, code: string, mobilenumber: string, email: string, streetname: string, streetnumber: string, postalcode: string, address: string, city: string, day: string, month: string, year: string) {
@@ -363,7 +363,7 @@ export class OnePayPage {
         await this.selectcountryInputField.click();
         await this.passportnumberInputField.fill(passport);
         await this.codeDropdownField.click();
-        await this.page.locator("//div[@class='cdk-overlay-pane']//mat-option[2]//img").click();
+        await this.page.locator("//img[@src='assets/country-flag-icons/IN.svg']").click();
         await this.mobilenumberInputField.fill(mobilenumber);
         await this.page.waitForTimeout(1000);
         await this.emailInputField.fill(email);
@@ -385,7 +385,7 @@ export class OnePayPage {
     async reiscareFilldetailsoncreditcardTab() {
         console.log("hi");
         //await this.page.waitForTimeout(10000);
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.waitForLoadState('networkidle');
         //await this.page.waitForTimeout(10000);
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").waitFor();
@@ -393,7 +393,7 @@ export class OnePayPage {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationMM']").fill("10");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cardnumber']").fill("5555 5555 5555 4444");
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").click();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='expirationYYYY']").fill("28");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='cvc']").click();
@@ -403,18 +403,16 @@ export class OnePayPage {
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").waitFor();
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//input[@id='postalCode']").fill("12345");
         await this.page.frameLocator("//iframe[@id='CreditCardIframe']").locator("//span[normalize-space()='Save card details']").click();
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        //await new Promise(resolve => setTimeout(resolve, 3000));
 
         // await this.page.waitForTimeout(10000);
         //   await new Promise(resolve => setTimeout(resolve, 8000));
-
-
     }
 
     async getPolicyNumber(superUser: string, password: string) {
-        await new Promise(resolve => setTimeout(resolve, 14000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.page.waitForLoadState('networkidle');
-        await this.page.locator("//div[@id='row-12889']//h3[contains(text(),'Thank you')]").waitFor();
+        await this.page.locator("(//h2[contains(text(),'Thank you')])[1]").waitFor();
         //let actualdisText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]//following::p[1]//b[contains(text(),'MAE-AWPDE')]").textContent();
         const pn = await this.policynum.innerText();
         await this.page.goto("https://test-syncro-eu.tatsh.cloud/Account/Login");
@@ -425,17 +423,17 @@ export class OnePayPage {
         await this.page.waitForLoadState('networkidle');
         await this.contractNumber.fill(pn);
         await this.searchbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.editbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 20000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.page.waitForLoadState('networkidle');
-        await this.page.locator("//div[text()=' Details']").waitFor();
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        await this.page.locator("//div//a[text()='Save & continue ']").waitFor();
+        //await this.page.locator("//div[text()=' Details']").waitFor();
+        //await new Promise(resolve => setTimeout(resolve, 5000));
+        //await this.page.locator("//div//a[text()='Save & continue ']").waitFor();
         await this.acceptbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        await this.acceptbtn.click();
-        await this.page.waitForLoadState('networkidle');
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        //await this.acceptbtn.click();
+        //await this.page.waitForLoadState('networkidle');
         await this.confirmbtn.click();
         await this.page.waitForLoadState('networkidle');
         await this.fullDeatailsbtn.click();
@@ -445,7 +443,7 @@ export class OnePayPage {
     }
 
     async verifyFinancialInfo() {
-        await this.page.waitForTimeout(7000);
+        await this.page.waitForTimeout(2000);
         const actual = this.page.locator("//iris-field-label//div//div");
         for(let i=0; i < await actual.count();i++)
         expect(actual.nth(i)).toBeVisible();

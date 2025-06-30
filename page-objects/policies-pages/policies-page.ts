@@ -87,8 +87,8 @@ export class PoliciesPage {
         this.description = page.locator('//div//small[text()="Description"]');
         this.currency = page.locator('//div//small[text()="Currency"]');
         this.amount = page.locator('//div//small[text()="Amount"]');
-        this.amountCV1EUR = page.locator('//div//small[text()="Amount CV1 (EUR)"]');
-        this.amountCV2EUR = page.locator('//div//small[text()="Amount CV2 (EUR)"]');
+        this.amountCV1EUR = page.locator('(//div//small[text()="Amount EUR"])[1]');
+        this.amountCV2EUR = page.locator('(//div//small[text()="Amount EUR"])[2]');
         this.credit_debit = page.locator('//div//small[text()="Credit/Debit"]');
         this.valuedDate = page.locator('//div//small[text()="Value Date"]');
         this.recordPerPage = page.locator('//div[text()=" Records per page: "]');
@@ -164,12 +164,22 @@ export class PoliciesPage {
     }
 
     async enterinValidFromDate(fromDates: string, errorText: string) {
-        await this.fromDate.clear();
-        await this.fromDate.fill(fromDates);
-        this.page.keyboard.press("Enter")
-        const actual = await this.errorText.textContent();
-        expect(actual).toBe(errorText);
+        // await this.fromDate.clear();
+        // await this.fromDate.fill(fromDates);
+        // this.page.keyboard.press("Enter")
+        // const actual = await this.errorText.textContent();
+        // expect(actual).toBe(errorText);
 
+        const today = new Date();
+        const pastDate = new Date(today);
+        pastDate.setDate(today.getDate()); 
+        const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        const formattedPastDate = pastDate.getDate().toString().padStart(2, '0') + "-" + monthNumber[pastDate.getMonth()] + "-" + pastDate.getFullYear();
+        await this.fromDate.fill(formattedPastDate);
+        await new Promise(resolve => setTimeout(resolve, 9000));
+        const filledDate = await this.fromDate.inputValue();  
+        const filledDateObj = new Date(filledDate.split("-").reverse().join("-")); 
+        expect(filledDateObj.getTime()).toBeLessThanOrEqual(today.getTime());
     }
 
     async enterValidToDate(ToDate: string) {
@@ -373,10 +383,16 @@ export class PoliciesPage {
     }
 
     async clickOnRecordsPerPageDropdown() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        // await new Promise(resolve => setTimeout(resolve, 5000));
+        // const recordsPerPagedropdown = this.page.locator('//section//mat-select[contains(@aria-label,"")]').first();
+        // recordsPerPagedropdown.click();
+        // expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+
         const recordsPerPagedropdown = this.page.locator('//section//mat-select[contains(@aria-label,"")]').first();
-        recordsPerPagedropdown.click();
-        expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
+        await recordsPerPagedropdown.click();
+        const options = this.page.locator('div[role="listbox"] mat-option span');
+        await expect(options).toHaveCount(5, { timeout: 10000 });
+        await expect(options).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
 

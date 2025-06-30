@@ -821,7 +821,7 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
         await policiesPage.verifyPolicyJournalVochereyeiconButton();
     })
 });
-/*
+
 test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected on Policy Journal Voucher screen after click on view policy journal voucher', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -834,11 +834,10 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
-    await test.step("User Select Organization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_024_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -851,10 +850,8 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
     
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
-
     })
-
-})
+});
 
 test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title is displayed', async ({ page }) => {
 
@@ -870,8 +867,8 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -889,8 +886,7 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
     await test.step("Verify Policy Journal Voucher Title Displayed", async () => {
         await policiesPage.verifyPolicyJournalVocherTitle(policiesData['TC_025_Policies'].policyJournalVochereText);
     })
-
-})
+});
 
 test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', async ({ page }) => {
 
@@ -906,8 +902,8 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -926,8 +922,7 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
         await policiesPage.verifyPolicyJournalVoucherListSection();;
         await policiesPage.verifyPolicyJournalVoucherDtailsListSection();
     })
-
-})
+});
 
 test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed in first section', async ({ page }) => {
 
@@ -943,8 +938,8 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -962,8 +957,7 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
     await test.step("Verify First sections Grid Column are Displayed", async () => {
         await policiesPage.verifyPolicyJournalVoucherFirstSectionGridColumn();
     })
-
-})
+});
 
 test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed in second section', async ({ page }) => {
 
@@ -979,8 +973,8 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -998,8 +992,7 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
     await test.step("Verify Second sections Grid Column are Displayed", async () => {
         await policiesPage.verifyPolicyJournalVoucherSecondSectionGridColumn();
     })
-
-})
+});
 
 test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on voucher reference and the record data should get in second section of grid', async ({ page }) => {
 
@@ -1015,8 +1008,8 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1038,8 +1031,7 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
     await test.step("Verify Account Records from Second grid", async () => {
         await policiesPage.verifyAccountRecordsFromSecondGrid();
     })
-
-})
+});
 
 test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title should displayed', async ({ page }) => {
 
@@ -1055,8 +1047,8 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1074,7 +1066,6 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
     await test.step("Verify that the Records per page title is displayed", async () => {
         await policiesPage.verifyRecordsPerPageTitle();
     })
-
 })
 
 test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down', async ({ page }) => {
@@ -1092,8 +1083,8 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1111,9 +1102,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
     await test.step("Click On Records per page dropdown", async () => {
         await policiesPage.clickOnRecordsPerPageDropdown();
     })
-
 })
-
 
 test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down in Polices screen', async ({ page }) => {
 
@@ -1129,8 +1118,8 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1144,7 +1133,6 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
     await test.step("Click On Records per page dropdown", async () => {
         await policiesPage.clickOnRecordsPerPageDropdown();
     })
-
 })
 
 test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title should displayed in Polices screen', async ({ page }) => {
@@ -1161,8 +1149,8 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_030_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1176,7 +1164,6 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
     await test.step("Verify that the Records per page title is displayed", async () => {
         await policiesPage.verifyRecordsPerPageTitle();
     })
-
 })
 
 test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select future date in From date', async ({ page }) => {
@@ -1193,8 +1180,8 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_034_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1224,8 +1211,8 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1242,15 +1229,12 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
 
     await test.step("Click On Vocher Reference from Grid", async () => {
         await policiesPage.clickOnVoucherRef();
-
     })
 
     await test.step("Verify Account Records from Second grid", async () => {
         await policiesPage.verifyAccountRecordsFromSecondGrid();
     })
-
 })
-
 
 test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 varies based on the selected currencies defined in the respective organization', async ({ page }) => {
 
@@ -1266,8 +1250,8 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1305,9 +1289,7 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
     await test.step("Verify Currency from Organziations", async () => {
         await policiesPage.verifyCurrencyFromOrganization();
     })
-
 })
-
 
 test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the Total of debit amount column from grid', async ({ page }) => {
 
@@ -1323,8 +1305,8 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
-    await test.step("User select oragnization", async () => {
-        await dashboardPage.selectOrganization(policiesData['TC_025_Policies'].organization);
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1351,4 +1333,4 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
         console.log("--------------End the Policies Testclass----------------------")
     })
 })
-    */
+    

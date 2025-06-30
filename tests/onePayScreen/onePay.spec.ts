@@ -4,7 +4,7 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 const onePayData = require(`../../testdata/${process.env.ENV || 'eu'}/onePay.json`) as Record<string, any>;
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 
-/*
+
 test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the user is able to create any long term and short term policies in Mawista B2C portal', async ({ page }) => {
     const onePayPage: OnePayPage = new OnePayPage(page);
 
@@ -47,7 +47,7 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+    
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -63,9 +63,7 @@ test('NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the
     await test.step("Verified all details on Thank you page ", async () => {
         await onePayPage.verifyThankyoupageText(onePayData["TC_003_OnePay"].thankyouText, onePayData["TC_003_OnePay"].policyidText);
     })
-  //page.close();
 });
-
 
 test('NXGF-TC-2828: TC_004_OnePay payment journey_Validate that the user is able to select the payment method as Credit card for long term policy and short term policies', async ({ page }) => {
     const onePayPage: OnePayPage = new OnePayPage(page);
@@ -101,7 +99,6 @@ test('NXGF-TC-2828: TC_004_OnePay payment journey_Validate that the user is able
     await test.step("Validated that the user is able to select the payment method as Credit card for short term policies", async () => {
         await onePayPage.clickOnCreditcardradioButton();
     })
-   // page.close();
 });
 
 test('NXGF-TC-2829: TC_005_OnePay payment journey_Validate that the user is navigated to One pay iframe once the credit card payment method is selected', async ({ page }) => {
@@ -150,17 +147,13 @@ test('NXGF-TC-2829: TC_005_OnePay payment journey_Validate that the user is navi
     await test.step("Validated that the user is navigated to One pay iframe once the credit card payment method is selected", async () => {
         await onePayPage.verifyexpatcaredetailsoncreditcardTab();
     })
-
 });
 
-
 test('NXGF-TC-2831: TC_006_OnePay payment journey_Validate that when the incorrect card number is entered the user is able to view the valid error message', async ({ page }) => {
-
     const onePayPage: OnePayPage = new OnePayPage(page);
 
     await test.step("Load the URL in Browser", async () => {
         await onePayPage.gotoHomePage(onePayData["TC_006_OnePay"].url);
-
     })
 
     await test.step("Enter Policyholder's details,Policyholder's address in Germany,Are you the insured person details and Enter your date of birth and gender", async () => {
@@ -194,7 +187,7 @@ test('NXGF-TC-2831: TC_006_OnePay payment journey_Validate that when the incorre
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+    
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -206,8 +199,6 @@ test('NXGF-TC-2831: TC_006_OnePay payment journey_Validate that when the incorre
     await test.step("Validated that when the incorrect card number is entered the user is able to view the valid error message", async () => {
         await onePayPage.verifyInvalidErrormessage(onePayData["TC_006_OnePay"].errormessage);
     })
-
-   // page.close();
 });
 
 test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button is enabled once all the required fields are filled', async ({ page }) => {
@@ -248,7 +239,7 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+  
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -260,8 +251,6 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
     await test.step("Verified Save button Enabled", async () => {
         await onePayPage.verifySaveDetailsButtonEnabled();
     })
-
-    //page.close();
 });
 
 test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can click on cancel and they return to the previous page', async ({ page }) => {
@@ -302,7 +291,7 @@ test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can cli
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+    
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -318,8 +307,6 @@ test('NXGF-TC-2833: TC_001_OnePay payment journey_Validate that the user can cli
     await test.step("Verified Prevoius page title as 'Payment method and checkout'", async () => {
         await onePayPage.verifyPrevoiusPageTitle(onePayData["TC_001_OnePay"].title);
     })
-
-//page.close();
 });
 
 test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the user can view a payment successful message along with the policy number and the one pay iframe is closed', async ({ page }) => {
@@ -360,7 +347,7 @@ test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+    
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -376,8 +363,6 @@ test('NXGF-TC-2834,NXGF-TC-2835: TC_002_OnePay payment journey_validate that the
     await test.step("Verified all details on Thank you page ", async () => {
         await onePayPage.verifyThankyoupageText(onePayData["TC_002_OnePay"].thankyouText, onePayData["TC_002_OnePay"].policyidText);
     })
-
-    //page.close();
 });
 
 test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able to create a long term policy with Credit card as the payment method', async ({ page }) => {
@@ -397,6 +382,7 @@ test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able t
     await test.step("Click on Second Tab  Button ", async () => {
         await onePayPage.clickOnsecondtabNextButton();
     })
+
     await test.step("Select Start and End Date on Third Tab ", async () => {
         await onePayPage.reiscareStartandenddateonThirdtTab();
     })
@@ -412,7 +398,7 @@ test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able t
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+  
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -426,12 +412,9 @@ test('NXGF-TC-3923,NXGF-TC-3927: TC_000_long term_Verify that the user is able t
         await page.waitForLoadState('networkidle');
         await onePayPage.verifyThankyoupageText(onePayData["TC_000_long_term"].thankyouText, onePayData["TC_000_long_term"].policyidText);
     })
-
-   // page.close();
 });
 
 test('NXGF-TC-3924: TC_001_long term_Verify that the user is redirected to One Pay Iframe when the Credit card option is selected', async ({ page }) => {
-
     const onePayPage: OnePayPage = new OnePayPage(page);
 
     await test.step("Load the URL in Browser", async () => {
@@ -461,8 +444,6 @@ test('NXGF-TC-3924: TC_001_long term_Verify that the user is redirected to One P
     await test.step("Verified that the user is redirected to One Pay Iframe when the Credit card option is selected", async () => {
         await onePayPage.clickOnCreditcardradioButton();
     })
-
-    //page.close();
 });
 
 test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able to enter all the card details on the One pay Iframe', async ({ page }) => {
@@ -500,7 +481,7 @@ test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able t
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+   
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -508,8 +489,6 @@ test('NXGF-TC-3925,NXGF-TC-3926: TC_002_long term_Verify that the user is able t
     await test.step("Verified that the user is able to enter all the card details on the One pay Iframe", async () => {
         await onePayPage.reiscareFilldetailsoncreditcardTab();
     })
-
-    //page.close();
 });
 
 test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the saved card details in Syncro "financial info page" after validating the policy', async ({ page }) => {
@@ -546,7 +525,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
     await test.step("Select checkboxes on  fourth tab", async () => {
         await onePayPage.clickOnCheckboxesonfourthtab();
     })
-    //page.pause();
+   
     await test.step("Click on  Apply & Pay Button on fourth tab", async () => {
         await onePayPage.clickOnApplyandPayButton();
     })
@@ -564,11 +543,7 @@ test('NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the sa
     await test.step("user is able to view the saved card details in Syncro 'financial info page' after validating the policy", async () => {
         await onePayPage.verifyFinancialInfo();
     })
-
-   // page.close();
-
 });
-
 
 test('NXGF-TC-2834: TC_008_OnePay payment journey_Validate the the user can click on pay and proceed with the payment', async ({ page }) => {
 
@@ -586,4 +561,4 @@ test('NXGF-TC-2834: TC_008_OnePay payment journey_Validate the the user can clic
         await onePayPage.clickOnFirstTabNextButton();
     })
 });
-*/
+
