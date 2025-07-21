@@ -91,7 +91,7 @@
         "value": "Financial Transactions Monitoring"
     },
     "TC_048_Transactions_Details_Screen": {
-        "transactionType": "cash deposite ",
+        "data1": "cash deposite ",
         "errorMessage": "No results found"
     }
 }

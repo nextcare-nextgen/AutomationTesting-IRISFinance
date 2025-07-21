@@ -225,11 +225,11 @@ export class Reports {
     // }
 
     async calculateAndVerifyTurnover() {
-        const netPremiumLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-gwp mat-column-gwp ng-star-inserted'][contains(.,'52,097.91')])[1]");
+        const netPremiumLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-gwp')])[1]");
         const netPremiumValue = await netPremiumLocator.textContent();  
         const netPremium = parseFloat(netPremiumValue?.replace(/[^\d.-]/g, '') || '0'); 
         
-        const iptAmountLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-ipt mat-column-ipt ng-star-inserted'][contains(.,'0')])[1]");
+        const iptAmountLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-ipt')])[1]");
         const iptAmountValue = await iptAmountLocator.textContent();  
         const iptAmount = parseFloat(iptAmountValue?.replace(/[^\d.-]/g, '') || '0');  
         
@@ -237,7 +237,7 @@ export class Reports {
         
         console.log(`Net Premium: ${netPremium}, IPT Amount: ${iptAmount}, Calculated Turnover: ${turnover}`);
         
-        const turnoverLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-turnover mat-column-turnover ng-star-inserted'][contains(.,'52,097.91')])[1]");
+        const turnoverLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-turnover')])[1]");
         const turnoverValue = await turnoverLocator.textContent(); 
         const expectedTurnover = parseFloat(turnoverValue?.replace(/[^\d.-]/g, '') || '0'); 
         
@@ -284,11 +284,11 @@ export class Reports {
     
         try {
           
-            const netPremiumLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-gwp mat-column-gwp ng-star-inserted'][contains(.,'52,097.91')])[1]");
+            const netPremiumLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-gwp')])[1]");
             const netPremiumValue = await netPremiumLocator.textContent(); 
             const netPremium = parseValue(netPremiumValue);
     
-            const iptAmountLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-ipt mat-column-ipt ng-star-inserted'][contains(.,'0')])[1]");
+            const iptAmountLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-ipt')])[1]");
             const iptAmountValue = await iptAmountLocator.textContent(); 
             const iptAmount = parseValue(iptAmountValue);  
     
@@ -298,7 +298,7 @@ export class Reports {
             console.log(`IPT Amount: ${iptAmount}`);
             console.log(`Calculated Turnover: ${turnover}`);
     
-            const displayedNetPremiumLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-gwp mat-column-gwp ng-star-inserted'][contains(.,'52,097.91')])[1]");
+            const displayedNetPremiumLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-gwp')])[1]");
             const displayedNetPremiumValue = await displayedNetPremiumLocator.textContent();
             const displayedNetPremium = parseValue(displayedNetPremiumValue);
     
@@ -308,7 +308,7 @@ export class Reports {
                 console.log('Net Premium matches the displayed value.');
             }
     
-            const displayedIptAmountLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-ipt mat-column-ipt ng-star-inserted'][contains(.,'0')])[1]");
+            const displayedIptAmountLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-ipt')])[1]");
             const displayedIptAmountValue = await displayedIptAmountLocator.textContent();
             const displayedIptAmount = parseValue(displayedIptAmountValue);
     
@@ -318,7 +318,7 @@ export class Reports {
                 console.log('IPT Amount matches the displayed value.');
             }
     
-            const displayedTurnoverLocator = this.page.locator("(//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-turnover mat-column-turnover ng-star-inserted'][contains(.,'52,097.91')])[1]");
+            const displayedTurnoverLocator = this.page.locator("(//mat-cell[contains(@class, 'mat-column-turnover')])[1]");
             const displayedTurnoverValue = await displayedTurnoverLocator.textContent();
             const displayedTurnover = parseValue(displayedTurnoverValue);
     

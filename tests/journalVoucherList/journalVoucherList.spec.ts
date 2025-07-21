@@ -820,7 +820,7 @@ test('NXGF-TC-2081: TC_024_Journal Voucher List_Search_Verify that the user is a
         await journalVoucherListPage.verifyVoucherNumFromGrid();
     })
 });
-/*
+
 test('NXGF-TC-2082: TC_037_Journal Voucher List_Search result_Verify that the user is redirected to another screen Journal Voucher details', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -833,7 +833,6 @@ test('NXGF-TC-2082: TC_037_Journal Voucher List_Search result_Verify that the us
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1199,7 +1198,7 @@ test('NXGF-TC-2087: TC_044_Journal Voucher List_Modify_Verify that the second se
         await journalVoucherListPage.verifyBalanceAndAmountsFromGrid();
     })
 });
-
+//Data is not present 
 test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transaction fields under the voucher reference are available on the details page', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1262,7 +1261,7 @@ test('NXGF-TC-2088: TC_045_Journal Voucher List_Modify_Verify that the transacti
         await journalVoucherListPage.verifyEditTransactionScreen();
     })
 });
-*/
+
 test('NXGF-TC-2089: TC_047_Journal Voucher List_Modify_Verify the the user is able to view below the grid, Records per page dropdown', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

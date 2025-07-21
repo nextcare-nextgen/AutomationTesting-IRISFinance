@@ -1489,7 +1489,7 @@ test('NXGF-TC-2143: TC_054_ Chart of Accounts_Verify that the start date selecto
         await chartOfAccountsPage.verifyCurrentDateFromCalender();
     })
 });
-/*
+
 test('NXGF-TC-2145: TC_057_ Chart of Accounts_Verify that the user is able to view only the Active accounts unless show stopped is selected', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1567,7 +1567,7 @@ test('NXGF-TC-2146: TC_059_ Chart of Accounts_Verify that the user is able to cl
         await chartOfAccountsPage.clickAddChildAccountButton();
     })
 });
-*/
+
 test('NXGF-TC-2147,NXGF-TC-2148: TC_060_ Chart of Accounts_Verify that the user is redirected to a Add Child Account screen to  create the sub account', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -1978,7 +1978,7 @@ test('NXGF-TC-2157: TC_071_ Chart of Accounts_Verify that the user is able to ed
         await chartOfAccountsPage.enterEditSelectStartDate(ChartOfAccountsPageData['TC_071_Chart_of_Accounts'].date);
     })
 });
-/*
+
 test('NXGF-TC-2158: TC_072_ Chart of Accounts_Verify that the user is able to edit the account name and account type for sub account', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -2021,7 +2021,7 @@ test('NXGF-TC-2158: TC_072_ Chart of Accounts_Verify that the user is able to ed
         await chartOfAccountsPage.selectEditChildAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_072_Chart_of_Accounts'].dropdownvalue);
     })
 });
-*/
+
 test('NXGF-TC-2159: TC_073_ Chart of Accounts_Verify that the user is able to click on save after editing the details', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -2072,70 +2072,74 @@ test('NXGF-TC-2159: TC_073_ Chart of Accounts_Verify that the user is able to cl
         await chartOfAccountsPage.clickOnSaveButton();
     })
 });
-/*
-test('NXGF-TC-2160: TC_074_ Chart of Accounts_Verify that the updated details are saved for subaccount', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const dashboardPage: DashboardPage = new DashboardPage(page);
-    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+// test('NXGF-TC-2160: TC_074_ Chart of Accounts_Verify that the updated details are saved for subaccount', async ({ page }) => {
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const dashboardPage: DashboardPage = new DashboardPage(page);
+//     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("Set the organization to Allianz partners 2024", async () => {
-        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("User Click on Menu Icon", async () => {
-        await dashboardPage.clickOnMenuIconButton();
-    })
+//     await test.step("Set the organization to Allianz partners 2024", async () => {
+//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+//     })
 
-    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
-        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
-    })
+//     await test.step("User Click on Menu Icon", async () => {
+//         await dashboardPage.clickOnMenuIconButton();
+//     })
 
-    await test.step("Click on Extended Arrow", async () => {
-        await chartOfAccountsPage.clickOnExpandArrow();
-    })
+//     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+//         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+//     })
 
-    await test.step("Click on Add child Account Icon", async () => {
-        await chartOfAccountsPage.clickOnAddChildAccountIcon();
-    })
+//     await test.step("Click on Extended Arrow", async () => {
+//         await chartOfAccountsPage.clickOnExpandArrow();
+//     })
 
-    await test.step("User Enter Child Account Number", async () => {
-        await chartOfAccountsPage.enterRandomChildAccountNumber();
-    })
+//     await test.step("Click on Add child Account Icon", async () => {
+//         await chartOfAccountsPage.clickOnAddChildAccountIcon();
+//     })
 
-    await test.step("User Select account Name", async () => {
-        await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].dropdownvalue);
-    })
+//     await test.step("User Enter Child Account Number", async () => {
+//         await chartOfAccountsPage.enterRandomChildAccountNumber();
+//     })
 
-    await test.step("User enter Start Date", async () => {
-        await chartOfAccountsPage.enterStartDate();
-    })
+//     await test.step("User Select account Name", async () => {
+//         await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].dropdownvalue);
+//     })
 
-    await test.step("User Select account type", async () => {
-        await chartOfAccountsPage.selectEditChildAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].accountType);
-    })
+//     await test.step("User enter Start Date", async () => {
+//         await chartOfAccountsPage.enterStartDate();
+//     })
 
-    await test.step("User Select GL Account type", async () => {
-        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].GLdropdownvalue);
-    })
+//     await test.step("User Select account type", async () => {
+//         await chartOfAccountsPage.selectEditChildAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].accountType);
+//     })
 
-    await test.step("Click on Save button", async () => {
-        await chartOfAccountsPage.clickOnSaveButton();
-    })
+//     await test.step("User Select GL Account type", async () => {
+//         await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].GLdropdownvalue);
+//     })
 
-    await test.step("Verified that the updated details are saved for subaccount", async () => {
-        await chartOfAccountsPage.getaccountNumber();
-    })
-});
-*/
+//     await test.step("Click on Save button", async () => {
+//         await chartOfAccountsPage.clickOnSaveButton();
+//     })
+
+//     // await test.step("Click on Search button", async () => {
+//     //     await chartOfAccountsPage.clickonSearchButton();
+//     // })
+
+//     await test.step("Verified that the updated details are saved for subaccount", async () => {
+//         await chartOfAccountsPage.getaccountNumber();
+//     })
+// });
+
 test('NXGF-TC-2161: TC_075_ Chart of Accounts_Verify that the Stop option to stop the active account is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -2201,7 +2205,7 @@ test('NXGF-TC-2162,NXGF-TC-2163: TC_077_ Chart of Accounts_Verify that the messa
         await chartOfAccountsPage.verifyStopAccountPopup(ChartOfAccountsPageData['TC_077_Chart_of_Accounts'].popup);
     })
 });
-/*
+
 test('NXGF-TC-2164: TC_078_ Chart of Accounts_Verify that the user is able to view the stop date after stopping the Chart of account', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -2303,7 +2307,7 @@ test('NXGF-TC-2165: TC_079_ Chart of Accounts_Verify that the user is able to ed
         await chartOfAccountsPage.selectProductlineFromDropdown(ChartOfAccountsPageData['TC_079_Chart_of_Accounts'].productLine);
     })
 });
-*/
+
 test('NXGF-TC-2166: TC_080_ Chart of Accounts_Verify that the user is able to edit the GL Account Type for sub account', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -2561,80 +2565,80 @@ test('NXGF-TC-6709: TC_86_ Chart of Accounts_Verify that when an account is disp
     })
 });
 
-// test('NXGF-TC-6710: TC_87_ Chart of Accounts_Verify that a newly created account is visible and selectable in the journal voucher. This ensures that accounts are correctly updated and integrated with the journal voucher system.', async ({ page }) => {
+test('NXGF-TC-6710: TC_87_ Chart of Accounts_Verify that a newly created account is visible and selectable in the journal voucher. This ensures that accounts are correctly updated and integrated with the journal voucher system.', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Set the organization to Allianz partners 2024", async () => {
-//         await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
-//     })
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on Charts of Accounts Shortcut button", async () => {
-//         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
-//     })
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
 
-//     await test.step("User click on the add(+) button", async () => {
-//         await chartOfAccountsPage.clickOnAddAccountButton();
-//     })
+    await test.step("User click on the add(+) button", async () => {
+        await chartOfAccountsPage.clickOnAddAccountButton();
+    })
 
-//     await test.step("User Enter Account Number", async () => {
-//         await chartOfAccountsPage.getAddaccountNumber();
-//     })
+    await test.step("User Enter Account Number", async () => {
+        await chartOfAccountsPage.getAddaccountNumber();
+    })
 
-//     await test.step("User Enter Account Name", async () => {
-//         await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].accountName);
-//     })
+    await test.step("User Enter Account Name", async () => {
+        await chartOfAccountsPage.enterAddAccountName(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].accountName);
+    })
 
-//     await test.step("User Select Date", async () => {
-//         await chartOfAccountsPage.enterSelectStartDate(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].value);
-//     })
+    await test.step("User Select Date", async () => {
+        await chartOfAccountsPage.enterSelectStartDate(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].value);
+    })
 
-//     await test.step("User Select Add Account type", async () => {
-//         await chartOfAccountsPage.selectAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].dropdownvalue);
-//     })
+    await test.step("User Select Add Account type", async () => {
+        await chartOfAccountsPage.selectAddAccountTypeFromDropdown(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].dropdownvalue);
+    })
 
-//     await test.step("User Select GL Account type", async () => {
-//         await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].GLdropdownvalue);
-//     })
+    await test.step("User Select GL Account type", async () => {
+        await chartOfAccountsPage.selectglAccountTypeFromDropdown(ChartOfAccountsPageData['TC_087_Chart_of_Accounts'].GLdropdownvalue);
+    })
 
-//     await test.step("Click on Save button", async () => {
-//         await chartOfAccountsPage.clickOnSaveButton();
-//     })
+    await test.step("Click on Save button", async () => {
+        await chartOfAccountsPage.clickOnSaveButton();
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//         await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
 
-//     await test.step("User Click on Journal Voucher Shortcut button", async () => {
-//         await chartOfAccountsPage.clickOnJournalVoucherShrtcutsButton();
-//     })
+    await test.step("User Click on Journal Voucher Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnJournalVoucherShrtcutsButton();
+    })
 
-//     await test.step("User Click on Journal Voucher Lookup Button", async () => {
-//         await chartOfAccountsPage.clickOnJournalVoucherLookupButton();
-//     })
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await chartOfAccountsPage.clickOnJournalVoucherLookupButton();
+    })
 
-//     await test.step("User Click on Advanced Search Button", async () => {
-//         await chartOfAccountsPage.clickOnAdvancedSearchButton();
-//     })
+    await test.step("User Click on Advanced Search Button", async () => {
+        await chartOfAccountsPage.clickOnAdvancedSearchButton();
+    })
 
-//     await test.step("User Click on Journal Voucher Lookup Button", async () => {
-//         await chartOfAccountsPage.getAddaccountNumberAndVerifyFromJV();
-//     })
-// });
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await chartOfAccountsPage.getAddaccountNumberAndVerifyFromJV();
+    })
+});
 
 test("NXGF-TC-6711: TC_88_ Chart of Accounts_Verify that the count of total records displayed in the chart of accounts is consistent and does not vary unexpectedly after performing certain activities or operations.", async ({ page }) => {
 

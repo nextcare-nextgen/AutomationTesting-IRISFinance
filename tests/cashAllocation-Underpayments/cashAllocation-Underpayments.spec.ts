@@ -43,7 +43,7 @@ test('NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a st
         await cashAllocationUnderPaymentsPage.verifyUnAllocatedData();
     })
 });
-/*
+
 test('NXGF-TC-2974,NXGF-TC-2975: TC_002_Underpayment_Verify that the payment amount is less than the premium due for the policy', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -173,7 +173,7 @@ test('NXGF-TC-2976,NXGF-TC-2981: TC_004_one to one_Verify that a received paymen
         await cashAllocationUnderPaymentsPage.verifyAllocateButtonIsClickable();
     })
 });
-*/
+
 test('NXGF-TC-2986: TC_014_Underpayment_Verify a received payment has been allocated to a policy where commission is applicable', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

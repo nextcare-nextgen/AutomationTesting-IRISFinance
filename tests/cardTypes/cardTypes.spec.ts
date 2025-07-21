@@ -328,7 +328,7 @@ test('NXGF-TC-1865: TC_009_card types_Verify that the user is able to view the s
     })
 
 });
-/*
+
 test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on Unstopped to stop the card from usage', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -341,6 +341,10 @@ test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on U
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -362,9 +366,7 @@ test('NXGF-TC-1866: TC_010_card types_Verify that the user is able to click on U
     await test.step("Verified that the user is able to click on Unstopped to stop the card from usage", async () => {
         await cardTypesPage.clickOnStoppedCard(CardTypesData['TC_010_card types'].value);
     })
-
 });
-
 
 test('NXGF-TC-1867: TC_011_card types_Verify that the user is able to see a popup message"Are you sure you want to change the status of card', async ({ page }) => {
 
@@ -378,6 +380,10 @@ test('NXGF-TC-1867: TC_011_card types_Verify that the user is able to see a popu
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -403,9 +409,7 @@ test('NXGF-TC-1867: TC_011_card types_Verify that the user is able to see a popu
     await test.step("Verify that the user is able to see a popup message'Are you sure you want to change the status of card'", async () => {
         await cardTypesPage.verifyPopupMeassage(CardTypesData['TC_011_card types'].popupMessage);
     })
-
 });
-
 
 test('NXGF-TC-1868: TC_012_card types_Verify that the user is able to click on "ok" to proceed or "cancel" the status change', async ({ page }) => {
 
@@ -419,6 +423,10 @@ test('NXGF-TC-1868: TC_012_card types_Verify that the user is able to click on "
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -468,6 +476,10 @@ test('NXGF-TC-1870: TC_014_card types_Verify that the user is able to view the s
         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
     await test.step("User Click on Menu Icon", async () => {
         await dashboardPage.clickOnMenuIconButton();
     })
@@ -495,8 +507,7 @@ test('NXGF-TC-1870: TC_014_card types_Verify that the user is able to view the s
     await test.step("Verified that the user is able to view the stop date for the stopped cards", async () => {
         await cardTypesPage.verifyStoppedDateFromGrid();
     })
-
 });
 
-*/
+
 

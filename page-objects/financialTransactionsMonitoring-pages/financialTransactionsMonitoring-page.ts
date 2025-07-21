@@ -380,15 +380,23 @@ export class FinancialTransactionsMonitoringPage {
 
     async verifySearchResultFromGrid() {
         await new Promise(resolve => setTimeout(resolve, 3000));
-        expect(this.page.locator('//mat-cell[contains(@class,"transactionDate")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentDate")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentType")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentMethod")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentAmount")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentCurrency")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentStatus")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"paymentRef")]')).toBeVisible();
-        expect(this.page.locator('//mat-cell[contains(@class,"policyReference")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"transactionDate")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentDate")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentType")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentMethod")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentAmount")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentCurrency")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentStatus")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentRef")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"policyReference")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"paymentFileRef")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"transactionId")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"documentReference")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"remittanceInfo")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"beneficiaryAccountName")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"beneficiaryAccountNumber")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"origin")]')).toBeVisible();
+        expect(this.page.locator('//mat-header-cell[contains(@class,"rejectReasonCode")]')).toBeVisible();
 
     }
 
@@ -480,13 +488,16 @@ export class FinancialTransactionsMonitoringPage {
     }
 
     async verifyErrorMessage(data: string, data1: string) {
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        const value = await this.page.locator('//mat-label//span[@title="Transaction Type"]').dblclick();
-        const fill = await this.page.locator('//iris-transaction-type-autocomplete//input').fill(data1);
-        // await this.page.keyboard.press('Enter');
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        const actual = await this.errorMessage.textContent();
-        expect(actual).toBe(data);
+        await this.page.locator('//mat-label//span[@title="Transaction Type"]').click();
+        const input = this.page.locator('//iris-transaction-type-autocomplete//input');
+
+        await input.click(); 
+        await input.fill(''); 
+        await input.type(data1, { delay: 100 }); 
+
+        await this.errorMessage.waitFor({ state: 'visible', timeout: 5000 });
+        const actual = await this.errorMessage.getAttribute('title');
+        expect(actual?.trim()).toBe(data);
     }
 
     async verifyexistingRecordBeforeSearch() {

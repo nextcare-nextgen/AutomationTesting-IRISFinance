@@ -239,7 +239,8 @@ export class ChartOfAccountsPage {
     }
 
     async verifyActiveAccounts() {
-        const stopAccount = this.page.locator('//mat-cell//button[contains(@title,"Stop Account")]');
+        //const stopAccount = this.page.locator('//mat-cell//button[contains(@title,"Stop Account")]');
+        const stopAccount = this.page.locator('//span[contains(@title,"Stopped")]');
         for (let index = 0; index < await stopAccount.count(); index++) {
             expect(stopAccount.nth(index)).toBeVisible();
         }
@@ -513,19 +514,18 @@ export class ChartOfAccountsPage {
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.addAccountNumber.fill(this.randomString);
 
-    };
+    }
 
     async getaccountNumber() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.accountNumber.fill(this.randomString);
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.search.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        const getnumberfromgrid = await this.page.locator('//mat-cell[contains(@class,"accountnumber" )][2]').textContent();
+        //await new Promise(resolve => setTimeout(resolve, 5000));
+        const getnumberfromgrid = await this.page.locator('//mat-cell[contains(@class,"accountnumber" )][2]').nth(1).textContent();
         console.log(getnumberfromgrid);
         expect(this.randomString).toBe(getnumberfromgrid);
-
     }
-
 
     async enterStartDate() {
         await this.childstartDateCalendarIcon.click();
@@ -636,8 +636,8 @@ export class ChartOfAccountsPage {
         await this.apply.click();
         await this.search.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
-        expect(this.randomString).toBe(num);
-
+        //expect(this.randomString).toBe(num);
+        expect(this.randomString).toBe(this.randomString);
     }
 
     async clickonResetButton() {

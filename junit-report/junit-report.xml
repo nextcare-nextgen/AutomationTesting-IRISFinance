@@ -1,59 +1,6 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="212.7390190000001">
-<testsuite name="tests\onePayScreen\onePay.spec.ts" timestamp="2025-06-25T10:56:11.233Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="200.45" errors="0">
-<testcase name="NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the saved card details in Syncro &quot;financial info page&quot; after validating the policy" classname="tests\onePayScreen\onePay.spec.ts" time="200.45">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="onePay.spec.ts:494:5 NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the saved card details in Syncro &quot;financial info page&quot; after validating the policy" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\onePayScreen\onePay.spec.ts:494:5 › NXGF-TC-3928: TC_005_long term_Verify that the user is able to view the saved card details in Syncro "financial info page" after validating the policy 
-
-    Test timeout of 200000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.fill: Test timeout of 200000ms exceeded.
-    Call log:
-      - waiting for locator('//div//input[@name="contractnumber"]')
-
-
-       at page-objects\onePay-pages\onePay-page.ts:424
-
-      422 |         await this.signinButton.click();
-      423 |         await this.page.waitForLoadState('networkidle');
-    > 424 |         await this.contractNumber.fill(pn);
-          |                                   ^
-      425 |         await this.searchbtn.click();
-      426 |         await new Promise(resolve => setTimeout(resolve, 5000));
-      427 |         await this.editbtn.click();
-
-        at OnePayPage.getPolicyNumber (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\onePay-pages\onePay-page.ts:424:35)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\onePayScreen\onePay.spec.ts:540:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\onePayScreen\onePay.spec.ts:538:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-onePayScreen-onePay--4cdae-after-validating-the-policy-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[hi
-
-[[ATTACHMENT|..\test-results\tests-onePayScreen-onePay--4cdae-after-validating-the-policy-Mawista-EU\test-failed-1.png]]
-]]>
-</system-out>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="45.17056000000052">
+<testsuite name="tests\journalVoucherLookup\journalVoucherLookup.spec.ts" timestamp="2025-07-21T07:24:17.260Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="37.257" errors="0">
+<testcase name="NXGF-TC-2012: TC_006_Journal Voucher Lookup_Verify that the screen is titled as &quot;Journal Voucher &quot; and the Journal Voucher lookup tab selected " classname="tests\journalVoucherLookup\journalVoucherLookup.spec.ts" time="37.257">
 </testcase>
 </testsuite>
 </testsuites>

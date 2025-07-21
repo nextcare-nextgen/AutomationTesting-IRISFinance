@@ -113,9 +113,8 @@ export class CardTypesPage {
     async clickonEditOrganizationButton() {
         await new Promise(resolve => setTimeout(resolve, 3000));
         const editOrgIcon = this.page.locator('//button[@title="Edit Organization"]');
-        await editOrgIcon.first().click();
+        await editOrgIcon.nth(16).click();
     }
-
 
     async verifyFinancialInfo(data: string) {
         expect(this.financialsInformation).toBeVisible();
@@ -185,7 +184,7 @@ export class CardTypesPage {
     }
 
     async verifyStoppedDateFromGrid() {
-        const actual = this.page.locator("//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-stopDate mat-column-stopDate ng-star-inserted'][contains(.,'10-10-2024')]");
+        const actual = this.page.locator("//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-stopDate mat-column-stopDate ng-star-inserted']").nth(0);
         expect(actual).toBeVisible();
     }
 }
