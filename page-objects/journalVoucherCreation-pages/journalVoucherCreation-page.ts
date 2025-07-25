@@ -96,8 +96,8 @@ export class JournalVoucherCreationPage {
         this.manadteaccountName = page.locator('//iris-composed-dialog//iris-account-autocomplete//div//input[contains(@class,"input-element")]');
         this.manadteamount = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount"]');
         this.manadtecurrency = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::iris-currency-autocomplete//input[contains(@class,"input-element")]');
-        this.manadteamountCV1 = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount CV1"]');
-        this.manadteamountCV2 = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount CV2"]');
+        this.manadteamountCV1 = page.locator('(//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount EUR"])[1]');
+        this.manadteamountCV2 = page.locator('(//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Amount EUR"])[2]');
         this.manadtevalueDate = page.locator('//iris-composed-dialog//span[contains(@class,"required-marker")]//following::input[@title="Value Date"]');
         this.manadtedescription = page.locator('//input[@title="Description"]');
         this.selectValueCalenderIcon = page.locator('//iris-composed-dialog//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
@@ -269,7 +269,7 @@ export class JournalVoucherCreationPage {
         expect(this.manadteamountCV2).toBeVisible();
         expect(this.manadtevalueDate).toBeVisible();
         expect(this.manadtedescription).toBeVisible();
-
+        expect(this.productLine).toBeVisible();
     }
 
 

@@ -414,8 +414,41 @@ test('NXGF-TC-3028: TC_014_Transaction Details Screen_Verify that the user is ab
         await financialTransactionsMonitoringPage.selectTransactiontype(FinancialTransactionsMonitoringData['TC_014_Transactions_Details_Screen'].transactionType);
     })
 });
+///added
+test('NXGF-TC-3029: TC_015_Transaction Details Screen_Verify that the Payment Type has the mentioned values', async ({ page }) => {
 
-// s
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+     await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+
+    await test.step("User Click on Search filter button", async () => {
+        await financialTransactionsMonitoringPage.clickOnSearchFilterButton();
+    })
+
+    await test.step("Verified that the Payment Type has the mentioned values", async () => {
+        await financialTransactionsMonitoringPage.verifyListOfTransactionType();
+    })
+});
 
 test('NXGF-TC-3030: TC_016_Transaction Details Screen_Verify that the user is able to select from the Payment Method from the dropdown', async ({ page }) => {
 

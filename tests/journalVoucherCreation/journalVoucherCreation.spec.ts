@@ -786,6 +786,49 @@ test('NXGF-TC-3872,NXGF-TC-3873: TC_033_Journal Voucher lookup_Verify that the A
         await journalVoucherCreationPage.verifyAddVoucherTransactionFields();
     })
 });
+//added
+test('NXGF-TC-3873: TC_034_Journal Voucher lookup_Verify that the Amount, Currency, Amount CV1,  Amount CV2, Value date and Description are mandatory fields', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherCreationPage: JournalVoucherCreationPage = new JournalVoucherCreationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnJournalVoucherLookupButton();
+    })
+    //page.pause();
+    await test.step("User Click on Journal Voucher Lookup Button", async () => {
+        await journalVoucherCreationPage.clickOnAddLookupVoucherCreationButton();
+    })
+
+    await test.step("User Click on Add Voucher transaction Button", async () => {
+        await journalVoucherCreationPage.clickOnAddVoucherTrancastionButton();
+    })
+
+    await test.step("Verified that the Amount, Currency, Amount CV1,  Amount CV2, Value date and Description are mandatory fields", async () => {
+        await journalVoucherCreationPage.verifyMandatoryAddVoucherTransactionFields();
+    })
+});
 
 test('NXGF-TC-3874: TC_035_Journal Voucher creation_Verify that the Account name is a auto complete smart search field', async ({ page }) => {
 

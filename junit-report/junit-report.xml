@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="45.17056000000052">
-<testsuite name="tests\journalVoucherLookup\journalVoucherLookup.spec.ts" timestamp="2025-07-21T07:24:17.260Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="37.257" errors="0">
-<testcase name="NXGF-TC-2012: TC_006_Journal Voucher Lookup_Verify that the screen is titled as &quot;Journal Voucher &quot; and the Journal Voucher lookup tab selected " classname="tests\journalVoucherLookup\journalVoucherLookup.spec.ts" time="37.257">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="55.047346000000836">
+<testsuite name="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" timestamp="2025-07-24T13:06:05.252Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="43.86" errors="0">
+<testcase name="NXGF-TC-3029: TC_015_Transaction Details Screen_Verify that the Payment Type has the mentioned values" classname="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" time="43.86">
 </testcase>
 </testsuite>
 </testsuites>

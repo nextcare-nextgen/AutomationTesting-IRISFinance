@@ -71,6 +71,12 @@ export class ChartOfAccountsPage {
     readonly advancedSearch: Locator;
     readonly JVaccountNum: Locator;
     readonly apply: Locator;
+    readonly expandArrow1: Locator;
+    readonly editChildAccount: Locator;
+
+    readonly accountNameInput: Locator;
+    readonly glAccountTypeDropdown : Locator;
+    readonly productLineInput: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -126,6 +132,7 @@ export class ChartOfAccountsPage {
         this.addchildAccountTitle = page.locator('//h2[@title="Add  Child Account For Gross Written Premium"]');
         this.warningPopup = page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
         this.expandArrow = page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
+        this.expandArrow1 = page.locator("(//button[@aria-label='button'])[13]");
         this.addAccountScreenText = page.locator("//iris-base-label//h2[@title='Add a new account']");
         this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
@@ -140,6 +147,11 @@ export class ChartOfAccountsPage {
         this.advancedSearch = page.locator('//div//button[@title="Filter"]');
         this.JVaccountNum = page.locator('//iris-form-container//input[@title="Account number"]');
         this.apply = page.locator('//button[@title="Apply"]');
+        this.editChildAccount = page.locator("mat-icon[title='Edit Account'] svg");
+
+        this.accountNameInput = this.page.locator('[placeholder="Account Name"]');  
+        this.glAccountTypeDropdown = this.page.locator('select[name="glAccountType"]');
+        this.productLineInput = this.page.locator('[placeholder="Product Line"]');
     }
 
     async verifyBreadCrumbsText(data: string) {
@@ -447,6 +459,10 @@ export class ChartOfAccountsPage {
         await this.expandArrow.click();
     }
 
+    async clickOnExpandArrow1() {
+        await this.expandArrow1.click();
+    }
+
     async verifyEditIconInGrid() {
         const editIcon = this.page.locator('//button[@title="Edit Account"]');
         for (let index = 0; index < await editIcon.count(); index++) {
@@ -518,7 +534,8 @@ export class ChartOfAccountsPage {
 
     async getaccountNumber() {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.accountNumber.fill(this.randomString);
+        //await this.editChildAccount.click();
+        await this.accountNumber.nth(0).fill(this.randomString);
         await new Promise(resolve => setTimeout(resolve, 3000));
         await this.search.click();
         //await new Promise(resolve => setTimeout(resolve, 5000));
@@ -644,5 +661,24 @@ export class ChartOfAccountsPage {
         await this.reset.click();
         await this.page.waitForSelector('.loader', { state: 'hidden' });
     }
+
+    async clickOnEditChildAccountIcon() {
+        await this.editChildAccount.waitFor({ state: 'visible' });
+        await this.editChildAccount.click();
+    }
+
+    async editSubAccountDetails(accountName1: string, ) {
+       //async enterEditchildAddAccountName(data: string) {
+        await this.addAccountName.clear();
+        await this.addAccountName.fill(accountName1);
+    }
+    
+    async verifyEditedDetailsInGrid(expectedName: string, expectedGLAccountType: string) {
+        const actualName = await this.page.locator('//mat-cell[contains(@class,"accountname")]').textContent();
+        const actualGLAccountType = await this.page.locator('//mat-cell[contains(@class,"gLAccountTypeDescription")]').textContent();
+
+        expect(actualName?.trim()).toBe(expectedName);
+        expect(actualGLAccountType?.trim()).toBe(expectedGLAccountType);
+   }
 }
 

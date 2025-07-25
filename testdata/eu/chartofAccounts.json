@@ -112,7 +112,10 @@
     "TC_074_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
         "accountType": "CC Incoming Clearing",
-        "GLdropdownvalue": "Account Payable"
+        "GLdropdownvalue": "Account Payable",
+        "accountNum": "4567",
+        "accountName": "TestAccount",
+        "accountName1": "45678"
     },
     "TC_077_Chart_of_Accounts": {
         "popup": "Are you sure you want to stop this account ?"
