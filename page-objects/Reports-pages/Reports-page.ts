@@ -35,9 +35,9 @@ export class Reports {
         this.clickOnFOB= page.locator("//mat-label//span[@title= 'FOB']");
         this.clickOnApplyBtn= page.locator("//span[@title='Apply'][contains(.,'Apply')]");
         this.clickOnClearAllBtn= page.locator("//span[@title='Clear All'][contains(.,'Clear All')]");
-        this.taxablebtn= page.locator("(//span[@title='Taxable'][normalize-space()='Taxable'])[5]");
-        this.taxfreebtn= page.locator("(//span[@title='Tax Free'][normalize-space()='Tax Free'])[3]");
-        this.itemDropDownSelector= page.locator("//div[text()=' Records per page: ']/following::mat-select[@role= 'combobox'][2]");
+        this.taxablebtn= page.locator("(//span[@title='Taxable'][normalize-space()='Taxable'])[1]");
+        this.taxfreebtn= page.locator("(//span[@title='Tax Free'][normalize-space()='Tax Free'])[1]");
+        this.itemDropDownSelector= page.locator("(//div[text()=' Records per page: ']/following::mat-select[@role= 'combobox'][2])[5]");
         this.selectedCount= page.locator("//mat-option[@role='option'][contains(.,'100')]");
         this.clickExportToExcelbtn= page.locator("//span[@title='Export to excel'][contains(.,'Export to excel')]");
         this.grandTotalSelector= page.locator("//small[@title='Grand Total'][contains(.,'Grand Total')]");
@@ -50,7 +50,7 @@ export class Reports {
         await this.reportsMenuIcon.click();
     }
     async clickOnIPToption() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await this.IPTLink.click();
     }
     async fillFromDate() {
@@ -139,17 +139,18 @@ export class Reports {
         const formattedDate = fixedDay.toString().padStart(2, '0') + "-" + monthNumber[today.getMonth()] + "-" + today.getFullYear();
         await this.toDate.clear();
         await this.toDate.fill(formattedDate);
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async ClickonSearchBtn() {
         const searchBtn = this.page.locator("//iris-base-label//span[@title='Search']");
         searchBtn.nth(0).click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clickOnFilterBtn()
     {
+        await this. page.reload();
         await expect(this.advanceSearchFilter).toBeVisible();
         await this.advanceSearchFilter.click();
     }
@@ -158,7 +159,7 @@ export class Reports {
     {
         await expect(this.clickProductLine).toBeVisible();
         await this.clickProductLine.click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await expect(this.page.locator("//div//span//iris-base-label//mat-label[@title= 'Health']")).toBeVisible();
         await this.page.locator("//div//span//iris-base-label//mat-label[@title= 'Health']").click();
     }
@@ -169,10 +170,10 @@ export class Reports {
         await expect(this.clickOnFOB).toBeVisible();
         await this.clickOnFOB.click();
        // await this.clickOnFOB.fill(FOB_Value);
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await expect(this.page.locator("//mat-option//span//div/span//iris-base-label//mat-label[@title= 'In-Patient']")).toBeVisible();
         this.page.locator("//mat-option//span//div/span//iris-base-label//mat-label[@title= 'In-Patient']").click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async selectFOBTravelInsurance()
@@ -190,7 +191,7 @@ export class Reports {
     {
         await this.clickOnApplyBtn.click();
         await this.page.mouse.click(0,0);
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     async clearAllbtn()
@@ -396,7 +397,8 @@ export class Reports {
     }
     
     async selectItemCountFromDropdown(selectedCount: string) {
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this. page.reload();
         await this.itemDropDownSelector.click();
         await this.page.waitForSelector("mat-option");
 
@@ -419,25 +421,40 @@ export class Reports {
 
     async clickOnExportToExcelButton()
     {
+        await new Promise(resolve => setTimeout(resolve, 9000));
         await expect(this.clickExportToExcelbtn).toBeVisible();
         await this.clickExportToExcelbtn.click();
     }
 
-    async verifyFileDownloaded(downloadPath: string) {
+    async verifyFileDownloaded(downloadDir: string): Promise<void> {
         const download: Download = await this.page.waitForEvent('download');
-        const downloadedFilePath = await download.path();
-        expect(downloadedFilePath).toBeTruthy();        
-      }
 
-    async verifyFileDownloadedSuccessfully(downloadPath: string) {
-        const download: Download = await this.page.waitForEvent('download');
         const downloadedFilePath = await download.path();
         expect(downloadedFilePath).toBeTruthy();
-        const fileName = path.basename(downloadedFilePath);
-        //expect(fileName).toBe('.csv');
-        //await new Promise(resolve => setTimeout(resolve, 9000));
-      }
 
+        const suggestedFilename = download.suggestedFilename();
+        const finalFilePath = path.join(downloadDir, suggestedFilename);
+        await download.saveAs(finalFilePath);
+    }
+
+    async verifyFileDownloadedSuccessfully(): Promise<void> {
+        await this.page.waitForLoadState('networkidle');
+
+        const [download] = await Promise.all([this.page.waitForEvent('download'), this.clickExportToExcelbtn.click({ force: true })]);
+        const filePath = path.join(__dirname, '../../page-objects/downloadDocuments-pages/DownloadedFileName.xlsx');
+        await download.saveAs(filePath);
+
+        const fileExtension = path.extname(filePath).toLowerCase();
+        if (fileExtension !== '.xlsx') {throw new Error(`Invalid file extension: ${fileExtension}. Expected '.xlsx'`);}
+
+        const xlsx = require('xlsx');
+        const workbook = xlsx.readFile(filePath);
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const jsonData = xlsx.utils.sheet_to_json(worksheet);
+        console.log('Extracted Excel Data:', jsonData);
+    }
+    
     async verifyGrandTotalAtTheEndOfProductLines(){
         await expect(this.grandTotalSelector).toBeVisible();
         const rows = this.page.locator('table#product-table tr');  

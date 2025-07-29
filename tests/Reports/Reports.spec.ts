@@ -854,7 +854,7 @@ test('NXGF-TC-3840: TC_021_IPT_Verify that the total of the IPT amount should ma
     await reportsPage.ClickonSearchBtn();
     await reportsPage.verifyTotalIPTAmount();
     })
-})
+});
 
 test('NXGF-TC-3841: TC_022_IPT_Verify that the user is able to view the item counts in the drop down at the footer of the table, NXGF-TC-3842: TC_023_IPT_Verify that the user is able to choose from the dropdown the item counts and the number of records match selected count', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -910,7 +910,7 @@ test('NXGF-TC-3841: TC_022_IPT_Verify that the user is able to view the item cou
     await reportsPage.ClickonSearchBtn();
     await reportsPage.selectItemCountFromDropdown("100");
     })
-})
+});
 
 test('NXGF-TC-3843: TC_024_IPT_Verify that the user is able to click on the export to excel button and view the options to download the "Export current page" and "export all data"', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -970,7 +970,7 @@ test('NXGF-TC-3843: TC_024_IPT_Verify that the user is able to click on the expo
     await test.step("click on the export to excel option", async () => {
     await reportsPage.clickOnExportToExcelButton();
     })
-})
+});
 
 test('NXGF-TC-3844: TC_025_IPT_Verify that when the user clicks on the export to excel button an excel file gets downloaded', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -1029,70 +1029,70 @@ test('NXGF-TC-3844: TC_025_IPT_Verify that when the user clicks on the export to
 
     await test.step("click on the export to excel option", async () => {
     await reportsPage.clickOnExportToExcelButton();
-    await reportsPage.verifyFileDownloaded('C:\Users\ashwini.sunil.yeskar\Downloads\Download file from project');
+    await reportsPage.verifyFileDownloaded('../../page-objects/downloadDocuments-pages/Download file from project');
     })
 });
 
-// test('NXGF-TC-3845: TC_026_IPT_Verify that the file is exported with the proper file extension.', async ({ page }) => {
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const dashboardPage: DashboardPage = new DashboardPage(page);
-//     const reportsPage: Reports = new Reports(page);
+test('NXGF-TC-3845: TC_026_IPT_Verify that the file is exported with the proper file extension.', async ({ page }) => {
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const reportsPage: Reports = new Reports(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//     await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+    await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//     await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+    await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
     
-//     await test.step("Set the organization to Allianz partners 2024", async () => {
-//     await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
-//     })
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+    await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
 
-//     await test.step("User Click on Menu Icon", async () => {
-//     await dashboardPage.clickOnMenuIconButton();
-//     })
+    await test.step("User Click on Menu Icon", async () => {
+    await dashboardPage.clickOnMenuIconButton();
+    })
     
-//     await test.step("User Click on Reports Menu Icon", async () => {
-//     await reportsPage.clickOnReportsMenuIcon();
-//     })
+    await test.step("User Click on Reports Menu Icon", async () => {
+    await reportsPage.clickOnReportsMenuIcon();
+    })
         
-//     await test.step("User Selects Insurance Premim Tax option", async () => {
-//     await reportsPage.clickOnIPToption();
-//     })
+    await test.step("User Selects Insurance Premim Tax option", async () => {
+    await reportsPage.clickOnIPToption();
+    })
 
-//     await test.step("User selects the today's date as the from date value", async () => {
-//     await reportsPage.fillfromDate_PastDate();
-//     })
+    await test.step("User selects the today's date as the from date value", async () => {
+    await reportsPage.fillfromDate_PastDate();
+    })
       
-//     await test.step("User provides the To date value", async () => {
-//     await reportsPage.fillToDate();
-//     })
+    await test.step("User provides the To date value", async () => {
+    await reportsPage.fillToDate();
+    })
 
-//     await test.step("User needs to click on advance search option", async () => {
-//     await reportsPage.clickOnFilterBtn();
-//     })
+    await test.step("User needs to click on advance search option", async () => {
+    await reportsPage.clickOnFilterBtn();
+    })
 
-//     await test.step("Click on the Product line and select a value from the dropdown", async () => {
-//     await reportsPage.selectProductLine();
-//     })
+    await test.step("Click on the Product line and select a value from the dropdown", async () => {
+    await reportsPage.selectProductLine();
+    })
     
-//     await test.step("Click on the FoB and select a value from the dropdown", async () => {
-//     await reportsPage.selectFOB();
-//     })
+    await test.step("Click on the FoB and select a value from the dropdown", async () => {
+    await reportsPage.selectFOB();
+    })
     
-//     await test.step("click on search in the advanced search field", async () => {
-//     await reportsPage.addValueAndClickOnApplyBtn();
-//     await reportsPage.ClickonSearchBtn();
-//     await reportsPage.selectItemCountFromDropdown("100");
-//     })
+    await test.step("click on search in the advanced search field", async () => {
+    await reportsPage.addValueAndClickOnApplyBtn();
+    await reportsPage.ClickonSearchBtn();
+    await reportsPage.selectItemCountFromDropdown("100");
+    })
 
-//     await test.step("click on the export to excel option", async () => {
-//     await reportsPage.clickOnExportToExcelButton();
-//     await reportsPage.verifyFileDownloadedSuccessfully('C:\Users\ashwini.sunil.yeskar\Downloads\Download file from project');
-//     })
-// })
+    await test.step("click on the export to excel option", async () => {
+    await reportsPage.clickOnExportToExcelButton();
+    await reportsPage.verifyFileDownloadedSuccessfully();
+    })
+});
 
 test('NXGF-TC-3850: TC_031_IPT_Verify that both the totals reflect and the end of the each product line with the collapse option', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -1147,7 +1147,7 @@ test('NXGF-TC-3850: TC_031_IPT_Verify that both the totals reflect and the end o
     await test.step("TC_031_IPT_Verify that both the totals reflect and the end of the each product line with the collapse option ", async () => {
     await reportsPage.verifyGrandTotalAtTheEndOfProductLines();
     })
-})
+});
 
 test('NXGF-TC-3851: TC_032_IPT_Verify that the Search bar displayed in main menu screen', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);
@@ -1169,4 +1169,4 @@ test('NXGF-TC-3851: TC_032_IPT_Verify that the Search bar displayed in main menu
     await test.step("User should verify serach bar present on main menu page", async () => {
     await reportsPage.verifySearchBarDisplayed();
     })
-})
+});

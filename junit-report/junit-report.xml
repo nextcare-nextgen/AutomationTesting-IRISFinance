@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="55.047346000000836">
-<testsuite name="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" timestamp="2025-07-24T13:06:05.252Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="43.86" errors="0">
-<testcase name="NXGF-TC-3029: TC_015_Transaction Details Screen_Verify that the Payment Type has the mentioned values" classname="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" time="43.86">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="60.88092000000016">
+<testsuite name="tests\Reports\Reports.spec.ts" timestamp="2025-07-29T09:40:48.018Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="53.877" errors="0">
+<testcase name="NXGF-TC-3838: TC_019_IPT_Verify that only tax free records are visible when the tax free filer is selected" classname="tests\Reports\Reports.spec.ts" time="53.877">
 </testcase>
 </testsuite>
 </testsuites>

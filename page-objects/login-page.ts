@@ -8,6 +8,7 @@ export class LoginPage {
     readonly signinButton: Locator;
     readonly rememberMeCheckbox: Locator;
     readonly checkBoxSelector: Locator;
+    readonly captchaError: Locator;
 
 
     constructor(page: Page) {
@@ -19,6 +20,7 @@ export class LoginPage {
        this.signinButton = page.locator("//button[@title='Sign in']");
         this.rememberMeCheckbox = page.locator('//mat-checkbox');
         this.checkBoxSelector= page.locator("//input[contains(@type,'checkbox')]");
+        this.captchaError= page.locator("//mat-icon[@title='Cancel']//*[name()='svg']");
     }
 
     async gotoLoginPage(url: string) {
@@ -26,12 +28,52 @@ export class LoginPage {
         await this.page.waitForLoadState('networkidle');
     }
 
-    async loginToApplication(superUser: string, password: string) {
-        await this.userNameOrEmailInputField.fill(superUser);
-        await this.passwordInputField.fill(password);
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.signinButton.click();
+    // async loginToApplication(superUser: string, password: string) {
+    //     await this.userNameOrEmailInputField.fill(superUser);
+    //     await this.passwordInputField.fill(password);
+    //     await new Promise(resolve => setTimeout(resolve, 5000));
+    //     await this.signinButton.click();
+    // }
+
+    async loginToApplication(superUser: string, password: string): Promise<void> {
+    // ✅ Step 1: Check and close CAPTCHA error if it exists BEFORE login
+    try {
+        if (await this.captchaError.isVisible({ timeout: 3000 })) {
+            console.warn("CAPTCHA error dialog detected on page load. Closing it before login.");
+            await this.captchaError.click();
+            await this.page.waitForTimeout(2000); // wait for UI to reset
+        }
+    } catch (e) {
+        // No CAPTCHA error, continue
     }
+
+    // ✅ Step 2: Enter credentials and attempt login
+    await this.userNameOrEmailInputField.fill(superUser);
+    await this.passwordInputField.fill(password);
+    await this.signinButton.click();
+
+    // ✅ Step 3: Check again if CAPTCHA appears after login attempt
+    try {
+        if (await this.captchaError.isVisible({ timeout: 5000 })) {
+            console.warn("CAPTCHA error appeared after login attempt. Closing it.");
+            await this.captchaError.click();
+            await this.page.waitForTimeout(2000); // Let UI recover
+            
+            // Optional: Retry login once
+            console.log("Retrying login after closing CAPTCHA error...");
+            await this.userNameOrEmailInputField.fill(superUser);
+            await this.passwordInputField.fill(password);
+            await this.signinButton.click();
+        }
+    } catch (e) {
+        // No CAPTCHA error, proceed
+    }
+
+    // ✅ Step 4: Wait for successful login or dashboard load
+    await this.page.waitForLoadState('networkidle');
+    // Optionally: Wait for a post-login element
+    // await this.page.locator('selector-for-dashboard-element').waitFor();
+}
 
     async loginToApplicationAndClickOnCheckbox(superUser: string, password: string) {
         await this.userNameOrEmailInputField.fill(superUser);
