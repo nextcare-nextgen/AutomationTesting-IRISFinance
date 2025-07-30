@@ -37,7 +37,7 @@ export default defineConfig({
     trace: 'off',
     screenshot: 'only-on-failure',
     video: 'off',
-    headless: true
+    headless: false
   },
   expect: {
     timeout: 20 * 2000,

@@ -14,7 +14,7 @@
     "LoginB2C-Access": {
         "url": "https://test-syncrob2c-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
-        "passwordInput": "Premium@9",
+        "passwordInput": "Shruti@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-AccessAcc": {

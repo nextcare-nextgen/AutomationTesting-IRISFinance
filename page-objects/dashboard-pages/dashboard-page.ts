@@ -59,11 +59,11 @@ export class DashboardPage {
   }
 
   async selectOrganization(org: string) {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     await this.organization.click();
     await this.page.locator('//mat-optgroup//mat-option//mat-label[text()="' + org + '"]').click();
     await this.page.waitForSelector('.loader', { state: 'hidden' });
   }
-
  
   async selectOrganizationAndYear(org: string, year: string) {
     await new Promise(resolve => setTimeout(resolve, 3000));
