@@ -22,7 +22,7 @@ test('NXGF-TC-3712: TC_002_Mawista payments_Verify that the user is able to view
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -50,7 +50,7 @@ test('NXGF-TC-3711: TC_001_Mawista payments_Verify that the IRIS user will be pr
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -78,7 +78,7 @@ test('NXGF-TC-3713: TC_003_Mawista payments_Verify that the user is able to sear
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -110,7 +110,7 @@ test('NXGF-TC-3714: TC_004_Mawista payments_Verify that the user is able to rese
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -138,7 +138,7 @@ test('NXGF-TC-3715: TC_005_Mawista payments_Verify that the user is able click o
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -170,7 +170,7 @@ test('NXGF-TC-3716: TC_006_Mawista payments_Verify that the user is able select 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -225,7 +225,7 @@ test('NXGF-TC-3717: TC_007_Mawista payments_Verify that the user is able to view
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -276,7 +276,7 @@ test('NXGF-TC-3718: TC_008_Mawista payments_Verify that the user is able to view
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -320,7 +320,7 @@ test('NXGF-TC-3719: TC_009_Mawista payments_Verify that the user is able to view
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -367,7 +367,7 @@ test('NXGF-TC-3720: TC_010_Mawista payments_Verify that the user is able to view
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -415,7 +415,7 @@ test('NXGF-TC-3721: TC_011_Mawista payments_Verify that the user is able to navi
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -482,7 +482,7 @@ test('NXGF-TC-3722: TC_012_Mawista payments_Verify that the user is able to expo
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {

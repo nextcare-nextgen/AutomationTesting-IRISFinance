@@ -18,11 +18,11 @@ test('NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed'
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -48,11 +48,11 @@ test('NXGF-TC-1911: TC_001_Policies_Verify that the user is able to navigate to 
     const dashboardPage: DashboardPage = new DashboardPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -71,11 +71,11 @@ test('NXGF-TC-1912: TC_002_Policies_Verify that the user is able to land on the 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -94,11 +94,11 @@ test('NXGF-TC-1913: TC_003_Policies_Verify that Policies shortcut buttons are cl
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -121,11 +121,11 @@ test('NXGF-TC-1914: TC_004_Policies_Verify that the user is able to see Policies
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -148,11 +148,11 @@ test('NXGF-TC-1915: TC_005_Policies_Verify that the user is redirected to the Po
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -179,11 +179,11 @@ test('NXGF-TC-1916: TC_006_Policies_Verify that the user is able to view the "Po
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -210,11 +210,11 @@ test('NXGF-TC-1917: TC_007_Policies_Verify that the From date and To date is dis
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -245,11 +245,11 @@ test('NXGF-TC-1918: TC_008_Policies_Verify that the user is able to select From 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -284,11 +284,11 @@ test('NXGF-TC-1919: TC_009_Policies_Verify that the Search filed is displayed', 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -315,11 +315,11 @@ test('NXGF-TC-1920: TC_010_Policies_Verify that the Advanced search filed is dis
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -350,7 +350,7 @@ test('NXGF-TC-1921: TC_011_Policies_Verify that the Reset filed is displayed', a
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -377,11 +377,11 @@ test('NXGF-TC-1922: TC_012_Policies_Verify that the all the column name should d
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -408,11 +408,11 @@ test('NXGF-TC-1923: TC_013_Policies_Verify that the user is able to search with 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -451,11 +451,11 @@ test('NXGF-TC-1924: TC_014_Policies_Verify that the Policy Reference filed is di
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -486,11 +486,11 @@ test('NXGF-TC-1925: TC_015_Policies_Verify that the Policy Id field is displayed
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -521,11 +521,11 @@ test('NXGF-TC-1926: TC_016_Policies_Verify that the Policy Holder Name field is 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -556,11 +556,11 @@ test('NXGF-TC-1927: TC_017_Policies_Verify that the Apply button is displayed in
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -591,11 +591,11 @@ test('NXGF-TC-1928: TC_018_Policies_Verify that the user is able to click on Res
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -622,11 +622,11 @@ test('NXGF-TC-1929: TC_019_Policies_Verify that the user is able to Reset field 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -653,11 +653,11 @@ test('NXGF-TC-1930: TC_020_Policies_Verify that the user is able to search with 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -700,11 +700,11 @@ test('NXGF-TC-1931: TC_021_Policies_Verify that the user is able to search with 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -751,11 +751,11 @@ test('NXGF-TC-1932: TC_022_Policies_Verify that the user is able to search with 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -798,11 +798,11 @@ test('NXGF-TC-1933: TC_023_Policies_Verify that the View Policy Journal ocher ey
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -829,11 +829,11 @@ test('NXGF-TC-1934: TC_024_Policies_Verify that the user is able to redirected o
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -860,11 +860,11 @@ test('NXGF-TC-1935: TC_025_Policies_Verify that the Policy Journal Voucher title
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -895,11 +895,11 @@ test('NXGF-TC-1936: TC_026_Policies_Verify that the two section are displayed', 
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -931,11 +931,11 @@ test('NXGF-TC-1937: TC_027_Policies_Verify that the all the column are displayed
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -966,11 +966,11 @@ test('NXGF-TC-1938: TC_028_Policies_Verify that the all the column are displayed
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1001,11 +1001,11 @@ test('NXGF-TC-1939: TC_029_Policies_Verify that the user is able to click on vou
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1040,11 +1040,11 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1076,11 +1076,11 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
 
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1111,11 +1111,11 @@ test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the ite
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1142,11 +1142,11 @@ test('NXGF-TC-1943: TC_033_Policies_Verify that the Records per page title shoul
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1173,11 +1173,11 @@ test('NXGF-TC-1944: TC_034_Policies_Verify that the user is not able to select f
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1204,11 +1204,11 @@ test('NXGF-TC-1945: TC_035_Policies_Verify that Any journal created under a poli
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1243,11 +1243,11 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1298,11 +1298,11 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
     const policiesPage: PoliciesPage = new PoliciesPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {

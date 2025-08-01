@@ -11,7 +11,7 @@ test('NXGF-TC-3820: TC_001_IPT_Verify that the user is able to login to the IRIS
     const loginPage: LoginPage = new LoginPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
@@ -200,7 +200,7 @@ test('NXGF-TC-3826: TC_007_IPT_Verify that the user is able to select from date 
     await test.step("click on search button", async () => {
         await reportsPage.ClickonSearchBtn();
     })
-})
+});
 
 test('NXGF-TC-3827: TC_008_IPT_Verify that the user is able to click on the advanced search filter', async ({ page }) => {
     const loginPage: LoginPage = new LoginPage(page);

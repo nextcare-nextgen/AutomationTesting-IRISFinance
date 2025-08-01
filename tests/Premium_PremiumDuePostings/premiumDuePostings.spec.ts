@@ -16,12 +16,12 @@ test('NXGF-TC-7460: TC_03_410_LT_reverse premium postings_Verify that the revers
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -68,11 +68,11 @@ test('NXGF-TC-7461: TC_04_410_LT_reverse premium postings_LT_Verify that for rev
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -119,11 +119,11 @@ test('NXGF-TC-7462: TC_05_410_reverse premium postings_LT_Verify that for revers
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -170,11 +170,11 @@ test('NXGF-TC-7463: TC_06_410_Partial Cancellation_LT_Verify that the Reverse pr
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
      })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -220,11 +220,11 @@ test('NXGF-TC-7464: TC_07_410_Partial Cancellation_LT_Verify that for Reverse pr
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -271,11 +271,11 @@ test('NXGF-TC-7465: TC_08_410_Partial Cancellation_LT_Verify that for Reverse pr
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -324,11 +324,11 @@ test('NXGF-TC-7466: TC_09_410_Dependent removed_LT_Verify that the Positive Inst
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -376,11 +376,11 @@ test('NXGF-TC-7467: TC_10_410_Dependent removed_LT_Verify that for Reverse premi
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -428,11 +428,11 @@ test('NXGF-TC-7468: TC_11_410_Dependent removed_LT_Verify that for Reverse premi
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -480,11 +480,11 @@ test('NXGF-TC-7470: TC_13_410_cancelled from inception_ST_Verify that the premiu
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -532,11 +532,11 @@ test('NXGF-TC-7471: TC_14_410_cancelled from inception_ST_Verify that for premiu
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -583,11 +583,11 @@ test('NXGF-TC-7472: TC_15_410_cancelled from inception_ST_Verify that for premiu
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -634,11 +634,11 @@ test('NXGF-TC-393: TC_001_Long term_back_Verify that a long term (backdated) pol
     const PremiumDuePosting: premiumDuePosting = new premiumDuePosting(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 

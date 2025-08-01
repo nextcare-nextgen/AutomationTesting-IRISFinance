@@ -1,6 +1,48 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="60.88092000000016">
-<testsuite name="tests\Reports\Reports.spec.ts" timestamp="2025-07-29T09:40:48.018Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="53.877" errors="0">
-<testcase name="NXGF-TC-3838: TC_019_IPT_Verify that only tax free records are visible when the tax free filer is selected" classname="tests\Reports\Reports.spec.ts" time="53.877">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="32.60245899999992">
+<testsuite name="tests\policies-tests\policies.spec.ts" timestamp="2025-08-01T05:06:01.447Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="23.265" errors="0">
+<testcase name="NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed" classname="tests\policies-tests\policies.spec.ts" time="23.265">
+<failure message="policies.spec.ts:10:5 NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\policies-tests\policies.spec.ts:10:5 › NXGF-TC-1910: TC_000_Policies_Verify that Valid breadcrumbs are displayed 
+
+    Error: locator.click: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('//iris-organization-financial-year-dropdown//mat-select[@role="combobox"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:70
+
+      68 |   async selectOrganizationAndYear(org: string, year: string) {
+      69 |     await new Promise(resolve => setTimeout(resolve, 3000));
+    > 70 |     await this.organization.click();
+         |                             ^
+      71 |     await this.page.locator('//span[text()="'+org+'"]/ancestor::span/following-sibling::mat-option/descendant::mat-label[text()="' +year+ '"]').click();
+      72 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      73 | }
+
+        at DashboardPage.selectOrganizationAndYear (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:70:29)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\policies-tests\policies.spec.ts:29:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\policies-tests\policies.spec.ts:28:5
+
+    Error: page.screenshot: Target page, context or browser has been closed
+
+       at page-objects\utilities-pages\global-setup.ts:11
+
+       9 |     if (testInfo.status !== testInfo.expectedStatus) {
+      10 |         let scPath: string = `test-results/screenshots/sc.png`;
+    > 11 |         await page.screenshot({ path: scPath });
+         |                    ^
+      12 |         testInfo.annotations.push({ type: 'Screen shot on Failure', description: scPath });
+      13 |         const file = path.resolve(scPath);
+      14 |         const image = fs.readFileSync(file);
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:11:20
+]]>
+</failure>
+<system-out>
+<![CDATA[--------------Start the Policies Testclass----------------------
+Login process completed.
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

@@ -23,7 +23,7 @@ test('NXGF-TC-2006: TC_000_Journal Voucher Lookup_Verify that Valid breadcrumbs 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -53,7 +53,7 @@ test('NXGF-TC-2007: TC_001_Journal Voucher Lookup_Verify that the main menu opti
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -76,7 +76,7 @@ test('NXGF-TC-2008: TC_002_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -99,7 +99,7 @@ test('NXGF-TC-2009: TC_003_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -126,7 +126,7 @@ test('NXGF-TC-2010: TC_004_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -157,7 +157,7 @@ test('NXGF-TC-2011: TC_005_Journal Voucher Lookup_Verify that the screen is divi
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -196,7 +196,7 @@ test('NXGF-TC-2012: TC_006_Journal Voucher Lookup_Verify that the screen is titl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -231,7 +231,7 @@ test('NXGF-TC-2013: TC_008_Journal Voucher Lookup_Verify that the Organization i
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -262,7 +262,7 @@ test('NXGF-TC-2014: TC_009_Journal Voucher Lookup_Verify that the Organization n
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -293,7 +293,7 @@ test('NXGF-TC-2015: TC_011_Journal Voucher Lookup_Verify that the details of acc
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -324,7 +324,7 @@ test('NXGF-TC-2016: TC_013_Journal Voucher Lookup_Verify that the Account number
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -363,7 +363,7 @@ test('NXGF-TC-2017: TC_014_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -402,7 +402,7 @@ test('NXGF-TC-2018: TC_015_Journal Voucher Lookup_Verify that the Account name i
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -441,7 +441,7 @@ test('NXGF-TC-2019: TC_016_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -488,7 +488,7 @@ test('NXGF-TC-2020: TC_017_Journal Voucher Lookup_Verify that the Voucher type i
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -531,7 +531,7 @@ test('NXGF-TC-2021: TC_018_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -570,7 +570,7 @@ test('NXGF-TC-2022: TC_019_Journal Voucher Lookup_Verify that the from Voucher n
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -617,7 +617,7 @@ test('NXGF-TC-2023: TC_021_Journal Voucher Lookup_Verify that the To Voucher num
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -664,7 +664,7 @@ test('NXGF-TC-2024: TC_022_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -703,7 +703,7 @@ test('NXGF-TC-2025: TC_023_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -754,7 +754,7 @@ test('NXGF-TC-2026: TC_031_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -789,7 +789,7 @@ test('NXGF-TC-2027: TC_045_Journal Voucher Lookup_Verify that after the search t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -824,7 +824,7 @@ test('NXGF-TC-2028: TC_046_Journal Voucher Lookup_Verify that the user is abel t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -859,7 +859,7 @@ test('NXGF-TC-2029: TC_047_Journal Voucher Lookup_Verify that the user is redire
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -898,7 +898,7 @@ test('NXGF-TC-2030: TC_048_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -937,7 +937,7 @@ test('NXGF-TC-2031: TC_049_Journal Voucher Lookup_Verify that the voucher detail
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -976,7 +976,7 @@ test('NXGF-TC-2032: TC_050_Journal Voucher Lookup_Verify that under the voucher 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1015,7 +1015,7 @@ test('NXGF-TC-2033: TC_051_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1054,7 +1054,7 @@ test('NXGF-TC-2034: TC_052_Journal Voucher Lookup_Verify that the Validate check
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1093,7 +1093,7 @@ test('NXGF-TC-2036: TC_054_Journal Voucher Lookup_Verify that the second section
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1132,7 +1132,7 @@ test('NXGF-TC-2038: TC_057_Journal Voucher Lookup_Verify the the user is able to
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1171,7 +1171,7 @@ test('NXGF-TC-2039: TC_058_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1210,7 +1210,7 @@ test('NXGF-TC-2040: TC_059_Journal Voucher Lookup_Verify that the user is able t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1245,11 +1245,11 @@ test('NXGF-TC-2041: TC_062_Journal Voucher Lookup_Verify that the third section 
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1284,11 +1284,11 @@ test('NXGF-TC-2042: TC_063_Journal Voucher Lookup_Verify that the differences ar
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1327,7 +1327,7 @@ test('NXGF-TC-2044: TC_065_Journal Voucher Lookup_Verify that the Search bar dis
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1350,11 +1350,11 @@ test('NXGF-TC-2046: TC_066_Journal Voucher Lookup_Verify that the User is able t
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1417,11 +1417,11 @@ test('NXGF-TC-2045: TC_067_Journal Voucher Lookup_Verify that the User is able t
     const journalVoucherLookupPage: JournalVoucherLookupPage = new JournalVoucherLookupPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
