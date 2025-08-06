@@ -28,41 +28,41 @@ export class LoginPage {
         await this.page.waitForLoadState('networkidle');
     }
 
-    // async loginToApplication(superUser: string, password: string) {
-    //     await this.userNameOrEmailInputField.fill(superUser);
-    //     await this.passwordInputField.fill(password);
-    //     await new Promise(resolve => setTimeout(resolve, 5000));
-    //     await this.signinButton.click();
-    // }
-
-    async loginToApplication(superUser: string, password: string): Promise<void> {
-    // Attempt to close CAPTCHA if present before login
-    if (await this.captchaError.isVisible({ timeout: 3000 }).catch(() => false)) {
-        console.warn("CAPTCHA detected. Closing it...");
-        await this.captchaError.click();
-        await this.page.waitForTimeout(1000);
-    }
-
-    // Fill in login credentials
-    await this.userNameOrEmailInputField.fill(superUser);
-    await this.passwordInputField.fill(password);
-    await this.signinButton.click();
-
-    // Wait for possible CAPTCHA again
-    if (await this.captchaError.isVisible({ timeout: 5000 }).catch(() => false)) {
-        console.warn("CAPTCHA reappeared after login. Closing and retrying...");
-        await this.captchaError.click();
-        await this.page.waitForTimeout(1000);
-
-        // Retry login once
+    async loginToApplication(superUser: string, password: string) {
         await this.userNameOrEmailInputField.fill(superUser);
         await this.passwordInputField.fill(password);
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.signinButton.click();
-        }
-
-        await this.page.waitForLoadState('networkidle');
-        console.log("Login process completed.");
     }
+
+    // async loginToApplication(superUser: string, password: string): Promise<void> {
+    // // Attempt to close CAPTCHA if present before login
+    // if (await this.captchaError.isVisible({ timeout: 3000 }).catch(() => false)) {
+    //     console.warn("CAPTCHA detected. Closing it...");
+    //     await this.captchaError.click();
+    //     await this.page.waitForTimeout(1000);
+    // }
+
+    // // Fill in login credentials
+    // await this.userNameOrEmailInputField.fill(superUser);
+    // await this.passwordInputField.fill(password);
+    // await this.signinButton.click();
+
+    // // Wait for possible CAPTCHA again
+    // if (await this.captchaError.isVisible({ timeout: 5000 }).catch(() => false)) {
+    //     console.warn("CAPTCHA reappeared after login. Closing and retrying...");
+    //     await this.captchaError.click();
+    //     await this.page.waitForTimeout(1000);
+
+    //     // Retry login once
+    //     await this.userNameOrEmailInputField.fill(superUser);
+    //     await this.passwordInputField.fill(password);
+    //     await this.signinButton.click();
+    //     }
+
+    //     await this.page.waitForLoadState('networkidle');
+    //     console.log("Login process completed.");
+    // }
 
     async loginToApplicationAndClickOnCheckbox(superUser: string, password: string) {
         await this.userNameOrEmailInputField.fill(superUser);
