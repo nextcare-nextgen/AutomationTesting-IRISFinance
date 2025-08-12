@@ -91,8 +91,10 @@ export class Reports {
         const pastDate = new Date(today.getFullYear(), 1, 9); 
         const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
         const formattedPastDate = pastDate.getDate().toString().padStart(2, '0') + "-" + monthNumber[pastDate.getMonth()] + "-" + pastDate.getFullYear();
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const fromDateInput = this.page.locator("//span[@title='From Date'][contains(.,'From Date')]");
         await fromDateInput.waitFor({ state: 'visible' });
+        //await this.page.reload();
         await fromDateInput.click();  
         await fromDateInput.fill(formattedPastDate);
         await fromDateInput.waitFor({ state: 'attached' });  
@@ -386,7 +388,7 @@ export class Reports {
             const iptAmountValue = await individualIPTAmounts.nth(i).innerText();
             totalIPTAmount += parseFloat(iptAmountValue.replace(/[^0-9.-]+/g, "")); 
         }
-        const displayedTotalIPTAmount = await this.page.locator("(//iris-custom-row-cell[@class='ng-star-inserted'][contains(.,'0')])[4]").innerText();
+        const displayedTotalIPTAmount = await this.page.locator("(//mat-cell[contains(@class,'cell cdk-cell cdk-column-ipt mat-column-ipt ng-star-inserted')])[3]").innerText();
         const displayedTotal = parseFloat(displayedTotalIPTAmount.replace(/[^0-9.-]+/g, ""));  
     
         if (isNaN(displayedTotal)) {

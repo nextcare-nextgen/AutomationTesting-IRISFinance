@@ -23,7 +23,7 @@ test('NXGF-TC-3316: TC_000_Cash Allocation Dashboard_Verify that Valid breadcrum
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -56,7 +56,7 @@ test('NXGF-TC-3317: TC_001_Cash Allocation Dashboard_Verify that after logging t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
     await test.step("User Click on Menu Icon", async () => {
@@ -76,7 +76,7 @@ test('NXGF-TC-3318: TC_002_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
     await test.step("User Click on Menu Icon", async () => {
@@ -101,7 +101,7 @@ test('NXGF-TC-3319: TC_003_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
     await test.step("User Click on Menu Icon", async () => {
@@ -126,7 +126,7 @@ test('NXGF-TC-3320: TC_004_Cash Allocation Dashboard_Verify that the screen is t
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
     await test.step("User Click on Menu Icon", async () => {
@@ -155,7 +155,7 @@ test('NXGF-TC-3321: TC_005_Cash Allocation Dashboard_Verify that the Organizatio
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -183,7 +183,7 @@ test('NXGF-TC-3322: TC_006_Cash Allocation Dashboard_Verify that the mandatory s
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -217,7 +217,7 @@ test('NXGF-TC-3323: TC_007_Cash Allocation Dashboard_Verify that the non manadat
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -255,7 +255,7 @@ test('NXGF-TC-3324: TC_008_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -289,7 +289,7 @@ test('NXGF-TC-3325: TC_009_Cash Allocation Dashboard_Verify that the Payment typ
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -328,7 +328,7 @@ test('NXGF-TC-3326: TC_010_Cash Allocation Dashboard_Verify that the Payment sta
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -363,7 +363,7 @@ test('NXGF-TC-3327: TC_011_Cash Allocation Dashboard_Verify that the Payment met
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -402,7 +402,7 @@ test('NXGF-TC-3328: TC_012_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -437,7 +437,7 @@ test('NXGF-TC-3329: TC_013_Cash Allocation Dashboard_Verify that the user should
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -471,7 +471,7 @@ test('NXGF-TC-3330: TC_014_Cash Allocation Dashboard_Verify that the user should
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -506,7 +506,7 @@ test('NXGF-TC-3331,NXGF-TC-3334: TC_015_Cash Allocation Dashboard_Verify that th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -546,7 +546,7 @@ test('NXGF-TC-3332: TC_016_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -595,7 +595,7 @@ test('NXGF-TC-3333: TC_017_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -630,7 +630,7 @@ test('NXGF-TC-3335: TC_019_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
 
     })
 
@@ -685,7 +685,7 @@ test('NXGF-TC-3336: TC_020_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -728,7 +728,7 @@ test('NXGF-TC-3337: TC_021_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -771,7 +771,7 @@ test('NXGF-TC-3338,NXGF-TC-3340: TC_022_Cash Allocation Dashboard_Verify that th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -804,7 +804,7 @@ test('NXGF-TC-3339: TC_023_Cash Allocation Dashboard_ Verify that the user is ab
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -871,7 +871,7 @@ test('NXGF-TC-3341: TC_025_Cash Allocation Dashboard_Verify that the payment rec
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -898,7 +898,7 @@ test('NXGF-TC-3342: TC_026_Cash Allocation Dashboard_Verify that a new pop scree
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
      await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -933,7 +933,7 @@ test('NXGF-TC-3343: TC_027_Cash Allocation Dashboard_Verify that the payment rec
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -972,7 +972,7 @@ test('NXGF-TC-3344: TC_028_Cash Allocation Dashboard_Verify that the "Details" b
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -1011,7 +1011,7 @@ test('NXGF-TC-3345: TC_029_Cash Allocation Dashboard_Verify that the allocation 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1062,7 +1062,7 @@ test('NXGF-TC-3346,NXGF-TC-3347: TC_031_Cash Allocation Dashboard_Verify that th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1101,7 +1101,7 @@ test('NXGF-TC-3348: TC_032_Cash Allocation Dashboard_Verify that the user can en
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1148,7 +1148,7 @@ test('NXGF-TC-3349: TC_033_Cash Allocation Dashboard_Verify that the user effect
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1195,7 +1195,7 @@ test('NXGF-TC-3350: TC_035_Cash Allocation Dashboard_Verify that the third secti
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1250,7 +1250,7 @@ test('NXGF-TC-3351: TC_036_Cash Allocation Dashboard_Verify that the policies th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1289,7 +1289,7 @@ test('NXGF-TC-3353: TC_034_Cash Allocation Dashboard_Verify that the when click 
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1344,7 +1344,7 @@ test('NXGF-TC-3354: TC_038_Cash Allocation Dashboard_Verify that  beside each po
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1391,7 +1391,7 @@ test('NXGF-TC-3355: TC_039_Cash Allocation Dashboard_Verify that the details opt
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1442,7 +1442,7 @@ test('NXGF-TC-3356: TC_040_Cash Allocation Dashboard_Verify that the Premium and
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1495,7 +1495,7 @@ test('NXGF-TC-3359,NXGF-TC-3367: TC_043_Cash Allocation Dashboard_Verify that th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1546,7 +1546,7 @@ test('NXGF-TC-3360: TC_044_Cash Allocation Dashboard_Verify that if the Outstand
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1601,7 +1601,7 @@ test('NXGF-TC-3361,NXGF-TC-3362: TC_045_Cash Allocation Dashboard_Verify that on
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1660,7 +1660,7 @@ test('NXGF-TC-3363: TC_047_Cash Allocation Dashboard_Verify that the Allocated a
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1715,7 +1715,7 @@ test('NXGF-TC-3364,NXGF-TC-3368: TC_048_Cash Allocation Dashboard_Verify that th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1810,7 +1810,7 @@ test('NXGF-TC-3365,NXGF-TC-3366: TC_049_Cash Allocation Dashboard_Verify that th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {
@@ -1865,7 +1865,7 @@ test('NXGF-TC-3369: TC_053_Cash Allocation Dashboard_Verify that the user is abl
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {

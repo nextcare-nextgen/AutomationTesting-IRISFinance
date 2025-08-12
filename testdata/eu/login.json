@@ -7,6 +7,12 @@
     },
     "Login-Access": {
         "url": "https://test-finance-eu.tatsh.cloud/",
+        "userNameInput": "vTestBroker",
+        "passwordInput": "Shruti@25",
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
+    },
+    "Login-Access_old": {
+        "url": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestAdmin",
         "passwordInput": "Coverage@6",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
