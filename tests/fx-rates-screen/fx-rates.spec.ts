@@ -964,7 +964,10 @@ test('NXGF-TC-1903: TC_032_FX_Rates_Add new FX Rates_Verify that Create Button s
 
     await test.step("User Enter Username and Password", async () => {
         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
     })
 
     await test.step("User Click on Menu Icon", async () => {
@@ -989,7 +992,6 @@ test('NXGF-TC-1903: TC_032_FX_Rates_Add new FX Rates_Verify that Create Button s
 
     await test.step("User start Date and End Date", async () => {
         await fxRatesPage.enterStartAndEndDate();
-
     })
 
     await test.step("User get the Rate data", async () => {

@@ -93,8 +93,8 @@ export class JournalVoucherListPage {
         this.balance = page.locator('//mat-header-cell[contains(@id,"balance-Balance")]');
         this.amount = page.locator('//div//input[@title="Amount"]');
         this.editTransationCurrency = page.locator('//mat-header-cell[contains(@id,"balance-Balance")]');
-        this.amountCV1 = page.locator('//div//input[@title="Amount CV1"]');
-        this.amountCV2 = page.locator('//div//input[@title="Amount CV2"]');
+        this.amountCV1 = page.locator("(//small[@title='Amount EUR'][normalize-space()='Amount EUR'])[1]");
+        this.amountCV2 = page.locator("(//small[@title='Amount EUR'][normalize-space()='Amount EUR'])[2]");
         this.valueDate = page.locator('//div//input[@title="Value Date"]');
         this.description = page.locator('//div//input[@title="Description"]');
         this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
@@ -227,13 +227,24 @@ export class JournalVoucherListPage {
     }
 
     async enterfromDate(fromDate: string) {
-        await this.fromDate.clear();
-        await this.fromDate.fill(fromDate);
-    }
+ 
+        await this.page.keyboard.press('Escape');
+        await this.page.waitForSelector('.cdk-overlay-backdrop', { state: 'detached', timeout: 5000 });
 
+        
+        const date = new Date(fromDate);
+        const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, '0')}/` +
+                            `${date.getDate().toString().padStart(2, '0')}/` +
+                            `${date.getFullYear()}`;
+
+        await this.fromDate.fill(formattedDate);
+        await this.page.keyboard.press('Tab');
+    }
+    
     async enterToDate(date: string) {
         await this.toDate.clear();
         await this.toDate.fill(date);
+        await this.page.keyboard.press('Tab');
     }
 
     async verifyToDate() {
@@ -260,6 +271,7 @@ export class JournalVoucherListPage {
     async clickOnEditJournalVoucherButton() {
         await new Promise(resolve => setTimeout(resolve, 3000));
         let editicon = this.page.locator('//mat-icon[@data-mat-icon-name="icon-edit"]');
+        //await new Promise(resolve => setTimeout(resolve, 3000));
         await editicon.first().click();
     }
 

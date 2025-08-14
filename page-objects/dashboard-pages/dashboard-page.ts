@@ -66,7 +66,8 @@ export class DashboardPage {
   }
  
   async selectOrganizationAndYear(org: string, year: string) {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    //await new Promise(resolve => setTimeout(resolve, 3000));
+    await this.page.waitForLoadState('networkidle');
     await this.organization.click();
     await this.page.locator('//span[text()="'+org+'"]/ancestor::span/following-sibling::mat-option/descendant::mat-label[text()="' +year+ '"]').click();
     await this.page.waitForSelector('.loader', { state: 'hidden' });

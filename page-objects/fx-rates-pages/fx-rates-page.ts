@@ -356,7 +356,7 @@ export class FxRatesPage {
   async enterStartAndEndDate() {
     await this.addFxRateStartDateCalender.click();
     await this.page.locator("//span[text()=' 1 ']").click();
-    await this.page.waitForTimeout(2000);
+    await this.page.waitForTimeout(5000);
 
     let date = new Date()
     let day = date.getDate();

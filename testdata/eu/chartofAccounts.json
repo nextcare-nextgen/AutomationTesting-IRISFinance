@@ -60,7 +60,7 @@
         "GLdropdownvalue": "General ledger"
     },
     "TC_045_Chart_of_Accounts": {
-        "accountNum": "13112024"
+        "accountNum": "78451234"
     },
     "TC_051_Chart_of_Accounts": {
         "productLine": "Assistance"
@@ -111,11 +111,11 @@
     },
     "TC_074_Chart_of_Accounts": {
         "dropdownvalue": "Gross written premium",
-        "accountType": "CC Incoming Clearing",
-        "GLdropdownvalue": "Account Payable",
-        "accountNum": "4567",
-        "accountName": "TestAccount",
-        "accountName1": "45678"
+        "accountType": "Bank Charges",
+        "GLdropdownvalue": "General ledger",
+        "accountNum": "21061995",
+        "accountName": "TestingAccount",
+        "accountName1": "Gross Written Premium"
     },
     "TC_077_Chart_of_Accounts": {
         "popup": "Are you sure you want to stop this account ?"

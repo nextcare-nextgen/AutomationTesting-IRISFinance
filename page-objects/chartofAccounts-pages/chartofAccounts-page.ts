@@ -122,7 +122,7 @@ export class ChartOfAccountsPage {
         this.selectstartDate = page.locator('//div//input[contains(@class,"datepicker")]');
         this.selectglAccountTypee = page.locator('//iris-gl-account-type-autocomplete//div//span[text()="GL Account Type"]');
         this.savebtn = page.locator('//button[@title="Save"]');
-        this.accountnumFromGrid = page.locator('//mat-table[@id="AccountsList"]//mat-cell[contains(@class,"accountnumber")][2]');
+        this.accountnumFromGrid = page.locator("//mat-cell[@class='mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-accountnumber mat-column-accountnumber ng-star-inserted']");
         this.closebtn = page.locator('//button//mat-icon[@data-mat-icon-name="icon-cancel-in-cercle"]');
         this.rightarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_right"]');
         this.leftarrow = page.locator('//button//mat-icon[text()="keyboard_arrow_left"]');
@@ -147,7 +147,7 @@ export class ChartOfAccountsPage {
         this.advancedSearch = page.locator('//div//button[@title="Filter"]');
         this.JVaccountNum = page.locator('//iris-form-container//input[@title="Account number"]');
         this.apply = page.locator('//button[@title="Apply"]');
-        this.editChildAccount = page.locator("mat-icon[title='Edit Account'] svg");
+        this.editChildAccount = page.locator("//mat-cell[@id='action-154']//mat-icon[@title='Edit Account']//*[name()='svg']");
 
         this.accountNameInput = this.page.locator('[placeholder="Account Name"]');  
         this.glAccountTypeDropdown = this.page.locator('select[name="glAccountType"]');

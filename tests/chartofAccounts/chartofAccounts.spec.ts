@@ -2099,13 +2099,13 @@ test('NXGF-TC-2160: TC_074_ Chart of Accounts_Verify that the updated details ar
         await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
     })
 
-    await test.step("Add Account Number", async () => {
-        await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].accountNum);
-    })
+    // await test.step("Add Account Number", async () => {
+    //     await chartOfAccountsPage.enterAccountNumber(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].accountNum);
+    // })
 
-    await test.step("Add Account Name", async () => {
-        await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].accountName);
-    })
+    // await test.step("Add Account Name", async () => {
+    //     await chartOfAccountsPage.enterAccountName(ChartOfAccountsPageData['TC_074_Chart_of_Accounts'].accountName);
+    // })
 
     await test.step("Click on Search button", async () => {
         await chartOfAccountsPage.clickonSearchButton();

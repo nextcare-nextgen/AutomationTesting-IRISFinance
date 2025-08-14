@@ -1,6 +1,10 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="67.29231199999992">
-<testsuite name="tests\cashAllocation\cashAllocation.spec.ts" timestamp="2025-08-12T05:09:13.753Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="60.354" errors="0">
-<testcase name="NXGF-TC-3370,NXGF-TC-3371: TC_055_Cash Allocation Dashboard_Verify that a confirmation messae popup is displayed Are you sure do you want to cancel the allocation?" classname="tests\cashAllocation\cashAllocation.spec.ts" time="60.354">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="96.22877500000223">
+<testsuite name="tests\onePayScreen\onePay.spec.ts" timestamp="2025-08-14T13:32:46.609Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="86.374" errors="0">
+<testcase name="NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the user is able to create any long term and short term policies in Mawista B2C portal" classname="tests\onePayScreen\onePay.spec.ts" time="86.374">
+<system-out>
+<![CDATA[--------------Start the OnePay payment journey Testclass----------------------
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

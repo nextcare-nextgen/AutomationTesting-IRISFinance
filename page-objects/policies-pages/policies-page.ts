@@ -280,6 +280,7 @@ export class PoliciesPage {
     }
 
     async clickOnViewJournalVoucherEyeIcon() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         let eyeIcons = this.page.locator('//button[@title="View Policy Journal Voucher"]');
         await eyeIcons.first().click();
     }
