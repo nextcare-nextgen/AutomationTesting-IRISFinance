@@ -164,6 +164,7 @@ export class CardTypesPage {
     async clickOnStoppedCard(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const actual = this.page.locator("(//div[contains(@class,'mdc-switch__track')])[1]");
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await actual.click();
         await new Promise(resolve => setTimeout(resolve, 3000));
     }

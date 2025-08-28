@@ -117,6 +117,7 @@ export class CashAllocationUnderPaymentsPage {
 
     async clickOnpolicyAllocationButton() {
         let policyAllocation = this.page.locator('//button[@title="Policy Allocation"]');
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await policyAllocation.first().click();
     }
 
@@ -197,7 +198,7 @@ export class CashAllocationUnderPaymentsPage {
 
     async clickOnSearchButtonButton() {
         await this.searchbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     async verifyAmount() {

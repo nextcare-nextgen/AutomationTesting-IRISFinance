@@ -121,14 +121,12 @@ export class PoliciesPage {
         expect(actual).toBe(data);
     }
 
-
     async clickOnPolicisShrtcutsButton() {
         await this.policiesShortcut.click();
     }
 
     async verifyPolicisShortcutButton() {
         expect(this.policiesShortcut).toBeVisible;
-
     }
 
     async verifyPoliciesText(data: string) {
@@ -229,7 +227,6 @@ export class PoliciesPage {
         }
     }
 
-
     async verifySearchResultFromDate() {
         const pendingReasonLocator = this.page.locator('//mat-cell[contains(@class,"policyStartDate")]');
         for (let index = 0; index < await pendingReasonLocator.count(); index++) {
@@ -237,7 +234,6 @@ export class PoliciesPage {
         }
         console.log(await pendingReasonLocator.count());
     }
-
 
     async clickOnAdvancedSerach() {
         await this.advancedSearch.click();
@@ -267,7 +263,6 @@ export class PoliciesPage {
             //expect(await policyHolderName.nth(index).innerText()).toBeTruthy();
             expect(await icon.nth(index)).toBeVisible();
         }
-
     }
 
     async clickOnPolicyJournalVochereyeiconButton() {
@@ -295,17 +290,14 @@ export class PoliciesPage {
 
     async enterPolicyReference(policyRef: string) {
         await this.policyRef.fill(policyRef);
-
     }
 
     async enterPolicyId(policyId: string) {
         await this.advancedSearchPolicyId.fill(policyId);
-
     }
 
     async enterPolicyHolderName(policyHolderName: string) {
         await this.policyHolderName.fill(policyHolderName);
-
     }
 
     async clickOnApplyButton() {
@@ -322,7 +314,6 @@ export class PoliciesPage {
         await new Promise(resolve => setTimeout(resolve, 5000));
         const policyID = this.page.locator('//mat-cell[contains(@class,"policyId")]');
         expect(policyID).toBeVisible();
-
     }
 
     async verifySearchResultPolicyHolderName() {
@@ -334,7 +325,6 @@ export class PoliciesPage {
         }
         console.log(await policyHolderName.count());
     }
-
 
     async verifyPolicyJournalVoucherFirstSectionGridColumn() {
         expect(this.voucherNumber).toBeVisible();
@@ -355,11 +345,9 @@ export class PoliciesPage {
         expect(this.valuedDate).toBeVisible();
     }
 
-
     async clickOnVoucherRef() {
         let vocherRefs = this.page.locator('//mat-cell[contains(@class,"voucherReference")]');
         await vocherRefs.first().click();
-
     }
 
     async verifyAccountRecordsFromSecondGrid() {
@@ -396,7 +384,6 @@ export class PoliciesPage {
         await expect(options).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
     }
 
-
     async verifyCurrencyRecordsFromSecondGrid() {
 
         const account = this.page.locator('//mat-cell[contains(@class,"currencyCode")]');
@@ -430,7 +417,6 @@ export class PoliciesPage {
         }
     }
 
-
     async verifyAmountEqulestoCV() {
 
         const amount = this.page.locator('//mat-cell[contains(@class,"amount ")]');
@@ -440,8 +426,6 @@ export class PoliciesPage {
         for (let index = 0; index < await amount.count() || await amountcv1.count(); index++) {
             //const amountcv1 = this.page.locator('//mat-cell[contains(@class,"amountCV1")]');
             expect(await amount.nth(index).innerText()).toEqual(amountcv1.nth(index).innerText());
-
         }
     }
-
 }

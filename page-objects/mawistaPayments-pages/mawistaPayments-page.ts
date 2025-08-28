@@ -380,6 +380,7 @@ export class MawistaPaymentsPage {
     }
 
     async clickOnResetButton() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.resetbtn.click();
     }
 

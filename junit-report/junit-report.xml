@@ -1,8 +1,57 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="96.22877500000223">
-<testsuite name="tests\onePayScreen\onePay.spec.ts" timestamp="2025-08-14T13:32:46.609Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="86.374" errors="0">
-<testcase name="NXGF-TC-2827,NXGF-TC-2830: TC_003_OnePay payment journey_Validate that the user is able to create any long term and short term policies in Mawista B2C portal" classname="tests\onePayScreen\onePay.spec.ts" time="86.374">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="108.38340899999999">
+<testsuite name="tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts" timestamp="2025-08-18T06:24:22.715Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="100.501" errors="0">
+<testcase name="NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a status of cleared-unallocated" classname="tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts" time="100.501">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="cashAllocation-Underpayments.spec.ts:12:5 NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a status of cleared-unallocated" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts:12:5 › NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a status of cleared-unallocated 
+
+    Test timeout of 100000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: locator.click: Test timeout of 100000ms exceeded.
+    Call log:
+      - waiting for locator('//iris-organization-financial-year-dropdown//mat-select[@role="combobox"]')
+
+
+       at page-objects\dashboard-pages\dashboard-page.ts:71
+
+      69 |     //await new Promise(resolve => setTimeout(resolve, 3000));
+      70 |     await this.page.waitForLoadState('networkidle');
+    > 71 |     await this.organization.click();
+         |                             ^
+      72 |     await this.page.locator('//span[text()="'+org+'"]/ancestor::span/following-sibling::mat-option/descendant::mat-label[text()="' +year+ '"]').click();
+      73 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
+      74 | }
+
+        at DashboardPage.selectOrganizationAndYear (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:71:29)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts:31:13
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts:30:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-cashAllocation-Under-26161-atus-of-cleared-unallocated-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
 <system-out>
-<![CDATA[--------------Start the OnePay payment journey Testclass----------------------
+<![CDATA[--------------Start the Cash Alloaction- underpayments Testclass----------------------
+
+[[ATTACHMENT|..\test-results\tests-cashAllocation-Under-26161-atus-of-cleared-unallocated-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
