@@ -1289,7 +1289,7 @@ test('NXGF-TC-1946: TC_036_Policies_Verify that the values in Amount CV1 CV2 var
     await test.step("Verify Currency from Organziations", async () => {
         await policiesPage.verifyCurrencyFromOrganization();
     })
-})
+});
 
 test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the Total of debit amount column from grid', async ({ page }) => {
 
@@ -1332,5 +1332,36 @@ test('NXGF-TC-1947: TC_037_Policies_Verify that the Amount column displays the T
     await test.step("--------------End the Policies Testclass----------------------", async () => {
         console.log("--------------End the Policies Testclass----------------------")
     })
-})
+});
+
+test('NXGF-TC-8017: TC_038_Policies_Implement automation to validate the sorting behavior of the relevant button/component.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const policiesPage: PoliciesPage = new PoliciesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access1'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Policies Shortcut Button", async () => {
+        await policiesPage.clickOnPoliciesShrtcutsButton();
+    })
+    
+    await test.step("Validate sorting functionality of 'Policy Id' column", async () => {
+        await policiesPage.validateSortingForColumn('Policy Id');
+    })
+});
     

@@ -508,8 +508,72 @@ export class FinancialTransactionsMonitoringPage {
         expect(before).toStrictEqual(after);
     }
 
+    ////added 
+    async clickColumnHeader(columnName: string) {
+        const header = this.page.locator(`.mat-sort-header:has-text("${columnName}")`);
+        await header.waitFor({ state: 'visible' });
+        await header.click();
+    }
 
+    async getColumnValues(columnName: string): Promise<string[]> {
+    const allSmalls = this.page.locator('small');
+
+    const smallCount = await allSmalls.count();
+    const headerLabels: string[] = [];
+
+    for (let i = 0; i < smallCount; i++) {
+        const text = await allSmalls.nth(i).innerText();
+        const trimmedText = text.trim();
+
+        if (/^\d+$/.test(trimmedText) || trimmedText === '-') {
+            break;
+        }
+
+        headerLabels.push(trimmedText);
+    }
+
+    console.log('✅ Column headers extracted:', headerLabels);
+
+    const columnIndex = headerLabels.findIndex(header =>
+        header.toLowerCase().includes(columnName.trim().toLowerCase())
+    );
+
+    if (columnIndex === -1) {
+        throw new Error(`❌ Column "${columnName}" not found. Headers: ${headerLabels.join(', ')}`);
+    }
+
+  
+    return await this.page.locator('tbody tr').evaluateAll((rows, index) =>
+        rows.map(row => {
+            const cell = row.querySelectorAll('td')[index];
+            return cell?.textContent?.trim() || '';
+        }),
+        columnIndex
+    );
 }
+
+    async validateSortingForColumn(columnName: string) {
+     
+        const originalValues = await this.getColumnValues(columnName);
+
+        await this.clickColumnHeader(columnName);
+        const ascSortedValues = await this.getColumnValues(columnName);
+        const expectedAsc = [...originalValues].sort((a, b) => a.localeCompare(b));
+
+        expect(ascSortedValues).toEqual(expectedAsc);
+        console.log(`✅ Ascending sort validated for column: ${columnName}`);
+
+        await this.clickColumnHeader(columnName);
+        const descSortedValues = await this.getColumnValues(columnName);
+        const expectedDesc = [...originalValues].sort((a, b) => b.localeCompare(a));
+
+        expect(descSortedValues).toEqual(expectedDesc);
+        console.log(`✅ Descending sort validated for column: ${columnName}`);
+    }
+ }
+
+
+
 
 
 

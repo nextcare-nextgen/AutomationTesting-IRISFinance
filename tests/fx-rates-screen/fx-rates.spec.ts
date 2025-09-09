@@ -1183,3 +1183,34 @@ test('NXGF-TC-1909: TC_038_FX_Rates_Add new FX Rates_Verify that the User is abl
     })
 
 });
+
+test('NXGF-TC-8013: TC_039_FX_Rates_Implement automation to validate the sorting behavior of the relevant button/components.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const fxRatesPage: FxRatesPage = new FxRatesPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on FX Rates Shortcut Button", async () => {
+        await fxRatesPage.clickOnFxRatesShrtcutsButton();
+    })
+
+    await test.step("Validate sorting functionality of 'Account Name' column", async () => {
+        await fxRatesPage.validateSortingForColumn('To Currency');
+    })
+});

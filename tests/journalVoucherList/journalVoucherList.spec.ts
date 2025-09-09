@@ -1643,3 +1643,38 @@ test('NXGF-TC-2096: TC_058_Journal Voucher List_Verify that the User is able to 
         console.log("--------------End the Journal Voucher List Testclass----------------------")
     })
 });
+
+test('NXGF-TC-8014: TC_059_Journal Voucher List _Implement automation to validate the sorting behavior of the relevant button/component.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const journalVoucherListPage: JournalVoucherListPage = new JournalVoucherListPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Journal Voucher Shortcut Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherShrtcutsButton();
+    })
+
+    await test.step("User Click on Journal Voucher List Button", async () => {
+        await journalVoucherListPage.clickOnJournalVoucherListButton();
+    })
+
+     await test.step("Validate sorting functionality of 'Account Name' column", async () => {
+        await journalVoucherListPage.validateSortingForColumn('Voucher Number');
+    })
+});

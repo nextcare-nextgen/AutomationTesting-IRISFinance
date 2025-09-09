@@ -1946,3 +1946,35 @@ test('NXGF-TC-1772: TC_085_Verify that the User is able to Search the shortcut m
     })
 });
 
+test('NXGF-TC-8016: TC_086_Financial_Organization_ Implement automation to validate the sorting behavior of the relevant button/component.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialOrganizationsPage: FinancialOrganizationsPage = new FinancialOrganizationsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("Click on the Organization shortcut icon", async () => {
+        await financialOrganizationsPage.clickOnFinancialOrganizationShrtcutsButton();
+    })
+
+    await test.step("Validate sorting functionality of 'Account Name' column", async () => {
+        await financialOrganizationsPage.validateSortingForColumn('Name');
+    })
+});
+
+

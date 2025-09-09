@@ -1688,3 +1688,34 @@ test('NXGF-TC-6714: TC_49_Transaction Details Screen_Verify that when the user c
         await financialTransactionsMonitoringPage.verifyexistingRecordBeforeSearch();
     })
 });
+
+test('NXGF-TC-8018: TC_50_Transaction Details Screen_ Implement automation to validate the sorting behavior of the relevant button/component.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const financialTransactionsMonitoringPage: FinancialTransactionsMonitoringPage = new FinancialTransactionsMonitoringPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Financial Transactions Monitoring Shortcut Button", async () => {
+        await financialTransactionsMonitoringPage.clickOnFinancialTransactionsMonitoringShortcutButton();
+    })
+ 
+     await test.step("Validate sorting functionality of 'Payment Amount' column", async () => {
+        await financialTransactionsMonitoringPage.validateSortingForColumn('Payment Amount');
+    })
+});

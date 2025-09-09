@@ -2707,4 +2707,34 @@ test("NXGF-TC-6711: TC_88_ Chart of Accounts_Verify that the count of total reco
     })
 });
 
+test("NXGF-TC-8011: TC_89_Chart of Accounts_ Implement automation to validate the sorting behavior of the relevant button/component.", async ({ page }) => {
 
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-AccessAcc'].userNameInput, data['Login-AccessAcc'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+    
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Charts of Accounts Shortcut button", async () => {
+        await chartOfAccountsPage.clickOnChartsOfAccountsShrtcutsButton();
+    })
+
+    await test.step("Validate sorting functionality of 'Account Name' column", async () => {
+        await chartOfAccountsPage.validateSortingForColumn('Account Name');
+    })
+
+});

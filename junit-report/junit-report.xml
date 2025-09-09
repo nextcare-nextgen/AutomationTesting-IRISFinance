@@ -1,57 +1,96 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="108.38340899999999">
-<testsuite name="tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts" timestamp="2025-08-18T06:24:22.715Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="100.501" errors="0">
-<testcase name="NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a status of cleared-unallocated" classname="tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts" time="100.501">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="cashAllocation-Underpayments.spec.ts:12:5 NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a status of cleared-unallocated" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts:12:5 › NXGF-TC-2973: TC_001_Underpayment_Verify that a received payment with a status of cleared-unallocated 
-
-    Test timeout of 100000ms exceeded.
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    Error: locator.click: Test timeout of 100000ms exceeded.
-    Call log:
-      - waiting for locator('//iris-organization-financial-year-dropdown//mat-select[@role="combobox"]')
-
-
-       at page-objects\dashboard-pages\dashboard-page.ts:71
-
-      69 |     //await new Promise(resolve => setTimeout(resolve, 3000));
-      70 |     await this.page.waitForLoadState('networkidle');
-    > 71 |     await this.organization.click();
-         |                             ^
-      72 |     await this.page.locator('//span[text()="'+org+'"]/ancestor::span/following-sibling::mat-option/descendant::mat-label[text()="' +year+ '"]').click();
-      73 |     await this.page.waitForSelector('.loader', { state: 'hidden' });
-      74 | }
-
-        at DashboardPage.selectOrganizationAndYear (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\dashboard-pages\dashboard-page.ts:71:29)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts:31:13
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\cashAllocation-Underpayments\cashAllocation-Underpayments.spec.ts:30:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-cashAllocation-Under-26161-atus-of-cleared-unallocated-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="53.48583800000139">
+<testsuite name="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" timestamp="2025-09-05T09:40:31.533Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="41.4" errors="0">
+<testcase name="NXGF-TC-8018: TC_49_TC_50_Transaction Details Screen_ Implement automation to validate the sorting behavior of the relevant button/component." classname="tests\financialTransactionsMonitoring\financialTransactionsMonitoring.spec.ts" time="41.4">
 <system-out>
-<![CDATA[--------------Start the Cash Alloaction- underpayments Testclass----------------------
-
-[[ATTACHMENT|..\test-results\tests-cashAllocation-Under-26161-atus-of-cleared-unallocated-Mawista-EU\test-failed-1.png]]
+<![CDATA[✅ Column headers extracted: [
+  [32m'Transaction Date'[39m,
+  [32m'Payment Date'[39m,
+  [32m'Payment Type'[39m,
+  [32m'Payment Method'[39m,
+  [32m'Payment Amount'[39m,
+  [32m'Payment Currency'[39m,
+  [32m'Payment Status'[39m,
+  [32m'Payment Reference'[39m,
+  [32m'Payment File Ref'[39m,
+  [32m'Policy Reference'[39m,
+  [32m'Transaction Id'[39m,
+  [32m'Document Reference'[39m,
+  [32m'Remittance Info'[39m,
+  [32m'Beneficiary Account Name'[39m,
+  [32m'Beneficiary Account Number'[39m,
+  [32m'Return Origin'[39m,
+  [32m'Rejection Reason'[39m,
+  [32m'04-09-2025'[39m,
+  [32m'04-09-2025'[39m,
+  [32m'Premium Payment'[39m,
+  [32m'Direct Debit'[39m,
+  [32m'44.50'[39m,
+  [32m'EUR'[39m,
+  [32m'Cleared-allocated'[39m,
+  [32m'AE1000000000029575'[39m,
+  [32m'IRIS_GFE_SIT_DD_20250905_043559.xml'[39m,
+  [32m'MRC-AWPDE-19978-NB/111249375'[39m
+]
+✅ Column headers extracted: [
+  [32m'Transaction Date'[39m,
+  [32m'Payment Date'[39m,
+  [32m'Payment Type'[39m,
+  [32m'Payment Method'[39m,
+  [32m'Payment Amount'[39m,
+  [32m'Payment Currency'[39m,
+  [32m'Payment Status'[39m,
+  [32m'Payment Reference'[39m,
+  [32m'Payment File Ref'[39m,
+  [32m'Policy Reference'[39m,
+  [32m'Transaction Id'[39m,
+  [32m'Document Reference'[39m,
+  [32m'Remittance Info'[39m,
+  [32m'Beneficiary Account Name'[39m,
+  [32m'Beneficiary Account Number'[39m,
+  [32m'Return Origin'[39m,
+  [32m'Rejection Reason'[39m,
+  [32m'04-09-2025'[39m,
+  [32m'04-09-2025'[39m,
+  [32m'Premium Payment'[39m,
+  [32m'Direct Debit'[39m,
+  [32m'44.50'[39m,
+  [32m'EUR'[39m,
+  [32m'Cleared-allocated'[39m,
+  [32m'AE1000000000029575'[39m,
+  [32m'IRIS_GFE_SIT_DD_20250905_043559.xml'[39m,
+  [32m'MRC-AWPDE-19978-NB/111249375'[39m
+]
+✅ Ascending sort validated for column: Payment Amount
+✅ Column headers extracted: [
+  [32m'Transaction Date'[39m,
+  [32m'Payment Date'[39m,
+  [32m'Payment Type'[39m,
+  [32m'Payment Method'[39m,
+  [32m'Payment Amount'[39m,
+  [32m'Payment Currency'[39m,
+  [32m'Payment Status'[39m,
+  [32m'Payment Reference'[39m,
+  [32m'Payment File Ref'[39m,
+  [32m'Policy Reference'[39m,
+  [32m'Transaction Id'[39m,
+  [32m'Document Reference'[39m,
+  [32m'Remittance Info'[39m,
+  [32m'Beneficiary Account Name'[39m,
+  [32m'Beneficiary Account Number'[39m,
+  [32m'Return Origin'[39m,
+  [32m'Rejection Reason'[39m,
+  [32m'04-09-2025'[39m,
+  [32m'04-09-2025'[39m,
+  [32m'Premium Payment'[39m,
+  [32m'Direct Debit'[39m,
+  [32m'1.35'[39m,
+  [32m'EUR'[39m,
+  [32m'Cleared-allocated'[39m,
+  [32m'AE1000000000029570'[39m,
+  [32m'IRIS_GFE_SIT_DD_20250905_043559.xml'[39m,
+  [32m'MRC-AWPDE-19970-NB/111247542'[39m
+]
+✅ Descending sort validated for column: Payment Amount
 ]]>
 </system-out>
 </testcase>

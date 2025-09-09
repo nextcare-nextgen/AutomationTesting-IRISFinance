@@ -190,7 +190,7 @@
         "thankyouText": "Thank you",
         "policyidText": "MAE-AWPDE",
         "username": "vTestBroker",
-        "password": "AccentureQA@25"
+        "password": "August@25"
     },
     "TC_008_OnePay":{
         "url":"https://test-syncrob2c-eu.tatsh.cloud/online-application?KEY=MtywX6ask6X7STU8otfGPg%3D%3D&BRK=MAW&PT=MAE&LANG=en",

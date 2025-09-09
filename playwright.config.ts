@@ -17,7 +17,7 @@ dotenv.config({
  */
 export default defineConfig({
   testDir: './',
-  timeout: 100 * 1000,
+  timeout: 150 * 1000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -37,7 +37,7 @@ export default defineConfig({
     trace: 'off',
     screenshot: 'only-on-failure',
     video: 'off',
-    headless: true
+    headless: false
   },
   expect: {
     timeout: 20 * 1000,

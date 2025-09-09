@@ -1972,3 +1972,34 @@ test('NXGF-TC-3370,NXGF-TC-3371: TC_055_Cash Allocation Dashboard_Verify that a 
     })
 });
 
+test('NXGF-TC-8012: TC_056_Cash Allocation Dashboard_ Implement automation to validate the sorting behavior of the relevant button/component.', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Validate sorting functionality of 'Account Name' column", async () => {
+        await cashAllocationPage.validateSortingForColumn('Sender A/C Name');
+    })
+});
+
