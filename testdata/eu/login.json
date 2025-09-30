@@ -1,12 +1,14 @@
 {
     "Login-Access1": {
-        "url": "https://test-finance-eu.tatsh.cloud/",
+        "url": "https://qa-finance-eu.tatsh.cloud/",
+        "url_old": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
         "passwordInput": "September@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-Access": {
-        "url": "https://test-finance-eu.tatsh.cloud/",
+        "url": "https://qa-finance-eu.tatsh.cloud/",
+        "url_old": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
         "passwordInput": "September@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
@@ -18,13 +20,15 @@
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "LoginB2C-Access": {
-        "url": "https://test-syncrob2c-eu.tatsh.cloud/",
+        "url": "https://qa-syncrob2c-eu.tatsh.cloud/",
+        "url_old": "https://test-syncrob2c-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
         "passwordInput": "September@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-AccessAcc": {
-        "url": "https://test-finance-eu.tatsh.cloud/",
+        "url": "https://qa-finance-eu.tatsh.cloud/",
+        "url_old": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "AccentureTempAdmin",
         "passwordInput": "Coverage@12",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
