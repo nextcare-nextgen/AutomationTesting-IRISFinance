@@ -3,14 +3,14 @@
         "url": "https://qa-finance-eu.tatsh.cloud/",
         "url_old": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
-        "passwordInput": "September@25",
+        "passwordInput": "Coverage@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-Access": {
         "url": "https://qa-finance-eu.tatsh.cloud/",
         "url_old": "https://test-finance-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
-        "passwordInput": "September@25",
+        "passwordInput": "Coverage@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-Access_old": {
@@ -23,7 +23,7 @@
         "url": "https://qa-syncrob2c-eu.tatsh.cloud/",
         "url_old": "https://test-syncrob2c-eu.tatsh.cloud/",
         "userNameInput": "vTestBroker",
-        "passwordInput": "September@25",
+        "passwordInput": "Coverage@25",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
     "Login-AccessAcc": {
