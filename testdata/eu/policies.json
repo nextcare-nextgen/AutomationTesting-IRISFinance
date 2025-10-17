@@ -44,6 +44,11 @@
     "TC_030_Policies": {
         "organization": "2024"
     },
+    "TC_031_Policies": {
+        "fromDate": "01 Oct 2025",
+        "toDate": "13 Oct 2025"
+    },
+
     "TC_034_Policies": {
         "fromDate": "01 Jan 2027",
         "organization": "2024",

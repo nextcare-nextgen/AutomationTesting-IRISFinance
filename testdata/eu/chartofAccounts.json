@@ -72,7 +72,7 @@
         "accountName": "Gross Writen Premium"
     },
     "TC_059_Chart_of_Accounts": {
-        "accountNumber": "875421"
+        "accountNumber": "662480"
     },
     "TC_060_Chart_of_Accounts": {
         "accountNumber": "5114001",
@@ -141,7 +141,7 @@
         "accountNumber": "875421"
     },
     "TC_085_Chart_of_Accounts": {
-        "accountName": "NCP Clearing"
+        "accountName": "TestAccount"
     },
     "TC_086_Chart_of_Accounts": {
         "accountNumber": "8288888000"

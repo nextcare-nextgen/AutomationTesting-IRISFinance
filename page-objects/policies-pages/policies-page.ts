@@ -157,6 +157,7 @@ export class PoliciesPage {
     }
 
     async enterValidFromDate(fromDate: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.fromDate.clear();
         await this.fromDate.fill(fromDate);
     }
@@ -181,6 +182,7 @@ export class PoliciesPage {
     }
 
     async enterValidToDate(ToDate: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.fromDate.clear();
         await this.fromDate.fill(ToDate);
     }
@@ -490,6 +492,18 @@ export class PoliciesPage {
 
         expect(descSortedValues).toEqual(expectedDesc);
         console.log(`✅ Descending sort validated for column: ${columnName}`);
+    }
+
+    async fillFromDate() {
+        await this.fromDate.clear();
+
+        const today = new Date();
+        const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
+        const formattedDate = "01-" + monthNumber[today.getMonth()] + "-" + today.getFullYear();
+
+        await this.fromDate.fill(formattedDate);
+        await new Promise(resolve => setTimeout(resolve, 9000));
     }
  }
 

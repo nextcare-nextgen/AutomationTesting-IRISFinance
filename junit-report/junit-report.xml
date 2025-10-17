@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="39.552838000000015">
-<testsuite name="tests\cashAllocation\cashAllocation.spec.ts" timestamp="2025-10-07T07:34:36.037Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="30.594" errors="0">
-<testcase name="NXGF-TC-3323: TC_007_Cash Allocation Dashboard_Verify that the non manadatory search fields include From Date ,To Date,Payment Reference,Payment Amount ,Policy Reference" classname="tests\cashAllocation\cashAllocation.spec.ts" time="30.594">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="63.582245999999344">
+<testsuite name="tests\cashAllocation\cashAllocation.spec.ts" timestamp="2025-10-17T08:19:52.219Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="56.291" errors="0">
+<testcase name="NXGF-TC-001: TC_057_Cash Allocation Dashboard_" classname="tests\cashAllocation\cashAllocation.spec.ts" time="56.291">
 </testcase>
 </testsuite>
 </testsuites>

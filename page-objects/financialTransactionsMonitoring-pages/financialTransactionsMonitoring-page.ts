@@ -72,7 +72,7 @@ export class FinancialTransactionsMonitoringPage {
         this.resetbtn = page.locator('//div//button[@title="Reset"]');
         this.searchBar = page.locator('//input[@placeholder="Search"]');
         this.label = page.locator('//iris-menu-card//iris-base-label//span');
-        this.exportToExcel = page.locator('//button[@title="Export to excel"]');
+        this.exportToExcel = page.locator('//button[@title="Export To Excel"]');
         this.paymentDetailsTitle = page.locator('//h2[@title="Payment Details"]');
         this.nameOnCardField = page.locator('//mat-label//span[@title="Name On Card"]//following::div[contains(@class,mdc-notched-outline)][2]');
         this.ccNumber = page.locator('//mat-label//span[@title="CC Number"]//following::div[contains(@class,mdc-notched-outline)][2]');

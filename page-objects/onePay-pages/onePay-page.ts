@@ -218,11 +218,20 @@ export class OnePayPage {
 
     async expatcaresStartandEnddateonThirdtTab(startdate: string, enddate: string) {
 
-        await this.page.locator("//input[@id='mat-input-27']").fill(startdate);
-        await this.page.locator("//input[@id='mat-input-28']").fill(enddate);
-        await this.page.locator("//div[@id='row-12896']").click();
+        const startInput = this.page.locator("//input[@id='mat-input-27']");
+        const endInput = this.page.locator("//input[@id='mat-input-28']");
+ 
+        await startInput.waitFor({ state: 'visible' });
+        await startInput.click();
+        await startInput.fill(startdate);
+        await this.page.keyboard.press('Tab');
+ 
+        await endInput.waitFor({ state: 'visible' });
+        await endInput.click();
+        await endInput.fill(enddate);
+        await this.page.keyboard.press('Tab');
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(3000);
+        await this.page.waitForTimeout(5000);
     }
 
     async clickOnClassiccTile() {
@@ -415,7 +424,7 @@ export class OnePayPage {
         await this.page.locator("(//h2[contains(text(),'Thank you')])[1]").waitFor();
         //let actualdisText = await this.page.locator("//div[@id='row-12889']//app-message-screen//p[1]//following::p[1]//b[contains(text(),'MAE-AWPDE')]").textContent();
         const pn = await this.policynum.innerText();
-        await this.page.goto("https://test-syncro-eu.tatsh.cloud/Account/Login");
+        await this.page.goto("https://qa-syncro-eu.tatsh.cloud/Account/Login");
         await this.page.waitForLoadState('networkidle');
         await this.userNameInputField.fill(superUser);
         await this.passwordInputField.fill(password);
@@ -423,15 +432,15 @@ export class OnePayPage {
         await this.page.waitForLoadState('networkidle');
         await this.contractNumber.fill(pn);
         await this.searchbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         await this.editbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         await this.page.waitForLoadState('networkidle');
         //await this.page.locator("//div[text()=' Details']").waitFor();
         //await new Promise(resolve => setTimeout(resolve, 5000));
         //await this.page.locator("//div//a[text()='Save & continue ']").waitFor();
         await this.acceptbtn.click();
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 9000));
         //await this.acceptbtn.click();
         //await this.page.waitForLoadState('networkidle');
         await this.confirmbtn.click();

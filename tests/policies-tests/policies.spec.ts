@@ -1066,7 +1066,7 @@ test('NXGF-TC-1940: TC_030_Policies_Verify that the Records per page title shoul
     await test.step("Verify that the Records per page title is displayed", async () => {
         await policiesPage.verifyRecordsPerPageTitle();
     })
-})
+});
 
 test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down', async ({ page }) => {
 
@@ -1095,6 +1095,18 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
         await policiesPage.clickOnPoliciesShrtcutsButton();
     })
 
+    await test.step("User Enter From Date", async () => {
+        await policiesPage.fillFromDate();
+    })
+
+    // await test.step("User Enter To Date", async () => {
+    //     await policiesPage.enterValidToDate(policiesData['TC_031_Policies'].toDate);
+    // })
+
+    await test.step("User Click on Search button", async () => {
+        await policiesPage.clickOnSerach();
+    })
+
     await test.step("User Click On Policy Journal Voucher Eye Icon", async () => {
         await policiesPage.clickOnViewJournalVoucherEyeIcon();
     })
@@ -1102,7 +1114,7 @@ test('NXGF-TC-1941: TC_031_Policies_Verify that the user is able to view the ite
     await test.step("Click On Records per page dropdown", async () => {
         await policiesPage.clickOnRecordsPerPageDropdown();
     })
-})
+});
 
 test('NXGF-TC-1942: TC_032_Policies_Verify that the user is able to view the item counts (10,15,20,30,50,100,250) in the drop down in Polices screen', async ({ page }) => {
 

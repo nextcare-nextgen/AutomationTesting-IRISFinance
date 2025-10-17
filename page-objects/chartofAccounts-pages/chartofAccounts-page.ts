@@ -147,7 +147,7 @@ export class ChartOfAccountsPage {
         this.advancedSearch = page.locator('//div//button[@title="Filter"]');
         this.JVaccountNum = page.locator('//iris-form-container//input[@title="Account number"]');
         this.apply = page.locator('//button[@title="Apply"]');
-        this.editChildAccount = page.locator("//mat-cell[@id='action-154']//mat-icon[@title='Edit Account']//*[name()='svg']");
+        this.editChildAccount = page.locator("(//mat-icon[@title='Edit Account']//*[name()='svg'])[last()]");
 
         this.accountNameInput = this.page.locator('[placeholder="Account Name"]');  
         this.glAccountTypeDropdown = this.page.locator('select[name="glAccountType"]');
@@ -581,7 +581,7 @@ export class ChartOfAccountsPage {
     async stopedAccounts() {
         //await this.accountNumber.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.accountNumber.fill(this.randomString);
+        await this.accountNumber.nth(0).fill(this.randomString);
         await this.search.click();
         await new Promise(resolve => setTimeout(resolve, 5000));
         const getnumberfromgrid = await this.page.locator('//button[@title="Stop Account"]');
@@ -631,7 +631,7 @@ export class ChartOfAccountsPage {
 
     async verifyActiveAccountsNameinGrid(data: string) {
         await new Promise(resolve => setTimeout(resolve, 5000));
-        const actual = await this.accountnameFromGrid.textContent();
+        const actual = await this.accountnameFromGrid.nth(0).textContent();
         expect(actual).toBe(data);
     }
 

@@ -221,7 +221,7 @@ test('NXGF-TC-2832: TC_000_OnePay payment journey_Validate that the pay button i
     })
 
     await test.step("Enter Start Date and End Date  on Third Tab ", async () => {
-        await onePayPage.expatcaresStartandEnddateonThirdtTab(onePayData["TC_003_OnePay"].StartdateInput, onePayData["TC_003_OnePay"].EnddateInput);
+        await onePayPage.expatcaresStartandEnddateonThirdtTab(onePayData["TC_2832_OnePay"].StartdateInput, onePayData["TC_2832_OnePay"].EnddateInput);
     })
 
     await test.step("Click on Classic Plan ", async () => {

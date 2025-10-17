@@ -2718,7 +2718,7 @@ test("NXGF-TC-8011: TC_89_Chart of Accounts_ Implement automation to validate th
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-AccessAcc'].userNameInput, data['Login-AccessAcc'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
     })
 
     await test.step("Set the organization to Allianz partners 2024", async () => {

@@ -3,11 +3,11 @@
         "paymentStatus": "Cleared-unallocated"
     },
     "TC_002_Cash_Allocation": {
-        "paymentRef": "AE2500000002255340",
+        "paymentRef": "AE550000001155450",
         "policyRef": "PRT-AWPDE-6914-NB"
     },
     "TC_004_Cash_Allocation": {
-        "paymentRef": "AE2500000002255340",
+        "paymentRef": "AE550000001155450",
         "policyRef": "PRT-AWPDE-6914-NB",
         "unallocatedAmount": "4"
     },
