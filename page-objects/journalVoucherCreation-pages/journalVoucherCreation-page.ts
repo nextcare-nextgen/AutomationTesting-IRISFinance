@@ -9,7 +9,7 @@ export class JournalVoucherCreationPage {
     readonly cashAllocationShortcut: Locator;
     readonly chartOfAccountsShortcut: Locator;
     readonly FXRatesShorcut: Locator;
-    readonly organizationShortcut: Locator;
+    //readonly organizationShortcut: Locator;
     readonly policiesShortcut: Locator;
     readonly FTMshortcut: Locator;
     readonly breadCrumbs: Locator;
@@ -312,8 +312,11 @@ export class JournalVoucherCreationPage {
     async selectCurrentDateCalender() {
         await new Promise(resolve => setTimeout(resolve, 5000));
         await this.selectValueCalenderIcon.click();
-        await this.page.locator('//button[contains(@class,"active")]').click();
+        //await this.page.locator('//button[contains(@class,"active")]').click();
         //await new Promise(resolve => setTimeout(resolve, 3000));
+        const todayDateCell = this.page.locator("//span[contains(@class, 'mat-calendar-body-cell-content') and contains(@class, 'mat-calendar-body-today')]");
+        await expect(todayDateCell).toBeVisible({ timeout: 5000 }); 
+        await todayDateCell.click();
     }
 
     async clickOnSave() {

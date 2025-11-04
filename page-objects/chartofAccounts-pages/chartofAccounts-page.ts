@@ -101,7 +101,8 @@ export class ChartOfAccountsPage {
         this.stopIndex = page.locator('//iris-table-filter-tags//mat-chip-option[@chip-color="red"]');
         this.confirmationMessage = page.locator('//p[text()="Are you sure you want to stop this account ?"]');
         this.recordsPerPage = page.locator(' //mat-paginator//div[text()=" Records per page: "]');
-        this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        //this.recordPerPageDropdown = page.locator('(//mat-select[contains(@aria-label,"")])[last()]');
+        this.recordPerPageDropdown = page.locator("//div[@class='mat-mdc-paginator-touch-target']");
         this.addAccount = page.locator('//div//button[@title="Add Account"]');
         this.addAccountNumber = page.locator('//iris-composed-dialog//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Number"]');
         this.addAccountName = page.locator('//iris-chart-of-accounts-manage-dialog//div//input[@title="Account Name"]');
@@ -129,7 +130,7 @@ export class ChartOfAccountsPage {
         this.selectStartDatecalenderIcon = page.locator('//div//input[contains(@class,"datepicker")]//following::button//mat-icon[@data-mat-icon-name="icon-calendar"]');
         this.currentDateFromCalender = page.locator('//mat-month-view//td//button[contains(@class,"active")]');
         this.addchildAccount = page.locator('//mat-icon[@title="Add Child Account"]');
-        this.addchildAccountTitle = page.locator('//h2[@title="Add  Child Account For Gross Written Premium"]');
+        this.addchildAccountTitle = page.locator("//h2[contains(text(),'Add  Child Account For TestAccount')]");
         this.warningPopup = page.locator('//mat-list-item//span//span[text()="Account number must be unique per organization."]');
         this.expandArrow = page.locator('//mat-cell[@id="1-parentaccountnumber"]//button//mat-icon[@data-mat-icon-name="icon-angle-down"]');
         this.expandArrow1 = page.locator("(//button[@aria-label='button'])[13]");
@@ -250,13 +251,35 @@ export class ChartOfAccountsPage {
         await this.activeIndex.click();
     }
 
+    // async verifyActiveAccounts() {
+    //     //const stopAccount = this.page.locator('//mat-cell//button[contains(@title,"Stop Account")]');
+    //     const stopAccount = this.page.locator('//span[contains(@title,"Stopped")]');
+    //     for (let index = 0; index < await stopAccount.count(); index++) {
+    //         expect(stopAccount.nth(index)).toBeVisible();
+    //     }
+    // }
+
     async verifyActiveAccounts() {
-        //const stopAccount = this.page.locator('//mat-cell//button[contains(@title,"Stop Account")]');
-        const stopAccount = this.page.locator('//span[contains(@title,"Stopped")]');
-        for (let index = 0; index < await stopAccount.count(); index++) {
-            expect(stopAccount.nth(index)).toBeVisible();
+        const stopButtons = this.page.locator('//button[contains(@title, "Stop Account")]');
+        const count = await stopButtons.count();
+        console.log(`Found ${count} Stop Account buttons`);
+
+        expect(count).toBeGreaterThan(0); 
+
+        for (let i = 0; i < count; i++) {
+            await expect(stopButtons.nth(i)).toBeVisible();
         }
     }
+
+    async verifyActiveAccountsForAccountName() {
+        const stopButtons = this.page.locator('//button[contains(@title, "Stop Account")]');
+        await expect(stopButtons.first()).toBeVisible();
+
+        const count = await stopButtons.count();
+        console.log(`Found ${count} Stop Account buttons`);
+        expect(count).toBeGreaterThan(0);
+    }
+
     async clickOnStopIndex() {
         await this.stopIndex.click();
     }
@@ -280,7 +303,7 @@ export class ChartOfAccountsPage {
 
     async clickOnRecordsPerPageDropdown() {
         await this.page.waitForSelector('.loader', { state: 'hidden' });
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 8000));
         await this.recordPerPageDropdown.click();
         expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
 
@@ -593,7 +616,10 @@ export class ChartOfAccountsPage {
 
     async selectCurrentDateStartDateCalender() {
         await this.startDateCalendarIcon.click();
-        await this.page.locator('//button[contains(@class,"active")]').click();
+        const todayDateCell = this.page.locator("//span[contains(@class, 'mat-calendar-body-cell-content') and contains(@class, 'mat-calendar-body-today')]");
+
+        await expect(todayDateCell).toBeVisible({ timeout: 5000 }); 
+        await todayDateCell.click();
     }
 
     async verifyTitleinBold() {

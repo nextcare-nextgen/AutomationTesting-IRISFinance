@@ -283,10 +283,12 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVoucherListSection() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.policyJournalVoucherList).toBeVisible();
     }
 
     async verifyPolicyJournalVoucherDtailsListSection() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.policyJournalVocherDeatils).toBeVisible();
     }
 
@@ -329,6 +331,7 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVoucherFirstSectionGridColumn() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.voucherNumber).toBeVisible();
         expect(this.voucherType).toBeVisible();
         expect(this.voucherRef).toBeVisible();
@@ -338,6 +341,7 @@ export class PoliciesPage {
     }
 
     async verifyPolicyJournalVoucherSecondSectionGridColumn() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         expect(this.account).toBeVisible();
         expect(this.description).toBeVisible();
         expect(this.currency).toBeVisible();
@@ -353,7 +357,7 @@ export class PoliciesPage {
     }
 
     async verifyAccountRecordsFromSecondGrid() {
-
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const account = this.page.locator('//mat-cell[contains(@class,"accountName")]');
 
         for (let index = 0; index < await account.count(); index++) {
@@ -379,7 +383,7 @@ export class PoliciesPage {
         // recordsPerPagedropdown.click();
         // expect(this.page.locator('//mat-option//span')).toHaveText([' 50 ', ' 100 ', ' 150 ', ' 200 ', ' 250 ']);
 
-        const recordsPerPagedropdown = this.page.locator('//section//mat-select[contains(@aria-label,"")]').first();
+        const recordsPerPagedropdown = this.page.locator("//div[@class='mat-mdc-paginator-touch-target']").first();
         await recordsPerPagedropdown.click();
         const options = this.page.locator('div[role="listbox"] mat-option span');
         await expect(options).toHaveCount(5, { timeout: 10000 });

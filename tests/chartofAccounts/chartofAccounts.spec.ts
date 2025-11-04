@@ -1525,7 +1525,7 @@ test('NXGF-TC-2145: TC_057_ Chart of Accounts_Verify that the user is able to vi
     })
 
     await test.step("Verified that the user is able to view only the Active accounts", async () => {
-        await chartOfAccountsPage.verifyActiveAccounts();
+        await chartOfAccountsPage.verifyActiveAccountsForAccountName();
     })
 });
 

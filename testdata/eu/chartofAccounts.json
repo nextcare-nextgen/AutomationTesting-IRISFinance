@@ -69,17 +69,17 @@
         "GLdropdownvalue": "General ledger"
     },
     "TC_057_Chart_of_Accounts": {
-        "accountName": "Gross Writen Premium"
+        "accountName": "TestAccount"
     },
     "TC_059_Chart_of_Accounts": {
-        "accountNumber": "662480"
+        "accountNumber": "211606"
     },
     "TC_060_Chart_of_Accounts": {
-        "accountNumber": "5114001",
-        "title": "Add  Child Account For Gross Written Premium"
+        "accountNumber": "211606",
+        "title": "Add  Child Account For TestAccount"
     },
     "TC_062_Chart_of_Accounts": {
-        "accountNumber": "5114001"
+        "accountNumber": "211606"
     },
     "TC_064_Chart_of_Accounts": {
         "accountName": "Gross Written Premium",

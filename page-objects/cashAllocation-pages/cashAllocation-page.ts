@@ -67,6 +67,12 @@ export class CashAllocationPage {
     readonly broker: Locator;
     readonly clearedtransactionType: Locator;
 
+    readonly transactionTypeDropdown: Locator;
+    readonly paymentStatusDropdown: Locator;
+    readonly paymentMethodDropdown: Locator;
+    readonly resultRows: Locator;
+    readonly noResultsMsg: Locator;
+
     constructor(page: Page) {
         this.page = page;
         this.cashAllocationShortcut = page.locator('//div//span[@title="Cash Allocation"]');
@@ -132,6 +138,12 @@ export class CashAllocationPage {
         this.alertErrorPopup = page.locator("//p[contains(text(),'Are you sure you want to allocate policy reference')]");
         this.deletebtn = page.locator('//button[@title="Remove Policy"]');
         this.broker = page.locator('//input[@title="Broker"]');
+
+        this.transactionTypeDropdown = page.locator("(//mat-icon[@title='Remove'])[1]");
+        this.paymentStatusDropdown = page.locator("(//mat-icon[@title='Remove'])[2]");
+        this.paymentMethodDropdown = page.locator("(//mat-icon[@title='Remove'])[3]");
+        this.resultRows = page.locator('//table//tr[contains(@class, "mat-row")]');
+        this.noResultsMsg = page.locator('text=No transactions found');
     }
 
 
@@ -287,14 +299,19 @@ export class CashAllocationPage {
 
     async selectCurrentDateFromDateCalender() {
         await this.fromDateCalendarIcon.click();
-        await this.page.locator('//button[contains(@class,"active")]').click()
+        //await this.page.locator('//button[contains(@class,"active")]').click();
 
+        //await this.startDateCalendarIcon.click();
+        const todayDateCell = this.page.locator("//span[contains(@class, 'mat-calendar-body-cell-content') and contains(@class, 'mat-calendar-body-today')]");
+        await expect(todayDateCell).toBeVisible({ timeout: 5000 }); 
+        await todayDateCell.click();
     }
 
     async selectCurrentDateToDateCalender() {
         await this.toDateCalendarIcon.click();
-        await this.page.locator('//button[contains(@class,"active")]').click()
-
+        const todayDateCell = this.page.locator("//span[contains(@class, 'mat-calendar-body-cell-content') and contains(@class, 'mat-calendar-body-today')]");
+        await expect(todayDateCell).toBeVisible({ timeout: 5000 }); 
+        await todayDateCell.click();
     }
 
     async selectOldDate() {
@@ -491,6 +508,7 @@ export class CashAllocationPage {
     }
 
     async enterAmount(data: string) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.amountFill.scrollIntoViewIfNeeded();
         await this.amountFill.click();
         await this.amountFill.clear();
@@ -672,6 +690,45 @@ export class CashAllocationPage {
         expect(descSortedValues).toEqual(expectedDesc);
         console.log(`✅ Descending sort validated for column: ${columnName}`);
     }
- }
+
+    async applyFilters() {
+        console.log('Applying filters for Cash Allocation...');
+        await this.page.waitForTimeout(5000);
+
+        // Select Transaction Type
+        await this.transactionTypeDropdown.click();
+        await this.page.locator('(//mat-option//span[normalize-space()="Cash Payment"])[1]').click();
+
+        // Select Payment Status
+        await this.paymentStatusDropdown.click();
+        await this.page.locator('(//mat-option//span[normalize-space()="Cleared - Unallocated"])[2]').click();
+
+        // Select Payment Method
+        await this.paymentMethodDropdown.click();
+        await this.page.locator('(//mat-option//span[normalize-space()="Bank Transfer"])[1]').click();
+
+        // Click Search
+        await this.searchbtn.click();
+
+        // Wait for results or empty state
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(2000);
+
+        const txCount = await this.resultRows.count();
+        const noResultsVisible = await this.noResultsMsg.isVisible();
+
+        if (txCount === 0 || noResultsVisible) {
+        console.warn("⚠️ No transactions found for the given filter criteria.");
+        // Option 1: Return flag so test can handle it
+        return false;
+
+        // Option 2: Or, throw an error to stop execution here
+        // throw new Error("No transactions found for given filter criteria.");
+        }
+
+        console.log(`✅ Found ${txCount} transactions after applying filters.`);
+        return true;
+    }
+}
 
 
