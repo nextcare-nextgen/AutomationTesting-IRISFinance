@@ -2004,7 +2004,7 @@ test('NXGF-TC-8012: TC_056_Cash Allocation Dashboard_ Implement automation to va
 });
 
 // Latest Testcase for BT policy
-test('NXGF-TC-001: TC_057_Cash Allocation Dashboard_', async ({ page }) => {
+test('NXGF-TC-8042: TC_057_Cash Allocation Dashboard_ Validation of Cash Allocation functionality for BT Policies.', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const dashboardPage: DashboardPage = new DashboardPage(page);
@@ -2033,10 +2033,6 @@ test('NXGF-TC-001: TC_057_Cash Allocation Dashboard_', async ({ page }) => {
     await test.step("Apply filters for Cash Allocation search", async () => {
         await cashAllocationPage.applyFilters();
     })
-
-    // await test.step("User Click on Search button", async () => {
-    //     await cashAllocationPage.clickOnSearchButton();
-    // })
 
     await test.step("User Click on Policy Allocation  button", async () => {
         await cashAllocationPage.clickOnpolicyAllocationButton();

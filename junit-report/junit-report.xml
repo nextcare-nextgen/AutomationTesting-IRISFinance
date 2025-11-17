@@ -1,54 +1,9 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="158.95270600000023">
-<testsuite name="tests\cashAllocation\cashAllocation.spec.ts" timestamp="2025-11-03T11:23:57.300Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="142.651" errors="0">
-<testcase name="NXGF-TC-3359,NXGF-TC-3367: TC_043_Cash Allocation Dashboard_Verify that the an error message is displayed &quot;Please enter a value less than or equal to &quot;Total Balance&quot;" classname="tests\cashAllocation\cashAllocation.spec.ts" time="142.651">
-<properties>
-<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
-</property>
-</properties>
-<failure message="cashAllocation.spec.ts:1487:5 NXGF-TC-3359,NXGF-TC-3367: TC_043_Cash Allocation Dashboard_Verify that the an error message is displayed &quot;Please enter a value less than or equal to &quot;Total Balance&quot;" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\cashAllocation\cashAllocation.spec.ts:1487:5 › NXGF-TC-3359,NXGF-TC-3367: TC_043_Cash Allocation Dashboard_Verify that the an error message is displayed "Please enter a value less than or equal to "Total Balance" 
-
-    TimeoutError: locator.waitFor: Timeout 60000ms exceeded.
-    Call log:
-      - waiting for locator('//mat-label[contains(@title,"Please enter a value less than or equal to")]') to be visible
-
-
-       at page-objects\cashAllocation-pages\cashAllocation-page.ts:625
-
-      623 |     async verifyAmountErrorMessage() {
-      624 |         const premiumAndTaxAmount = this.page.locator('//mat-label[contains(@title,"Please enter a value less than or equal to")]');
-    > 625 |         await premiumAndTaxAmount.waitFor({ state: 'visible', timeout: 60000 });
-          |                                   ^
-      626 |         expect(premiumAndTaxAmount).toBeVisible();
-      627 |     }
-      628 |
-
-        at CashAllocationPage.verifyAmountErrorMessage (C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\cashAllocation-pages\cashAllocation-page.ts:625:35)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\cashAllocation\cashAllocation.spec.ts:1534:34
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\tests\cashAllocation\cashAllocation.spec.ts:1533:16
-
-    TypeError: apiRequestContext.post: Invalid URL
-
-       at page-objects\utilities-pages\global-setup.ts:17
-
-      15 |         const testCaseID: string = testInfo.title.split(':')[0];
-      16 |         const projectID: string = testCaseID.split(':')[0];
-    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
-         |                                        ^
-      18 |             headers: {
-      19 |                 Accept: "*/*",
-      20 |                 ContentType: "multipart/form-data",
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-MawistaFinance1\AutomationTesting-MawistaFinance\page-objects\utilities-pages\global-setup.ts:17:40
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-cashAllocation-cashA-d8484--or-equal-to-Total-Balance--Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="107.965907">
+<testsuite name="tests\cashAllocation\cashAllocation.spec.ts" timestamp="2025-11-12T05:41:26.811Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="68.566" errors="0">
+<testcase name="NXGF-TC-8042: TC_057_Cash Allocation Dashboard_ Validation of Cash Allocation functionality for BT Policies." classname="tests\cashAllocation\cashAllocation.spec.ts" time="68.566">
 <system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-cashAllocation-cashA-d8484--or-equal-to-Total-Balance--Mawista-EU\test-failed-1.png]]
+<![CDATA[Applying filters for Cash Allocation...
+✅ Found 8 transactions after applying filters.
 ]]>
 </system-out>
 </testcase>

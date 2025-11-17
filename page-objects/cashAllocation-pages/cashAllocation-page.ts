@@ -142,7 +142,8 @@ export class CashAllocationPage {
         this.transactionTypeDropdown = page.locator("(//mat-icon[@title='Remove'])[1]");
         this.paymentStatusDropdown = page.locator("(//mat-icon[@title='Remove'])[2]");
         this.paymentMethodDropdown = page.locator("(//mat-icon[@title='Remove'])[3]");
-        this.resultRows = page.locator('//table//tr[contains(@class, "mat-row")]');
+        //this.resultRows = page.locator('//table//tr[contains(@class, "mat-row")]');
+        this.resultRows = page.locator("//section[@class='mat-table-container-v2']//mat-row");
         this.noResultsMsg = page.locator('text=No transactions found');
     }
 
@@ -701,7 +702,7 @@ export class CashAllocationPage {
 
         // Select Payment Status
         await this.paymentStatusDropdown.click();
-        await this.page.locator('(//mat-option//span[normalize-space()="Cleared - Unallocated"])[2]').click();
+        await this.page.locator("//mat-label[@title='Cleared-unallocated']").click();
 
         // Select Payment Method
         await this.paymentMethodDropdown.click();
@@ -719,11 +720,7 @@ export class CashAllocationPage {
 
         if (txCount === 0 || noResultsVisible) {
         console.warn("⚠️ No transactions found for the given filter criteria.");
-        // Option 1: Return flag so test can handle it
         return false;
-
-        // Option 2: Or, throw an error to stop execution here
-        // throw new Error("No transactions found for given filter criteria.");
         }
 
         console.log(`✅ Found ${txCount} transactions after applying filters.`);
