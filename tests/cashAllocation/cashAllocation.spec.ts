@@ -2059,3 +2059,58 @@ test('NXGF-TC-8042: TC_057_Cash Allocation Dashboard_ Validation of Cash Allocat
     })
 });
 
+test('NXGF-TC-8044: TC_058_Cash Allocation Dashboard_ Validation of Cash Allocation functionality (Outstanding Amount).', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const dashboardPage: DashboardPage = new DashboardPage(page);
+    const cashAllocationPage: CashAllocationPage = new CashAllocationPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Set the organization to Allianz partners 2024", async () => {
+        await dashboardPage.selectOrganizationAndYear(dashboardData['TC_001_Policies'].org, dashboardData['TC_001_Policies'].year);
+    })
+
+    await test.step("User Click on Menu Icon", async () => {
+        await dashboardPage.clickOnMenuIconButton();
+    })
+
+    await test.step("User Click on Cash Allocation Shortcut button", async () => {
+        await cashAllocationPage.clickOnCashAllocationShrtcutsButton();
+    })
+
+    await test.step("Apply filters for Cash Allocation search", async () => {
+        await cashAllocationPage.applyFilters();
+    })
+
+    await test.step("User Click on Policy Allocation  button", async () => {
+        await cashAllocationPage.clickOnpolicyAllocationButton();
+    })
+
+    await test.step("User able to entert he policy details using the policy refernce", async () => {
+        await cashAllocationPage.enterPolicyRef(CashAllocationPageData['TC_034_Cash_Allocation'].policyRef);
+    })
+
+    await test.step("User Click on Search button", async () => {
+        await cashAllocationPage.clickOnManualAllocationSearchButton();
+    })
+
+    await test.step("User Ener Amount", async () => {
+        await cashAllocationPage.enterAmount(CashAllocationPageData['TC_034_Cash_Allocation'].amount);
+    })
+
+    await test.step("User Click on Add policy Button", async () => {
+        await cashAllocationPage.clickOnAddPolicyButton();
+    })
+
+    await test.step("Verified that the when click on add/allocate option in the second sction after the policy search a confirmation message pops up", async () => {
+        await cashAllocationPage.verifyAddPolicyPopup();
+    })
+});
+
