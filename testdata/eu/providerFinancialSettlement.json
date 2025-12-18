@@ -1,0 +1,28 @@
+{
+    "TC_006_ProviderFinancialSettlementData": {
+        "PayerValue": "ADNIC",
+        "BankAccountValue": "Yatri",
+        "UpToDueDate": "19/06/2023"
+    },
+
+    "TC_008_ProviderFinancialSettlementData": {
+        "PayerValue": "ADNIC",
+        "BankAccountValue": "Yatri",
+        "UpToDueDate": "09/12/2025"
+    },
+
+     "TC_025_ProviderFinancialSettlementData": {
+        "PayerValue": "Test Payer",
+        "BankAccountValue": "NAME_109_26_1",
+        "UpToDueDate": "09/12/2025",
+        "AccountNumber": "AE750030010258862020014"
+    },
+
+     "TC_026_ProviderFinancialSettlementData": {
+        "PayerValue": "TEST PAYER (Do Not Use)",
+        "BankAccountValue": "NAME_109_26_1",
+        "UpToDueDate": "31/05/2023",
+        "AccountNumber": "AE750030010258862020014",
+        "AccountName": "Testing"
+    }
+}

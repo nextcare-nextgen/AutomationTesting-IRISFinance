@@ -1,9 +1,60 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="107.965907">
-<testsuite name="tests\cashAllocation\cashAllocation.spec.ts" timestamp="2025-11-12T05:41:26.811Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="68.566" errors="0">
-<testcase name="NXGF-TC-8042: TC_057_Cash Allocation Dashboard_ Validation of Cash Allocation functionality for BT Policies." classname="tests\cashAllocation\cashAllocation.spec.ts" time="68.566">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="87.16275699999929">
+<testsuite name="tests\providerFinancialSettlement\providerFinancialSettlement.spec.ts" timestamp="2025-12-18T09:04:40.313Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="64.848" errors="0">
+<testcase name="FIN-TC-740: TC_027_Providers Financial Settlement_Verify that the Currency, Minimum balance and Current balance reflects as per the Payer selected  " classname="tests\providerFinancialSettlement\providerFinancialSettlement.spec.ts" time="64.848">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="providerFinancialSettlement.spec.ts:902:5 FIN-TC-740: TC_027_Providers Financial Settlement_Verify that the Currency, Minimum balance and Current balance reflects as per the Payer selected  " type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\providerFinancialSettlement\providerFinancialSettlement.spec.ts:902:5 › FIN-TC-740: TC_027_Providers Financial Settlement_Verify that the Currency, Minimum balance and Current balance reflects as per the Payer selected   
+
+    Error: expect.toHaveValue: Error: strict mode violation: locator('//mat-label[normalize-space()=\'Currency\']/ancestor::mat-form-field//input') resolved to 2 elements:
+        1) <input disabled matinput="" type="text" id="mat-input-2…/> aka getByRole('textbox', { name: 'Currency' })
+        2) <input matinput="" role="combobox" id="mat-input-14" au…/> aka getByRole('combobox', { name: 'Currency' })
+
+    Call log:
+      - expect.toHaveValue with timeout 20000ms
+      - waiting for locator('//mat-label[normalize-space()=\'Currency\']/ancestor::mat-form-field//input')
+
+
+       at page-objects\providerFinancialSettlement-pages\providerFinancialSettlement-page.ts:320
+
+      318 |      async verifyCurrencyMinBalanceAndCurrentBalanceForSelectedPayer() {
+      319 |         // Wait until inputs have values
+    > 320 |         await expect(this.currencyField).toHaveValue(/.+/);
+          |                                          ^
+      321 |         await expect(this.minimumBalanceField).toHaveValue(/.+/);
+      322 |         await expect(this.currentBalanceField).toHaveValue(/.+/);
+      323 |
+
+        at ProviderFinancialSettlementPage.verifyCurrencyMinBalanceAndCurrentBalanceForSelectedPayer (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\providerFinancialSettlement-pages\providerFinancialSettlement-page.ts:320:42)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerFinancialSettlement\providerFinancialSettlement.spec.ts:933:47
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerFinancialSettlement\providerFinancialSettlement.spec.ts:932:16
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-providerFinancialSet-b7e2d--as-per-the-Payer-selected--Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
 <system-out>
-<![CDATA[Applying filters for Cash Allocation...
-✅ Found 8 transactions after applying filters.
+<![CDATA[Payer "TEST PAYER (Do Not Use)" selected successfully.
+Up To Due Date "31/05/2023" selected successfully.
+
+[[ATTACHMENT|..\test-results\tests-providerFinancialSet-b7e2d--as-per-the-Payer-selected--Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>

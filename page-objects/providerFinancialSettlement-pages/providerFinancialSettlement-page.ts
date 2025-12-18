@@ -1,0 +1,338 @@
+import { Keyboard, Locator, Page, expect } from "@playwright/test";
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export class ProviderFinancialSettlementPage {
+
+    readonly page: Page;
+    readonly searchIcon: Locator;
+    readonly financials: Locator;
+    readonly providersFinancialSettlement: Locator;
+    readonly payerRadio: Locator;
+    readonly reinsurerRadio: Locator;
+    readonly reinsurerInput: Locator;
+    readonly reinsurerOptions: Locator;
+    readonly searchButton: Locator;
+    readonly requiredErrors: Locator;
+    readonly bankAccountDropdown: Locator;
+    readonly bankAccountOptions: Locator;
+    readonly payerDropdown: Locator;
+    readonly upToDueDateInput: Locator;
+    readonly searchResultsContainer: Locator;
+    readonly glAccountDescLink: Locator;
+    readonly glAccounthashLink: Locator;
+    readonly providerTypeSearchField: Locator;
+    readonly validErrorMessageVerification: Locator;
+    readonly voucherSearchTitle: Locator;
+    readonly accountNumber: Locator;
+    readonly accountName: Locator;
+    readonly voucherSearchButton: Locator;
+    readonly voucherSearchSelectAccountName: Locator;
+    readonly voucherSearchSelectAccountNumber: Locator;
+    readonly selectedAccountName: Locator;
+    readonly selectedAccountNumber: Locator;
+    readonly currencyDropdown: Locator;
+    readonly currencyDropdownOptions: Locator;
+    readonly collectedDropdown: Locator;
+    readonly collectedDropdownOptions: Locator;
+    readonly currencyField: Locator;
+    readonly minimumBalanceField: Locator;
+    readonly currentBalanceField: Locator;
+
+
+    
+    constructor(page: Page) {
+        this.page = page;
+        this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
+        this.financials = page.getByRole('button', { name: 'Financials' });
+        this.providersFinancialSettlement = page.locator("//a[contains(., \"Provider's Financial Settlement\")]"); 
+        this.payerRadio = page.locator("//mat-radio-button[@value='Payer']");
+        this.reinsurerRadio = page.locator("//mat-radio-button[@value='Reinsurer']");
+        this.reinsurerInput = page.locator("//mat-label[text()='Reinsurer']/ancestor::mat-form-field//input");
+        this.reinsurerOptions = page.locator(".cdk-overlay-pane mat-option");
+        this.searchButton = page.locator("//button[@id='search-settlement']");
+        this.requiredErrors = page.locator("//mat-error[contains(text(),'This field is required')]");
+        this.payerDropdown = page.locator("//mat-label[contains(text(),'Payer')]/ancestor::mat-form-field//input");
+        this.bankAccountDropdown = page.locator("//mat-label[contains(text(),'Bank Account')]/ancestor::mat-form-field//mat-select");
+        this.bankAccountOptions = page.locator(".cdk-overlay-pane mat-option");
+        this.upToDueDateInput = page.locator("//input[@formcontrolname='toDueDate']");
+        this.searchResultsContainer = page.locator('table.mat-table');
+        this.glAccountDescLink = page.locator('a', { hasText: 'GL Account Desc' });
+        this.glAccounthashLink = page.locator('a', { hasText: 'GL Account #' });
+        this.providerTypeSearchField = page.locator("//iris-autocomplete[@id='providerTypes']");
+        this.validErrorMessageVerification = page.locator("//div[@class='grid-no-data ng-star-inserted']");
+        this.voucherSearchTitle = page.locator('mat-dialog-container h2', { hasText: 'Voucher Search' });
+        this.accountNumber = page.locator("//input[@formcontrolname='accountNumber']");
+        this.accountName = page.locator("//input[@formcontrolname='accountName']");
+        this.voucherSearchButton = page.locator("//button[@title='Search']"); 
+        this.voucherSearchSelectAccountName = page.locator("(//a[@class='ng-star-inserted'][normalize-space()='Select'])[10]");
+        this.voucherSearchSelectAccountNumber = page.locator("//a[normalize-space()='Select']");
+        this.selectedAccountName = page.locator('td.mat-column-accountName .td-content');
+        this.selectedAccountNumber = page.locator('td.mat-column-accountNumber .td-content');
+        this.currencyDropdown = page.locator("(//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input)[2]");
+        this.currencyDropdownOptions = page.locator(".cdk-overlay-pane mat-option");
+        this.collectedDropdown = page.locator("//mat-label[normalize-space()='Collected']/ancestor::mat-form-field");
+        this.collectedDropdownOptions = page.locator(".cdk-overlay-pane mat-option");
+        this.currencyField = page.locator("//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input");
+        this.minimumBalanceField = page.locator("//mat-label[normalize-space()='Minimum Balance']/ancestor::mat-form-field//input");
+        this.currentBalanceField = page.locator("//mat-label[normalize-space()='Current Balance']/ancestor::mat-form-field//input");
+    }
+
+    async searchAndClickFinancials() {  
+        await this.searchIcon.waitFor({ state: 'visible' });
+        await expect(this.searchIcon).toBeEnabled();
+
+        await this.searchIcon.click();
+        await this.searchIcon.fill("FINANCIALS");
+
+        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
+        await this.financials.click();
+    }
+
+    async clickOnProvidersFinancialSettlement() {  
+        //await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.providersFinancialSettlement.scrollIntoViewIfNeeded();
+        await this.providersFinancialSettlement.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
+        await this.providersFinancialSettlement.click();
+    }
+
+    async toVerifyPayersAndReinsurerRadioButton() { 
+        await new Promise(resolve => setTimeout(resolve, 10000)); 
+        await expect(this.payerRadio).toBeVisible();
+        await expect(this.reinsurerRadio).toBeVisible();
+    }
+
+    async verifyRadioButtonsAreMutuallyExclusive() {
+        await this.payerRadio.click();
+        await expect(this.payerRadio).toHaveAttribute('class', /mat-radio-checked/);
+        await expect(this.reinsurerRadio).not.toHaveAttribute('class', /mat-radio-checked/);
+
+        await this.reinsurerRadio.click();
+        await expect(this.reinsurerRadio).toHaveAttribute('class', /mat-radio-checked/);
+        await expect(this.payerRadio).not.toHaveAttribute('class', /mat-radio-checked/);
+    }
+
+    async clickOnPayersRadioButton() { 
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.payerRadio.click();
+    }
+
+    async clickOnReinsurerRadioRadioButton() { 
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.reinsurerRadio.click();
+    }
+
+    async verifyReinsurerDropdownValues() {
+        await expect(this.reinsurerInput).toBeVisible();
+
+        await this.reinsurerInput.click();
+        await this.reinsurerInput.press("ArrowDown");
+        await this.reinsurerOptions.first().waitFor({state: "visible",timeout: 5000});
+
+        const optionCount = await this.reinsurerOptions.count();
+        expect(optionCount).toBeGreaterThan(0);
+
+        const texts = await this.reinsurerOptions.allTextContents();
+        console.log("Reinsurer options:", texts);
+    }
+
+    async errorMessageWithoutFillingAnyField() {
+        await this.requiredErrors.first().waitFor({state: "visible",timeout: 5000});
+
+        const count = await this.requiredErrors.count();
+        expect(count).toBeGreaterThan(0);
+
+        for (let i = 0; i < count; i++) {
+            await expect(this.requiredErrors.nth(i)).toContainText("This field is required");
+        }
+        console.log(`Displayed ${count} required field error messages`);
+    }
+
+    async clickOnSearchButton() {
+        await this.searchButton.click();
+    }
+
+    async notAbleToSelectBankAccountUntilPayerIsSelected() {
+            
+        await this.bankAccountDropdown.click();
+        await expect(this.bankAccountOptions.first()).toBeVisible();
+        const firstOption = this.bankAccountOptions.first();
+        const optionText = (await firstOption.textContent())?.trim();
+        await firstOption.click();
+        const selectedText = await this.bankAccountDropdown.textContent();
+        expect(selectedText).toContain("-- Select --");
+        console.log("Verified: User cannot select any Bank Account until Payer is selected.");
+    }
+
+    async selectPayerOption(value: string) {
+        await expect(this.payerDropdown).toBeVisible({ timeout: 10000 });
+        await this.payerDropdown.click();
+        await this.payerDropdown.fill("");  
+        for (const char of value) {await this.payerDropdown.type(char, { delay: 200 }); }
+        const option = this.page.locator(".cdk-overlay-pane mat-option", { hasText: value }).first();
+        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.click();
+        console.log(`Payer "${value}" selected successfully.`);
+    }
+
+    async selectBankAccount(value: string) {
+        await this.bankAccountDropdown.click();
+        const option = this.bankAccountOptions.filter({ hasText: value }).first();
+        //await option.waitFor({ state: "visible", timeout: 25000 });
+        await expect(option).toBeVisible({ timeout: 90000 });
+        await option.click();
+        console.log(`Bank Account "${value}" selected successfully.`);
+    }
+
+    async selectUpTODueDate(value: string) {
+        await expect(this.upToDueDateInput).toBeVisible({ timeout: 10000 });
+        await this.upToDueDateInput.fill("");
+        await this.upToDueDateInput.fill(value);
+        await expect(this.upToDueDateInput).toHaveValue(value);
+        console.log(`Up To Due Date "${value}" selected successfully.`);
+    }
+
+    async validateDetailsAfterSearch() {
+        const rows = this.searchResultsContainer.locator("tr.mat-row");
+        await expect(rows.first()).toBeVisible({ timeout: 15000 });
+
+        const rowCount = await rows.count();
+        if (rowCount === 0) {
+            throw new Error("Expected at least 1 result row, but got 0.");
+        }
+        console.log(`Results list loaded and validated. Rows found: ${rowCount}`);
+    }
+
+    async verifyGLAccountDescHyperLink() {
+        await expect(this.glAccountDescLink).toBeVisible();
+        console.log('GL Account Desc hyperlink is visible.');
+    }
+
+    async clickOnGLAccountDescHyperLink() {
+        await expect(this.glAccountDescLink).toBeVisible();
+        console.log('GL Account Desc hyperlink is visible.');
+        await this.glAccountDescLink.click();
+    }
+
+    async verifyGLAccounthashHyperLink() {
+        await expect(this.glAccounthashLink).toBeVisible();
+        console.log('GL Account Hash hyperlink is visible.');
+    }
+
+    async verifyProviderTypeSearchField() {
+        await expect(this.providerTypeSearchField).toBeVisible();
+        console.log('Provider Type Search field is visible.');
+    }
+
+    // async clickOnProviderTypeHyperLink() {
+    //     await expect(this.providerTypeSearchField).toBeVisible();
+    //     console.log('Provider Type Search field is visible.');
+    // }
+
+    async validErrorMessage() {
+        await expect(this.validErrorMessageVerification).toBeVisible();
+        console.log('Error Message available as No Records Found.');
+    }
+
+    async verifyVoucherSearchPopupDisplayed() {
+        const voucherSearchTitle = this.page.locator('mat-dialog-container');
+        await expect(voucherSearchTitle).toBeVisible();
+
+        const title = voucherSearchTitle.locator('h2', { hasText: 'Voucher Search' });
+        await expect(title).toBeVisible();
+    }
+
+    async addAccountNumber(value: string) {
+        await expect(this.accountNumber).toBeVisible({ timeout: 10000 });
+        await this.accountNumber.click();
+        await this.accountNumber.fill(value); 
+        console.log(`Entered Account Number: ${value}`);
+    }
+
+    async addAccountName(value: string) {
+        await expect(this.accountNumber).toBeVisible({ timeout: 10000 });
+        await this.accountName.click();
+        await this.accountName.fill(value); 
+        console.log(`Entered Account Name: ${value}`);
+    }
+
+    async clickOnVoucherSearchButton() {
+        await this.voucherSearchButton.click();
+        await expect(this.voucherSearchButton).toBeVisible();
+        console.log('User Is able to search the value.');
+    }
+
+    async VoucherSearchSelectAccountName() {
+        await this.voucherSearchSelectAccountName.click();
+        await expect(this.voucherSearchSelectAccountName).toBeVisible();
+        console.log('User Is able to select Account name for provider.');
+    }
+
+    async VoucherSearchSelectAccountNumber() {
+        await this.voucherSearchSelectAccountNumber.click();
+        await expect(this.voucherSearchSelectAccountNumber).toBeVisible();
+        console.log('User Is able to select Account number for provider.');
+    }
+
+    async verifySelectedAccountNumberAndNameDisplayed() {
+        await expect(this.selectedAccountName).toBeVisible({ timeout: 15000 });
+        await expect(this.selectedAccountNumber).toBeVisible({ timeout: 15000 });
+
+        const accountName = (await this.selectedAccountName.textContent())?.trim();
+        const accountNumber = (await this.selectedAccountNumber.textContent())?.trim();
+
+        expect(accountName).toBeTruthy();
+        expect(accountNumber).toBeTruthy();
+
+        console.log(`Selected Account Name: ${accountName}`);
+        console.log(`Selected Account Number: ${accountNumber}`);
+    }
+
+    async verifyCurrencyDropdownValues() {
+        await expect(this.currencyDropdown).toBeVisible({ timeout: 10000 });
+        await this.currencyDropdown.click();
+
+        await this.currencyDropdown.press("ArrowDown");
+        await expect(this.currencyDropdownOptions.first()).toBeVisible({ timeout: 15000 });
+
+        const optionCount = await this.currencyDropdownOptions.count();
+        expect(optionCount).toBeGreaterThan(0);
+
+        const currencyValues = await this.currencyDropdownOptions.allTextContents();
+        console.log("Currency dropdown values:", currencyValues.map(v => v.trim()));
+    }
+
+    async verifyCollectedDropdownValues() {
+        await expect(this.collectedDropdown).toBeVisible({ timeout: 10000 });
+        await this.collectedDropdown.click();
+
+        await this.collectedDropdown.press("ArrowDown");
+        await expect(this.collectedDropdownOptions.first()).toBeVisible({ timeout: 15000 });
+
+        const optionCount = await this.collectedDropdownOptions.count();
+        expect(optionCount).toBeGreaterThan(0);
+
+        const currencyValues = await this.collectedDropdownOptions.allTextContents();
+        console.log("Currency dropdown values:", currencyValues.map(v => v.trim()));
+    }
+
+     async verifyCurrencyMinBalanceAndCurrentBalanceForSelectedPayer() {
+        // Wait until inputs have values
+        await expect(this.currencyField).toHaveValue(/.+/);
+        await expect(this.minimumBalanceField).toHaveValue(/.+/);
+        await expect(this.currentBalanceField).toHaveValue(/.+/);
+
+        // Read values
+        const currency = await this.currencyField.inputValue();
+        const minimumBalance = await this.minimumBalanceField.inputValue();
+        const currentBalance = await this.currentBalanceField.inputValue();
+
+        // Assertions
+        expect(currency, 'Currency should be displayed').not.toBe('');
+        expect(minimumBalance, 'Minimum Balance should be displayed').not.toBe('');
+        expect(currentBalance, 'Current Balance should be displayed').not.toBe('');
+
+        console.log(`Currency: ${currency}`);
+        console.log(`Minimum Balance: ${minimumBalance}`);
+        console.log(`Current Balance: ${currentBalance}`);
+    }
+}

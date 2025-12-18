@@ -13,11 +13,11 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.userNameOrEmailInputField = page.locator('input[title="Email or Username"]');
-        this.passwordInputField = page.locator('input[title="Password"]');
+        this.userNameOrEmailInputField = page.locator("//input[@id='mat-input-0']");
+        this.passwordInputField = page.locator("//input[@id='mat-input-1']");
         //this.signinButton = page.locator('span[title="Sign in"]');
        // code updated 19-12-2024
-       this.signinButton = page.locator("//button[@title='Sign in']");
+       this.signinButton = page.locator("//button[@type='submit']");
         this.rememberMeCheckbox = page.locator('//mat-checkbox');
         this.checkBoxSelector= page.locator("//input[contains(@type,'checkbox')]");
         this.captchaError= page.locator("//mat-icon[@title='Cancel']//*[name()='svg']");
