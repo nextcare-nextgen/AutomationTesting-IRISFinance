@@ -1,8 +1,8 @@
 {
     "Login-Access": {
         "url": "https://test-tatshboportal-uae.tatsh.cloud/login",
-        "userNameInput": "MaPa-CM",
-        "passwordInput": "RsIN$@0141",
+        "userNameInput": "VManoukian",
+        "passwordInput": "123",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
 
@@ -10,6 +10,12 @@
         "url": "https://test-tatshboportal-uae.tatsh.cloud/login",
         "userNameInput": "VManoukian",
         "passwordInput": "123",
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
+    },
+    "Login-Access_old": {
+        "url": "https://test-tatshboportal-uae.tatsh.cloud/login",
+        "userNameInput": "MaPa-CM",
+        "passwordInput": "RsIN$@0141",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     }
 }

@@ -37,8 +37,13 @@ export class ProviderFinancialSettlementPage {
     readonly currencyField: Locator;
     readonly minimumBalanceField: Locator;
     readonly currentBalanceField: Locator;
-
-
+    readonly payerField: Locator;
+    readonly bankAccountField: Locator;
+    readonly upToDueDateField: Locator;
+    readonly dueDateColumnCells: Locator;
+    readonly orderResultsByPOID: Locator;
+    readonly poIdCells: Locator;
+    readonly orderResultsByPOIDRadio: Locator;
     
     constructor(page: Page) {
         this.page = page;
@@ -49,7 +54,7 @@ export class ProviderFinancialSettlementPage {
         this.reinsurerRadio = page.locator("//mat-radio-button[@value='Reinsurer']");
         this.reinsurerInput = page.locator("//mat-label[text()='Reinsurer']/ancestor::mat-form-field//input");
         this.reinsurerOptions = page.locator(".cdk-overlay-pane mat-option");
-        this.searchButton = page.locator("//button[@id='search-settlement']");
+        //this.searchButton = page.locator("//button[@id='search-settlement']");
         this.requiredErrors = page.locator("//mat-error[contains(text(),'This field is required')]");
         this.payerDropdown = page.locator("//mat-label[contains(text(),'Payer')]/ancestor::mat-form-field//input");
         this.bankAccountDropdown = page.locator("//mat-label[contains(text(),'Bank Account')]/ancestor::mat-form-field//mat-select");
@@ -72,9 +77,19 @@ export class ProviderFinancialSettlementPage {
         this.currencyDropdownOptions = page.locator(".cdk-overlay-pane mat-option");
         this.collectedDropdown = page.locator("//mat-label[normalize-space()='Collected']/ancestor::mat-form-field");
         this.collectedDropdownOptions = page.locator(".cdk-overlay-pane mat-option");
-        this.currencyField = page.locator("//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input");
+        this.currencyField = page.locator("(//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input)[1]");
         this.minimumBalanceField = page.locator("//mat-label[normalize-space()='Minimum Balance']/ancestor::mat-form-field//input");
         this.currentBalanceField = page.locator("//mat-label[normalize-space()='Current Balance']/ancestor::mat-form-field//input");
+        this.payerField = page.locator("//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input");
+        this.bankAccountField = page.locator('#bankaccount');
+        this.upToDueDateField = page.locator('#uptodate');
+        this.dueDateColumnCells = page.locator("table tbody tr td.mat-column-dueDate");
+        //this.orderResultsByPOID= page.locator("//label[@for='mat-radio-15-input']//div[@class='mat-radio-inner-circle']");
+        this.searchButton = page.locator('#search-btn'); // update if needed
+        this.orderResultsByPOID = page.locator('text=Order results by PO ID'); // update if needed
+        this.poIdCells = page.locator('table.mat-table tbody tr td.mat-column-paymentOrderId');
+        this.orderResultsByPOIDRadio = page.locator('mat-radio-button:has-text("PO ID")');
+        
     }
 
     async searchAndClickFinancials() {  
@@ -315,18 +330,15 @@ export class ProviderFinancialSettlementPage {
         console.log("Currency dropdown values:", currencyValues.map(v => v.trim()));
     }
 
-     async verifyCurrencyMinBalanceAndCurrentBalanceForSelectedPayer() {
-        // Wait until inputs have values
+    async verifyCurrencyMinBalanceAndCurrentBalanceForSelectedPayer() {
         await expect(this.currencyField).toHaveValue(/.+/);
         await expect(this.minimumBalanceField).toHaveValue(/.+/);
         await expect(this.currentBalanceField).toHaveValue(/.+/);
 
-        // Read values
         const currency = await this.currencyField.inputValue();
         const minimumBalance = await this.minimumBalanceField.inputValue();
         const currentBalance = await this.currentBalanceField.inputValue();
 
-        // Assertions
         expect(currency, 'Currency should be displayed').not.toBe('');
         expect(minimumBalance, 'Minimum Balance should be displayed').not.toBe('');
         expect(currentBalance, 'Current Balance should be displayed').not.toBe('');
@@ -334,5 +346,81 @@ export class ProviderFinancialSettlementPage {
         console.log(`Currency: ${currency}`);
         console.log(`Minimum Balance: ${minimumBalance}`);
         console.log(`Current Balance: ${currentBalance}`);
+    }
+
+    async verifyPayerBankAccountAndUpToDueDateAreDisplayed() {
+        await expect(this.payerField).toHaveValue(/.+/);
+        await expect(this.bankAccountField).toBeVisible({ timeout: 20000 });
+        await expect(this.upToDueDateField).toBeVisible({ timeout: 20000 });
+
+        const payer = await this.payerField.inputValue();
+
+        const bankAccount = (await this.bankAccountField.locator('.mat-select-value-text').innerText()).trim();
+        const upToDueDate = await this.upToDueDateField.inputValue();
+
+        expect(payer).not.toBe('');
+        expect(bankAccount).not.toBe('-- Select --');
+        expect(bankAccount).not.toBe('');
+        expect(upToDueDate).not.toBe('');
+
+        console.log(`Payer: ${payer}`);
+        console.log(`Bank Account: ${bankAccount}`);
+        console.log(`Up to Due Date: ${upToDueDate}`);
+    }
+
+    private convertDateToNumber(date: string): number {
+        const [day, month, year] = date.split('/');
+        return new Date(+year, +month - 1, +day).getTime();
+    }
+
+    async orderResultsByDueDateAndSearch() {
+        await this.searchButton.click();      
+        await expect(this.searchResultsContainer).toBeVisible({ timeout: 20000 });
+    }
+
+    async verifyResultsSortedByDueDate() {
+        const dueDates = await this.dueDateColumnCells.allInnerTexts();
+
+        const actual = dueDates.map(d => this.convertDateToNumber(d.trim()));
+        const sorted = [...actual].sort((a, b) => a - b);
+
+        expect(actual).toEqual(sorted);
+    }
+
+    async orderResultsByPOIDAndSearch() {
+        await this.searchButton.click();      
+        await this.orderResultsByPOID.check();
+    }
+
+    async verifyPOIDSortedAscending() {
+  // 1️⃣ Select radio button (Angular Material)
+        await this.orderResultsByPOIDRadio.first().click();
+
+        // 2️⃣ Verify radio is selected using ARIA
+        await expect(this.orderResultsByPOIDRadio)
+            .toHaveAttribute('aria-checked', 'true');
+
+        // 3️⃣ Trigger search
+        await this.searchButton.click();
+
+        // 4️⃣ Wait for table data
+        await expect(this.poIdCells.first()).toBeVisible();
+
+        // 5️⃣ Extract PO IDs
+        const poIdTexts = await this.poIdCells.allTextContents();
+        const actualPOIDs = poIdTexts
+            .map(t => t.trim())
+            .filter(Boolean)
+            .map(Number);
+
+        expect(actualPOIDs.length).toBeGreaterThan(1);
+
+        // 6️⃣ Verify ascending order
+        const sortedPOIDs = [...actualPOIDs].sort((a, b) => a - b);
+
+        expect(
+            actualPOIDs,
+            'PO IDs should be sorted in ascending order'
+        ).toEqual(sortedPOIDs);
     }
 }

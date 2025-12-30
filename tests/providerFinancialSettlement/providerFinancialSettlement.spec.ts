@@ -933,3 +933,114 @@ test('FIN-TC-740: TC_027_Providers Financial Settlement_Verify that the Currency
         await providerFinancialSettlementPage.verifyCurrencyMinBalanceAndCurrentBalanceForSelectedPayer();
     })
 });
+
+test('FIN-TC-741: TC_028_Providers Financial Settlement_Verify that the user can search the details of the transaction with Payer , Bank account and up to date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+    })
+
+    await test.step("Click On Financials", async () => {
+        await providerFinancialSettlementPage.searchAndClickFinancials();
+    })
+
+    await test.step("Click on Provider's Financial Settlement", async () => {
+        await providerFinancialSettlementPage.clickOnProvidersFinancialSettlement();
+    })
+
+    await test.step("User should be able to click on Payers Radio Button", async () => {
+        await providerFinancialSettlementPage.clickOnPayersRadioButton();
+    })
+
+    await test.step("Select Payer Option", async () => {
+        await providerFinancialSettlementPage.selectPayerOption(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].PayerValue);
+        await providerFinancialSettlementPage.selectUpTODueDate(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].UpToDueDate);
+    })
+
+    await test.step("User should search the details of the transaction with Payer , Bank account and up to date", async () => {
+        await providerFinancialSettlementPage.clickOnSearchButton();
+        await providerFinancialSettlementPage.verifyPayerBankAccountAndUpToDueDateAreDisplayed();
+    })
+});
+
+// test('FIN-TC-742: TC_029_Providers Financial Settlement_Verify that the user should be able to sort the results using "Order results by"', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+//     })
+
+//     await test.step("Click On Financials", async () => {
+//         await providerFinancialSettlementPage.searchAndClickFinancials();
+//     })
+
+//     await test.step("Click on Provider's Financial Settlement", async () => {
+//         await providerFinancialSettlementPage.clickOnProvidersFinancialSettlement();
+//     })
+
+//     await test.step("User should be able to click on Payers Radio Button", async () => {
+//         await providerFinancialSettlementPage.clickOnPayersRadioButton();
+//     })
+
+//     await test.step("Select Payer Option", async () => {
+//         await providerFinancialSettlementPage.selectPayerOption(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].PayerValue);
+//         await providerFinancialSettlementPage.selectUpTODueDate(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].UpToDueDate);
+//     })
+
+//     await test.step("User should be able to sort the results using the Order results by due date", async () => {
+//         await providerFinancialSettlementPage.orderResultsByDueDateAndSearch();
+//         await providerFinancialSettlementPage.verifyResultsSortedByDueDate();
+//     })
+// });
+
+// test('FIN-TC-743: TC_027_Providers Financial Settlement_Verify that the user should be able to sort the results using "Order results by', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+//     })
+
+//     await test.step("Click On Financials", async () => {
+//         await providerFinancialSettlementPage.searchAndClickFinancials();
+//     })
+
+//     await test.step("Click on Provider's Financial Settlement", async () => {
+//         await providerFinancialSettlementPage.clickOnProvidersFinancialSettlement();
+//     })
+
+//     await test.step("User should be able to click on Payers Radio Button", async () => {
+//         await providerFinancialSettlementPage.clickOnPayersRadioButton();
+//     })
+
+//     await test.step("Select Payer Option", async () => {
+//         await providerFinancialSettlementPage.selectPayerOption(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].PayerValue);
+//         await providerFinancialSettlementPage.selectUpTODueDate(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].UpToDueDate);
+//     })
+
+//     // await test.step("User should be able to sort the results using the Order results by PO ID", async () => {
+//     //     await providerFinancialSettlementPage.orderResultsByPOIDAndSearch();
+//     // })
+
+//     await test.step("User should be able to sort the results using the Order results by PO ID",async () => {
+//         await providerFinancialSettlementPage.verifyPOIDSortedAscending();
+//     });
+// });

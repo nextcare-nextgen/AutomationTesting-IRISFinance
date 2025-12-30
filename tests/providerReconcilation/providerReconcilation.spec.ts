@@ -121,10 +121,10 @@ test('FIN-TC-165: TC_168_provider Reconciliation_verify that enter provider then
        // page.pause();
     })
 
-//     await test.step("Selecting the Provider field",async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+    await test.step("Selecting the Provider field",async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
 
-//   })
+  })
 });
 
 test('FIN-TC-166: TC_169_provider Reconciliation_verify that fill country, provider type, provider and click on search', async ({ page }) => {
@@ -148,13 +148,13 @@ test('FIN-TC-166: TC_169_provider Reconciliation_verify that fill country, provi
         await providerReconcilationPage.providerRecoincialtionField();
     })
 
-//     await test.step("Selecting the Provider field",async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field",async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+    })
 
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
+    await test.step("Searching the selected value",async()=>{
+        await providerReconcilationPage.searchProvder();
+    })
 });
 
 test('FIN-TC-167: TC_170_provider Reconciliation_verify that fill country, provider type, provider, payer, currency,account , show only not settled toggle button is disabled click on search', async ({ page }) => {
@@ -174,224 +174,224 @@ test('FIN-TC-167: TC_170_provider Reconciliation_verify that fill country, provi
         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
     })
  
-      await test.step("Verify that Provider Recoincilation Page is visible", async () => {
+    await test.step("Verify that Provider Recoincilation Page is visible", async () => {
         await providerReconcilationPage.providerRecoincialtionField();
     })
 
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+    })
 
-//   await test.step("Selecting the Payers field" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+    await test.step("Selecting the Payers field" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
 
-//   })
-//   await test.step("Vaidate that the toggel button is disabled",async()=>{
-//         await providerReconcilationPage.toggelDisable();
-//   })
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
+    })
+    await test.step("Vaidate that the toggel button is disabled",async()=>{
+        await providerReconcilationPage.toggelDisable();
+    })
+    await test.step("Searching the selected value",async()=>{
+        await providerReconcilationPage.searchProvder();
+    })
 });
 
-// test('FIN-TC-168: TC_171_provider Reconciliation_verify that fill country, provider type, provider, payer, currency,account , show only not settled toggle button is enabled click on search', async ({ page }) => {
+test('FIN-TC-168: TC_171_provider Reconciliation_verify that fill country, provider type, provider, payer, currency,account , show only not settled toggle button is enabled click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
  
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+  })
 
-//   await test.step("Selecting the Payers field" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//          await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+  await test.step("Selecting the Payers field" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
 
-//   })
-//   await test.step("Vaidate that the toggel button is disabled",async()=>{
-//         await providerReconcilationPage.toggelEnable();
-//   })
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
-// });
+  })
+  await test.step("Vaidate that the toggel button is disabled",async()=>{
+        await providerReconcilationPage.toggelEnable();
+  })
+  await test.step("Searching the selected value",async()=>{
+    await providerReconcilationPage.searchProvder();
+  })
+});
 
-// test('FIN-TC-169: TC_172_provider Reconciliation_verify that fill country, provider type, provider, payer, currency,account ,from due date, to due date click on search', async ({ page }) => {
+test('FIN-TC-169: TC_172_provider Reconciliation_verify that fill country, provider type, provider, payer, currency,account ,from due date, to due date click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
  
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+  })
 
-//   await test.step("Selecting the Payers field" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//          await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+  await test.step("Selecting the Payers field" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
 
-//     })
+    })
  
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
-// });
+  await test.step("Searching the selected value",async()=>{
+    await providerReconcilationPage.searchProvder();
+  })
+});
 
-// test('FIN-TC-170: TC_173_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date click on search', async ({ page }) => {
+test('FIN-TC-170: TC_173_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
  
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+  })
 
-//   await test.step("Selecting the Payers field and reception date" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//          await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
-//         await providerReconcilationPage.receptionDate();
-//     })
+  await test.step("Selecting the Payers field and reception date" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.receptionDate();
+    })
  
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
-// });
+  await test.step("Searching the selected value",async()=>{
+    await providerReconcilationPage.searchProvder();
+  })
+});
 
-// test('FIN-TC-171: TC_174_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date, from settal date, to settle date  click on search', async ({ page }) => {
+test('FIN-TC-171: TC_174_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date, from settal date, to settle date  click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
  
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+  })
 
-//   await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
-//         await providerReconcilationPage.receptionDate();
-//         await providerReconcilationPage.settleDate();
-//     })
+  await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.receptionDate();
+        await providerReconcilationPage.settleDate();
+    })
  
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
-// });
+  await test.step("Searching the selected value",async()=>{
+    await providerReconcilationPage.searchProvder();
+  })
+});
 
-// test('FIN-TC-172:TC_175_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date, enable toggle button show only not settled click on search', async ({ page }) => {
+test('FIN-TC-172:TC_175_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date, enable toggle button show only not settled click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
  
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+  })
 
-//   await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//          await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
-//         await providerReconcilationPage.receptionDate();
-//         await providerReconcilationPage.settleDate();
-//     })
-//  await test.step("Vaidate that the toggel button is disabled",async()=>{
-//         await providerReconcilationPage.toggelDisable();
-//   })
-//   await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })
-// });
+  await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.receptionDate();
+        await providerReconcilationPage.settleDate();
+    })
+ await test.step("Vaidate that the toggel button is disabled",async()=>{
+        await providerReconcilationPage.toggelDisable();
+  })
+  await test.step("Searching the selected value",async()=>{
+    await providerReconcilationPage.searchProvder();
+  })
+});
 
-// test('FIN-TC-173:TC_176_provider Reconciliation_verify that click on generate date file then report prefrence popup window display', async ({ page }) => {
+test('FIN-TC-173:TC_176_provider Reconciliation_verify that click on generate date file then report prefrence popup window display', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+  })
 
-//   await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
-//         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-//          await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+  await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
    
-//     })
+    })
 
-//     await test.step("Click on Generate data file button",async()=>{
-//         await providerReconcilationPage.generateFileButton();
-//     })
+    await test.step("Click on Generate data file button",async()=>{
+        await providerReconcilationPage.generateFileButton();
+    })
     
-// });
+});
 
 test('FIN-TC-174:TC_177_provider Reconciliation_verify that click on generate date file without selecting provider,providertype, country then report prefrence popup window display', async ({ page }) => {
 
@@ -447,72 +447,77 @@ test('FIN-TC-176:TC_179_provider Reconciliation_verify that search whitout filin
     })
 });
 
-// test('FIN-TC-177: TC_180_provider Reconciliation_verify that user can select to due date is less than from due date', async ({ page }) => {
+test('FIN-TC-177: TC_180_provider Reconciliation_verify that user can select to due date is less than from due date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilationIncorrect-001"].fromDueDate,ProviderReconcilationData["providerReconcilationIncorrect-001"].toDueDate)
-//         await providerReconcilationPage.InCorrectDateMsg();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilationIncorrect-001"].fromDueDate,ProviderReconcilationData["providerReconcilationIncorrect-001"].toDueDate)
+        await providerReconcilationPage.InCorrectDateMsg();
+    })
 
    
-// });
+});
 
-// test('FIN-TC-178: TC_181_provider Reconciliation_verify that user can select  same date to due date and from due date', async ({ page }) => {
+test('FIN-TC-178: TC_181_provider Reconciliation_verify that user can select  same date to due date and from due date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilationSameDate-001"].fromDueDate,ProviderReconcilationData["providerReconcilationSameDate-001"].toDueDate)
-//        // await providerReconcilationPage.InCorrectDateMsg();
-//     })
-// });
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilationSameDate-001"].fromDueDate,ProviderReconcilationData["providerReconcilationSameDate-001"].toDueDate)
+       // await providerReconcilationPage.InCorrectDateMsg();
+    })
+});
 
-// test('FIN-TC-179: TC_182_provider Reconciliation_verify that user can select to due date is greater than from due date', async ({ page }) => {
+test('FIN-TC-179: TC_182_provider Reconciliation_verify that user can select to due date is greater than from due date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-//     })
-//     await test.step("Selecting the Provider field", async()=>{
-//         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
-//     })
-// });
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+    await test.step("Selecting the Provider field", async()=>{
+        await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
+    })
+});
+
+
+
+
+//9 new TC
