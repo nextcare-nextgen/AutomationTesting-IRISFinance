@@ -24,5 +24,17 @@
         "UpToDueDate": "31/05/2023",
         "AccountNumber": "AE750030010258862020014",
         "AccountName": "Testing"
+    },
+
+     "TC_029_ProviderFinancialSettlementData": {
+        "PayerValue": "TEST PAYER (Do Not Use)",
+        "BankAccountValue": "NAME_109_26_1",
+        "UpToDueDate": "31/12/2025"
+     },
+    
+    "TC_039_ProviderFinancialSettlementData": {
+        "POID": "6813687",
+        "TOPOID": "6871541",
+        "PARTNER_BANK": "BBMEQAQXXXX"
     }
 }

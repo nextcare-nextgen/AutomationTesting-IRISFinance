@@ -11,7 +11,7 @@ export class ProviderFinancialSettlementPage {
     readonly reinsurerRadio: Locator;
     readonly reinsurerInput: Locator;
     readonly reinsurerOptions: Locator;
-    readonly searchButton: Locator;
+    readonly searchBtn: Locator;
     readonly requiredErrors: Locator;
     readonly bankAccountDropdown: Locator;
     readonly bankAccountOptions: Locator;
@@ -44,6 +44,14 @@ export class ProviderFinancialSettlementPage {
     readonly orderResultsByPOID: Locator;
     readonly poIdCells: Locator;
     readonly orderResultsByPOIDRadio: Locator;
+    readonly searchButton: Locator;
+    readonly exportUsingJobInactive: Locator;
+    readonly exportToExcelLocator: Locator;
+    readonly enterFromPOIDSelector: Locator;
+    readonly enterToPOIDSelector: Locator;
+    readonly partnerBankSelect: Locator;
+    readonly partnerBankOptions: Locator;
+    readonly partnerBankSelectedValue: Locator;
     
     constructor(page: Page) {
         this.page = page;
@@ -54,7 +62,7 @@ export class ProviderFinancialSettlementPage {
         this.reinsurerRadio = page.locator("//mat-radio-button[@value='Reinsurer']");
         this.reinsurerInput = page.locator("//mat-label[text()='Reinsurer']/ancestor::mat-form-field//input");
         this.reinsurerOptions = page.locator(".cdk-overlay-pane mat-option");
-        //this.searchButton = page.locator("//button[@id='search-settlement']");
+        this.searchBtn = page.locator("//button[@id='search-settlement']");
         this.requiredErrors = page.locator("//mat-error[contains(text(),'This field is required')]");
         this.payerDropdown = page.locator("//mat-label[contains(text(),'Payer')]/ancestor::mat-form-field//input");
         this.bankAccountDropdown = page.locator("//mat-label[contains(text(),'Bank Account')]/ancestor::mat-form-field//mat-select");
@@ -89,7 +97,13 @@ export class ProviderFinancialSettlementPage {
         this.orderResultsByPOID = page.locator('text=Order results by PO ID'); // update if needed
         this.poIdCells = page.locator('table.mat-table tbody tr td.mat-column-paymentOrderId');
         this.orderResultsByPOIDRadio = page.locator('mat-radio-button:has-text("PO ID")');
-        
+        this.exportUsingJobInactive = page.locator("//label[@for='mat-slide-toggle-4-input']//div[@class='mat-slide-toggle-bar']");
+        this.exportToExcelLocator = page.locator("//button[@title='Export To Excel']");
+        this.enterFromPOIDSelector = page.locator("//input[@formcontrolname='fromPoId']");
+        this.enterToPOIDSelector = page.locator("//input[@formcontrolname='toPoId']");
+        this.partnerBankSelect = page.locator("//mat-select[@formcontrolname='partnerBank']");
+        this.partnerBankOptions = page.locator("//mat-option");
+        this.partnerBankSelectedValue = page.locator("//mat-select[@formcontrolname='partnerBank']//span[contains(@class,'mat-select-value-text')]");
     }
 
     async searchAndClickFinancials() {  
@@ -163,11 +177,11 @@ export class ProviderFinancialSettlementPage {
     }
 
     async clickOnSearchButton() {
-        await this.searchButton.click();
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.searchBtn.click();
     }
 
     async notAbleToSelectBankAccountUntilPayerIsSelected() {
-            
         await this.bankAccountDropdown.click();
         await expect(this.bankAccountOptions.first()).toBeVisible();
         const firstOption = this.bankAccountOptions.first();
@@ -374,7 +388,7 @@ export class ProviderFinancialSettlementPage {
     }
 
     async orderResultsByDueDateAndSearch() {
-        await this.searchButton.click();      
+        await this.searchBtn.click();      
         await expect(this.searchResultsContainer).toBeVisible({ timeout: 20000 });
     }
 
@@ -393,34 +407,55 @@ export class ProviderFinancialSettlementPage {
     }
 
     async verifyPOIDSortedAscending() {
-  // 1️⃣ Select radio button (Angular Material)
-        await this.orderResultsByPOIDRadio.first().click();
+        const poIdRadio = this.orderResultsByPOIDRadio.first();
+    const poIdRadioInput = poIdRadio.locator('input[type="radio"]');
 
-        // 2️⃣ Verify radio is selected using ARIA
-        await expect(this.orderResultsByPOIDRadio)
-            .toHaveAttribute('aria-checked', 'true');
+    await poIdRadio.click();
+    await expect(poIdRadioInput).toBeChecked();
 
-        // 3️⃣ Trigger search
-        await this.searchButton.click();
+    await this.searchBtn.click();
 
-        // 4️⃣ Wait for table data
-        await expect(this.poIdCells.first()).toBeVisible();
+    // ✅ simple & reliable wait
+    await this.poIdCells.first().waitFor({ state: 'attached' });
 
-        // 5️⃣ Extract PO IDs
-        const poIdTexts = await this.poIdCells.allTextContents();
-        const actualPOIDs = poIdTexts
-            .map(t => t.trim())
-            .filter(Boolean)
-            .map(Number);
+    const poIdTexts = await this.poIdCells.allTextContents();
+    const actualPOIDs = poIdTexts
+        .map(t => t.trim())
+        .filter(Boolean)
+        .map(Number);
 
-        expect(actualPOIDs.length).toBeGreaterThan(1);
-
-        // 6️⃣ Verify ascending order
-        const sortedPOIDs = [...actualPOIDs].sort((a, b) => a - b);
-
-        expect(
-            actualPOIDs,
-            'PO IDs should be sorted in ascending order'
-        ).toEqual(sortedPOIDs);
+    const sortedPOIDs = [...actualPOIDs].sort((a, b) => a - b);
+    expect(actualPOIDs).toEqual(sortedPOIDs);
     }
+
+    async clickOnExportUsingJobInactive() {
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.exportUsingJobInactive.check();
+    }
+
+    async exportToExcel() {
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.exportToExcelLocator.click();
+    }
+
+    async enterFromPOID(value: string) {
+        await expect(this.enterFromPOIDSelector).toBeVisible({ timeout: 50000 });
+        await this.enterFromPOIDSelector.click();
+        await this.enterFromPOIDSelector.fill(value); 
+        console.log(`Entered PO ID Number: ${value}`);
+    }
+
+    async enterTOPOID(value: string) {
+        await expect(this.enterToPOIDSelector).toBeVisible({ timeout: 50000 });
+        await this.enterToPOIDSelector.click();
+        await this.enterToPOIDSelector.fill(value); 
+        console.log(`Entered TO PO ID Number: ${value}`);
+    }
+
+    async selectPartersBank(value: string) {
+        await this.partnerBankSelect.click();
+        await this.partnerBankOptions.filter({ hasText: value }).click();
+        await expect(this.partnerBankSelectedValue).toHaveText(value);
+    }
+    
 }

@@ -1,8 +1,117 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="79.50841999999999">
-<testsuite name="tests\providerReconcilation\providerReconcilation.spec.ts" timestamp="2025-12-30T06:49:58.284Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="62.168" errors="0">
-<testcase name="FIN-TC-179: TC_182_provider Reconciliation_verify that user can select to due date is greater than from due date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="62.168">
+<testsuites id="" name="" tests="15" failures="1" skipped="0" errors="0" time="937.168905">
+<testsuite name="tests\providerReconcilation\providerReconcilation.spec.ts" timestamp="2026-01-06T06:02:29.810Z" hostname="Mawista-EU" tests="15" failures="1" skipped="0" time="930.643" errors="0">
+<testcase name="FIN-TC-180: TC_183_provider Reconciliation_verify that user can select to settle date is less than from settle date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="53.876">
 <system-out>
 <![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-181: TC_184_provider Reconciliation_verify that user can select  same date to settle date and from settle date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="47.861">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-182: TC_185_provider Reconciliation_verify that user can select to settle date is greater than from settle date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="50.416">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-183: TC_186_provider Reconciliation_verify that user can select to validation date is less than from validation date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="49.554">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-184: TC_187_provider Reconciliation_verify that user can select  same date to validation date and from validation  date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="66.06">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-185: TC_188_provider Reconciliation_verify that user can select to validation date is greater than from validation  date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="53.755">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-186: TC_189_provider Reconciliation_verify that user can select to Reception date is less than from Reception date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="54.192">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-187:TC_190_provider Reconciliation_verify that user can select  same date to Reception date and from Reception date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="62.655">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-188: TC_191_provider Reconciliation_verify that user can select to Reception date is greater than from Reception  date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="67.389">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-189: TC_192_provider Reconciliation_Verify that Items per page label and dropdown is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="43.392">
+</testcase>
+<testcase name="FIN-TC-190: TC_193_provider Reconciliation_IN dropdown 10,15,20, 30, 50, 100, 250 values are displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="50.333">
+</testcase>
+<testcase name="FIN-TC-191:TC_194_provider Reconciliation_Pagination is display from 1 to 10 and user can change the pagination using start page and last page" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="42.357">
+</testcase>
+<testcase name="FIN-TC-1093:TC_445_provider Reconciliation_verify that From Due date label and textbox is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="43.794">
+</testcase>
+<testcase name="FIN-TC-1094:TC_446_provider Reconciliation_verify that calender icon is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="44.403">
+</testcase>
+<testcase name="FIN-TC-1095:TC_447_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="200.606">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="providerReconcilation.spec.ts:839:5 FIN-TC-1095:TC_447_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\providerReconcilation\providerReconcilation.spec.ts:839:5 › FIN-TC-1095:TC_447_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default 
+
+    Test timeout of 200000ms exceeded.
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\utilities-pages\global-setup.ts:17:40
+
+    Error: page.waitForLoadState: Test timeout of 200000ms exceeded.
+
+       at page-objects\providerReconcilation-pages\providerReconcilation-pages.ts:261
+
+      259 | async verifyTodayDate(){
+      260 |     // await this.toDueDateCalendar.click();
+    > 261 |      await this.page.waitForLoadState('networkidle');
+          |                      ^
+      262 |     await this.todayCalender.click();
+      263 | }
+      264 |
+
+        at ProviderReconcilationPage.verifyTodayDate (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\providerReconcilation-pages\providerReconcilation-pages.ts:261:22)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:858:41
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:856:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-providerReconcilatio-67911-nt-date-selected-by-default-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\tests-providerReconcilatio-67911-nt-date-selected-by-default-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>

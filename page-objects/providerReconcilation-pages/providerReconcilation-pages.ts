@@ -37,7 +37,24 @@ export class ProviderReconcilationPage{
     readonly popup: Locator;
     readonly requiredField: Locator;
     readonly payerError: Locator;
-
+    readonly perPage:Locator;
+    readonly perPageDropdown: Locator;
+    readonly page10:Locator;
+    readonly page15:Locator;
+    readonly page20:Locator;
+    readonly page30:Locator;
+    readonly page50:Locator;
+    readonly page100:Locator;
+    readonly pagination: Locator;
+    readonly toDueDateLabel:Locator;
+    readonly toDueDateCalendar:Locator;
+    readonly todayCalender: Locator;
+    readonly oldDate:Locator;
+    readonly newDate:Locator;
+    readonly fromDueDateLabel:Locator;
+    readonly fromDurDateCalendar:Locator;
+    readonly fromSettleDateLabel:Locator;
+    readonly fromSettleDateCalendar:Locator;
     constructor(page: Page) {
         this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
@@ -55,8 +72,8 @@ export class ProviderReconcilationPage{
         this.toDueDate=page.locator("//input[@id='mat-input-5']");
         this.fromSettleDate=page.locator("//input[@id='mat-input-6']");
         this.toSettleDate=page.locator("//input[@id='mat-input-7']");
-        this.fromValidationDate=page.locator("mat-input-24");
-        this.toValidationDate=page.locator("mat-input-25");
+        this.fromValidationDate=page.locator("//input[@id='mat-input-8']");
+        this.toValidationDate=page.locator("//input[@id='mat-input-9']");
         this.payers=page.locator("mat-input-30");
         this.currency=page.locator("mat-input-31");
         this.Account=page.locator("mat-select-4");
@@ -71,6 +88,24 @@ export class ProviderReconcilationPage{
         this.popup=page.locator("//mat-dialog-container[@id='mat-dialog-2']");
         this.requiredField=page.locator("mat-error-0");
         this.payerError=page.locator("mat-error-3");
+        this.perPage=page.locator("#mat-select-5");
+        this.perPageDropdown=page.locator("//span[text()='10']/../../../div[2]");
+        this.page10=page.locator("//span[@class='mat-option-text' and text()='10']");
+        this.page15=page.locator("//span[text()='15']");
+        this.page20=page.locator("//span[text()='20']");
+        this.page30=page.locator("//span[text()='30']");
+        this.page50=page.locator("//span[text()='50']");
+        this.page100=page.locator("//span[text()='100']");
+        this.pagination=page.locator('#main-paginator');
+        this.toDueDateLabel=page.locator("//mat-label[text()='To Due Date']");
+        this.toDueDateCalendar=page.locator("//input[@id='mat-input-5']/../../div[2]/mat-datepicker-toggle/button");
+        this.todayCalender=page.locator("//div[@class='mat-calendar-body-cell-content mat-calendar-body-today']");
+        this.oldDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-calendar-body-today']/../../../tr[2]/td[1]");
+       this.newDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-calendar-body-today']/../../../tr[5]/td[1]");
+        this.fromDueDateLabel=page.locator("//mat-label[text()='From Due Date']");
+        this.fromDurDateCalendar=page.locator("//input[@id='mat-input-4']/../../div[2]/mat-datepicker-toggle/button");
+        this.fromSettleDateLabel=page.locator("//mat-label[text()='From Settle Date']");
+        this.fromSettleDateCalendar=page.locator("//label[@id='mat-form-field-label-17']/../../../div[2]/mat-datepicker-toggle/button");
     }
 
     async searchAndClickOnPaymentOrderUnderFinancials() {
@@ -147,9 +182,6 @@ async payerfield(payerValue: String){
  const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
   await option.waitFor({ state: "visible", timeout: 10000 });
 await option.click()
-    // await this.toDueDate.fill("01-Jan-2017");
-    // await this.fromDueDate.fill("31-Dec-2016");
-//await this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").click();
 }
 
 async DueDate(fromDue: String,toDue: String){
@@ -173,15 +205,18 @@ async toggelEnable(){
     //await this.toggleButton.check();
     await expect(this.toggleButton).not.toBeChecked();
 }
-async receptionDate(){
-    await this.toReceptionDate.fill("01-Jan-2016");
-    await this.fromReceptionDate.fill("31-Dec-2016");
+async receptionDate(fromReception:String, toReception: String){
+    await this.toReceptionDate.fill(toReception.trim());
+    await this.fromReceptionDate.fill(fromReception.trim());
 }
-async settleDate(){
-    await this.toSettleDate.fill("01-Jan-2016");
-    await this.fromSettleDate.fill("31-Dec-2016");
+async settleDate(fromSettle:String, toSettle:String){
+    await this.toSettleDate.fill(toSettle.trim());
+    await this.fromSettleDate.fill(fromSettle.trim());
 }
-
+async validateDate(toValidate: String, fromValidate: String){
+     await this.toValidationDate.fill(toValidate.trim());
+    await this.fromValidationDate.fill(fromValidate.trim());
+}
 async generateFileButton(){
     // this.page.pause();
     // await this.page.waitForTimeout(2000);
@@ -196,5 +231,59 @@ async requireErrorMsg(){
 async requirePayerMsg(){
     await this.payerError.isVisible();
 }
+async pageDropdown(){
+    await this.perPage.isVisible();
+    await this.perPageDropdown.click();
+    await this.page.waitForTimeout(5000);
+}
+async pageCount(){
+    await this.page10.click();
+    await this.perPageDropdown.click();
+    await this.page15.isVisible();
+    await this.page20.isVisible();
+    await this.page30.isVisible();
+    await this.page50.isVisible();
+    await this.page100.isVisible();
+}
+async verifyPagination(){
+    await this.page.waitForLoadState('networkidle');
+    await this.pagination.isVisible();
+}
+async verifytoDueDate(){
+    await this.toDueDateLabel.isVisible();
+    await this.toDueDate.click();
+}
+async verifytoDueDateCalendar(){
+    await this.toDueDateCalendar.click();
+}
+async verifyTodayDate(){
+    // await this.toDueDateCalendar.click();
+     await this.page.waitForLoadState('networkidle');
+    await this.todayCalender.click();
+}
 
+async verifyOldDate(){
+  //  await this.toDueDateCalendar.click();
+    await this.page.waitForLoadState('networkidle');
+    await this.oldDate.click();
+}
+async verifyNewDate(){
+   // await this.toDueDateCalendar.click();
+    await this.page.waitForLoadState('networkidle');
+    await this.newDate.click();
+}
+async verifyfromDueDate(){
+    await this.fromDueDateLabel.isVisible();
+    await this.fromDueDate.click();
+}
+async verifyfromDueDateCalendar(){
+    await this.fromDurDateCalendar.click();
+}
+async verifyfromSettleDate(){
+    await this.fromSettleDateLabel.isVisible();
+    await this.fromSettleDate.click();
+}
+async verifyfromSettleDateCalendar(){
+    await this.fromSettleDateCalendar.click();
+}
 }

@@ -5,14 +5,33 @@
         "providerValue":"Yara Pharmacy - DXB",
         "payerValue":"TEST PAYER (Do Not Use)",
         "toDueDate":"31-Dec-2016",
-        "fromDueDate":"31-Jan-2016"
+        "fromDueDate":"31-Jan-2016",
+        "fromSettleDate":"31-Jan-2016",
+        "toSttleDate":"31-Dec-2016",
+        "fromValidateDate":"31-Jan-2016",
+        "toValidateDate":"31-Dec-2016",
+        "fromReceptionDate":"31-Jan-2016",
+        "toReceptionDate":"31-Dec-2016"
     },
     "providerReconcilationIncorrect-001":{
          "toDueDate":"31-Jan-2017",
-        "fromDueDate":"31-Dec-2017"
+        "fromDueDate":"31-Dec-2017",
+        "fromSettleDate":"31-Dec-2016",
+        "toSttleDate":"31-Jan-2016",
+         "fromValidateDate":"31-Dec-2016",
+        "toValidateDate":"31-Jan-2016",
+        "fromReceptionDate":"31-Dec-2016",
+        "toReceptionDate":"31-Jan-2016"
     },
      "providerReconcilationSameDate-001":{
          "toDueDate":"31-Jan-2017",
-        "fromDueDate":"31-Jan-2017"
+        "fromDueDate":"31-Jan-2017",
+        "fromSettleDate":"31-Jan-2016",
+        "toSttleDate":"31-Jan-2016",
+         "fromValidateDate":"31-Jan-2016",
+        "toValidateDate":"31-Jan-2016",
+         "fromReceptionDate":"31-Jan-2016",
+        "toReceptionDate":"31-Jan-2016"
     }
+
 }
