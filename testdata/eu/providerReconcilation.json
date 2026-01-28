@@ -11,7 +11,12 @@
         "fromValidateDate":"31-Jan-2016",
         "toValidateDate":"31-Dec-2016",
         "fromReceptionDate":"31-Jan-2016",
-        "toReceptionDate":"31-Dec-2016"
+        "toReceptionDate":"31-Dec-2016",
+        "paymentOrder":"abc",
+        "paymentOrderDig":"2542926",
+        "paymentOrderSp":"@$#",
+        "paymentOrderBlank":"   ",
+        "paymentOrderSpaces":"  123 34 "
     },
     "providerReconcilationIncorrect-001":{
          "toDueDate":"31-Jan-2017",
@@ -33,5 +38,4 @@
          "fromReceptionDate":"31-Jan-2016",
         "toReceptionDate":"31-Jan-2016"
     }
-
 }

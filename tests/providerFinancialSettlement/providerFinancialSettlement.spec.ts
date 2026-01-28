@@ -970,7 +970,7 @@ const ProviderFinancialSettlementData = require(`../../testdata/${process.env.EN
 //     })
 // });
 
-//Need To add Next time
+
 // test('FIN-TC-742: TC_029_Providers Financial Settlement_Verify that the user should be able to sort the results using "Order results by"', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -1232,3 +1232,45 @@ const ProviderFinancialSettlementData = require(`../../testdata/${process.env.EN
 //         await providerFinancialSettlementPage.selectPartersBank(ProviderFinancialSettlementData['TC_039_ProviderFinancialSettlementData'].PARTNER_BANK);
 //     })
 // });
+
+// test('FIN-TC-749: TC_038_Providers Financial Settlement_Verify that the user is able to view the vouchers by clicking on Show deduction vocuhers ', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+//     })
+
+//     await test.step("Click On Financials", async () => {
+//         await providerFinancialSettlementPage.searchAndClickFinancials();
+//     })
+
+//     await test.step("Click on Provider's Financial Settlement", async () => {
+//         await providerFinancialSettlementPage.clickOnProvidersFinancialSettlement();
+//     })
+
+//     await test.step("User should be able to click on Payers Radio Button", async () => {
+//         await providerFinancialSettlementPage.clickOnPayersRadioButton();
+//     })
+
+//     await test.step("Select Payer Option", async () => {
+//         await providerFinancialSettlementPage.selectPayerOption(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].PayerValue);
+//         await providerFinancialSettlementPage.selectUpTODueDate(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].UpToDueDate);
+//     })
+
+    
+//     await test.step("USer should be able to view the deduction vouchers", async () => {
+//         await providerFinancialSettlementPage.clickOnShowDeductionVoucher();
+//     })
+
+//     await test.step("User should be able to click on Search Button", async () => {
+//         await providerFinancialSettlementPage.clickOnSearchButton();
+//     })
+// });
+
+//Need To add Next time when we get TC reviewd

@@ -52,6 +52,7 @@ export class ProviderFinancialSettlementPage {
     readonly partnerBankSelect: Locator;
     readonly partnerBankOptions: Locator;
     readonly partnerBankSelectedValue: Locator;
+    readonly ShowDeductionVoucher: Locator;
     
     constructor(page: Page) {
         this.page = page;
@@ -104,6 +105,7 @@ export class ProviderFinancialSettlementPage {
         this.partnerBankSelect = page.locator("//mat-select[@formcontrolname='partnerBank']");
         this.partnerBankOptions = page.locator("//mat-option");
         this.partnerBankSelectedValue = page.locator("//mat-select[@formcontrolname='partnerBank']//span[contains(@class,'mat-select-value-text')]");
+        this.ShowDeductionVoucher = page.locator("//label[@for='mat-slide-toggle-3-input']//div[@class='mat-slide-toggle-bar']");
     }
 
     async searchAndClickFinancials() {  
@@ -456,6 +458,12 @@ export class ProviderFinancialSettlementPage {
         await this.partnerBankSelect.click();
         await this.partnerBankOptions.filter({ hasText: value }).click();
         await expect(this.partnerBankSelectedValue).toHaveText(value);
+    }
+
+    async clickOnShowDeductionVoucher() {
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.ShowDeductionVoucher.check();
+        await expect (this.ShowDeductionVoucher).toBeVisible();
     }
     
 }

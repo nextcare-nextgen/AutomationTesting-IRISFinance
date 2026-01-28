@@ -1,0 +1,13 @@
+{
+  "TC_262_SoloPaymentOrderSetupData": {
+    "payerName": "ABU DHABI NATIONAL INSURANCE CO. ADNIC",
+    "expectedResults": 1
+  },
+
+  "TC_263_SoloPaymentOrderSetupData": {
+    "payerName": "adnic",
+    "name": "test",
+    "effectiveDate": "01/01/2026",
+    "soloPaymentOrder": "All"
+  }
+}
