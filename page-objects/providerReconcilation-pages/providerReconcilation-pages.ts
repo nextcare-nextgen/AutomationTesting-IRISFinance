@@ -143,8 +143,10 @@ export class ProviderReconcilationPage{
         this.toReceptionDateLabel=page.locator("//mat-label[text()='To Reception Date']");
         this.toReceptionDateCalendar=page.locator("//label[@id='mat-form-field-label-31']/../../../div[2]/mat-datepicker-toggle/button");
         this.accountDD=page.locator("//mat-select[@id='mat-select-2']/div/div[2]");
-        this.upArrow=page.locator("(//table[@id='dddd']/thead/tr/th/div/button/div/img[1])[2]");
-        this.downArrow=page.locator("(//table[@id='dddd']/thead/tr/th/div/button/div/img[2])[2]");
+        // this.upArrow=page.locator("(//table[@id='dddd']/thead/tr/th/div/button/div/img[1])[2]");
+        // this.downArrow=page.locator("(//table[@id='dddd']/thead/tr/th/div/button/div/img[2])[2]");
+        this.upArrow=page.locator("//span[text()=' Payer']/../div/img[1]");
+        this.downArrow=page.locator("//span[text()=' Payer']/../div/img[2]");
         this.tPayer=page.locator("//span[text()=' Payer']");
         this.tValidationDate=page.locator("//span[text()=' Validation Date']");
         this.tDeliveryDate=page.locator("//span[text()=' Delivery Date']");
@@ -434,6 +436,7 @@ export class ProviderReconcilationPage{
     }
 
     async upArrowSort(){
+        await this.page.waitForTimeout(5000);
         await this.upArrow.click();
         const colVal = await this.page.$$eval(
         'table tbody tr td:nth-child(7)', 

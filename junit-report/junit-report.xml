@@ -1,70 +1,41 @@
-<testsuites id="" name="" tests="18" failures="1" skipped="0" errors="0" time="1347.8004990000002">
-<testsuite name="tests\providerReconcilation\providerReconcilation.spec.ts" timestamp="2026-01-20T08:37:26.838Z" hostname="Mawista-EU" tests="18" failures="1" skipped="0" time="1106.031" errors="0">
-<testcase name="FIN-TC-187:TC_190_provider Reconciliation_verify that user can select  same date to Reception date and from Reception date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="49.871">
+<testsuites id="" name="" tests="8" failures="1" skipped="5" errors="0" time="166.21719700000003">
+<testsuite name="tests\providerReconcilation\providerReconcilation.spec.ts" timestamp="2026-02-17T07:25:05.088Z" hostname="Mawista-EU" tests="8" failures="1" skipped="5" time="155.413" errors="0">
+<testcase name="FIN-TC-1141:TC_493_provider Reconciliation_verify that user can serach result by payer" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="73.494">
 <system-out>
 <![CDATA[Pharmacy
 ]]>
 </system-out>
 </testcase>
-<testcase name="FIN-TC-1104:TC_456_provider Reconciliation_verify that calender icon is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="40.296">
+<testcase name="FIN-TC-1142:TC_494_provider Reconciliation_verify that serach result column has up and down arrow are displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="67.961">
+<system-out>
+<![CDATA[Pharmacy
+]]>
+</system-out>
 </testcase>
-<testcase name="FIN-TC-1105: TC_457_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="41.148">
-</testcase>
-<testcase name="FIN-TC-1106: TC_458_provider Reconciliation_verify that user can select old date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="37.218">
-</testcase>
-<testcase name="FIN-TC-1107:TC_459_provider Reconciliation_verify that user can select future date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="41.673">
-</testcase>
-<testcase name="FIN-TC-1108:TC_460_provider Reconciliation_verify that To settle date label and textbox is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="45.058">
-</testcase>
-<testcase name="FIN-TC-1109:TC_461_provider Reconciliation_verify that calender icon is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="54.397">
-</testcase>
-<testcase name="FIN-TC-1110: TC_462_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="41.063">
-</testcase>
-<testcase name="FIN-TC-1111: TC_463_provider Reconciliation_verify that user can select old date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="400.012">
-<failure message="providerReconcilation.spec.ts:1209:5 FIN-TC-1111: TC_463_provider Reconciliation_verify that user can select old date" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\providerReconcilation\providerReconcilation.spec.ts:1209:5 › FIN-TC-1111: TC_463_provider Reconciliation_verify that user can select old date 
+<testcase name="FIN-TC-1143:TC_495_provider Reconciliation_verify that click on up arrow them data is displayed in ascending order" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="13.958">
+<failure message="providerReconcilation.spec.ts:2105:5 FIN-TC-1143:TC_495_provider Reconciliation_verify that click on up arrow them data is displayed in ascending order" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\providerReconcilation\providerReconcilation.spec.ts:2105:5 › FIN-TC-1143:TC_495_provider Reconciliation_verify that click on up arrow them data is displayed in ascending order 
 
-    Test timeout of 200000ms exceeded.
-
-    Test timeout of 200000ms exceeded while running "afterEach" hook.
-
-       at page-objects\utilities-pages\global-setup.ts:8
-
-       6 | const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
-       7 |
-    >  8 | test.afterEach(async ({ page, request, baseURL }, testInfo) => {
-         |      ^
-       9 |     if (testInfo.status !== testInfo.expectedStatus) {
-      10 |         let scPath: string = `test-results/screenshots/sc.png`;
-      11 |         await page.screenshot({ path: scPath });
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\utilities-pages\global-setup.ts:8:6
-
-    Error: locator.waitFor: Test timeout of 200000ms exceeded.
+    Error: locator.fill: Target page, context or browser has been closed
     Call log:
-      - waiting for locator('//input[@placeholder=\'Quick Search\']') to be visible
+      - waiting for locator('//input[@id=\'mat-input-0\']')
 
 
-       at page-objects\providerReconcilation-pages\providerReconcilation-pages.ts:164
+       at page-objects\login-page.ts:32
 
-      162 |     async searchAndClickOnPaymentOrderUnderFinancials() {
-      163 |        
-    > 164 |         await this.searchIcon.waitFor({ state: 'visible' });
-          |                               ^
-      165 |         await expect(this.searchIcon).toBeEnabled();
-      166 |
-      167 |         await this.searchIcon.click();
+      30 |
+      31 |     async loginToApplication(superUser: string, password: string) {
+    > 32 |         await this.userNameOrEmailInputField.fill(superUser);
+         |                                              ^
+      33 |         await this.passwordInputField.fill(password);
+      34 |         await new Promise(resolve => setTimeout(resolve, 10000));
+      35 |         await this.signinButton.click();
 
-        at ProviderReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\providerReconcilation-pages\providerReconcilation-pages.ts:164:31)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:1223:41
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:1222:16
+        at LoginPage.loginToApplication (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\login-page.ts:32:46)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:2115:25
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:2114:16
 
-    Error: page.screenshot: Test timeout of 200000ms exceeded.
-    Call log:
-      - taking page screenshot
-      - waiting for fonts to load...
-      - fonts loaded
-
+    Error: page.screenshot: Target page, context or browser has been closed
 
        at page-objects\utilities-pages\global-setup.ts:11
 
@@ -77,45 +48,28 @@
       14 |         const image = fs.readFileSync(file);
 
         at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\utilities-pages\global-setup.ts:11:20
-
-    Tearing down "context" exceeded the test timeout of 200000ms.
-
-    Error: Test timeout of 200000ms exceeded.
-    Browser logs:
-
-    <launching> C:\Users\ashwini.sunil.yeskar\AppData\Local\ms-playwright\chromium-1117\chrome-win\chrome.exe --disable-field-trial-config --disable-background-networking --enable-features=NetworkService,NetworkServiceInProcess --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --no-sandbox --user-data-dir=C:\Users\ASHWIN~1.YES\AppData\Local\Temp\playwright_chromiumdev_profile-BX3FpA --remote-debugging-pipe --no-startup-window
-    <launched> pid=23524
-    [pid=23524][err] [23524:32604:0120/141348.252:ERROR:gpu_process_host.cc(999)] GPU process exited unexpectedly: exit_code=34
-    [pid=23524] <gracefully close start>
-    [pid=23524] <kill>
-    [pid=23524] <will force kill>
-    [pid=23524] taskkill stdout: SUCCESS: The process with PID 28664 (child process of PID 23524) has been terminated.
-    SUCCESS: The process with PID 11324 (child process of PID 23524) has been terminated.
-    SUCCESS: The process with PID 33196 (child process of PID 23524) has been terminated.
-    SUCCESS: The process with PID 23524 (child process of PID 4704) has been terminated.
-
-
-    Worker teardown timeout of 200000ms exceeded while tearing down "context".
 ]]>
 </failure>
 </testcase>
-<testcase name="FIN-TC-1112:TC_464_provider Reconciliation_verify that user can select future date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="41.882">
+<testcase name="FIN-TC-1144:TC_496_provider Reconciliation_verify that click on down arrow then data is displayed in descending order" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
+<skipped>
+</skipped>
 </testcase>
-<testcase name="FIN-TC-1113:TC_465_provider Reconciliation_verify that From validation date label and textbox is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="34.067">
+<testcase name="FIN-TC-1538:TC_497_Provider Reconciliation_Verify clicking on &quot;Generate Data File&quot; without filling any field in Search Criteria" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
+<skipped>
+</skipped>
 </testcase>
-<testcase name="FIN-TC-1114:TC_466_provider Reconciliation_verify that calender icon is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="36.188">
+<testcase name="FIN-TC-1539:TC_498_Provider Reconciliation_Verify the columns in the grid" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
+<skipped>
+</skipped>
 </testcase>
-<testcase name="FIN-TC-1115: TC_467_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="42.505">
+<testcase name="FIN-TC-1540:TC_499_Provider Reconciliation_Verify data without &quot;Show Only Not Settled&quot; option turned on" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
+<skipped>
+</skipped>
 </testcase>
-<testcase name="FIN-TC-1116: TC_468_provider Reconciliation_verify that user can select old date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="39.489">
-</testcase>
-<testcase name="FIN-TC-1117:TC_469_provider Reconciliation_verify that user can select future date" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="39.04">
-</testcase>
-<testcase name="FIN-TC-1118:TC_470_provider Reconciliation_verify that To validation date label and textbox is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="41.695">
-</testcase>
-<testcase name="FIN-TC-1119:TC_471_provider Reconciliation_verify that calender icon is displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="39.716">
-</testcase>
-<testcase name="FIN-TC-1120: TC_472_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="40.713">
+<testcase name="FIN-TC-1541:TC_500_Provider Reconciliation_Verify data with &quot;Show Only Not Settled&quot; option turned on" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
+<skipped>
+</skipped>
 </testcase>
 </testsuite>
 </testsuites>

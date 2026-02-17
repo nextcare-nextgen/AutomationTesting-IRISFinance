@@ -9,5 +9,9 @@
     "name": "test",
     "effectiveDate": "01/01/2026",
     "soloPaymentOrder": "All"
+  },
+
+   "TC_280_SoloPaymentOrderSetupData": {
+    "soloPaymentOrderType": "Both"
   }
 }

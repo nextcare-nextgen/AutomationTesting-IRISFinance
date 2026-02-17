@@ -1,7 +1,7 @@
 import { Keyboard, Locator, Page, expect } from "@playwright/test";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export class PaymentOrderDetailsPage {
+export class PaymentOrdersPage {
 
     readonly page: Page;
     readonly searchIcon: Locator;
@@ -34,8 +34,12 @@ export class PaymentOrderDetailsPage {
     readonly printTransactions: Locator;
     readonly printTransactions2: Locator;
     readonly printClaimsEvaluation: Locator;
+    readonly autocompletePanel: Locator;
+    readonly firstAutocompleteOptionText: Locator;
+    readonly fromDateLabel: Locator;
+    readonly fromDateTextbox: Locator;
+    readonly fromDateCalendarIcon: Locator;
    
-
     constructor(page: Page) {
         this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
@@ -68,6 +72,11 @@ export class PaymentOrderDetailsPage {
         this.printTransactions = page.getByText("Print Transactions", { exact: true });
         this.printTransactions2 = page.getByText("Print Transactions 2", { exact: true });
         this.printClaimsEvaluation = page.getByText("Print Claims Evaluation", { exact: true });
+        this.autocompletePanel = page.locator('div[role="listbox"]');
+        this.firstAutocompleteOptionText = page.locator('span.custom-mat-option-text').first();
+        this.fromDateLabel = page.locator('//mat-label[text()="From Date"]');
+        this.fromDateTextbox = page.locator('//input[@id="fromdate"]');
+        this.fromDateCalendarIcon = page.locator('//mat-icon[@matdatepickertoggleicon]').first();
     }
 
     async searchAndClickOnPaymentOrderUnderFinancials() {
@@ -150,7 +159,172 @@ export class PaymentOrderDetailsPage {
         await expect(this.printTransactions2).toBeVisible();
         await this.printClaimsEvaluation.evaluate(el => el.style.border = "3px solid orange");
         await expect(this.printClaimsEvaluation).toBeVisible();
-        
     }
+
+    async verifyParentEntityTextboxAcceptsAlphabets() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = 'TESTENTITY';
+        await this.parentEntity.fill(testValue);
+        await expect(this.parentEntity).toHaveValue(testValue);
+    }
+
+    async verifyParentEntityTextboxAcceptNumberss() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = '12345';
+        await this.parentEntity.fill(testValue);
+        await expect(this.parentEntity).toHaveValue(testValue);
+    }
+
+    async verifyParentEntityTextboxAcceptSpecialCharacters() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = '!@#$%^&*()_+-={}[]|;:"<>,.?/~`';
+        await this.parentEntity.fill(testValue);
+        await expect(this.parentEntity).toHaveValue(testValue);
+    }
+
+    async verifyParentEntityTextboxAcceptBlankSpaces() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = 'Parent Entity Test';
+        await this.parentEntity.fill(testValue);
+        await expect(this.parentEntity).toHaveValue(testValue);
+    }
+
+    async verifyParentEntityTextboxAcceptLeadingTrailingSpaces() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = '   ParentEntity   ';
+        await this.parentEntity.fill(testValue);
+        await expect(this.parentEntity).toHaveValue(testValue);
+    }
+
+    async verifyParentEntityAutocompleteListShown() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const testValue = 'test';
+        await this.parentEntity.focus();
+        await this.parentEntity.type(testValue, { delay: 200 });
+        await expect(this.autocompletePanel).toBeVisible({ timeout: 9000 });
+        await expect(this.firstAutocompleteOptionText).toContainText(testValue);
+        // await this.firstAutocompleteOptionText.click();
+        // const selectedValue = await this.parentEntity.inputValue();
+        // expect(selectedValue.toLowerCase()).toBe(testValue.toLowerCase());
+    }
+
+    async verifyUserCanSelectValueFromParentEntityList() {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const testValue = 'test';
+        await this.parentEntity.focus();
+        await this.parentEntity.type(testValue, { delay: 200 });
+        await expect(this.autocompletePanel).toBeVisible({ timeout: 5000 });
+        await expect(this.firstAutocompleteOptionText).toContainText(testValue);
+        await this.firstAutocompleteOptionText.click();
+        const selectedValue = await this.parentEntity.inputValue();
+        expect(selectedValue.toLowerCase()).toBe(testValue.toLowerCase());
+    }
+
+    async verifyUserCanSelectOnlyOneValueAtATime() {
+        const firstValue = 'test';
+        const secondValue = 'demo';
+
+        await this.parentEntity.fill('');
+        await this.parentEntity.type(firstValue, { delay: 200 });
+        await this.firstAutocompleteOptionText.click();
+        await this.parentEntity.type(secondValue, { delay: 200 });
+        await this.firstAutocompleteOptionText.click();
+        const selectedValue = await this.parentEntity.inputValue();
+        expect(selectedValue.toLowerCase()).toBe(firstValue.toLowerCase());
+    }
+
+    async verifyIdTextboxNotAcceptsAlphabets() {
+        const alphabetValue = 'TESTENTITY';
+        await this.idField.click();
+        await this.idField.pressSequentially(alphabetValue);
+        const actualValue = await this.idField.inputValue();
+        expect(actualValue).toBe('');
+    }
+
+    async verifyIdTextboxAcceptsnumbers() {
+        await this.idField.click();
+        await this.idField.pressSequentially('123ABC');
+        const value = await this.idField.inputValue();
+        expect(value).toBe('123');
+    }
+
+    async verifyIdTextboxNotAcceptsSpecialCharacter() {
+        const specialCharacters = '!@#$%^&*()';
+        await this.idField.click();
+        await this.idField.pressSequentially(specialCharacters);
+        const actualValue = await this.idField.inputValue();
+        expect(actualValue).toBe('');
+    }
+
+    async verifyIdTextboxAcceptsBlankValue() {
+        await this.idField.fill('');
+        await this.idField.blur();
+        const actualValue = await this.idField.inputValue();
+        expect(actualValue).toBe('');
+    }
+
+    async verifyIdTextboxDoesNotAcceptLeadingTrailingSpaces() {
+        const valueWithSpaces = ' 123 ';
+        const expectedValue = '123'; 
+        await this.idField.click();
+        await this.idField.pressSequentially(valueWithSpaces);
+        const actualValue = await this.idField.inputValue();
+        expect(actualValue).toBe(expectedValue);
+    }
+
+    async verifyLabelTextboxAcceptsAlphabets() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = 'TESTENTITY';
+        await this.labelField.fill(testValue);
+        await expect(this.labelField).toHaveValue(testValue);
+    }
+
+    async verifyLabelTextboxAcceptNumberss() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = '12345';
+        await this.labelField.fill(testValue);
+        await expect(this.labelField).toHaveValue(testValue);
+    }
+
+    async verifyLabelTextboxAcceptSpecialCharacters() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = '!@#$%^&*()_+-={}[]|;:"<>,.?/~`';
+        await this.labelField.fill(testValue);
+        await expect(this.labelField).toHaveValue(testValue);
+    }
+
+    async verifyLabelTextboxAcceptBlankSpaces() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = 'Label Test';
+        await this.labelField.fill(testValue);
+        await expect(this.labelField).toHaveValue(testValue);
+    }
+
+    async verifyLabelTextboxAcceptLeadingTrailingSpaces() {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        const testValue = '   LabelEntity   ';
+        await this.labelField.fill(testValue);
+        await expect(this.labelField).toHaveValue(testValue);
+    }
+
+    async verifyFromDateLabelAndTextboxDisplayed() {
+        await expect(this.fromDateLabel).toBeVisible();
+        await expect(this.fromDateTextbox).toBeVisible();
+    }
+
+    async verifyFromDateCalendarIconDisplayed() {
+        await expect(this.fromDateCalendarIcon).toBeVisible();
+    }
+
+    async verifyFromDateCalendarOpensWithCurrentDate() {
+        await this.fromDateCalendarIcon.click();
+        const calendarPopup = this.page.locator('//mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible({ timeout: 5000 });
+        const today = new Date();
+        const todayDate = today.getDate().toString();
+        const selectedDate = calendarPopup.locator(`//td[contains(@class,"mat-calendar-body-selected")]`);
+        await expect(selectedDate).toHaveText(todayDate);
+    }
+
 
 }

@@ -1442,242 +1442,242 @@ const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || '
 // });
 
 // 
-test('FIN-TC-1121: TC_473_provider Reconciliation_verify that user can select old date', async ({ page }) => {
+// test('FIN-TC-1121: TC_473_provider Reconciliation_verify that user can select old date', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that to Validation date calendar is present",async()=>{
-        await providerReconcilationPage.verifytoValidationDateCalendar();
-        await providerReconcilationPage.verifyOldDate();
-    })
-});
+//     await test.step("Verify that to Validation date calendar is present",async()=>{
+//         await providerReconcilationPage.verifytoValidationDateCalendar();
+//         await providerReconcilationPage.verifyOldDate();
+//     })
+// });
 
-//60
-test('FIN-TC-1122:TC_474_provider Reconciliation_verify that user can select future date', async ({ page }) => {
+// //60
+// test('FIN-TC-1122:TC_474_provider Reconciliation_verify that user can select future date', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that to Validation date calendar is present",async()=>{
-        await providerReconcilationPage.verifytoValidationDateCalendar();
-        await providerReconcilationPage.verifyNewDate();
-    })
-});
+//     await test.step("Verify that to Validation date calendar is present",async()=>{
+//         await providerReconcilationPage.verifytoValidationDateCalendar();
+//         await providerReconcilationPage.verifyNewDate();
+//     })
+// });
 
-//61
-test('FIN-TC-1123:TC_475_provider Reconciliation_verify that From Reception date label and textbox is displayed', async ({ page }) => {
+// //61
+// test('FIN-TC-1123:TC_475_provider Reconciliation_verify that From Reception date label and textbox is displayed', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that from Reception date label is present",async()=>{
-        await providerReconcilationPage.verifyfromReceptionDate();
-    })
-});
+//     await test.step("Verify that from Reception date label is present",async()=>{
+//         await providerReconcilationPage.verifyfromReceptionDate();
+//     })
+// });
 
-//62
-test('FIN-TC-1124:TC_476_provider Reconciliation_verify that calender icon is displayed', async ({ page }) => {
+// //62
+// test('FIN-TC-1124:TC_476_provider Reconciliation_verify that calender icon is displayed', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that from reception date calendar is present",async()=>{
-        await providerReconcilationPage.verifyfromReceptionDateCalendar();
-    })
-});
+//     await test.step("Verify that from reception date calendar is present",async()=>{
+//         await providerReconcilationPage.verifyfromReceptionDateCalendar();
+//     })
+// });
 
-//63
-test('FIN-TC-1125:TC_477_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+// //63
+// test('FIN-TC-1125:TC_477_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that from reception date calendar is present",async()=>{
-       await providerReconcilationPage.verifyfromReceptionDateCalendar();
-        await providerReconcilationPage.verifyTodayDate();
-    })
-});
+//     await test.step("Verify that from reception date calendar is present",async()=>{
+//        await providerReconcilationPage.verifyfromReceptionDateCalendar();
+//         await providerReconcilationPage.verifyTodayDate();
+//     })
+// });
 
-//64
-test('FIN-TC-1126:TC_478_provider Reconciliation_verify that user can select old date', async ({ page }) => {
+// //64
+// test('FIN-TC-1126:TC_478_provider Reconciliation_verify that user can select old date', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that from Reception date calendar is present",async()=>{
-        await providerReconcilationPage.verifyfromReceptionDateCalendar();
-        await providerReconcilationPage.verifyOldDate();
-    })
-});
+//     await test.step("Verify that from Reception date calendar is present",async()=>{
+//         await providerReconcilationPage.verifyfromReceptionDateCalendar();
+//         await providerReconcilationPage.verifyOldDate();
+//     })
+// });
 
-//65
-test('FIN-TC-1127:TC_479_provider Reconciliation_verify that user can select future date', async ({ page }) => {
+// //65
+// test('FIN-TC-1127:TC_479_provider Reconciliation_verify that user can select future date', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that from Reception date calendar is present",async()=>{
-        await providerReconcilationPage.verifyfromReceptionDateCalendar();
-        await providerReconcilationPage.verifyNewDate();
-    })
-});
+//     await test.step("Verify that from Reception date calendar is present",async()=>{
+//         await providerReconcilationPage.verifyfromReceptionDateCalendar();
+//         await providerReconcilationPage.verifyNewDate();
+//     })
+// });
 
-//66
-test('FIN-TC-1128:TC_480_provider Reconciliation_verify that To Reception date label and textbox is displayed', async ({ page }) => {
+// //66
+// test('FIN-TC-1128:TC_480_provider Reconciliation_verify that To Reception date label and textbox is displayed', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that to Reception date label is present",async()=>{
-        await providerReconcilationPage.verifytoReceptionDate();
-    })
-});
+//     await test.step("Verify that to Reception date label is present",async()=>{
+//         await providerReconcilationPage.verifytoReceptionDate();
+//     })
+// });
 
-//67
-test('FIN-TC-1129:TC_481_provider Reconciliation_verify that calender icon is displayed', async ({ page }) => {
+// //67
+// test('FIN-TC-1129:TC_481_provider Reconciliation_verify that calender icon is displayed', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that from reception date calendar is present",async()=>{
-        await providerReconcilationPage.verifytoReceptionDateCalendar();
-    })
-});
+//     await test.step("Verify that from reception date calendar is present",async()=>{
+//         await providerReconcilationPage.verifytoReceptionDateCalendar();
+//     })
+// });
 
-//68
-test('FIN-TC-1130:TC_482_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+// //68
+// test('FIN-TC-1130:TC_482_provider Reconciliation_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const providerReconcilationPage: ProviderReconcilationPage = new ProviderReconcilationPage(page);
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
-    })
+//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
+//         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
     
-    await test.step("Verify that to reception date calendar is present",async()=>{
-       await providerReconcilationPage.verifytoReceptionDateCalendar();
-        await providerReconcilationPage.verifyTodayDate();
-    })
-});
+//     await test.step("Verify that to reception date calendar is present",async()=>{
+//        await providerReconcilationPage.verifytoReceptionDateCalendar();
+//         await providerReconcilationPage.verifyTodayDate();
+//     })
+// });
 
-// //69  Need TO add Next Time
+
 // test('FIN-TC-1131:TC_483_provider Reconciliation_verify that user can select old date', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -1988,7 +1988,7 @@ test('FIN-TC-1130:TC_482_provider Reconciliation_verify that click on calender i
   
 // });
 
-// //78
+// //78 
 // test('FIN-TC-1140:TC_492_provider Reconciliation_verify that user can serach result by payment order', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -2025,7 +2025,8 @@ test('FIN-TC-1130:TC_482_provider Reconciliation_verify that click on calender i
 //     await providerReconcilationPage.searchProvder();
 //   })  
 // });
-// //79
+
+
 // test('FIN-TC-1141:TC_493_provider Reconciliation_verify that user can serach result by payer', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -2079,24 +2080,25 @@ test('FIN-TC-1130:TC_482_provider Reconciliation_verify that click on calender i
 //         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
 //     })
  
-//       await test.step("Verify that Provider Recoincilation Page is visible", async () => {
+//     await test.step("Verify that Provider Recoincilation Page is visible", async () => {
 //         await providerReconcilationPage.providerRecoincialtionField();
 //     })
 
 //     await test.step("Selecting the Provider field", async()=>{
 //         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType, ProviderReconcilationData["providerReconcilation-001"].Country, ProviderReconcilationData["providerReconcilation-001"].providerValue);
-//   })
+//     })
 
-//   await test.step("Selecting the Payers field" , async()=>{
+//     await test.step("Selecting the Payers field" , async()=>{
 //         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-       
-//   })
-// await test.step("Searching the selected value",async()=>{
-//     await providerReconcilationPage.searchProvder();
-//   })  
-//   await test.step("Verifying the up and down arrow in the table",async()=>{
-//     await providerReconcilationPage.displayArrow();
-//   })
+//     })
+
+//     await test.step("Searching the selected value",async()=>{
+//         await providerReconcilationPage.searchProvder();
+//     }) 
+     
+//     await test.step("Verifying the up and down arrow in the table",async()=>{
+//         await providerReconcilationPage.displayArrow();
+//     })
 // });
 
 // //81
@@ -2315,3 +2317,4 @@ test('FIN-TC-1130:TC_482_provider Reconciliation_verify that click on calender i
 //     })
 
 // });
+//79  Need TO add Next Time

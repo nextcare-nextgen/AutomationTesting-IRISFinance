@@ -49,8 +49,15 @@ export class SoloPaymentOrderSetupPage {
     readonly headerCheckboxInput: Locator; 
     readonly rowCheckboxInputs: Locator; 
     readonly soloPaymentOrderTypeDownArrow: Locator;
-
-
+    readonly itemsPerPageLabel: Locator;
+    readonly itemsPerPageDropdown: Locator;
+    readonly previousPageButton: Locator;
+    readonly paginatorTooltip: Locator;
+    readonly saveBtn: Locator;
+    readonly errorMessageLocator : Locator;
+    readonly infoMessageLocator : Locator;
+    readonly successMessageLocator  : Locator;
+    readonly soloPaymentOrderTypeDropdown   : Locator;
         
     constructor(page: Page) {
         this.page = page;
@@ -101,6 +108,16 @@ export class SoloPaymentOrderSetupPage {
         this.headerCheckboxInput = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox input.mat-checkbox-input');
         this.rowCheckboxInputs = page.locator('table tbody tr mat-checkbox input.mat-checkbox-input');
         this.soloPaymentOrderTypeDownArrow = page.locator('th.cdk-column-soloPaymentOrderType .sort-div img[alt="Down Sorting Icon"]');
+        this.itemsPerPageLabel = page.locator("(//div[contains(@class,'mat-paginator-page-size-label') and normalize-space()='Items per page:'])[2]");
+        this.itemsPerPageDropdown = page.locator("//mat-select[@aria-label='Items per page:']");
+        this.previousPageButton = page.locator("//button[contains(@class,'mat-paginator-navigation-previous')]").first();
+        this.paginatorTooltip = page.locator('.mat-tooltip');
+        this.saveBtn = page.locator("//span[text()='Save']");
+        this.errorMessageLocator = page.locator('.mat-snack-bar-container', {hasText: 'You have to search first'});
+        this.infoMessageLocator = page.locator('.mat-snack-bar-container', {hasText: 'Nothing has changed'});
+        this.successMessageLocator = page.locator('.mat-snack-bar-container', {hasText: 'Record updated successfully !'});
+        this.soloPaymentOrderTypeDropdown = page.locator("//td[contains(@class, 'mat-column-soloPaymentOrderType')]//div[normalize-space(text())='Both']");
+        
     }
 
     async searchAndClickFinancials() {  
@@ -310,6 +327,67 @@ export class SoloPaymentOrderSetupPage {
         }
         await expect(this.soloPaymentOrderTypeDownArrow).toBeVisible();
         console.log('Down arrow is displayed after unchecking the checkbox');
+    }
+
+    async verifyItemsPerPageLabelAndDropdownIsDisplayed(): Promise<void> {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await expect(this.itemsPerPageLabel).toBeVisible();
+        await this.itemsPerPageLabel.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
+        await expect(this.itemsPerPageDropdown).toBeVisible();
+        await this.itemsPerPageDropdown.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
+    }
+
+    async verifyItemsPerPageDropdownOptionsAreDisplayed(){
+        await this.itemsPerPageDropdown.click();
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.page.locator('//mat-option//span')).toHaveText(['10','15','20','30','50','100','250']);
+    }
+
+    async verifyPreviousPageButtonIsDisabledAndTooltipIsNotDisplayed(): Promise<void> {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.previousPageButton).toBeDisabled();
+        //await this.previousPageButton.hover();
+        await expect(this.paginatorTooltip).toHaveCount(0);
+    }
+
+    async verifySaveButtonIsEnabled(): Promise<void> {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.saveBtn).toBeEnabled();
+    }
+
+    async verifySaveWithoutSearchShowsErrorMessage(): Promise<void> {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.saveBtn.click();
+        await this.errorMessageLocator.scrollIntoViewIfNeeded();
+        await expect(this.errorMessageLocator).toBeVisible();
+        await expect(this.errorMessageLocator).toContainText('You have to search first');
+    }
+
+    async verifyNothingHasChangedMessageOnSave(): Promise<void> {
+        await this.saveBtn.scrollIntoViewIfNeeded();
+        await this.saveBtn.click();
+        await expect(this.infoMessageLocator).toBeVisible({ timeout: 5000 });
+        await expect(this.infoMessageLocator).toContainText('Nothing has changed');
+    }
+
+    async selectSoloPaymentOrderType(newValue: string): Promise<void> {
+        const cell = this.page.locator('td.mat-column-soloPaymentOrderType').first();
+        await cell.waitFor({ state: 'visible', timeout: 10000 });
+        await cell.click();
+        await this.page.waitForTimeout(300);
+        const dropdownTrigger = cell.locator('.mat-select-trigger');
+        await dropdownTrigger.waitFor({ state: 'visible', timeout: 10000 });
+        await dropdownTrigger.click();
+        const option = this.page.locator(`//div[contains(@class,'cdk-overlay-pane')]//mat-option//span[normalize-space(.)='${newValue}']`);
+        await option.waitFor({ state: 'visible', timeout: 10000 });
+        await option.click();
+    }
+
+    async updateSoloPaymentOrderTypeAndVerifySuccess(newValue: string): Promise<void> {
+        await this.selectSoloPaymentOrderType(newValue);
+        await this.saveBtn.scrollIntoViewIfNeeded();
+        await this.saveBtn.click();
+        await expect(this.successMessageLocator).toContainText('Record updated successfully !', { timeout: 5000 });
     }
 
 }
