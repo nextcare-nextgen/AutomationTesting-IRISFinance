@@ -1,75 +1,10 @@
-<testsuites id="" name="" tests="8" failures="1" skipped="5" errors="0" time="166.21719700000003">
-<testsuite name="tests\providerReconcilation\providerReconcilation.spec.ts" timestamp="2026-02-17T07:25:05.088Z" hostname="Mawista-EU" tests="8" failures="1" skipped="5" time="155.413" errors="0">
-<testcase name="FIN-TC-1141:TC_493_provider Reconciliation_verify that user can serach result by payer" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="73.494">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="82.27706799999997">
+<testsuite name="tests\soloPaymentOrderSetup\soloPaymentOrderSetup.spec.ts" timestamp="2026-03-02T07:16:59.845Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="67.606" errors="0">
+<testcase name="FIN-TC-278: TC_285_Solo Payment Order Setup_verify that click on save button without searching any values user got You have to search first message is displayed" classname="tests\soloPaymentOrderSetup\soloPaymentOrderSetup.spec.ts" time="67.606">
 <system-out>
-<![CDATA[Pharmacy
+<![CDATA[--------------Start the Financial Organization - Solo Payment Order Setup Testclass----------------------
 ]]>
 </system-out>
-</testcase>
-<testcase name="FIN-TC-1142:TC_494_provider Reconciliation_verify that serach result column has up and down arrow are displayed" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="67.961">
-<system-out>
-<![CDATA[Pharmacy
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1143:TC_495_provider Reconciliation_verify that click on up arrow them data is displayed in ascending order" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="13.958">
-<failure message="providerReconcilation.spec.ts:2105:5 FIN-TC-1143:TC_495_provider Reconciliation_verify that click on up arrow them data is displayed in ascending order" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\providerReconcilation\providerReconcilation.spec.ts:2105:5 › FIN-TC-1143:TC_495_provider Reconciliation_verify that click on up arrow them data is displayed in ascending order 
-
-    Error: locator.fill: Target page, context or browser has been closed
-    Call log:
-      - waiting for locator('//input[@id=\'mat-input-0\']')
-
-
-       at page-objects\login-page.ts:32
-
-      30 |
-      31 |     async loginToApplication(superUser: string, password: string) {
-    > 32 |         await this.userNameOrEmailInputField.fill(superUser);
-         |                                              ^
-      33 |         await this.passwordInputField.fill(password);
-      34 |         await new Promise(resolve => setTimeout(resolve, 10000));
-      35 |         await this.signinButton.click();
-
-        at LoginPage.loginToApplication (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\login-page.ts:32:46)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:2115:25
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\providerReconcilation\providerReconcilation.spec.ts:2114:16
-
-    Error: page.screenshot: Target page, context or browser has been closed
-
-       at page-objects\utilities-pages\global-setup.ts:11
-
-       9 |     if (testInfo.status !== testInfo.expectedStatus) {
-      10 |         let scPath: string = `test-results/screenshots/sc.png`;
-    > 11 |         await page.screenshot({ path: scPath });
-         |                    ^
-      12 |         testInfo.annotations.push({ type: 'Screen shot on Failure', description: scPath });
-      13 |         const file = path.resolve(scPath);
-      14 |         const image = fs.readFileSync(file);
-
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\utilities-pages\global-setup.ts:11:20
-]]>
-</failure>
-</testcase>
-<testcase name="FIN-TC-1144:TC_496_provider Reconciliation_verify that click on down arrow then data is displayed in descending order" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="FIN-TC-1538:TC_497_Provider Reconciliation_Verify clicking on &quot;Generate Data File&quot; without filling any field in Search Criteria" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="FIN-TC-1539:TC_498_Provider Reconciliation_Verify the columns in the grid" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="FIN-TC-1540:TC_499_Provider Reconciliation_Verify data without &quot;Show Only Not Settled&quot; option turned on" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="FIN-TC-1541:TC_500_Provider Reconciliation_Verify data with &quot;Show Only Not Settled&quot; option turned on" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="0">
-<skipped>
-</skipped>
 </testcase>
 </testsuite>
 </testsuites>

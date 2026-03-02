@@ -517,7 +517,7 @@ const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || '
 //     })
 // });
 
-//19  15 new TC added
+// //19  
 // test('FIN-TC-180: TC_183_provider Reconciliation_verify that user can select to settle date is less than from settle date', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -858,7 +858,7 @@ const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || '
 //         await providerReconcilationPage.verifyTodayDate();
 //     })
 // });
-//34  
+// 34  
 // test('FIN-TC-1096: TC_448_provider Reconciliation_verify that user can select old date', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -1040,7 +1040,7 @@ const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || '
 //     })
 // });
 
-//42
+// 42
 // test('FIN-TC-1104:TC_456_provider Reconciliation_verify that calender icon is displayed', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -1441,7 +1441,7 @@ const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || '
 //     })
 // });
 
-// 
+
 // test('FIN-TC-1121: TC_473_provider Reconciliation_verify that user can select old date', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -2317,4 +2317,5 @@ const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || '
 //     })
 
 // });
-//79  Need TO add Next Time
+
+// //79  Need TO add Next Time

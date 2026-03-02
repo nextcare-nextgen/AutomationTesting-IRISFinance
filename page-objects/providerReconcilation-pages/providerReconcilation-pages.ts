@@ -291,6 +291,7 @@ export class ProviderReconcilationPage{
     }
 
     async pageDropdown(){
+        await this.page.waitForTimeout(5000);
         await this.perPage.isVisible();
         await this.perPageDropdown.click();
         await this.page.waitForTimeout(5000);

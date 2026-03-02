@@ -1,0 +1,25 @@
+{
+    "accountReconcilation-001":{
+        "payerValue":"ABU DHABI NATIONAL INSURANCE CO. ADNIC",
+        "fromDueDate":"01-Jan-2016",
+        "toDueDate":"01-Jan-2020",
+        "POID":"3601261",
+        "TXNNBR":"4074793",
+        "DestinationAccount":"NEXTCARE Claims Management.",
+        "Principle":"NEXTCARE-TEST ACCOUNT, SARGUN . SARGUN",
+        "invalidValue":"erw",
+        "paymentOrderIdAlphabet":"abc",
+        "paymentOrderIdNo":"123",
+        "paymentOrderIdSp":"$#@",
+        "paymentOrderIdBlank":" ",
+        "paymentOrderIdWithSpace":" ADC 9787 "
+        },
+        "accountReconcilation-002":{
+        "fromDueDate":"01-Jan-2022",
+        "toDueDate":"01-Jan-2020"
+        },
+        "accountReconcilation-003":{
+        "fromDueDate":"01-Jan-2020",
+        "toDueDate":"01-Jan-2020"
+        }
+}
