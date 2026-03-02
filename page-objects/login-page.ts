@@ -28,11 +28,44 @@ export class LoginPage {
         await this.page.waitForLoadState('networkidle');
     }
 
+    // async loginToApplication(superUser: string, password: string) {
+    //     await this.userNameOrEmailInputField.fill(superUser);
+    //     await this.passwordInputField.fill(password);
+    //     await new Promise(resolve => setTimeout(resolve, 10000));
+    //     await this.signinButton.click({force:true});
+    // }
+
+
     async loginToApplication(superUser: string, password: string) {
+
+        await new Promise(resolve => setTimeout(resolve, 9000));
+
+        await expect(this.userNameOrEmailInputField).toBeVisible({ timeout: 30000 });
         await this.userNameOrEmailInputField.fill(superUser);
+
+        await expect(this.passwordInputField).toBeVisible({ timeout: 30000 });
         await this.passwordInputField.fill(password);
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        await this.signinButton.click({force:true});
+
+        await expect(this.signinButton).toBeEnabled({ timeout: 50000 });
+
+        // First click
+        await this.signinButton.click({ force: true });
+
+        await this.page.waitForLoadState('domcontentloaded');
+
+        // Wait 5 seconds to see if login worked
+        await this.page.waitForTimeout(5000);
+
+        // Check if still on login page
+        const stillOnLogin = await this.userNameOrEmailInputField.isVisible().catch(() => false);
+
+        if (stillOnLogin) {
+            console.log('Retrying Sign In...');
+            await this.signinButton.click({ force: true });
+            await this.page.waitForLoadState('domcontentloaded');
+        }
+
+        console.log('✅ Login process completed');
     }
 
     // async loginToApplication(superUser: string, password: string): Promise<void> {
