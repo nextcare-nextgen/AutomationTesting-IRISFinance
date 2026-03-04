@@ -5,339 +5,339 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const AccountReconcilationData = require(`../../testdata/${process.env.ENV||'eu'}/accountReconcilation.json`) as Record< string,any >
 
-// //1
-// test('FIN-TC-131: TC_132_Account Reconciliation_Verify that user is navigate to Account  Reconciliation', async ({ page }) => {
+//1
+test('FIN-TC-131: TC_132_Account Reconciliation_Verify that user is navigate to Account  Reconciliation', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Account Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
-//  });
+    await test.step("Click On Account Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
+ });
 
-// //2
-// test('FIN-TC-132: TC_133_Account Reconciliation_Verify that  Validbreadcrumbs are displayed Finance >Account  Reconciliation', async ({ page }) => {
+//2
+test('FIN-TC-132: TC_133_Account Reconciliation_Verify that  Validbreadcrumbs are displayed Finance >Account  Reconciliation', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Recoincilation Page is visible", async () => {
-//         await accountReconcilationPage.accountRecoincialtionField();
-//     })
-// });
+      await test.step("Verify that Account Recoincilation Page is visible", async () => {
+        await accountReconcilationPage.accountRecoincialtionField();
+    })
+});
 
-// //3
-// test('FIN-TC-133: TC_134_Account Reconciliation_Verify that Account Reconciliation Label is display in bold', async ({ page }) => {
+//3
+test('FIN-TC-133: TC_134_Account Reconciliation_Verify that Account Reconciliation Label is display in bold', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Recoincilation Page is visible", async () => {
-//         await accountReconcilationPage.accountRecoincialtionField();
-//     })
-// });
+      await test.step("Verify that Account Recoincilation Page is visible", async () => {
+        await accountReconcilationPage.accountRecoincialtionField();
+    })
+});
 
-// //4
-// test('FIN-TC-135: TC_136_Account Reconciliation_Verify that "Only Reimbursement Transactions are allowed to be settled from this screen." Tip is displayed in red colour', async ({ page }) => {
+//4
+test('FIN-TC-135: TC_136_Account Reconciliation_Verify that "Only Reimbursement Transactions are allowed to be settled from this screen." Tip is displayed in red colour', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
  
-//       await test.step("Verify that the red text should be visible", async () => {
-//         await accountReconcilationPage.verifytext();
-//     })
-// });
+      await test.step("Verify that the red text should be visible", async () => {
+        await accountReconcilationPage.verifytext();
+    })
+});
 
-// //5
-// test('FIN-TC-136: TC_137_Account Reconciliation_Verify that user can Search with a click on search button by filing all mandatory fields', async ({ page }) => {
+//5
+test('FIN-TC-136: TC_137_Account Reconciliation_Verify that user can Search with a click on search button by filing all mandatory fields', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
  
-//       await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-//     })
+      await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
-// });
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
+});
 
-// //6
-// test('FIN-TC-137: TC_138_Account Reconciliation_Verify that Search click on search button with filing all fields', async ({ page }) => {
+//6
+test('FIN-TC-137: TC_138_Account Reconciliation_Verify that Search click on search button with filing all fields', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
  
-//       await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillAllDetails(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
-//     })
+      await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillAllDetails(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
-// });
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
+});
 
-// //7
-// test('FIN-TC-138: TC_139_Account Reconciliation_Verify that Search click on search button without filing any fields', async ({ page }) => {
+//7
+test('FIN-TC-138: TC_139_Account Reconciliation_Verify that Search click on search button without filing any fields', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
  
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
-//        await test.step("Validate that error msg should be displayed", async () => {
-//         await accountReconcilationPage.verifyErrorMessage();
-//     })
-// });
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
+       await test.step("Validate that error msg should be displayed", async () => {
+        await accountReconcilationPage.verifyErrorMessage();
+    })
+});
 
-// //8
-// test('FIN-TC-139: TC_140_Account Reconciliation_verify that click on Search button with filling all mandatory fields', async ({ page }) => {
+//8
+test('FIN-TC-139: TC_140_Account Reconciliation_verify that click on Search button with filling all mandatory fields', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
     
-//     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-//     })
+    await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
-//        await test.step("Validate that table should be displayed", async () => {
-//         await accountReconcilationPage.verifyTable();
-//     })
-// });
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
+       await test.step("Validate that table should be displayed", async () => {
+        await accountReconcilationPage.verifyTable();
+    })
+});
 
-// //9
-// test('FIN-TC-140: TC_141_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709', async ({ page }) => {
+//9
+test('FIN-TC-140: TC_141_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
     
-//     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-//     })
+    await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
 
-//        await test.step("Validate that user should be able to search by PO ID", async () => {
-//         await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].POID);
-//     })
-//     await test.step("Validate that table should be displayed", async () => {
-//         await accountReconcilationPage.verifyTable();
-//     })
-// });
+       await test.step("Validate that user should be able to search by PO ID", async () => {
+        await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].POID);
+    })
+    await test.step("Validate that table should be displayed", async () => {
+        await accountReconcilationPage.verifyTable();
+    })
+});
 
-// //10
-// test('FIN-TC-141: TC_142_Account Reconciliation_Verify that user can search by TXN NBR- ex-4074748', async ({ page }) => {
+//10
+test('FIN-TC-141: TC_142_Account Reconciliation_Verify that user can search by TXN NBR- ex-4074748', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
     
-//     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-//     })
+    await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
 
-//        await test.step("Validate that user should be able to search by TXN NBR ID", async () => {
-//         await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].TXNNBR);
-//     })
-//     await test.step("Validate that table should be displayed", async () => {
-//         await accountReconcilationPage.verifyTable();
-//     })
-// });
+       await test.step("Validate that user should be able to search by TXN NBR ID", async () => {
+        await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].TXNNBR);
+    })
+    await test.step("Validate that table should be displayed", async () => {
+        await accountReconcilationPage.verifyTable();
+    })
+});
 
-// //11
-// test('FIN-TC-142: TC_143_Account Reconciliation_Verify that user can search by destination Account- ex-EXTCARE Claims Management.', async ({ page }) => {
+//11
+test('FIN-TC-142: TC_143_Account Reconciliation_Verify that user can search by destination Account- ex-EXTCARE Claims Management.', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
     
-//     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-//     })
+    await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
 
-//        await test.step("Validate that user should be able to search by Destination Account", async () => {
-//         await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].DestinationAccount);
-//     })
-//     await test.step("Validate that table should be displayed", async () => {
-//         await accountReconcilationPage.verifyTable();
-//     })
-// });
+       await test.step("Validate that user should be able to search by Destination Account", async () => {
+        await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].DestinationAccount);
+    })
+    await test.step("Validate that table should be displayed", async () => {
+        await accountReconcilationPage.verifyTable();
+    })
+});
 
-// //12
-// test('FIN-TC-143: TC_144_Account Reconciliation_Verify that user can search by Principle Ex-8088702', async ({ page }) => {
+//12
+test('FIN-TC-143: TC_144_Account Reconciliation_Verify that user can search by Principle Ex-8088702', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
    
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Reconcilation Under Financials", async () => {
-//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-//     })
+    await test.step("Click On Provider Reconcilation Under Financials", async () => {
+        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+    })
     
-//     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-//     })
+    await test.step("Fill all the mandatory details", async () => {
+        await accountReconcilationPage.fillMandaoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+    })
 
-//     await test.step("Click on the search button", async () => {
-//         await accountReconcilationPage.clickSearchButtn();
-//     })
+    await test.step("Click on the search button", async () => {
+        await accountReconcilationPage.clickSearchButtn();
+    })
 
-//        await test.step("Validate that user should be able to search by Destination Account", async () => {
-//         await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].Principle);
-//     })
-//     await test.step("Validate that table should be displayed", async () => {
-//         await accountReconcilationPage.verifyTable();
-//     })
-// });
+       await test.step("Validate that user should be able to search by Destination Account", async () => {
+        await accountReconcilationPage.searchByID(AccountReconcilationData['accountReconcilation-001'].Principle);
+    })
+    await test.step("Validate that table should be displayed", async () => {
+        await accountReconcilationPage.verifyTable();
+    })
+});
 
 // //13
 // test('FIN-TC-144: TC_145_Account Reconciliation_Verify that user can search inValidvalue Ex-erw', async ({ page }) => {
