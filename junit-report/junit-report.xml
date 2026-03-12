@@ -1,8 +1,9 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="82.27706799999997">
-<testsuite name="tests\soloPaymentOrderSetup\soloPaymentOrderSetup.spec.ts" timestamp="2026-03-02T07:16:59.845Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="67.606" errors="0">
-<testcase name="FIN-TC-278: TC_285_Solo Payment Order Setup_verify that click on save button without searching any values user got You have to search first message is displayed" classname="tests\soloPaymentOrderSetup\soloPaymentOrderSetup.spec.ts" time="67.606">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="62.47553500000003">
+<testsuite name="tests\accountReconcilation\accountReconcilation.spec.ts" timestamp="2026-03-12T11:18:48.157Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="48.732" errors="0">
+<testcase name="FIN-TC-131: TC_132_Account Reconciliation_Verify that user is navigate to Account  Reconciliation" classname="tests\accountReconcilation\accountReconcilation.spec.ts" time="48.732">
 <system-out>
-<![CDATA[--------------Start the Financial Organization - Solo Payment Order Setup Testclass----------------------
+<![CDATA[Retrying Sign In...
+✅ Login process completed
 ]]>
 </system-out>
 </testcase>
