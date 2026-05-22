@@ -1,41 +1,11 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="57.71647700001299">
-<testsuite name="tests\accountTransaction\accountTransaction.spec.ts" timestamp="2026-04-02T04:31:43.936Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="48.232" errors="0">
-<testcase name="FIN-TC-98: TC_099_Account Transaction_Verify that  Validbreadcrumbs are displayed Finance &gt;Account Transaction" classname="tests\accountTransaction\accountTransaction.spec.ts" time="48.232">
-<failure message="accountTransaction.spec.ts:27:5 FIN-TC-98: TC_099_Account Transaction_Verify that  Validbreadcrumbs are displayed Finance &gt;Account Transaction" type="FAILURE">
-<![CDATA[  [Mawista-EU] › tests\accountTransaction\accountTransaction.spec.ts:27:5 › FIN-TC-98: TC_099_Account Transaction_Verify that  Validbreadcrumbs are displayed Finance >Account Transaction › User Enter Username and Password 
-
-    Error: Timed out 30000ms waiting for expect(locator).toBeVisible()
-
-    Locator: locator('//input[@id=\'mat-input-0\']')
-    Expected: visible
-    Received: <element(s) not found>
-    Call log:
-      - expect.toBeVisible with timeout 30000ms
-      - waiting for locator('//input[@id=\'mat-input-0\']')
-
-
-       at page-objects\login-page.ts:43
-
-      41 |         await new Promise(resolve => setTimeout(resolve, 9000));
-      42 |
-    > 43 |         await expect(this.userNameOrEmailInputField).toBeVisible({ timeout: 30000 });
-         |                                                      ^
-      44 |         await this.userNameOrEmailInputField.fill(superUser);
-      45 |
-      46 |         await expect(this.passwordInputField).toBeVisible({ timeout: 30000 });
-
-        at LoginPage.loginToApplication (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\login-page.ts:43:54)
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\accountTransaction\accountTransaction.spec.ts:37:9
-        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\accountTransaction\accountTransaction.spec.ts:36:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    test-results\tests-accountTransaction-a-35282-Finance-Account-Transaction-Mawista-EU\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="41.966315999999644">
+<testsuite name="tests\paymentOrders\paymentOrders.spec.ts" timestamp="2026-05-21T09:19:10.087Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="35.567" errors="0">
+<testcase name="FIN-TC-1081: TC_433_Payment Orders_verify that enter number and blank spaces and click on search" classname="tests\paymentOrders\paymentOrders.spec.ts" time="35.567">
 <system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\tests-accountTransaction-a-35282-Finance-Account-Transaction-Mawista-EU\test-failed-1.png]]
+<![CDATA[--------------Start the Financial Organization - Payment Order Details Testclass----------------------
+✅ Login process completed
+Batch Id input "1 2 3" → textbox shows "123" (system stripped interleaved spaces, kept numbers)
+Search button clicked after entering numbers with blank spaces
 ]]>
 </system-out>
 </testcase>

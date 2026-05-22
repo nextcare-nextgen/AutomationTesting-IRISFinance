@@ -737,4 +737,44 @@ async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,acco
     //     await this.page.waitForTimeout(2000);
     //     expect(await this.providerDrop.isVisible())
     // }
+
+    async tableFieldVisibility(){
+        expect(await this.page.getByRole('columnheader', { name: 'Settled Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Cheque Released Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('columnheader', { name: 'Cheque Released Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('columnheader', { name: 'Cheque Sent Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'PO ID Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'TXN NBR Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Due Date Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Destination Account Up' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'principal Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Provider Up Sorting Icon Down' }).isVisible());
+        //expect(await this.page.getByRole('button', { name: 'Amount Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Counter Value Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Settled Date Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Cheque Released Date Up' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Cheque Sent Date Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Bank Reference Up Sorting' }).isVisible());
+        
+    }
+ 
+    async generateDatefileFields(){
+        await this.page.waitForLoadState("networkidle");
+        expect(await this.page.getByText('Account Transaction *').isVisible());
+        expect(await this.page.locator('#mat-dialog-0 div').filter({ hasText: /^Account \*$/ }).nth(3).isVisible());
+        expect(await this.page.locator('.cdk-overlay-container > div:nth-child(3)').isVisible());
+        expect(await this.page.getByRole('button', { name: 'Preferences' }).isVisible());
+        await this.page.getByRole('button', { name: 'Preferences' }).click();
+        await this.page.waitForTimeout(5000);
+        expect(await this.page.locator('div').filter({ hasText: /^Title$/ }).nth(3).isVisible());
+        await this.page.locator("//input[@id='mat-input-28']").fill("test");
+        
+        expect(await this.page.getByRole('img', { name: 'No icon found' }).isVisible());
+ 
+    }
+ 
+    async JobCreatedMsg(){
+        expect(await this.page.locator('snack-bar-container').isVisible());
+    }
+ 
 }

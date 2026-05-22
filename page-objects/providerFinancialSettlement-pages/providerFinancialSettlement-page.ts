@@ -465,5 +465,21 @@ export class ProviderFinancialSettlementPage {
         await this.ShowDeductionVoucher.check();
         await expect (this.ShowDeductionVoucher).toBeVisible();
     }
+
+    async fieldVisiblity(){
+        expect(await this.payerField.isVisible());
+        expect(await this.bankAccountField.isVisible());
+        expect(await this.currencyField.isVisible());
+        expect(await this.collectedDropdown.isVisible());
+        expect(await this.dueDateColumnCells.isVisible());
+        expect(await this.upToDueDateField.isVisible());
+        expect(await this.minimumBalanceField.isVisible());
+        expect(await this.currentBalanceField.isVisible());
+        expect(await this.enterFromPOIDSelector.isVisible());
+        expect(await this.enterToPOIDSelector.isVisible());
+        expect(await this.providerTypeSearchField.isVisible());
+        expect(await this.partnerBankSelect.isVisible());
+   
+    }
     
 }

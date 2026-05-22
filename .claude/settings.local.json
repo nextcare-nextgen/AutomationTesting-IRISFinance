@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:nextcarehealth.atlassian.net)",
+      "PowerShell(node _lookup_tc.js)"
+    ]
+  }
+}

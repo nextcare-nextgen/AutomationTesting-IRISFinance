@@ -4,7 +4,7 @@ import { AccountTransactionPage } from '../../page-objects/accountTransaction-pa
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const AccountTransactionData = require(`../../testdata/${process.env.ENV||'eu'}/accountTransactions.json`) as Record< string,any >
 
-// //1
+//1
 // test('FIN-TC-97: TC_098_Account Transaction_Verify that user is navigate to Account Transaction', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -1861,7 +1861,7 @@ const AccountTransactionData = require(`../../testdata/${process.env.ENV||'eu'}/
 //     })
 // });
 
-// //51
+// //51 Need to add next time
 // test('FIN-TC-1253: TC_559_Account Transaction_verify that To Due date label and textbox is displayed', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);

@@ -28,5 +28,8 @@
     },
     "TC_012_card types": {
         "value": "Electron"
+    },
+    "TC013":{
+     "payerValue":"ABU DHABI NATIONAL INSURANCE CO. ADNIC"
     }
 }

@@ -713,3 +713,1278 @@ const PaymentOrdersData = require(`../../testdata/${process.env.ENV || 'eu'}/pay
 //         await paymentOrdersPage.verifyFromDateCalendarOpensWithCurrentDate();
 //     })
 // });
+
+// Need to add in next session
+test('FIN-TC-1041: TC_393_Payment Orders_verify that user can select old date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select old date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectOldDate();
+    })
+});
+
+test('FIN-TC-1042: TC_394_Payment Orders_verify that user can select future date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select future date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectFutureDate();
+    })
+});
+
+test('FIN-TC-1043: TC_395_Payment Orders_verify that To date label and textbox is displayed', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that To date label and textbox is displayed", async () => {
+        await paymentOrdersPage.verifyToDateLabelAndTextboxDisplayed();
+    })
+});
+
+test('FIN-TC-1044: TC_396_Payment Orders_verify that calender icon is displayed', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that calender icon is displayed", async () => {
+        await paymentOrdersPage.verifyToDateCalendarIconDisplayed();
+    })
+});
+
+test('FIN-TC-1045: TC_397_Payment Orders_verify that click on To Date calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that click on To Date calender icon then calender get open with current date selected by default", async () => {
+        await paymentOrdersPage.verifyToDateCalendarOpensWithCurrentDate();
+    })
+});
+
+test('FIN-TC-1046: TC_398_Payment Orders_verify that user can select old date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select old date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectOldDateFromToDateCalendarIcon();
+    })
+});
+
+test('FIN-TC-1047: TC_399_Payment Orders_verify that user can select future date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select future date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectFutureDateFromToDateCalendarIcon();
+    })
+});
+
+
+test('FIN-TC-1048: TC_400_Payment Orders_verify that user can select To date less than from date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select To date less than from date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectToDateLessThanFromDate();
+    })
+});
+
+test('FIN-TC-1049: TC_401_Payment Orders_verify that user can select To date greater than from date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select To date greater than from date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectToDateGreaterThanFromDate();
+    })
+});
+
+test('FIN-TC-1050: TC_402_Payment Orders_verify that user can select same To date and from date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select same To date and from date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectSameToAndFromDate();
+    })
+});
+
+test('FIN-TC-1051: TC_403_Payment Orders_verify that from Release date label and textbox is displayed', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that from Release date label and textbox is displayed", async () => {
+        await paymentOrdersPage.verifyFromReleaseDateLabelAndTextboxDisplayed();
+    })
+});
+
+test('FIN-TC-1052: TC_404_Payment Orders_verify that From Release date calender icon is displayed', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that From Release date calender icon is displayed", async () => {
+        await paymentOrdersPage.verifyFromReleaseDateCalendarIconDisplayed();
+    })
+});
+
+test('FIN-TC-1053: TC_397_Payment Orders_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that click on calender icon then calender get open with current date selected by default", async () => {
+        await paymentOrdersPage.verifyFromReleaseDateCalendarOpensWithCurrentDate();
+    })
+});
+
+test('FIN-TC-1054: TC_398_Payment Orders_verify that user can select old date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select old date", async () => {
+        await paymentOrdersPage.verifyDatePickerCanSelectOldDateFromReleaseDateCalendarIcon();
+    })
+});
+
+test('FIN-TC-1055: TC_399_Payment Orders_verify that user can select future date', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that user can select future date", async () => {
+        await paymentOrdersPage.verifyUserCanSelectFutureDateFromReleaseDateCalendarIcon();
+    })
+});
+
+test('FIN-TC-1056: TC_408_Payment Orders_verify that To Release date label and textbox is displayed', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+    await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+        console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+    })
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Payment Order Under Financials", async () => {
+        await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+    })
+
+    await test.step("verify that To Release date label and textbox is displayed", async () => {
+        await paymentOrdersPage.verifyToReleaseDateLabelAndTextboxDisplayed();
+    })
+});
+
+// test('FIN-TC-1057: TC_404_Payment Orders_verify that To Release date calender icon is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that To Release date calender icon is displayed", async () => {
+//         await paymentOrdersPage.verifyToReleaseDateCalendarIconDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1058: TC_405_Payment Orders_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that click on calender icon then calender get open with current date selected by default", async () => {
+//         await paymentOrdersPage.verifyToReleaseDateCalendarOpensWithCurrentDate();
+//     })
+// });
+
+// test('FIN-TC-1059: TC_406_Payment Orders_verify that user can select old date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select old date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectOldDateFromToReleaseDateCalendarIcon();
+//     })
+// });
+
+// test('FIN-TC-1060: TC_407_Payment Orders_verify that user can select future date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select future date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectFutureDateFromToReleaseDateCalendarIcon();
+//     })
+// });
+
+// test('FIN-TC-1061: TC_413_Payment Orders_verify that user can select To Release date less than from Release date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select To Release date less than from Release date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectToReleaseDateLessThanFromReleaseDate();
+//     })
+// });
+
+// test('FIN-TC-1062: TC_414_Payment Orders_verify that user can select To Release date greater than from Release date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select To Release date greater than from Release date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectToReleaseDateGreaterThanFromReleaseDate();
+//     })
+// });
+
+// test('FIN-TC-1063: TC_415_Payment Orders_verify that user can select same To Release date and from Release date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select same To Release date and from Release date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectSameToAndFromReleaseDate();
+//     })
+// });
+
+// test('FIN-TC-1064: TC_416_Payment Orders_verify that From Delivery date label and textbox is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that From Delivery date label and textbox is displayed", async () => {
+//         await paymentOrdersPage.verifyFromDeliveryDateLabelAndTextboxDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1065: TC_409_Payment Orders_verify that From Delivery date calender icon is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that From Delivery date calender icon is displayed", async () => {
+//         await paymentOrdersPage.verifyFromDeliveryDateCalendarIconDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1066: TC_410_Payment Orders_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that click on calender icon then calender get open with current date selected by default", async () => {
+//         await paymentOrdersPage.verifyFromDeliveryDateCalendarOpensWithCurrentDate();
+//     })
+// });
+
+// test('FIN-TC-1067: TC_411_Payment Orders_verify that user can select old date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select old date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectOldDateFromFromDeliveryDateCalendarIcon();
+//     })
+// });
+
+// test('FIN-TC-1068: TC_412_Payment Orders_verify that user can select future date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select future date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectFutureDateFromFromDeliveryDateCalendarIcon();
+//     })
+// });
+
+// test('FIN-TC-1069: TC_421_Payment Orders_verify that To Delivery date label and textbox is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that To Delivery date label and textbox is displayed", async () => {
+//         await paymentOrdersPage.verifyToDeliveryDateLabelAndTextboxDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1070: TC_417_Payment Orders_verify that To Delivery date calender icon is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that To Delivery date calender icon is displayed", async () => {
+//         await paymentOrdersPage.verifyToDeliveryDateCalendarIconDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1071: TC_423_Payment Orders_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that click on calender icon then calender get open with current date selected by default", async () => {
+//         await paymentOrdersPage.verifyToDeliveryDateCalendarOpensWithCurrentDate();
+//     })
+// });
+
+// test('FIN-TC-1072: TC_424_Payment Orders_verify that user can select old date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select old date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectOldDateFromToDeliveryDateCalendarIcon();
+//     })
+// });
+
+// test('FIN-TC-1073: TC_425_Payment Orders_verify that user can select future date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select future date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectFutureDateFromToDeliveryDateCalendarIcon();
+//     })
+// });
+
+// test('FIN-TC-1074: TC_426_Payment Orders_verify that user can select To Delivery date less than From Delivery date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select To Delivery date less than From Delivery date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectToDeliveryDateLessThanFromDeliveryDate();
+//     })
+// });
+
+// test('FIN-TC-1075: TC_427_Payment Orders_verify that user can select To Delivery date greater than From Delivery date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select To Delivery date greater than From Delivery date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectToDeliveryDateGreaterThanFromDeliveryDate();
+//     })
+// });
+
+// test('FIN-TC-1076: TC_428_Payment Orders_verify that user can select same To Delivery date and From Delivery date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can select same To Delivery date and From Delivery date", async () => {
+//         await paymentOrdersPage.verifyUserCanSelectSameToAndFromDeliveryDate();
+//     })
+// });
+
+// test('FIN-TC-1077: TC_429_Payment Orders_Verify that Batch Id textbox accept blank spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("Verify that Batch Id textbox accept blank spaces", async () => {
+//         await paymentOrdersPage.verifyBatchIdTextboxAcceptBlankSpaces();
+//     })
+// });
+
+// test('FIN-TC-1078: TC_430_Payment Orders_Verify that Batch Id textbox accept leading and trailing spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("Verify that Batch Id textbox accept leading and trailing spaces", async () => {
+//         await paymentOrdersPage.verifyBatchIdTextboxAcceptLeadingTrailingSpaces();
+//     })
+// });
+
+// test('FIN-TC-1079: TC_431_Payment Orders_verify that enter single alphabeat and click on search', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that enter single alphabeat and click on search", async () => {
+//         await paymentOrdersPage.verifyBatchIdTextboxAcceptSingleAlphabet();
+//     })
+// });
+
+// test('FIN-TC-1080: TC_432_Payment Orders_verify that enter single special charachter and click on search', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that enter single special charachter and click on search", async () => {
+//         await paymentOrdersPage.verifyBatchIdTextboxAcceptSingleSpecialCharacter();
+//     })
+// });
+
+// test('FIN-TC-1081: TC_433_Payment Orders_verify that enter number and blank spaces and click on search', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that enter number and blank spaces and click on search", async () => {
+//         await paymentOrdersPage.verifyBatchIdTextboxAcceptNumberAndBlankSpacesThenSearch();
+//     })
+// });
+
+// test('FIN-TC-1082: TC_434_Payment Orders_verify that show only not delivered toggle button is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that show only not delivered toggle button is displayed", async () => {
+//         await paymentOrdersPage.verifyShowOnlyNotDeliveredToggleIsDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1083: TC_435_Payment Orders_verify that user can enable toggle button show only not delivered', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can enable toggle button show only not delivered", async () => {
+//         await paymentOrdersPage.verifyUserCanEnableShowOnlyNotDeliveredToggle();
+//     })
+// });
+
+// test('FIN-TC-1084: TC_436_Payment Orders_verify that user can disable toggle button show only not delivered', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can disable toggle button show only not delivered", async () => {
+//         await paymentOrdersPage.verifyUserCanDisableShowOnlyNotDeliveredToggle();
+//     })
+// });
+
+// test('FIN-TC-1085: TC_437_Payment Orders_verify that Capitation toggle button is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that Capitation toggle button is displayed", async () => {
+//         await paymentOrdersPage.verifyCapitationToggleIsDisplayed();
+//     })
+// });
+
+// test('FIN-TC-1086: TC_438_Payment Orders_verify that user can enable toggle button Capitation', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can enable toggle button Capitation", async () => {
+//         await paymentOrdersPage.verifyUserCanEnableCapitationToggle();
+//     })
+// });
+
+// test('FIN-TC-1087: TC_439_Payment Orders_verify that user can disable toggle button Capitation', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const paymentOrdersPage: PaymentOrdersPage = new PaymentOrdersPage(page);
+
+
+//     await test.step("--------------Start the Financial Organization - Payment Order Details Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Payment Order Details Testclass----------------------")
+//     })
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Payment Order Under Financials", async () => {
+//         await paymentOrdersPage.searchAndClickOnPaymentOrderUnderFinancials();
+//     })
+
+//     await test.step("verify that user can disable toggle button Capitation", async () => {
+//         await paymentOrdersPage.verifyUserCanDisableCapitationToggle();
+//     })
+// });
+
+
+
+
