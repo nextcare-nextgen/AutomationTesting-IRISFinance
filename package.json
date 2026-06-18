@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "Tests": "npx playwright test || powershell -command Compress-Archive -Path playwright-report -DestinationPath playwright-report.zip -Force"
+    "Tests": "npx playwright test || powershell -command Compress-Archive -Path playwright-report -DestinationPath playwright-report.zip -Force",
+    "smoke": "npx playwright test --grep \"@smoke\"",
+    "sanity": "npx playwright test --grep \"@sanity\"",
+    "regression": "npx playwright test --grep-invert \"@smoke|@sanity\""
   },
   "keywords": [],
   "author": "",

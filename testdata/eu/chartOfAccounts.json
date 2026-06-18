@@ -1,0 +1,86 @@
+{
+    "TC_001_Chart of Accounts": {
+        "screenTitle": "Chart of Accounts"
+    },
+    "TC_002_Chart of Accounts": {
+    },
+    "TC_003_Chart of Accounts": {
+        "expectedDefaultPageSize": "10"
+    },
+    "TC_004_Chart of Accounts": {
+        "toggleLabel": "Show stopped"
+    },
+    "TC_005_Chart of Accounts": {
+        "toggleLabel": "Show stopped"
+    },
+    "TC_006_Chart of Accounts": {
+        "addButtonName": "Add"
+    },
+    "TC_007_Chart of Accounts": {
+        "expectedFormFields": ["Account Number", "Account Name", "Account For", "Allow Voucher Creation", "Aging", "Save"]
+    },
+    "TC_008_Chart of Accounts": {
+        "requiredFieldErrorMessage": "This field is required",
+        "expectedRequiredFieldErrorCount": 3
+    },
+    "TC_009_Chart of Accounts": {
+        "expectedAccountForOptions": ["Escrow Account", "Payers", "Provider", "Provider-Professional", "Reinsurers"]
+    },
+    "TC_010_Chart of Accounts": {
+        "checkboxLabels": {
+            "trigger": "Allow Voucher Creation",
+            "dependent": "Aging"
+        }
+    },
+    "TC_011_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountName": "TEST",
+        "accountFor": "Payers",
+        "successMessage": "Account saved successfully."
+    },
+    "TC_012_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountName": "TEST",
+        "accountFor": "Payers",
+        "successMessage": "Account saved successfully.",
+        "duplicateErrorMessage": "Account Number already exists."
+    },
+    "TC_013_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountNamePrefix": "TESTNAME",
+        "accountFor": "Payers"
+    },
+    "TC_014_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountNamePrefix": "TESTNAME",
+        "accountFor": "Payers"
+    },
+    "TC_015_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountNamePrefix": "TESTNAME",
+        "accountFor": "Payers"
+    },
+    "TC_016_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountName": "TEST",
+        "accountFor": "Payers",
+        "successMessage": "Account saved successfully.",
+        "duplicateErrorMessage": "Account Number already exists."
+    },
+    "TC_017_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountNamePrefix": "TESTNAME",
+        "accountFor": "Payers"
+    },
+    "TC_022_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountNamePrefix": "TESTNAME",
+        "accountFor": "Payers",
+        "updatedAccountName": "test1"
+    },
+    "TC_023_Chart of Accounts": {
+        "accountNumberPrefix": "TEST",
+        "accountNamePrefix": "TESTNAME",
+        "accountFor": "Payers"
+    }
+}

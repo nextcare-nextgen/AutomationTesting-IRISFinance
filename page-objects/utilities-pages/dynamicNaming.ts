@@ -10,4 +10,8 @@ export class DynamicName {
 
         return `${dateString}`;
     }
+
+    static randomAccountNumber(prefix: string = 'TEST'): string {
+        return `${prefix}${Date.now()}`;
+    }
 }

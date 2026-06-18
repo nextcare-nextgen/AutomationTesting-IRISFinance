@@ -1,11 +1,127 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="41.966315999999644">
-<testsuite name="tests\paymentOrders\paymentOrders.spec.ts" timestamp="2026-05-21T09:19:10.087Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="35.567" errors="0">
-<testcase name="FIN-TC-1081: TC_433_Payment Orders_verify that enter number and blank spaces and click on search" classname="tests\paymentOrders\paymentOrders.spec.ts" time="35.567">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="72.50060499999951">
+<testsuite name="tests\chartOfAccounts\chartOfAccounts.spec.ts" timestamp="2026-06-08T09:02:35.022Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="66.29" errors="0">
+<testcase name="FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with &quot;Show stopped&quot; toggle off" classname="tests\chartOfAccounts\chartOfAccounts.spec.ts" time="66.29">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="chartOfAccounts.spec.ts:777:5 FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with &quot;Show stopped&quot; toggle off" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\chartOfAccounts\chartOfAccounts.spec.ts:777:5 › FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with "Show stopped" toggle off 
+
+    Error: Timed out 30000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('mat-row, tbody tr').filter({ hasText: 'abc' })
+    Expected: 0
+    Received: 1
+    Call log:
+      - expect.toHaveCount with timeout 30000ms
+      - waiting for locator('mat-row, tbody tr').filter({ hasText: 'abc' })
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+
+
+       at page-objects\chartOfAccounts-pages\chartOfAccounts-page.ts:295
+
+      293 |         // verify the exact account number no longer exists in the grid
+      294 |         const after = this.accountsGridRows.filter({ hasText: accountNumber });
+    > 295 |         await expect(after).toHaveCount(0, { timeout: 30000 });
+          |                             ^
+      296 |
+      297 |         // Optional: check for a snackbar / toast indicating success
+      298 |         const snack = this.page.locator('snack-bar-container, .mat-snack-bar-container');
+
+        at ChartOfAccountsPage.stopFirstMatchedRowAndConfirmBySearch (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\chartOfAccounts-pages\chartOfAccounts-page.ts:295:29)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\chartOfAccounts\chartOfAccounts.spec.ts:801:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\chartOfAccounts\chartOfAccounts.spec.ts:799:5
+
+    TypeError: apiRequestContext.post: Invalid URL
+
+       at page-objects\utilities-pages\global-setup.ts:17
+
+      15 |         const testCaseID: string = testInfo.title.split(':')[0];
+      16 |         const projectID: string = testCaseID.split(':')[0];
+    > 17 |         const response = await request.post(`${baseURL}/api/v1/project/${projectID}/testcase/${testCaseID}/attachment`, {
+         |                                        ^
+      18 |             headers: {
+      19 |                 Accept: "*/*",
+      20 |                 ContentType: "multipart/form-data",
+
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\utilities-pages\global-setup.ts:17:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-chartOfAccounts-char-a887f-ith-Show-stopped-toggle-off-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
 <system-out>
-<![CDATA[--------------Start the Financial Organization - Payment Order Details Testclass----------------------
+<![CDATA[Retrying Sign In...
 ✅ Login process completed
-Batch Id input "1 2 3" → textbox shows "123" (system stripped interleaved spaces, kept numbers)
-Search button clicked after entering numbers with blank spaces
+
+[[ATTACHMENT|..\test-results\tests-chartOfAccounts-char-a887f-ith-Show-stopped-toggle-off-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
