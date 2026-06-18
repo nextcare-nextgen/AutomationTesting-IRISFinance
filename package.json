@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "Tests": "npx playwright test || powershell -command Compress-Archive -Path playwright-report -DestinationPath playwright-report.zip -Force",
+    "Tests": "npx playwright test",
     "smoke": "npx playwright test --grep \"@smoke\"",
     "sanity": "npx playwright test --grep \"@sanity\"",
-    "regression": "npx playwright test --grep-invert \"@smoke|@sanity\""
+    "regression": "npx playwright test --grep-invert \"@smoke|@sanity\"",
+    "zip-report": "powershell -NoProfile -Command \"if (Test-Path 'playwright-report.zip') { Remove-Item 'playwright-report.zip' -Force }; if (Test-Path 'playwright-report') { Compress-Archive -Path 'playwright-report\\*' -DestinationPath 'playwright-report.zip' -Force }\""
   },
   "keywords": [],
   "author": "",
