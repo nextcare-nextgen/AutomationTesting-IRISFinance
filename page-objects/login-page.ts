@@ -24,8 +24,7 @@ export class LoginPage {
     }
 
     async gotoLoginPage(url: string) {
-        await this.page.goto(process.env.URL as string || url);
-        await this.page.waitForLoadState('networkidle');
+        await this.page.goto(process.env.URL as string || url, { waitUntil: "domcontentloaded", timeout: 120000 });
     }
 
     // async loginToApplication(superUser: string, password: string) {

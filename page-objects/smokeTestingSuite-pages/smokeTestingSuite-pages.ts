@@ -155,7 +155,13 @@ export class SmokeTestingSuitePage{
         await this.poPayer.fill("");  
         for (const char of payer) {await this.poPayer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
+        try {
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        } catch {
+            await this.poPayer.fill("");
+            for (const char of payer) {await this.poPayer.type(char, { delay: 250 }); }
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        }
         await option.click();      
     }
 
@@ -223,7 +229,13 @@ export class SmokeTestingSuitePage{
         await this.arPayer.fill("");  
         for (const char of payer) {await this.arPayer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
+        try {
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        } catch {
+            await this.arPayer.fill("");
+            for (const char of payer) {await this.arPayer.type(char, { delay: 250 }); }
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        }
         await option.click();      
     }
 
@@ -296,7 +308,13 @@ async searchAndClickOnProviderFinancialSettlementUnderFinancials(){
         await this.pfsPayer.fill("");  
         for (const char of payer) {await this.pfsPayer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
+        try {
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        } catch {
+            await this.pfsPayer.fill("");
+            for (const char of payer) {await this.pfsPayer.type(char, { delay: 250 }); }
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        }
         await option.click();      
     }
 async searchAndClickOnPayersCollectionUnderFinancials(){

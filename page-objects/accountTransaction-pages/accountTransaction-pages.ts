@@ -514,11 +514,17 @@ async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,acco
         await this.payer.fill("");  
         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
+        try {
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        } catch {
+            await this.payer.fill("");
+            for (const char of payerValue) {await this.payer.type(char, { delay: 250 }); }
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        }
         await option.click();      
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
-        await acc.waitFor({ state: "visible", timeout: 10000 });
+        await acc.waitFor({ state: "visible", timeout: 15000 });
         await acc.click();  
        await this.fromDueDate.fill(fromDueDate1.trim());
         await this.toDueDate.fill(toDueDate1.trim());
