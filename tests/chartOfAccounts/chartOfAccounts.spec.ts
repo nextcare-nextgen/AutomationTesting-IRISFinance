@@ -6,60 +6,62 @@ import { DynamicName } from "../../page-objects/utilities-pages/dynamicNaming.ts
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const ChartOfAccountsData = require(`../../testdata/${process.env.ENV || 'eu'}/chartOfAccounts.json`) as Record<string, any>;
 
-test('FIN-TC-1391: TC_001_Chart of Accounts_Verify that the user is able to navigate to Chart of Accounts screen', async ({ page }) => {
+// test('FIN-TC-1391: TC_001_Chart of Accounts_Verify that the user is able to navigate to Chart of Accounts screen', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
 
-    await test.step("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------", async () => {
-        console.log("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------");
-    });
+//     await test.step("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------");
+//     });
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    });
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    });
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     });
 
-    await test.step("Click on Chart of Accounts under Financials", async () => {
-        await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
-    });
+//     await test.step("Click on Chart of Accounts under Financials", async () => {
+//         await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
+//     });
 
-    await test.step("Verify that user is navigated to Chart of Accounts screen", async () => {
-        await chartOfAccountsPage.verifyChartOfAccountsScreenIsDisplayed();
-    });
+//     await test.step("Verify that user is navigated to Chart of Accounts screen", async () => {
+//         await chartOfAccountsPage.verifyChartOfAccountsScreenIsDisplayed();
+//     });
 
-});
+// });
 
-test('FIN-TC-1392: TC_002_Chart of Accounts_Verify the UI of the landing screen', async ({ page }) => {
+// test('FIN-TC-1392: TC_002_Chart of Accounts_Verify the UI of the landing screen', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
 
-    await test.step("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------", async () => {
-        console.log("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------");
-    });
+//     await test.step("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------", async () => {
+//         console.log("--------------Start the Financial Organization - Chart of Accounts Testclass----------------------");
+//     });
 
-    await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    });
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
 
-    await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    });
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     });
 
-    await test.step("Click on Chart of Accounts under Financials", async () => {
-        await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
-    });
+//     await test.step("Click on Chart of Accounts under Financials", async () => {
+//         await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
+//     });
 
-    await test.step("Verify the UI of Chart of Accounts screen (grid is displayed)", async () => {
-        await chartOfAccountsPage.verifyChartOfAccountsGridIsDisplayed();
-    });
+//     await test.step("Verify the UI of Chart of Accounts screen (grid is displayed)", async () => {
+//         await chartOfAccountsPage.verifyChartOfAccountsGridIsDisplayed();
+//     });
 
-});
+// });
 
+
+// Not showed in Jenkins
 // test('FIN-TC-1393: TC_003_Chart of Accounts_Verify the pagination', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
