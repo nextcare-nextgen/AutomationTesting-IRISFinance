@@ -556,21 +556,66 @@ export class AccountTransactionPage{
 
     async fillSettleDate(payerValue: String,fromSettleDate1:String,toSettleDate1: String,account:String){
         await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+        await this.payer.click();
+        await this.payer.fill("");
+        for (const char of payerValue) { await this.payer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
+        try {
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        } catch {
+            await this.payer.fill("");
+            for (const char of payerValue) { await this.payer.type(char, { delay: 250 }); }
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        }
+        await option.click();
+
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();  
-       await this.fromSettleDate.fill(fromSettleDate1.trim());
-        await this.toSettleDate.fill(toSettleDate1.trim());
+        await acc.click();
+
+        await this.page.waitForLoadState("networkidle");
+
+        const fromValue = fromSettleDate1.toString().trim();
+        const toValue = toSettleDate1.toString().trim();
+
+        await this.fromSettleDate.click({ clickCount: 3 });
+        await this.fromSettleDate.pressSequentially(fromValue, { delay: 50 });
+        await this.page.keyboard.press("Tab");
+        if ((await this.fromSettleDate.inputValue()).trim() !== fromValue) {
+            await this.fromSettleDate.click({ clickCount: 3 });
+            await this.fromSettleDate.pressSequentially(fromValue, { delay: 50 });
+            await this.page.keyboard.press("Tab");
+        }
+
+        await this.toSettleDate.click({ clickCount: 3 });
+        await this.toSettleDate.pressSequentially(toValue, { delay: 50 });
+        await this.page.keyboard.press("Tab");
+        if ((await this.toSettleDate.inputValue()).trim() !== toValue) {
+            await this.toSettleDate.click({ clickCount: 3 });
+            await this.toSettleDate.pressSequentially(toValue, { delay: 50 });
+            await this.page.keyboard.press("Tab");
+        }
     }
 
-      async verifyfromPOReleaseDate(){
-          expect(await this.fromPOReleaseDate.isVisible());
+    // async fillSettleDate(payerValue: String,fromSettleDate1:String,toSettleDate1: String,account:String){
+    //     await this.page.waitForLoadState("networkidle");
+    //     await this.payer.click();
+    //     await this.payer.fill("");  
+    //     for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+    //     const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+    //     await option.waitFor({ state: "visible", timeout: 20000 });
+    //     await option.click();      
+    //     await this.Account.click();
+    //     const acc = this.page.locator("//span[text()='Union Ins.']").first();
+    //     await acc.waitFor({ state: "visible", timeout: 10000 });
+    //     await acc.click();  
+    //     await this.fromSettleDate.fill(fromSettleDate1.trim());
+    //     await this.toSettleDate.fill(toSettleDate1.trim());
+    // }
+
+    async verifyfromPOReleaseDate(){
+        expect(await this.fromPOReleaseDate.isVisible());
         expect(await this.fromPOReleaseDateLabel.isVisible());
            
     }
@@ -632,16 +677,23 @@ export class AccountTransactionPage{
 
     async fillChequeReleaseDate(payerValue: String,fromChequereleaseDate1:String,toChequereleaseDate1: String,account:String){
         await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
+        await this.payer.click();
+        await this.payer.fill("");
         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
+        try {
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        } catch {
+            await this.payer.fill("");
+            for (const char of payerValue) {await this.payer.type(char, { delay: 250 }); }
+            await option.waitFor({ state: "visible", timeout: 20000 });
+        }
+        await option.click();
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();  
-       await this.fromChequeReleaseDate.fill(fromChequereleaseDate1.trim());
+        await acc.click();
+        await this.fromChequeReleaseDate.fill(fromChequereleaseDate1.trim());
         await this.toChecqueReleaseDate.fill(toChequereleaseDate1.trim());
     }
 
