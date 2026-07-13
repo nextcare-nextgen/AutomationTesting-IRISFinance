@@ -1,6 +1,84 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="75.45236199999974">
-<testsuite name="tests\accountTransaction\accountTransaction.spec.ts" timestamp="2026-06-25T09:10:11.427Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="65.909" errors="0">
-<testcase name="FIN-TC-1285: TC_591_Account Transaction_verify that user can select To cheque release date greater than from cheque release date" classname="tests\accountTransaction\accountTransaction.spec.ts" time="65.909">
+<testsuites id="" name="" tests="14" failures="0" skipped="0" errors="0" time="478.2597320000008">
+<testsuite name="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" timestamp="2026-07-13T07:27:04.734Z" hostname="Mawista-EU" tests="14" failures="0" skipped="0" time="467.07" errors="0">
+<testcase name="FIN-TC-1741 @smoke: TC_001_Payment Orders_Verify that the user is able to navigate to Payment Orders_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="28.279">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="37.149">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="59.539">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1744 @smoke: TC_004_Payer&apos;s Financial Collection_verify that user is navigate to Payer&apos;s Financial collection_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="29.61">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1745 @smoke:TC_005_Payer&apos;s Financial Collection_verify that  all fields are displayed in Payer/Reinsurer Information , Bank Account Information , Collection Information_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="30.147">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1746 @smoke:TC_006_Payer&apos;s Financial Collection_verify that click on search button without filing any fields proper messages are displayed for mandatory fields_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="27.691">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1747 @smoke: TC_007_Account Transaction_Verify that user is navigate to Account Transaction_smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="26.921">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1748 @smoke: TC_008_Account Transaction_Verify that  without filling any values and click on search_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="24.403">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1749 @smoke: TC_009_Account Reconciliation_Verify that user is navigate to Account  Reconciliation_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="26.157">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1750 @smoke:TC_010_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="37.845">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1751 @smoke: TC_011_provider Reconciliation_Verify that user is navigate to provider Reconciliation_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="29.446">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1752 @smoke: TC_012_provider Reconciliation_Verify that in Search Criteria, batch criteria, Transactions  all fields are displayed_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="33.732">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1753 @smoke: TC_013_Provider&apos;s Financial Settlement_verify that  payer and reinsurer radio button are displayed_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="22.068">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1754 @smoke: TC_014_Provider&apos;s Financial Settlement_Verify that when Payer is selected, then  Payer&apos;s auto populated list should be display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="54.083">
 <system-out>
 <![CDATA[✅ Login process completed
 ]]>
