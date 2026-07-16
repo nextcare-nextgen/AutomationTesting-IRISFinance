@@ -238,7 +238,7 @@ test('FIN-TC-1747 @smoke: TC_007_Account Transaction_Verify that user is navigat
   
       await test.step("Click On Account Reconcilation Under Financials", async () => {
          await smokeTestingSuitePage.searchAndClickOnAccountReconcilationUnderFinancials();
-     })
+    })
       
       await test.step("Fill all the mandatory details", async () => {
           await smokeTestingSuitePage.fillMandaoryDetailsAR(smokeTestData["smokeTest-001"].payer,smokeTestData["smokeTest-001"].Account);;
@@ -248,9 +248,10 @@ test('FIN-TC-1747 @smoke: TC_007_Account Transaction_Verify that user is navigat
           await smokeTestingSuitePage.clickonSearch();
       })
   
-         await test.step("Validate that user should be able to search by PO ID", async () => {
+      await test.step("Validate that user should be able to search by PO ID", async () => {
           await smokeTestingSuitePage.searchByID(smokeTestData['smokeTest-001'].POID);
       })
+
       await test.step("Validate that table should be displayed", async () => {
           await smokeTestingSuitePage.verifyTable();
       })

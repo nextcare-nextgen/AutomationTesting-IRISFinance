@@ -21,6 +21,8 @@ export class SmokeTestingSuitePage{
     Recoincilation: Locator;
     searchTable: Locator;
     arPayer: Locator;
+    arPayerOption: Locator;
+    appLoader: Locator;
     providerReconcilation: Locator;
     headingSC: Locator;
     headingBC: Locator;
@@ -89,6 +91,8 @@ export class SmokeTestingSuitePage{
         this.Recoincilation=page.locator("//h1[text()='Account Reconciliation ']");
         this.searchTable=page.locator("//table[@id='dddd']/tbody/tr[2]");
         this.arPayer=page.locator("//input[@id='mat-input-5']");
+        this.arPayerOption=page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+        this.appLoader=page.locator("app-new-loader");
         this.providerReconcilation = page.getByRole('link', { name: 'Provider Reconciliation' });
         this.Recoincilation=page.locator("//h1[text()='Provider Reconciliation ']");
         this.headingSC=page.getByText("Search Criteria");
@@ -226,17 +230,29 @@ export class SmokeTestingSuitePage{
     }
 
     async fillMandaoryDetailsAR(payer: String,account:String){
-        await this.arPayer.fill("");  
-        for (const char of payer) {await this.arPayer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.arPayer.waitFor({ state: "visible", timeout: 30000 });
+        await expect(this.arPayer).toBeEditable({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.arPayer.click();
+        await this.arPayer.fill("");
+        for (const char of payer.toString()) {
+            await this.arPayer.type(char, { delay: 250 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+        }
+
         try {
-            await option.waitFor({ state: "visible", timeout: 20000 });
+            await this.arPayerOption.waitFor({ state: "visible", timeout: 20000 });
         } catch {
             await this.arPayer.fill("");
-            for (const char of payer) {await this.arPayer.type(char, { delay: 250 }); }
-            await option.waitFor({ state: "visible", timeout: 20000 });
+            for (const char of payer.toString()) {
+                await this.arPayer.type(char, { delay: 250 });
+                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await this.arPayerOption.waitFor({ state: "visible", timeout: 20000 });
         }
-        await option.click();      
+        await this.arPayerOption.click();      
     }
 
     async searchAndClickOnProviderReconcilationUnderFinancials() {
@@ -254,40 +270,41 @@ export class SmokeTestingSuitePage{
     }
 
     async providerRecoincialtionField(){
-    await this.Recoincilation.isVisible();
-}
-async visiblefield(){
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    await this.headingBC.isVisible();
-    await this.headingSC.isVisible();
-    await this.headingTransactions.isVisible();
-}
-    
-async SearchCriteria(){
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    expect(await this.country.isVisible());
-    expect(await this.providerType.isVisible());
-    expect(await this.provider.isVisible());
-    expect(await this.fromDueDate.isVisible());
-    expect(await this.toDueDate.isVisible());
-    expect(await this.fromSettleDate.isVisible());
-    expect(await this.toSettleDate.isVisible());
-    expect(await this.fromValidationDate.isVisible());
-    expect(await this.toValidationDate.isVisible());
-    expect(await this.payers.isVisible());
-    expect(await this.currency.isVisible());
-    expect(await this.Account.isVisible());
-    expect(await this.paymentOrder.isVisible());
-    expect(await this.showOnlyNotSetteled.isVisible());
-}
-async batchCriteria(){
-    expect(await this.fromReceptionDate.isVisible());
-    expect(await this.toReceptionDate.isVisible());
+        await this.Recoincilation.isVisible();
+    }
 
-}
+    async visiblefield(){
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.headingBC.isVisible();
+        await this.headingSC.isVisible();
+        await this.headingTransactions.isVisible();
+    }
+        
+    async SearchCriteria(){
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(await this.country.isVisible());
+        expect(await this.providerType.isVisible());
+        expect(await this.provider.isVisible());
+        expect(await this.fromDueDate.isVisible());
+        expect(await this.toDueDate.isVisible());
+        expect(await this.fromSettleDate.isVisible());
+        expect(await this.toSettleDate.isVisible());
+        expect(await this.fromValidationDate.isVisible());
+        expect(await this.toValidationDate.isVisible());
+        expect(await this.payers.isVisible());
+        expect(await this.currency.isVisible());
+        expect(await this.Account.isVisible());
+        expect(await this.paymentOrder.isVisible());
+        expect(await this.showOnlyNotSetteled.isVisible());
+    }
+    async batchCriteria(){
+        expect(await this.fromReceptionDate.isVisible());
+        expect(await this.toReceptionDate.isVisible());
 
-async searchAndClickOnProviderFinancialSettlementUnderFinancials(){
-          await this.searchIcon.waitFor({ state: 'visible' });
+    }
+
+    async searchAndClickOnProviderFinancialSettlementUnderFinancials(){
+            await this.searchIcon.waitFor({ state: 'visible' });
                 await expect(this.searchIcon).toBeEnabled();
         
                 await this.searchIcon.click();
