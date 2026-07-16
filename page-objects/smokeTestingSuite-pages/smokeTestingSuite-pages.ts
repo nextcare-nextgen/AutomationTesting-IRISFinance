@@ -237,11 +237,7 @@ export class SmokeTestingSuitePage{
 
         await this.arPayer.click();
         await this.arPayer.fill("");
-        for (const char of payer.toString()) {
-            await this.arPayer.type(char, { delay: 250 });
-            await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
-        }
-
+        
         try {
             await this.arPayerOption.waitFor({ state: "visible", timeout: 20000 });
         } catch {
