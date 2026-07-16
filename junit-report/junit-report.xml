@@ -1,86 +1,112 @@
-<testsuites id="" name="" tests="14" failures="0" skipped="0" errors="0" time="478.2597320000008">
-<testsuite name="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" timestamp="2026-07-13T07:27:04.734Z" hostname="Mawista-EU" tests="14" failures="0" skipped="0" time="467.07" errors="0">
-<testcase name="FIN-TC-1741 @smoke: TC_001_Payment Orders_Verify that the user is able to navigate to Payment Orders_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="28.279">
-<system-out>
-<![CDATA[✅ Login process completed
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="64.05750500000082">
+<testsuite name="tests\chartOfAccounts\chartOfAccounts.spec.ts" timestamp="2026-07-13T09:17:58.132Z" hostname="Mawista-EU" tests="1" failures="1" skipped="0" time="57.714" errors="0">
+<testcase name="FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with &quot;Show stopped&quot; toggle off" classname="tests\chartOfAccounts\chartOfAccounts.spec.ts" time="57.714">
+<properties>
+<property name="Screen shot on Failure" value="test-results/screenshots/sc.png">
+</property>
+</properties>
+<failure message="chartOfAccounts.spec.ts:779:5 FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with &quot;Show stopped&quot; toggle off" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\chartOfAccounts\chartOfAccounts.spec.ts:779:5 › FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with "Show stopped" toggle off › Use an existing account from the grid and stop one matched row (confirm) 
+
+    Error: Timed out 30000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('mat-row, tbody tr').filter({ hasText: 'abc' })
+    Expected: 0
+    Received: 1
+    Call log:
+      - expect.toHaveCount with timeout 30000ms
+      - waiting for locator('mat-row, tbody tr').filter({ hasText: 'abc' })
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+      -   locator resolved to 1 element
+      -   unexpected value "1"
+
+
+       at page-objects\chartOfAccounts-pages\chartOfAccounts-page.ts:295
+
+      293 |         // verify the exact account number no longer exists in the grid
+      294 |         const after = this.accountsGridRows.filter({ hasText: accountNumber });
+    > 295 |         await expect(after).toHaveCount(0, { timeout: 30000 });
+          |                             ^
+      296 |
+      297 |         // Optional: check for a snackbar / toast indicating success
+      298 |         const snack = this.page.locator('snack-bar-container, .mat-snack-bar-container');
+
+        at ChartOfAccountsPage.stopFirstMatchedRowAndConfirmBySearch (C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\page-objects\chartOfAccounts-pages\chartOfAccounts-page.ts:295:29)
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\chartOfAccounts\chartOfAccounts.spec.ts:803:9
+        at C:\Users\ashwini.sunil.yeskar\AutomationTesting-IRISPortal-Playwright\tests\chartOfAccounts\chartOfAccounts.spec.ts:801:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-chartOfAccounts-char-a887f-ith-Show-stopped-toggle-off-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="37.149">
+</failure>
 <system-out>
 <![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="59.539">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1744 @smoke: TC_004_Payer&apos;s Financial Collection_verify that user is navigate to Payer&apos;s Financial collection_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="29.61">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1745 @smoke:TC_005_Payer&apos;s Financial Collection_verify that  all fields are displayed in Payer/Reinsurer Information , Bank Account Information , Collection Information_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="30.147">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1746 @smoke:TC_006_Payer&apos;s Financial Collection_verify that click on search button without filing any fields proper messages are displayed for mandatory fields_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="27.691">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1747 @smoke: TC_007_Account Transaction_Verify that user is navigate to Account Transaction_smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="26.921">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1748 @smoke: TC_008_Account Transaction_Verify that  without filling any values and click on search_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="24.403">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1749 @smoke: TC_009_Account Reconciliation_Verify that user is navigate to Account  Reconciliation_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="26.157">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1750 @smoke:TC_010_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="37.845">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1751 @smoke: TC_011_provider Reconciliation_Verify that user is navigate to provider Reconciliation_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="29.446">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1752 @smoke: TC_012_provider Reconciliation_Verify that in Search Criteria, batch criteria, Transactions  all fields are displayed_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="33.732">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1753 @smoke: TC_013_Provider&apos;s Financial Settlement_verify that  payer and reinsurer radio button are displayed_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="22.068">
-<system-out>
-<![CDATA[✅ Login process completed
-]]>
-</system-out>
-</testcase>
-<testcase name="FIN-TC-1754 @smoke: TC_014_Provider&apos;s Financial Settlement_Verify that when Payer is selected, then  Payer&apos;s auto populated list should be display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="54.083">
-<system-out>
-<![CDATA[✅ Login process completed
+
+[[ATTACHMENT|..\test-results\tests-chartOfAccounts-char-a887f-ith-Show-stopped-toggle-off-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>

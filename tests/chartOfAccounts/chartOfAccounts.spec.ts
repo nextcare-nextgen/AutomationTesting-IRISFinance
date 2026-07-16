@@ -730,77 +730,77 @@ const ChartOfAccountsData = require(`../../testdata/${process.env.ENV || 'eu'}/c
 //     });
 // });
 
-// test('FIN-TC-1449: TC_022_Chart of Accounts_Verify search for a newly added account by Account Number and update Account Name', async ({ page }) => {
+test('FIN-TC-1449: TC_022_Chart of Accounts_Verify search for a newly added account by Account Number and update Account Name', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
-//     const tcData = ChartOfAccountsData['TC_022_Chart of Accounts'];
-//     const accountNumber = DynamicName.randomAccountNumber(tcData.accountNumberPrefix);
-//     const accountName = DynamicName.randomAccountNumber(tcData.accountNamePrefix);
-//     const updatedAccountName = tcData.updatedAccountName;
-//     const accountFor = tcData.accountFor;
+    const loginPage: LoginPage = new LoginPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+    const tcData = ChartOfAccountsData['TC_022_Chart of Accounts'];
+    const accountNumber = DynamicName.randomAccountNumber(tcData.accountNumberPrefix);
+    const accountName = DynamicName.randomAccountNumber(tcData.accountNamePrefix);
+    const updatedAccountName = tcData.updatedAccountName;
+    const accountFor = tcData.accountFor;
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     });
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    });
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     });
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    });
 
-//     await test.step("Click on Chart of Accounts under Financials", async () => {
-//         await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
-//     });
+    await test.step("Click on Chart of Accounts under Financials", async () => {
+        await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
+    });
 
-//     await test.step("Add a new account", async () => {
-//         await chartOfAccountsPage.clickOnAddButton();
-//         await chartOfAccountsPage.fillAccountFormAndSave(accountNumber, accountName, accountFor);
-//         await chartOfAccountsPage.verifySaveSuccessMessageAndReturnToListScreen();
-//     });
+    await test.step("Add a new account", async () => {
+        await chartOfAccountsPage.clickOnAddButton();
+        await chartOfAccountsPage.fillAccountFormAndSave(accountNumber, accountName, accountFor);
+        await chartOfAccountsPage.verifySaveSuccessMessageAndReturnToListScreen();
+    });
 
-//     await test.step("Search for the newly added account by account number", async () => {
-//         await chartOfAccountsPage.searchInAccountsGrid(accountNumber);
-//         await chartOfAccountsPage.verifyGridHasExactlyOneRowContaining(accountNumber);
-//     });
+    await test.step("Search for the newly added account by account number", async () => {
+        await chartOfAccountsPage.searchInAccountsGrid(accountNumber);
+        await chartOfAccountsPage.verifyGridHasExactlyOneRowContaining(accountNumber);
+    });
 
-//     await test.step("Open the account details and update the Account Name", async () => {
-//         await chartOfAccountsPage.clickAccountNameInRow(accountName);
-//         await chartOfAccountsPage.verifyDetailsScreenIsDisplayed();
-//         await chartOfAccountsPage.updateAccountNameAndSave(updatedAccountName);
-//         await chartOfAccountsPage.verifySaveSuccessMessageAndReturnToListScreen();
-//     });
+    await test.step("Open the account details and update the Account Name", async () => {
+        await chartOfAccountsPage.clickAccountNameInRow(accountName);
+        await chartOfAccountsPage.verifyDetailsScreenIsDisplayed();
+        await chartOfAccountsPage.updateAccountNameAndSave(updatedAccountName);
+        await chartOfAccountsPage.verifySaveSuccessMessageAndReturnToListScreen();
+    });
 
-//     await test.step("Verify the account still exists and displays the updated name", async () => {
-//         await chartOfAccountsPage.searchInAccountsGrid(accountNumber);
-//         await chartOfAccountsPage.verifyGridHasExactlyOneRowContaining(accountNumber);
-//     });
-// });
+    await test.step("Verify the account still exists and displays the updated name", async () => {
+        await chartOfAccountsPage.searchInAccountsGrid(accountNumber);
+        await chartOfAccountsPage.verifyGridHasExactlyOneRowContaining(accountNumber);
+    });
+});
 
-// test('FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with "Show stopped" toggle off', async ({ page }) => {
+test('FIN-TC-1450: TC_023_Chart of Accounts_Verify stopping an account with "Show stopped" toggle off', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const chartOfAccountsPage: ChartOfAccountsPage = new ChartOfAccountsPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     });
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    });
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     });
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    });
 
-//     await test.step("Click on Chart of Accounts under Financials", async () => {
-//         await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
-//     });
+    await test.step("Click on Chart of Accounts under Financials", async () => {
+        await chartOfAccountsPage.searchAndClickOnChartOfAccountsUnderFinancials();
+    });
 
-//     await test.step("Verify Chart of Accounts screen and default toggle state", async () => {
-//         await chartOfAccountsPage.verifyChartOfAccountsGridIsDisplayed();
-//         await chartOfAccountsPage.verifyShowStoppedToggleIsOffByDefault();
-//     });
+    await test.step("Verify Chart of Accounts screen and default toggle state", async () => {
+        await chartOfAccountsPage.verifyChartOfAccountsGridIsDisplayed();
+        await chartOfAccountsPage.verifyShowStoppedToggleIsOffByDefault();
+    });
 
-//     await test.step("Use an existing account from the grid and stop one matched row (confirm)", async () => {
-//         const accountSearch = await chartOfAccountsPage.rememberFirstRowAccountNumber();
-//         await chartOfAccountsPage.stopFirstMatchedRowAndConfirmBySearch(accountSearch);
-//     });
-// });
+    await test.step("Use an existing account from the grid and stop one matched row (confirm)", async () => {
+        const accountSearch = await chartOfAccountsPage.rememberFirstRowAccountNumber();
+        await chartOfAccountsPage.stopFirstMatchedRowAndConfirmBySearch(accountSearch);
+    });
+});
 
