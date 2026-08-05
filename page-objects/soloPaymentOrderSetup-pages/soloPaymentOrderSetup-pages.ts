@@ -19,8 +19,15 @@ export class SoloPaymentOrderSetupPage {
     readonly searchButton: Locator;
     readonly searchResults: Locator;
     readonly nameInput: Locator;
+    readonly externalRefLabel: Locator;
+    readonly externalRefInput: Locator;
     readonly soloPaymentOrderDropdown: Locator;
+    readonly effectiveDateLabel: Locator;
     readonly effectiveDateInput: Locator;
+    readonly effectiveDateCalendarIcon: Locator;
+    readonly expiryDateLabel: Locator;
+    readonly expiryDateInput: Locator;
+    readonly expiryDateCalendarIcon: Locator;
     readonly nameColumn: Locator;
     readonly statusColumn: Locator;
     readonly startDateColumn: Locator;
@@ -76,8 +83,18 @@ export class SoloPaymentOrderSetupPage {
         this.searchButton = page.locator('button.search-button');
         this.searchResults = page.locator('table tbody tr');
         this.nameInput = page.locator("input[formcontrolname='name']");
+        this.externalRefLabel = this.searchCriteriaSection.locator('mat-label', { hasText: 'External Ref' });
+        this.externalRefInput = this.externalRefLabel.locator('xpath=ancestor::mat-form-field//input').first();
         this.soloPaymentOrderDropdown = page.locator("mat-select[formcontrolname='soloPaymentOrder']");
+        this.effectiveDateLabel = this.searchCriteriaSection.locator('mat-label', { hasText: 'Effective Date' });
         this.effectiveDateInput = page.locator("input[formcontrolname='effectiveDate']");
+        this.effectiveDateCalendarIcon = page
+            .locator("input[formcontrolname='effectiveDate']")
+            .locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle");
+        this.expiryDateLabel = this.searchCriteriaSection.locator('mat-label', { hasText: 'Expiry Date' });
+        this.expiryDateInput = this.expiryDateLabel.locator('xpath=ancestor::mat-form-field//input').first();
+        this.expiryDateCalendarIcon = this.expiryDateLabel
+            .locator('xpath=ancestor::mat-form-field//mat-datepicker-toggle');
         this.nameColumn = page.locator('th.mat-column-name', { hasText: 'Name' });
         this.statusColumn = page.locator('th.mat-column-status', { hasText: 'Status' });
         this.startDateColumn = page.locator('th.mat-column-startDate', { hasText: 'Start Date' });
@@ -195,9 +212,432 @@ export class SoloPaymentOrderSetupPage {
         await this.nameInput.fill(name);
     } 
 
+    async verifyExternalRefAcceptsAlphabets(): Promise<void> {
+        const value = 'AlphaOnly';
+        await this.externalRefInput.click();
+        await this.externalRefInput.fill('');
+        await this.externalRefInput.fill(value);
+        await this.externalRefInput.press('Tab');
+        await expect(this.externalRefInput).toHaveValue(value);
+    }
+
+    async verifyExternalRefAcceptsNumbers(): Promise<void> {
+        const value = '1234567890';
+        await this.externalRefInput.click();
+        await this.externalRefInput.fill('');
+        await this.externalRefInput.fill(value);
+        await this.externalRefInput.press('Tab');
+        await expect(this.externalRefInput).toHaveValue(value);
+    }
+
+    async verifyExternalRefAcceptsSpecialCharacters(): Promise<void> {
+        const value = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        await this.externalRefInput.click();
+        await this.externalRefInput.fill('');
+        await this.externalRefInput.fill(value);
+        await this.externalRefInput.press('Tab');
+        await expect(this.externalRefInput).toHaveValue(value);
+    }
+
+    async verifyExternalRefDoesNotAcceptBlankSpaces(): Promise<void> {
+        const value = '     ';
+        await this.externalRefInput.click();
+        await this.externalRefInput.fill('');
+        await this.externalRefInput.fill(value);
+        await this.externalRefInput.press('Tab');
+        const actual = await this.externalRefInput.inputValue();
+        expect(actual.trim()).toBe('');
+    }
+
+    async verifyExternalRefDoesNotAllowLeadingTrailingSpaces(): Promise<void> {
+        const value = '  ExternalRef123  ';
+        await this.externalRefInput.click();
+        await this.externalRefInput.fill('');
+        await this.externalRefInput.fill(value);
+        await this.externalRefInput.press('Tab');
+        const actual = await this.externalRefInput.inputValue();
+        expect(actual).toBe(actual.trim());
+        expect(actual.trim()).toBe('ExternalRef123');
+    }
+
+    async verifyNameAcceptsAlphabets(): Promise<void> {
+        const value = 'AlphaOnly';
+        await this.nameInput.click();
+        await this.nameInput.fill('');
+        await this.nameInput.fill(value);
+        await this.nameInput.press('Tab');
+        await expect(this.nameInput).toHaveValue(value);
+    }
+
+    async verifyNameAcceptsNumbers(): Promise<void> {
+        const value = '1234567890';
+        await this.nameInput.click();
+        await this.nameInput.fill('');
+        await this.nameInput.fill(value);
+        await this.nameInput.press('Tab');
+        await expect(this.nameInput).toHaveValue(value);
+    }
+
+    async verifyNameAcceptsSpecialCharacters(): Promise<void> {
+        const value = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        await this.nameInput.click();
+        await this.nameInput.fill('');
+        await this.nameInput.fill(value);
+        await this.nameInput.press('Tab');
+        await expect(this.nameInput).toHaveValue(value);
+    }
+
+    async verifyNameDoesNotAcceptBlankSpaces(): Promise<void> {
+        const value = '     ';
+        await this.nameInput.click();
+        await this.nameInput.fill('');
+        await this.nameInput.fill(value);
+        await this.nameInput.press('Tab');
+        const actual = await this.nameInput.inputValue();
+        expect(actual.trim()).toBe('');
+    }
+
+    async verifyNameDoesNotAllowLeadingTrailingSpaces(): Promise<void> {
+        const value = '  NameValue123  ';
+        await this.nameInput.click();
+        await this.nameInput.fill('');
+        await this.nameInput.fill(value);
+        await this.nameInput.press('Tab');
+        const actual = await this.nameInput.inputValue();
+        expect(actual).toBe(actual.trim());
+        expect(actual.trim()).toBe('NameValue123');
+    }
+
     async enterEffectiveDate(date: string) {
         await this.effectiveDateInput.click();
         await this.effectiveDateInput.fill(date);
+    }
+
+    async verifyEffectiveDateLabelAndTextboxDisplayed(): Promise<void> {
+        await expect(this.effectiveDateLabel).toBeVisible();
+        await expect(this.effectiveDateInput).toBeVisible();
+        await expect(this.effectiveDateInput).toBeEnabled();
+    }
+
+    async verifyExpiryDateLabelAndTextboxDisplayed(): Promise<void> {
+        await expect(this.expiryDateLabel).toBeVisible();
+        await expect(this.expiryDateInput).toBeVisible();
+        await expect(this.expiryDateInput).toBeEnabled();
+    }
+
+    async verifyEffectiveDateCalendarIconDisplayed(): Promise<void> {
+        await expect(this.effectiveDateCalendarIcon).toBeVisible();
+    }
+
+    async verifyExpiryDateCalendarIconDisplayed(): Promise<void> {
+        await expect(this.expiryDateCalendarIcon).toBeVisible();
+    }
+
+    private async getCurrentCalendarDayCell(calendarPopup: Locator): Promise<Locator> {
+        const selectedTdCell = calendarPopup.locator('td.mat-calendar-body-selected .mat-calendar-body-cell-content').first();
+        if (await selectedTdCell.count()) {
+            return selectedTdCell;
+        }
+
+        const activeButtonCell = calendarPopup.locator('button.mat-calendar-body-cell.mat-calendar-body-active .mat-calendar-body-cell-content').first();
+        if (await activeButtonCell.count()) {
+            return activeButtonCell;
+        }
+
+        const todayCell = calendarPopup.locator('.mat-calendar-body-today').first();
+        return todayCell;
+    }
+
+    private parseDateValue(value: string): Date | null {
+        const trimmed = value.trim();
+        const slashMatch = trimmed.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+        if (slashMatch) {
+            const day = Number.parseInt(slashMatch[1], 10);
+            const month = Number.parseInt(slashMatch[2], 10);
+            const year = Number.parseInt(slashMatch[3], 10);
+
+            const parsed = new Date(year, month - 1, day);
+            if (
+                parsed.getFullYear() === year &&
+                parsed.getMonth() === month - 1 &&
+                parsed.getDate() === day
+            ) {
+                return parsed;
+            }
+            return null;
+        }
+
+        const dashMatch = trimmed.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/);
+        if (dashMatch) {
+            const day = Number.parseInt(dashMatch[1], 10);
+            const monthToken = dashMatch[2].toLowerCase();
+            const year = Number.parseInt(dashMatch[3], 10);
+
+            const monthMap: Record<string, number> = {
+                jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+            };
+
+            const month = monthMap[monthToken];
+            if (month === undefined) {
+                return null;
+            }
+
+            const parsed = new Date(year, month, day);
+            if (
+                parsed.getFullYear() === year &&
+                parsed.getMonth() === month &&
+                parsed.getDate() === day
+            ) {
+                return parsed;
+            }
+            return null;
+        }
+
+        return null;
+    }
+
+    async verifyCalendarOpensWithCurrentDateSelectedByDefault(): Promise<void> {
+        await this.effectiveDateCalendarIcon.click();
+
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const currentDayCell = await this.getCurrentCalendarDayCell(calendarPopup);
+        await expect(currentDayCell).toBeVisible();
+
+        const selectedDayText = (await currentDayCell.textContent())?.trim();
+        const todayDayText = new Date().getDate().toString();
+
+        expect(selectedDayText).toBe(todayDayText);
+    }
+
+    async verifyExpiryCalendarOpensWithCurrentDateSelectedByDefault(): Promise<void> {
+        await this.expiryDateCalendarIcon.click();
+
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const currentDayCell = await this.getCurrentCalendarDayCell(calendarPopup);
+        await expect(currentDayCell).toBeVisible();
+
+        const selectedDayText = (await currentDayCell.textContent())?.trim();
+        const todayDayText = new Date().getDate().toString();
+
+        expect(selectedDayText).toBe(todayDayText);
+    }
+
+    async verifyUserCanSelectOldDate(): Promise<void> {
+        await this.effectiveDateCalendarIcon.click();
+
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const currentDayCell = await this.getCurrentCalendarDayCell(calendarPopup);
+        await expect(currentDayCell).toBeVisible();
+
+        const selectedDayText = (await currentDayCell.textContent())?.trim() || '';
+        const selectedDay = Number.parseInt(selectedDayText, 10);
+
+        const enabledCells = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)');
+        const cellCount = await enabledCells.count();
+
+        let targetCell: Locator | null = null;
+
+        for (let i = 0; i < cellCount; i++) {
+            const cell = enabledCells.nth(i);
+            const dayText = (await cell.locator('.mat-calendar-body-cell-content').textContent())?.trim() || '';
+            const day = Number.parseInt(dayText, 10);
+
+            if (!Number.isNaN(day) && day < selectedDay) {
+                targetCell = cell;
+                break;
+            }
+        }
+
+        if (!targetCell) {
+            const previousMonthButton = calendarPopup.locator('button.mat-calendar-previous-button');
+            await previousMonthButton.click();
+            targetCell = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)').first();
+        }
+
+        await targetCell.click();
+        await expect(this.effectiveDateInput).not.toHaveValue('');
+    }
+
+    async verifyExpiryDateUserCanSelectOldDate(): Promise<void> {
+        await this.expiryDateCalendarIcon.click();
+
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const currentDayCell = await this.getCurrentCalendarDayCell(calendarPopup);
+        await expect(currentDayCell).toBeVisible();
+
+        const selectedDayText = (await currentDayCell.textContent())?.trim() || '';
+        const selectedDay = Number.parseInt(selectedDayText, 10);
+
+        const enabledCells = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)');
+        const cellCount = await enabledCells.count();
+
+        let targetCell: Locator | null = null;
+
+        for (let i = 0; i < cellCount; i++) {
+            const cell = enabledCells.nth(i);
+            const dayText = (await cell.locator('.mat-calendar-body-cell-content').textContent())?.trim() || '';
+            const day = Number.parseInt(dayText, 10);
+
+            if (!Number.isNaN(day) && day < selectedDay) {
+                targetCell = cell;
+                break;
+            }
+        }
+
+        if (!targetCell) {
+            const previousMonthButton = calendarPopup.locator('button.mat-calendar-previous-button');
+            await previousMonthButton.click();
+            targetCell = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)').first();
+        }
+
+        await targetCell.click();
+        await expect(this.expiryDateInput).not.toHaveValue('');
+    }
+
+    async verifyUserCanSelectFutureDate(): Promise<void> {
+        await this.effectiveDateCalendarIcon.click();
+
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const currentDayCell = await this.getCurrentCalendarDayCell(calendarPopup);
+        await expect(currentDayCell).toBeVisible();
+
+        const selectedDayText = (await currentDayCell.textContent())?.trim() || '';
+        const selectedDay = Number.parseInt(selectedDayText, 10);
+
+        const enabledCells = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)');
+        const cellCount = await enabledCells.count();
+
+        let targetCell: Locator | null = null;
+
+        for (let i = 0; i < cellCount; i++) {
+            const cell = enabledCells.nth(i);
+            const dayText = (await cell.locator('.mat-calendar-body-cell-content').textContent())?.trim() || '';
+            const day = Number.parseInt(dayText, 10);
+
+            if (!Number.isNaN(day) && day > selectedDay) {
+                targetCell = cell;
+                break;
+            }
+        }
+
+        if (!targetCell) {
+            const nextMonthButton = calendarPopup.locator('button.mat-calendar-next-button');
+            await nextMonthButton.click();
+            targetCell = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)').first();
+        }
+
+        await targetCell.click();
+        await expect(this.effectiveDateInput).not.toHaveValue('');
+    }
+
+    async verifyExpiryDateUserCanSelectFutureDate(): Promise<void> {
+        await this.expiryDateCalendarIcon.click();
+
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const currentDayCell = await this.getCurrentCalendarDayCell(calendarPopup);
+        await expect(currentDayCell).toBeVisible();
+
+        const selectedDayText = (await currentDayCell.textContent())?.trim() || '';
+        const selectedDay = Number.parseInt(selectedDayText, 10);
+
+        const enabledCells = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)');
+        const cellCount = await enabledCells.count();
+
+        let targetCell: Locator | null = null;
+
+        for (let i = 0; i < cellCount; i++) {
+            const cell = enabledCells.nth(i);
+            const dayText = (await cell.locator('.mat-calendar-body-cell-content').textContent())?.trim() || '';
+            const day = Number.parseInt(dayText, 10);
+
+            if (!Number.isNaN(day) && day > selectedDay) {
+                targetCell = cell;
+                break;
+            }
+        }
+
+        if (!targetCell) {
+            const nextMonthButton = calendarPopup.locator('button.mat-calendar-next-button');
+            await nextMonthButton.click();
+            targetCell = calendarPopup.locator('button.mat-calendar-body-cell:not(.mat-calendar-body-disabled)').first();
+        }
+
+        await targetCell.click();
+        await expect(this.expiryDateInput).not.toHaveValue('');
+    }
+
+    async verifyExpiryDateLessThanEffectiveDateIsNotAllowed(): Promise<void> {
+        await this.verifyUserCanSelectFutureDate();
+
+        const beforeExpiryValue = (await this.expiryDateInput.inputValue()).trim();
+
+        await this.expiryDateCalendarIcon.click();
+        const calendarPopup = this.page.locator('mat-datepicker-content');
+        await expect(calendarPopup).toBeVisible();
+
+        const previousMonthButton = calendarPopup.locator('button.mat-calendar-previous-button');
+        const isPreviousMonthDisabled = await previousMonthButton.isDisabled();
+
+        const disabledDayCells = calendarPopup.locator('td.mat-calendar-body-disabled .mat-calendar-body-cell-content');
+        const disabledDayCount = await disabledDayCells.count();
+
+        expect(
+            isPreviousMonthDisabled || disabledDayCount > 0,
+            'Expected old expiry dates to be restricted (disabled old dates or disabled previous month navigation)'
+        ).toBeTruthy();
+
+        if (disabledDayCount > 0) {
+            await disabledDayCells.first().click({ force: true });
+            await expect(this.expiryDateInput).toHaveValue(beforeExpiryValue);
+        }
+    }
+
+    async verifyExpiryDateGreaterThanEffectiveDateIsAllowed(): Promise<void> {
+        await this.verifyUserCanSelectOldDate();
+        const effectiveValue = (await this.effectiveDateInput.inputValue()).trim();
+        const effectiveDate = this.parseDateValue(effectiveValue);
+        expect(effectiveDate, `Unable to parse effective date value: ${effectiveValue}`).not.toBeNull();
+
+        await this.verifyExpiryDateUserCanSelectFutureDate();
+        const expiryValue = (await this.expiryDateInput.inputValue()).trim();
+        const expiryDate = this.parseDateValue(expiryValue);
+        expect(expiryDate, `Unable to parse expiry date value: ${expiryValue}`).not.toBeNull();
+        expect(expiryDate!.getTime()).toBeGreaterThan(effectiveDate!.getTime());
+    }
+
+    async verifyUserCanSelectSameExpiryAndEffectiveDate(): Promise<void> {
+        await this.verifyUserCanSelectFutureDate();
+
+        const effectiveValue = (await this.effectiveDateInput.inputValue()).trim();
+        expect(effectiveValue).not.toBe('');
+
+        await this.expiryDateInput.click();
+        await this.expiryDateInput.fill('');
+        await this.expiryDateInput.fill(effectiveValue);
+        await this.expiryDateInput.press('Tab');
+
+        await expect(this.expiryDateInput).toHaveValue(effectiveValue);
+
+        const effectiveDate = this.parseDateValue(effectiveValue);
+        const expiryDateValue = (await this.expiryDateInput.inputValue()).trim();
+        const expiryDate = this.parseDateValue(expiryDateValue);
+
+        expect(effectiveDate, `Unable to parse effective date value: ${effectiveValue}`).not.toBeNull();
+        expect(expiryDate, `Unable to parse expiry date value: ${expiryDateValue}`).not.toBeNull();
+        expect(expiryDate!.getTime()).toBe(effectiveDate!.getTime());
     }
 
     async selectSoloPaymentOrder(option: string) {
@@ -389,5 +829,6 @@ export class SoloPaymentOrderSetupPage {
         await this.saveBtn.click();
         await expect(this.successMessageLocator).toContainText('Record updated successfully !', { timeout: 5000 });
     }
+    
 
 }

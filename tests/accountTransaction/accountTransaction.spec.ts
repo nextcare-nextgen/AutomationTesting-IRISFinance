@@ -1,2352 +1,2354 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from '../../page-objects/login-page.ts';
 import { AccountTransactionPage } from '../../page-objects/accountTransaction-pages/accountTransaction-pages.ts';
-const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
+ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const AccountTransactionData = require(`../../testdata/${process.env.ENV||'eu'}/accountTransactions.json`) as Record< string,any >
 
-//1
-// test('FIN-TC-97: TC_098_Account Transaction_Verify that user is navigate to Account Transaction', async ({ page }) => {
+1
+test('FIN-TC-97: TC_098_Account Transaction_Verify that user is navigate to Account Transaction', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Account Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
-//  });
+    await test.step("Click On Account Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
+ });
 
-// //2
-// test('FIN-TC-98: TC_099_Account Transaction_Verify that  Validbreadcrumbs are displayed Finance >Account Transaction', async ({ page }) => {
+//2
+test('FIN-TC-98: TC_099_Account Transaction_Verify that  Validbreadcrumbs are displayed Finance >Account Transaction', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
-// });
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
+});
 
-// //3
-// test('FIN-TC-99: TC_100_Account Transaction_Verify that in Search Criteria, Search Result all fields are displayed', async ({ page }) => {
+//3
+test('FIN-TC-99: TC_100_Account Transaction_Verify that in Search Criteria, Search Result all fields are displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-// });
+});
 
-// //4
-// test('FIN-TC-100: TC_101_Account Transaction_Verify that click on search then user get Validresult', async ({ page }) => {
+//4
+test('FIN-TC-100: TC_101_Account Transaction_Verify that click on search then user get Validresult', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
-// });
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
+});
 
-// //5
-// test('FIN-TC-101: TC_102_Account Transaction_Verify that  fill only mandatory fields click on search', async ({ page }) => {
+//5
+test('FIN-TC-101: TC_102_Account Transaction_Verify that  fill only mandatory fields click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
-// });
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
+});
 
-// //6
-// test('FIN-TC-102: TC_103_Account Transaction_Verify that  fill all fields click on search', async ({ page }) => {
+//6
+test('FIN-TC-102: TC_103_Account Transaction_Verify that  fill all fields click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillAllDetails(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account,AccountTransactionData["accountTransaction-001"].type,AccountTransactionData["accountTransaction-001"].countryValue);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillAllDetails(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account,AccountTransactionData["accountTransaction-001"].type,AccountTransactionData["accountTransaction-001"].countryValue);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
-// });
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
+});
 
-// //7
-// test('FIN-TC-103: TC_104_Account Transaction_Verify that  without filling any values and click on search', async ({ page }) => {
+//7
+test('FIN-TC-103: TC_104_Account Transaction_Verify that  without filling any values and click on search', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
 
-//     await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+    await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate thst popup should be displayed",async()=>{
-//         await accountTransactionPage.verifyErrorMsg();
-//     })
-// });
+    await test.step("Validate thst popup should be displayed",async()=>{
+        await accountTransactionPage.verifyErrorMsg();
+    })
+});
 
-// //8
-// test('FIN-TC-104:TC_105_Account Transaction_verify that fill mandatory fields and  click on generate data file then file get downloaded and All contents should be display proper and and correct .', async ({ page }) => {
+//8
+test('FIN-TC-104:TC_105_Account Transaction_verify that fill mandatory fields and  click on generate data file then file get downloaded and All contents should be display proper and and correct .', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
 
-//      await test.step("Fill all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Fill all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//     await test.step("Click on the Generate file button", async () => {
-//         await accountTransactionPage.clickgeneratefile();
-//     })
+    await test.step("Click on the Generate file button", async () => {
+        await accountTransactionPage.clickgeneratefile();
+    })
 
-// });
+});
 
-// //9
-// test('FIN-TC-105:TC_106_Account Transaction_verify that without fill mandatory fields and  click on generate data file then file get downloaded', async ({ page }) => {
+//9
+test('FIN-TC-105:TC_106_Account Transaction_verify that without fill mandatory fields and  click on generate data file then file get downloaded', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
 
-//     await test.step("Click on the Generate file button", async () => {
-//         await accountTransactionPage.clickgeneratefile();
-//     })
+    await test.step("Click on the Generate file button", async () => {
+        await accountTransactionPage.clickgeneratefile();
+    })
 
-//     await test.step("Validate thst popup should be displayed",async()=>{
-//         await accountTransactionPage.verifyErrorMsg();
-//     })
-// });
+    await test.step("Validate thst popup should be displayed",async()=>{
+        await accountTransactionPage.verifyErrorMsg();
+    })
+});
 
-// //10
-// test('FIN-TC-106: TC_107_Account Transaction_verify that user can search result by Provider key Ex-Reim', async ({ page }) => {
+//10
+test('FIN-TC-106: TC_107_Account Transaction_verify that user can search result by Provider key Ex-Reim', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Search the fields", async() =>{
-//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].providerKey)
-//     })
-// });
+    await test.step("Search the fields", async() =>{
+        await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].providerKey)
+    })
+});
 
-// //11
-// test('FIN-TC-107:TC_108_Account Transaction_verify that user can search result by Txn Id EX-4074730', async ({ page }) => {
+//11
+test('FIN-TC-107:TC_108_Account Transaction_verify that user can search result by Txn Id EX-4074730', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Search the fields", async() =>{
-//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].TXNID)
-//     })
-// });
+    await test.step("Search the fields", async() =>{
+        await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].TXNID)
+    })
+});
 
-// //12
-// test('FIN-TC-108:TC_109_Account Transaction_verify that user can search result by payment order Ex-3601148', async ({ page }) => {
+//12
+test('FIN-TC-108:TC_109_Account Transaction_verify that user can search result by payment order Ex-3601148', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Search the fields", async() =>{
-//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].paymentOrder)
-//     })
-// });
+    await test.step("Search the fields", async() =>{
+        await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].paymentOrder)
+    })
+});
 
-// //13
-// test('FIN-TC-109:TC_110_Account Transaction_verify that user can search result by Destination Account Ex-Hospital', async ({ page }) => {
+//13
+test('FIN-TC-109:TC_110_Account Transaction_verify that user can search result by Destination Account Ex-Hospital', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Search the fields", async() =>{
-//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].destinationAccount)
-//     })
-// });
+    await test.step("Search the fields", async() =>{
+        await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].destinationAccount)
+    })
+});
 
-// //14
-// test('FIN-TC-111:TC_112_Account Transaction_verify that user enter inValidvalues for serach ex-erw', async ({ page }) => {
+//14
+test('FIN-TC-111:TC_112_Account Transaction_verify that user enter inValidvalues for serach ex-erw', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Search the fields", async() =>{
-//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].InvalidValue)
-//     })
+    await test.step("Search the fields", async() =>{
+        await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].InvalidValue)
+    })
 
-//     await test.step("No Record found message should be displayed",async() => {
-//         await accountTransactionPage.noRecordFound();
-//     })
-// });
+    await test.step("No Record found message should be displayed",async() => {
+        await accountTransactionPage.noRecordFound();
+    })
+});
 
-// //15
-// test('FIN-TC-113:TC_114_Account Transaction_verify that select any rows eye icon and click on it then Account transaction details popup window is displayed', async ({ page }) => {
+//15
+test('FIN-TC-113:TC_114_Account Transaction_verify that select any rows eye icon and click on it then Account transaction details popup window is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
-// });
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
+});
 
-// //16
-// test('FIN-TC-114:TC_115_Account Transaction_verify that bank reference checque realse date and cheque sent date is editable', async ({ page }) => {
+//16
+test('FIN-TC-114:TC_115_Account Transaction_verify that bank reference checque realse date and cheque sent date is editable', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that cheque dates should be present in popup", async() =>{
-//         await accountTransactionPage.validatepopupdetail();
-//     })
-// });
+    await test.step("Validate that cheque dates should be present in popup", async() =>{
+        await accountTransactionPage.validatepopupdetail();
+    })
+});
 
-// //17
-// test('FIN-TC-115:TC_116_Account Transaction_verify that few fields are disabled', async ({ page }) => {
+//17
+test('FIN-TC-115:TC_116_Account Transaction_verify that few fields are disabled', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that cheque dates should be present in popup", async() =>{
-//         await accountTransactionPage.nonEditableField();
-//     })
-// });
+    await test.step("Validate that cheque dates should be present in popup", async() =>{
+        await accountTransactionPage.nonEditableField();
+    })
+});
 
-// //18
-// test('FIN-TC-116:TC_117_Account Transaction_verify that pending checkbox is displyed', async ({ page }) => {
+//18
+test('FIN-TC-116:TC_117_Account Transaction_verify that pending checkbox is displyed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
-// });
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
+});
 
-// //19
-// test('FIN-TC-117:TC_118_Account Transaction_verify that checkbox is checked then pending reason button is displayed', async ({ page }) => {
+//19
+test('FIN-TC-117:TC_118_Account Transaction_verify that checkbox is checked then pending reason button is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
-// });
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
+});
 
-// //20
-// test('FIN-TC-118:TC_119_Account Transaction_verify that click on pending reason button then  Pending Reason popup window is displayed', async ({ page }) => {
+//20
+test('FIN-TC-118:TC_119_Account Transaction_verify that click on pending reason button then  Pending Reason popup window is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
 
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingReasonPopup();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingReasonPopup();
+    })
 
-// });
+});
 
-// //21
-// test('FIN-TC-119:TC_120_Account Transaction_verify that reason label and multipline text box is displayed', async ({ page }) => {
+//21
+test('FIN-TC-119:TC_120_Account Transaction_verify that reason label and multipline text box is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
 
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingReasonPopup();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingReasonPopup();
+    })
 
-// });
+});
 
-// //22
-// test('FIN-TC-120:TC_121_Account Transaction_verify that click on apply button without filing reason then proper error message is displayed', async ({ page }) => {
+//22
+test('FIN-TC-120:TC_121_Account Transaction_verify that click on apply button without filing reason then proper error message is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
 
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingReasonPopup();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingReasonPopup();
+    })
 
-// });
+});
 
-// //23
-// test('FIN-TC-121:TC_122_Account Transaction_verify that click on apply button with filing reason then details get saved', async ({ page }) => {
+//23
+test('FIN-TC-121:TC_122_Account Transaction_verify that click on apply button with filing reason then details get saved', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingReasonText();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingReasonText();
+    })
 
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingReasonPopup();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingReasonPopup();
+    })
 
-// });
+});
 
-// //24
-// test('FIN-TC-122:TC_123_Account Transaction_verify that click on cancel button with popup window should get closed', async ({ page }) => {
+//24
+test('FIN-TC-122:TC_123_Account Transaction_verify that click on cancel button with popup window should get closed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
     
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingPopupCancel();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingPopupCancel();
+    })
 
-// });
+});
 
-// //25
-// test('FIN-TC-123:TC_124_Account Transaction_verify that click on Apply button with selecting checkbox pending but not filing the reason then proper error message is displayed', async ({ page }) => {
+//25
+test('FIN-TC-123:TC_124_Account Transaction_verify that click on Apply button with selecting checkbox pending but not filing the reason then proper error message is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
 
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingReasonPopup();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingReasonPopup();
+    })
 
-// });
+});
 
-// //26
-// test('FIN-TC-124: TC_125_Account Transaction_verify that click on Apply button without selecting checkbox pending values should get saved', async ({ page }) => {
+//26
+test('FIN-TC-124: TC_125_Account Transaction_verify that click on Apply button without selecting checkbox pending values should get saved', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingCheckbox();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingCheckbox();
+    })
 
-//     await test.step("Validate that pending checkbox is present", async() =>{
-//         await accountTransactionPage.pendingReasonText();
-//     })
+    await test.step("Validate that pending checkbox is present", async() =>{
+        await accountTransactionPage.pendingReasonText();
+    })
 
-//     await test.step("Validate that message popup box should be displayed",async()=>{
-//         await accountTransactionPage.pendingReasonPopup();
-//     })
+    await test.step("Validate that message popup box should be displayed",async()=>{
+        await accountTransactionPage.pendingReasonPopup();
+    })
 
-// });
+});
 
-// //27
-// test('FIN-TC-125: TC_126_Account Transaction_verify that set  Cheque realse date is less than settlement date  then error message is displayed', async ({ page }) => {
+//27
+test('FIN-TC-125: TC_126_Account Transaction_verify that set  Cheque realse date is less than settlement date  then error message is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that Alert should be poped up when released Date is less than settled date", async() =>{
-//         await accountTransactionPage.newChequereleaseDate(AccountTransactionData["accountTransaction-001"].chequeReleaseDate);
-//     })
-// });
+    await test.step("Validate that Alert should be poped up when released Date is less than settled date", async() =>{
+        await accountTransactionPage.newChequereleaseDate(AccountTransactionData["accountTransaction-001"].chequeReleaseDate);
+    })
+});
 
-// //28
-// test('FIN-TC-126: TC_127_Account Transaction_verify that set  sent date is less than realse date  then error message is displayed', async ({ page }) => {
+//28
+test('FIN-TC-126: TC_127_Account Transaction_verify that set  sent date is less than realse date  then error message is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Validate that Alert should be poped up when released Date is less than settled date", async() =>{
-//         await accountTransactionPage.newChequereleaseDate(AccountTransactionData["accountTransaction-001"].chequeSentDate);
-//     })
-// });
+    await test.step("Validate that Alert should be poped up when released Date is less than settled date", async() =>{
+        await accountTransactionPage.newChequereleaseDate(AccountTransactionData["accountTransaction-001"].chequeSentDate);
+    })
+});
 
-// //29
-// test('FIN-TC-127: TC_128_Account Transaction_verify that click  on cancel button then popup window get closed', async ({ page }) => {
+//29
+test('FIN-TC-127: TC_128_Account Transaction_verify that click  on cancel button then popup window get closed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate eye icon should be present",async() =>{
-//         await accountTransactionPage.validateEyeIcon();
-//     })
+    await test.step("Validate eye icon should be present",async() =>{
+        await accountTransactionPage.validateEyeIcon();
+    })
 
-//     await test.step("Click on the close button", async() =>{
-//         await accountTransactionPage.closePopup();
-//     })
-// });
+    await test.step("Click on the close button", async() =>{
+        await accountTransactionPage.closePopup();
+    })
+});
 
-// //30
-// test('FIN-TC-128: TC_129_Account Transaction_Verify that Items per page label and dropdown is displayed', async ({ page }) => {
+//30
+test('FIN-TC-128: TC_129_Account Transaction_Verify that Items per page label and dropdown is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate item per page should be present",async() =>{
-//         await accountTransactionPage.verifyPerPage()
-//     })
+    await test.step("Validate item per page should be present",async() =>{
+        await accountTransactionPage.verifyPerPage()
+    })
 
-// });
+});
 
-// //31
-// test('FIN-TC-129: TC_130_Account Transaction_IN dropdown 10,15,20, 30, 50, 100, 250 values are displayed', async ({ page }) => {
+//31
+test('FIN-TC-129: TC_130_Account Transaction_IN dropdown 10,15,20, 30, 50, 100, 250 values are displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate item per page should be present",async() =>{
-//         await accountTransactionPage.itemperPagedd()
-//     })
+    await test.step("Validate item per page should be present",async() =>{
+        await accountTransactionPage.itemperPagedd()
+    })
 
-// });
+});
 
-// //32
-// test('FIN-TC-130: TC_131_Account Transaction_Pagination is display from 1 to 15 and user can change the pagination using start page and last page', async ({ page }) => {
+//32
+test('FIN-TC-130: TC_131_Account Transaction_Pagination is display from 1 to 15 and user can change the pagination using start page and last page', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
     
-//      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate item per page should be present",async() =>{
-//         await accountTransactionPage.verifypagination()
-//     })
+    await test.step("Validate item per page should be present",async() =>{
+        await accountTransactionPage.verifypagination()
+    })
 
-// });
+});
 
-// //33
-// test('FIN-TC-1235: TC_541_Account Transaction_verify that from po validation date label and textbox is displayed', async ({ page }) => {
+//33
+test('FIN-TC-1235: TC_541_Account Transaction_verify that from po validation date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifyfromPODate()
+    })
  
-// });
+});
 
-// //34
-// test('FIN-TC-1236:TC_542_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+//34
+test('FIN-TC-1236:TC_542_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifyfromPODate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromPODateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromPODateCalendar();
+    })
+});
 
-// //35
-// test('FIN-TC-1237: TC_543_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//35
+test('FIN-TC-1237: TC_543_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifyfromPODate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromPODateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromPODateCalendar();
+    })
+});
 
-// //36
-// test('FIN-TC-1238: TC_544_Account Transaction_verify that user can select old date', async ({ page }) => {
+//36
+test('FIN-TC-1238: TC_544_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifyfromPODate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromPODateCalendar();
-//     })
-//     await test.step("Validate that told date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromPODateCalendar();
+    })
+    await test.step("Validate that told date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //37
-// test('FIN-TC-1239: TC_545_Account Transaction_verify that user can select future date', async ({ page }) => {
+//37
+test('FIN-TC-1239: TC_545_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifyfromPODate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromPODateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromPODateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// //38
-// test('FIN-TC-1240: TC_546_Account Transaction_verify that To po validation date label and textbox is displayed', async ({ page }) => {
+//38
+test('FIN-TC-1240: TC_546_Account Transaction_verify that To po validation date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to po date should be present",async() =>{
-//         await accountTransactionPage.verifytoPODate()
-//     })
+    await test.step("Validate to po date should be present",async() =>{
+        await accountTransactionPage.verifytoPODate()
+    })
  
-// });
+});
 
-// //39
-// test('FIN-TC-1241:TC_547_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+//39
+test('FIN-TC-1241:TC_547_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to po date should be present",async() =>{
-//         await accountTransactionPage.verifytoPODate()
-//     })
+    await test.step("Validate to po date should be present",async() =>{
+        await accountTransactionPage.verifytoPODate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifytoPODateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifytoPODateCalendar();
+    })
+});
 
-// //40
-// test('FIN-TC-1242: TC_548_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//40
+test('FIN-TC-1242: TC_548_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to po date should be present",async() =>{
-//         await accountTransactionPage.verifytoPODate()
-//     })
+    await test.step("Validate to po date should be present",async() =>{
+        await accountTransactionPage.verifytoPODate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifytoPODateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifytoPODateCalendar();
+    })
+});
 
-// //41
-// test('FIN-TC-1243: TC_549_Account Transaction_verify that user can select old date', async ({ page }) => {
+//41
+test('FIN-TC-1243: TC_549_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifytoPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifytoPODate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifytoPODateCalendar();
-//     })
-//     await test.step("Validate that told date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifytoPODateCalendar();
+    })
+    await test.step("Validate that told date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //42
-// test('FIN-TC-1244: TC_550_Account Transaction_verify that user can select future date', async ({ page }) => {
+//42
+test('FIN-TC-1244: TC_550_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifytoPODate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifytoPODate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifytoPODateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifytoPODateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// //43
-// test('FIN-TC-1245: TC_551_Account Transaction_verify that user can select To po validation date less than from po validation date', async ({ page }) => {
+//43
+test('FIN-TC-1245: TC_551_Account Transaction_verify that user can select To po validation date less than from po validation date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with PO Validation Date", async () => {
-//         await accountTransactionPage.fillPOValidationDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromPOValidationDate,AccountTransactionData["accountTransaction-001"].toPOValidationDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with PO Validation Date", async () => {
+        await accountTransactionPage.fillPOValidationDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromPOValidationDate,AccountTransactionData["accountTransaction-001"].toPOValidationDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate that invalid message should be populated", async() => {
-//         await accountTransactionPage.InvalidPageMsg();
-//     })
-// });
+    await test.step("Validate that invalid message should be populated", async() => {
+        await accountTransactionPage.InvalidPageMsg();
+    })
+});
 
-// //44
-// test('FIN-TC-1246: TC_552_Account Transaction_verify that user can select To po validation date greater than from po validation date', async ({ page }) => {
+//44
+test('FIN-TC-1246: TC_552_Account Transaction_verify that user can select To po validation date greater than from po validation date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with PO Validation Date", async () => {
-//         await accountTransactionPage.fillPOValidationDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromPOValidationDate,AccountTransactionData["accountTransaction-002"].toPOValidationDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with PO Validation Date", async () => {
+        await accountTransactionPage.fillPOValidationDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromPOValidationDate,AccountTransactionData["accountTransaction-002"].toPOValidationDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-// });
+});
 
-// //45
-// test('FIN-TC-1247: TC_553_Account Transaction_verify that user can select same To po validation date and from po validation date', async ({ page }) => {
+//45
+test('FIN-TC-1247: TC_553_Account Transaction_verify that user can select same To po validation date and from po validation date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with PO Validation Date", async () => {
-//         await accountTransactionPage.fillPOValidationDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromPOValidationDate,AccountTransactionData["accountTransaction-003"].toPOValidationDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with PO Validation Date", async () => {
+        await accountTransactionPage.fillPOValidationDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromPOValidationDate,AccountTransactionData["accountTransaction-003"].toPOValidationDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-// });
+});
 
-// //46
-// test('FIN-TC-1248: TC_554_Account Transaction_verify that from Due date label and textbox is displayed', async ({ page }) => {
+//46
+test('FIN-TC-1248: TC_554_Account Transaction_verify that from Due date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from due date should be present",async() =>{
-//         await accountTransactionPage.verifyfromDueDate()
-//     })
+    await test.step("Validate from due date should be present",async() =>{
+        await accountTransactionPage.verifyfromDueDate()
+    })
  
-// });
+});
 
-// //47
-// test('FIN-TC-1249:TC_555_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+//47
+test('FIN-TC-1249:TC_555_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from due date should be present",async() =>{
-//         await accountTransactionPage.verifyfromDueDate()
-//     })
+    await test.step("Validate from due date should be present",async() =>{
+        await accountTransactionPage.verifyfromDueDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromDueDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromDueDateCalendar();
+    })
+});
 
-// //48
-// test('FIN-TC-1250: TC_556_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//48
+test('FIN-TC-1250: TC_556_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from due date should be present",async() =>{
-//         await accountTransactionPage.verifyfromDueDate()
-//     })
+    await test.step("Validate from due date should be present",async() =>{
+        await accountTransactionPage.verifyfromDueDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromDueDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromDueDateCalendar();
+    })
+});
 
-// //49
-// test('FIN-TC-1251: TC_557_Account Transaction_verify that user can select old date', async ({ page }) => {
+//49
+test('FIN-TC-1251: TC_557_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from due date should be present",async() =>{
-//         await accountTransactionPage.verifyfromDueDate()
-//     })
+    await test.step("Validate from due date should be present",async() =>{
+        await accountTransactionPage.verifyfromDueDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromDueDateCalendar();
-//     })
-//     await test.step("Validate that old date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromDueDateCalendar();
+    })
+    await test.step("Validate that old date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //50
-// test('FIN-TC-1252: TC_558_Account Transaction_verify that user can select future date', async ({ page }) => {
+//50
+test('FIN-TC-1252: TC_558_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from due date should be present",async() =>{
-//         await accountTransactionPage.verifyfromDueDate()
-//     })
+    await test.step("Validate from due date should be present",async() =>{
+        await accountTransactionPage.verifyfromDueDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromDueDateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromDueDateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// 
 
-// test('FIN-TC-1253: TC_559_Account Transaction_verify that To Due date label and textbox is displayed', async ({ page }) => {
+//51
+test('FIN-TC-1253: TC_559_Account Transaction_verify that To Due date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to due date should be present",async() =>{
-//         await accountTransactionPage.verifytoDueDate()
-//     })
+    await test.step("Validate to due date should be present",async() =>{
+        await accountTransactionPage.verifytoDueDate()
+    })
  
-// });
+});
 
-// //52
-// test('FIN-TC-1254:TC_560_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+//52
+test('FIN-TC-1254:TC_560_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to due date should be present",async() =>{
-//         await accountTransactionPage.verifytoDueDate()
-//     })
+    await test.step("Validate to due date should be present",async() =>{
+        await accountTransactionPage.verifytoDueDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifytoDueDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifytoDueDateCalendar();
+    })
+});
 
-// //53
-// test('FIN-TC-1255: TC_561_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//53
+test('FIN-TC-1255: TC_561_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from due date should be present",async() =>{
-//         await accountTransactionPage.verifytoDueDate()
-//     })
+    await test.step("Validate from due date should be present",async() =>{
+        await accountTransactionPage.verifytoDueDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromDueDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromDueDateCalendar();
+    })
+});
 
-// //54
-// test('FIN-TC-1256: TC_562_Account Transaction_verify that user can select old date', async ({ page }) => {
+//54
+test('FIN-TC-1256: TC_562_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifytoDueDate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifytoDueDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifytoDueDateCalendar();
-//     })
-//     await test.step("Validate that told date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifytoDueDateCalendar();
+    })
+    await test.step("Validate that told date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //55
-// test('FIN-TC-1257: TC_563_Account Transaction_verify that user can select future date', async ({ page }) => {
+//55
+test('FIN-TC-1257: TC_563_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from po date should be present",async() =>{
-//         await accountTransactionPage.verifytoDueDate()
-//     })
+    await test.step("Validate from po date should be present",async() =>{
+        await accountTransactionPage.verifytoDueDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifytoDueDateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifytoDueDateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// //56
-// test('FIN-TC-1258: TC_564_Account Transaction_verify that user can select To Due date less than from Due date', async ({ page }) => {
+//56
+test('FIN-TC-1258: TC_564_Account Transaction_verify that user can select To Due date less than from Due date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with Due Date", async () => {
-//         await accountTransactionPage.fillDueDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDueDate,AccountTransactionData["accountTransaction-001"].toDueDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with Due Date", async () => {
+        await accountTransactionPage.fillDueDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDueDate,AccountTransactionData["accountTransaction-001"].toDueDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate that invalid message should be populated", async() => {
-//         await accountTransactionPage.InvalidPageMsg();
-//     })
-// });
+    await test.step("Validate that invalid message should be populated", async() => {
+        await accountTransactionPage.InvalidPageMsg();
+    })
+});
 
-// //57
-// test('FIN-TC-1259: TC_565_Account Transaction_verify that user can select To Due date greater than from Due date', async ({ page }) => {
+//57
+test('FIN-TC-1259: TC_565_Account Transaction_verify that user can select To Due date greater than from Due date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with Due Date", async () => {
-//         await accountTransactionPage.fillDueDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromDueDate,AccountTransactionData["accountTransaction-002"].toDueDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with Due Date", async () => {
+        await accountTransactionPage.fillDueDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromDueDate,AccountTransactionData["accountTransaction-002"].toDueDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-// });
+});
 
-// //58
-// test('FIN-TC-1260: TC_566_Account Transaction_verify that user can select same To Due date and from Due date', async ({ page }) => {
+//58
+test('FIN-TC-1260: TC_566_Account Transaction_verify that user can select same To Due date and from Due date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Enter all the details with due Date", async () => {
-//         await accountTransactionPage.fillDueDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromDueDate,AccountTransactionData["accountTransaction-003"].toDueDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+    await test.step("Enter all the details with due Date", async () => {
+        await accountTransactionPage.fillDueDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromDueDate,AccountTransactionData["accountTransaction-003"].toDueDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
-// });
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
+});
 
-// //59
-// test('FIN-TC-1261: TC_567_Account Transaction_verify that from settle date label and textbox is displayed', async ({ page }) => {
+//59
+test('FIN-TC-1261: TC_567_Account Transaction_verify that from settle date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from Settle date should be present",async() =>{
-//         await accountTransactionPage.verifyfromSettleDate()
-//     })
+    await test.step("Validate from Settle date should be present",async() =>{
+        await accountTransactionPage.verifyfromSettleDate()
+    })
  
-// });
+});
 
-// //60
-// test('FIN-TC-1262:TC_568_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+//60
+test('FIN-TC-1262:TC_568_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from settle date should be present",async() =>{
-//         await accountTransactionPage.verifyfromSettleDate()
-//     })
+    await test.step("Validate from settle date should be present",async() =>{
+        await accountTransactionPage.verifyfromSettleDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromSettleDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromSettleDateCalendar();
+    })
+});
 
-// //61
-// test('FIN-TC-1263: TC_569_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//61
+test('FIN-TC-1263: TC_569_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from settle date should be present",async() =>{
-//         await accountTransactionPage.verifyfromSettleDate()
-//     })
+    await test.step("Validate from settle date should be present",async() =>{
+        await accountTransactionPage.verifyfromSettleDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromSettleDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromSettleDateCalendar();
+    })
+});
 
-// //62
-// test('FIN-TC-1264: TC_570_Account Transaction_verify that user can select old date', async ({ page }) => {
+//62
+test('FIN-TC-1264: TC_570_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from settle date should be present",async() =>{
-//         await accountTransactionPage.verifyfromSettleDate()
-//     })
+    await test.step("Validate from settle date should be present",async() =>{
+        await accountTransactionPage.verifyfromSettleDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromSettleDateCalendar();
-//     })
-//     await test.step("Validate that old date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromSettleDateCalendar();
+    })
+    await test.step("Validate that old date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //63
-// test('FIN-TC-1265: TC_571_Account Transaction_verify that user can select future date', async ({ page }) => {
+//63
+test('FIN-TC-1265: TC_571_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from settle date should be present",async() =>{
-//         await accountTransactionPage.verifyfromSettleDate()
-//     })
+    await test.step("Validate from settle date should be present",async() =>{
+        await accountTransactionPage.verifyfromSettleDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromSettleDateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromSettleDateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// //64
-// test('FIN-TC-1266: TC_572_Account Transaction_verify that To settle date label and textbox is displayed', async ({ page }) => {
+//64
+test('FIN-TC-1266: TC_572_Account Transaction_verify that To settle date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to settle date should be present",async() =>{
-//         await accountTransactionPage.verifytoSettleDate()
-//     })
-//  });
-
-// // 65
-// test('FIN-TC-1267:TC_573_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
-
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
-
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
-
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
-
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Validate to settle date should be present",async() =>{
+        await accountTransactionPage.verifytoSettleDate()
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+});
 
-//     await test.step("Validate to settle date should be present",async() =>{
-//         await accountTransactionPage.verifytoSettleDate()
-//     })
+// 65
+test('FIN-TC-1267:TC_573_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
+
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
+
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
+ 
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
+
+    await test.step("Validate to settle date should be present",async() =>{
+        await accountTransactionPage.verifytoSettleDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifytoSettleDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifytoSettleDateCalendar();
+    })
+});
 
+//66
 test('FIN-TC-1268: TC_574_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
@@ -2947,746 +2949,745 @@ test('FIN-TC-1285: TC_591_Account Transaction_verify that user can select To che
 
 });
 
-// //84 Need to add next time
-// test('FIN-TC-1286: TC_592_Account Transaction_verify that user can select same To cheque release date and from cheque release date', async ({ page }) => {
+//84
+test('FIN-TC-1286: TC_592_Account Transaction_verify that user can select same To cheque release date and from cheque release date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Enter all the details with settle Date", async () => {
-//         await accountTransactionPage.fillChequeReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromChequeReleaseDate,AccountTransactionData["accountTransaction-003"].toChequeReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+    await test.step("Enter all the details with settle Date", async () => {
+        await accountTransactionPage.fillChequeReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromChequeReleaseDate,AccountTransactionData["accountTransaction-003"].toChequeReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
+    await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
+});
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
-// });
+//85
+test('FIN-TC-1287: TC_593_Account Transaction_verify that from po release date label and textbox is displayed', async ({ page }) => {
 
-// //85
-// test('FIN-TC-1287: TC_593_Account Transaction_verify that from po release date label and textbox is displayed', async ({ page }) => {
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
-
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from PO Release date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPOReleaseDate();
-//     })
+    await test.step("Validate from PO Release date should be present",async() =>{
+        await accountTransactionPage.verifyfromPOReleaseDate();
+    })
  
-// });
+});
 
-// //86
-// test('FIN-TC-1288:TC_594_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+//86
+test('FIN-TC-1288:TC_594_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from PO Release date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPOReleaseDate()
-//     })
+    await test.step("Validate from PO Release date should be present",async() =>{
+        await accountTransactionPage.verifyfromPOReleaseDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromPOReleaseDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromPOReleaseDateCalendar();
+    })
+});
 
-// //87  
-// test('FIN-TC-1289: TC_595_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//87
+test('FIN-TC-1289: TC_595_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from PO release date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPOReleaseDate()
-//     })
+    await test.step("Validate from PO release date should be present",async() =>{
+        await accountTransactionPage.verifyfromPOReleaseDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromPOReleaseDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromPOReleaseDateCalendar();
+    })
+});
 
-// //88
-// test('FIN-TC-1290: TC_596_Account Transaction_verify that user can select old date', async ({ page }) => {
+//88
+test('FIN-TC-1290: TC_596_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from PO Release date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPOReleaseDate()
-//     })
+    await test.step("Validate from PO Release date should be present",async() =>{
+        await accountTransactionPage.verifyfromPOReleaseDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromPOReleaseDateCalendar();
-//     })
-//     await test.step("Validate that old date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromPOReleaseDateCalendar();
+    })
+    await test.step("Validate that old date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //89
-// test('FIN-TC-1291: TC_597_Account Transaction_verify that user can select future date', async ({ page }) => {
+//89
+test('FIN-TC-1291: TC_597_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from settle date should be present",async() =>{
-//         await accountTransactionPage.verifyfromPOReleaseDate()
-//     })
+    await test.step("Validate from settle date should be present",async() =>{
+        await accountTransactionPage.verifyfromPOReleaseDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifyfromPOReleaseDateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifyfromPOReleaseDateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// //90
-// test('FIN-TC-1292: TC_598_Account Transaction_verify that To po release date label and textbox is displayed', async ({ page }) => {
+//90
+test('FIN-TC-1292: TC_598_Account Transaction_verify that To po release date label and textbox is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to settle date should be present",async() =>{
-//         await accountTransactionPage.verifytoPOReleaseDate()
-//     })
+    await test.step("Validate to settle date should be present",async() =>{
+        await accountTransactionPage.verifytoPOReleaseDate()
+    })
  
-// });
+});
 
-// // 91
-// test('FIN-TC-1293:TC_599_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+// 91 
+test('FIN-TC-1293:TC_599_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to PO release date should be present",async() =>{
-//         await accountTransactionPage.verifytoPOReleaseDate()
-//     })
+    await test.step("Validate to PO release date should be present",async() =>{
+        await accountTransactionPage.verifytoPOReleaseDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifytoPOReleaseDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifytoPOReleaseDateCalendar();
+    })
+});
 
-// //92
-// test('FIN-TC-1294: TC_600_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+//92
+test('FIN-TC-1294: TC_600_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from PO release date should be present",async() =>{
-//         await accountTransactionPage.verifytoPOReleaseDate()
-//     })
+    await test.step("Validate from PO release date should be present",async() =>{
+        await accountTransactionPage.verifytoPOReleaseDate()
+    })
     
-//     await test.step("Validate that the calendar should be present",async()=>{
-//         await accountTransactionPage.verifyfromPOReleaseDateCalendar();
-//     })
-// });
+    await test.step("Validate that the calendar should be present",async()=>{
+        await accountTransactionPage.verifyfromPOReleaseDateCalendar();
+    })
+});
 
-// //93
-// test('FIN-TC-1295: TC_601_Account Transaction_verify that user can select old date', async ({ page }) => {
+//93
+test('FIN-TC-1295: TC_601_Account Transaction_verify that user can select old date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate to PO Release date should be present",async() =>{
-//         await accountTransactionPage.verifytoPOReleaseDate()
-//     })
+    await test.step("Validate to PO Release date should be present",async() =>{
+        await accountTransactionPage.verifytoPOReleaseDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifytoPOReleaseDateCalendar();
-//     })
-//     await test.step("Validate that told date can be selected",async()=>{
-//         await accountTransactionPage.verifyOldDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifytoPOReleaseDateCalendar();
+    })
+    await test.step("Validate that told date can be selected",async()=>{
+        await accountTransactionPage.verifyOldDate();
+    })
+});
 
-// //94
-// test('FIN-TC-1296:TC_602_Account Transaction_verify that user can select future date', async ({ page }) => {
+//94
+test('FIN-TC-1296:TC_602_Account Transaction_verify that user can select future date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Validate from settle date should be present",async() =>{
-//         await accountTransactionPage.verifytoPOReleaseDate()
-//     })
+    await test.step("Validate from settle date should be present",async() =>{
+        await accountTransactionPage.verifytoPOReleaseDate()
+    })
     
-//      await test.step("Click on calendar icon",async()=>{
-//         await accountTransactionPage.verifytoPOReleaseDateCalendar();
-//     })
-//     await test.step("Validate that future date can be selected",async()=>{
-//         await accountTransactionPage.verifyFutureDate();
-//     })
-// });
+     await test.step("Click on calendar icon",async()=>{
+        await accountTransactionPage.verifytoPOReleaseDateCalendar();
+    })
+    await test.step("Validate that future date can be selected",async()=>{
+        await accountTransactionPage.verifyFutureDate();
+    })
+});
 
-// //95
-// test('FIN-TC-1297: TC_603_Account Transaction_verify that user can select To po release date less than from po release date', async ({ page }) => {
+//95
+test('FIN-TC-1297: TC_603_Account Transaction_verify that user can select To po release date less than from po release date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with PO Release Date", async () => {
-//         await accountTransactionPage.fillPOReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromPOReleaseDate,AccountTransactionData["accountTransaction-001"].toPOReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with PO Release Date", async () => {
+        await accountTransactionPage.fillPOReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromPOReleaseDate,AccountTransactionData["accountTransaction-001"].toPOReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-//     await test.step("Validate that invalid message should be populated", async() => {
-//         await accountTransactionPage.InvalidPageMsg();
-//     })
-// });
+    await test.step("Validate that invalid message should be populated", async() => {
+        await accountTransactionPage.InvalidPageMsg();
+    })
+});
 
-// //96
-// test('FIN-TC-1298: TC_604_Account Transaction_verify that user can select To po release date greater than from po release date', async ({ page }) => {
+//96
+test('FIN-TC-1298: TC_604_Account Transaction_verify that user can select To po release date greater than from po release date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//      await test.step("Enter all the details with PO Release Date", async () => {
-//         await accountTransactionPage.fillPOReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromPOReleaseDate,AccountTransactionData["accountTransaction-002"].toPOReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+     await test.step("Enter all the details with PO Release Date", async () => {
+        await accountTransactionPage.fillPOReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromPOReleaseDate,AccountTransactionData["accountTransaction-002"].toPOReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
 
-// });
+});
 
-// //97
-// test('FIN-TC-1299: TC_605_Account Transaction_verify that user can select same To po release date and from po release date', async ({ page }) => {
+//97
+test('FIN-TC-1299: TC_605_Account Transaction_verify that user can select same To po release date and from po release date', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Enter all the details with settle Date", async () => {
-//         await accountTransactionPage.fillPOReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromPOReleaseDate,AccountTransactionData["accountTransaction-003"].toPOReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
-//     })
+    await test.step("Enter all the details with settle Date", async () => {
+        await accountTransactionPage.fillPOReleaseDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-003"].fromPOReleaseDate,AccountTransactionData["accountTransaction-003"].toPOReleaseDate,AccountTransactionData["accountTransaction-002"].Account);
+    })
 
 
-//      await test.step("Click on the Search button", async () => {
-//         await accountTransactionPage.clickonSearch();
-//     })
-// });
+     await test.step("Click on the Search button", async () => {
+        await accountTransactionPage.clickonSearch();
+    })
+});
 
-// //98
-// test('FIN-TC-1300: TC_606_Account Transaction_Verify that Type dropdown is displayed', async ({ page }) => {
+//98
+test('FIN-TC-1300: TC_606_Account Transaction_Verify that Type dropdown is displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
-//         await accountTransactionPage.typeDropdown();
-//     })
-// });
+    await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
+        await accountTransactionPage.typeDropdown();
+    })
+});
 
-// //99
-// test('FIN-TC-1301: TC_607_Account Transaction_verify that in dropdown options are displayed', async ({ page }) => {
+//99
+test('FIN-TC-1301: TC_607_Account Transaction_verify that in dropdown options are displayed', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
-//         await accountTransactionPage.typeDropdown();
-//     })
+    await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
+        await accountTransactionPage.typeDropdown();
+    })
 
-//     await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.selectfirstdropdown();
-//     })
-// });
+    await test.step("Validate that first option in dropdown is selected", async() =>{
+        await accountTransactionPage.selectfirstdropdown();
+    })
+});
 
-// //100
-// test('FIN-TC-1302: TC_608_Account Transaction_verify that user can select one option at a time', async ({ page }) => {
+//100
+test('FIN-TC-1302: TC_608_Account Transaction_verify that user can select one option at a time', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
-//         await accountTransactionPage.typeDropdown();
-//     })
+    await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
+        await accountTransactionPage.typeDropdown();
+    })
 
-//     await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.selectfirstdropdown();
-//     })
-// });
+    await test.step("Validate that first option in dropdown is selected", async() =>{
+        await accountTransactionPage.selectfirstdropdown();
+    })
+});
 
-// //101
-// test('FIN-TC-1303: TC_609_Account Transaction_verify that selected value is shown on the dropdown', async ({ page }) => {
+//101
+test('FIN-TC-1303: TC_609_Account Transaction_verify that selected value is shown on the dropdown', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
-//         await accountTransactionPage.typeDropdown();
-//     })
+    await test.step("Click on Type field and validate that the dropdown should be populated", async () => {
+        await accountTransactionPage.typeDropdown();
+    })
 
-//     await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.selectfirstdropdown();
-//     })
+    await test.step("Validate that first option in dropdown is selected", async() =>{
+        await accountTransactionPage.selectfirstdropdown();
+    })
 
-//     await test.step("Validate that the type is same as shown in the dropdown", async()=>{
-//         await accountTransactionPage.selectedOption(AccountTransactionData["accountTransaction-002"].type);
-//     })
-// });
+    await test.step("Validate that the type is same as shown in the dropdown", async()=>{
+        await accountTransactionPage.selectedOption(AccountTransactionData["accountTransaction-002"].type);
+    })
+});
 
-// //102
-// test('FIN-TC-1304: TC_610_Account Transaction_Verify that Payment order Id textbox accept alphabeats', async ({ page }) => {
+//102
+test('FIN-TC-1304: TC_610_Account Transaction_Verify that Payment order Id textbox accept alphabeats', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Fill the payment order ID", async () => {
-//         await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDAlpha);
-//     })
+    await test.step("Fill the payment order ID", async () => {
+        await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDAlpha);
+    })
 
-//     await test.step("Validate that OrderID is blank", async() =>{
-//         await accountTransactionPage.blankOrderID();
-//     })
-// });
+    await test.step("Validate that OrderID is blank", async() =>{
+        await accountTransactionPage.blankOrderID();
+    })
+});
 
-// //103
-// test('FIN-TC-1305: TC_611_Account Transaction_Verify that Payment order Id textbox accept numbers', async ({ page }) => {
+//103
+test('FIN-TC-1305: TC_611_Account Transaction_Verify that Payment order Id textbox accept numbers', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Fill the payment order ID", async () => {
-//         await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDNo);
-//     })
-// });
+    await test.step("Fill the payment order ID", async () => {
+        await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDNo);
+    })
+});
 
-// //104
-// test('FIN-TC-1306: TC_612_Account Transaction_Verify that Payment order Id textbox accept specail charachters', async ({ page }) => {
+//104
+test('FIN-TC-1306: TC_612_Account Transaction_Verify that Payment order Id textbox accept specail charachters', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Fill the payment order ID", async () => {
-//         await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDSpCh);
-//     })
+    await test.step("Fill the payment order ID", async () => {
+        await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDSpCh);
+    })
 
-//     await test.step("Validate that OrderID is blank", async() =>{
-//         await accountTransactionPage.blankOrderID();
-//     })
-// });
+    await test.step("Validate that OrderID is blank", async() =>{
+        await accountTransactionPage.blankOrderID();
+    })
+});
 
-// //105
-// test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textbox accept blank spaces', async ({ page }) => {
+//105
+test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textbox accept blank spaces', async ({ page }) => {
 
-//     const loginPage: LoginPage = new LoginPage(page);
-//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+    const loginPage: LoginPage = new LoginPage(page);
+    const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
 
-//     await test.step("User navigates to Mawista application", async () => {
-//         await loginPage.gotoLoginPage(data['Login-Access'].url);
-//     })
+    await test.step("User navigates to Mawista application", async () => {
+        await loginPage.gotoLoginPage(data['Login-Access'].url);
+    })
 
-//     await test.step("User Enter Username and Password", async () => {
-//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-//     })
+    await test.step("User Enter Username and Password", async () => {
+        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+    })
 
-//     await test.step("Click On Provider Transaction Under Financials", async () => {
-//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-//     })
+    await test.step("Click On Provider Transaction Under Financials", async () => {
+        await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+    })
  
-//       await test.step("Verify that Account Transaction Page is visible", async () => {
-//         await accountTransactionPage.accountTransactionField();
-//     })
+      await test.step("Verify that Account Transaction Page is visible", async () => {
+        await accountTransactionPage.accountTransactionField();
+    })
 
-//     await test.step("Verify that Account Transactions Page is visible", async () => {
-//         await accountTransactionPage.validatefieldsVisibility();
-//     })
+    await test.step("Verify that Account Transactions Page is visible", async () => {
+        await accountTransactionPage.validatefieldsVisibility();
+    })
     
-//     await test.step("Fill the payment order ID", async () => {
-//         await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDBlSp);
-//     })
+    await test.step("Fill the payment order ID", async () => {
+        await accountTransactionPage.fillPaymentOrderID(AccountTransactionData["accountTransaction-001"].POIDBlSp);
+    })
 
-//     await test.step("Validate that OrderID is blank", async() =>{
-//         await accountTransactionPage.blankOrderID();
-//     })
-// });
+    await test.step("Validate that OrderID is blank", async() =>{
+        await accountTransactionPage.blankOrderID();
+    })
+});
 
-// //106
+// //106 Need to add next time
 // test('FIN-TC-1308: TC_614_Account Transaction_Verify that Payment order Id textbox accept leading and trailing spaces', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
@@ -4302,9 +4303,8 @@ test('FIN-TC-1285: TC_591_Account Transaction_verify that user can select To che
 //     })
 // });
 
-
-// //121
-// test('FIN-TC-1327: TC_633_Account Transaction_verify that when provider typw selected from dropdown then provider dropdown get enabled', async ({ page }) => {
+// //125
+// test('FIN-TC-1331: TC_637_Account Transaction_Verify that from amount textbox accept alphabeats', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
 //     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -4325,23 +4325,21 @@ test('FIN-TC-1285: TC_591_Account Transaction_verify that user can select To che
 //         await accountTransactionPage.accountTransactionField();
 //     })
 
-//      await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.verifyCountryDropdown();
-//         await accountTransactionPage.selectfirstCountryDropdown();
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the from amount", async () => {
+//         await accountTransactionPage.fillFromAmount(AccountTransactionData["accountTransaction-001"].fromAmountAlpha);
 //     })
 
-//     await test.step("Select the valure for Provider type field", async () => {
-//         await accountTransactionPage.verifyProviderTypeDropdown();
-//          await accountTransactionPage.selectfirstProviderTypeDropdown();
-//     })
-
-//     await test.step("Validate that Provider field dropdown is enabled",async()=>{
-//         await accountTransactionPage.verifyProviderDropdown();
+//     await test.step("Validate that from amount is blank", async() =>{
+//         await accountTransactionPage.blankFromAmount();
 //     })
 // });
 
-// //122
-// test('FIN-TC-1324: TC_634_Account Transaction_verify that in dropdown options are displayed', async ({ page }) => {
+// //126
+// test('FIN-TC-1332: TC_638_Account Transaction_Verify that from amount textbox accept numbers', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
 //     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -4362,19 +4360,119 @@ test('FIN-TC-1285: TC_591_Account Transaction_verify that user can select To che
 //         await accountTransactionPage.accountTransactionField();
 //     })
 
-//      await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.verifyCountryDropdown();
-//         await accountTransactionPage.selectfirstCountryDropdown();
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the from amount", async () => {
+//         await accountTransactionPage.fillFromAmount(AccountTransactionData["accountTransaction-001"].fromAmountNo);
+//     })
+// });
+
+// //127
+// test('FIN-TC-1333: TC_639_Account Transaction_Verify that from amount textbox accept specail charachters', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
 //     })
 
-//     await test.step("Validate that Provider type field is enabled", async () => {
-//         await accountTransactionPage.verifyProviderTypeDropdown();
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the from amount", async () => {
+//         await accountTransactionPage.fillFromAmount(AccountTransactionData["accountTransaction-001"].fromAmountSpecialCharacter);
+//     })
+
+//     await test.step("Validate that from amount is blank", async() =>{
+//         await accountTransactionPage.blankFromAmount();
+//     })
+// });
+
+// //128
+// test('FIN-TC-1334: TC_640_Account Transaction_Verify that from amount textbox accept blank spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the from amount", async () => {
+//         await accountTransactionPage.fillFromAmount(AccountTransactionData["accountTransaction-001"].fromAmountBlank);
+//     })
+
+//     await test.step("Validate that from amount is blank", async() =>{
+//         await accountTransactionPage.blankFromAmount();
+//     })
+// });
+
+// //129
+// test('FIN-TC-1335: TC_641_Account Transaction_Verify that from amount textbox accept leading and trailing spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the from amount", async () => {
+//         await accountTransactionPage.fillFromAmount(AccountTransactionData["accountTransaction-001"].fromAmountTrailingSpace);
 //     })
 
 // });
 
-// //123
-// test('FIN-TC-1325: TC_631_Account Transaction_verify that user can select one option at a time', async ({ page }) => {
+// //130
+// test('FIN-TC-1336: TC_642_Account Transaction_Verify that To amount textbox accept alphabeats', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
 //     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -4395,22 +4493,21 @@ test('FIN-TC-1285: TC_591_Account Transaction_verify that user can select To che
 //         await accountTransactionPage.accountTransactionField();
 //     })
 
-//      await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.verifyCountryDropdown();
-//         await accountTransactionPage.selectfirstCountryDropdown();
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillToAmount(AccountTransactionData["accountTransaction-001"].toAmountAlpha);
 //     })
 
-//     await test.step("Validate that Provider type field is enabled", async () => {
-//         await accountTransactionPage.verifyProviderTypeDropdown();
-//     })
-
-//     await test.step("Validate that first option of provider type is selected", async()=>{
-//         await accountTransactionPage.selectfirstProviderTypeDropdown();
+//     await test.step("Validate that to amount is blank", async() =>{
+//         await accountTransactionPage.blankToAmount();
 //     })
 // });
 
-// //124
-// test('FIN-TC-1326: TC_632_Account Transaction_verify that selected value is shown on the dropdown', async ({ page }) => {
+// //131
+// test('FIN-TC-1337: TC_643_Account Transaction_Verify that To amount textbox accept numbers', async ({ page }) => {
 
 //     const loginPage: LoginPage = new LoginPage(page);
 //     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -4431,20 +4528,1116 @@ test('FIN-TC-1285: TC_591_Account Transaction_verify that user can select To che
 //         await accountTransactionPage.accountTransactionField();
 //     })
 
-//      await test.step("Validate that first option in dropdown is selected", async() =>{
-//         await accountTransactionPage.verifyCountryDropdown();
-//         await accountTransactionPage.selectfirstCountryDropdown();
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillToAmount(AccountTransactionData["accountTransaction-001"].toAmountNo);
+//     })
+// });
+
+// //132
+// test('FIN-TC-1338: TC_644_Account Transaction_Verify that To amount textbox accept specail charachters', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
 //     })
 
-//     await test.step("Validate that Provider type field is enabled", async () => {
-//         await accountTransactionPage.verifyProviderTypeDropdown();
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
 //     })
 
-//     await test.step("Validate that first option of provider type is selected", async()=>{
-//         await accountTransactionPage.selectfirstProviderTypeDropdown();
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
 //     })
 
-//     await test.step("Validate that the selected value is shown", async()=>{
-//         await accountTransactionPage.selectedProviderTypeOption(AccountTransactionData["accountTransaction-001"].ProviderType)
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillToAmount(AccountTransactionData["accountTransaction-001"].toAmountSpecialCharacter);
+//     })
+
+//     await test.step("Validate that to amount is blank", async() =>{
+//         await accountTransactionPage.blankToAmount();
+//     })
+// });
+
+// //133
+// test('FIN-TC-1339: TC_645_Account Transaction_Verify that To amount textbox accept blank spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillToAmount(AccountTransactionData["accountTransaction-001"].toAmountBlank);
+//     })
+
+//     await test.step("Validate that to amount is blank", async() =>{
+//         await accountTransactionPage.blankToAmount();
+//     })
+// });
+
+// //134
+// test('FIN-TC-1340: TC_646_Account Transaction_Verify that To amount textbox accept leading and trailing spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillToAmount(AccountTransactionData["accountTransaction-001"].toAmountTrailingSpace);
+//     })
+
+// });
+
+// //135
+// test('FIN-TC-1341: TC_647_Account Transaction_verify that user can enter To amount less than from amount', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillAmount(AccountTransactionData["accountTransaction-001"].fromAmount, AccountTransactionData["accountTransaction-001"].toAmount);
+//     })
+
+//     await test.step("Validate that to amount is less than from amount", async() =>{
+//         await accountTransactionPage.errorMsgAmount();
+//     })
+
+// });
+
+// //136
+// test('FIN-TC-1342:TC_648_Account Transaction_verify that user can enter To amount greater than from amount', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillAmount(AccountTransactionData["accountTransaction-002"].fromAmount, AccountTransactionData["accountTransaction-002"].toAmount);
+//     })
+
+// });
+
+// //137
+// test('FIN-TC-1343:TC_649_Account Transaction_verify that user can enter same from amount and To amount', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the to amount", async () => {
+//         await accountTransactionPage.fillAmount(AccountTransactionData["accountTransaction-002"].fromAmount, AccountTransactionData["accountTransaction-001"].toAmount);
+//     })
+
+// });
+
+// //138
+// test('FIN-TC-1344: TC_650_Account Transaction_verify that from delivery date label and textbox is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate from delivery date should be present",async() =>{
+//         await accountTransactionPage.verifyfromDeleiveryDate()
+//     })
+ 
+// });
+
+// //139
+// test('FIN-TC-1345: TC_651_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate from delivery date should be present",async() =>{
+//         await accountTransactionPage.verifyfromDeleiveryDate()
+//     })
+    
+//     await test.step("Validate that the calendar should be present",async()=>{
+//         await accountTransactionPage.verifyfromDeliveryDateCalendar();
+//     })
+// });
+
+// //140
+// test('FIN-TC-1346: TC_652_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate from delivery date should be present",async() =>{
+//         await accountTransactionPage.verifyfromDeleiveryDate()
+//     })
+    
+//     await test.step("Validate that the calendar should be present",async()=>{
+//         await accountTransactionPage.verifyfromDeliveryDateCalendar();
+//     })
+// });
+
+// //141
+// test('FIN-TC-1347: TC_653_Account Transaction_verify that user can select old date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate from delivery date should be present",async() =>{
+//         await accountTransactionPage.verifyfromDeleiveryDate()
+//     })
+    
+//      await test.step("Click on calendar icon",async()=>{
+//         await accountTransactionPage.verifyfromDeliveryDateCalendar();
+//     })
+//     await test.step("Validate that old date can be selected",async()=>{
+//         await accountTransactionPage.verifyOldDate();
+//     })
+// });
+
+// //142
+// test('FIN-TC-1348: TC_654_Account Transaction_verify that user can select future date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate from delivery date should be present",async() =>{
+//         await accountTransactionPage.verifyfromDeleiveryDate()
+//     })
+    
+//      await test.step("Click on calendar icon",async()=>{
+//         await accountTransactionPage.verifyfromDeliveryDateCalendar();
+//     })
+//     await test.step("Validate that future date can be selected",async()=>{
+//         await accountTransactionPage.verifyFutureDate();
+//     })
+// });
+
+// //143
+// test('FIN-TC-1349: TC_655_Account Transaction_verify that To delivery date label and textbox is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate to delivery date should be present",async() =>{
+//         await accountTransactionPage.verifytoDeliveryDate()
+//     })
+ 
+// });
+
+// //144
+// test('FIN-TC-1350: TC_656_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate to delivery date should be present",async() =>{
+//         await accountTransactionPage.verifytoDeliveryDate()
+//     })
+    
+//     await test.step("Validate that the calendar should be present",async()=>{
+//         await accountTransactionPage.verifytoDeliveryDateCalendar();
+//     })
+// });
+
+// //145
+// test('FIN-TC-1351: TC_657_Account Transaction_verify that click on calender icon then calender get open with current date selected by default', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate to delivery date should be present",async() =>{
+//         await accountTransactionPage.verifytoDeliveryDate()
+//     })
+    
+//     await test.step("Validate that the calendar should be present",async()=>{
+//         await accountTransactionPage.verifytoDeliveryDateCalendar();
+//     })
+// });
+
+// //146
+// test('FIN-TC-1352: TC_658_Account Transaction_verify that user can select old date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate to delivery date should be present",async() =>{
+//         await accountTransactionPage.verifytoDeliveryDate()
+//     })
+    
+//      await test.step("Click on calendar icon",async()=>{
+//         await accountTransactionPage.verifytoDeliveryDateCalendar();
+//     })
+//     await test.step("Validate that old date can be selected",async()=>{
+//         await accountTransactionPage.verifyOldDate();
+//     })
+// });
+
+// //147
+// test('FIN-TC-1353: TC_659_Account Transaction_verify that user can select future date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Validate to delivery date should be present",async() =>{
+//         await accountTransactionPage.verifytoDeliveryDate()
+//     })
+    
+//      await test.step("Click on calendar icon",async()=>{
+//         await accountTransactionPage.verifytoDeliveryDateCalendar();
+//     })
+//     await test.step("Validate that future date can be selected",async()=>{
+//         await accountTransactionPage.verifyFutureDate();
+//     })
+// });
+
+// //148
+// test('FIN-TC-1354: TC_660_Account Transaction_verify that user can select To delivery date less than from delivery date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Enter all the details with Delivery Date", async () => {
+//         await accountTransactionPage.fillDeliveryDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//      await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+
+//     await test.step("Validate that invalid message should be populated", async() => {
+//         await accountTransactionPage.InvalidPageMsg();
+//     })
+// });
+
+// //149
+// test('FIN-TC-1355: TC_661_Account Transaction_verify that user can select To delivery date greater than from delivery date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Enter all the details with Delivery Date", async () => {
+//         await accountTransactionPage.fillDeliveryDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-002"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//      await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+
+// });
+
+// //150
+// test('FIN-TC-1356: TC_662_Account Transaction_verify that user can select same To delivery date and from delivery date', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Enter all the details with Delivery Date", async () => {
+//         await accountTransactionPage.fillDeliveryDate(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-002"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+
+//      await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+// });
+
+// //151
+// test('FIN-TC-1357: TC_663_Account Transaction_verify that Cheques Not Sent checkbox is displayed', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+  
+//     await test.step("Verify that Cheques Not Sent checkbox is displayed", async () => {
+//         await accountTransactionPage.verifychequeNotSentCheckbox();
+//     })
+
+// });
+
+// //152
+// test('FIN-TC-1358: TC_664_Account Transaction_verify that user can check and uncheck chechbox', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+  
+//     await test.step("Verify that Cheques Not Sent checkbox is displayed", async () => {
+//         await accountTransactionPage.verifychequeNotSentCheckbox();
+//     })
+
+//     await test.step("Validate that user can check and uncheck the Cheques Not Sent checkbox", async () => {
+//         await accountTransactionPage.checkAndUncheckChequeNotSentCheckbox();
+//     })
+
+// });
+
+
+// //153
+// test('FIN-TC-1359: TC_665_Account Transaction_Verify that Destination account textbox accept alphabets', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the destination account", async () => {
+//         await accountTransactionPage.fillDestinationAccount(AccountTransactionData["accountTransaction-001"].DestinationAccountAlpha);
+//     })
+
+// });
+
+// //154
+// test('FIN-TC-1360: TC_666_Account Transaction_Verify that Destination account textbox accept numbers', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the destination account", async () => {
+//         await accountTransactionPage.fillDestinationAccount(AccountTransactionData["accountTransaction-001"].DestinationAccountNo);
+//     })
+
+// });
+
+// //155
+// test('FIN-TC-1361: TC_667_Account Transaction_Verify that Destination account textbox accept specail charachters', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the destination account", async () => {
+//         await accountTransactionPage.fillDestinationAccount(AccountTransactionData["accountTransaction-001"].DestinationAccountSpChar);
+//     })
+
+// });
+
+// //156
+// test('FIN-TC-1362: TC_668_Account Transaction_Verify that Destination account textbox accept blank spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the destination account", async () => {
+//         await accountTransactionPage.fillDestinationAccount(AccountTransactionData["accountTransaction-001"].DestinationAccountBlSp);
+//     })
+
+//     await test.step("Validate that destination account is blank", async() =>{
+//         await accountTransactionPage.blankDestinationAccount();
+//     })
+// });
+
+// //157
+// test('FIN-TC-1363: TC_669_Account Transaction_Verify that Destination account textbox accept leading and trailing spaces', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Fill the destination account", async () => {
+//         await accountTransactionPage.fillDestinationAccount(AccountTransactionData["accountTransaction-001"].DestinationAccountTrailingSpace);
+//     })
+// });
+
+// //158
+// test('FIN-TC-1364: TC_670_Account Transaction_verify that fill mandatory fields and click on search user get result and click on generate data file', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Search all the mandatory feilds", async () => {
+//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//      await test.step("Click on the Generate data file button", async () => {
+//         await accountTransactionPage.generateDataFile();
+//     })
+
+//      await test.step("Verify that Job Created message is displayed", async () => {
+//         await accountTransactionPage.JobCreatedMsg();
+//     });
+// });
+
+// //159
+// test('FIN-TC-1365: TC_671_Account Transaction_verify that fill fields and click on search user get result and click on generate data file', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Search all the mandatory feilds", async () => {
+//          await accountTransactionPage.fillAllDetails(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account,AccountTransactionData["accountTransaction-001"].type,AccountTransactionData["accountTransaction-001"].countryValue);
+//      })
+
+//      await test.step("Click on the Generate data file button", async () => {
+//         await accountTransactionPage.generateDataFile();
+//     })
+
+//      await test.step("Verify that Job Created message is displayed", async () => {
+//         await accountTransactionPage.JobCreatedMsg();
+//     })
+// });
+
+// //160
+// test('FIN-TC-112:TC_113_Account Transaction_verify that eye icon is displayed in grid box', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Search all the mandatory feilds", async () => {
+//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//      await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+
+//     await test.step("Validate eye icon should be present",async() =>{
+//         await accountTransactionPage.validateEyeIcon();
+//     })
+// });
+
+// //161
+// test('FIN-TC-110:TC_111_Account Transaction_verify that user can search result by Principal Ex-NEXTCARE-TEST ACCOUNT,dummy Prin1 AUH .', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Search all the mandatory feilds", async () => {
+//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//      await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+
+//     await test.step("Search the fields", async() =>{
+//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-001"].Principal)
+//     })
+// });
+
+// //162
+// test('FIN-TC-1542:TC_685_Account Transaction_Verify when all the fields are disabled in details popup', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//     await test.step("Search all the mandatory feilds", async () => {
+//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//     await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+     
+//     await test.step("Search the fields", async() =>{
+//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-004"].TXNID)
+//     })
+
+//      await test.step("Validate eye icon should be present",async() =>{
+//         await accountTransactionPage.validateEyeIcon();
+//     })
+
+//     await test.step("Validate the disabled fields", async() =>{
+//         await accountTransactionPage.nonEditableFieldforNoSettledDate();
+//     })
+// });
+
+// //163
+// test('FIN-TC-1543:TC_684_Account Transaction_Verify the columns in the grid', async ({ page }) => {
+
+//     const loginPage: LoginPage = new LoginPage(page);
+//     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
+
+//     await test.step("User navigates to Mawista application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
+
+//     await test.step("User Enter Username and Password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+//     })
+
+//     await test.step("Click On Provider Transaction Under Financials", async () => {
+//         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+//     })
+ 
+//       await test.step("Verify that Account Transaction Page is visible", async () => {
+//         await accountTransactionPage.accountTransactionField();
+//     })
+
+//     await test.step("Verify that Account Transactions Page is visible", async () => {
+//         await accountTransactionPage.validatefieldsVisibility();
+//     })
+    
+//      await test.step("Search all the mandatory feilds", async () => {
+//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//     })
+
+//      await test.step("Click on the Search button", async () => {
+//         await accountTransactionPage.clickonSearch();
+//     })
+     
+//     await test.step("Search the fields", async() =>{
+//         await accountTransactionPage.verifySearch(AccountTransactionData["accountTransaction-004"].TXNID)
+//     })
+//      await test.step("Validate table field visibility",async() =>{
+//         await accountTransactionPage.tableFieldVisibility();
 //     })
 // });

@@ -473,10 +473,10 @@ export class PaymentOrdersPage {
     }
      
     async fillMandaoryDetails(payerValue: string){
-        await this.page.waitForTimeout(2000);
-       // await this.page.waitForLoadState("networkidle");
+        await this.page.waitForLoadState("networkidle");
+        await this.page.waitForTimeout(12000);
         await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+        for (const char of payerValue) {await this.payer.pressSequentially(char, { delay: 200 }); }
         expect(await this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").isVisible());
         await this.page.waitForLoadState("networkidle");
         const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();

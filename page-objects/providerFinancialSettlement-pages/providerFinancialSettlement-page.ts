@@ -30,6 +30,7 @@ export class ProviderFinancialSettlementPage {
     readonly voucherSearchSelectAccountNumber: Locator;
     readonly selectedAccountName: Locator;
     readonly selectedAccountNumber: Locator;
+    readonly currencyLabel: Locator;
     readonly currencyDropdown: Locator;
     readonly currencyDropdownOptions: Locator;
     readonly collectedDropdown: Locator;
@@ -53,6 +54,7 @@ export class ProviderFinancialSettlementPage {
     readonly partnerBankOptions: Locator;
     readonly partnerBankSelectedValue: Locator;
     readonly ShowDeductionVoucher: Locator;
+    appLoader: Locator;
     
     constructor(page: Page) {
         this.page = page;
@@ -82,6 +84,7 @@ export class ProviderFinancialSettlementPage {
         this.voucherSearchSelectAccountNumber = page.locator("//a[normalize-space()='Select']");
         this.selectedAccountName = page.locator('td.mat-column-accountName .td-content');
         this.selectedAccountNumber = page.locator('td.mat-column-accountNumber .td-content');
+        this.currencyLabel = page.locator("//mat-label[normalize-space()='Currency']").first();
         this.currencyDropdown = page.locator("(//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input)[2]");
         this.currencyDropdownOptions = page.locator(".cdk-overlay-pane mat-option");
         this.collectedDropdown = page.locator("//mat-label[normalize-space()='Collected']/ancestor::mat-form-field");
@@ -106,6 +109,7 @@ export class ProviderFinancialSettlementPage {
         this.partnerBankOptions = page.locator("//mat-option");
         this.partnerBankSelectedValue = page.locator("//mat-select[@formcontrolname='partnerBank']//span[contains(@class,'mat-select-value-text')]");
         this.ShowDeductionVoucher = page.locator("//label[@for='mat-slide-toggle-3-input']//div[@class='mat-slide-toggle-bar']");
+        this.appLoader=page.locator("app-new-loader");
     }
 
     async searchAndClickFinancials() {  
@@ -145,6 +149,8 @@ export class ProviderFinancialSettlementPage {
     async clickOnPayersRadioButton() { 
         await new Promise(resolve => setTimeout(resolve, 5000)); 
         await this.payerRadio.click();
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+
     }
 
     async clickOnReinsurerRadioRadioButton() { 
@@ -194,16 +200,93 @@ export class ProviderFinancialSettlementPage {
         console.log("Verified: User cannot select any Bank Account until Payer is selected.");
     }
 
+    // async selectPayerOption(value: string) {
+    //     await this.page.waitForLoadState("networkidle");
+    //     await expect(this.payerDropdown).toBeVisible({ timeout: 15000 });
+    //     await this.payerDropdown.click();
+    //     await this.payerDropdown.fill("");  
+    //     for (const char of value) {await this.payerDropdown.pressSequentially(char, { delay: 200 }); }
+    //     const option = this.page.locator(".cdk-overlay-pane mat-option", { hasText: value }).first();
+    //     await option.waitFor({ state: "visible", timeout: 10000 });
+    //     await option.click();
+    //     console.log(`Payer "${value}" selected successfully.`);
+        
+    // }
+
     async selectPayerOption(value: string) {
-        await expect(this.payerDropdown).toBeVisible({ timeout: 10000 });
+        await this.page.waitForLoadState("domcontentloaded");
+
+        await this.payerDropdown.waitFor({ state: "visible", timeout: 30000 });
+        await expect(this.payerDropdown).toBeEditable({ timeout: 30000 });
+
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
         await this.payerDropdown.click();
-        await this.payerDropdown.fill("");  
-        for (const char of value) {await this.payerDropdown.type(char, { delay: 200 }); }
-        const option = this.page.locator(".cdk-overlay-pane mat-option", { hasText: value }).first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();
+        await this.payerDropdown.fill("");
+
+        try {
+            await this.payerDropdown.type(value, { delay: 300 });
+
+            // Trigger selection
+            await this.page.locator("body").click({ position: { x: 10, y: 10 } });
+
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+            await expect(this.payerDropdown).toHaveValue(value, {
+                timeout: 15000
+            });
+
+        } catch {
+            console.log("Retrying payer selection...");
+
+            await this.payerDropdown.click();
+            await this.payerDropdown.fill("");
+
+            for (const char of value) {
+                await this.payerDropdown.type(char, { delay: 300 });
+                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+
+            // Trigger selection again
+            await this.page.locator("body").click({ position: { x: 10, y: 10 } });
+
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+            await expect(this.payerDropdown).toHaveValue(value, {
+                timeout: 15000
+            });
+        }
+
+        // Allow Angular dependent fields to update
+        await this.page.waitForTimeout(2000);
+
         console.log(`Payer "${value}" selected successfully.`);
     }
+
+    
+    // async selectPayerOption(value: string) {
+    //     await this.page.waitForLoadState("domcontentloaded");
+
+    //     await this.payerDropdown.waitFor({ state: "visible", timeout: 30000 });
+    //     await expect(this.payerDropdown).toBeEditable({ timeout: 30000 });
+
+    //     await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+    //     await this.payerDropdown.click();
+    //     await this.payerDropdown.fill("");
+
+    //     await this.payerDropdown.type(value, { delay: 300 });
+
+    //     await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+    //     const option = this.page
+    //         .locator("mat-option")
+    //         .filter({ hasText: value })
+    //         .first();
+
+    //     await expect(option).toBeVisible({ timeout: 30000 });
+    //     await option.click();
+    // }
 
     async selectBankAccount(value: string) {
         await this.bankAccountDropdown.click();
@@ -318,18 +401,120 @@ export class ProviderFinancialSettlementPage {
         console.log(`Selected Account Number: ${accountNumber}`);
     }
 
+    // async verifyCurrencyDropdownValues() {
+    //     await this.page.locator("body").click({ position: { x: 10, y: 10 } });
+    //     await expect(this.currencyDropdown).toBeVisible({ timeout: 10000 });
+    //     await this.currencyDropdown.click();
+
+    //     await this.currencyDropdown.press("ArrowDown");
+    //     await expect(this.currencyDropdownOptions.first()).toBeVisible({ timeout: 20000 });
+
+    //     const optionCount = await this.currencyDropdownOptions.count();
+    //     expect(optionCount).toBeGreaterThan(0);
+
+    //     const currencyValues = await this.currencyDropdownOptions.allTextContents();
+    //     console.log("Currency dropdown values:", currencyValues.map(v => v.trim()));
+    // }
+
+    // async verifyCurrencyDropdownValues() {
+    //     await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+    //     await expect(this.currencyDropdown).toBeVisible({ timeout: 10000 });
+
+    //     await this.currencyDropdown.click();
+
+    //     await expect(this.currencyDropdownOptions.first()).toBeVisible({
+    //         timeout: 20000
+    //     });
+
+    //     const optionCount = await this.currencyDropdownOptions.count();
+
+    //     expect(optionCount).toBeGreaterThan(0);
+
+    //     const currencyValues = await this.currencyDropdownOptions.allTextContents();
+
+    //     console.log(
+    //         "Currency dropdown values:",
+    //         currencyValues.map(v => v.trim())
+    //     );
+    // }
+
     async verifyCurrencyDropdownValues() {
-        await expect(this.currencyDropdown).toBeVisible({ timeout: 10000 });
-        await this.currencyDropdown.click();
+    await this.page.waitForLoadState("domcontentloaded");
 
-        await this.currencyDropdown.press("ArrowDown");
-        await expect(this.currencyDropdownOptions.first()).toBeVisible({ timeout: 15000 });
+    await this.currencyDropdown.waitFor({ state: "visible", timeout: 30000 });
+    await expect(this.currencyDropdown).toBeEditable({ timeout: 30000 });
 
-        const optionCount = await this.currencyDropdownOptions.count();
+    await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+    await this.currencyDropdown.click();
+    await this.currencyDropdown.fill("");
+
+    try {
+        // Trigger autocomplete
+        await this.currencyDropdown.type("A", { delay: 300 });
+
+        // Click outside to allow Angular autocomplete to process
+        await this.page.locator("body").click({ position: { x: 10, y: 10 } });
+
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        const options = this.page.locator(".cdk-overlay-pane mat-option");
+
+        await expect(options.first()).toBeVisible({
+            timeout: 20000
+        });
+
+        const optionCount = await options.count();
         expect(optionCount).toBeGreaterThan(0);
 
-        const currencyValues = await this.currencyDropdownOptions.allTextContents();
-        console.log("Currency dropdown values:", currencyValues.map(v => v.trim()));
+        const currencyValues = await options.allTextContents();
+
+        console.log(
+            "Currency dropdown values:",
+            currencyValues.map(v => v.trim())
+        );
+
+    } catch {
+        console.log("Retrying currency dropdown...");
+
+        await this.currencyDropdown.click();
+        await this.currencyDropdown.fill("");
+
+        for (const char of "A") {
+            await this.currencyDropdown.type(char, { delay: 300 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+        }
+
+        await this.page.locator("body").click({ position: { x: 10, y: 10 } });
+
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        const options = this.page.locator(".cdk-overlay-pane mat-option");
+
+        await expect(options.first()).toBeVisible({
+            timeout: 20000
+        });
+
+        const currencyValues = await options.allTextContents();
+
+        console.log(
+            "Currency dropdown values after retry:",
+            currencyValues.map(v => v.trim())
+        );
+    }
+}
+
+    async verifyCurrencyLabelAndDropdownDisplayed() {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await expect(this.currencyLabel).toBeVisible({ timeout: 20000 });
+        await expect(this.currencyDropdown).toBeVisible({ timeout: 20000 });
+        await expect(this.currencyDropdown).toBeEditable({ timeout: 20000 });
+
+        // Click to confirm the dropdown is interactable for this sanity assertion.
+        await this.currencyDropdown.click();
     }
 
     async verifyCollectedDropdownValues() {

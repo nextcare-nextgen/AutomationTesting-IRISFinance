@@ -71,7 +71,7 @@ export class AccountReconcilationPage{
         this.searchButton=page.locator("//button[@aria-label='Search']");
         this.fromDueDateLabel=page.locator("//mat-label[text()='From Due Date']");
         this.fromDueDate=page.locator("//input[@id='mat-input-2']");
-         this.toDueDateLabel=page.locator("//mat-label[text()='To Due Date']");
+        this.toDueDateLabel=page.locator("//mat-label[text()='To Due Date']");
         this.toDuedate=page.locator("//input[@id='mat-input-3']");
         this.errormsg=page.locator("(//mat-error[text()=' This field is required '])[1]");
         this.searchTable=page.locator("//table[@id='dddd']/tbody/tr[2]");
@@ -129,35 +129,83 @@ export class AccountReconcilationPage{
     async accountRecoincialtionField(){
         await this.Recoincilation.isVisible();
     }
+
     async verifytext(){
         await this.redText.isVisible();
-       
         await expect(this.redText).toHaveCSS('color', 'rgb(244, 67, 54)'); 
     }
 
-    async fillMandaoryDetails(payerValue: String){
+    async fillMandatoryDetails(payerValue: String){
         await this.page.waitForLoadState("networkidle");
+        await this.page.waitForTimeout(5000);
         await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+        for (const char of payerValue) {await this.payer.pressSequentially(char, { delay: 300 }); }
         const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.waitFor({ state: "visible", timeout: 15000 });
         await option.click();      
         await this.account.click();
         await this.page.locator("//span[text()=' abcd ']").click();
     }
+
+    // async fillMandatoryDetails(payerValue: string) {
+    //     await this.payer.clear();
+    //     await this.payer.pressSequentially(payerValue, { delay: 200 });
+
+    //     const option = this.page.getByText(
+    //         "ABU DHABI NATIONAL INSURANCE CO. ADNIC",
+    //         { exact: true }
+    //     );
+
+    //     await expect(option).toBeVisible({ timeout: 30000 });
+    //     await option.click();
+
+    //     await this.account.click();
+    //     await this.page.getByText("abcd", { exact: true }).click();
+    // }
+
     async clickSearchButtn(){
         await this.searchButton.click();
         await this.page.waitForLoadState("networkidle");
     }
-    async fillAllDetails(payerValue: String,fromDue:String,toDue:String){
-         await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+
+    // async fillAllDetails(payerValue: String,fromDue:String,toDue:String){
+    //     await this.page.waitForLoadState("networkidle");
+    //     await this.page.waitForTimeout(5000);
+    //     await this.payer.fill("");  
+    //     for (const char of payerValue) {await this.payer.pressSequentially(char, { delay: 300 }); }
+    //     const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();
+    //     await option.waitFor({ state: "visible", timeout: 30000 });
+    //     await option.click();      
+    //     await this.account.click();
+    //     await this.page.locator("//span[text()=' ADNIC - Escrow ']").click();
+    //     await this.fromDueDate.fill(fromDue.trim());
+    //     await this.toDuedate.fill(toDue.trim());
+    // }
+    
+    async fillAllDetails(payerValue: string, fromDue: string, toDue: string) {
+        await this.page.waitForLoadState("networkidle");
+        await this.page.waitForTimeout(5000);
+
+        await this.payer.fill("");
+
+        let typedText = "";
+        for (const char of payerValue) {
+            typedText += char;
+            await this.payer.pressSequentially(char, { delay: 300 });
+
+            // Wait after typing the 3rd character
+            if (typedText.length === 3) {
+                await this.page.waitForTimeout(2000); // or wait for API/dropdown
+            }
+        }
+
         const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
+        await option.waitFor({ state: "visible", timeout: 30000 });
+        await option.click();
+
         await this.account.click();
         await this.page.locator("//span[text()=' ADNIC - Escrow ']").click();
+
         await this.fromDueDate.fill(fromDue.trim());
         await this.toDuedate.fill(toDue.trim());
     }
@@ -177,11 +225,13 @@ export class AccountReconcilationPage{
     async validateUploadPopup(){
         await this.uploadPopUp.isVisible();
     }
+
     async validateAlert(){
         await this.uploadPopUpButton.click();
         await this.page.waitForTimeout(2000);
         await this.AlertBox.isVisible();
     }
+
     async UploadFile(){
         //await this.selectFile.click();
         await this.page.waitForTimeout(2000);
@@ -189,22 +239,23 @@ export class AccountReconcilationPage{
         await this.page.setInputFiles('input[type="file"]', filePath);
         await this.uploadPopUpButton.click();
     }
+
     async dragandDropFile(){
         await this.page.waitForTimeout(2000);
         const filePath = path.resolve(__dirname, '../uploadDocuments/test.xlsx');
-   
-  await this.page.locator('input[type="file"]').setInputFiles(filePath);
+        await this.page.locator('input[type="file"]').setInputFiles(filePath);
 
         await this.uploadPopUpButton.click();
     }
 
     async UploadInvalidFile(){
-            await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(2000);
         const filePath = path.resolve(__dirname, '../uploadDocuments/test.pdf');
         await this.page.setInputFiles('input[type="file"]', filePath);
-       await this.invalidPopup.isVisible();
+        await this.invalidPopup.isVisible();
     
     }
+
     async closeUploadPopup(){
         await this.closePopUp.click();
     }
@@ -243,12 +294,14 @@ export class AccountReconcilationPage{
         // await this.page.waitForTimeout(5000);
         // await this.chequeReleased.isDisabled();
     }
+
     async ChequeClicked(){
         //await this.settled.click();
         await this.page.waitForTimeout(5000);
         await this.chequeReleased.isEnabled();
        // await this.settled.isDisabled();
     }
+
     async itemsPerPage(){
         await this.itemPage.isVisible();
         await this.itemPage.click();
@@ -265,14 +318,16 @@ export class AccountReconcilationPage{
         await this.item100.isVisible();
     }
 
-async displayArrow(){
-    await this.upArrow.isVisible();
-    await this.downArrow.isVisible();
-}
+    async displayArrow(){
+        await this.upArrow.isVisible();
+        await this.downArrow.isVisible();
+    }
+
     async searchByID(id:String){
         await this.search.click();
         await this.search.fill(id.trim());
     }
+
     async noRecordfound(){
         await this.noRecord.isVisible();
     }
@@ -286,118 +341,125 @@ async displayArrow(){
     }
 
     async upArrowSort(){
-    await this.upArrow.click();
-    const colVal = await this.page.$$eval(
-   'table tbody tr td:nth-child(7)', 
-    cells => cells.map(cell => cell.textContent?.trim() || ''));
-   // log(colVal);
-    const sortedValues = [...colVal].sort((a, b) =>
-    a.localeCompare(b));
-    expect(colVal).toEqual(sortedValues);
-}
-async downArrowSort(){
-    await this.downArrow.click();
-    const colVal = await this.page.$$eval(
-   'table tbody tr td:nth-child(7)', 
-    cells => cells.map(cell => cell.textContent?.trim() || ''));
- //   log(colVal);
-    const sortedValues = [...colVal].sort((b, a) =>
-     b.localeCompare(a));
-    expect(colVal).toEqual(sortedValues);
-}
+        await this.upArrow.click();
+        const colVal = await this.page.$$eval(
+        'table tbody tr td:nth-child(7)', 
+        cells => cells.map(cell => cell.textContent?.trim() || ''));
+    // log(colVal);
+        const sortedValues = [...colVal].sort((a, b) =>
+        a.localeCompare(b));
+        expect(colVal).toEqual(sortedValues);
+    }
+
+    async downArrowSort(){
+        await this.downArrow.click();
+        const colVal = await this.page.$$eval(
+        'table tbody tr td:nth-child(7)', 
+        cells => cells.map(cell => cell.textContent?.trim() || ''));
+    //   log(colVal);
+        const sortedValues = [...colVal].sort((b, a) =>
+        b.localeCompare(a));
+        expect(colVal).toEqual(sortedValues);
+    }
+
     async providerURL(){
         await this.providerMore.isVisible();
         await this.providerMore.click();
     }
-async verifyproviderText(){
-    expect(this.providerText.isVisible());
-    log(this.providerMore.allTextContents.toString);
-    expect(this.providerHide.isVisible());
-}
-async verifyHideButton(){
-await this.providerMore.click();
-await this.page.waitForTimeout(3000);
-await this.providerHide.click();
-await this.page.waitForTimeout(3000);
-expect(this.providerMore.isVisible())
-}
 
-async verifyfromDueDate(){
-    await this.page.waitForLoadState('networkidle');
-    expect(this.fromDueDate.isVisible());
-    await this.page.waitForTimeout(10000);
-    await this.page.waitForLoadState('networkidle');
-    this.fromDueDate.click();
+    async verifyproviderText(){
+        expect(this.providerText.isVisible());
+        log(this.providerMore.allTextContents.toString);
+        expect(this.providerHide.isVisible());
+    }
+
+    async verifyHideButton(){
+        await this.providerMore.click();
+        await this.page.waitForTimeout(3000);
+        await this.providerHide.click();
+        await this.page.waitForTimeout(3000);
+        expect(this.providerMore.isVisible())
+    }
+
+    async verifyfromDueDate(){
+        await this.page.waitForLoadState('networkidle');
+        expect(this.fromDueDate.isVisible());
+        await this.page.waitForTimeout(10000);
+        await this.page.waitForLoadState('networkidle');
+        this.fromDueDate.click();
+        await this.page.waitForTimeout(2000);
+        expect(this.fromDueDateLabel.isVisible());
+    }
+
+    async verifyfromDueDateCalendar(){
+        expect(this.fromDueDateCalendar.isVisible());
+        this.fromDueDateCalendar.click();
+    }
+
+    async verifyDueDateToday(){
+        await this.page.waitForLoadState('networkidle');
+        expect(this.dueDateToday.isVisible());
+        await this.dueDateToday.click();
+    }
+
+    async oldDateSelect(){
+        await this.page.waitForLoadState('networkidle');
+        await this.oldDate.click();
+    }
+
+    async futureDateSelect(){
+        await this.page.waitForLoadState('networkidle');
+        await this.futureDate.click();
+    }
+
+    async verifytoDueDate(){
+        await this.page.waitForLoadState('networkidle');
+        expect(this.toDuedate.isVisible());
+        await this.page.waitForTimeout(10000);
+        this.toDuedate.click();
+        await this.page.waitForTimeout(2000);
+        expect(this.toDueDateLabel.isVisible());
+    }
+
+    async verifytoDueDateCalendar(){
+        expect(this.toDueDateCalendar.isVisible());
+        this.toDueDateCalendar.click();
+    }
+
+    async dueDateErrorMsg(){
+        expect(this.errormsgDate.isVisible());
+    }
+
+    async fillpaymentOrderId(paymentOrder: String){
     await this.page.waitForTimeout(2000);
-    expect(this.fromDueDateLabel.isVisible());
-}
-async verifyfromDueDateCalendar(){
-    expect(this.fromDueDateCalendar.isVisible());
-    this.fromDueDateCalendar.click();
-}
-async verifyDueDateToday(){
-    await this.page.waitForLoadState('networkidle');
-    expect(this.dueDateToday.isVisible());
-    await this.dueDateToday.click();
-}
-async oldDateSelect(){
-     await this.page.waitForLoadState('networkidle');
-     await this.oldDate.click();
-}
+        await this.paymentOrderId.fill(paymentOrder.trim());
+        log(await this.paymentOrderId.inputValue());
+        expect(this.paymentOrderId).toHaveValue("");
+    }
 
-async futureDateSelect(){
-     await this.page.waitForLoadState('networkidle');
-     await this.futureDate.click();
-}
+    async fillpaymentOrderIdNo(paymentOrder: String){
+        await this.page.waitForTimeout(2000);
+        await this.paymentOrderId.fill(paymentOrder.trim());
+        log(this.paymentOrderId.textContent);
+        expect(this.paymentOrderId.textContent).not.toBeNull();
+    
+    }
 
+    async clickGenerateButton(){
+        await this.page.waitForLoadState("networkidle");
+        await this.generatebutton.click();
+        await this.page.waitForLoadState("networkidle");
+    // await this.generatebutton.click();
+        await this.preferences.click();
+        await this.fileName.fill("test");
+        await this.page.waitForTimeout(2000);
+        await this.generatebuttonPop.click();
+        await this.page.waitForTimeout(5000);
+        await this.page.waitForLoadState("networkidle");
+        expect(this.jobButton.isVisible());
+    }
 
-async verifytoDueDate(){
-    await this.page.waitForLoadState('networkidle');
-    expect(this.toDuedate.isVisible());
-    await this.page.waitForTimeout(10000);
-    this.toDuedate.click();
-    await this.page.waitForTimeout(2000);
-    expect(this.toDueDateLabel.isVisible());
-}
-async verifytoDueDateCalendar(){
-    expect(this.toDueDateCalendar.isVisible());
-    this.toDueDateCalendar.click();
-}
-
-async dueDateErrorMsg(){
-    expect(this.errormsgDate.isVisible());
-}
-
-async fillpaymentOrderId(paymentOrder: String){
-   await this.page.waitForTimeout(2000);
-    await this.paymentOrderId.fill(paymentOrder.trim());
-    log(await this.paymentOrderId.inputValue());
-    expect(this.paymentOrderId).toHaveValue("");
-}
-
-async fillpaymentOrderIdNo(paymentOrder: String){
-    await this.page.waitForTimeout(2000);
-    await this.paymentOrderId.fill(paymentOrder.trim());
-    log(this.paymentOrderId.textContent);
-    expect(this.paymentOrderId.textContent).not.toBeNull();
-   
-}
-
-async clickGenerateButton(){
-    await this.page.waitForLoadState("networkidle");
-    await this.generatebutton.click();
-    await this.page.waitForLoadState("networkidle");
-   // await this.generatebutton.click();
-    await this.preferences.click();
-    await this.fileName.fill("test");
-    await this.page.waitForTimeout(2000);
-    await this.generatebuttonPop.click();
-    await this.page.waitForTimeout(5000);
-    await this.page.waitForLoadState("networkidle");
-    expect(this.jobButton.isVisible());
-}
-
-async jobRun(){
-    await this.jobButton.click();
-}
+    async jobRun(){
+        await this.jobButton.click();
+    }
 }

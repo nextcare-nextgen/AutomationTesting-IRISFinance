@@ -1,7 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { test } from '@playwright/test';
 import { log } from "console";
-import exp from "constants";
+
 
 export class AccountTransactionPage{
     page: Page  ;
@@ -111,6 +110,17 @@ export class AccountTransactionPage{
     SettledDrop: Locator;
     CountryDrop: Locator;
     providerTypeDrop: Locator;
+    errorAmount: Locator;
+    fromdeliveryDateCalendar: Locator;
+    fromdeliveryDatecalendarButton: Locator;
+    fromdeliveryDateLabel: Locator;
+    todeliveryDateLabel: Locator;
+    todeliveryDatecalendarButton: Locator;
+    todeliveryDateCalendar: Locator;
+    chequeNotSentCheckbox: Locator;
+    popBankReference: Locator;
+    popChequeSentDate: Locator;
+    popChequeReleaseDate: Locator;
 
     constructor(page: Page){
      this.page = page;
@@ -142,43 +152,49 @@ export class AccountTransactionPage{
         this.destinationAccount=page.locator("//input[@id='mat-input-6']");
         this.fromSettleDate=page.locator("//input[@id='mat-input-7']");
         this.fromSettleDateLabel=page.locator("//mat-label[text()='From Settle Date']");
-        this.fromSettleDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-7']/button");
+         this.fromSettleDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-7']/button");
         this.fromSettleDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toSettleDateLabel=page.locator("//mat-label[text()='To Settle Date']");
-        this.toSettleDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-8']/button");
+         this.toSettleDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-8']/button");
         this.toSettleDateDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toSettleDate=page.locator("//input[@id='mat-input-8']");
         this.POID=page.locator("//input[@id='mat-input-9']");
         this.fromChequeReleaseDate=page.locator("//input[@id='mat-input-10']");
         this.fromChequeReleaseDateLabel=page.locator("//mat-label[text()='From Cheque Release Date']");
-        this.fromChequeReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-9']/button");
+         this.fromChequeReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-9']/button");
         this.fromChequeReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toChecqueReleaseDate=page.locator("//input[@id='mat-input-11']");
         this.toChequeReleaseDateLabel=page.locator("//mat-label[text()='To Cheque Release Date']");
-        this.toChequeReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
+         this.toChequeReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
         this.toChequeReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.bankReference=page.locator("//input[@id='mat-input-12']");
         this.fromPOReleaseDate=page.locator("//input[@id='mat-input-13']");
         this.fromPOReleaseDateLabel=page.locator("//mat-label[text()='From PO Release Date']");
-        this.fromPOReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
+         this.fromPOReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
         this.fromPOReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toPOReleaseDate=page.locator("//input[@id='mat-input-14']");
         this.toPOReleaseDateLabel=page.locator("//mat-label[text()='To PO Release Date']");
-        this.toPOReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
+         this.toPOReleaseDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
         this.toPOReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
-        this.Settled=page.locator("//mat-select[@id='mat-select-4']");
+        this.Settled=page.locator("//mat-select[@id='mat-select-0']");
         this.Country=page.locator("//input[@id='mat-input-23']");
         this.providerType=page.locator("//input[@id='mat-input-24']");
         this.provider=page.locator("//input[@id='mat-input-25']");
         this.fromAmount=page.locator("//input[@id='mat-input-15']");
         this.toAmount=page.locator("//input[@id='mat-input-16']");
         this.fromdeliveryDate=page.locator("//input[@id='mat-input-17']");
+        this.fromdeliveryDateLabel=page.locator("//mat-label[text()='From Delivery Date']");
+        this.fromdeliveryDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
+        this.fromdeliveryDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
+       this.todeliveryDateLabel=page.locator("//mat-label[text()='To Delivery Date']");
+        this.todeliveryDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
+        this.todeliveryDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toDeliveryDate=page.locator("//input[@id='mat-input-18']");
         this.AccountTransactions=page.locator("//h1[text()='Account Transactions ']");
         this.Searchresults=page.locator("//label[text()='Search Result : ']");
         this.SearchButton=page.locator("//button[@aria-label='Search']");
         this.errorMsg=page.locator("//mat-error[@id='mat-error-0']");
-        this.genratefile=page.locator("//div[text()='Generate Data File ']");
+        this.genratefile=page.locator("//div[text()='Generate Data File ']/..");
         this.search=page.locator("final-grid-component input");
         this.eyeIcon=page.locator("(//table[@id='dddd']/tbody/tr/td[16]/div/div/img)[1]");
         this.accTransPopUp=page.locator("nc-account-detail");
@@ -197,6 +213,9 @@ export class AccountTransactionPage{
         this.popdeleiveryDate=page.locator("//input[@formcontrolname='deliveryDate']");
         this.popCheckbox=page.locator("//mat-checkbox[@id='mat-checkbox-4']");
         this.popPendingtext=page.locator("//div[text()='Pending Reason']/..");
+        this.popBankReference=page.locator("//input[@id='bankreference']");
+        this.popChequeReleaseDate=page.locator("//input[@id='chequereleasedate']");
+        this.popChequeSentDate=page.locator("//input[@id='chequesentdate']");
         this.reason=page.locator("//textarea[@id='textarea']");
         this.error=page.locator("//mat-error[text()=' This field is required ']");
         this.popApply=page.locator("(//div[@class='btn-section']/button)[1]");
@@ -220,6 +239,8 @@ export class AccountTransactionPage{
         this.SettledDrop=page.locator("//div[@id='mat-select-4-panel']");
         this.CountryDrop=page.locator("//div[@id='mat-autocomplete-4']");
         this.providerTypeDrop=page.locator("//div[@id='mat-autocomplete-5']");
+        this.errorAmount=page.locator("//span[contains(text(),'Choose amount greater than')]");
+        this.chequeNotSentCheckbox=page.locator(" //span[text()=' Cheques Not Sent '] /../span[1]");
        // this.providerDrop=page.locator("")
     }
     async searchAndClickOnAccountTransactionUnderFinancials(){
@@ -312,8 +333,8 @@ export class AccountTransactionPage{
         await this.toChecqueReleaseDate.fill(toDeldate.trim());
         await this.fromPOReleaseDate.fill(fromDelDate.trim());
         await this.toPOReleaseDate.fill(toDeldate.trim());
-        await this.Settled.click();
-        await this.page.locator("//span[text()=' Yes ']").click();
+        // await this.Settled.click();
+        // await this.page.locator("//span[text()=' Yes ']").click();
         await this.Country.click();
         await this.page.locator("//span[text()='United Arab Emirates']").click(); 
         await this.fromdeliveryDate.fill(fromDelDate.trim());
@@ -330,6 +351,7 @@ export class AccountTransactionPage{
     }
 
     async verifySearch(provider: String){
+           await this.page.waitForTimeout(5000);
         await this.search.click();
         await this.search.fill(provider.trim());
         await this.page.keyboard.press('Enter');
@@ -480,7 +502,7 @@ export class AccountTransactionPage{
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
         await acc.click();  
-        await this.fromPOValidationDate.fill(fromPOValidDate.trim());
+       await this.fromPOValidationDate.fill(fromPOValidDate.trim());
         await this.toPOValidationDate.fill(toPOValiddate.trim());
     }
 
@@ -509,27 +531,20 @@ export class AccountTransactionPage{
         await this.toDueDatecalendarButton.click();
        expect(await this.toDueDateDateCalendar.isVisible());
     }
-
-    async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,account:String){
-            await this.page.waitForLoadState("networkidle");
-            await this.payer.fill("");  
-            for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-            const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-            try {
-                await option.waitFor({ state: "visible", timeout: 20000 });
-            } catch {
-                await this.payer.fill("");
-                for (const char of payerValue) {await this.payer.type(char, { delay: 250 }); }
-                await option.waitFor({ state: "visible", timeout: 20000 });
-            }
-            await option.click();      
-            await this.Account.click();
-            const acc = this.page.locator("//span[text()='Union Ins.']").first();
-            await acc.waitFor({ state: "visible", timeout: 15000 });
-            await acc.click();  
-            await this.fromDueDate.fill(fromDueDate1.trim());
-            await this.toDueDate.fill(toDueDate1.trim());
-        }
+async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,account:String){
+        await this.page.waitForLoadState("networkidle");
+        await this.payer.fill("");  
+        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.click();      
+        await this.Account.click();
+        const acc = this.page.locator("//span[text()='Union Ins.']").first();
+        await acc.waitFor({ state: "visible", timeout: 10000 });
+        await acc.click();  
+       await this.fromDueDate.fill(fromDueDate1.trim());
+        await this.toDueDate.fill(toDueDate1.trim());
+    }
 
     async verifyfromSettleDate(){
           expect(await this.fromSettleDate.isVisible());
@@ -556,66 +571,21 @@ export class AccountTransactionPage{
 
     async fillSettleDate(payerValue: String,fromSettleDate1:String,toSettleDate1: String,account:String){
         await this.page.waitForLoadState("networkidle");
-        await this.payer.click();
-        await this.payer.fill("");
-        for (const char of payerValue) { await this.payer.type(char, { delay: 200 }); }
+        await this.payer.fill("");  
+        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        try {
-            await option.waitFor({ state: "visible", timeout: 20000 });
-        } catch {
-            await this.payer.fill("");
-            for (const char of payerValue) { await this.payer.type(char, { delay: 250 }); }
-            await option.waitFor({ state: "visible", timeout: 20000 });
-        }
-        await option.click();
-
+        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.click();      
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();
-
-        await this.page.waitForLoadState("networkidle");
-
-        const fromValue = fromSettleDate1.toString().trim();
-        const toValue = toSettleDate1.toString().trim();
-
-        await this.fromSettleDate.click({ clickCount: 3 });
-        await this.fromSettleDate.pressSequentially(fromValue, { delay: 50 });
-        await this.page.keyboard.press("Tab");
-        if ((await this.fromSettleDate.inputValue()).trim() !== fromValue) {
-            await this.fromSettleDate.click({ clickCount: 3 });
-            await this.fromSettleDate.pressSequentially(fromValue, { delay: 50 });
-            await this.page.keyboard.press("Tab");
-        }
-
-        await this.toSettleDate.click({ clickCount: 3 });
-        await this.toSettleDate.pressSequentially(toValue, { delay: 50 });
-        await this.page.keyboard.press("Tab");
-        if ((await this.toSettleDate.inputValue()).trim() !== toValue) {
-            await this.toSettleDate.click({ clickCount: 3 });
-            await this.toSettleDate.pressSequentially(toValue, { delay: 50 });
-            await this.page.keyboard.press("Tab");
-        }
+        await acc.click();  
+       await this.fromSettleDate.fill(fromSettleDate1.trim());
+        await this.toSettleDate.fill(toSettleDate1.trim());
     }
 
-    // async fillSettleDate(payerValue: String,fromSettleDate1:String,toSettleDate1: String,account:String){
-    //     await this.page.waitForLoadState("networkidle");
-    //     await this.payer.click();
-    //     await this.payer.fill("");  
-    //     for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-    //     const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-    //     await option.waitFor({ state: "visible", timeout: 20000 });
-    //     await option.click();      
-    //     await this.Account.click();
-    //     const acc = this.page.locator("//span[text()='Union Ins.']").first();
-    //     await acc.waitFor({ state: "visible", timeout: 10000 });
-    //     await acc.click();  
-    //     await this.fromSettleDate.fill(fromSettleDate1.trim());
-    //     await this.toSettleDate.fill(toSettleDate1.trim());
-    // }
-
-    async verifyfromPOReleaseDate(){
-        expect(await this.fromPOReleaseDate.isVisible());
+      async verifyfromPOReleaseDate(){
+          expect(await this.fromPOReleaseDate.isVisible());
         expect(await this.fromPOReleaseDateLabel.isVisible());
            
     }
@@ -677,23 +647,16 @@ export class AccountTransactionPage{
 
     async fillChequeReleaseDate(payerValue: String,fromChequereleaseDate1:String,toChequereleaseDate1: String,account:String){
         await this.page.waitForLoadState("networkidle");
-        await this.payer.click();
-        await this.payer.fill("");
+        await this.payer.fill("");  
         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        try {
-            await option.waitFor({ state: "visible", timeout: 20000 });
-        } catch {
-            await this.payer.fill("");
-            for (const char of payerValue) {await this.payer.type(char, { delay: 250 }); }
-            await option.waitFor({ state: "visible", timeout: 20000 });
-        }
-        await option.click();
+        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.click();      
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();
-        await this.fromChequeReleaseDate.fill(fromChequereleaseDate1.trim());
+        await acc.click();  
+       await this.fromChequeReleaseDate.fill(fromChequereleaseDate1.trim());
         await this.toChecqueReleaseDate.fill(toChequereleaseDate1.trim());
     }
 
@@ -721,6 +684,36 @@ export class AccountTransactionPage{
 
     async blankOrderID(){
        const x = await this.POID.inputValue();
+       console.log(x);
+       expect(x).toBe("");
+    }
+
+    async fillFromAmount(Amount:String){
+        await this.fromAmount.fill(Amount.trim());
+    }
+
+     async blankFromAmount(){
+       const x = await this.fromAmount.inputValue();
+       console.log(x);
+       expect(x).toBe("");
+    }
+
+    async fillToAmount(Amount:String){
+        await this.toAmount.fill(Amount.trim());
+    }
+
+     async fillAmount(FromAmount:String, ToAmount:String){
+        await this.fromAmount.fill(FromAmount.trim());
+        await this.toAmount.fill(ToAmount.trim());
+    }
+
+    async errorMsgAmount(){
+        await this.page.waitForTimeout(2000);
+       // expect(await this.toAmount.getAttribute("aria-invalid")).toBe("true");
+       expect(await this.errorAmount.isVisible());
+    }
+     async blankToAmount(){
+       const x = await this.toAmount.inputValue();
        console.log(x);
        expect(x).toBe("");
     }
@@ -799,41 +792,123 @@ export class AccountTransactionPage{
 
     async tableFieldVisibility(){
         expect(await this.page.getByRole('columnheader', { name: 'Settled Up Sorting Icon Down' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Cheque Released Up Sorting' }).isVisible());
-        expect(await this.page.getByRole('columnheader', { name: 'Cheque Released Up Sorting' }).isVisible());
-        expect(await this.page.getByRole('columnheader', { name: 'Cheque Sent Up Sorting Icon' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'PO ID Up Sorting Icon Down' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'TXN NBR Up Sorting Icon Down' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Due Date Up Sorting Icon Down' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Destination Account Up' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'principal Up Sorting Icon' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Provider Up Sorting Icon Down' }).isVisible());
-        //expect(await this.page.getByRole('button', { name: 'Amount Up Sorting Icon Down' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Counter Value Up Sorting Icon' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Settled Date Up Sorting Icon' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Cheque Released Date Up' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Cheque Sent Date Up Sorting' }).isVisible());
-        expect(await this.page.getByRole('button', { name: 'Bank Reference Up Sorting' }).isVisible());
-        
+  expect(await this.page.getByRole('button', { name: 'Cheque Released Up Sorting' }).isVisible());
+  expect(await this.page.getByRole('columnheader', { name: 'Cheque Released Up Sorting' }).isVisible());
+  expect(await this.page.getByRole('columnheader', { name: 'Cheque Sent Up Sorting Icon' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'PO ID Up Sorting Icon Down' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'TXN NBR Up Sorting Icon Down' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Due Date Up Sorting Icon Down' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Destination Account Up' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'principal Up Sorting Icon' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Provider Up Sorting Icon Down' }).isVisible());
+  //expect(await this.page.getByRole('button', { name: 'Amount Up Sorting Icon Down' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Counter Value Up Sorting Icon' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Settled Date Up Sorting Icon' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Cheque Released Date Up' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Cheque Sent Date Up Sorting' }).isVisible());
+  expect(await this.page.getByRole('button', { name: 'Bank Reference Up Sorting' }).isVisible());
+
     }
- 
+
     async generateDatefileFields(){
         await this.page.waitForLoadState("networkidle");
         expect(await this.page.getByText('Account Transaction *').isVisible());
-        expect(await this.page.locator('#mat-dialog-0 div').filter({ hasText: /^Account \*$/ }).nth(3).isVisible());
-        expect(await this.page.locator('.cdk-overlay-container > div:nth-child(3)').isVisible());
-        expect(await this.page.getByRole('button', { name: 'Preferences' }).isVisible());
-        await this.page.getByRole('button', { name: 'Preferences' }).click();
-        await this.page.waitForTimeout(5000);
-        expect(await this.page.locator('div').filter({ hasText: /^Title$/ }).nth(3).isVisible());
-        await this.page.locator("//input[@id='mat-input-28']").fill("test");
-        
-        expect(await this.page.getByRole('img', { name: 'No icon found' }).isVisible());
+  expect(await this.page.locator('#mat-dialog-0 div').filter({ hasText: /^Account \*$/ }).nth(3).isVisible());
+  expect(await this.page.locator('.cdk-overlay-container > div:nth-child(3)').isVisible());
+  expect(await this.page.getByRole('button', { name: 'Preferences' }).isVisible());
+  await this.page.getByRole('button', { name: 'Preferences' }).click();
+   await this.page.waitForTimeout(5000);
+  expect(await this.page.locator('div').filter({ hasText: /^Title$/ }).nth(3).isVisible());
+  await this.page.locator("//input[@id='mat-input-28']").fill("test");
  
+  expect(await this.page.getByRole('img', { name: 'No icon found' }).isVisible());
+  
     }
- 
+
     async JobCreatedMsg(){
         expect(await this.page.locator('snack-bar-container').isVisible());
     }
- 
+
+    async verifyfromDeleiveryDate(){
+        expect(await this.fromdeliveryDate.isVisible());
+        expect(await this.fromdeliveryDateLabel.isVisible());
+    }
+
+    async verifyfromDeliveryDateCalendar(){
+        
+        await this.fromdeliveryDatecalendarButton.click();
+       expect(await this.fromdeliveryDateCalendar.isVisible());
+    }
+
+     async verifytoDeliveryDate(){
+        expect(await this.toDeliveryDate.isVisible());
+        expect(await this.todeliveryDateLabel.isVisible());
+    }
+
+    async verifytoDeliveryDateCalendar(){
+        
+        await this.todeliveryDatecalendarButton.click();
+       expect(await this.todeliveryDateCalendar.isVisible());
+    }
+
+     async fillDeliveryDate(payerValue: String,fromDeliveryDate1:String,toDeliveryDate1: String,account:String){
+        await this.page.waitForLoadState("networkidle");
+        await this.payer.fill("");  
+        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.click();      
+        await this.Account.click();
+        const acc = this.page.locator("//span[text()='Union Ins.']").first();
+        await acc.waitFor({ state: "visible", timeout: 10000 });
+        await acc.click();  
+       await this.fromdeliveryDate.fill(fromDeliveryDate1.trim());
+        await this.toDeliveryDate.fill(toDeliveryDate1.trim());
+    }
+
+    async verifychequeNotSentCheckbox(){
+        expect(await this.chequeNotSentCheckbox.isVisible());
+    }
+
+    async checkAndUncheckChequeNotSentCheckbox(){
+        await this.chequeNotSentCheckbox.click();
+        await this.page.waitForTimeout(2000);
+        expect(await this.chequeNotSentCheckbox.locator("input").isChecked()).toBeTruthy();
+        await this.chequeNotSentCheckbox.click();
+        await this.page.waitForTimeout(2000);
+        expect(await this.chequeNotSentCheckbox.locator("input").isChecked()).toBeFalsy();
+    }
+
+    async fillDestinationAccount(destinationAccount:String){
+        await this.destinationAccount.fill(destinationAccount.trim());
+    }
+
+     async blankDestinationAccount(){
+       const x = await this.destinationAccount.inputValue();
+       console.log(x);
+       expect(x).toBe("");
+    }
+
+    async generateDataFile(){
+        await this.genratefile.click();
+        await this.page.waitForTimeout(3000);
+    }
+
+    async nonEditableFieldforNoSettledDate(){
+        expect(await this.popDueDate.isDisabled());
+        expect(await this.popSettlementDate.isDisabled());
+        expect(await this.popTransactionType.isDisabled());
+        expect(await this.popDestination.isDisabled());
+        expect(await this.popCurrency.isDisabled());
+        expect(await this.popAmount.isDisabled());
+        expect(await this.popcvc.isDisabled());
+        expect(await this.popcva.isDisabled());
+        expect(await this.poplabel.isDisabled());
+        expect(await this.poppo.isDisabled());
+        expect(await this.popdeleiveryDate.isDisabled());
+        expect(await this.popBankReference.isDisabled());
+        expect(await this.popChequeReleaseDate.isDisabled());
+        expect(await this.popChequeSentDate.isDisabled());
+    }
+
 }

@@ -33,12 +33,30 @@
          "BankRefSpecialCharacter":"!@#$",
          "settled":"No       ",
          "Country":"Al Harth Tribe",
-         "ProviderType":"Airline agencies"
+         "ProviderType":"Airline agencies",
+         "fromAmountAlpha":"ADW",
+         "fromAmountNo":"1234",
+         "fromAmountSpecialCharacter":"!@#$",
+        "fromAmountBlank":"  ",
+            "fromAmountTrailingSpace":"  1234  ",
+             "toAmountAlpha":"ADW",
+         "toAmountNo":"1234",
+         "toAmountSpecialCharacter":"!@#$",
+        "toAmountBlank":"  ",
+            "toAmountTrailingSpace":"  1234  ",
+            "fromAmount":"1234",
+            "toAmount":"123",
+            "DestinationAccountAlpha":"ADW",
+         "DestinationAccountNo":"1234",
+         "DestinationAccountSpChar":"!@#$",
+        "DestinationAccountBlSp":"  ",
+            "DestinationAccountTrailingSpace":"  1234  ",
+            "Principal":"NAME_1228558,FIRSTNAME1_127510 MIDDLENAME1_127510 FAMILYNAME1_127510"
     },
     "accountTransaction-002":{
         "payer":"TEST PAYER (Do Not Use)",
-          "fromDeliveryDate":"01-Feb-2018",
-        "todeliverydate":"01-Feb-2019",
+          "fromDeliveryDate":"01-Feb-2020",
+        "todeliverydate":"01-Feb-2018",
         "Account":"Union Ins.",
         "toPOValidationDate":"12-Mar-2026",
          "fromPOValidationDate":"06-Mar-2026",
@@ -50,7 +68,9 @@
          "fromChequeReleaseDate":"06-Mar-2026",
           "toPOReleaseDate":"12-Mar-2026",
          "fromPOReleaseDate":"06-Mar-2026",
-         "type":"Balance Adjustment"
+         "type":"Balance Adjustment",
+         "fromAmount":"123",
+            "toAmount":"1230"
     },
     "accountTransaction-003":{
         "toPOValidationDate":"12-Mar-2026",
@@ -63,5 +83,10 @@
          "fromChequeReleaseDate":"12-Mar-2026",
           "toPOReleaseDate":"12-Mar-2026",
          "fromPOReleaseDate":"12-Mar-2026"
+    },
+    "accountTransaction-004":{
+        "todeliverydate":"12-Mar-2020",
+         "fromDeliveryDate":"12-Mar-2019",
+         "TXNID":"4067558"
     }
 }

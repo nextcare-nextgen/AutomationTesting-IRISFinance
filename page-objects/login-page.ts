@@ -33,6 +33,17 @@ export class LoginPage {
         await this.page.goto(process.env.URL as string || url, { waitUntil: "domcontentloaded", timeout: 120000 });
     }
 
+    // async gotoLoginPage(url: string) {
+    //     const targetUrl = process.env.URL ?? url;
+
+    //     await this.page.goto(targetUrl, {
+    //         waitUntil: "domcontentloaded",
+    //         timeout: 120000,
+    //     });
+
+    //     await expect(this.userNameOrEmailInputField).toBeVisible();
+    // }
+
     // async loginToApplication(superUser: string, password: string) {
     //     await this.userNameOrEmailInputField.fill(superUser);
     //     await this.passwordInputField.fill(password);
@@ -40,6 +51,17 @@ export class LoginPage {
     //     await this.signinButton.click({force:true});
     // }
 
+    //  async gotoLoginPage(url: string) {
+    //     await this.page.goto(process.env.URL as string || url);
+    //     await this.page.waitForLoadState('networkidle');
+    // }
+ 
+    // async loginToApplication(superUser: string, password: string) {
+    //     await this.userNameOrEmailInputField.fill(superUser);
+    //     await this.passwordInputField.fill(password);
+    //     await new Promise(resolve => setTimeout(resolve, 10000));
+    //     await this.signinButton.click();
+    // }
 
     async loginToApplication(superUser: string, password: string) {
 
