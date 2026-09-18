@@ -6,12 +6,27 @@
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
 
+    "Login-Access_ppd": {
+        "url": "https://ppd-iris-uae.nextcarehealth.com/",
+        "userNameInput": "AccentureTempAdmin",
+        "passwordInput": "Coverage@123",
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
+    },
+
+     "Login-Access-DEV": {
+        "url": "https://tatshboportal-dev.tatsh.cloud/login",
+        "userNameInput": "VManoukian",
+        "passwordInput": "123",
+        "expectedPageTitle": "Iris Finance Portal | Dashboard"
+    },
+
     "Login-Access1": {
         "url": "https://test-iris-uae.tatsh.cloud/login",
         "userNameInput": "VManoukian",
         "passwordInput": "123",
         "expectedPageTitle": "Iris Finance Portal | Dashboard"
     },
+
     "Login-Access_old": {
         "url": "https://test-iris-uae.tatsh.cloud/login",
         "userNameInput": "MaPa-CM",

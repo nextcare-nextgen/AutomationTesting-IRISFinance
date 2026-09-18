@@ -95,7 +95,7 @@ test('FIN-TC-1760 @sanity: TC_244_Account Reconciliation_verify that payer label
     })
  
       await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
 });
@@ -119,7 +119,7 @@ test('FIN-TC-1761 @sanity: TC_246_Account Reconciliation_verify that currency la
     })
  
       await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
 });
@@ -313,7 +313,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
      })
      
       await test.step("Search all the mandatory feilds", async () => {
-         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
      })
  });
  
@@ -439,7 +439,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
      })
  
       await test.step("Fill all the mandatory feilds", async () => {
-         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
      })
  
      await test.step("Click on the Generate file button", async () => {
@@ -447,7 +447,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
      })
 
      await test.step("Valdate that various fields have been populated correctly",async()=>{
-        await accountTransactionPage.generateDatefileFields();
+        await accountTransactionPage.generateDatefileFieldsVerified();
      })
  
  });
@@ -479,7 +479,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
      })
  
       await test.step("Fill all the mandatory feilds", async () => {
-         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
      })
  
      await test.step("Click on the Generate file button", async () => {
@@ -487,7 +487,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
      })
 
      await test.step("Validate that various fields have been populated correctly",async()=>{
-        await accountTransactionPage.generateDatefileFields();
+        await accountTransactionPage.generateDatefileFieldsVerified();
      })
  
      await test.step("Validate that success job creation message is created",async()=>{
@@ -688,10 +688,10 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
      })
 
      await test.step("Fill all the mandatory details", async () => {
-        await paymentOrderDetailsPage.fillMandaoryDetails(PaymentOrdersData['TC013'].payerValue);
+        await paymentOrderDetailsPage.fillMandatoryDetails(PaymentOrdersData['TC013'].payerValue);
      })
      
-     await test.step("Click on search button without filling any details", async () => {
+     await test.step("Click on search button after filling only mandatory fields", async () => {
          await paymentOrderDetailsPage.clickOnSearch();
      })
  });
@@ -718,13 +718,9 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
          await paymentOrderDetailsPage.searchAndClickOnPaymentOrderUnderFinancials();
      })
 
-     await test.step("Fill all the mandatory details", async () => {
-        await paymentOrderDetailsPage.fillMandaoryDetails(PaymentOrdersData['TC013'].payerValue);
+     await test.step("Type in payer field and verify dropdown values are displayed", async () => {
+        await paymentOrderDetailsPage.verifyPayerDropdownValuesDisplayed(PaymentOrdersData['TC013'].payerValue);
     })
-    
-     await test.step("Click on search button without filling any details", async () => {
-         await paymentOrderDetailsPage.clickOnSearch();
-     })
  });
 
 //26
@@ -749,12 +745,12 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
          await paymentOrderDetailsPage.searchAndClickOnPaymentOrderUnderFinancials();
      })
 
-     await test.step("Fill all the mandatory details", async () => {
-        await paymentOrderDetailsPage.fillMandaoryDetails(PaymentOrdersData['TC013'].payerValue);
+     await test.step("Select payer to populate dependent dropdowns", async () => {
+        await paymentOrderDetailsPage.fillMandatoryDetails(PaymentOrdersData['TC013'].payerValue);
     })
 
-     await test.step("Click on search button without filling any details", async () => {
-         await paymentOrderDetailsPage.clickOnSearch();
+     await test.step("Verify currency dropdown values are displayed", async () => {
+         await paymentOrderDetailsPage.verifyCurrencyDropdownValuesDisplayed();
      })
  });
 
@@ -781,10 +777,15 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
      })
 
      await test.step("Fill all the mandatory details", async () => {
-        await paymentOrderDetailsPage.fillMandaoryDetails(PaymentOrdersData['TC013'].payerValue);
-    })
-     await test.step("Click on search button without filling any details", async () => {
+        await paymentOrderDetailsPage.fillMandatoryDetails(PaymentOrdersData['TC013'].payerValue);
+     })
+
+     await test.step("Click on search button", async () => {
          await paymentOrderDetailsPage.clickOnSearch();
+     })
+
+     await test.step("Verify search result columns are displayed", async () => {
+         await paymentOrderDetailsPage.verifySearchResultColumnsDisplayed();
      })
  });
 

@@ -90,7 +90,8 @@ export class ProviderReconcilationPage{
         this.headingTransactions=page.locator("//h2[text()='Transactions']");  
         this.country=page.locator("//input[@id='mat-input-2']");
         this.providerType=page.locator("//input[@id='mat-input-3']");
-        this.provider=page.locator("//input[@id='mat-input-13']");
+        //this.provider=page.locator("//input[@id='mat-input-13']");
+        this.provider = this.page.getByRole("combobox", {name: "Provider"});
         this.fromDueDate=page.locator("//input[@id='mat-input-4']");
         this.toDueDate=page.locator("//input[@id='mat-input-5']");
         this.fromSettleDate=page.locator("//input[@id='mat-input-6']");
@@ -124,7 +125,7 @@ export class ProviderReconcilationPage{
         this.toDueDateCalendar=page.locator("//input[@id='mat-input-5']/../../div[2]/mat-datepicker-toggle/button");
         this.todayCalender=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']");
         this.oldDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']/../../../tr[2]/td[1]");
-       this.newDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']/../../../tr[5]/td[1]");
+        this.newDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']/../../../tr[5]/td[1]");
         this.fromDueDateLabel=page.locator("//mat-label[text()='From Due Date']");
         this.fromDurDateCalendar=page.locator("//input[@id='mat-input-4']/../../div[2]/mat-datepicker-toggle/button");
         this.fromSettleDateLabel=page.locator("//mat-label[text()='From Settle Date']");
@@ -145,15 +146,15 @@ export class ProviderReconcilationPage{
         this.tPayer=page.locator("//span[text()=' Payer']");
         this.tValidationDate=page.locator("//span[text()=' Validation Date']");
         this.tDeliveryDate=page.locator("//span[text()=' Delivery Date']");
-    this.tDueDate=page.locator("//span[text()=' Due Date']");
-    this.tSettledDate=page.locator("//span[text()=' Settled Date']");
-    this.tReceptionDate=page.locator("//span[text()=' Reception Date']");
-    this.tPaymentOrder=page.locator("//span[text()=' Payment Order']");
-    this.tDestinationAccount=page.locator("//span[text()=' Destination  Account']");
-    this.tAmount=page.locator("//span[text()=' Amount']");
-    this.tCurrency=page.locator("//span[text()=' Currency']");
-    this.tCVAmount=page.locator("//span[text()=' CV Amount']");
-    this.tCVCurrency=page.locator("//span[text()=' CV Currency']");
+        this.tDueDate=page.locator("//span[text()=' Due Date']");
+        this.tSettledDate=page.locator("//span[text()=' Settled Date']");
+        this.tReceptionDate=page.locator("//span[text()=' Reception Date']");
+        this.tPaymentOrder=page.locator("//span[text()=' Payment Order']");
+        this.tDestinationAccount=page.locator("//span[text()=' Destination  Account']");
+        this.tAmount=page.locator("//span[text()=' Amount']");
+        this.tCurrency=page.locator("//span[text()=' Currency']");
+        this.tCVAmount=page.locator("//span[text()=' CV Amount']");
+        this.tCVCurrency=page.locator("//span[text()=' CV Currency']");
     }
 
     async searchAndClickOnPaymentOrderUnderFinancials() {
@@ -169,281 +170,323 @@ export class ProviderReconcilationPage{
         await this.providerReconcilation.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
         await this.providerReconcilation.click();
     }
-async providerRecoincialtionField(){
-    await this.Recoincilation.isVisible();
-}
-async visiblefield(){
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    await this.headingBC.isVisible();
-    await this.headingSC.isVisible();
-    await this.headingTransactions.isVisible();
-}
+    async providerRecoincialtionField(){
+        await this.Recoincilation.isVisible();
+    }
     
-async SearchCriteria(){
-   await new Promise(resolve => setTimeout(resolve, 3000));
-   expect(await this.country.isVisible());
-   expect(await this.providerType.isVisible());
-   expect(await this.provider.isVisible());
-   expect(await this.fromDueDate.isVisible());
-   expect(await this.toDueDate.isVisible());
-   expect(await this.fromSettleDate.isVisible());
-   expect(await this.toSettleDate.isVisible());
-   expect(await this.fromValidationDate.isVisible());
-   expect(await this.toValidationDate.isVisible());
-   expect(await this.payers.isVisible());
-   expect(await this.currency.isVisible());
-   expect(await this.Account.isVisible());
-   expect(await this.paymentOrder.isVisible());
-   expect(await this.showOnlyNotSetteled.isVisible());
-}
-async batchCriteria(){
-    expect(await this.fromReceptionDate.isVisible());
-    expect(await this.toReceptionDate.isVisible());
+    async visiblefield(){
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        await this.headingBC.isVisible();
+        await this.headingSC.isVisible();
+        await this.headingTransactions.isVisible();
+    }
+        
+    async SearchCriteria(){
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        expect(await this.country.isVisible());
+        expect(await this.providerType.isVisible());
+        expect(await this.provider.isVisible());
+        expect(await this.fromDueDate.isVisible());
+        expect(await this.toDueDate.isVisible());
+        expect(await this.fromSettleDate.isVisible());
+        expect(await this.toSettleDate.isVisible());
+        expect(await this.fromValidationDate.isVisible());
+        expect(await this.toValidationDate.isVisible());
+        expect(await this.payers.isVisible());
+        expect(await this.currency.isVisible());
+        expect(await this.Account.isVisible());
+        expect(await this.paymentOrder.isVisible());
+        expect(await this.showOnlyNotSetteled.isVisible());
+    }
 
-}
-async providerField(providerType: String, Country: String, providerValue:String){
- await this.page.locator("//input[@id='mat-input-13']").click();
- await this.page.waitForTimeout(3000);
- await this.provider.fill("");  
- for (const char of providerValue) {await this.provider.type(char, { delay: 200 }); }
- const option = this.page.locator("//span[text()='Yara Pharmacy - DXB']").first();
-  await option.waitFor({ state: "visible", timeout: 10000 });
-await option.click();      
- console.log(await this.providerType.inputValue());
-const providerInput = await this.providerType.inputValue();
-expect(providerInput.trim()).toBe(providerType); 
-expect((await this.country.inputValue()).trim()).toBe(Country);
-}
+    async batchCriteria(){
+        expect(await this.fromReceptionDate.isVisible());
+        expect(await this.toReceptionDate.isVisible());
 
-async searchProvder(){
+    }
+
+    async providerField(providerType: string,country: string,providerValue: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.provider.waitFor({state: "visible",timeout: 30000});
+        await expect(this.provider).toBeEditable({timeout: 30000});
+        await this.provider.click();
+        await this.provider.fill("");
+
+        for (let i = 0; i < providerValue.length; i++) {
+            await this.provider.pressSequentially(providerValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let providerOption = this.page.locator(`//span[contains(normalize-space(.), '${providerValue}')]`).first();
+        await expect(providerOption).toBeVisible({timeout: 20000});
+        await providerOption.click();
+        await this.provider.click();
+        await this.page.waitForTimeout(1000);
+        providerOption = this.page.locator(`//span[contains(normalize-space(.), '${providerValue}')]`).first();
+        await expect(providerOption).toBeVisible({timeout: 15000});
+        await providerOption.click();
+        await this.provider.press("Tab");
+        await expect(this.providerType).toHaveValue(providerType, {timeout: 15000});
+        await expect(this.country).toHaveValue(country, {timeout: 15000});
+
+        console.log(`Provider "${providerValue}" selected successfully.`);
+        console.log(`Provider Type: ${await this.providerType.inputValue()}`);
+        console.log(`Country: ${await this.country.inputValue()}`);
+    }
+
+    async searchProvder(){
+        
+        await this.searchButton.click();
+        await this.page.waitForLoadState("networkidle");
+        await this.page.waitForLoadState();
+        await this.page.waitForTimeout(10000);
+        await this.page.locator("(//tr[@class='test mat-row ng-star-inserted'][1])").isVisible();
+    }
+
+    async payerfield(payerValue: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({state: "visible",timeout: 30000});
+        await expect(this.payer).toBeEditable({timeout: 30000});
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {delay: 250});
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 20000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        await expect(this.payer).toHaveValue(payerValue, {timeout: 15000});
+        console.log(`Payer "${payerValue}" selected successfully.`);
+    }
+
+    async DueDate(fromDue: String,toDue: String){
+        await this.toDueDate.fill(toDue.trim());
+        await this.fromDueDate.fill(fromDue.trim());
+        await this.page.keyboard.press('Tab');
+        await this.page.waitForTimeout(2000);
     
-await this.searchButton.click();
- await this.page.waitForLoadState("networkidle");
-  await this.page.waitForLoadState();
- await this.page.waitForTimeout(10000);
-await this.page.locator("(//tr[@class='test mat-row ng-star-inserted'][1])").isVisible();
-}
+    }
 
-async payerfield(payerValue: String){
-    await this.payer.click();
-    await this.payer.fill("");
-    for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
- const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-  await option.waitFor({ state: "visible", timeout: 10000 });
-await option.click()
-}
+    async InCorrectDateMsg(){
+        await this.page.locator("(//mat-error[text()=' Incorrect entry '][1])").isVisible();
+    }
 
-async DueDate(fromDue: String,toDue: String){
-     await this.toDueDate.fill(toDue.trim());
-    await this.fromDueDate.fill(fromDue.trim());
-    await this.page.keyboard.press('Tab');
-    await this.page.waitForTimeout(2000);
-   
-}
+    async toggelDisable(){
+        await expect(this.toggleButton).not.toBeChecked();
+    }
+    async toggelEnable(){
+        await expect(this.toggleButton).not.toBeChecked();
+    }
+    async receptionDate(fromReception:String, toReception: String){
+        await this.toReceptionDate.fill(toReception.trim());
+        await this.fromReceptionDate.fill(fromReception.trim());
+    }
+    async settleDate(fromSettle:String, toSettle:String){
+        await this.toSettleDate.fill(toSettle.trim());
+        await this.fromSettleDate.fill(fromSettle.trim());
+    }
+    async validateDate(toValidate: String, fromValidate: String){
+        await this.toValidationDate.fill(toValidate.trim());
+        await this.fromValidationDate.fill(fromValidate.trim());
+    }
+    async generateFileButton(){
+        await this.generateFile.click();
+        await this.page.waitForTimeout(2000);
+        await this.popup.isVisible();
+    }
+    async requireErrorMsg(){
+        expect(await this.requiredField.isVisible());
+    }
 
-async InCorrectDateMsg(){
-     await this.page.locator("(//mat-error[text()=' Incorrect entry '][1])").isVisible();
-}
+    async requirePayerMsg(){
+        expect(await this.payerError.isVisible());
+    }
+    async pageDropdown(){
+        expect(await this.perPage.isVisible());
+        await this.perPageDropdown.click();
+        await this.page.waitForTimeout(5000);
+    }
+    async pageCount(){
+        //await this.page10.click();
+        //await this.perPageDropdown.click();
+        expect(await this.page15.isVisible());
+        expect(await this.page20.isVisible());
+        expect(await this.page30.isVisible());
+        expect(await this.page50.isVisible());
+        expect(await this.page100.isVisible());
+    }
+    async verifyPagination(){
+        await this.page.waitForLoadState('networkidle');
+        await this.pagination.isVisible();
+    }
+    async verifytoDueDate(){
+        expect(await this.toDueDateLabel.isVisible());
+        await this.toDueDate.click();
+    }
+    async verifytoDueDateCalendar(){
+        await this.toDueDateCalendar.click();
+    }
+    async verifyTodayDate(){
+        await this.page.waitForLoadState('networkidle');
+        await this.todayCalender.click();
+        await this.page.waitForTimeout(2000);
+    }
 
-async toggelDisable(){
-    await expect(this.toggleButton).not.toBeChecked();
-}
-async toggelEnable(){
-    await expect(this.toggleButton).not.toBeChecked();
-}
-async receptionDate(fromReception:String, toReception: String){
-    await this.toReceptionDate.fill(toReception.trim());
-    await this.fromReceptionDate.fill(fromReception.trim());
-}
-async settleDate(fromSettle:String, toSettle:String){
-    await this.toSettleDate.fill(toSettle.trim());
-    await this.fromSettleDate.fill(fromSettle.trim());
-}
-async validateDate(toValidate: String, fromValidate: String){
-     await this.toValidationDate.fill(toValidate.trim());
-    await this.fromValidationDate.fill(fromValidate.trim());
-}
-async generateFileButton(){
-    await this.generateFile.click();
-    await this.page.waitForTimeout(2000);
-    await this.popup.isVisible();
-}
-async requireErrorMsg(){
-    expect(await this.requiredField.isVisible());
-}
+    async verifyOldDate(){
+        await this.page.waitForLoadState('networkidle');
+        await this.oldDate.click();
+    }
+    async verifyNewDate(){
+        await this.page.waitForLoadState('networkidle');
+        await this.newDate.click();
+    }
+    async verifyfromDueDate(){
+        expect(await this.fromDueDateLabel.isVisible());
+        await this.fromDueDate.click();
+    }
+    async verifyfromDueDateCalendar(){
+        await this.fromDurDateCalendar.click();
+    }
+    async verifyfromSettleDate(){
+        expect(await this.fromSettleDateLabel.isVisible());
+        await this.fromSettleDate.click();
+    }
+    async verifyfromSettleDateCalendar(){
+        await this.fromSettleDateCalendar.click();
+        await this.page.waitForTimeout(2000);
+    }
+    async verifytoSettleDate(){
+        expect(await this.toSettleDateLabel.isVisible());
+        await this.toSettleDate.click();
+    }
+    async verifytoSettleDateCalendar(){
+        await this.toSettleDateCalendar.click();
+        await this.page.waitForTimeout(2000);
+    }
+    async verifyfromValidationDate(){
+        await this.fromValidationDateLabel.isVisible();
+        await this.fromValidationDate.click();
+    }
+    async verifyfromValidationDateCalendar(){
+        await this.fromValidationDateCalendar.click();
+        await this.page.waitForTimeout(2000);
+    }
+    async verifytoValidationDate(){
+        expect(await this.toValidationDateLabel.isVisible());
+        await this.toValidationDate.click();
+    }
+    async verifytoValidationDateCalendar(){
+        await this.toValidationDateCalendar.click();
+        await this.page.waitForTimeout(2000);
+    }
+    async verifyfromReceptionDate(){
+        expect(await this.fromReceptionDateLabel.isVisible());
+        await this.fromReceptionDate.click();
+    }
+    async verifyfromReceptionDateCalendar(){
+        await this.fromReceptionDateCalendar.click();
+        await this.page.waitForTimeout(2000);
+    }
+    async verifytoReceptionDate(){
+        expect(await this.toReceptionDateLabel.isVisible());
+        await this.toReceptionDate.click();
+    }
+    async verifytoReceptionDateCalendar(){
+        await this.toReceptionDateCalendar.click();
+        await this.page.waitForTimeout(2000);
+    }
+    async verifyCurrencyText(){
+        expect(await this.currency.inputValue()).not.toHaveLength(0);
+    } 
+    async verifyAccountText(){
+        await this.accountDD.isVisible();
+        await this.accountDD.click();
+    } 
+    async sendpaymentOrder(digit:String){
+        await this.paymentOrder.click();
+    await this.paymentOrder.fill("");
+        for (const char of digit) {await this.paymentOrder.type(char, { delay: 200 }); }
+        await this.page.waitForTimeout(5000);
+    }
+    async validatePaymentOrder(){
 
-async requirePayerMsg(){
-    expect(await this.payerError.isVisible());
-}
-async pageDropdown(){
-    expect(await this.perPage.isVisible());
-    await this.perPageDropdown.click();
-    await this.page.waitForTimeout(5000);
-}
-async pageCount(){
-    //await this.page10.click();
-    //await this.perPageDropdown.click();
-    expect(await this.page15.isVisible());
-    expect(await this.page20.isVisible());
-    expect(await this.page30.isVisible());
-    expect(await this.page50.isVisible());
-    expect(await this.page100.isVisible());
-}
-async verifyPagination(){
-    await this.page.waitForLoadState('networkidle');
-    await this.pagination.isVisible();
-}
-async verifytoDueDate(){
-    expect(await this.toDueDateLabel.isVisible());
-    await this.toDueDate.click();
-}
-async verifytoDueDateCalendar(){
-    await this.toDueDateCalendar.click();
-}
-async verifyTodayDate(){
-     await this.page.waitForLoadState('networkidle');
-    await this.todayCalender.click();
-    await this.page.waitForTimeout(2000);
-}
-
-async verifyOldDate(){
-    await this.page.waitForLoadState('networkidle');
-    await this.oldDate.click();
-}
-async verifyNewDate(){
-    await this.page.waitForLoadState('networkidle');
-    await this.newDate.click();
-}
-async verifyfromDueDate(){
-    expect(await this.fromDueDateLabel.isVisible());
-    await this.fromDueDate.click();
-}
-async verifyfromDueDateCalendar(){
-    await this.fromDurDateCalendar.click();
-}
-async verifyfromSettleDate(){
-    expect(await this.fromSettleDateLabel.isVisible());
-    await this.fromSettleDate.click();
-}
-async verifyfromSettleDateCalendar(){
-    await this.fromSettleDateCalendar.click();
-    await this.page.waitForTimeout(2000);
-}
-async verifytoSettleDate(){
-    expect(await this.toSettleDateLabel.isVisible());
-    await this.toSettleDate.click();
-}
-async verifytoSettleDateCalendar(){
-    await this.toSettleDateCalendar.click();
-    await this.page.waitForTimeout(2000);
-}
-async verifyfromValidationDate(){
-    await this.fromValidationDateLabel.isVisible();
-    await this.fromValidationDate.click();
-}
-async verifyfromValidationDateCalendar(){
-    await this.fromValidationDateCalendar.click();
-    await this.page.waitForTimeout(2000);
-}
-async verifytoValidationDate(){
-    expect(await this.toValidationDateLabel.isVisible());
-    await this.toValidationDate.click();
-}
-async verifytoValidationDateCalendar(){
-    await this.toValidationDateCalendar.click();
-    await this.page.waitForTimeout(2000);
-}
-async verifyfromReceptionDate(){
-    expect(await this.fromReceptionDateLabel.isVisible());
-    await this.fromReceptionDate.click();
-}
-async verifyfromReceptionDateCalendar(){
-    await this.fromReceptionDateCalendar.click();
-    await this.page.waitForTimeout(2000);
-}
-async verifytoReceptionDate(){
-    expect(await this.toReceptionDateLabel.isVisible());
-    await this.toReceptionDate.click();
-}
-async verifytoReceptionDateCalendar(){
-    await this.toReceptionDateCalendar.click();
-    await this.page.waitForTimeout(2000);
-}
-async verifyCurrencyText(){
-    expect(await this.currency.inputValue()).not.toHaveLength(0);
-} 
-async verifyAccountText(){
-    await this.accountDD.isVisible();
-    await this.accountDD.click();
-} 
-async sendpaymentOrder(digit:String){
-     await this.paymentOrder.click();
-   await this.paymentOrder.fill("");
-    for (const char of digit) {await this.paymentOrder.type(char, { delay: 200 }); }
-     await this.page.waitForTimeout(5000);
-}
-async validatePaymentOrder(){
-
-    expect(await this.paymentOrder.inputValue()).toBeNull
-}
-async validatePaymentOrderaccepted(){
-    console.log(this.paymentOrder.inputValue());
-    expect(await this.paymentOrder.inputValue()).not.toBeNull
-}
-async displayArrow(){
-    expect(await this.upArrow.isVisible());
-    expect(await this.downArrow.isVisible());
-}
-async upArrowSort(){
-    await this.upArrow.click();
+        expect(await this.paymentOrder.inputValue()).toBeNull
+    }
+    async validatePaymentOrderaccepted(){
+        console.log(this.paymentOrder.inputValue());
+        expect(await this.paymentOrder.inputValue()).not.toBeNull
+    }
+    async displayArrow(){
+        expect(await this.upArrow.isVisible());
+        expect(await this.downArrow.isVisible());
+    }
+    async upArrowSort(){
+        await this.upArrow.click();
+        const colVal = await this.page.$$eval(
+    'table tbody tr td:nth-child(7)', 
+        cells => cells.map(cell => cell.textContent?.trim() || ''));
+        log(colVal);
+        const sortedValues = [...colVal].sort((a, b) =>
+        a.localeCompare(b));
+        expect(colVal).toEqual(sortedValues);
+    }
+    async downArrowSort(){
+        await this.downArrow.click();
+        const colVal = await this.page.$$eval(
+    'table tbody tr td:nth-child(7)', 
+        cells => cells.map(cell => cell.textContent?.trim() || ''));
+    //   log(colVal);
+        const sortedValues = [...colVal].sort((b, a) =>
+        b.localeCompare(a));
+        expect(colVal).toEqual(sortedValues);
+    }
+    async settleData(){
+        const colVal = await this.page.$$eval(
+    'table tbody tr td:nth-child(5)', 
+        cells => cells.map(cell => cell.textContent?.trim() || ''));
+        //log(colVal);
+        expect(colVal!=null)
+    }
+    async toggleClick(){
+        await this.page.waitForTimeout(2000);
+        await this.page.locator("//input[@id='mat-slide-toggle-3-input']/..").click();
+    }
+    async settleDataNotPresent(){
     const colVal = await this.page.$$eval(
-   'table tbody tr td:nth-child(7)', 
-    cells => cells.map(cell => cell.textContent?.trim() || ''));
-    log(colVal);
-    const sortedValues = [...colVal].sort((a, b) =>
-    a.localeCompare(b));
-    expect(colVal).toEqual(sortedValues);
-}
-async downArrowSort(){
-    await this.downArrow.click();
-    const colVal = await this.page.$$eval(
-   'table tbody tr td:nth-child(7)', 
-    cells => cells.map(cell => cell.textContent?.trim() || ''));
- //   log(colVal);
-    const sortedValues = [...colVal].sort((b, a) =>
-     b.localeCompare(a));
-    expect(colVal).toEqual(sortedValues);
-}
-async settleData(){
-    const colVal = await this.page.$$eval(
-   'table tbody tr td:nth-child(5)', 
-    cells => cells.map(cell => cell.textContent?.trim() || ''));
-    //log(colVal);
-    expect(colVal!=null)
-}
-async toggleClick(){
-    await this.page.waitForTimeout(2000);
-     await this.page.locator("//input[@id='mat-slide-toggle-3-input']/..").click();
-}
-async settleDataNotPresent(){
- const colVal = await this.page.$$eval(
-   'table tbody tr td:nth-child(5)', 
-    cells => cells.map(cell => cell.textContent?.trim() || ''));
-    //log(colVal);
-    expect(colVal[0]).toEqual("");
-}
-async tableItems(){
-    expect(await this.tPayer.isVisible());
-    expect(await this.tValidationDate.isVisible());
-    expect(await this.tDeliveryDate.isVisible());
-    expect(await this.tDueDate.isVisible());
-    expect(await this.tSettledDate.isVisible());
-    expect(await this.tReceptionDate.isVisible());
-    expect(await this.tPaymentOrder.isVisible());
-    expect(await this.tDestinationAccount.isVisible());
-    expect(await this.tAmount.isVisible());
-    expect(await this.tCurrency.isVisible());
-    expect(await this.tCVAmount.isVisible());
-    expect(await this.tCVCurrency.isVisible());
-}
+    'table tbody tr td:nth-child(5)', 
+        cells => cells.map(cell => cell.textContent?.trim() || ''));
+        //log(colVal);
+        expect(colVal[0]).toEqual("");
+        }
+    async tableItems(){
+        expect(await this.tPayer.isVisible());
+        expect(await this.tValidationDate.isVisible());
+        expect(await this.tDeliveryDate.isVisible());
+        expect(await this.tDueDate.isVisible());
+        expect(await this.tSettledDate.isVisible());
+        expect(await this.tReceptionDate.isVisible());
+        expect(await this.tPaymentOrder.isVisible());
+        expect(await this.tDestinationAccount.isVisible());
+        expect(await this.tAmount.isVisible());
+        expect(await this.tCurrency.isVisible());
+        expect(await this.tCVAmount.isVisible());
+        expect(await this.tCVCurrency.isVisible());
+    }
 }

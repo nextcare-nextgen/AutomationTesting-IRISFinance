@@ -196,7 +196,8 @@ export class AccountTransactionPage{
         this.errorMsg=page.locator("//mat-error[@id='mat-error-0']");
         this.genratefile=page.locator("//div[text()='Generate Data File ']/..");
         this.search=page.locator("final-grid-component input");
-        this.eyeIcon=page.locator("(//table[@id='dddd']/tbody/tr/td[16]/div/div/img)[1]");
+        //this.eyeIcon=page.locator("(//table[@id='dddd']/tbody/tr[1]/td[last()]//img)[1]");
+        this.eyeIcon = this.page.locator("table tbody tr").first().locator("td:last-child img").first();
         this.accTransPopUp=page.locator("nc-account-detail");
         this.chequeReleaseDate=page.locator("//input[@id='chequereleasedate']");
         this.chequeSentDate=page.locator("//input[@id='chequesentdate']");
@@ -211,8 +212,8 @@ export class AccountTransactionPage{
         this.poplabel=page.locator("//input[@formcontrolname='lable']");
         this.poppo=page.locator("//input[@formcontrolname='paymentOrder']");
         this.popdeleiveryDate=page.locator("//input[@formcontrolname='deliveryDate']");
-        this.popCheckbox=page.locator("//mat-checkbox[@id='mat-checkbox-4']");
-        this.popPendingtext=page.locator("//div[text()='Pending Reason']/..");
+        this.popCheckbox = this.page.locator("mat-checkbox").filter({ hasText: "Pending" });
+        this.popPendingtext = this.page.getByRole("button", {name: "Pending Reason"});
         this.popBankReference=page.locator("//input[@id='bankreference']");
         this.popChequeReleaseDate=page.locator("//input[@id='chequereleasedate']");
         this.popChequeSentDate=page.locator("//input[@id='chequesentdate']");
@@ -289,7 +290,8 @@ export class AccountTransactionPage{
         expect(await this.Searchresults.isVisible());
 
     }
-    async fillMandaoryDetails(payerValue: String,fromDelDate:String,toDeldate: String,account:String){
+
+    async fillMandatoryDetails(payerValue: String,fromDelDate:String,toDeldate: String,account:String){
         await this.page.waitForLoadState("networkidle");
         await this.payer.fill("");  
         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
@@ -300,25 +302,289 @@ export class AccountTransactionPage{
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
         await acc.click();  
-       await this.fromdeliveryDate.fill(fromDelDate.trim());
+        await this.fromdeliveryDate.fill(fromDelDate.trim());
         await this.toDeliveryDate.fill(toDeldate.trim());
     }
 
-    async clickonSearch(){
-        await this.SearchButton.click();
+    // async clickonSearch(){
+    //     await this.page.waitForTimeout(10000);
+    //     await this.SearchButton.click();
+    //     await this.page.waitForLoadState("networkidle");
+    // }
+
+    async clickonSearch() {
+        const searchButton = this.page.getByRole("button", {name: "Search"});
+        await expect(searchButton).toBeEnabled({timeout: 10000});
+        await searchButton.click();
+        console.log("Search clicked");
+        const appLoader = this.page.locator("app-new-loader");
+        await appLoader.waitFor({state: "hidden",timeout: 60000}).catch(() => {});
+        await this.page.waitForTimeout(2000);
     }
+
+    // async fillMandatoryDetailsWithRetry(payerValue: string, fromDelDate: string, toDelDate: string, account: string) {
+    //     const appLoader = this.page.locator("app-new-loader");
+    //     await this.page.waitForLoadState("domcontentloaded");
+    //     await this.payer.waitFor({ state: "visible", timeout: 30000 });
+    //     await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+    //     await this.payer.click();
+    //     await this.payer.fill("");
+
+    //     const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
+
+    //     try {
+    //         await this.payer.type(payerValue, { delay: 200 });
+    //         await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+    //         await payerOption.waitFor({ state: "visible", timeout: 15000 });
+    //         await this.page.keyboard.press("Enter").catch(() => {});
+    //         await payerOption.click();
+    //     } catch {
+    //         console.log("Retrying payer selection...");
+    //         await this.payer.click();
+    //         await this.payer.fill("");
+    //         for (const char of payerValue) {
+    //             await this.payer.type(char, { delay: 200 });
+    //             await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+    //         }
+    //         await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+    //         await payerOption.waitFor({ state: "visible", timeout: 15000 });
+    //         await this.page.keyboard.press("Enter").catch(() => {});
+    //         await payerOption.click();
+    //     }
+
+    //     await this.page.waitForTimeout(2000);
+    //     await expect(this.Account).toBeVisible({ timeout: 10000 });
+    //     await this.Account.click();
+    //     const accOption = this.page.locator(`//span[contains(text(),'${account}')]`).first();
+    //     try {
+    //         await accOption.waitFor({ state: "visible", timeout: 10000 });
+    //         await accOption.click();
+    //     } catch {
+    //         console.log(`Retrying account selection with fallback for "${account}"...`);
+    //         const firstAccountOption = this.page.locator("mat-option").first();
+    //         await firstAccountOption.waitFor({ state: "visible", timeout: 10000 });
+    //         await firstAccountOption.click();
+    //     }
+
+    //     // await this.fromdeliveryDate.fill(fromDelDate.trim());
+    //     // await this.toDeliveryDate.fill(toDelDate.trim());
+    //     // await this.toDeliveryDate.press("Tab");
+    //     // console.log(`Payer "${payerValue}" and Account "${account}" selected successfully.`);
+    //     await this.fromdeliveryDate.click();
+    //     await this.fromdeliveryDate.pressSequentially(fromDelDate.trim(), { delay: 100 });
+    //     await this.fromdeliveryDate.press("Tab");
+
+    //     await this.toDeliveryDate.click();
+    //     await this.toDeliveryDate.pressSequentially(toDelDate.trim(), { delay: 100 });
+    //     await this.toDeliveryDate.press("Tab");
+
+    //     await this.page.waitForTimeout(1000);
+    //     console.log("From Delivery Date:", await this.fromdeliveryDate.inputValue());
+    //     console.log("To Delivery Date:", await this.toDeliveryDate.inputValue());
+    // }
+
+    async fillMandatoryDetailsWithRetry(payerValue: string, fromDelDate: string, toDelDate: string, account: string) {
+        const appLoader = this.page.locator("app-new-loader");
+
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 20000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
+        await this.Account.click();
+        const accOption = this.page.locator(`//span[contains(normalize-space(.), '${account}')]`).first();
+
+        await expect(accOption).toBeVisible({timeout: 20000});
+        await accOption.click();
+        await this.fromdeliveryDate.click();
+        await this.fromdeliveryDate.fill(fromDelDate.trim());
+        await this.fromdeliveryDate.press("Tab");
+        await this.toDeliveryDate.click();
+        await this.toDeliveryDate.fill(toDelDate.trim());
+        await this.toDeliveryDate.press("Tab");
+        await expect(this.fromdeliveryDate).toHaveValue(fromDelDate.trim(),{ timeout: 10000 });
+        await expect(this.toDeliveryDate).toHaveValue(toDelDate.trim(),{ timeout: 10000 });
+        console.log(`Payer: ${await this.payer.inputValue()}`);
+        console.log(`Currency: ${await currency.inputValue()}`);
+        console.log(`Account: ${await this.Account.inputValue()}`);
+        console.log(`From Delivery Date: ${await this.fromdeliveryDate.inputValue()}`);
+        console.log(`To Delivery Date: ${await this.toDeliveryDate.inputValue()}`);
+        await this.page.waitForTimeout(1000);
+    }
+
+    async fillMandatoryDetailsWithRetryDev(
+    payerValue: string,
+    fromDelDate: string,
+    toDelDate: string,
+    account: string
+) {
+    await this.page.waitForLoadState("domcontentloaded");
+    await this.payer.waitFor({
+        state: "visible",
+        timeout: 30000
+    });
+
+    // =========================
+    // PAYER
+    // =========================
+    await this.payer.click();
+    await this.payer.fill("");
+
+    for (let i = 0; i < payerValue.length; i++) {
+        await this.payer.pressSequentially(payerValue[i], {
+            delay: 250
+        });
+
+        if (i === 2) {
+            await this.page.waitForTimeout(5000);
+        }
+    }
+
+    let payerOption = this.page
+        .locator(`//span[contains(normalize-space(.), '${payerValue}')]`)
+        .first();
+
+    await expect(payerOption).toBeVisible({
+        timeout: 20000
+    });
+
+    await payerOption.click();
+
+    // Application sometimes needs payer to be opened again
+    await this.payer.click();
+    await this.page.waitForTimeout(1000);
+
+    payerOption = this.page
+        .locator(`//span[contains(normalize-space(.), '${payerValue}')]`)
+        .first();
+
+    await expect(payerOption).toBeVisible({
+        timeout: 15000
+    });
+
+    await payerOption.click();
+    await this.payer.press("Tab");
+
+    // =========================
+    // CURRENCY
+    // =========================
+    const currency = this.page.getByRole("combobox", {
+        name: "Currency"
+    });
+
+    await expect(currency).toHaveValue("Rial Omani", {
+        timeout: 30000
+    });
+
+    // =========================
+    // ACCOUNT
+    // =========================
+    await this.Account.click();
+
+    const accOption = this.page
+        .locator(`//span[contains(normalize-space(.), '${account}')]`)
+        .first();
+
+    await expect(accOption).toBeVisible({
+        timeout: 20000
+    });
+
+    await accOption.click();
+
+    // =========================
+    // FROM DELIVERY DATE
+    // =========================
+    await this.fromdeliveryDate.click();
+    await this.fromdeliveryDate.fill(fromDelDate.trim());
+    await this.fromdeliveryDate.press("Tab");
+
+    // =========================
+    // TO DELIVERY DATE
+    // =========================
+    await this.toDeliveryDate.click();
+    await this.toDeliveryDate.fill(toDelDate.trim());
+    await this.toDeliveryDate.press("Tab");
+
+    // =========================
+    // VERIFY VALUES
+    // =========================
+    await expect(this.fromdeliveryDate).toHaveValue(
+        fromDelDate.trim(),
+        { timeout: 10000 }
+    );
+
+    await expect(this.toDeliveryDate).toHaveValue(
+        toDelDate.trim(),
+        { timeout: 10000 }
+    );
+
+    console.log(`Payer: ${await this.payer.inputValue()}`);
+    console.log(`Currency: ${await currency.inputValue()}`);
+    console.log(`Account: ${await this.Account.inputValue()}`);
+    console.log(`From Delivery Date: ${await this.fromdeliveryDate.inputValue()}`);
+    console.log(`To Delivery Date: ${await this.toDeliveryDate.inputValue()}`);
+
+    await this.page.waitForTimeout(1000);
+}
+
     async fillAllDetails(payerValue: String,fromDelDate:String,toDeldate: String, AccountValue:String, type: String, country:String){
-        await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();  
+        const appLoader = this.page.locator("app-new-loader");
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+        const payerText = payerValue.toString();
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerText}')]`).first();
+
+        try {
+            await this.payer.type(payerText, { delay: 200 });
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerText) {
+                await this.payer.type(char, { delay: 200 });
+                await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
         await this.page.waitForLoadState("networkidle");
        // await this.Account.fill("");  
        // for (const char of this.AccountValue) {await this.Account.type(char, { delay: 200 }); }
         await this.Account.click();
-       const acc = this.page.locator("//span[text()='ADNIC - Escrow']").first();
+        const acc = this.page.locator("//span[text()='ADNIC - Escrow']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
         await acc.click();  
         await this.fromPOValidationDate.fill(fromDelDate.trim());
@@ -341,9 +607,67 @@ export class AccountTransactionPage{
         await this.toDeliveryDate.fill(toDeldate.trim());
     }
 
+    async fillAllDetailsDev(payerValue: String,fromDelDate:String,toDeldate: String, AccountValue:String, type: String, country:String){
+        const appLoader = this.page.locator("app-new-loader");
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+        const payerText = payerValue.toString();
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerText}')]`).first();
+
+        try {
+            await this.payer.type(payerText, { delay: 200 });
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerText) {
+                await this.payer.type(char, { delay: 200 });
+                await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
+        await this.page.waitForLoadState("networkidle");
+        await this.Account.click();
+        const accOption = this.page.locator(`//span[contains(normalize-space(.), '${AccountValue}')]`).first();
+        await expect(accOption).toBeVisible({timeout: 20000});
+
+        await accOption.click();
+        await this.fromPOValidationDate.fill(fromDelDate.trim());
+        await this.toPOValidationDate.fill(toDeldate.trim());
+        await this.Type.click();
+        await this.page.locator("//span[text()='Reimbursement Claims']").click();  
+        await this.fromDueDate.fill(fromDelDate.trim());
+        await this.toDueDate.fill(toDeldate.trim());
+        await this.fromSettleDate.fill(fromDelDate.trim());
+        await this.toSettleDate.fill(toDeldate.trim());
+        await this.fromChequeReleaseDate.fill(fromDelDate.trim());
+        await this.toChecqueReleaseDate.fill(toDeldate.trim());
+        await this.fromPOReleaseDate.fill(fromDelDate.trim());
+        await this.toPOReleaseDate.fill(toDeldate.trim());
+        // await this.Settled.click();
+        // await this.page.locator("//span[text()=' Yes ']").click();
+        await this.Country.click();
+        await this.page.locator("//span[text()='United Arab Emirates']").click(); 
+        await this.fromdeliveryDate.fill(fromDelDate.trim());
+        await this.toDeliveryDate.fill(toDeldate.trim());
+    }
+
+
     async verifyErrorMsg(){
         expect(await this.errorMsg.isVisible());
     }
+
     async clickgeneratefile(){
         await this.page.waitForTimeout(5000);
         await this.genratefile.click();
@@ -351,26 +675,50 @@ export class AccountTransactionPage{
     }
 
     async verifySearch(provider: String){
-           await this.page.waitForTimeout(5000);
+        await this.page.waitForTimeout(5000);
         await this.search.click();
         await this.search.fill(provider.trim());
         await this.page.keyboard.press('Enter');
         await this.page.waitForTimeout(5000);
     }
+
     async noRecordFound(){
         await this.page.locator("//div[text()=' No Records Found ']")
     }
-    async validateEyeIcon(){
-        expect(await this.eyeIcon.isVisible());
-        await this.page.waitForTimeout(2000);
+
+    // async validateEyeIcon(){
+    //     const appLoader = this.page.locator("app-new-loader");
+    //     await this.page.waitForLoadState("domcontentloaded");
+    //     await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+    //     await this.eyeIcon.waitFor({ state: "visible", timeout: 20000 });
+    //     await expect(this.eyeIcon).toBeVisible({ timeout: 20000 });
+    //     await this.eyeIcon.click();
+
+    //     await expect(this.accTransPopUp).toBeVisible({ timeout: 20000 });
+    // }
+
+    async validateEyeIcon() {
+        const rows = this.page.locator("table tbody tr");
+        await expect(rows.first()).toBeVisible({timeout: 60000});
+        await expect(this.eyeIcon).toBeVisible({timeout: 30000});
         await this.eyeIcon.click();
-        await this.page.waitForTimeout(5000);
-        expect(await this.accTransPopUp.isVisible())
+    }
+
+    async verifySearchResult() {
+        const resultText = await this.page.locator("body").innerText();
+
+        console.log(
+            resultText.includes("No Records Found")
+                ? "❌ Search returned NO RECORDS"
+                : "✅ Search returned records"
+        );
     }
 
     async validatepopupdetail(){
         await this.chequeReleaseDate.click();
         await this.page.keyboard.press('Enter');
+        await this.page.getByRole("button", { name: "OK" }).click();
         await this.chequeSentDate.click();
     }
 
@@ -388,11 +736,12 @@ export class AccountTransactionPage{
         expect(await this.popdeleiveryDate.isVisible());
     }
 
-    async pendingCheckbox(){
-        expect(await this.popCheckbox.isVisible());
+    async pendingCheckbox() {
+        await expect(this.popCheckbox).toBeVisible();
         await this.popCheckbox.click();
-        await this.page.waitForTimeout(5000);
-        expect(await this.popPendingtext.isVisible())
+        await this.page.waitForTimeout(2000);
+        await this.popCheckbox.click();
+        await expect(this.popPendingtext).toBeVisible({timeout: 10000});
     }
 
     async pendingReasonPopup(){
@@ -481,6 +830,7 @@ export class AccountTransactionPage{
     async verifyFutureDate(){
         await this.futureDate.click();
     }
+
     async verifytoPODate(){
         expect(await this.fromPOValidationDate.isVisible());
         expect(await this.fromPOValidationDateLabel.isVisible());
@@ -491,19 +841,67 @@ export class AccountTransactionPage{
         await this.fromPOValidationcalendarButton.click();
        expect(await this.fromPOValidationDateCalendar.isVisible());
     }
-    async fillPOValidationDate(payerValue: String,fromPOValidDate:String,toPOValiddate: String,account:String){
-        await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
+
+    // async fillPOValidationDate(payerValue: String,fromPOValidDate:String,toPOValiddate: String,account:String){
+    //     await this.page.waitForLoadState("networkidle");
+    //     await this.payer.fill("");  
+    //     for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+    //     const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+    //     await option.waitFor({ state: "visible", timeout: 10000 });
+    //     await option.click();      
+    //     await this.Account.click();
+    //     const acc = this.page.locator("//span[text()='Union Ins.']").first();
+    //     await acc.waitFor({ state: "visible", timeout: 10000 });
+    //     await acc.click();  
+    //    await this.fromPOValidationDate.fill(fromPOValidDate.trim());
+    //     await this.toPOValidationDate.fill(toPOValiddate.trim());
+
+        
+    // }
+
+    async fillPOValidationDate(payerValue: string, fromPOValidDate: string, toPOValidDate: string,account: string) {
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 20000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
         await this.Account.click();
-        const acc = this.page.locator("//span[text()='Union Ins.']").first();
-        await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();  
-       await this.fromPOValidationDate.fill(fromPOValidDate.trim());
-        await this.toPOValidationDate.fill(toPOValiddate.trim());
+        const accOption = this.page.locator(`//span[contains(normalize-space(.), '${account}')]`).first();
+        await expect(accOption).toBeVisible({timeout: 20000});
+        await accOption.click();
+        await this.fromPOValidationDate.click();
+        await this.fromPOValidationDate.fill(fromPOValidDate.trim());
+        await this.fromPOValidationDate.press("Tab");
+        await this.toPOValidationDate.click();
+        await this.toPOValidationDate.fill(toPOValidDate.trim());
+        await this.toPOValidationDate.press("Tab");
+        await expect(this.fromPOValidationDate).toHaveValue(fromPOValidDate.trim(),{ timeout: 10000 });
+        await expect(this.toPOValidationDate).toHaveValue(toPOValidDate.trim(),{ timeout: 10000 });
+        console.log(`Payer: ${await this.payer.inputValue()}`);
+        console.log(`Currency: ${await currency.inputValue()}`);
+        console.log(`Account: ${await this.Account.inputValue()}`);
+        console.log(`From PO Validation Date: ${await this.fromPOValidationDate.inputValue()}`);
+        console.log(`To PO Validation Date: ${await this.toPOValidationDate.inputValue()}`);
+        await this.page.waitForTimeout(1000);
     }
 
     async InvalidPageMsg(){
@@ -531,34 +929,82 @@ export class AccountTransactionPage{
         await this.toDueDatecalendarButton.click();
        expect(await this.toDueDateDateCalendar.isVisible());
     }
-async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,account:String){
-        await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
+
+    // async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,account:String){
+    //         await this.page.waitForLoadState("networkidle");
+    //         await this.payer.fill("");  
+    //         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
+    //         const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+    //         await option.waitFor({ state: "visible", timeout: 10000 });
+    //         await option.click();      
+    //         await this.Account.click();
+    //         const acc = this.page.locator("//span[text()='Union Ins.']").first();
+    //         await acc.waitFor({ state: "visible", timeout: 10000 });
+    //         await acc.click();  
+    //     await this.fromDueDate.fill(fromDueDate1.trim());
+    //         await this.toDueDate.fill(toDueDate1.trim());
+    // }
+
+    async fillDueDate(payerValue: string,fromDueDate1: string,toDueDate1: string,account: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 20000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
         await this.Account.click();
-        const acc = this.page.locator("//span[text()='Union Ins.']").first();
-        await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();  
-       await this.fromDueDate.fill(fromDueDate1.trim());
+
+        const accOption = this.page.locator(`//span[contains(normalize-space(.), '${account}')]`).first();
+        await expect(accOption).toBeVisible({timeout: 20000});
+        await accOption.click();
+        await this.fromDueDate.click();
+        await this.fromDueDate.fill(fromDueDate1.trim());
+        await this.fromDueDate.press("Tab");
+        await this.toDueDate.click();
         await this.toDueDate.fill(toDueDate1.trim());
+        await this.toDueDate.press("Tab");
+        await expect(this.fromDueDate).toHaveValue(fromDueDate1.trim(),{ timeout: 10000 });
+        await expect(this.toDueDate).toHaveValue(toDueDate1.trim(),{ timeout: 10000 });
+        console.log(`Payer: ${await this.payer.inputValue()}`);
+        console.log(`Currency: ${await currency.inputValue()}`);
+        console.log(`Account: ${await this.Account.inputValue()}`);
+        console.log(`From Due Date: ${await this.fromDueDate.inputValue()}`);
+        console.log(`To Due Date: ${await this.toDueDate.inputValue()}`);
+        await this.page.waitForTimeout(1000);
     }
 
     async verifyfromSettleDate(){
-          expect(await this.fromSettleDate.isVisible());
+        expect(await this.fromSettleDate.isVisible());
         expect(await this.fromSettleDateLabel.isVisible());
-           
     }
 
     async verifyfromSettleDateCalendar(){
-        
         await this.fromSettleDatecalendarButton.click();
-       expect(await this.fromSettleDateCalendar.isVisible());
+        expect(await this.fromSettleDateCalendar.isVisible());
     }
 
-     async verifytoSettleDate(){
+    async verifytoSettleDate(){
         expect(await this.toSettleDate.isVisible());
         expect(await this.toSettleDateLabel.isVisible());
     }
@@ -570,22 +1016,46 @@ async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,acco
     }
 
     async fillSettleDate(payerValue: String,fromSettleDate1:String,toSettleDate1: String,account:String){
+        const appLoader = this.page.locator("app-new-loader");
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+        const payerText = payerValue.toString();
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerText}')]`).first();
+
+        try {
+            await this.payer.type(payerText, { delay: 200 });
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerText) {
+                await this.payer.type(char, { delay: 200 });
+                await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
         await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
         await acc.click();  
-       await this.fromSettleDate.fill(fromSettleDate1.trim());
+        await this.fromSettleDate.fill(fromSettleDate1.trim());
         await this.toSettleDate.fill(toSettleDate1.trim());
     }
 
       async verifyfromPOReleaseDate(){
-          expect(await this.fromPOReleaseDate.isVisible());
+        expect(await this.fromPOReleaseDate.isVisible());
         expect(await this.fromPOReleaseDateLabel.isVisible());
            
     }
@@ -608,22 +1078,46 @@ async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,acco
     }
 
     async fillPOReleaseDate(payerValue: String,fromChequereleaseDate1:String,toChequereleaseDate1: String,account:String){
+        const appLoader = this.page.locator("app-new-loader");
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+        const payerText = payerValue.toString();
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerText}')]`).first();
+
+        try {
+            await this.payer.type(payerText, { delay: 200 });
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerText) {
+                await this.payer.type(char, { delay: 200 });
+                await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
         await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
         await this.Account.click();
         const acc = this.page.locator("//span[text()='Union Ins.']").first();
         await acc.waitFor({ state: "visible", timeout: 10000 });
         await acc.click();  
-       await this.fromPOReleaseDate.fill(fromChequereleaseDate1.trim());
+        await this.fromPOReleaseDate.fill(fromChequereleaseDate1.trim());
         await this.toPOReleaseDate.fill(toChequereleaseDate1.trim());
     }
 
       async verifyfromChequeReleaseDate(){
-          expect(await this.fromChequeReleaseDate.isVisible());
+        expect(await this.fromChequeReleaseDate.isVisible());
         expect(await this.fromChequeReleaseDateLabel.isVisible());
            
     }
@@ -646,17 +1140,35 @@ async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,acco
     }
 
     async fillChequeReleaseDate(payerValue: String,fromChequereleaseDate1:String,toChequereleaseDate1: String,account:String){
-        await this.page.waitForLoadState("networkidle");
-        await this.payer.fill("");  
-        for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
-        await option.click();      
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 20000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
         await this.Account.click();
-        const acc = this.page.locator("//span[text()='Union Ins.']").first();
-        await acc.waitFor({ state: "visible", timeout: 10000 });
-        await acc.click();  
-       await this.fromChequeReleaseDate.fill(fromChequereleaseDate1.trim());
+        const accOption = this.page.locator(`//span[contains(normalize-space(.), '${account}')]`).first();
+        await expect(accOption).toBeVisible({timeout: 20000});
+        await accOption.click();
+        await this.fromChequeReleaseDate.fill(fromChequereleaseDate1.trim());
         await this.toChecqueReleaseDate.fill(toChequereleaseDate1.trim());
     }
 
@@ -810,18 +1322,73 @@ async fillDueDate(payerValue: String,fromDueDate1:String,toDueDate1: String,acco
 
     }
 
+    async generateDatefileFieldsVerified() {
+        const dialog = this.page.locator('#mat-dialog-0, mat-dialog-container').first();
+        await dialog.waitFor({ state: 'visible', timeout: 30000 });
+        await expect(dialog).toBeVisible({ timeout: 30000 });
+
+        // 'Preferences' may render as a tab or button inside the dialog
+        const preferencesEl = dialog.locator('button, [role="tab"]').filter({ hasText: 'Preferences' }).first();
+        await preferencesEl.waitFor({ state: 'visible', timeout: 50000 });
+        await preferencesEl.click();
+        await this.page.waitForTimeout(2000);
+
+        const titleField = this.page.locator("//input[@id='mat-input-28']");
+        await titleField.waitFor({ state: 'visible', timeout: 15000 });
+        await titleField.fill("test");
+        console.log('Generate file dialog Preferences fields verified.');
+    }
+
+    async generateDatefileFieldsVerifiedDev() {
+    const dialog = this.page.locator('mat-dialog-container').last();
+
+    await expect(dialog).toBeVisible({
+        timeout: 30000
+    });
+
+    // =========================
+    // PREFERENCES
+    // =========================
+    const preferencesEl = dialog
+        .getByText('Preferences', { exact: true })
+        .first();
+
+    await expect(preferencesEl).toBeVisible({
+        timeout: 30000
+    });
+
+    await preferencesEl.click();
+
+    await this.page.waitForTimeout(2000);
+
+    // =========================
+    // JOB LABEL
+    // =========================
+    const titleField = dialog.locator('input').first();
+
+    await expect(titleField).toBeVisible({
+        timeout: 15000
+    });
+
+    await titleField.fill("test");
+
+    console.log(
+        'Generate file dialog Preferences fields verified.'
+    );
+}
+
     async generateDatefileFields(){
         await this.page.waitForLoadState("networkidle");
         expect(await this.page.getByText('Account Transaction *').isVisible());
-  expect(await this.page.locator('#mat-dialog-0 div').filter({ hasText: /^Account \*$/ }).nth(3).isVisible());
-  expect(await this.page.locator('.cdk-overlay-container > div:nth-child(3)').isVisible());
-  expect(await this.page.getByRole('button', { name: 'Preferences' }).isVisible());
-  await this.page.getByRole('button', { name: 'Preferences' }).click();
-   await this.page.waitForTimeout(5000);
-  expect(await this.page.locator('div').filter({ hasText: /^Title$/ }).nth(3).isVisible());
-  await this.page.locator("//input[@id='mat-input-28']").fill("test");
- 
-  expect(await this.page.getByRole('img', { name: 'No icon found' }).isVisible());
+        expect(await this.page.locator('#mat-dialog-0 div').filter({ hasText: /^Account \*$/ }).nth(3).isVisible());
+        expect(await this.page.locator('.cdk-overlay-container > div:nth-child(3)').isVisible());
+        expect(await this.page.getByRole('button', { name: 'Preferences' }).isVisible());
+        await this.page.getByRole('button', { name: 'Preferences' }).click();
+        await this.page.waitForTimeout(5000);
+        expect(await this.page.locator('div').filter({ hasText: /^Title$/ }).nth(3).isVisible());
+        await this.page.locator("//input[@id='mat-input-28']").fill("test");
+        
+        expect(await this.page.getByRole('img', { name: 'No icon found' }).isVisible());
   
     }
 

@@ -95,7 +95,7 @@ test('FIN-TC-164: TC_167_provider Reconciliation_Verify that in Search Criteria,
         await providerReconcilationPage.visiblefield();
         await providerReconcilationPage.SearchCriteria();
         await providerReconcilationPage.batchCriteria();
- })
+    })
 });
 
 //Need Json data
@@ -116,14 +116,12 @@ test('FIN-TC-165: TC_168_provider Reconciliation_verify that enter provider then
         await providerReconcilationPage.searchAndClickOnPaymentOrderUnderFinancials();
     })
  
-      await test.step("Verify that Provider Recoincilation Page is visible", async () => {
+    await test.step("Verify that Provider Recoincilation Page is visible", async () => {
         await providerReconcilationPage.providerRecoincialtionField();
-       // page.pause();
     })
 
     await test.step("Selecting the Provider field",async()=>{
         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-
   })
 });
 
@@ -185,11 +183,12 @@ test('FIN-TC-167: TC_170_provider Reconciliation_verify that fill country, provi
     await test.step("Selecting the Payers field" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
-
     })
+
     await test.step("Vaidate that the toggel button is disabled",async()=>{
         await providerReconcilationPage.toggelDisable();
     })
+
     await test.step("Searching the selected value",async()=>{
         await providerReconcilationPage.searchProvder();
     })
@@ -214,19 +213,20 @@ test('FIN-TC-168: TC_171_provider Reconciliation_verify that fill country, provi
  
     await test.step("Selecting the Provider field", async()=>{
         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-  })
+    })
 
-  await test.step("Selecting the Payers field" , async()=>{
+    await test.step("Selecting the Payers field" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+    })
 
-  })
-  await test.step("Vaidate that the toggel button is disabled",async()=>{
+    await test.step("Vaidate that the toggel button is disabled",async()=>{
         await providerReconcilationPage.toggelEnable();
-  })
-  await test.step("Searching the selected value",async()=>{
-    await providerReconcilationPage.searchProvder();
-  })
+    })
+
+    await test.step("Searching the selected value",async()=>{
+        await providerReconcilationPage.searchProvder();
+    })
 });
 
 test('FIN-TC-169: TC_172_provider Reconciliation_verify that fill country, provider type, provider, payer, currency,account ,from due date, to due date click on search', async ({ page }) => {
@@ -251,10 +251,9 @@ test('FIN-TC-169: TC_172_provider Reconciliation_verify that fill country, provi
     })
 
     await test.step("Selecting the Payers field" , async()=>{
-            await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-            await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
-
-        })
+        await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+    })
     
     await test.step("Searching the selected value",async()=>{
         await providerReconcilationPage.searchProvder();
@@ -280,17 +279,17 @@ test('FIN-TC-170: TC_173_provider Reconciliation_verify that fill country, provi
  
     await test.step("Selecting the Provider field", async()=>{
         await providerReconcilationPage.providerField(ProviderReconcilationData["providerReconcilation-001"].ProviderType,ProviderReconcilationData["providerReconcilation-001"].Country,ProviderReconcilationData["providerReconcilation-001"].providerValue);
-  })
+    })
 
-  await test.step("Selecting the Payers field and reception date" , async()=>{
+    await test.step("Selecting the Payers field and reception date" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
         await providerReconcilationPage.receptionDate(ProviderReconcilationData["providerReconcilation-001"].fromReceptionDate,ProviderReconcilationData["providerReconcilation-001"].toReceptionDate);
     })
  
-  await test.step("Searching the selected value",async()=>{
-    await providerReconcilationPage.searchProvder();
-  })
+    await test.step("Searching the selected value",async()=>{
+        await providerReconcilationPage.searchProvder();
+    })
 });
 
 test('FIN-TC-171: TC_174_provider Reconciliation_verify that fill country, provider type, provider, payer,currency , account ,from due date, to due date, from reception date, to reception date, from settal date, to settle date  click on search', async ({ page }) => {

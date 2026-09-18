@@ -937,14 +937,15 @@ test('FIN-TC-740: TC_027_Providers Financial Settlement_Verify that the Currency
 test('FIN-TC-741: TC_028_Providers Financial Settlement_Verify that the user can search the details of the transaction with Payer , Bank account and up to date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
-    const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
+    const providerFinancialSettlementPage: ProviderFinancialSettlementPage =
+        new ProviderFinancialSettlementPage(page);
 
     await test.step("User navigates to Mawista application", async () => {
         await loginPage.gotoLoginPage(data['Login-Access'].url);
     })
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access1'].userNameInput, data['Login-Access1'].passwordInput);
+        await loginPage.loginToApplication(data['Login-Access1'].userNameInput,data['Login-Access1'].passwordInput);
     })
 
     await test.step("Click On Financials", async () => {
@@ -959,14 +960,15 @@ test('FIN-TC-741: TC_028_Providers Financial Settlement_Verify that the user can
         await providerFinancialSettlementPage.clickOnPayersRadioButton();
     })
 
-    await test.step("Select Payer Option", async () => {
+    await test.step("Select Payer and Bank Account", async () => {
         await providerFinancialSettlementPage.selectPayerOption(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].PayerValue);
+        await providerFinancialSettlementPage.selectBankAccount(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].BankAccountValue1);
         await providerFinancialSettlementPage.selectUpTODueDate(ProviderFinancialSettlementData['TC_026_ProviderFinancialSettlementData'].UpToDueDate);
     })
 
-    await test.step("User should search the details of the transaction with Payer , Bank account and up to date", async () => {
+    await test.step("User should search the details of the transaction with Payer, Bank account and up to date", async () => {
         await providerFinancialSettlementPage.clickOnSearchButton();
-        await providerFinancialSettlementPage.verifyPayerBankAccountAndUpToDueDateAreDisplayed();
+        await providerFinancialSettlementPage.verifyPayerBankAccountAndUpToDueDateAreDisplayedTC741();
     })
 });
 

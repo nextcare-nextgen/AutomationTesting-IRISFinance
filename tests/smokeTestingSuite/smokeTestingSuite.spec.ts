@@ -24,7 +24,6 @@ test('FIN-TC-1741 @smoke: TC_001_Payment Orders_Verify that the user is able to 
     })
  });
 
-
 //2
  test('FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke', async ({ page }) => {
 
@@ -51,7 +50,6 @@ test('FIN-TC-1741 @smoke: TC_001_Payment Orders_Verify that the user is able to 
         await smokeTestingSuitePage.createNewbutton();
      })
 });
-
 
 //3
  test('FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke', async ({ page }) => {

@@ -155,22 +155,45 @@ export class SmokeTestingSuitePage{
         await this.paymentOrders.click();
     }
 
-    async fillMandaoryDetails(payer: String,account:String){
-        await this.poPayer.fill("");  
-        for (const char of payer) {await this.poPayer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+    async fillMandaoryDetails(payer: string, account: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.poPayer.waitFor({ state: "visible", timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.poPayer.click();
+        await this.poPayer.fill("");
+
+        const payerOption = this.page.locator(`//span[contains(text(),'${payer}')]`).first();
+
         try {
-            await option.waitFor({ state: "visible", timeout: 20000 });
+            await this.poPayer.type(payer, { delay: 200 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
         } catch {
+            await this.poPayer.click();
             await this.poPayer.fill("");
-            for (const char of payer) {await this.poPayer.type(char, { delay: 250 }); }
-            await option.waitFor({ state: "visible", timeout: 20000 });
+            for (const char of payer) {
+                await this.poPayer.type(char, { delay: 200 });
+                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
         }
-        await option.click();      
+
+        await expect(this.poAccount).toBeVisible({ timeout: 10000 });
+        await this.poAccount.click();
+        const accountOption = this.page.locator("mat-option", {
+            hasText: account
+        }).first();
+        await accountOption.waitFor({ state: "visible", timeout: 10000 });
+        await accountOption.click();
     }
 
     async createNewbutton(){
         await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(2000);
         await this.createNew.click();
         await this.page.waitForTimeout(2000);
         expect(await this.newpopUp.isVisible());
@@ -229,7 +252,7 @@ export class SmokeTestingSuitePage{
         await this.searchTable.isVisible();
     }
 
-    async fillMandaoryDetailsAR(payer: String,account:String){
+    async fillMandaoryDetailsAR(payer: string, account: string) {
         await this.page.waitForLoadState("domcontentloaded");
         await this.arPayer.waitFor({ state: "visible", timeout: 30000 });
         await expect(this.arPayer).toBeEditable({ timeout: 30000 });
@@ -237,18 +260,24 @@ export class SmokeTestingSuitePage{
 
         await this.arPayer.click();
         await this.arPayer.fill("");
-        
+
+        const payerOption = this.page.locator(`//span[contains(text(),'${payer}')]`).first();
+
         try {
-            await this.arPayerOption.waitFor({ state: "visible", timeout: 20000 });
+            await this.arPayer.type(payer, { delay: 200 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
         } catch {
+            await this.arPayer.click();
             await this.arPayer.fill("");
-            for (const char of payer.toString()) {
-                await this.arPayer.type(char, { delay: 250 });
+            for (const char of payer) {
+                await this.arPayer.type(char, { delay: 200 });
                 await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
             }
-            await this.arPayerOption.waitFor({ state: "visible", timeout: 20000 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
         }
-        await this.arPayerOption.click();      
+        await payerOption.click();
     }
 
     async searchAndClickOnProviderReconcilationUnderFinancials() {
@@ -330,7 +359,7 @@ export class SmokeTestingSuitePage{
         }
         await option.click();      
     }
-async searchAndClickOnPayersCollectionUnderFinancials(){
+    async searchAndClickOnPayersCollectionUnderFinancials(){
           await this.searchIcon.waitFor({ state: 'visible' });
                 await expect(this.searchIcon).toBeEnabled();
         

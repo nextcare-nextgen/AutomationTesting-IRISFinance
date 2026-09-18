@@ -101,7 +101,7 @@ test('FIN-TC-100: TC_101_Account Transaction_Verify that click on search then us
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -136,7 +136,7 @@ test('FIN-TC-101: TC_102_Account Transaction_Verify that  fill only mandatory fi
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -241,7 +241,7 @@ test('FIN-TC-104:TC_105_Account Transaction_verify that fill mandatory fields an
     })
 
      await test.step("Fill all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
     await test.step("Click on the Generate file button", async () => {
@@ -312,7 +312,7 @@ test('FIN-TC-106: TC_107_Account Transaction_verify that user can search result 
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -351,7 +351,7 @@ test('FIN-TC-107:TC_108_Account Transaction_verify that user can search result b
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -390,7 +390,7 @@ test('FIN-TC-108:TC_109_Account Transaction_verify that user can search result b
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -429,7 +429,7 @@ test('FIN-TC-109:TC_110_Account Transaction_verify that user can search result b
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -468,7 +468,7 @@ test('FIN-TC-111:TC_112_Account Transaction_verify that user enter inValidvalues
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -485,7 +485,7 @@ test('FIN-TC-111:TC_112_Account Transaction_verify that user enter inValidvalues
 });
 
 //15
-test('FIN-TC-113:TC_114_Account Transaction_verify that select any rows eye icon and click on it then Account transaction details popup window is displayed', async ({ page }) => {
+test('FIN-TC-113: TC_114_Account Transaction_verify that select any rows eye icon and click on it then Account transaction details popup window is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -511,12 +511,16 @@ test('FIN-TC-113:TC_114_Account Transaction_verify that select any rows eye icon
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
         await accountTransactionPage.clickonSearch();
     })
+
+    // await test.step("Verify search result", async () => {
+    //     await accountTransactionPage.verifySearchResult();
+    // });
 
     await test.step("Validate eye icon should be present",async() =>{
         await accountTransactionPage.validateEyeIcon();
@@ -541,7 +545,7 @@ test('FIN-TC-114:TC_115_Account Transaction_verify that bank reference checque r
         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
     })
  
-      await test.step("Verify that Account Transaction Page is visible", async () => {
+    await test.step("Verify that Account Transaction Page is visible", async () => {
         await accountTransactionPage.accountTransactionField();
     })
 
@@ -549,11 +553,11 @@ test('FIN-TC-114:TC_115_Account Transaction_verify that bank reference checque r
         await accountTransactionPage.validatefieldsVisibility();
     })
     
-     await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
-     await test.step("Click on the Search button", async () => {
+    await test.step("Click on the Search button", async () => {
         await accountTransactionPage.clickonSearch();
     })
 
@@ -584,7 +588,7 @@ test('FIN-TC-115:TC_116_Account Transaction_verify that few fields are disabled'
         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
     })
  
-      await test.step("Verify that Account Transaction Page is visible", async () => {
+    await test.step("Verify that Account Transaction Page is visible", async () => {
         await accountTransactionPage.accountTransactionField();
     })
 
@@ -592,11 +596,11 @@ test('FIN-TC-115:TC_116_Account Transaction_verify that few fields are disabled'
         await accountTransactionPage.validatefieldsVisibility();
     })
     
-     await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
-     await test.step("Click on the Search button", async () => {
+    await test.step("Click on the Search button", async () => {
         await accountTransactionPage.clickonSearch();
     })
 
@@ -610,7 +614,7 @@ test('FIN-TC-115:TC_116_Account Transaction_verify that few fields are disabled'
 });
 
 //18
-test('FIN-TC-116:TC_117_Account Transaction_verify that pending checkbox is displyed', async ({ page }) => {
+test('FIN-TC-116: TC_117_Account Transaction_verify that pending checkbox is displyed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -627,7 +631,7 @@ test('FIN-TC-116:TC_117_Account Transaction_verify that pending checkbox is disp
         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
     })
  
-      await test.step("Verify that Account Transaction Page is visible", async () => {
+    await test.step("Verify that Account Transaction Page is visible", async () => {
         await accountTransactionPage.accountTransactionField();
     })
 
@@ -635,11 +639,11 @@ test('FIN-TC-116:TC_117_Account Transaction_verify that pending checkbox is disp
         await accountTransactionPage.validatefieldsVisibility();
     })
     
-     await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+    await test.step("Search all the mandatory feilds", async () => {
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
-     await test.step("Click on the Search button", async () => {
+    await test.step("Click on the Search button", async () => {
         await accountTransactionPage.clickonSearch();
     })
 
@@ -647,13 +651,13 @@ test('FIN-TC-116:TC_117_Account Transaction_verify that pending checkbox is disp
         await accountTransactionPage.validateEyeIcon();
     })
 
-    await test.step("Validate that pending checkbox is present", async() =>{
+    await test.step("Validate that pending checkbox is checked and pending reason button is displayed", async() =>{
         await accountTransactionPage.pendingCheckbox();
     })
 });
 
 //19
-test('FIN-TC-117:TC_118_Account Transaction_verify that checkbox is checked then pending reason button is displayed', async ({ page }) => {
+test('FIN-TC-117: TC_118_Account Transaction_verify that checkbox is checked then pending reason button is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -679,7 +683,7 @@ test('FIN-TC-117:TC_118_Account Transaction_verify that checkbox is checked then
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -722,7 +726,7 @@ test('FIN-TC-118:TC_119_Account Transaction_verify that click on pending reason 
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -770,7 +774,7 @@ test('FIN-TC-119:TC_120_Account Transaction_verify that reason label and multipl
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -818,7 +822,7 @@ test('FIN-TC-120:TC_121_Account Transaction_verify that click on apply button wi
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -866,7 +870,7 @@ test('FIN-TC-121:TC_122_Account Transaction_verify that click on apply button wi
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -918,7 +922,7 @@ test('FIN-TC-122:TC_123_Account Transaction_verify that click on cancel button w
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -966,7 +970,7 @@ test('FIN-TC-123:TC_124_Account Transaction_verify that click on Apply button wi
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1014,7 +1018,7 @@ test('FIN-TC-124: TC_125_Account Transaction_verify that click on Apply button w
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1066,7 +1070,7 @@ test('FIN-TC-125: TC_126_Account Transaction_verify that set  Cheque realse date
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1109,7 +1113,7 @@ test('FIN-TC-126: TC_127_Account Transaction_verify that set  sent date is less 
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1152,7 +1156,7 @@ test('FIN-TC-127: TC_128_Account Transaction_verify that click  on cancel button
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1191,7 +1195,7 @@ test('FIN-TC-128: TC_129_Account Transaction_Verify that Items per page label an
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1227,7 +1231,7 @@ test('FIN-TC-129: TC_130_Account Transaction_IN dropdown 10,15,20, 30, 50, 100, 
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1263,7 +1267,7 @@ test('FIN-TC-130: TC_131_Account Transaction_Pagination is display from 1 to 15 
     })
     
      await test.step("Search all the mandatory feilds", async () => {
-        await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+        await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
     })
 
      await test.step("Click on the Search button", async () => {
@@ -1305,7 +1309,7 @@ test('FIN-TC-1235: TC_541_Account Transaction_verify that from po validation dat
 });
 
 //34
-test('FIN-TC-1236:TC_542_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1236: TC_542_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -1463,7 +1467,7 @@ test('FIN-TC-1240: TC_546_Account Transaction_verify that To po validation date 
 });
 
 //39
-test('FIN-TC-1241:TC_547_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1241: TC_547_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -1587,6 +1591,7 @@ test('FIN-TC-1244: TC_550_Account Transaction_verify that user can select future
      await test.step("Click on calendar icon",async()=>{
         await accountTransactionPage.verifytoPODateCalendar();
     })
+    
     await test.step("Validate that future date can be selected",async()=>{
         await accountTransactionPage.verifyFutureDate();
     })
@@ -1732,7 +1737,7 @@ test('FIN-TC-1248: TC_554_Account Transaction_verify that from Due date label an
 });
 
 //47
-test('FIN-TC-1249:TC_555_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1249: TC_555_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -1891,7 +1896,7 @@ test('FIN-TC-1253: TC_559_Account Transaction_verify that To Due date label and 
 });
 
 //52
-test('FIN-TC-1254:TC_560_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1254: TC_560_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -2160,7 +2165,7 @@ test('FIN-TC-1261: TC_567_Account Transaction_verify that from settle date label
 });
 
 //60
-test('FIN-TC-1262:TC_568_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1262: TC_568_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -2318,7 +2323,7 @@ test('FIN-TC-1266: TC_572_Account Transaction_verify that To settle date label a
 });
 
 // 65
-test('FIN-TC-1267:TC_573_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1267: TC_573_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -2745,7 +2750,7 @@ test('FIN-TC-1279: TC_585_Account Transaction_verify that To cheque release date
 });
 
 // 78
-test('FIN-TC-1280:TC_586_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1280: TC_586_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -3013,7 +3018,7 @@ test('FIN-TC-1287: TC_593_Account Transaction_verify that from po release date l
 });
 
 //86
-test('FIN-TC-1288:TC_594_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1288: TC_594_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -3171,7 +3176,7 @@ test('FIN-TC-1292: TC_598_Account Transaction_verify that To po release date lab
 });
 
 // 91 
-test('FIN-TC-1293:TC_599_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
+test('FIN-TC-1293: TC_599_Account Transaction_verify that calender icon is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -3267,7 +3272,7 @@ test('FIN-TC-1295: TC_601_Account Transaction_verify that user can select old da
 });
 
 //94
-test('FIN-TC-1296:TC_602_Account Transaction_verify that user can select future date', async ({ page }) => {
+test('FIN-TC-1296: TC_602_Account Transaction_verify that user can select future date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -5424,7 +5429,7 @@ test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textb
 //     })
     
 //      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
 //     })
 
 //      await test.step("Click on the Generate data file button", async () => {
@@ -5502,7 +5507,7 @@ test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textb
 //     })
     
 //      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
 //     })
 
 //      await test.step("Click on the Search button", async () => {
@@ -5541,7 +5546,7 @@ test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textb
 //     })
     
 //      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
 //     })
 
 //      await test.step("Click on the Search button", async () => {
@@ -5580,7 +5585,7 @@ test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textb
 //     })
     
 //     await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
 //     })
 
 //     await test.step("Click on the Search button", async () => {
@@ -5627,7 +5632,7 @@ test('FIN-TC-1307: TC_613_Account Transaction_Verify that Payment order Id textb
 //     })
     
 //      await test.step("Search all the mandatory feilds", async () => {
-//         await accountTransactionPage.fillMandaoryDetails(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
+//         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-002"].payer,AccountTransactionData["accountTransaction-004"].fromDeliveryDate,AccountTransactionData["accountTransaction-004"].todeliverydate,AccountTransactionData["accountTransaction-002"].Account);
 //     })
 
 //      await test.step("Click on the Search button", async () => {

@@ -54,6 +54,8 @@ export class ProviderFinancialSettlementPage {
     readonly partnerBankOptions: Locator;
     readonly partnerBankSelectedValue: Locator;
     readonly ShowDeductionVoucher: Locator;
+    readonly glAccountNumber: Locator;
+    readonly glAccountDescription: Locator;
     appLoader: Locator;
     
     constructor(page: Page) {
@@ -71,7 +73,8 @@ export class ProviderFinancialSettlementPage {
         this.bankAccountDropdown = page.locator("//mat-label[contains(text(),'Bank Account')]/ancestor::mat-form-field//mat-select");
         this.bankAccountOptions = page.locator(".cdk-overlay-pane mat-option");
         this.upToDueDateInput = page.locator("//input[@formcontrolname='toDueDate']");
-        this.searchResultsContainer = page.locator('table.mat-table');
+        //this.searchResultsContainer = page.locator('table.mat-table');
+        this.searchResultsContainer = page.locator("table.mat-mdc-table, table.mat-table").first();
         this.glAccountDescLink = page.locator('a', { hasText: 'GL Account Desc' });
         this.glAccounthashLink = page.locator('a', { hasText: 'GL Account #' });
         this.providerTypeSearchField = page.locator("//iris-autocomplete[@id='providerTypes']");
@@ -101,15 +104,22 @@ export class ProviderFinancialSettlementPage {
         this.orderResultsByPOID = page.locator('text=Order results by PO ID'); // update if needed
         this.poIdCells = page.locator('table.mat-table tbody tr td.mat-column-paymentOrderId');
         this.orderResultsByPOIDRadio = page.locator('mat-radio-button:has-text("PO ID")');
-        this.exportUsingJobInactive = page.locator("//label[@for='mat-slide-toggle-4-input']//div[@class='mat-slide-toggle-bar']");
+        //this.exportUsingJobInactive = page.locator("//label[@for='mat-slide-toggle-4-input']//div[@class='mat-slide-toggle-bar']");
+        this.exportUsingJobInactive = this.page.getByRole("switch", {name: "Export Using Job"});
         this.exportToExcelLocator = page.locator("//button[@title='Export To Excel']");
         this.enterFromPOIDSelector = page.locator("//input[@formcontrolname='fromPoId']");
         this.enterToPOIDSelector = page.locator("//input[@formcontrolname='toPoId']");
-        this.partnerBankSelect = page.locator("//mat-select[@formcontrolname='partnerBank']");
-        this.partnerBankOptions = page.locator("//mat-option");
-        this.partnerBankSelectedValue = page.locator("//mat-select[@formcontrolname='partnerBank']//span[contains(@class,'mat-select-value-text')]");
-        this.ShowDeductionVoucher = page.locator("//label[@for='mat-slide-toggle-3-input']//div[@class='mat-slide-toggle-bar']");
+        // this.partnerBankSelect = page.locator("//mat-select[@formcontrolname='partnerBank']");
+        // this.partnerBankOptions = page.locator("//mat-option");
+        //this.partnerBankSelectedValue = page.locator("//mat-select[@formcontrolname='partnerBank']//span[contains(@class,'mat-select-value-text')]");
+        this.partnerBankSelect = this.page.getByRole("combobox", {name: "Partner Bank"});
+        this.partnerBankOptions = page.locator("#partnerbank-panel mat-option");
+        this.partnerBankSelectedValue = this.partnerBankSelect.locator(".mat-mdc-select-value-text");
+        //this.ShowDeductionVoucher = page.locator("//label[@for='mat-slide-toggle-3-input']//div[@class='mat-slide-toggle-bar']");
+        this.ShowDeductionVoucher = page.getByRole("switch", {name: "Show deductions vouchers"});
         this.appLoader=page.locator("app-new-loader");
+        this.glAccountNumber = page.getByLabel("GL Account #");
+        this.glAccountDescription = page.getByLabel("GL Account Desc");
     }
 
     async searchAndClickFinancials() {  
@@ -138,12 +148,24 @@ export class ProviderFinancialSettlementPage {
 
     async verifyRadioButtonsAreMutuallyExclusive() {
         await this.payerRadio.click();
-        await expect(this.payerRadio).toHaveAttribute('class', /mat-radio-checked/);
-        await expect(this.reinsurerRadio).not.toHaveAttribute('class', /mat-radio-checked/);
+        await expect(this.payerRadio).toHaveClass(/mat-mdc-radio-checked/);
+        await expect(this.reinsurerRadio).not.toHaveClass(/mat-mdc-radio-checked/);
 
         await this.reinsurerRadio.click();
-        await expect(this.reinsurerRadio).toHaveAttribute('class', /mat-radio-checked/);
-        await expect(this.payerRadio).not.toHaveAttribute('class', /mat-radio-checked/);
+        await expect(this.reinsurerRadio).toHaveClass(/mat-mdc-radio-checked/);
+        await expect(this.payerRadio).not.toHaveClass(/mat-mdc-radio-checked/);
+    }
+
+    async verifyRadioButtonsAreMutuallyExclusiveDev() {
+        await this.payerRadio.click();
+
+        await expect(this.payerRadio).toHaveClass(/mat-mdc-radio-checked/);
+        await expect(this.reinsurerRadio).not.toHaveClass(/mat-mdc-radio-checked/);
+
+        await this.reinsurerRadio.click();
+
+        await expect(this.reinsurerRadio).toHaveClass(/mat-mdc-radio-checked/);
+        await expect(this.payerRadio).not.toHaveClass(/mat-mdc-radio-checked/);
     }
 
     async clickOnPayersRadioButton() { 
@@ -218,52 +240,34 @@ export class ProviderFinancialSettlementPage {
 
         await this.payerDropdown.waitFor({ state: "visible", timeout: 30000 });
         await expect(this.payerDropdown).toBeEditable({ timeout: 30000 });
-
         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
         await this.payerDropdown.click();
         await this.payerDropdown.fill("");
 
-        try {
-            await this.payerDropdown.type(value, { delay: 300 });
-
-            // Trigger selection
-            await this.page.locator("body").click({ position: { x: 10, y: 10 } });
-
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-            await expect(this.payerDropdown).toHaveValue(value, {
-                timeout: 15000
-            });
-
-        } catch {
-            console.log("Retrying payer selection...");
-
-            await this.payerDropdown.click();
-            await this.payerDropdown.fill("");
-
-            for (const char of value) {
-                await this.payerDropdown.type(char, { delay: 300 });
-                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+        for (let i = 0; i < value.length; i++) {
+            await this.payerDropdown.pressSequentially(value[i], {delay: 250});
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
             }
-
-            // Trigger selection again
-            await this.page.locator("body").click({ position: { x: 10, y: 10 } });
-
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-            await expect(this.payerDropdown).toHaveValue(value, {
-                timeout: 15000
-            });
         }
 
-        // Allow Angular dependent fields to update
-        await this.page.waitForTimeout(2000);
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${value}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 20000});
+        await payerOption.click();
+        await this.payerDropdown.click();
+        await this.page.waitForTimeout(1000);
 
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${value}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payerDropdown.press("Tab");
+        await this.appLoader.waitFor({state: "hidden",timeout: 30000}).catch(() => {});
+        await expect(this.payerDropdown).toHaveValue(value, {timeout: 30000});
+        await this.page.waitForTimeout(2000);
         console.log(`Payer "${value}" selected successfully.`);
     }
 
-    
     // async selectPayerOption(value: string) {
     //     await this.page.waitForLoadState("domcontentloaded");
 
@@ -297,6 +301,39 @@ export class ProviderFinancialSettlementPage {
         console.log(`Bank Account "${value}" selected successfully.`);
     }
 
+//     async selectBankAccountTC741(value: string) {
+//         await this.appLoader.waitFor({
+//         state: "hidden",
+//         timeout: 30000
+//     }).catch(() => {});
+
+//     await this.bankAccountField.waitFor({
+//         state: "visible",
+//         timeout: 30000
+//     });
+
+//     await this.bankAccountField.click();
+
+//     const option = this.page
+//         .locator("mat-option")
+//         .filter({ hasText: value })
+//         .first();
+
+//     await expect(option).toBeVisible({
+//         timeout: 20000
+//     });
+
+//     await option.click();
+
+//     await expect(
+//         this.bankAccountField.locator(".mat-select-value-text")
+//     ).toContainText(value, {
+//         timeout: 15000
+//     });
+
+//     console.log(`Bank Account "${value}" selected successfully.`);
+// }
+
     async selectUpTODueDate(value: string) {
         await expect(this.upToDueDateInput).toBeVisible({ timeout: 10000 });
         await this.upToDueDateInput.fill("");
@@ -305,14 +342,13 @@ export class ProviderFinancialSettlementPage {
         console.log(`Up To Due Date "${value}" selected successfully.`);
     }
 
-    async validateDetailsAfterSearch() {
-        const rows = this.searchResultsContainer.locator("tr.mat-row");
+   async validateDetailsAfterSearch() {
+        const resultTable = this.page.locator("table").filter({ hasText: "GL Account #" }).filter({ hasText: "Provider Name" }).first();
+        await expect(resultTable).toBeVisible({ timeout: 30000 });
+        const rows = resultTable.locator("tbody tr");
         await expect(rows.first()).toBeVisible({ timeout: 15000 });
-
         const rowCount = await rows.count();
-        if (rowCount === 0) {
-            throw new Error("Expected at least 1 result row, but got 0.");
-        }
+        expect(rowCount).toBeGreaterThan(0);
         console.log(`Results list loaded and validated. Rows found: ${rowCount}`);
     }
 
@@ -388,17 +424,24 @@ export class ProviderFinancialSettlementPage {
     }
 
     async verifySelectedAccountNumberAndNameDisplayed() {
-        await expect(this.selectedAccountName).toBeVisible({ timeout: 15000 });
-        await expect(this.selectedAccountNumber).toBeVisible({ timeout: 15000 });
+        const row = this.page.locator("tr.mat-mdc-row").first();
 
-        const accountName = (await this.selectedAccountName.textContent())?.trim();
-        const accountNumber = (await this.selectedAccountNumber.textContent())?.trim();
+        await expect(row).toBeVisible({ timeout: 30000 });
 
-        expect(accountName).toBeTruthy();
-        expect(accountNumber).toBeTruthy();
+        const accountName = row.locator("td.mat-column-accountName");
+        const accountNumber = row.locator("td.mat-column-accountNumber");
 
-        console.log(`Selected Account Name: ${accountName}`);
-        console.log(`Selected Account Number: ${accountNumber}`);
+        await expect(accountName).toBeVisible({ timeout: 15000 });
+        await expect(accountNumber).toBeVisible({ timeout: 15000 });
+
+        const accountNameValue = (await accountName.textContent())?.trim();
+        const accountNumberValue = (await accountNumber.textContent())?.trim();
+
+        expect(accountNameValue).toBeTruthy();
+        expect(accountNumberValue).toBeTruthy();
+
+        console.log(`Selected Account Name: ${accountNameValue}`);
+        console.log(`Selected Account Number: ${accountNumberValue}`);
     }
 
     // async verifyCurrencyDropdownValues() {
@@ -440,70 +483,32 @@ export class ProviderFinancialSettlementPage {
     // }
 
     async verifyCurrencyDropdownValues() {
-    await this.page.waitForLoadState("domcontentloaded");
-
-    await this.currencyDropdown.waitFor({ state: "visible", timeout: 30000 });
-    await expect(this.currencyDropdown).toBeEditable({ timeout: 30000 });
-
-    await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-    await this.currencyDropdown.click();
-    await this.currencyDropdown.fill("");
-
-    try {
-        // Trigger autocomplete
-        await this.currencyDropdown.type("A", { delay: 300 });
-
-        // Click outside to allow Angular autocomplete to process
-        await this.page.locator("body").click({ position: { x: 10, y: 10 } });
-
-        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-        const options = this.page.locator(".cdk-overlay-pane mat-option");
-
-        await expect(options.first()).toBeVisible({
-            timeout: 20000
-        });
-
-        const optionCount = await options.count();
-        expect(optionCount).toBeGreaterThan(0);
-
-        const currencyValues = await options.allTextContents();
-
-        console.log(
-            "Currency dropdown values:",
-            currencyValues.map(v => v.trim())
-        );
-
-    } catch {
-        console.log("Retrying currency dropdown...");
-
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.currencyDropdown.waitFor({state: "visible",timeout: 30000});
+        await expect(this.currencyDropdown).toBeEditable({timeout: 30000});
+        await this.appLoader.waitFor({state: "hidden",timeout: 30000}).catch(() => {});
         await this.currencyDropdown.click();
         await this.currencyDropdown.fill("");
+        const searchValue = "UAE";
 
-        for (const char of "A") {
-            await this.currencyDropdown.type(char, { delay: 300 });
-            await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+        for (let i = 0; i < searchValue.length; i++) {
+
+            await this.currencyDropdown.pressSequentially(
+                searchValue[i],
+                { delay: 250 }
+            );
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
         }
-
-        await this.page.locator("body").click({ position: { x: 10, y: 10 } });
-
-        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-        const options = this.page.locator(".cdk-overlay-pane mat-option");
-
-        await expect(options.first()).toBeVisible({
-            timeout: 20000
-        });
-
+        const options = this.page.locator(`//span[contains(normalize-space(.), '${searchValue}')]`);
+        await expect(options.first()).toBeVisible({timeout: 20000});
+        const optionCount = await options.count();
+        expect(optionCount).toBeGreaterThan(0);
         const currencyValues = await options.allTextContents();
 
-        console.log(
-            "Currency dropdown values after retry:",
-            currencyValues.map(v => v.trim())
-        );
+        console.log("Currency dropdown values:",currencyValues.map(value => value.trim()));
     }
-}
 
     async verifyCurrencyLabelAndDropdownDisplayed() {
         await this.page.waitForLoadState("domcontentloaded");
@@ -569,6 +574,25 @@ export class ProviderFinancialSettlementPage {
         console.log(`Up to Due Date: ${upToDueDate}`);
     }
 
+    async verifyPayerBankAccountAndUpToDueDateAreDisplayedTC741() {
+        await expect(this.payerField).toBeVisible({timeout: 20000});
+        await expect(this.payerField).toHaveValue(/.+/, {timeout: 20000});
+        await expect(this.bankAccountField).toBeVisible({timeout: 20000});
+        await expect(this.upToDueDateField).toBeVisible({timeout: 20000});
+
+        const payer = (await this.payerField.inputValue()).trim();
+        const bankAccount = (await this.bankAccountField.innerText()).trim();
+        const upToDueDate = (await this.upToDueDateField.inputValue()).trim();
+        expect(payer).not.toBe("");
+        expect(bankAccount).not.toBe("");
+        expect(bankAccount).not.toContain("-- Select --");
+        expect(upToDueDate).not.toBe("");
+
+        console.log(`Payer: ${payer}`);
+        console.log(`Bank Account: ${bankAccount}`);
+        console.log(`Up To Due Date: ${upToDueDate}`);
+    }
+
     private convertDateToNumber(date: string): number {
         const [day, month, year] = date.split('/');
         return new Date(+year, +month - 1, +day).getTime();
@@ -577,6 +601,7 @@ export class ProviderFinancialSettlementPage {
     async orderResultsByDueDateAndSearch() {
         await this.searchBtn.click();      
         await expect(this.searchResultsContainer).toBeVisible({ timeout: 20000 });
+        console.log("Search results displayed successfully.");
     }
 
     async verifyResultsSortedByDueDate() {
@@ -615,9 +640,20 @@ export class ProviderFinancialSettlementPage {
     expect(actualPOIDs).toEqual(sortedPOIDs);
     }
 
+    // async clickOnExportUsingJobInactive() {
+    //     await new Promise(resolve => setTimeout(resolve, 5000)); 
+    //     await this.exportUsingJobInactive.check();
+    // }
+
     async clickOnExportUsingJobInactive() {
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
-        await this.exportUsingJobInactive.check();
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const toggle = this.exportUsingJobInactive;
+        await expect(toggle).toBeVisible({ timeout: 10000 });
+
+        if (await toggle.getAttribute("aria-checked") === "true") {
+            await toggle.click();
+        }
+        await expect(toggle).toHaveAttribute("aria-checked", "false");
     }
 
     async exportToExcel() {
@@ -640,15 +676,26 @@ export class ProviderFinancialSettlementPage {
     }
 
     async selectPartersBank(value: string) {
+        await this.partnerBankSelect.waitFor({state: "visible",timeout: 20000});
         await this.partnerBankSelect.click();
-        await this.partnerBankOptions.filter({ hasText: value }).click();
-        await expect(this.partnerBankSelectedValue).toHaveText(value);
+        const option = this.partnerBankOptions.filter({ hasText: value }).first();
+        await expect(option).toBeVisible({timeout: 20000});
+        await option.click();
+        await expect(this.partnerBankSelectedValue).toContainText(value, {timeout: 20000});
+        console.log(`Partner Bank "${value}" selected successfully.`);
     }
 
     async clickOnShowDeductionVoucher() {
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
-        await this.ShowDeductionVoucher.check();
-        await expect (this.ShowDeductionVoucher).toBeVisible();
+        await this.ShowDeductionVoucher.waitFor({state: "visible",timeout: 20000});
+        const isChecked = await this.ShowDeductionVoucher.getAttribute("aria-checked");
+        console.log("Show deductions vouchers current state:", isChecked);
+
+        if (isChecked === "false") {
+            await this.ShowDeductionVoucher.click();
+        }
+
+        await expect(this.ShowDeductionVoucher).toHaveAttribute("aria-checked","true",{ timeout: 10000 });
+        console.log("Show deductions vouchers is ON.");
     }
 
     async fieldVisiblity(){

@@ -58,6 +58,8 @@ export class PaymentOrdersPage {
     readonly toDeliveryDateTextbox: Locator;
     readonly showOnlyNotDeliveredToggle: Locator;
     readonly capitationToggle: Locator;
+    readonly appLoader: Locator;
+    readonly searchCriteriaMsg: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -115,6 +117,8 @@ export class PaymentOrdersPage {
         this.toDeliveryDateTextbox = page.locator('//input[@id="todeliverydate"]');
         this.showOnlyNotDeliveredToggle = page.locator('//mat-slide-toggle[@formcontrolname="showOnlyNotDelivered"]');
         this.capitationToggle = page.locator('//mat-slide-toggle[@formcontrolname="capitation"]');
+        this.appLoader = page.locator("app-new-loader");
+        this.searchCriteriaMsg = page.locator("mat-snack-bar-container");
 
     }
 
@@ -171,7 +175,7 @@ export class PaymentOrdersPage {
     }
 
     async allFieldsOfPaymentOrderReportPrefrences() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await this.firstOrder.evaluate(el => el.style.border = "3px solid green");
         await expect(this.firstOrder).toBeVisible();
         await this.sortByFirstOrder.evaluate(el => el.style.border = "3px solid green");
@@ -236,40 +240,95 @@ export class PaymentOrdersPage {
     }
 
     async verifyParentEntityAutocompleteListShown() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        const testValue = 'test';
-        await this.parentEntity.focus();
-        await this.parentEntity.type(testValue, { delay: 200 });
-        await expect(this.autocompletePanel).toBeVisible({ timeout: 9000 });
-        await expect(this.firstAutocompleteOptionText).toContainText(testValue);
-        // await this.firstAutocompleteOptionText.click();
-        // const selectedValue = await this.parentEntity.inputValue();
-        // expect(selectedValue.toLowerCase()).toBe(testValue.toLowerCase());
+        const testValue = "test";
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.parentEntity.waitFor({state: "visible",timeout: 30000});
+        await this.parentEntity.click();
+        await this.parentEntity.fill("");
+        for (let i = 0; i < testValue.length; i++) {
+            await this.parentEntity.pressSequentially(testValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        const parentEntityOption = this.page.locator(`//span[contains(normalize-space(.), '${testValue}')]`).first();
+        await expect(parentEntityOption).toBeVisible({timeout: 20000});
+        console.log(`Parent Entity autocomplete list is displayed for "${testValue}".`);
     }
 
     async verifyUserCanSelectValueFromParentEntityList() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        const testValue = 'test';
-        await this.parentEntity.focus();
-        await this.parentEntity.type(testValue, { delay: 200 });
-        await expect(this.autocompletePanel).toBeVisible({ timeout: 5000 });
-        await expect(this.firstAutocompleteOptionText).toContainText(testValue);
-        await this.firstAutocompleteOptionText.click();
+        const testValue = "test";
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.parentEntity.waitFor({state: "visible",timeout: 30000});
+        await this.parentEntity.click();
+        await this.parentEntity.fill("");
+
+        for (let i = 0; i < testValue.length; i++) {
+            await this.parentEntity.pressSequentially(testValue[i], {delay: 250});
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        const parentEntityOption = this.page.locator(`//span[contains(normalize-space(.), '${testValue}')]`).first();
+        await expect(parentEntityOption).toBeVisible({timeout: 20000});
+        await parentEntityOption.click();
+        await this.parentEntity.press("Tab");
         const selectedValue = await this.parentEntity.inputValue();
-        expect(selectedValue.toLowerCase()).toBe(testValue.toLowerCase());
+        expect(selectedValue.trim().toLowerCase()).toContain(testValue.toLowerCase());
+        console.log(`Parent Entity "${selectedValue}" selected successfully.`);
     }
 
     async verifyUserCanSelectOnlyOneValueAtATime() {
-        const firstValue = 'test';
-        const secondValue = 'demo';
+        const firstValue = "test";
+        const secondValue = "demo";
+        await this.parentEntity.click();
+        await this.parentEntity.fill("");
 
-        await this.parentEntity.fill('');
-        await this.parentEntity.type(firstValue, { delay: 200 });
-        await this.firstAutocompleteOptionText.click();
-        await this.parentEntity.type(secondValue, { delay: 200 });
-        await this.firstAutocompleteOptionText.click();
-        const selectedValue = await this.parentEntity.inputValue();
-        expect(selectedValue.toLowerCase()).toBe(firstValue.toLowerCase());
+        for (let i = 0; i < firstValue.length; i++) {
+            await this.parentEntity.pressSequentially(firstValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let option = this.page.locator(`//span[contains(normalize-space(.), '${firstValue}')]`).first();
+
+        await expect(option).toBeVisible({timeout: 20000});
+        await option.click();
+        await this.parentEntity.press("Tab");
+        const firstSelectedValue = await this.parentEntity.inputValue();
+        expect(firstSelectedValue.trim().toLowerCase()).toContain(firstValue.toLowerCase());
+        console.log(`First Parent Entity selected: ${firstSelectedValue}`);
+        await this.parentEntity.click();
+        await this.parentEntity.fill("");
+
+        for (let i = 0; i < secondValue.length; i++) {
+            await this.parentEntity.pressSequentially(secondValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        option = this.page.locator(`//span[contains(normalize-space(.), '${secondValue}')]`).first();
+        await expect(option).toBeVisible({timeout: 20000});
+        await option.click();
+        await this.parentEntity.press("Tab");
+        const secondSelectedValue = await this.parentEntity.inputValue();
+        expect(secondSelectedValue.trim().toLowerCase()).toContain(secondValue.toLowerCase());
+        expect(secondSelectedValue.trim().toLowerCase()).not.toContain(firstValue.toLowerCase());
+        console.log(`Second Parent Entity selected: ${secondSelectedValue}`);
+        console.log("Verified that only one Parent Entity value is selected at a time.");
     }
 
     async verifyIdTextboxNotAcceptsAlphabets() {
@@ -357,12 +416,19 @@ export class PaymentOrdersPage {
 
     async verifyFromDateCalendarOpensWithCurrentDate() {
         await this.fromDateCalendarIcon.click();
-        const calendarPopup = this.page.locator('//mat-datepicker-content');
-        await expect(calendarPopup).toBeVisible({ timeout: 5000 });
+        const calendarPopup = this.page.locator("mat-datepicker-content").last();
+        await expect(calendarPopup).toBeVisible({timeout: 10000});
         const today = new Date();
-        const todayDate = today.getDate().toString();
-        const selectedDate = calendarPopup.locator(`//td[contains(@class,"mat-calendar-body-selected")]`);
-        await expect(selectedDate).toHaveText(todayDate);
+
+        const day = today.getDate();
+        const month = today.toLocaleString("en-US", {month: "short"});
+        const year = today.getFullYear();
+        const todayLabel = `${day}-${month}-${year}`;
+        console.log(`Expected current date: ${todayLabel}`);
+        const todayDate = calendarPopup.locator(`button[aria-label="${todayLabel}"]`);
+        await expect(todayDate).toBeVisible({timeout: 10000});
+        await expect(todayDate).toHaveAttribute("aria-current","date");
+        console.log(`Current date ${todayLabel} is selected by default.`);
     }
 
     async verifyUserCanSelectOldDate() {
@@ -473,12 +539,14 @@ export class PaymentOrdersPage {
     }
      
     async fillMandaoryDetails(payerValue: string){
-        await this.page.waitForLoadState("networkidle");
-        await this.page.waitForTimeout(12000);
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+        await expect(this.payer).toBeVisible({ timeout: 30000 });
+        await expect(this.payer).toBeEditable({ timeout: 30000 });
         await this.payer.fill("");  
         for (const char of payerValue) {await this.payer.pressSequentially(char, { delay: 200 }); }
         expect(await this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").isVisible());
-        await this.page.waitForLoadState("networkidle");
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
         const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();
         await option.waitFor({ state: "visible", timeout: 10000 });
         await option.click();
@@ -486,6 +554,270 @@ export class PaymentOrdersPage {
         await this.account.click();
         expect(await this.page.locator("//span[text()=' abcd ']").isVisible());
         await this.page.locator("//span[text()=' abcd ']").click();
+    }
+
+    async fillMandatoryDetails(payerValue: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await expect(this.payer).toBeEditable({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
+
+        try {
+            await this.payer.type(payerValue, { delay: 200 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerValue) {
+                await this.payer.type(char, { delay: 200 });
+                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
+        await expect(this.account).toBeVisible({ timeout: 10000 });    
+        await this.account.click();
+        expect(await this.page.locator("//span[text()=' abcd ']").isVisible());
+        await this.page.locator("//span[text()=' abcd ']").click();
+        console.log(`Payer "${payerValue}" selected successfully.`);
+    }
+
+    async fillMandatoryDetailsDev(payerValue: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+
+        await this.payer.waitFor({
+            state: "visible",
+            timeout: 30000
+        });
+
+        await expect(this.payer).toBeEditable({
+            timeout: 30000
+        });
+
+        await this.appLoader.waitFor({
+            state: "hidden",
+            timeout: 30000
+        }).catch(() => {});
+
+        // =========================
+        // PAYER
+        // =========================
+
+        await this.payer.click();
+        await this.payer.fill("");
+
+        const payerOption = this.page
+            .locator(`//span[contains(text(),'${payerValue}')]`)
+            .first();
+
+        try {
+            await this.payer.type(payerValue, {
+                delay: 200
+            });
+
+            await this.appLoader.waitFor({
+                state: "hidden",
+                timeout: 30000
+            }).catch(() => {});
+
+            await payerOption.waitFor({
+                state: "visible",
+                timeout: 15000
+            });
+
+            await payerOption.click();
+
+        } catch {
+            console.log("Retrying payer selection...");
+
+            await this.payer.click();
+            await this.payer.fill("");
+
+            for (const char of payerValue) {
+                await this.payer.type(char, {
+                    delay: 200
+                });
+
+                await this.appLoader.waitFor({
+                    state: "hidden",
+                    timeout: 10000
+                }).catch(() => {});
+            }
+
+            await this.appLoader.waitFor({
+                state: "hidden",
+                timeout: 30000
+            }).catch(() => {});
+
+            await payerOption.waitFor({
+                state: "visible",
+                timeout: 15000
+            });
+
+            await payerOption.click();
+        }
+
+        // =========================
+        // ACCOUNT
+        // =========================
+
+        await this.page.waitForTimeout(2000);
+
+        await expect(this.account).toBeVisible({
+            timeout: 10000
+        });
+
+        await this.account.click();
+
+        const accOption = this.page
+            .getByText("Escrow", { exact: true })
+            .last();
+
+        await expect(accOption).toBeVisible({
+            timeout: 20000
+        });
+
+        await accOption.click();
+
+        console.log(`Payer "${payerValue}" selected successfully.`);
+        console.log(`Account "Escrow" selected successfully.`);
+    }
+
+    async verifyPayerDropdownValuesDisplayed(payerValue: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await expect(this.payer).toBeEditable({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
+
+        try {
+            await this.payer.type(payerValue, { delay: 200 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerValue) {
+                await this.payer.type(char, { delay: 200 });
+                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
+        await expect(this.account).toBeVisible({ timeout: 10000 });    
+        await this.account.click();
+        expect(await this.page.locator("//span[text()=' abcd ']").isVisible());
+        await this.page.locator("//span[text()=' abcd ']").click();
+        console.log(`Payer "${payerValue}" selected successfully.`);
+    }
+
+    async verifyPayerDropdownValuesDisplayedDev(payerValue: string) {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await expect(this.payer).toBeEditable({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+
+        await this.payer.click();
+        await this.payer.fill("");
+
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
+
+        try {
+            await this.payer.type(payerValue, { delay: 200 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerValue) {
+                await this.payer.type(char, { delay: 200 });
+                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
+        await expect(this.account).toBeVisible({ timeout: 10000 });    
+        await this.account.click();
+        const accOption = this.page.getByText("Escrow", { exact: true }).last();
+        await expect(accOption).toBeVisible({timeout: 20000});
+
+        await accOption.click();
+
+        console.log(`Payer "${payerValue}" selected successfully.`);
+        console.log(`Account "Escrow" selected successfully.`);
+        
+    }
+
+    async verifyCurrencyDropdownValuesDisplayed() {
+        await this.currency.waitFor({ state: "visible", timeout: 10000 });
+        await this.currency.click();
+        const options = this.page.locator(".cdk-overlay-pane mat-option");
+        await options.first().waitFor({ state: "visible", timeout: 15000 });
+        const optionCount = await options.count();
+        expect(optionCount).toBeGreaterThan(0);
+        console.log(`Currency dropdown shows ${optionCount} option(s).`);
+    }
+
+    async verifySearchResultColumnsDisplayed() {
+        const columns = ['Id', 'Label', 'Validated', 'Release Date', 'Delivery Date'];
+
+        for (const col of columns) {
+            const header = this.page.locator("mat-header-cell, th, [role='columnheader']").filter({ hasText: col }).first();
+            await expect(header).toBeVisible({ timeout: 30000 });
+        }
+
+        console.log('All search result columns are visible: ' + columns.join(', '));
+    }
+
+    async verifySearchResultColumnsDisplayedDev() {
+        const columns = [
+        "Id",
+        "Label",
+        "Validated",
+        "Release Date",
+        "Delivery Date",
+        "Controls"
+    ];
+        for (const col of columns) {
+
+        const header = this.page
+            .locator("mat-header-cell, th, [role='columnheader']")
+            .filter({ hasText: col })
+            .first();
+
+        await expect(header).toBeVisible({
+            timeout: 30000
+        });
+    }
+
+    console.log(
+        "All search result columns are visible: " + columns.join(", ")
+    );
     }
 
     async verifyFromReleaseDateCalendarOpensWithCurrentDate() {

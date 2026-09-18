@@ -112,7 +112,7 @@ test('FIN-TC-136: TC_137_Account Reconciliation_Verify that user can Search with
     })
  
       await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -192,7 +192,7 @@ test('FIN-TC-139: TC_140_Account Reconciliation_verify that click on Search butt
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -222,7 +222,7 @@ test('FIN-TC-140: TC_141_Account Reconciliation_Verify that user can search by P
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -256,7 +256,7 @@ test('FIN-TC-141: TC_142_Account Reconciliation_Verify that user can search by T
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -290,7 +290,7 @@ test('FIN-TC-142: TC_143_Account Reconciliation_Verify that user can search by d
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -324,7 +324,7 @@ test('FIN-TC-143: TC_144_Account Reconciliation_Verify that user can search by P
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -358,7 +358,7 @@ test('FIN-TC-144: TC_145_Account Reconciliation_Verify that user can search inVa
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -391,7 +391,7 @@ test('FIN-TC-144: TC_145_Account Reconciliation_Verify that user can search inVa
 //     })
     
 //     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+//         await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
 //     })
 
 //     await test.step("Click on the search button", async () => {
@@ -431,7 +431,7 @@ test('FIN-TC-146: TC_149_Account Reconciliation_verify that select settled check
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -466,7 +466,7 @@ test('FIN-TC-147: TC_150_Account Reconciliation_verify that in popup window Sele
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -505,7 +505,7 @@ test('FIN-TC-148: TC_151_Account Reconciliation_verify that click on Select file
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -544,7 +544,7 @@ test('FIN-TC-149: TC_152_Account Reconciliation_verify that user can upload xls,
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -583,7 +583,7 @@ test('FIN-TC-149: TC_152_Account Reconciliation_verify that user can upload xls,
 //     })
     
 //     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandatoryDetails(accountReconcilation['accountReconcilation-001'].payerValue);
+//         await accountReconcilationPage.fillMandatoryDetailsWithRetry(accountReconcilation['accountReconcilation-001'].payerValue);
 //     })
 
 //     await test.step("Click on the search button", async () => {
@@ -622,7 +622,7 @@ test('FIN-TC-151: TC_154_Account Reconciliation_verify that user can upload txt,
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -661,7 +661,7 @@ test('FIN-TC-153: TC_156_Account Reconciliation_verify that select an file xls a
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -700,7 +700,7 @@ test('FIN-TC-154: TC_157_Account Reconciliation_verify that without selectinng a
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -739,7 +739,7 @@ test('FIN-TC-155: TC_158_Account Reconciliation_verify that  click on close butt
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -778,7 +778,7 @@ test('FIN-TC-155: TC_158_Account Reconciliation_verify that  click on close butt
 //     })
     
 //     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+//         await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
 //     })
 
 //     await test.step("Click on the search button", async () => {
@@ -809,7 +809,7 @@ test('FIN-TC-155: TC_158_Account Reconciliation_verify that  click on close butt
 //     })
     
 //     await test.step("Fill all the mandatory details", async () => {
-//         await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+//         await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
 //     })
 
 //     await test.step("Click on the search button", async () => {
@@ -887,7 +887,7 @@ test('FIN-TC-1211: TC_517_Account Reconciliation_verify that up and down arrow i
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -918,7 +918,7 @@ test('FIN-TC-1212: TC_518_Account Reconciliation_verify that click on up arrow t
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -952,7 +952,7 @@ test('FIN-TC-1213: TC_519_Account Reconciliation_verify that click on down arrow
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
 
     await test.step("Click on the search button", async () => {
@@ -970,35 +970,45 @@ test('FIN-TC-1213: TC_519_Account Reconciliation_verify that click on down arrow
 //30
 test('FIN-TC-1214: TC_520_Account Reconciliation_verify that In search result provider column has more hyperlink is displayed', async ({ page }) => {
 
-    const loginPage: LoginPage = new LoginPage(page);
-    const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
-   
+    const loginPage = new LoginPage(page);
+    const accountReconcilationPage = new AccountReconcilationPage(page);
+
     await test.step("User navigates to Mawista application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+        await loginPage.gotoLoginPage(
+            data['Login-Access'].url
+        );
+    });
 
     await test.step("User Enter Username and Password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-    })
+        await loginPage.loginToApplication(
+            data['Login-Access'].userNameInput,
+            data['Login-Access'].passwordInput
+        );
+    });
 
-    await test.step("Click On Provider Reconcilation Under Financials", async () => {
-        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-    })
-    
+    await test.step("Click On Account Reconciliation Under Financials", async () => {
+        await accountReconcilationPage
+            .searchAndClickOnAccountReconcilationUnderFinancials();
+    });
+
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-    })
+        await accountReconcilationPage.fillMandatoryDetailsTC1214(
+            AccountReconcilationData['accountReconcilation-004'].payerValue,
+            AccountReconcilationData['accountReconcilation-004'].Account
+        );
+    });
 
     await test.step("Click on the search button", async () => {
         await accountReconcilationPage.clickSearchButtn();
-    })
+    });
 
-      await test.step("Verifying the up and down arrow in the table",async()=>{
-    await accountReconcilationPage.displayArrow();
-  })
-     await test.step("Verify that provider is in a link form",async()=>{
-    await accountReconcilationPage.providerURL();
-  })
+    await test.step("Verifying the up and down arrow in the table", async () => {
+        await accountReconcilationPage.displayArrow();
+    });
+
+    await test.step("Verify that provider is in a link form", async () => {
+        await accountReconcilationPage.providerURL();
+    });
 });
 
 //31
@@ -1020,22 +1030,27 @@ test('FIN-TC-1215: TC_521_Account Reconciliation_verify that click on more then 
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-    })
+        await accountReconcilationPage.fillMandatoryDetailsTC1214(
+            AccountReconcilationData['accountReconcilation-004'].payerValue,
+            AccountReconcilationData['accountReconcilation-004'].Account
+        );
+    });
 
     await test.step("Click on the search button", async () => {
         await accountReconcilationPage.clickSearchButtn();
     })
 
-      await test.step("Verifying the up and down arrow in the table",async()=>{
-    await accountReconcilationPage.displayArrow();
-  })
-     await test.step("Verify that provider is in a link form",async()=>{
-    await accountReconcilationPage.providerURL();
-  })
-  await test.step("Verify that the provider text should be visible",async()=>{
-    await accountReconcilationPage.verifyproviderText();
-  })
+    await test.step("Verifying the up and down arrow in the table",async()=>{
+        await accountReconcilationPage.displayArrow();
+    })
+
+    await test.step("Verify that provider is in a link form",async()=>{
+        await accountReconcilationPage.providerURL();
+    })
+
+    await test.step("Verify that the provider text should be visible",async()=>{
+        await accountReconcilationPage.verifyproviderText();
+    })
 });
 
 //32
@@ -1057,16 +1072,18 @@ test('FIN-TC-1216: TC_522_Account Reconciliation_verify that click on hide then 
     })
     
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
-    })
+        await accountReconcilationPage.fillMandatoryDetailsTC1214(
+            AccountReconcilationData['accountReconcilation-004'].payerValue,
+            AccountReconcilationData['accountReconcilation-004'].Account
+        );
+    });
 
     await test.step("Click on the search button", async () => {
         await accountReconcilationPage.clickSearchButtn();
     })
 
-    
-  await test.step("Verify that the provider text should be visible",async()=>{
-    await accountReconcilationPage.verifyHideButton();
+    await test.step("Verify that the provider text should be visible",async()=>{
+        await accountReconcilationPage.verifyHideButton();
   })
 });
 
@@ -1232,7 +1249,7 @@ test('FIN-TC-1222: TC_528_Account Reconciliation_verify that To Due date label a
         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
     })
     await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
    /// page.pause();
     await test.step("Verify to due date label and textbox is present", async () => {
@@ -1259,7 +1276,7 @@ test('FIN-TC-1223:TC_529_Account Reconciliation_verify that calender icon is dis
     })
  
      await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillMandatoryDetails(AccountReconcilationData['accountReconcilation-001'].payerValue);
+        await accountReconcilationPage.fillMandatoryDetailsWithRetry(AccountReconcilationData['accountReconcilation-001'].payerValue);
     })
  
      await test.step("Verify to due date label and textbox is present", async () => {
@@ -1587,7 +1604,7 @@ test('FIN-TC-1378: TC_684_Account Reconciliation_verify that fill mandatory fiel
     })
  
       await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillAllDetails(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
+        await accountReconcilationPage.fillAllDetailsTC1378(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
     })
 
     await test.step("Click on the generate button", async () => {
@@ -1614,7 +1631,7 @@ test('FIN-TC-1379: TC_685_Account Reconciliation_verify that fill fields , searc
     })
  
       await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillAllDetails(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
+        await accountReconcilationPage.fillAllDetailsTC1378(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
     })
 
     await test.step("Click on the generate button", async () => {
@@ -1641,7 +1658,7 @@ test('FIN-TC-1380: TC_686_Account Reconciliation_Verify that jobs then popup mes
     })
  
       await test.step("Fill all the mandatory details", async () => {
-        await accountReconcilationPage.fillAllDetails(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
+        await accountReconcilationPage.fillAllDetailsTC1378(AccountReconcilationData['accountReconcilation-001'].payerValue,AccountReconcilationData['accountReconcilation-001'].fromDueDate,AccountReconcilationData['accountReconcilation-001'].toDueDate);
     })
 
     await test.step("Click on the generate button", async () => {

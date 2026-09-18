@@ -58,6 +58,8 @@ export class AccountReconcilationPage{
     fileName: Locator;
     generatebuttonPop: Locator;
     jobButton: Locator;
+    appLoader: Locator;
+    dropdownOptions: Locator;
     constructor(page: Page){
      this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
@@ -102,7 +104,9 @@ export class AccountReconcilationPage{
         this.providerHide=page.locator("//div[@id='Hide0']/button");
         this.fromDueDateCalendar=page.locator("//input[@id='mat-input-2']/../../div[2]/mat-datepicker-toggle/button");
         this.toDueDateCalendar=page.locator("//input[@id='mat-input-3']/../../div[2]/mat-datepicker-toggle/button");
-        this.dueDateToday=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']");
+        //this.dueDateToday=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']");
+        //this.dueDateToday = this.page.locator("div.mat-calendar-body-today");
+        this.dueDateToday = this.page.locator('button[aria-current="date"]');
         this.oldDate=page.locator("//tbody[@class='mat-calendar-body']/tr[2]/td[1]");
         this.futureDate=page.locator("//tbody[@class='mat-calendar-body']/tr[5]/td[1]");
         this.errormsgDate=page.locator("//mat-error[text()=' Incorrect entry '][@id='mat-error-64']");
@@ -112,6 +116,12 @@ export class AccountReconcilationPage{
         this.fileName=page.locator("//mat-label[text()='File Name']/../../../div/input");
         this.generatebuttonPop=page.locator("//span[text()=' Generate ']/..");
         this.jobButton=page.locator("//button[text()='Dismiss']");
+        this.appLoader = page.locator("app-new-loader");
+        this.dropdownOptions = page.locator("mat-option span");
+    }
+
+    private escapeRegex(value: string): string {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
     async searchAndClickOnAccountReconcilationUnderFinancials(){
         await this.searchIcon.waitFor({ state: 'visible' });
@@ -147,23 +157,80 @@ export class AccountReconcilationPage{
         await this.page.locator("//span[text()=' abcd ']").click();
     }
 
-    // async fillMandatoryDetails(payerValue: string) {
-    //     await this.payer.clear();
-    //     await this.payer.pressSequentially(payerValue, { delay: 200 });
+    async fillMandatoryDetailsWithRetry(payerValue: string) {
+        const appLoader = this.page.locator("app-new-loader");
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({ state: "visible", timeout: 30000 });
+        await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
-    //     const option = this.page.getByText(
-    //         "ABU DHABI NATIONAL INSURANCE CO. ADNIC",
-    //         { exact: true }
-    //     );
+        await this.payer.click();
+        await this.payer.fill("");
 
-    //     await expect(option).toBeVisible({ timeout: 30000 });
-    //     await option.click();
+        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
 
-    //     await this.account.click();
-    //     await this.page.getByText("abcd", { exact: true }).click();
-    // }
+        try {
+            await this.payer.type(payerValue, { delay: 200 });
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        } catch {
+            console.log("Retrying payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            for (const char of payerValue) {
+                await this.payer.type(char, { delay: 200 });
+                await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            }
+            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await payerOption.waitFor({ state: "visible", timeout: 15000 });
+            await payerOption.click();
+        }
+
+        await this.page.waitForTimeout(2000);
+        await expect(this.account).toBeVisible({ timeout: 10000 });
+        await this.account.click();
+        //await this.page.getByText("abcd", { exact: true }).click();
+        const firstAccountOption = this.page.locator("mat-option").first();
+        await firstAccountOption.waitFor({ state: "visible", timeout: 10000 });
+        await firstAccountOption.click();
+        console.log(`Payer "${payerValue}" selected successfully.`);
+    }
+
+    async fillMandatoryDetailsTC1214(payerValue: string,accountValue: string) {
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {
+                delay: 250
+            });
+
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
+        await this.account.click();
+
+        const accountOption = this.page.locator("mat-option").filter({hasText: accountValue}).first();
+        await expect(accountOption).toBeVisible({timeout: 20000});
+
+        await accountOption.click();
+    }
 
     async clickSearchButtn(){
+        await this.page.waitForTimeout(5000);
         await this.searchButton.click();
         await this.page.waitForLoadState("networkidle");
     }
@@ -185,7 +252,7 @@ export class AccountReconcilationPage{
     async fillAllDetails(payerValue: string, fromDue: string, toDue: string) {
         await this.page.waitForLoadState("networkidle");
         await this.page.waitForTimeout(5000);
-
+        await this.payer.click();
         await this.payer.fill("");
 
         let typedText = "";
@@ -210,6 +277,145 @@ export class AccountReconcilationPage{
         await this.toDuedate.fill(toDue.trim());
     }
 
+    async fillAllDetailsDev(payerValue: string,fromDue: string,toDue: string) {
+        await this.page.waitForLoadState("networkidle");
+        await this.page.waitForTimeout(5000);
+        await this.payer.click();
+        await this.payer.fill("");
+
+        for (let i = 0; i < payerValue.length; i++) {
+            await this.payer.pressSequentially(payerValue[i], {
+                delay: 300
+            });
+            if (i === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 30000});
+        await payerOption.click();
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        await expect(payerOption).toBeVisible({timeout: 15000});
+        await payerOption.click();
+        await this.payer.press("Tab");
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("Rial Omani", {timeout: 30000});
+        await this.account.click();
+        const accountOption = this.page.locator("mat-option").filter({ hasText: "Escrow" }).first();
+        await expect(accountOption).toBeVisible({timeout: 20000});
+        await accountOption.click({ force: true });
+        await this.fromDueDate.click();
+        await this.fromDueDate.fill(fromDue.trim());
+        await this.fromDueDate.press("Tab");
+        await this.toDuedate.click();
+        await this.toDuedate.fill(toDue.trim());
+        await this.toDuedate.press("Tab");
+        await expect(this.fromDueDate).toHaveValue(fromDue.trim(),{ timeout: 10000 });
+        await expect(this.toDuedate).toHaveValue(toDue.trim(),{ timeout: 10000 });
+
+        console.log(`Payer: ${await this.payer.inputValue()}`);
+        console.log(`Currency: ${await currency.inputValue()}`);
+        console.log(`Account: ${(await this.account.textContent())?.trim()}`);
+        console.log(`From Due Date: ${await this.fromDueDate.inputValue()}`);
+        console.log(`To Due Date: ${await this.toDuedate.inputValue()}`);
+
+        await this.page.waitForTimeout(1000);
+    }
+    
+    async fillAllDetailsTC1378(
+        payerValue: string,
+        fromDue: string,
+        toDue: string
+    ) {
+        // ==============================
+        // PAYER
+        // ==============================
+        await this.page.waitForLoadState("networkidle");
+        await this.page.waitForTimeout(5000);
+
+        await this.payer.click();
+        await this.payer.fill("");
+
+        let typedText = "";
+
+        for (const char of payerValue) {
+            typedText += char;
+
+            await this.payer.pressSequentially(char, {
+                delay: 300
+            });
+
+            // Wait for dropdown after 3rd character
+            if (typedText.length === 3) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
+
+        // First payer selection
+        let payerOption = this.page
+            .locator(`//span[contains(normalize-space(.), '${payerValue}')]`)
+            .first();
+
+        await expect(payerOption).toBeVisible({
+            timeout: 30000
+        });
+
+        await payerOption.click();
+
+        // ==============================
+        // SELECT PAYER AGAIN
+        // ==============================
+        await this.payer.click();
+        await this.page.waitForTimeout(1000);
+
+        payerOption = this.page
+            .locator(`//span[contains(normalize-space(.), '${payerValue}')]`)
+            .first();
+
+        await expect(payerOption).toBeVisible({
+            timeout: 15000
+        });
+
+        await payerOption.click();
+
+        await this.payer.press("Tab");
+
+        // ==============================
+        // CURRENCY
+        // ==============================
+        const currency = this.page.getByRole("combobox", {
+            name: "Currency"
+        });
+
+        await expect(currency).toHaveValue("UAE Dirham", {
+            timeout: 30000
+        });
+
+        // ==============================
+        // ACCOUNT
+        // ==============================
+        await this.account.click();
+
+        const accountOption = this.page
+            .locator("//span[contains(normalize-space(.), 'ADNIC - Escrow')]")
+            .first();
+
+        await expect(accountOption).toBeVisible({
+            timeout: 20000
+        });
+
+        await accountOption.click();
+
+        // ==============================
+        // DUE DATES
+        // ==============================
+        await this.fromDueDate.fill(fromDue.trim());
+        await this.toDuedate.fill(toDue.trim());
+    }
+    
     async verifyErrorMessage(){
         await this.errormsg.isVisible();
     }
@@ -374,6 +580,7 @@ export class AccountReconcilationPage{
     }
 
     async verifyHideButton(){
+        expect(this.providerMore.isVisible());
         await this.providerMore.click();
         await this.page.waitForTimeout(3000);
         await this.providerHide.click();
@@ -391,15 +598,13 @@ export class AccountReconcilationPage{
         expect(this.fromDueDateLabel.isVisible());
     }
 
-    async verifyfromDueDateCalendar(){
-        expect(this.fromDueDateCalendar.isVisible());
-        this.fromDueDateCalendar.click();
+    async verifyfromDueDateCalendar() {
+        await expect(this.fromDueDateCalendar).toBeVisible({timeout: 10000});
+        await this.fromDueDateCalendar.click();
     }
 
-    async verifyDueDateToday(){
-        await this.page.waitForLoadState('networkidle');
-        expect(this.dueDateToday.isVisible());
-        await this.dueDateToday.click();
+    async verifyDueDateToday() {
+        await expect(this.dueDateToday).toBeVisible({timeout: 10000});
     }
 
     async oldDateSelect(){
@@ -447,6 +652,7 @@ export class AccountReconcilationPage{
 
     async clickGenerateButton(){
         await this.page.waitForLoadState("networkidle");
+        await this.page.waitForTimeout(15000);
         await this.generatebutton.click();
         await this.page.waitForLoadState("networkidle");
     // await this.generatebutton.click();

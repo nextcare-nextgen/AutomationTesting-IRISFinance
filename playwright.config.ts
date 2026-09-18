@@ -17,6 +17,7 @@ dotenv.config({
  */
 export default defineConfig({
   testDir: './',
+  globalSetup: require.resolve('./globalSetupFinanceData'),
   timeout: 200 * 1000,
   /* Run tests in files in parallel */
   fullyParallel: true,
