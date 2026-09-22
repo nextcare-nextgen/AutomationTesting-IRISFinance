@@ -12,7 +12,7 @@ const PaymentOrdersData = require(`../../testdata/${process.env.ENV || 'eu'}/pay
 const ProviderFinancialSettlementData = require(`../../testdata/${process.env.ENV || 'eu'}/providerFinancialSettlement.json`) as Record<string, any>;
 
 //1
-test('FIN-TC-1757 @sanity: TC_240_Account Reconciliation_verify that Account Reconciliation hyperlink is displayed', async ({ page }) => {
+test('FIN-TC-1877 @sanity: TC01_Sanity_Account Reconciliation_Verify that Account Reconciliation hyperlink is displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -31,7 +31,7 @@ test('FIN-TC-1757 @sanity: TC_240_Account Reconciliation_verify that Account Rec
  });
 
  //2
- test('FIN-TC-1758 @sanity: TC_241_Account Reconciliation_verify that click on Account Reconciliation then user redirected to Account Reconciliation screen', async ({ page }) => {
+ test('FIN-TC-1878 @sanity: TC02_Sanity_Account Reconciliation_Verify that user is redirected to Account Reconciliation screen on clicking Account Reconciliation', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -54,7 +54,7 @@ test('FIN-TC-1757 @sanity: TC_240_Account Reconciliation_verify that Account Rec
  });
  
  //3
- test('FIN-TC-1759 @sanity: TC_242_Account Reconciliation_verify that Account Reconciliation label is display', async ({ page }) => {
+ test('FIN-TC-1879 @sanity: TC03_Sanity_Account Reconciliation_Verify that Account Reconciliation label is displayed', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -77,7 +77,7 @@ test('FIN-TC-1757 @sanity: TC_240_Account Reconciliation_verify that Account Rec
  });
  
 //4
-test('FIN-TC-1760 @sanity: TC_244_Account Reconciliation_verify that payer label and dropdown is displayed', async ({ page }) => {
+test('FIN-TC-1880 @sanity: TC04_Sanity_Account Reconciliation_Verify that Payer label and dropdown are displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -101,7 +101,7 @@ test('FIN-TC-1760 @sanity: TC_244_Account Reconciliation_verify that payer label
 });
 
 //5
-test('FIN-TC-1761 @sanity: TC_246_Account Reconciliation_verify that currency label and dropdown is displayed', async ({ page }) => {
+test('FIN-TC-1881 @sanity: TC05_Sanity_Account Reconciliation_Verify that Currency label and dropdown are displayed', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -125,7 +125,7 @@ test('FIN-TC-1761 @sanity: TC_246_Account Reconciliation_verify that currency la
 });
 
 //6
-test('FIN-TC-1762 @sanity: TC_260_Account Reconciliation_verify that enter same from due date and To due date', async ({ page }) => {
+test('FIN-TC-1882 @sanity: TC06_Sanity_Account Reconciliation_Verify that same From Due Date and To Due Date can be entered', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -153,7 +153,7 @@ test('FIN-TC-1762 @sanity: TC_260_Account Reconciliation_verify that enter same 
 });
 
 //7
-test('FIN-TC-1763 @sanity: TC_261_Account Reconciliation_verify that enter from due date less than To due date', async ({ page }) => {
+test('FIN-TC-1883 @sanity: TC07_Sanity_Account Reconciliation_Verify that From Due Date is less than To Due Date due', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -181,7 +181,7 @@ test('FIN-TC-1763 @sanity: TC_261_Account Reconciliation_verify that enter from 
 });
 
 //8
-test('FIN-TC-1764 @sanity: TC_262_Account Reconciliation_verify that enter from due date greater than To due date', async ({ page }) => {
+test('FIN-TC-1884 @sanity: TC08_Sanity_Account Reconciliation_Verify that From Due Date is greater than To Due Date', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountReconcilationPage: AccountReconcilationPage = new AccountReconcilationPage(page);
@@ -212,7 +212,7 @@ test('FIN-TC-1764 @sanity: TC_262_Account Reconciliation_verify that enter from 
 });
 
 //9
-test('FIN-TC-1767 @sanity: TC_123_Account Transactions_verify that User navigate to Account Transaction screen', async ({ page }) => {
+test('FIN-TC-1885 @sanity: TC09_Sanity_Account Transactions_Verify that user navigates to Account Transactions screen', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -231,7 +231,7 @@ test('FIN-TC-1767 @sanity: TC_123_Account Transactions_verify that User navigate
  });
 
  //10
- test('FIN-TC-1768 @sanity: TC_124_Account Transactions_verify that Search criteria Label is displayed', async ({ page }) => {
+ test('FIN-TC-1886 @sanity: TC10_Sanity_Account Transactions_Verify that Search Criteria label is displayed', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -259,7 +259,7 @@ test('FIN-TC-1767 @sanity: TC_123_Account Transactions_verify that User navigate
  });
 
  //11
-test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields are displayed in search criteria', async ({ page }) => {
+test('FIN-TC-1887 @sanity: TC11_Sanity_Account Transactions_Verify that all fields are displayed in Search Criteria', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -287,7 +287,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
  
  //12
- test('FIN-TC-1770 @sanity: TC_126_Account Transactions_verify that select Payer and Currency then account  details are dispalyed in dropdown', async ({ page }) => {
+ test('FIN-TC-1888 @sanity: TC12_Sanity_Account Transactions_Verify that account details are displayed after selecting Payer and Currency', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -318,7 +318,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
  
  //13
- test('FIN-TC-1771 @sanity: TC_128_Account Transactions_verify that Transaction label is displayed in Search result', async ({ page }) => {
+ test('FIN-TC-1889 @sanity: TC13_Sanity_Account Transactions_Verify that Transaction label is displayed in Search Results', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -346,7 +346,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
  
  //14
- test('FIN-TC-1772 @sanity: TC_129_Account Transactions_verify that In serach result all coulmns are displayed Provider Key, Txn Id, Po validation date, Due date, settle date, cheque sent date, Payment order, delivery date, destination Account, principal, Amount, CV Amount, details', async ({ page }) => {
+ test('FIN-TC-1890 @sanity: TC14_Sanity_Account Transactions_Verify that all columns are displayed in Search Results', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -377,7 +377,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
  
  //15
- test('FIN-TC-1773 @sanity: TC_130_Account Transactions_verify that select Payer- ADNIC , Currency UAE , Account- Escrow  from Po validation date-9/1/2023 To Po validation date -9/30/2023 and click on Show transaction then Result is displayed', async ({ page }) => {
+ test('FIN-TC-1891 @sanity: TC15_Sanity_Account Transactions_Verify that transaction results are displayed for selected search criteria', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -409,11 +409,10 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
       await test.step("Click on the Search button", async () => {
          await accountTransactionPage.clickonSearch();
      })
- 
  });
 
  //16
- test('FIN-TC-1774 @sanity: TC_162_Report Prefrences_verify that In report prefrences all fields are displayed job label, date format, downoad format, decimal point, group separator, language, delimiter, first page top margin, next page top margin, result destination', async ({ page }) => {
+ test('FIN-TC-1898 @sanity: TC22_Sanity_Report Preferences_Verify that all fields are displayed in Report Preferences', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -453,7 +452,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
  
  //17
- test('FIN-TC-1775 @sanity: TC_164_Report Prefrences_verify that click on generate button then "Your job has been scheduled, you can go to the jobs pageto see it" popup message display', async ({ page }) => {
+ test('FIN-TC-1893 @sanity: TC17_Sanity_Report Preferences_Verify that success message is displayed after clicking Generate button', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
@@ -496,7 +495,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
  
  //18
- test('FIN-TC-1776 @sanity: TC_001_Payment Orders_Verify that the user is able to navigate to Payment Orders', async ({ page }) => {
+ test('FIN-TC-1894 @sanity: TC18_Sanity_Payment Orders_Verify that user is able to navigate to Payment Orders', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -520,7 +519,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
 //19
- test('FIN-TC-1777 @sanity: TC_002_Search Criteria_Verify that Search Criteria label displays', async ({ page }) => {
+ test('FIN-TC-1895 @sanity: TC19_Sanity_Search Criteria_Verify that Search Criteria label is displayed', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -550,7 +549,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
  //20
- test('FIN-TC-1778 @sanity: TC_003_Search Criteria_Verify that in search criteria all fileds are displayed', async ({ page }) => {
+ test('FIN-TC-1896 @sanity: TC20_Sanity_Search Criteria_Verify that all fields are displayed in Search Criteria', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -578,7 +577,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
  //21
- test('FIN-TC-1780 @sanity: TC_005_Report Preferences_Verify that in Report Preferences all fields are displayed', async ({ page }) => {
+ test('FIN-TC-1892 @sanity: TC16_Sanity_Report Preferences_Verify that all fields are displayed in Report Preferences', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -607,7 +606,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
  //22
- test('FIN-TC-1781 @sanity: TC_006_Search Results_Verify that in Search Results searched data is displayed', async ({ page }) => {
+ test('FIN-TC-1899 @sanity: TC23_Sanity_Search Results_Verify that searched data is displayed in Search Results', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -635,7 +634,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
  //23
- test('FIN-TC-1782 @sanity: TC_008_Search Results_Verify that click on Search without filing any fields', async ({ page }) => {
+ test('FIN-TC-1900 @sanity: TC24_Sanity_Search Results_Verify that user clicks Search without entering any field', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -666,7 +665,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
  //24
- test('FIN-TC-1783 @sanity: TC_015_Search Criteria_Verify that fill only mandatory fields click on search', async ({ page }) => {
+ test('FIN-TC-1901 @sanity: TC25_Sanity_Search Criteria_Verify that search works when only mandatory fields are entered', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -697,7 +696,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
  //25
- test('FIN-TC-1784 @sanity: TC_017_Search Criteria_verify that Payer dropdown values are displayed', async ({ page }) => {
+ test('FIN-TC-1902 @sanity: TC26_Sanity_Search Criteria_Verify that Payer dropdown values are displayed', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -724,7 +723,7 @@ test('FIN-TC-1769 @sanity: TC_125_Account Transactions_verify that all fields ar
  });
 
 //26
-test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown values are displayed', async ({ page }) => {
+test('FIN-TC-1903 @sanity: TC27_Sanity_Search Criteria_Verify that Currency dropdown values are displayed', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -755,7 +754,7 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
  });
 
  //27
- test('FIN-TC-1786 @sanity: TC_049_Payment Order_verify that in Payment order all details are displayed', async ({ page }) => {
+ test('FIN-TC-1904 @sanity: TC28_Sanity_Payment Order_Verify that all details are displayed in Payment Order', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -790,7 +789,7 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
  });
 
  //28
- test('FIN-TC-1787 @sanity: TC_050_Payment Order_verify that in Report Preferences  all details are displayed', async ({ page }) => {
+ test('FIN-TC-1905 @sanity: TC29_Sanity_Payment Order_Verify that all details are displayed in Report Preferences', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);
@@ -819,7 +818,7 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
  });
 
  //29
- test("FIN-TC-1788 @sanity: TC_426_Provider's Financial Settlement _verify that Provider's Financial Settlement hyperlink is displayed", async ({ page }) => {
+ test("FIN-TC-1906 @sanity: TC30_Sanity_Provider Financial Settlement_Verify that Provider's Financial Settlement hyperlink is displayed", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -847,7 +846,7 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
 });
 
 //30
- test("FIN-TC-1789 @sanity: TC_427_Provider's Financial Settlement _verify that user click on hyperlink then redirected to Provider's Financial Settlement screen", async ({ page }) => {
+ test("FIN-TC-1907 @sanity: TC31_Sanity_Provider Financial Settlement_Verify that user is redirected to Provider's Financial Settlement screen on clicking hyperlink", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -875,7 +874,7 @@ test('FIN-TC-1785 @sanity: TC_018_Search Criteria_verify that Currency dropdown 
 });
 
 //31
-test("FIN-TC-1790 @sanity: TC_428_Provider's Financial Settlement _verify that search criteria label is displayed", async ({ page }) => {
+test("FIN-TC-1908 @sanity: TC32_Sanity_Provider Financial Settlement_Verify that Search Criteria label is displayed", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -906,7 +905,7 @@ test("FIN-TC-1790 @sanity: TC_428_Provider's Financial Settlement _verify that s
 });
 
 //32
-test("FIN-TC-1791 @sanity: TC_429_Provider's Financial Settlement _verify that Payer radiobutton is displayed", async ({ page }) => {
+test("FIN-TC-1909 @sanity: TC33_Sanity_Provider Financial Settlement_Verify that Payer radio button is displayed", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -939,7 +938,7 @@ test("FIN-TC-1791 @sanity: TC_429_Provider's Financial Settlement _verify that P
 
 
 //33
-test("FIN-TC-1792 @sanity: TC_430_Provider's Financial Settlement _verify that Reinsurer radiobutton is displayed", async ({ page }) => {
+test("FIN-TC-1910 @sanity: TC34_Sanity_Provider Financial Settlement_Verify that Reinsurer radio button is displayed", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -972,7 +971,7 @@ test("FIN-TC-1792 @sanity: TC_430_Provider's Financial Settlement _verify that R
 
 
 //34
-test("FIN-TC-1793 @sanity: TC_431_Provider's Financial Settlement _verify that user can check and uncheck radio button", async ({ page }) => {
+test("FIN-TC-1911 @sanity: TC35_Sanity_Provider Financial Settlement_Verify that user can check and uncheck radio buttons", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -1004,7 +1003,7 @@ test("FIN-TC-1793 @sanity: TC_431_Provider's Financial Settlement _verify that u
 });
 
 //35
-test("FIN-TC-1794 @sanity: TC_432_Provider's Financial Settlement _verify that user can select one option at a time", async ({ page }) => {
+test("FIN-TC-1912 @sanity: TC36_Sanity_Provider Financial Settlement_Verify that only one option can be selected at a time", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -1036,7 +1035,7 @@ test("FIN-TC-1794 @sanity: TC_432_Provider's Financial Settlement _verify that u
 });
 
 //36
-test("FIN-TC-1795 @sanity: TC_433_Provider's Financial Settlement _verify that when radio button Payer is selected then in dropdown Payers option displayed", async ({ page }) => {
+test("FIN-TC-1993 @sanity: TC37_Sanity_Provider Financial Settlement_Verify that Payer options are displayed when Payer radio button is selected", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -1068,7 +1067,7 @@ test("FIN-TC-1795 @sanity: TC_433_Provider's Financial Settlement _verify that w
 });
 
 //37
-test("FIN-TC-1796 @sanity: TC_434_Provider's Financial Settlement _verify that when radio button Reinsurer is selected then in dropdown Reinsurer option displayed", async ({ page }) => {
+test("FIN-TC-1914 @sanity: TC38_Sanity_Provider Financial Settlement_Verify that Reinsurer options are displayed when Reinsurer radio button is selected", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -1103,7 +1102,7 @@ test("FIN-TC-1796 @sanity: TC_434_Provider's Financial Settlement _verify that w
 });
 
 //38
-test("FIN-TC-1797 @sanity: TC_435_Provider's Financial Settlement _verify that currency label and dropdown is displayed", async ({ page }) => {
+test("FIN-TC-1915 @sanity: TC39_Sanity_Provider Financial Settlement_Verify that Currency label and dropdown are displayed", async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const providerFinancialSettlementPage: ProviderFinancialSettlementPage = new ProviderFinancialSettlementPage(page);
@@ -1140,8 +1139,120 @@ test("FIN-TC-1797 @sanity: TC_435_Provider's Financial Settlement _verify that c
 
 //39
 
-//40
-test('FIN-TC-1779 @sanity: TC_004_Report Preferences_Verify that in Report Preferences label is displayed', async ({ page }) => {
+// //40
+// test('FIN-TC-1916 @sanity: TC40_Sanity_ADNIC Settlement_Verify that payload contains all required ADNIC settlement fields', async ({ page }) => {
+//     const loginPage = new LoginPage(page);
+//     const accountReconcilationPage = new AccountReconcilationPage(page);
+//     const settlementData = AccountReconcilationData.TC_040_ADNICSettlementData;
+//     let transactionNumber = '';
+
+//     await test.step("User navigates to IRIS application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
+
+//     await test.step("User enters username and password", async () => {
+//         await loginPage.loginToApplication(
+//             data['Login-Access'].userNameInput,
+//             data['Login-Access'].passwordInput,
+//         );
+//     });
+
+//     await test.step("User navigates to Account Reconciliation", async () => {
+//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+//     });
+
+//     await test.step("User enters ADNIC payer, currency and account and searches", async () => {
+//         await accountReconcilationPage.fillMandatoryDetailsTC1214(
+//             settlementData.payerValue,
+//             settlementData.accountValue,
+//         );
+//         await accountReconcilationPage.clickSearchButtn();
+//     });
+
+//     await test.step("User settles an eligible claim and verifies the ADNIC payload", async () => {
+//         transactionNumber =
+//             await accountReconcilationPage.settleFirstEligibleAdnicTransactionAndVerifyPayload();
+//     });
+
+//     await test.step("Settled transaction is no longer displayed", async () => {
+//         await accountReconcilationPage.verifyTransactionIsNoLongerAvailable(transactionNumber);
+//     });
+// });
+
+// //41
+// test('FIN-TC-1917 @sanity: TC41_Sanity_Dhamani Payment Reference_Verify that payment reference from 1 to 18 characters is accepted by Dhamani', async ({ page }) => {
+//     const loginPage = new LoginPage(page);
+//     const settlementPage = new ProviderFinancialSettlementPage(page);
+//     const settlementData = ProviderFinancialSettlementData.TC_041_DhamaniPaymentReferenceData;
+//     let paymentOrderId = '';
+
+//     await test.step("User navigates to IRIS application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
+
+//     await test.step("User enters username and password", async () => {
+//         await loginPage.loginToApplication(
+//             data['Login-Access1'].userNameInput,
+//             data['Login-Access1'].passwordInput,
+//         );
+//     });
+
+//     await test.step("User navigates to Provider Financial Settlement", async () => {
+//         await settlementPage.searchAndClickFinancials();
+//         await settlementPage.clickOnProvidersFinancialSettlement();
+//     });
+
+//     await test.step("User selects an eligible Dhamani payment order", async () => {
+//         paymentOrderId = await settlementPage.discoverDhamaniPaymentOrder();
+//         settlementPage.ensureDhamaniSettlementAllowed(paymentOrderId);
+//     });
+
+//     await test.step("Payment reference accepts 1 to 18 characters and saves successfully", async () => {
+//         await settlementPage.verifyPaymentReferenceRangeAndSave(
+//             paymentOrderId,
+//             settlementData.PaymentReference,
+//         );
+//     });
+// });
+
+// //42
+// test("FIN-TC-1918 @sanity: TC42_Sanity_Dhamani Payment Reference_Verify that payment reference starts with 'NP' character", async ({ page }) => {
+//     const loginPage = new LoginPage(page);
+//     const settlementPage = new ProviderFinancialSettlementPage(page);
+//     const settlementData = ProviderFinancialSettlementData.TC_042_DhamaniPaymentReferenceData;
+//     let paymentOrderId = '';
+
+//     await test.step("User navigates to IRIS application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
+
+//     await test.step("User enters username and password", async () => {
+//         await loginPage.loginToApplication(
+//             data['Login-Access1'].userNameInput,
+//             data['Login-Access1'].passwordInput,
+//         );
+//     });
+
+//     await test.step("User navigates to Provider Financial Settlement", async () => {
+//         await settlementPage.searchAndClickFinancials();
+//         await settlementPage.clickOnProvidersFinancialSettlement();
+//     });
+
+//     await test.step("User selects another eligible Dhamani payment order", async () => {
+//         paymentOrderId = await settlementPage.discoverDhamaniPaymentOrder();
+//         settlementPage.ensureDhamaniSettlementAllowed(paymentOrderId);
+//     });
+
+//     await test.step("NP-prefixed 18-character payment reference saves successfully", async () => {
+//         await settlementPage.verifyNpPaymentReferenceAndSave(
+//             paymentOrderId,
+//             settlementData.PaymentReference,
+//         );
+//     });
+// });
+
+//43
+test('FIN-TC-1897 @sanity: TC21_Sanity_Report Preferences_Verify that Report Preferences label is displayed', async ({ page }) => {
  
      const loginPage: LoginPage = new LoginPage(page);
      const paymentOrderDetailsPage: PaymentOrdersPage = new PaymentOrdersPage(page);

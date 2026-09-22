@@ -542,6 +542,92 @@ export class AccountReconcilationPage{
         await this.save.click();
     }
 
+    async settleFirstEligibleAdnicTransactionAndVerifyPayload(): Promise<string> {
+        const table = this.page.locator('table').filter({ hasText: 'TXN NBR' }).first();
+        await expect(table).toBeVisible({ timeout: 30000 });
+
+        const transactionHeader = table.locator('th').filter({ hasText: /TXN NBR/ }).first();
+        const transactionColumnIndex = await transactionHeader.evaluate(header =>
+            Array.from(header.parentElement?.children ?? []).indexOf(header),
+        );
+        expect(transactionColumnIndex).toBeGreaterThanOrEqual(0);
+
+        const rows = table.locator('tbody tr');
+        await expect(rows.first(), 'An eligible unsettled ADNIC claim must be available').toBeVisible({
+            timeout: 30000,
+        });
+
+        let eligibleRow: Locator | undefined;
+        let settledCheckbox: Locator | undefined;
+        let transactionNumber = '';
+        for (let index = 0; index < await rows.count(); index++) {
+            const row = rows.nth(index);
+            const checkbox = row.locator(
+                'td.mat-column-settled input[type="checkbox"]:not([disabled])',
+            );
+            if (!await checkbox.isVisible()) continue;
+
+            const candidateTransactionNumber = (
+                await row.locator('td').nth(transactionColumnIndex).innerText()
+            ).trim();
+            if (!candidateTransactionNumber) continue;
+
+            eligibleRow = row;
+            settledCheckbox = checkbox;
+            transactionNumber = candidateTransactionNumber;
+            break;
+        }
+        expect(eligibleRow, 'No enabled unsettled ADNIC claim was found').toBeDefined();
+        expect(settledCheckbox).toBeDefined();
+
+        console.log(`Selected ADNIC transaction: ${transactionNumber}`);
+        await settledCheckbox!.check();
+        await expect(settledCheckbox!).toBeChecked();
+
+        const settlementRequestPromise = this.page.waitForRequest(request => {
+            if (!['POST', 'PUT', 'PATCH'].includes(request.method())) return false;
+            return request.postData()?.includes(transactionNumber) ?? false;
+        }, { timeout: 30000 });
+
+        await this.clickSaveButton();
+        const request = await settlementRequestPromise;
+        const response = await request.response();
+        expect(response, 'The settlement request should receive a response').not.toBeNull();
+        expect(response!.ok(), `Settlement request failed with HTTP ${response!.status()}`).toBeTruthy();
+
+        await this.verifyAdnicSettlementPayload(request.postDataJSON());
+        return transactionNumber;
+    }
+
+    private async verifyAdnicSettlementPayload(payload: unknown): Promise<void> {
+        const fields = new Map<string, unknown>();
+        const collectFields = (value: unknown): void => {
+            if (!value || typeof value !== 'object') return;
+            for (const [key, child] of Object.entries(value as Record<string, unknown>)) {
+                fields.set(key.replace(/[^a-z0-9]/gi, '').toLowerCase(), child);
+                collectFields(child);
+            }
+        };
+        collectFields(payload);
+
+        const requiredFields: Array<[string, RegExp]> = [
+            ['claim reference', /^claim(ref|reference)$/],
+            ['FOB', /^fob$/],
+            ['beneficiary PIN', /^beneficiarypin$/],
+        ];
+        for (const [label, keyPattern] of requiredFields) {
+            const entry = [...fields.entries()].find(([key]) => keyPattern.test(key));
+            expect(entry, `ADNIC settlement payload should contain ${label}`).toBeDefined();
+            expect(String(entry![1] ?? '').trim(), `${label} should have a value`).not.toBe('');
+        }
+    }
+
+    async verifyTransactionIsNoLongerAvailable(transactionNumber: string): Promise<void> {
+        await this.search.fill('');
+        await this.search.fill(transactionNumber);
+        await expect(this.noRecord).toBeVisible({ timeout: 30000 });
+    }
+
     async validateBankBlankPopup(){
         await this.alertBankPopUp.isVisible();
     }

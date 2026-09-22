@@ -45,5 +45,13 @@
         "POID": "6813687",
         "TOPOID": "6871541",
         "PARTNER_BANK": "BBMEQAQXXXX"
+    },
+
+    "TC_041_DhamaniPaymentReferenceData": {
+        "PaymentReference": "123456789012345678"
+    },
+
+    "TC_042_DhamaniPaymentReferenceData": {
+        "PaymentReference": "NP1234567890123456"
     }
 }

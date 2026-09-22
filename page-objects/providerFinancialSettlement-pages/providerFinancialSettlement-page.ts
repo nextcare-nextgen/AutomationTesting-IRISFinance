@@ -1,7 +1,8 @@
-import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import { Keyboard, Locator, Page, expect, test } from "@playwright/test";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class ProviderFinancialSettlementPage {
+    private static readonly usedDhamaniPaymentOrderIds = new Set<string>();
 
     readonly page: Page;
     readonly searchIcon: Locator;
@@ -209,6 +210,161 @@ export class ProviderFinancialSettlementPage {
     async clickOnSearchButton() {
         await new Promise(resolve => setTimeout(resolve, 5000)); 
         await this.searchBtn.click();
+    }
+
+    async discoverDhamaniPaymentOrder(): Promise<string> {
+        await this.clickOnPayersRadioButton();
+        await expect(this.payerDropdown).toBeEditable({ timeout: 30000 });
+        await this.payerDropdown.fill('');
+        await this.payerDropdown.pressSequentially('Dhamani', { delay: 250 });
+        await this.appLoader.waitFor({ state: 'hidden', timeout: 30000 }).catch(() => {});
+        const dhamaniPayerOptions = this.page.locator('mat-option').filter({
+            hasText: /Dhamani/i,
+        });
+        await expect(
+            dhamaniPayerOptions.first(),
+            'At least one Dhamani payer must be available',
+        ).toBeVisible({ timeout: 30000 });
+        const payer = (await dhamaniPayerOptions.first().innerText()).trim();
+        await dhamaniPayerOptions.first().click();
+        await expect(this.payerDropdown).toHaveValue(payer, { timeout: 30000 });
+
+        await this.bankAccountDropdown.click();
+        const bankAccountOptions = this.bankAccountOptions.filter({
+            hasNotText: /^-- Select --$/,
+        });
+        await expect(
+            bankAccountOptions.first(),
+            `At least one bank account must be available for ${payer}`,
+        ).toBeVisible({ timeout: 30000 });
+        const bankAccount = (await bankAccountOptions.first().innerText()).trim();
+        await bankAccountOptions.first().click();
+
+        const today = new Date();
+        const upToDueDate = [
+            String(today.getDate()).padStart(2, '0'),
+            String(today.getMonth() + 1).padStart(2, '0'),
+            today.getFullYear(),
+        ].join('/');
+        await this.selectUpTODueDate(upToDueDate);
+        await this.clickOnSearchButton();
+
+        const paymentOrderHeader = this.searchResultsContainer.locator('th').filter({
+            hasText: /^P\.O\. ID$/,
+        });
+        const paymentOrderColumnIndex = await paymentOrderHeader.evaluate(header =>
+            Array.from(header.parentElement?.children ?? []).indexOf(header),
+        );
+        expect(paymentOrderColumnIndex).toBeGreaterThanOrEqual(0);
+
+        const eligiblePaymentOrderIds: string[] = [];
+        const rows = this.searchResultsContainer.locator('tbody tr');
+        await expect(rows.first(), `No unsettled transactions were found for ${payer}`).toBeVisible({
+            timeout: 30000,
+        });
+        for (let index = 0; index < await rows.count(); index++) {
+            const row = rows.nth(index);
+            const checkbox = row.locator('mat-checkbox, input[type="checkbox"]').first();
+            if (!await checkbox.isVisible() || !await checkbox.isEnabled()) continue;
+
+            const paymentOrderId = (
+                await row.locator('td').nth(paymentOrderColumnIndex).innerText()
+            ).trim();
+            if (
+                paymentOrderId &&
+                !ProviderFinancialSettlementPage.usedDhamaniPaymentOrderIds.has(paymentOrderId)
+            ) {
+                eligiblePaymentOrderIds.push(paymentOrderId);
+            }
+        }
+        expect(
+            eligiblePaymentOrderIds.length,
+            'No unused eligible Dhamani payment order was found',
+        ).toBeGreaterThan(0);
+
+        const paymentOrderId = eligiblePaymentOrderIds[0];
+        ProviderFinancialSettlementPage.usedDhamaniPaymentOrderIds.add(paymentOrderId);
+        await this.enterFromPOID(paymentOrderId);
+        await this.enterTOPOID(paymentOrderId);
+        await this.clickOnSearchButton();
+        await expect(
+            this.searchResultsContainer.locator('tbody tr').filter({ hasText: paymentOrderId }).first(),
+        ).toBeVisible({ timeout: 30000 });
+        return paymentOrderId;
+    }
+
+    ensureDhamaniSettlementAllowed(paymentOrderId: string): void {
+        test.skip(
+            process.env.ALLOW_DHAMANI_SETTLEMENT !== 'true',
+            `Discovered eligible Dhamani PO ${paymentOrderId}; ` +
+            'set ALLOW_DHAMANI_SETTLEMENT=true to save it.',
+        );
+    }
+
+    async verifyPaymentReferenceRangeAndSave(
+        paymentOrderId: string,
+        paymentReference: string,
+    ): Promise<void> {
+        await this.savePaymentReference(paymentOrderId, paymentReference, true);
+    }
+
+    async verifyNpPaymentReferenceAndSave(
+        paymentOrderId: string,
+        paymentReference: string,
+    ): Promise<void> {
+        expect(paymentReference).toMatch(/^NP/);
+        expect(paymentReference).toHaveLength(18);
+        await this.savePaymentReference(paymentOrderId, paymentReference);
+    }
+
+    private async savePaymentReference(
+        paymentOrderId: string,
+        paymentReference: string,
+        verifyMinimumLength = false,
+    ): Promise<void> {
+        expect(paymentReference.length).toBeGreaterThanOrEqual(1);
+        expect(paymentReference.length).toBeLessThanOrEqual(18);
+
+        const row = this.searchResultsContainer.locator('tbody tr').filter({
+            hasText: paymentOrderId,
+        }).first();
+        await expect(row).toBeVisible({ timeout: 30000 });
+
+        const rowCheckbox = row.locator('mat-checkbox, input[type="checkbox"]').first();
+        await expect(rowCheckbox).toBeVisible({ timeout: 15000 });
+        await rowCheckbox.click();
+
+        const bankReferenceHeader = this.searchResultsContainer.locator('th').filter({
+            hasText: /^Bank Ref\.$/,
+        });
+        const headerIndex = await bankReferenceHeader.evaluate(header =>
+            Array.from(header.parentElement?.children ?? []).indexOf(header),
+        );
+        expect(headerIndex).toBeGreaterThanOrEqual(0);
+
+        const bankReference = row.locator('td').nth(headerIndex).locator('input');
+        await expect(bankReference).toBeEditable({ timeout: 15000 });
+        if (verifyMinimumLength) {
+            await bankReference.fill(paymentReference.slice(0, 1));
+            await expect(bankReference).toHaveValue(paymentReference.slice(0, 1));
+        }
+        await bankReference.fill(paymentReference);
+        await expect(bankReference).toHaveValue(paymentReference);
+
+        const sendToBank = this.page.locator('mat-radio-button').filter({
+            hasText: 'Send to Bank & Settle in TATSH',
+        });
+        await expect(sendToBank).toBeVisible({ timeout: 15000 });
+        await sendToBank.click();
+
+        const saveButton = this.page.locator('#providerFinancialSettlementSave');
+        await expect(saveButton).toBeEnabled({ timeout: 15000 });
+        await saveButton.click();
+
+        const confirmation = this.page.locator(
+            'snack-bar-container, mat-snack-bar-container, [role="alert"], mat-dialog-container',
+        ).filter({ hasText: /success|saved successfully/i }).first();
+        await expect(confirmation).toBeVisible({ timeout: 30000 });
     }
 
     async notAbleToSelectBankAccountUntilPayerIsSelected() {

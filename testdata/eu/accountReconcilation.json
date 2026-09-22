@@ -40,5 +40,9 @@
     "paymentOrderIdSp": "$#@",
     "paymentOrderIdBlank": " ",
     "paymentOrderIdWithSpace": " ADC 9787 "
+  },
+  "TC_040_ADNICSettlementData": {
+    "payerValue": "ABU DHABI NATIONAL INSURANCE CO. ADNIC",
+    "accountValue": "ADNIC - Escrow"
   }
 }

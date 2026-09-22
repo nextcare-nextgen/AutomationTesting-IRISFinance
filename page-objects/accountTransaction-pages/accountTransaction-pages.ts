@@ -1323,18 +1323,17 @@ export class AccountTransactionPage{
     }
 
     async generateDatefileFieldsVerified() {
-        const dialog = this.page.locator('#mat-dialog-0, mat-dialog-container').first();
-        await dialog.waitFor({ state: 'visible', timeout: 30000 });
+        const dialog = this.page.locator('mat-dialog-container').last();
         await expect(dialog).toBeVisible({ timeout: 30000 });
 
-        // 'Preferences' may render as a tab or button inside the dialog
-        const preferencesEl = dialog.locator('button, [role="tab"]').filter({ hasText: 'Preferences' }).first();
-        await preferencesEl.waitFor({ state: 'visible', timeout: 50000 });
+        const preferencesEl = dialog.getByText('Preferences', { exact: true });
+        await expect(preferencesEl).toBeVisible({ timeout: 30000 });
         await preferencesEl.click();
-        await this.page.waitForTimeout(2000);
 
-        const titleField = this.page.locator("//input[@id='mat-input-28']");
-        await titleField.waitFor({ state: 'visible', timeout: 15000 });
+        const titleLabel = dialog.locator('mat-label').filter({ hasText: /^Title$/ });
+        await expect(titleLabel).toBeVisible({ timeout: 15000 });
+        const titleField = titleLabel.locator('xpath=ancestor::mat-form-field').locator('input');
+        await expect(titleField).toBeVisible({ timeout: 15000 });
         await titleField.fill("test");
         console.log('Generate file dialog Preferences fields verified.');
     }

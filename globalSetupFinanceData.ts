@@ -13,6 +13,7 @@ interface FieldMapping {
 
 const SCHEMA_VERSION = 2;
 const DEFAULT_MAX_AGE_HOURS = 168;
+const IMPORT_ENABLED_ENV = 'FINANCE_UAE_ORCHESTRATOR_IMPORT';
 
 const mappings: readonly FieldMapping[] = [
     ...sameFields('accountReconcilation.json', 'accountReconcilation-001', [
@@ -138,6 +139,17 @@ function readJson(filePath: string): JsonObject {
     }
 }
 
+function readOptionalJson(filePath: string): JsonObject | undefined {
+    if (!fs.existsSync(filePath)) {
+        console.warn(
+            `[UAE Finance globalSetup] Optional orchestrator artifact not found; ` +
+            `skipping finance data injection: ${filePath}`,
+        );
+        return undefined;
+    }
+    return readJson(filePath);
+}
+
 function objectAt(data: JsonObject, key: string): JsonObject | undefined {
     const value = data[key];
     return value && typeof value === 'object' && !Array.isArray(value)
@@ -212,8 +224,18 @@ function assertCoherent(source: JsonObject, errors: string[]): void {
 }
 
 async function globalSetupFinanceData(): Promise<void> {
+    if (process.env[IMPORT_ENABLED_ENV]?.toLowerCase() !== 'true') {
+        console.warn(
+            `[UAE Finance globalSetup] Finance data injection is disabled. ` +
+            `Set ${IMPORT_ENABLED_ENV}=true for the orchestrator-enabled job.`,
+        );
+        return;
+    }
+
     const sourceFile = resolveOrchestratorDataPath();
-    const sourceData = readJson(sourceFile);
+    const sourceData = readOptionalJson(sourceFile);
+    if (!sourceData) return;
+
     const errors: string[] = [];
     validateMetadata(sourceData, errors);
 
@@ -245,8 +267,10 @@ async function globalSetupFinanceData(): Promise<void> {
 
     for (const mapping of mappings) {
         const target = targetFiles.get(mapping.targetFile)!;
-        objectAt(target, mapping.targetKey)![mapping.targetField] =
-            objectAt(sourceData, mapping.sourceKey)![mapping.sourceField];
+        const targetObject = objectAt(target, mapping.targetKey);
+        const sourceObject = objectAt(sourceData, mapping.sourceKey);
+        if (!targetObject || !sourceObject) continue;
+        targetObject[mapping.targetField] = sourceObject[mapping.sourceField];
     }
 
     for (const [fileName, data] of targetFiles) {
