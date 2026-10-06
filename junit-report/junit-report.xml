@@ -1,8 +1,8 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="41.01262800000003">
-<testsuite name="tests\sanityTestingSuite\sanityTestingSuite.spec.ts" timestamp="2026-09-22T04:52:04.379Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="33.838" errors="0">
-<testcase name="FIN-TC-1897 @sanity: TC21_Sanity_Report Preferences_Verify that Report Preferences label is displayed" classname="tests\sanityTestingSuite\sanityTestingSuite.spec.ts" time="33.838">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="82.69344500000001">
+<testsuite name="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" timestamp="2026-10-06T06:49:53.486Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="76.148" errors="0">
+<testcase name="FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="76.148">
 <system-out>
-<![CDATA[--------------Start the Financial Organization - Payment Order Details Testclass----------------------
+<![CDATA[Retrying Sign In...
 ✅ Login process completed
 ]]>
 </system-out>

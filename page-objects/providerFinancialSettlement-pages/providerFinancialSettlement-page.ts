@@ -212,21 +212,32 @@ export class ProviderFinancialSettlementPage {
         await this.searchBtn.click();
     }
 
-    async discoverDhamaniPaymentOrder(): Promise<string> {
+    async discoverDhamaniPaymentOrder(payerValue: string): Promise<string> {
+        const payerSearchValue = payerValue.replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const payerPattern = new RegExp(
+            payerSearchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+            'i',
+        );
         await this.clickOnPayersRadioButton();
         await expect(this.payerDropdown).toBeEditable({ timeout: 30000 });
+        await this.payerDropdown.click();
         await this.payerDropdown.fill('');
-        await this.payerDropdown.pressSequentially('Dhamani', { delay: 250 });
+        for (let index = 0; index < payerSearchValue.length; index++) {
+            await this.payerDropdown.pressSequentially(payerSearchValue[index], { delay: 250 });
+            if (index === 2) {
+                await this.page.waitForTimeout(5000);
+            }
+        }
         await this.appLoader.waitFor({ state: 'hidden', timeout: 30000 }).catch(() => {});
-        const dhamaniPayerOptions = this.page.locator('mat-option').filter({
-            hasText: /Dhamani/i,
+        const payerOptions = this.page.locator('mat-option').filter({
+            hasText: payerPattern,
         });
         await expect(
-            dhamaniPayerOptions.first(),
-            'At least one Dhamani payer must be available',
+            payerOptions.first(),
+            `Payer "${payerValue}" must be available`,
         ).toBeVisible({ timeout: 30000 });
-        const payer = (await dhamaniPayerOptions.first().innerText()).trim();
-        await dhamaniPayerOptions.first().click();
+        const payer = (await payerOptions.first().innerText()).trim();
+        await payerOptions.first().click();
         await expect(this.payerDropdown).toHaveValue(payer, { timeout: 30000 });
 
         await this.bankAccountDropdown.click();
@@ -239,19 +250,19 @@ export class ProviderFinancialSettlementPage {
         ).toBeVisible({ timeout: 30000 });
         const bankAccount = (await bankAccountOptions.first().innerText()).trim();
         await bankAccountOptions.first().click();
+        console.log(`Selected Dhamani payer and bank account: ${payer} / ${bankAccount}`);
 
-        const today = new Date();
-        const upToDueDate = [
-            String(today.getDate()).padStart(2, '0'),
-            String(today.getMonth() + 1).padStart(2, '0'),
-            today.getFullYear(),
-        ].join('/');
-        await this.selectUpTODueDate(upToDueDate);
+        await this.selectCurrentUpToDueDate();
+        await this.selectFirstAvailableGlAccount(bankAccount);
         await this.clickOnSearchButton();
 
         const paymentOrderHeader = this.searchResultsContainer.locator('th').filter({
             hasText: /^P\.O\. ID$/,
         });
+        await expect(
+            paymentOrderHeader,
+            `No provider settlement results were found for ${payer} / ${bankAccount}`,
+        ).toBeVisible({ timeout: 30000 });
         const paymentOrderColumnIndex = await paymentOrderHeader.evaluate(header =>
             Array.from(header.parentElement?.children ?? []).indexOf(header),
         );
@@ -264,8 +275,8 @@ export class ProviderFinancialSettlementPage {
         });
         for (let index = 0; index < await rows.count(); index++) {
             const row = rows.nth(index);
-            const checkbox = row.locator('mat-checkbox, input[type="checkbox"]').first();
-            if (!await checkbox.isVisible() || !await checkbox.isEnabled()) continue;
+            const checkbox = row.locator('input[type="checkbox"]:not([disabled])').first();
+            if (!await checkbox.isVisible()) continue;
 
             const paymentOrderId = (
                 await row.locator('td').nth(paymentOrderColumnIndex).innerText()
@@ -291,6 +302,47 @@ export class ProviderFinancialSettlementPage {
             this.searchResultsContainer.locator('tbody tr').filter({ hasText: paymentOrderId }).first(),
         ).toBeVisible({ timeout: 30000 });
         return paymentOrderId;
+    }
+
+    private async selectCurrentUpToDueDate(): Promise<void> {
+        const datePickerButton = this.upToDueDateInput.locator(
+            'xpath=ancestor::mat-form-field//mat-datepicker-toggle//button',
+        );
+        await expect(datePickerButton).toBeVisible({ timeout: 15000 });
+        await datePickerButton.click();
+
+        const today = this.page.locator('mat-calendar button[aria-current="date"]');
+        await expect(today).toBeVisible({ timeout: 15000 });
+        await today.click();
+        await expect(this.upToDueDateInput).not.toHaveValue('');
+        console.log(`Up To Due Date "${await this.upToDueDateInput.inputValue()}" selected successfully.`);
+    }
+
+    private async selectFirstAvailableGlAccount(accountName: string): Promise<void> {
+        await this.glAccounthashLink.click();
+        const dialog = this.page.locator('mat-dialog-container');
+        await expect(dialog).toBeVisible({ timeout: 15000 });
+
+        const accountNameInput = dialog.locator('input[formcontrolname="accountName"]');
+        await expect(accountNameInput).toBeEditable({ timeout: 15000 });
+        await accountNameInput.fill(accountName.replace(/\s+LLC$/i, '').trim());
+
+        const searchButton = dialog.locator('button[title="Search"]');
+        await expect(searchButton).toBeEnabled({ timeout: 15000 });
+        await searchButton.click();
+
+        const firstResult = dialog.locator('tbody tr').first();
+        await expect(firstResult, 'At least one GL account must be available').toBeVisible({
+            timeout: 30000,
+        });
+        const accountNumber = (
+            await firstResult.locator('td.mat-column-accountNumber, td').first().innerText()
+        ).trim();
+        const selectLink = firstResult.getByText('Select', { exact: true });
+        await expect(selectLink).toBeVisible({ timeout: 15000 });
+        await selectLink.click();
+        await expect(dialog).toBeHidden({ timeout: 15000 });
+        console.log(`Selected GL account: ${accountNumber}`);
     }
 
     ensureDhamaniSettlementAllowed(paymentOrderId: string): void {
@@ -332,7 +384,8 @@ export class ProviderFinancialSettlementPage {
 
         const rowCheckbox = row.locator('mat-checkbox, input[type="checkbox"]').first();
         await expect(rowCheckbox).toBeVisible({ timeout: 15000 });
-        await rowCheckbox.click();
+        await rowCheckbox.check();
+        await expect(rowCheckbox).toBeChecked();
 
         const bankReferenceHeader = this.searchResultsContainer.locator('th').filter({
             hasText: /^Bank Ref\.$/,
@@ -494,6 +547,7 @@ export class ProviderFinancialSettlementPage {
         await expect(this.upToDueDateInput).toBeVisible({ timeout: 10000 });
         await this.upToDueDateInput.fill("");
         await this.upToDueDateInput.fill(value);
+        await this.upToDueDateInput.press("Tab");
         await expect(this.upToDueDateInput).toHaveValue(value);
         console.log(`Up To Due Date "${value}" selected successfully.`);
     }

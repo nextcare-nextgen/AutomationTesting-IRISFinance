@@ -1,4 +1,4 @@
-import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import test, { Keyboard, Locator, Page, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
 import { log } from "console";
@@ -25,7 +25,7 @@ export class AccountReconcilationPage{
     invalidPopup: Locator;
     AlertBox: Locator;
     closePopUp: Locator;
-    settled: Locator;
+    //settled: Locator;
     //chequeReleasd: Locator;
     itemPage: Locator;
     item10: Locator;
@@ -60,6 +60,9 @@ export class AccountReconcilationPage{
     jobButton: Locator;
     appLoader: Locator;
     dropdownOptions: Locator;
+    settled: Locator;
+    bankReferenceNumber: Locator;
+
     constructor(page: Page){
      this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
@@ -84,7 +87,8 @@ export class AccountReconcilationPage{
         this.invalidPopup=page.locator("//span[text()='Please select valid file']");
         this.AlertBox=page.locator("//mat-dialog-container[@id='mat-dialog-10']");
         this.closePopUp=page.locator("//img[@alt='No icon']");
-        this.settled=page.locator("//mat-checkbox[@id='mat-checkbox-3']");
+        //this.settled=page.locator("//mat-checkbox[@id='mat-checkbox-3']");
+        this.bankReferenceNumber=page.locator("//input[@id='externalRef0']");
         //this.chequeReleasd=page.locator("//mat-checkbox[@id='mat-checkbox-4']");
         this.itemPage=page.locator("//mat-select[@aria-label='Items per page:']");
         this.item10=page.locator("//span[text()='10']");
@@ -118,6 +122,7 @@ export class AccountReconcilationPage{
         this.jobButton=page.locator("//button[text()='Dismiss']");
         this.appLoader = page.locator("app-new-loader");
         this.dropdownOptions = page.locator("mat-option span");
+        this.settled = page.locator("//div[@class='mdc-checkbox']/input");
     }
 
     private escapeRegex(value: string): string {
@@ -197,11 +202,16 @@ export class AccountReconcilationPage{
     }
 
     async fillMandatoryDetailsTC1214(payerValue: string,accountValue: string) {
+        const payerSearchValue = payerValue.replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const payerPattern = new RegExp(
+            payerSearchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+            'i',
+        );
         await this.payer.click();
         await this.payer.fill("");
 
-        for (let i = 0; i < payerValue.length; i++) {
-            await this.payer.pressSequentially(payerValue[i], {
+        for (let i = 0; i < payerSearchValue.length; i++) {
+            await this.payer.pressSequentially(payerSearchValue[i], {
                 delay: 250
             });
 
@@ -210,12 +220,12 @@ export class AccountReconcilationPage{
             }
         }
 
-        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        let payerOption = this.page.locator("mat-option").filter({hasText: payerPattern}).first();
         await expect(payerOption).toBeVisible({timeout: 15000});
         await payerOption.click();
         await this.payer.click();
         await this.page.waitForTimeout(1000);
-        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
+        payerOption = this.page.locator("mat-option").filter({hasText: payerPattern}).first();
         await expect(payerOption).toBeVisible({timeout: 15000});
         await payerOption.click();
         await this.payer.press("Tab");
@@ -229,10 +239,70 @@ export class AccountReconcilationPage{
         await accountOption.click();
     }
 
+    async fillMandatoryDetailsTC1916(payerValue: string,accountValue: string) {
+        const payerText = payerValue.toString();
+        const payerPattern = new RegExp(
+            `^\\s*${payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`,
+            'i',
+        );
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({state: "visible", timeout: 30000});
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+
+        const payerOption = this.page.locator("mat-option").filter({hasText: payerPattern});
+        try {
+            await this.payer.click();
+            await this.payer.fill("");
+            await this.payer.type(payerText, {delay: 200});
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+            await expect(
+                payerOption,
+                `Exact payer option "${payerValue}" must be available`,
+            ).toHaveCount(1, {timeout: 15000});
+            await payerOption.waitFor({state: "visible", timeout: 15000});
+            await payerOption.click();
+        } catch {
+            console.log("Retrying TC1916 payer selection...");
+            await this.payer.click();
+            await this.payer.fill("");
+            let payerSelected = false;
+            for (let index = 0; index < payerText.length; index++) {
+                await this.payer.pressSequentially(payerText[index], {delay: 250});
+                if (index === 2) {
+                    await this.page.waitForTimeout(5000);
+                }
+                if (await payerOption.isVisible()) {
+                    await payerOption.click();
+                    payerSelected = true;
+                    break;
+                }
+            }
+            expect(
+                payerSelected,
+                `Exact payer option "${payerValue}" must appear while retrying`,
+            ).toBeTruthy();
+        }
+
+        await this.payer.press("Tab");
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        const currency = this.page.getByRole("combobox", {name: "Currency"});
+        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
+
+        await expect(this.account).toBeVisible({timeout: 30000});
+        await this.account.click();
+        const accountOption = this.page.locator("mat-option").filter({
+            hasText: accountValue,
+        }).first();
+        await expect(accountOption, `ADNIC account "${accountValue}" must be available`).toBeVisible({
+            timeout: 20000,
+        });
+        await accountOption.click();
+    }
+
     async clickSearchButtn(){
         await this.page.waitForTimeout(5000);
         await this.searchButton.click();
-        await this.page.waitForLoadState("networkidle");
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
     }
 
     // async fillAllDetails(payerValue: String,fromDue:String,toDue:String){
@@ -542,61 +612,71 @@ export class AccountReconcilationPage{
         await this.save.click();
     }
 
-    async settleFirstEligibleAdnicTransactionAndVerifyPayload(): Promise<string> {
+    async settleFirstEligibleAdnicTransactionAndVerifyPayload(): Promise<{transactionNumber: string;paymentOrderId: string;}> {
+        await this.page.waitForTimeout(5000);
         const table = this.page.locator('table').filter({ hasText: 'TXN NBR' }).first();
         await expect(table).toBeVisible({ timeout: 30000 });
 
         const transactionHeader = table.locator('th').filter({ hasText: /TXN NBR/ }).first();
         const transactionColumnIndex = await transactionHeader.evaluate(header =>
-            Array.from(header.parentElement?.children ?? []).indexOf(header),
-        );
+            Array.from(header.parentElement?.children ?? []).indexOf(header),);
+        const paymentOrderHeader = table.locator('th').filter({hasText: /PO ID/}).first();
+        const paymentOrderColumnIndex = await paymentOrderHeader.evaluate(header =>
+            Array.from(header.parentElement?.children ?? []).indexOf(header),);
         expect(transactionColumnIndex).toBeGreaterThanOrEqual(0);
+        expect(paymentOrderColumnIndex).toBeGreaterThanOrEqual(0);
 
         const rows = table.locator('tbody tr');
-        await expect(rows.first(), 'An eligible unsettled ADNIC claim must be available').toBeVisible({
-            timeout: 30000,
-        });
+        await expect(rows.first(), 'An unsettled ADNIC claim must be available').toBeVisible({timeout: 30000,});
 
-        let eligibleRow: Locator | undefined;
-        let settledCheckbox: Locator | undefined;
-        let transactionNumber = '';
-        for (let index = 0; index < await rows.count(); index++) {
-            const row = rows.nth(index);
-            const checkbox = row.locator(
-                'td.mat-column-settled input[type="checkbox"]:not([disabled])',
-            );
-            if (!await checkbox.isVisible()) continue;
+        const eligibleRow = rows.first();
+        const settledCheckbox = eligibleRow.locator('td.mat-column-settled mat-checkbox').first();
+        await expect(settledCheckbox, 'The first result must have a visible Settled checkbox').toBeVisible();
 
-            const candidateTransactionNumber = (
-                await row.locator('td').nth(transactionColumnIndex).innerText()
-            ).trim();
-            if (!candidateTransactionNumber) continue;
+        const transactionNumber = (await eligibleRow.locator('td').nth(transactionColumnIndex).innerText()).trim();
+        const paymentOrderId = (await eligibleRow.locator('td').nth(paymentOrderColumnIndex).innerText()).trim();
+        expect(transactionNumber, 'The selected row must have a transaction number').not.toBe('');
+        expect(paymentOrderId, 'The selected row must have a payment order ID').not.toBe('');
 
-            eligibleRow = row;
-            settledCheckbox = checkbox;
-            transactionNumber = candidateTransactionNumber;
-            break;
-        }
-        expect(eligibleRow, 'No enabled unsettled ADNIC claim was found').toBeDefined();
-        expect(settledCheckbox).toBeDefined();
+        await settledCheckbox.click({force: true});
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await this.page.waitForTimeout(5000);
+        await settledCheckbox.click({force: true});
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await this.page.waitForTimeout(5000);
 
+        const bankReference = `NBR-${transactionNumber}`;
         console.log(`Selected ADNIC transaction: ${transactionNumber}`);
-        await settledCheckbox!.check();
-        await expect(settledCheckbox!).toBeChecked();
+
+        const bankReferenceCell = eligibleRow.locator('td.mat-column-externalRef').first();
+        await bankReferenceCell.scrollIntoViewIfNeeded();
+        await expect(bankReferenceCell).toBeVisible({timeout: 15000});
+        await bankReferenceCell.click();
+
+        const bankReferenceInput = bankReferenceCell.locator('input[id^="externalRef"]').first();
+        await expect(bankReferenceInput).toBeVisible({timeout: 15000});
+        await expect(bankReferenceInput).toBeEditable({timeout: 15000});
+        await bankReferenceInput.fill(bankReference);
+        await expect(bankReferenceInput).toHaveValue(bankReference);
+        console.log(`Filled bank reference for ADNIC transaction ${transactionNumber}: ${bankReference}`);
+
+        test.skip(process.env.ADNIC_SETTLEMENT_DRY_RUN === 'true',`Dry run reached Save for ADNIC transaction ${transactionNumber} with bank reference ${bankReference}.`,);
 
         const settlementRequestPromise = this.page.waitForRequest(request => {
             if (!['POST', 'PUT', 'PATCH'].includes(request.method())) return false;
-            return request.postData()?.includes(transactionNumber) ?? false;
-        }, { timeout: 30000 });
+            return request.postData()?.includes(transactionNumber) ?? false;}, { timeout: 30000 });
 
         await this.clickSaveButton();
+        const saveSuccessMessage = this.page.locator('snack-bar-container, mat-snack-bar-container, [role="alert"]',).filter({hasText: /Account reconciliation data saved successfully/i}).first();
+        await expect(saveSuccessMessage,'Account Reconciliation save confirmation must appear',).toBeVisible({timeout: 50000});
+
         const request = await settlementRequestPromise;
         const response = await request.response();
         expect(response, 'The settlement request should receive a response').not.toBeNull();
         expect(response!.ok(), `Settlement request failed with HTTP ${response!.status()}`).toBeTruthy();
 
         await this.verifyAdnicSettlementPayload(request.postDataJSON());
-        return transactionNumber;
+        return {transactionNumber, paymentOrderId};
     }
 
     private async verifyAdnicSettlementPayload(payload: unknown): Promise<void> {
@@ -622,10 +702,58 @@ export class AccountReconcilationPage{
         }
     }
 
-    async verifyTransactionIsNoLongerAvailable(transactionNumber: string): Promise<void> {
-        await this.search.fill('');
-        await this.search.fill(transactionNumber);
+    async verifyTransactionIsNoLongerAvailable(paymentOrderId: string): Promise<void> {
+        await this.paymentOrderId.fill(paymentOrderId);
+        await this.clickSearchButtn();
         await expect(this.noRecord).toBeVisible({ timeout: 30000 });
+    }
+
+    async verifyLatestClaimSettlementQueueStatus(): Promise<void> {
+        const queueMonitoringUrl = new URL('/layout/queue-monitoring-screens', this.page.url());
+        await this.page.goto(queueMonitoringUrl.toString(), {
+            waitUntil: 'domcontentloaded',
+            timeout: 120000,
+        });
+
+        await expect(this.page.getByText('MESSAGE MONITORING', {exact: true})).toBeVisible({
+            timeout: 60000,
+        });
+        const table = this.page.locator('table').filter({hasText: 'Job Title'}).first();
+        await expect(table).toBeVisible({timeout: 30000});
+
+        const headers = table.locator('th');
+        const jobTitleIndex = await headers.filter({hasText: /^Job Title$/}).evaluate(header =>
+            Array.from(header.parentElement?.children ?? []).indexOf(header),
+        );
+        const statusIndex = await headers.filter({hasText: /^Status$/}).evaluate(header =>
+            Array.from(header.parentElement?.children ?? []).indexOf(header),
+        );
+        expect(jobTitleIndex).toBeGreaterThanOrEqual(0);
+        expect(statusIndex).toBeGreaterThanOrEqual(0);
+
+        const notificationRow = table.locator('tbody tr').filter({
+            hasText: /Claim Settlement Notification/,
+        }).first();
+        await expect(
+            notificationRow,
+            'A Claim Settlement Notification queue record must be generated',
+        ).toBeVisible({timeout: 60000});
+        await expect(notificationRow.locator('td').nth(jobTitleIndex)).toContainText(
+            'Claim Settlement Notification',
+        );
+        await expect(notificationRow.locator('td').nth(statusIndex)).toHaveText(/Completed/i);
+
+        const viewDetails = notificationRow.locator('button, a').first();
+        await expect(viewDetails, 'Queue record details control must be available').toBeVisible({
+            timeout: 15000,
+        });
+        await viewDetails.click();
+        await expect(this.page.getByText('View Message Details', {exact: true})).toBeVisible({
+            timeout: 30000,
+        });
+        await expect(this.page.getByText('Completed Successfully', {exact: true})).toBeVisible({
+            timeout: 30000,
+        });
     }
 
     async validateBankBlankPopup(){

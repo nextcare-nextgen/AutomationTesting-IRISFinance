@@ -98,7 +98,7 @@ test("FIN-TC-1744 @smoke: TC_004_Payer's Financial Collection_verify that user i
  });
 
 //5
-test("FIN-TC-1745 @smoke:TC_005_Payer's Financial Collection_verify that  all fields are displayed in Payer/Reinsurer Information , Bank Account Information , Collection Information_Smoke" , async ({ page }) => {
+test("FIN-TC-1745 @smoke: TC_005_Payer's Financial Collection_verify that  all fields are displayed in Payer/Reinsurer Information , Bank Account Information , Collection Information_Smoke" , async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const smokeTestingSuitePage: SmokeTestingSuitePage = new SmokeTestingSuitePage(page);
@@ -124,7 +124,7 @@ test("FIN-TC-1745 @smoke:TC_005_Payer's Financial Collection_verify that  all fi
  });
 
  //6
-test("FIN-TC-1746 @smoke:TC_006_Payer's Financial Collection_verify that click on search button without filing any fields proper messages are displayed for mandatory fields_Smoke" , async ({ page }) => {
+test("FIN-TC-1746 @smoke: TC_006_Payer's Financial Collection_verify that click on search button without filing any fields proper messages are displayed for mandatory fields_Smoke" , async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);
     const smokeTestingSuitePage: SmokeTestingSuitePage = new SmokeTestingSuitePage(page);
@@ -221,7 +221,7 @@ test('FIN-TC-1747 @smoke: TC_007_Account Transaction_Verify that user is navigat
   });
  
   //10
-  test('FIN-TC-1750 @smoke:TC_010_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709_Smoke', async ({ page }) => {
+  test('FIN-TC-1750 @smoke: TC_010_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709_Smoke', async ({ page }) => {
   
       const loginPage: LoginPage = new LoginPage(page);
       const smokeTestingSuitePage: SmokeTestingSuitePage = new SmokeTestingSuitePage(page);
