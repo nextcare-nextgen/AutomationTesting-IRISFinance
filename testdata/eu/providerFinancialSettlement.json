@@ -22,7 +22,7 @@
         "PayerValue": "TEST PAYER (Do Not Use)",
         "BankAccountValue": "NAME_109_26_1",
         "BankAccountValue1": "NAME_58_26_1",
-        "UpToDueDate": "31/12/2025",
+        "UpToDueDate": "31-Dec-2025",
         "AccountNumber": "AE750030010258862020014",
         "AccountName": "Testing"
     },

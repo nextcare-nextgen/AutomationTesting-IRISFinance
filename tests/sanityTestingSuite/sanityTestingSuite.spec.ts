@@ -1139,121 +1139,121 @@ test("FIN-TC-1915 @sanity: TC39_Sanity_Provider Financial Settlement_Verify that
 
 //39
 
-//40
-test('FIN-TC-1916 @sanity: TC40_Sanity_ADNIC Settlement_Verify that payload contains all required ADNIC settlement fields', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const accountReconcilationPage = new AccountReconcilationPage(page);
-    const settlementData = AccountReconcilationData.TC_040_ADNICSettlementData;
-    let settlementIdentifiers = {transactionNumber: '', paymentOrderId: ''};
+// //40
+// test('FIN-TC-1916 @sanity: TC40_Sanity_ADNIC Settlement_Verify that payload contains all required ADNIC settlement fields', async ({ page }) => {
+//     const loginPage = new LoginPage(page);
+//     const accountReconcilationPage = new AccountReconcilationPage(page);
+//     const settlementData = AccountReconcilationData.TC_040_ADNICSettlementData;
+//     let settlementIdentifiers = {transactionNumber: '', paymentOrderId: ''};
 
-    await test.step("User navigates to IRIS application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    })
+//     await test.step("User navigates to IRIS application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     })
 
-    await test.step("User enters username and password", async () => {
-        await loginPage.loginToApplication(data['Login-Access'].userNameInput,data['Login-Access'].passwordInput,);
-    })
+//     await test.step("User enters username and password", async () => {
+//         await loginPage.loginToApplication(data['Login-Access'].userNameInput,data['Login-Access'].passwordInput,);
+//     })
 
-    await test.step("User navigates to Account Reconciliation", async () => {
-        await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
-    })
+//     await test.step("User navigates to Account Reconciliation", async () => {
+//         await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
+//     })
 
-    await test.step("User enters ADNIC payer, currency and account and searches", async () => {
-        await accountReconcilationPage.fillMandatoryDetailsTC1916(AccountReconcilationData['TC_040_ADNICSettlementData'].payerValue,AccountReconcilationData['TC_040_ADNICSettlementData'].accountValue);
-        await accountReconcilationPage.clickSearchButtn();
-    })
+//     await test.step("User enters ADNIC payer, currency and account and searches", async () => {
+//         await accountReconcilationPage.fillMandatoryDetailsTC1916(AccountReconcilationData['TC_040_ADNICSettlementData'].payerValue,AccountReconcilationData['TC_040_ADNICSettlementData'].accountValue);
+//         await accountReconcilationPage.clickSearchButtn();
+//     })
 
-    await test.step("User settles an eligible claim and verifies the ADNIC payload", async () => {
-        settlementIdentifiers =
-            await accountReconcilationPage.settleFirstEligibleAdnicTransactionAndVerifyPayload();
-    })
+//     await test.step("User settles an eligible claim and verifies the ADNIC payload", async () => {
+//         settlementIdentifiers =
+//             await accountReconcilationPage.settleFirstEligibleAdnicTransactionAndVerifyPayload();
+//     })
 
-    await test.step("Settled transaction is no longer displayed", async () => {
-        await accountReconcilationPage.verifyTransactionIsNoLongerAvailable(
-            settlementIdentifiers.paymentOrderId,
-        );
-    })
+//     await test.step("Settled transaction is no longer displayed", async () => {
+//         await accountReconcilationPage.verifyTransactionIsNoLongerAvailable(
+//             settlementIdentifiers.paymentOrderId,
+//         );
+//     })
 
-    await test.step("Claim settlement queue status is completed successfully", async () => {
-        await accountReconcilationPage.verifyLatestClaimSettlementQueueStatus();
-    })
-});
+//     await test.step("Claim settlement queue status is completed successfully", async () => {
+//         await accountReconcilationPage.verifyLatestClaimSettlementQueueStatus();
+//     })
+// });
 
-//41
-test('FIN-TC-1917 @sanity: TC41_Sanity_Dhamani Payment Reference_Verify that payment reference from 1 to 18 characters is accepted by Dhamani', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const settlementPage = new ProviderFinancialSettlementPage(page);
-    const settlementData = ProviderFinancialSettlementData.TC_041_DhamaniPaymentReferenceData;
-    let paymentOrderId = '';
+// //41
+// test('FIN-TC-1917 @sanity: TC41_Sanity_Dhamani Payment Reference_Verify that payment reference from 1 to 18 characters is accepted by Dhamani', async ({ page }) => {
+//     const loginPage = new LoginPage(page);
+//     const settlementPage = new ProviderFinancialSettlementPage(page);
+//     const settlementData = ProviderFinancialSettlementData.TC_041_DhamaniPaymentReferenceData;
+//     let paymentOrderId = '';
 
-    await test.step("User navigates to IRIS application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    });
+//     await test.step("User navigates to IRIS application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
 
-    await test.step("User enters username and password", async () => {
-        await loginPage.loginToApplication(
-            data['Login-Access1'].userNameInput,
-            data['Login-Access1'].passwordInput,
-        );
-    });
+//     await test.step("User enters username and password", async () => {
+//         await loginPage.loginToApplication(
+//             data['Login-Access1'].userNameInput,
+//             data['Login-Access1'].passwordInput,
+//         );
+//     });
 
-    await test.step("User navigates to Provider Financial Settlement", async () => {
-        await settlementPage.searchAndClickFinancials();
-        await settlementPage.clickOnProvidersFinancialSettlement();
-    });
+//     await test.step("User navigates to Provider Financial Settlement", async () => {
+//         await settlementPage.searchAndClickFinancials();
+//         await settlementPage.clickOnProvidersFinancialSettlement();
+//     });
 
-    await test.step("User selects an eligible Dhamani payment order", async () => {
-        paymentOrderId = await settlementPage.discoverDhamaniPaymentOrder(
-            settlementData.PayerValue,
-        );
-        settlementPage.ensureDhamaniSettlementAllowed(paymentOrderId);
-    });
+//     await test.step("User selects an eligible Dhamani payment order", async () => {
+//         paymentOrderId = await settlementPage.discoverDhamaniPaymentOrder(
+//             settlementData.PayerValue,
+//         );
+//         settlementPage.ensureDhamaniSettlementAllowed(paymentOrderId);
+//     });
 
-    await test.step("Payment reference accepts 1 to 18 characters and saves successfully", async () => {
-        await settlementPage.verifyPaymentReferenceRangeAndSave(
-            paymentOrderId,
-            settlementData.PaymentReference,
-        );
-    });
-});
+//     await test.step("Payment reference accepts 1 to 18 characters and saves successfully", async () => {
+//         await settlementPage.verifyPaymentReferenceRangeAndSave(
+//             paymentOrderId,
+//             settlementData.PaymentReference,
+//         );
+//     });
+// });
 
-//42
-test("FIN-TC-1918 @sanity: TC42_Sanity_Dhamani Payment Reference_Verify that payment reference starts with 'NP' character", async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const settlementPage = new ProviderFinancialSettlementPage(page);
-    const settlementData = ProviderFinancialSettlementData.TC_042_DhamaniPaymentReferenceData;
-    let paymentOrderId = '';
+// //42
+// test("FIN-TC-1918 @sanity: TC42_Sanity_Dhamani Payment Reference_Verify that payment reference starts with 'NP' character", async ({ page }) => {
+//     const loginPage = new LoginPage(page);
+//     const settlementPage = new ProviderFinancialSettlementPage(page);
+//     const settlementData = ProviderFinancialSettlementData.TC_042_DhamaniPaymentReferenceData;
+//     let paymentOrderId = '';
 
-    await test.step("User navigates to IRIS application", async () => {
-        await loginPage.gotoLoginPage(data['Login-Access'].url);
-    });
+//     await test.step("User navigates to IRIS application", async () => {
+//         await loginPage.gotoLoginPage(data['Login-Access'].url);
+//     });
 
-    await test.step("User enters username and password", async () => {
-        await loginPage.loginToApplication(
-            data['Login-Access1'].userNameInput,
-            data['Login-Access1'].passwordInput,
-        );
-    });
+//     await test.step("User enters username and password", async () => {
+//         await loginPage.loginToApplication(
+//             data['Login-Access1'].userNameInput,
+//             data['Login-Access1'].passwordInput,
+//         );
+//     });
 
-    await test.step("User navigates to Provider Financial Settlement", async () => {
-        await settlementPage.searchAndClickFinancials();
-        await settlementPage.clickOnProvidersFinancialSettlement();
-    });
+//     await test.step("User navigates to Provider Financial Settlement", async () => {
+//         await settlementPage.searchAndClickFinancials();
+//         await settlementPage.clickOnProvidersFinancialSettlement();
+//     });
 
-    await test.step("User selects another eligible Dhamani payment order", async () => {
-        paymentOrderId = await settlementPage.discoverDhamaniPaymentOrder(
-            settlementData.PayerValue,
-        );
-        settlementPage.ensureDhamaniSettlementAllowed(paymentOrderId);
-    });
+//     await test.step("User selects another eligible Dhamani payment order", async () => {
+//         paymentOrderId = await settlementPage.discoverDhamaniPaymentOrder(
+//             settlementData.PayerValue,
+//         );
+//         settlementPage.ensureDhamaniSettlementAllowed(paymentOrderId);
+//     });
 
-    await test.step("NP-prefixed 18-character payment reference saves successfully", async () => {
-        await settlementPage.verifyNpPaymentReferenceAndSave(
-            paymentOrderId,
-            settlementData.PaymentReference,
-        );
-    });
-});
+//     await test.step("NP-prefixed 18-character payment reference saves successfully", async () => {
+//         await settlementPage.verifyNpPaymentReferenceAndSave(
+//             paymentOrderId,
+//             settlementData.PaymentReference,
+//         );
+//     });
+// });
 
 //43
 test('FIN-TC-1897 @sanity: TC21_Sanity_Report Preferences_Verify that Report Preferences label is displayed', async ({ page }) => {

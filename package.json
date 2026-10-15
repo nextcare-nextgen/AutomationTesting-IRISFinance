@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "Tests": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (Test-Path 'playwright-report') { Remove-Item 'playwright-report' -Recurse -Force }; if (Test-Path 'playwright-report.zip') { Remove-Item 'playwright-report.zip' -Force }; npx.cmd playwright test; $code=$LASTEXITCODE; if (Test-Path 'playwright-report') { Compress-Archive -Path 'playwright-report\\*' -DestinationPath 'playwright-report.zip' -Force }; exit $code\"",
+    "Tests:test-uae": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (-not $env:ORCHESTRATOR_ARTIFACT_DIR -and -not $env:ORCHESTRATOR_PATH) { throw 'ORCHESTRATOR_ARTIFACT_DIR or ORCHESTRATOR_PATH must be supplied externally' }; $env:ORCHESTRATOR_ENV='test-uae'; npm.cmd run Tests; exit $LASTEXITCODE\"",
     "smoke": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (Test-Path 'playwright-report') { Remove-Item 'playwright-report' -Recurse -Force }; if (Test-Path 'playwright-report.zip') { Remove-Item 'playwright-report.zip' -Force }; npx.cmd playwright test --grep '@smoke'; $code=$LASTEXITCODE; if (Test-Path 'playwright-report') { Compress-Archive -Path 'playwright-report\\*' -DestinationPath 'playwright-report.zip' -Force }; exit $code\"",
+    "smoke:test-uae": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (-not $env:ORCHESTRATOR_ARTIFACT_DIR -and -not $env:ORCHESTRATOR_PATH) { throw 'ORCHESTRATOR_ARTIFACT_DIR or ORCHESTRATOR_PATH must be supplied externally' }; $env:ORCHESTRATOR_ENV='test-uae'; npm.cmd run smoke; exit $LASTEXITCODE\"",
     "sanity": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (Test-Path 'playwright-report') { Remove-Item 'playwright-report' -Recurse -Force }; if (Test-Path 'playwright-report.zip') { Remove-Item 'playwright-report.zip' -Force }; npx.cmd playwright test --grep '@sanity'; $code=$LASTEXITCODE; if (Test-Path 'playwright-report') { Compress-Archive -Path 'playwright-report\\*' -DestinationPath 'playwright-report.zip' -Force }; exit $code\"",
-    "regression": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (Test-Path 'playwright-report') { Remove-Item 'playwright-report' -Recurse -Force }; if (Test-Path 'playwright-report.zip') { Remove-Item 'playwright-report.zip' -Force }; $p='@smoke'+[char]124+'@sanity'; node .\\node_modules\\playwright\\cli.js test --grep-invert $p; $code=$LASTEXITCODE; if (Test-Path 'playwright-report') { Compress-Archive -Path 'playwright-report\\*' -DestinationPath 'playwright-report.zip' -Force }; exit $code\""
+    "regression": "powershell -NoProfile -Command \"$ErrorActionPreference='Stop'; if (Test-Path 'playwright-report') { Remove-Item 'playwright-report' -Recurse -Force }; if (Test-Path 'playwright-report.zip') { Remove-Item 'playwright-report.zip' -Force }; $p='@smoke'+[char]124+'@sanity'; node .\\node_modules\\playwright\\cli.js test --grep-invert $p; $code=$LASTEXITCODE; if (Test-Path 'playwright-report') { Compress-Archive -Path 'playwright-report\\*' -DestinationPath 'playwright-report.zip' -Force }; exit $code\"",
+    "typecheck": "tsc --noEmit",
+    "validate:finance-orchestrator": "tsx scripts\\validateFinanceOrchestratorSetup.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +19,9 @@
   "devDependencies": {
     "@playwright/test": "^1.44.1",
     "@types/node": "^20.19.43",
-    "allure-playwright": "^2.3.0"
+    "allure-playwright": "^2.3.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
