@@ -64,7 +64,6 @@ export class LoginPage {
     // }
 
     async loginToApplication(superUser: string, password: string) {
-
         await new Promise(resolve => setTimeout(resolve, 9000));
 
         await expect(this.userNameOrEmailInputField).toBeVisible({ timeout: 30000 });
@@ -74,24 +73,24 @@ export class LoginPage {
         await this.passwordInputField.fill(password);
 
         await expect(this.signinButton).toBeEnabled({ timeout: 50000 });
-
-        // First click
         await this.signinButton.click({ force: true });
 
-        await this.page.waitForLoadState('domcontentloaded');
+        const dashboardSearch = this.page.locator('input[placeholder="Quick Search"]');
+        const dashboardLoaded = await dashboardSearch
+            .waitFor({state: 'visible', timeout: 60000})
+            .then(() => true)
+            .catch(() => false);
 
-        // Wait 5 seconds to see if login worked
-        await this.page.waitForTimeout(5000);
-
-        // Check if still on login page
-        const stillOnLogin = await this.userNameOrEmailInputField.isVisible().catch(() => false);
-
-        if (stillOnLogin) {
+        if (!dashboardLoaded && await this.signinButton.isVisible().catch(() => false)) {
             console.log('Retrying Sign In...');
+            await expect(this.signinButton).toBeEnabled({timeout: 30000});
             await this.signinButton.click({ force: true });
-            await this.page.waitForLoadState('domcontentloaded');
         }
 
+        await expect(
+            dashboardSearch,
+            'IRIS dashboard must be ready after sign in',
+        ).toBeVisible({timeout: 60000});
         console.log('✅ Login process completed');
     }
 

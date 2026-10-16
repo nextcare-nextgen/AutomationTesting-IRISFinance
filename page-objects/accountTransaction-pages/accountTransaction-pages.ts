@@ -128,9 +128,9 @@ export class AccountTransactionPage{
          this.financials = page.getByRole('button', { name: 'Financials' });
         this.accountTransaction = page.getByRole('link', { name: 'Account Transaction' });
         this.Transaction=page.locator("//h1[text()='Account Transaction ']");
-        this.payer=page.locator("//input[@id='mat-input-19']");
-        this.Currency=page.locator("//input[@id='mat-input-20']");
-        this.Account=page.locator("//input[@id='mat-input-21']");
+        this.payer=page.locator("//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input");
+        this.Currency=page.locator("//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input");
+        this.Account=page.locator("//mat-label[normalize-space()='Account']/ancestor::mat-form-field//input");
         this.fromPOValidationDateLabel=page.locator("//mat-label[text()='From PO Validation Date']");
         this.fromPOValidationDate=page.locator("//input[@id='mat-input-2']");
         this.fromPOValidationcalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-3']/button");
@@ -389,33 +389,15 @@ export class AccountTransactionPage{
 
         await this.page.waitForLoadState("domcontentloaded");
         await this.payer.waitFor({ state: "visible", timeout: 30000 });
-        await this.payer.click();
-        await this.payer.fill("");
-
-        for (let i = 0; i < payerValue.length; i++) {
-            await this.payer.pressSequentially(payerValue[i], {
-                delay: 250
-            });
-
-            if (i === 2) {
-                await this.page.waitForTimeout(5000);
-            }
-        }
-
-        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
-        await expect(payerOption).toBeVisible({timeout: 20000});
-        await payerOption.click();
-        await this.payer.click();
-        await this.page.waitForTimeout(1000);
-
-        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
-        await expect(payerOption).toBeVisible({timeout: 15000});
-        await payerOption.click();
-        await this.payer.press("Tab");
+        await this.selectExactPayer(payerValue);
+        await appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
         const currency = this.page.getByRole("combobox", {name: "Currency"});
         await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
         await this.Account.click();
-        const accOption = this.page.locator(`//span[contains(normalize-space(.), '${account}')]`).first();
+        const escapedAccount = account.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const accOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedAccount}\\s*$`, "i"),
+        });
 
         await expect(accOption).toBeVisible({timeout: 20000});
         await accOption.click();
@@ -433,6 +415,44 @@ export class AccountTransactionPage{
         console.log(`From Delivery Date: ${await this.fromdeliveryDate.inputValue()}`);
         console.log(`To Delivery Date: ${await this.toDeliveryDate.inputValue()}`);
         await this.page.waitForTimeout(1000);
+    }
+
+    private async selectExactPayer(payerValue: string): Promise<void> {
+        const normalizedPayer = payerValue.trim().toLowerCase();
+        const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const payerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
+        });
+
+        for (let attempt = 0; attempt < 2; attempt++) {
+            await this.payer.click();
+            await this.payer.fill("");
+
+            for (let index = 0; index < payerValue.length; index++) {
+                await this.payer.pressSequentially(payerValue[index], {delay: 200});
+                if (index === 2) {
+                    await this.page.waitForTimeout(3000);
+                }
+                if (await payerOption.isVisible()) {
+                    await expect(payerOption).toHaveCount(1);
+                    await this.page.waitForTimeout(500);
+                    await payerOption.click();
+                    break;
+                }
+            }
+
+            const selectionCommitted = await expect
+                .poll(
+                    async () => (await this.payer.inputValue()).trim().toLowerCase(),
+                    {timeout: 5000},
+                )
+                .toBe(normalizedPayer)
+                .then(() => true)
+                .catch(() => false);
+            if (selectionCommitted) return;
+        }
+
+        throw new Error(`Exact payer option "${payerValue}" could not be selected`);
     }
 
     async fillMandatoryDetailsWithRetryDev(

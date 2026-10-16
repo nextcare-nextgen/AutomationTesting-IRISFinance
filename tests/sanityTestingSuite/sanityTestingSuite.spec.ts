@@ -1144,7 +1144,8 @@ test("FIN-TC-1915 @sanity: TC39_Sanity_Provider Financial Settlement_Verify that
 //     const loginPage = new LoginPage(page);
 //     const accountReconcilationPage = new AccountReconcilationPage(page);
 //     const settlementData = AccountReconcilationData.TC_040_ADNICSettlementData;
-//     let settlementIdentifiers = {transactionNumber: '', paymentOrderId: ''};
+//     let settlementIdentifiers:
+//         Awaited<ReturnType<typeof accountReconcilationPage.settleFirstEligibleAdnicTransactionAndVerifyPayload>>;
 
 //     await test.step("User navigates to IRIS application", async () => {
 //         await loginPage.gotoLoginPage(data['Login-Access'].url);
@@ -1159,7 +1160,7 @@ test("FIN-TC-1915 @sanity: TC39_Sanity_Provider Financial Settlement_Verify that
 //     })
 
 //     await test.step("User enters ADNIC payer, currency and account and searches", async () => {
-//         await accountReconcilationPage.fillMandatoryDetailsTC1916(AccountReconcilationData['TC_040_ADNICSettlementData'].payerValue,AccountReconcilationData['TC_040_ADNICSettlementData'].accountValue);
+//         await accountReconcilationPage.fillMandatoryDetailsTC1916(settlementData.payerValue, settlementData.accountValue);
 //         await accountReconcilationPage.clickSearchButtn();
 //     })
 
@@ -1175,7 +1176,9 @@ test("FIN-TC-1915 @sanity: TC39_Sanity_Provider Financial Settlement_Verify that
 //     })
 
 //     await test.step("Claim settlement queue status is completed successfully", async () => {
-//         await accountReconcilationPage.verifyLatestClaimSettlementQueueStatus();
+//         await accountReconcilationPage.verifyLatestClaimSettlementQueueStatus(
+//             settlementIdentifiers,
+//         );
 //     })
 // });
 

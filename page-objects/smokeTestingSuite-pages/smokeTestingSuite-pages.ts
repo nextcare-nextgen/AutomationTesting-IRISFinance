@@ -1,6 +1,4 @@
 import { expect, Locator, Page } from "@playwright/test";
-import exp from "constants";
-
 export class SmokeTestingSuitePage{
     page: Page;
     financials: Locator;
@@ -77,9 +75,11 @@ export class SmokeTestingSuitePage{
         this.financials = page.getByRole('button', { name: 'Financials' });
         this.paymentOrders = page.getByRole('link', { name: 'Payment Orders' });
         this.paymentOrdersHeading=page.locator("//h1[text()='Payment Orders ']");
-        this.poPayer=page.locator("#mat-input-11");
-        this.poAccount=page.locator("//mat-select[@id='accountRF56']");
-        this.createNew=page.locator("//span[text()='Create New']");
+        this.poPayer=page.locator(
+            "//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input",
+        );
+        this.poAccount=page.locator("mat-select#accountRF56");
+        this.createNew=page.getByRole('button', {name: /Create New/i});
         this.newpopUp=page.locator("nc-new-payment-order-dialog");
         this.popupPoType=page.locator("//mat-select[@id='paymentordertype']");
         this.popupcorrectionOrderType=page.locator("//mat-select[@name='correctionsOption']");
@@ -143,16 +143,20 @@ export class SmokeTestingSuitePage{
         this.pfcBAProviderType=page.locator("#mat-input-18");
     }
     async searchAndClickOnpaymentOrdersUnderFinancials(){
-        await this.searchIcon.waitFor({ state: 'visible' });
+        await expect(this.searchIcon).toBeVisible({timeout: 60000});
         await expect(this.searchIcon).toBeEnabled();
-        
         await this.searchIcon.click();
         await this.searchIcon.fill("FINANCIALS");
-        
-        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
+
+        await expect(this.financials).toBeVisible({timeout: 30000});
         await this.financials.click();
-        await this.paymentOrders.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
+        await expect(this.paymentOrders).toBeVisible({timeout: 30000});
         await this.paymentOrders.click();
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await expect(
+            this.paymentOrdersHeading,
+            'Payment Orders page must be displayed',
+        ).toBeVisible({timeout: 60000});
     }
 
     async fillMandaoryDetails(payer: string, account: string) {
@@ -160,27 +164,37 @@ export class SmokeTestingSuitePage{
         await this.poPayer.waitFor({ state: "visible", timeout: 30000 });
         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
-        await this.poPayer.click();
-        await this.poPayer.fill("");
-
-        const payerOption = this.page.locator(`//span[contains(text(),'${payer}')]`).first();
-
-        try {
-            await this.poPayer.type(payer, { delay: 200 });
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
-        } catch {
+        const escapedPayer = payer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const payerOption = this.page.locator('mat-option').filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, 'i'),
+        });
+        let payerSelected = false;
+        for (let attempt = 0; attempt < 2 && !payerSelected; attempt++) {
             await this.poPayer.click();
             await this.poPayer.fill("");
-            for (const char of payer) {
-                await this.poPayer.type(char, { delay: 200 });
-                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+            for (let index = 0; index < payer.length; index++) {
+                await this.poPayer.pressSequentially(payer[index], {delay: 200});
+                if (index === 2) {
+                    await this.page.waitForTimeout(3000);
+                }
+                if (await payerOption.isVisible()) {
+                    await expect(payerOption).toHaveCount(1);
+                    await this.page.waitForTimeout(1000);
+                    await payerOption.click();
+                    break;
+                }
             }
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
+            payerSelected = await expect
+                .poll(() => this.poPayer.inputValue(), {timeout: 5000})
+                .toBe(payer)
+                .then(() => true)
+                .catch(() => false);
+            if (!payerSelected) {
+                await this.page.waitForTimeout(1000);
+            }
         }
+        expect(payerSelected, `Exact payer option "${payer}" must be selected`).toBeTruthy();
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
         await expect(this.poAccount).toBeVisible({ timeout: 10000 });
         await this.poAccount.click();
@@ -192,11 +206,25 @@ export class SmokeTestingSuitePage{
     }
 
     async createNewbutton(){
-        await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(2000);
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await expect(this.paymentOrdersHeading).toBeVisible({timeout: 30000});
+        await expect(this.createNew).toBeVisible({timeout: 30000});
+        await expect(this.createNew).toBeEnabled();
         await this.createNew.click();
-        await this.page.waitForTimeout(2000);
-        expect(await this.newpopUp.isVisible());
+
+        const dialogOpened = await this.popupPoType
+            .waitFor({state: 'visible', timeout: 10000})
+            .then(() => true)
+            .catch(() => false);
+        if (!dialogOpened) {
+            await expect(this.createNew).toBeVisible({timeout: 10000});
+            await this.createNew.click();
+        }
+
+        await expect(
+            this.popupPoType,
+            'Create New Payment Order dialog must be displayed',
+        ).toBeVisible({timeout: 30000});
     }
 
     async verifypopUpfields(){

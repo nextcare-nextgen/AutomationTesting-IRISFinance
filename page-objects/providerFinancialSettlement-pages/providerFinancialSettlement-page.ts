@@ -304,6 +304,44 @@ export class ProviderFinancialSettlementPage {
         return paymentOrderId;
     }
 
+    private async selectExactPayer(payerValue: string): Promise<string> {
+        const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const payerOption = this.page.locator('mat-option').filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, 'i'),
+        });
+
+        for (let attempt = 0; attempt < 2; attempt++) {
+            await this.payerDropdown.click();
+            await this.payerDropdown.fill('');
+
+            for (let index = 0; index < payerValue.length; index++) {
+                await this.payerDropdown.pressSequentially(payerValue[index], {delay: 200});
+                if (index === 2) {
+                    await this.page.waitForTimeout(3000);
+                }
+                if (await payerOption.isVisible()) {
+                    await expect(payerOption).toHaveCount(1);
+                    await this.page.waitForTimeout(500);
+                    const selectedPayer = (await payerOption.innerText()).trim();
+                    await payerOption.click();
+
+                    const selectionCommitted = await expect
+                        .poll(
+                            async () => (await this.payerDropdown.inputValue()).trim().toLowerCase(),
+                            {timeout: 5000},
+                        )
+                        .toBe(selectedPayer.toLowerCase())
+                        .then(() => true)
+                        .catch(() => false);
+                    if (selectionCommitted) return selectedPayer;
+                    break;
+                }
+            }
+        }
+
+        throw new Error(`Exact payer option "${payerValue}" could not be selected`);
+    }
+
     private async selectCurrentUpToDueDate(): Promise<void> {
         const datePickerButton = this.upToDueDateInput.locator(
             'xpath=ancestor::mat-form-field//mat-datepicker-toggle//button',
@@ -450,29 +488,8 @@ export class ProviderFinancialSettlementPage {
         await this.payerDropdown.waitFor({ state: "visible", timeout: 30000 });
         await expect(this.payerDropdown).toBeEditable({ timeout: 30000 });
         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-        await this.payerDropdown.click();
-        await this.payerDropdown.fill("");
-
-        for (let i = 0; i < value.length; i++) {
-            await this.payerDropdown.pressSequentially(value[i], {delay: 250});
-            if (i === 2) {
-                await this.page.waitForTimeout(5000);
-            }
-        }
-
-        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${value}')]`).first();
-        await expect(payerOption).toBeVisible({timeout: 20000});
-        await payerOption.click();
-        await this.payerDropdown.click();
-        await this.page.waitForTimeout(1000);
-
-        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${value}')]`).first();
-        await expect(payerOption).toBeVisible({timeout: 15000});
-        await payerOption.click();
-        await this.payerDropdown.press("Tab");
+        await this.selectExactPayer(value);
         await this.appLoader.waitFor({state: "hidden",timeout: 30000}).catch(() => {});
-        await expect(this.payerDropdown).toHaveValue(value, {timeout: 30000});
         await this.page.waitForTimeout(2000);
         console.log(`Payer "${value}" selected successfully.`);
     }
@@ -548,8 +565,42 @@ export class ProviderFinancialSettlementPage {
         await this.upToDueDateInput.fill("");
         await this.upToDueDateInput.fill(value);
         await this.upToDueDateInput.press("Tab");
-        await expect(this.upToDueDateInput).toHaveValue(value);
-        console.log(`Up To Due Date "${value}" selected successfully.`);
+        const displayedValue = await expect
+            .poll(() => this.upToDueDateInput.inputValue(), {timeout: 20000})
+            .not.toBe("")
+            .then(() => this.upToDueDateInput.inputValue());
+        expect(
+            this.parseDateValue(displayedValue),
+            `Up To Due Date "${displayedValue}" must represent "${value}"`,
+        ).toBe(this.parseDateValue(value));
+        console.log(`Up To Due Date "${displayedValue}" selected successfully.`);
+    }
+
+    private parseDateValue(value: string): number {
+        const normalizedValue = value.trim();
+        const numericMatch = normalizedValue.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+        if (numericMatch) {
+            return Date.UTC(
+                Number(numericMatch[3]),
+                Number(numericMatch[2]) - 1,
+                Number(numericMatch[1]),
+            );
+        }
+
+        const namedMatch = normalizedValue.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/);
+        const months: Record<string, number> = {
+            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+        };
+        if (namedMatch && months[namedMatch[2].toLowerCase()] !== undefined) {
+            return Date.UTC(
+                Number(namedMatch[3]),
+                months[namedMatch[2].toLowerCase()],
+                Number(namedMatch[1]),
+            );
+        }
+
+        throw new Error(`Unsupported date value "${value}"`);
     }
 
    async validateDetailsAfterSearch() {

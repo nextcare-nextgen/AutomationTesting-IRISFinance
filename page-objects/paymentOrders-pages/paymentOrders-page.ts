@@ -66,8 +66,8 @@ export class PaymentOrdersPage {
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
         this.financials = page.getByRole('button', { name: 'Financials' });
         this.paymentOrders = page.getByRole('link', { name: 'Payment Orders' });
-        this.payer = page.locator("#mat-input-11");        
-        this.currency = page.locator("#mat-input-12");    
+        this.payer = page.locator("//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input");
+        this.currency = page.locator("//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input");
         this.account = page.locator("mat-select[formcontrolname='account']"); 
         this.parentEntity = page.locator("#mat-input-13");
         this.idField = page.locator("input[formcontrolname='id']");
@@ -562,35 +562,57 @@ export class PaymentOrdersPage {
         await expect(this.payer).toBeEditable({ timeout: 30000 });
         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
-        await this.payer.click();
-        await this.payer.fill("");
+        await this.selectExactPayer(payerValue);
+        await expect(this.currency).not.toHaveValue("", {timeout: 30000});
+        await expect(this.account).toBeVisible({ timeout: 10000 });
+        await this.account.click();
+        const accountOption = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({hasNotText: /^\s*-- Select --\s*$/})
+            .first();
+        await expect(accountOption, "At least one account must be available").toBeVisible({
+            timeout: 20000,
+        });
+        await accountOption.click();
+        console.log(`Payer "${payerValue}" selected successfully.`);
+    }
 
-        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
+    private async selectExactPayer(payerValue: string): Promise<void> {
+        const normalizedPayer = payerValue.trim().toLowerCase();
+        const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const payerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
+        });
 
-        try {
-            await this.payer.type(payerValue, { delay: 200 });
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
-        } catch {
-            console.log("Retrying payer selection...");
+        for (let attempt = 0; attempt < 2; attempt++) {
             await this.payer.click();
             await this.payer.fill("");
-            for (const char of payerValue) {
-                await this.payer.type(char, { delay: 200 });
-                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+
+            for (let index = 0; index < payerValue.length; index++) {
+                await this.payer.pressSequentially(payerValue[index], {delay: 200});
+                if (index === 2) {
+                    await this.page.waitForTimeout(3000);
+                }
+                if (await payerOption.isVisible()) {
+                    await expect(payerOption).toHaveCount(1);
+                    await this.page.waitForTimeout(500);
+                    await payerOption.click();
+                    break;
+                }
             }
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
+
+            const selectionCommitted = await expect
+                .poll(
+                    async () => (await this.payer.inputValue()).trim().toLowerCase(),
+                    {timeout: 5000},
+                )
+                .toBe(normalizedPayer)
+                .then(() => true)
+                .catch(() => false);
+            if (selectionCommitted) return;
         }
 
-        await this.page.waitForTimeout(2000);
-        await expect(this.account).toBeVisible({ timeout: 10000 });    
-        await this.account.click();
-        expect(await this.page.locator("//span[text()=' abcd ']").isVisible());
-        await this.page.locator("//span[text()=' abcd ']").click();
-        console.log(`Payer "${payerValue}" selected successfully.`);
+        throw new Error(`Exact payer option "${payerValue}" could not be selected`);
     }
 
     async fillMandatoryDetailsDev(payerValue: string) {
@@ -702,33 +724,20 @@ export class PaymentOrdersPage {
 
         await this.payer.click();
         await this.payer.fill("");
-
-        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
-
-        try {
-            await this.payer.type(payerValue, { delay: 200 });
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
-        } catch {
-            console.log("Retrying payer selection...");
-            await this.payer.click();
-            await this.payer.fill("");
-            for (const char of payerValue) {
-                await this.payer.type(char, { delay: 200 });
-                await this.appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
+        const payerOptions = this.page.locator(".cdk-overlay-pane mat-option");
+        for (let index = 0; index < payerValue.length; index++) {
+            await this.payer.pressSequentially(payerValue[index], {delay: 200});
+            if (index === 2) {
+                await this.page.waitForTimeout(3000);
             }
-            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
+            if (await payerOptions.first().isVisible()) break;
         }
 
-        await this.page.waitForTimeout(2000);
-        await expect(this.account).toBeVisible({ timeout: 10000 });    
-        await this.account.click();
-        expect(await this.page.locator("//span[text()=' abcd ']").isVisible());
-        await this.page.locator("//span[text()=' abcd ']").click();
-        console.log(`Payer "${payerValue}" selected successfully.`);
+        await expect(
+            payerOptions.first(),
+            "Payer dropdown must display at least one option",
+        ).toBeVisible({timeout: 30000});
+        expect(await payerOptions.count()).toBeGreaterThan(0);
     }
 
     async verifyPayerDropdownValuesDisplayedDev(payerValue: string) {

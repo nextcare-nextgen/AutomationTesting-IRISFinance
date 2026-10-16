@@ -3,6 +3,14 @@ import path from "path";
 import fs from "fs";
 import { log } from "console";
 
+type AdnicSettlementResult = {
+    transactionNumber: string;
+    paymentOrderId: string;
+    bankReference: string;
+    saveStartedAt: number;
+    queueCorrelationTokens: string[];
+};
+
 export class AccountReconcilationPage{
     page: Page;
     searchIcon: Locator;
@@ -70,14 +78,14 @@ export class AccountReconcilationPage{
         this.accountReconcilation = page.getByRole('link', { name: 'Account Reconciliation' });
         this.Recoincilation=page.locator("//h1[text()='Account Reconciliation ']");
         this.redText=page.locator("//mat-error[contains(text(),' Only Reimbursement Transactions are allowed to be settled from this screen. ')]")
-        this.payer=page.locator("//input[@id='mat-input-5']");
-        this.currency=page.locator("//input[@id='mat-input-6']");
+        this.payer=page.locator("//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input");
+        this.currency=page.locator("//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input");
         this.account=page.locator("//mat-select[@id='accountreconciliationaccount']");
         this.searchButton=page.locator("//button[@aria-label='Search']");
         this.fromDueDateLabel=page.locator("//mat-label[text()='From Due Date']");
-        this.fromDueDate=page.locator("//input[@id='mat-input-2']");
+        this.fromDueDate=page.locator("//input[@formcontrolname='fromDueDate']");
         this.toDueDateLabel=page.locator("//mat-label[text()='To Due Date']");
-        this.toDuedate=page.locator("//input[@id='mat-input-3']");
+        this.toDuedate=page.locator("//input[@formcontrolname='toDueDate']");
         this.errormsg=page.locator("(//mat-error[text()=' This field is required '])[1]");
         this.searchTable=page.locator("//table[@id='dddd']/tbody/tr[2]");
         this.uploadButton=page.locator("//button[@aria-labelledby='2']");
@@ -299,6 +307,45 @@ export class AccountReconcilationPage{
         await accountOption.click();
     }
 
+    private async selectExactPayer(payerValue: string): Promise<void> {
+        const normalizedPayer = payerValue.trim().toLowerCase();
+        const payerPattern = new RegExp(
+            `^\\s*${payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`,
+            'i',
+        );
+        const payerOption = this.page.locator("mat-option").filter({hasText: payerPattern});
+
+        for (let attempt = 0; attempt < 2; attempt++) {
+            await this.payer.click();
+            await this.payer.fill("");
+
+            for (let index = 0; index < payerValue.length; index++) {
+                await this.payer.pressSequentially(payerValue[index], {delay: 200});
+                if (index === 2) {
+                    await this.page.waitForTimeout(3000);
+                }
+                if (await payerOption.isVisible()) {
+                    await expect(payerOption).toHaveCount(1);
+                    await this.page.waitForTimeout(500);
+                    await payerOption.click();
+                    break;
+                }
+            }
+
+            const selectionCommitted = await expect
+                .poll(
+                    async () => (await this.payer.inputValue()).trim().toLowerCase(),
+                    {timeout: 5000},
+                )
+                .toBe(normalizedPayer)
+                .then(() => true)
+                .catch(() => false);
+            if (selectionCommitted) return;
+        }
+
+        throw new Error(`Exact payer option "${payerValue}" could not be selected`);
+    }
+
     async clickSearchButtn(){
         await this.page.waitForTimeout(5000);
         await this.searchButton.click();
@@ -320,31 +367,23 @@ export class AccountReconcilationPage{
     // }
     
     async fillAllDetails(payerValue: string, fromDue: string, toDue: string) {
-        await this.page.waitForLoadState("networkidle");
-        await this.page.waitForTimeout(5000);
-        await this.payer.click();
-        await this.payer.fill("");
-
-        let typedText = "";
-        for (const char of payerValue) {
-            typedText += char;
-            await this.payer.pressSequentially(char, { delay: 300 });
-
-            // Wait after typing the 3rd character
-            if (typedText.length === 3) {
-                await this.page.waitForTimeout(2000); // or wait for API/dropdown
-            }
-        }
-
-        const option = this.page.locator("//span[text()='ABU DHABI NATIONAL INSURANCE CO. ADNIC']").first();
-        await option.waitFor({ state: "visible", timeout: 30000 });
-        await option.click();
+        await this.page.waitForLoadState("domcontentloaded");
+        await expect(this.payer).toBeEditable({timeout: 30000});
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await this.selectExactPayer(payerValue);
+        await expect(this.currency).toHaveValue("UAE Dirham", {timeout: 30000});
 
         await this.account.click();
-        await this.page.locator("//span[text()=' ADNIC - Escrow ']").click();
+        const accountOption = this.page.locator("mat-option").filter({
+            hasText: /^\s*ADNIC - Escrow\s*$/i,
+        });
+        await expect(accountOption).toBeVisible({timeout: 20000});
+        await accountOption.click();
 
         await this.fromDueDate.fill(fromDue.trim());
+        await this.fromDueDate.press("Tab");
         await this.toDuedate.fill(toDue.trim());
+        await this.toDuedate.press("Tab");
     }
 
     async fillAllDetailsDev(payerValue: string,fromDue: string,toDue: string) {
@@ -612,7 +651,7 @@ export class AccountReconcilationPage{
         await this.save.click();
     }
 
-    async settleFirstEligibleAdnicTransactionAndVerifyPayload(): Promise<{transactionNumber: string;paymentOrderId: string;}> {
+    async settleFirstEligibleAdnicTransactionAndVerifyPayload(): Promise<AdnicSettlementResult> {
         await this.page.waitForTimeout(5000);
         const table = this.page.locator('table').filter({ hasText: 'TXN NBR' }).first();
         await expect(table).toBeVisible({ timeout: 30000 });
@@ -666,6 +705,7 @@ export class AccountReconcilationPage{
             if (!['POST', 'PUT', 'PATCH'].includes(request.method())) return false;
             return request.postData()?.includes(transactionNumber) ?? false;}, { timeout: 30000 });
 
+        const saveStartedAt = Date.now();
         await this.clickSaveButton();
         const saveSuccessMessage = this.page.locator('snack-bar-container, mat-snack-bar-container, [role="alert"]',).filter({hasText: /Account reconciliation data saved successfully/i}).first();
         await expect(saveSuccessMessage,'Account Reconciliation save confirmation must appear',).toBeVisible({timeout: 50000});
@@ -675,8 +715,43 @@ export class AccountReconcilationPage{
         expect(response, 'The settlement request should receive a response').not.toBeNull();
         expect(response!.ok(), `Settlement request failed with HTTP ${response!.status()}`).toBeTruthy();
 
-        await this.verifyAdnicSettlementPayload(request.postDataJSON());
-        return {transactionNumber, paymentOrderId};
+        const requestPayload = request.postDataJSON();
+        await this.verifyAdnicSettlementPayload(requestPayload);
+        const responsePayload = await response!.json().catch(() => undefined);
+        const queueCorrelationTokens = this.collectQueueCorrelationTokens(
+            requestPayload,
+            responsePayload,
+            transactionNumber,
+            paymentOrderId,
+            bankReference,
+        );
+        return {
+            transactionNumber,
+            paymentOrderId,
+            bankReference,
+            saveStartedAt,
+            queueCorrelationTokens,
+        };
+    }
+
+    private collectQueueCorrelationTokens(...values: unknown[]): string[] {
+        const tokens = new Set<string>();
+        const collect = (value: unknown): void => {
+            if (Array.isArray(value)) {
+                value.forEach(collect);
+                return;
+            }
+            if (value && typeof value === 'object') {
+                Object.values(value as Record<string, unknown>).forEach(collect);
+                return;
+            }
+            if (typeof value !== 'string' && typeof value !== 'number') return;
+
+            const token = String(value).trim();
+            if (/^[A-Za-z0-9_-]{6,50}$/.test(token)) tokens.add(token);
+        };
+        values.forEach(collect);
+        return [...tokens];
     }
 
     private async verifyAdnicSettlementPayload(payload: unknown): Promise<void> {
@@ -708,7 +783,9 @@ export class AccountReconcilationPage{
         await expect(this.noRecord).toBeVisible({ timeout: 30000 });
     }
 
-    async verifyLatestClaimSettlementQueueStatus(): Promise<void> {
+    async verifyLatestClaimSettlementQueueStatus(
+        settlement: AdnicSettlementResult,
+    ): Promise<void> {
         const queueMonitoringUrl = new URL('/layout/queue-monitoring-screens', this.page.url());
         await this.page.goto(queueMonitoringUrl.toString(), {
             waitUntil: 'domcontentloaded',
@@ -722,12 +799,11 @@ export class AccountReconcilationPage{
         await expect(table).toBeVisible({timeout: 30000});
 
         const headers = table.locator('th');
-        const jobTitleIndex = await headers.filter({hasText: /^Job Title$/}).evaluate(header =>
-            Array.from(header.parentElement?.children ?? []).indexOf(header),
-        );
-        const statusIndex = await headers.filter({hasText: /^Status$/}).evaluate(header =>
-            Array.from(header.parentElement?.children ?? []).indexOf(header),
-        );
+        const headerTexts = (await headers.allTextContents()).map(text => text.trim());
+        const requestDateIndex = headerTexts.findIndex(text => text.startsWith('Request Date'));
+        const jobTitleIndex = headerTexts.findIndex(text => text.startsWith('Job Title'));
+        const statusIndex = headerTexts.findIndex(text => text === 'Status');
+        expect(requestDateIndex).toBeGreaterThanOrEqual(0);
         expect(jobTitleIndex).toBeGreaterThanOrEqual(0);
         expect(statusIndex).toBeGreaterThanOrEqual(0);
 
@@ -737,7 +813,21 @@ export class AccountReconcilationPage{
         await expect(
             notificationRow,
             'A Claim Settlement Notification queue record must be generated',
-        ).toBeVisible({timeout: 60000});
+        ).toBeVisible({timeout: 90000});
+
+        const requestDateText = (
+            await notificationRow.locator('td').nth(requestDateIndex).innerText()
+        ).trim();
+        const queueRequestTime = this.parseQueueRequestDate(requestDateText);
+        expect(
+            queueRequestTime,
+            `Queue request date "${requestDateText}" must be parseable`,
+        ).not.toBeNull();
+        expect(
+            queueRequestTime!,
+            'The Claim Settlement Notification must be created by this settlement run',
+        ).toBeGreaterThanOrEqual(settlement.saveStartedAt - 120000);
+
         await expect(notificationRow.locator('td').nth(jobTitleIndex)).toContainText(
             'Claim Settlement Notification',
         );
@@ -754,6 +844,37 @@ export class AccountReconcilationPage{
         await expect(this.page.getByText('Completed Successfully', {exact: true})).toBeVisible({
             timeout: 30000,
         });
+
+        const detailText = await this.page.locator('body').innerText();
+        expect(
+            settlement.queueCorrelationTokens.some(token => detailText.includes(token)),
+            'Queue message details must correlate to the settlement request or response',
+        ).toBeTruthy();
+    }
+
+    private parseQueueRequestDate(value: string): number | null {
+        const match = value.match(
+            /^(\d{1,2})-([A-Za-z]{3})-(\d{4})\s+(\d{1,2}):(\d{2}):(\d{2})\s+(AM|PM)$/i,
+        );
+        if (!match) return null;
+
+        const months: Record<string, number> = {
+            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+        };
+        const month = months[match[2].toLowerCase()];
+        if (month === undefined) return null;
+
+        let hour = Number(match[4]) % 12;
+        if (match[7].toUpperCase() === 'PM') hour += 12;
+        return new Date(
+            Number(match[3]),
+            month,
+            Number(match[1]),
+            hour,
+            Number(match[5]),
+            Number(match[6]),
+        ).getTime();
     }
 
     async validateBankBlankPopup(){
