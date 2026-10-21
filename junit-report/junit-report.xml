@@ -1,11 +1,8 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="55.390052000000026">
-<testsuite name="tests\providerReconcilation\providerReconcilation.spec.ts" timestamp="2026-10-15T11:55:26.150Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="47.104" errors="0">
-<testcase name="FIN-TC-165: TC_168_provider Reconciliation_verify that enter provider then country and provider type fields are filled" classname="tests\providerReconcilation\providerReconcilation.spec.ts" time="47.104">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="60.59989100000001">
+<testsuite name="tests\sanityTestingSuite\sanityTestingSuite.spec.ts" timestamp="2026-10-21T06:01:22.829Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="50.057" errors="0">
+<testcase name="FIN-TC-1877 @sanity: TC01_Sanity_Account Reconciliation_Verify that Account Reconciliation hyperlink is displayed" classname="tests\sanityTestingSuite\sanityTestingSuite.spec.ts" time="50.057">
 <system-out>
 <![CDATA[✅ Login process completed
-Provider "Yara Pharmacy - DXB" selected successfully.
-Provider Type: Pharmacy
-Country: United Arab Emirates
 ]]>
 </system-out>
 </testcase>

@@ -48,7 +48,7 @@ test('FIN-TC-1877 @sanity: TC01_Sanity_Account Reconciliation_Verify that Accoun
          await accountReconcilationPage.searchAndClickOnAccountReconcilationUnderFinancials();
      })
   
-       await test.step("Verify that Account Recoincilation Page is visible", async () => {
+     await test.step("Verify that Account Recoincilation Page is visible", async () => {
          await accountReconcilationPage.accountRecoincialtionField();
      })
  });
