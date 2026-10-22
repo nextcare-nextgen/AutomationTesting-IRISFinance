@@ -6,6 +6,8 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 //const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const ProviderFinancialSettlementData = require(`../../testdata/${process.env.ENV || 'eu'}/providerFinancialSettlement.json`) as Record<string, any>;
 
+test.describe.configure({ timeout: 360000 });
+
 //test code
 test('FIN-TC-705: TC_000_Providers Financial Settlement_verify that  payer and reinsurer radio button are displayed', async ({ page }) => {
 

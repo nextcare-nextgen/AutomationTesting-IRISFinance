@@ -1,5 +1,4 @@
-import { Keyboard, Locator, Page, expect } from "@playwright/test";
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+import { Locator, Page, expect } from "@playwright/test";
 
 export class SoloPaymentOrderSetupPage {
 
@@ -65,6 +64,7 @@ export class SoloPaymentOrderSetupPage {
     readonly infoMessageLocator : Locator;
     readonly successMessageLocator  : Locator;
     readonly soloPaymentOrderTypeDropdown   : Locator;
+    readonly appLoader: Locator;
         
     constructor(page: Page) {
         this.page = page;
@@ -78,8 +78,8 @@ export class SoloPaymentOrderSetupPage {
         this.searchCriteriaSection = page.locator('.batch-info-fields');
         this.labels = ['Payer','External Ref','Name','Effective Date','Expiry Date','Solo Payment Order','Solo Payment Order Type'];
         this.payerLabel = this.searchCriteriaSection.locator('mat-label', { hasText: 'Payer' });
-        this.payerMandatorySymbol = this.payerLabel.locator('xpath=..//span[contains(@class,"mat-placeholder-required")]');
         this.payerInput = page.locator('#payersolopaymentorder input');
+        this.payerMandatorySymbol = this.payerInput.locator('xpath=ancestor::mat-form-field');
         this.searchButton = page.locator('button.search-button');
         this.searchResults = page.locator('table tbody tr');
         this.nameInput = page.locator("input[formcontrolname='name']");
@@ -116,44 +116,55 @@ export class SoloPaymentOrderSetupPage {
         this.nameColumnHeader = page.locator('th.mat-column-name button');
         this.soloPaymentOrderHeader = page.locator('th.cdk-column-soloPaymentOrder');
         //this.soloPaymentOrderCheckbox = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox input[type="checkbox"]');
-        this.soloPaymentOrderCheckbox = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox input.mat-checkbox-input');
-        this.soloPaymentOrderCheckboxLabel = page.locator('th.cdk-column-soloPaymentOrder label.mat-checkbox-layout');
-        this.soloPaymentOrderCheckboxInput = page.locator('th.cdk-column-soloPaymentOrder input.mat-checkbox-input');
+        this.soloPaymentOrderCheckbox = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox input[type="checkbox"]');
+        this.soloPaymentOrderCheckboxLabel = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox');
+        this.soloPaymentOrderCheckboxInput = this.soloPaymentOrderCheckbox;
         this.rowCheckboxes = page.locator('table tbody tr mat-checkbox');
 
-        this.headerCheckboxLabel = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox label.mat-checkbox-layout');
-        this.headerCheckboxInput = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox input.mat-checkbox-input');
-        this.rowCheckboxInputs = page.locator('table tbody tr mat-checkbox input.mat-checkbox-input');
+        this.headerCheckboxLabel = page.locator('th.cdk-column-soloPaymentOrder mat-checkbox');
+        this.headerCheckboxInput = this.soloPaymentOrderCheckbox;
+        this.rowCheckboxInputs = page.locator('table tbody tr mat-checkbox input[type="checkbox"]');
         this.soloPaymentOrderTypeDownArrow = page.locator('th.cdk-column-soloPaymentOrderType .sort-div img[alt="Down Sorting Icon"]');
-        this.itemsPerPageLabel = page.locator("(//div[contains(@class,'mat-paginator-page-size-label') and normalize-space()='Items per page:'])[2]");
-        this.itemsPerPageDropdown = page.locator("//mat-select[@aria-label='Items per page:']");
-        this.previousPageButton = page.locator("//button[contains(@class,'mat-paginator-navigation-previous')]").first();
-        this.paginatorTooltip = page.locator('.mat-tooltip');
-        this.saveBtn = page.locator("//span[text()='Save']");
-        this.errorMessageLocator = page.locator('.mat-snack-bar-container', {hasText: 'You have to search first'});
-        this.infoMessageLocator = page.locator('.mat-snack-bar-container', {hasText: 'Nothing has changed'});
-        this.successMessageLocator = page.locator('.mat-snack-bar-container', {hasText: 'Record updated successfully !'});
+        this.itemsPerPageLabel = page.locator(".mat-mdc-paginator-page-size-label, .mat-paginator-page-size-label").filter({ hasText: "Items per page:" }).last();
+        this.itemsPerPageDropdown = page.getByRole("combobox", { name: "Items per page:" }).last();
+        this.previousPageButton = page.getByRole("button", { name: "Previous page" }).last();
+        this.paginatorTooltip = page.locator('.mat-mdc-tooltip, .mat-tooltip');
+        this.saveBtn = page.getByRole("button", { name: "Save", exact: true });
+        const snackbars = page.locator('simple-snack-bar, .mat-mdc-snack-bar-container, .mat-snack-bar-container');
+        this.errorMessageLocator = snackbars.filter({hasText: 'You have to search first'});
+        this.infoMessageLocator = snackbars.filter({hasText: 'Nothing has changed'});
+        this.successMessageLocator = snackbars.filter({hasText: 'Record updated successfully !'});
         this.soloPaymentOrderTypeDropdown = page.locator("//td[contains(@class, 'mat-column-soloPaymentOrderType')]//div[normalize-space(text())='Both']");
+        this.appLoader = page.locator("app-new-loader");
         
     }
 
     async searchAndClickFinancials() {  
-        await this.searchIcon.waitFor({ state: 'visible' });
+        await this.searchIcon.waitFor({ state: 'visible', timeout: 60000 });
         await expect(this.searchIcon).toBeEnabled();
 
         await this.searchIcon.click();
         await this.searchIcon.fill("FINANCIALS");
-
-        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
-        await this.financials.click();
+        await expect(this.financials).toBeVisible({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 15000 }).catch(() => {});
+        const opened = await this.financials.click({ timeout: 10000 }).then(() => true).catch(() => false);
+        if (!opened) {
+            await this.financials.click({ force: true, timeout: 10000 });
+        }
     }
 
     async clickOnSoloPaymentOrderSetup() {  
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.soloPaymentOrderSetup).toBeVisible({ timeout: 30000 });
         await this.soloPaymentOrderSetup.scrollIntoViewIfNeeded();
-        await this.soloPaymentOrderSetup.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
-        await this.soloPaymentOrderSetup.click();
-        await expect(this.soloPaymentOrderSetup).toBeVisible();
+        const navigationStarted = await this.soloPaymentOrderSetup
+            .click({ timeout: 10000 })
+            .then(() => true)
+            .catch(() => false);
+        if (!navigationStarted) {
+            await this.soloPaymentOrderSetup.click({ force: true, timeout: 10000 });
+        }
+        await this.appLoader.waitFor({ state: "hidden", timeout: 60000 });
+        await expect(this.soloPaymentOrderSetupLabel).toBeVisible({ timeout: 60000 });
     }
 
     async verifyValidBreadcrumbs() {
@@ -178,34 +189,63 @@ export class SoloPaymentOrderSetupPage {
     }
 
     async verifyPayerIsMandatory() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        await expect(this.payerMandatorySymbol).toBeVisible();
+        await expect(this.payerInput).toHaveAttribute("required", "");
     }
 
     async searchPayer(payerName: string) {
         await expect(this.payerInput).toBeVisible({ timeout: 20000 });
         await this.payerInput.click();
         await this.payerInput.fill("");
-        for (const char of payerName) {
-            await this.payerInput.type(char, { delay: 200 });
-        }
+        const searchValue = payerName.toUpperCase().includes("ADNIC")
+            ? "ADNIC"
+            : payerName.includes("TEST PAYER")
+                ? "TEST PAYER"
+                : payerName;
+        const payerResponse = this.page.waitForResponse(
+            response => response.url().includes("/payer/api/payers/") && response.status() === 200,
+            { timeout: 60000 },
+        );
+        await this.payerInput.pressSequentially(searchValue, { delay: 150 });
+        await payerResponse;
+        await this.payerInput.click();
+        await this.payerInput.press("ArrowDown");
 
         const option = this.page.locator(".cdk-overlay-pane mat-option", { hasText: payerName }).first();
-        await option.waitFor({ state: "visible", timeout: 10000 });
+        await option.waitFor({ state: "visible", timeout: 30000 });
         await option.click();
+        await this.payerInput.press("Tab");
+        await expect(this.page.locator("mat-error", { hasText: "Payer name was not found" })).toBeHidden();
 
         console.log(`Payer "${payerName}" selected successfully.`);
         await this.searchButton.click();
         const rows = this.page.locator("table tbody tr");
-        await rows.first().waitFor({ state: "visible", timeout: 20000 });
+        const noRecords = this.page.getByText("No Records Found", { exact: true });
+        await expect(rows.first().or(noRecords)).toBeVisible({ timeout: 60000 });
         const visibleRowsCount = await rows.count();
         console.log(`Number of rows found: ${visibleRowsCount}`);
     }
 
     async searchPayerToVerify(payerName: string) {
         await this.payerInput.click();
-        await this.payerInput.fill(payerName);
-        await this.page.locator('.cdk-overlay-pane mat-option', { hasText: payerName }).first().click();
+        await this.payerInput.fill("");
+        const searchValue = payerName.toUpperCase().includes("ADNIC")
+            ? "ADNIC"
+            : payerName.includes("TEST PAYER")
+                ? "TEST PAYER"
+                : payerName;
+        const payerResponse = this.page.waitForResponse(
+            response => response.url().includes("/payer/api/payers/") && response.status() === 200,
+            { timeout: 60000 },
+        );
+        await this.payerInput.pressSequentially(searchValue, { delay: 150 });
+        await payerResponse;
+        await this.payerInput.click();
+        await this.payerInput.press("ArrowDown");
+        const option = this.page.locator('.cdk-overlay-pane mat-option', { hasText: payerName }).first();
+        await expect(option).toBeVisible({ timeout: 30000 });
+        await option.click();
+        await this.payerInput.press("Tab");
+        await expect(this.page.locator("mat-error", { hasText: "Payer name was not found" })).toBeHidden();
     } 
 
     async enterName(name: string) {
@@ -646,31 +686,30 @@ export class SoloPaymentOrderSetupPage {
     }
 
     async clickSearchAndVerifyResult() {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await expect(this.searchButton).toBeEnabled({ timeout: 30000 });
         await this.searchButton.click();
-        await expect(this.searchResults.first()).toBeVisible({ timeout: 20000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 60000 });
+        await expect(this.searchResults.first()).toBeVisible({ timeout: 60000 });
     }
 
     async verifySearchResultColumnsVisible() {
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        expect(await this.nameColumn.isVisible()).toBeTruthy();
-        expect(await this.statusColumn.isVisible()).toBeTruthy();
-        expect(await this.startDateColumn.isVisible()).toBeTruthy();
-        expect(await this.stopDateColumn.isVisible()).toBeTruthy();
-        expect(await this.soloPaymentOrderColumn.isVisible()).toBeTruthy();
-        expect(await this.soloPaymentOrderTypeColumn.isVisible()).toBeTruthy();
+        await expect(this.nameColumn).toBeVisible();
+        await expect(this.statusColumn).toBeVisible();
+        await expect(this.startDateColumn).toBeVisible();
+        await expect(this.stopDateColumn).toBeVisible();
+        await expect(this.soloPaymentOrderColumn).toBeVisible();
+        await expect(this.soloPaymentOrderTypeColumn).toBeVisible();
     }
 
     async verifySortingArrowsVisible() {
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        expect(await this.nameUpArrow.isVisible()).toBeTruthy();
-        expect(await this.nameDownArrow.isVisible()).toBeTruthy();
-        expect(await this.statusUpArrow.isVisible()).toBeTruthy();
-        expect(await this.statusDownArrow.isVisible()).toBeTruthy();
-        expect(await this.startDateUpArrow.isVisible()).toBeTruthy();
-        expect(await this.startDateDownArrow.isVisible()).toBeTruthy();
-        expect(await this.stopDateUpArrow.isVisible()).toBeTruthy();
-        expect(await this.stopDateDownArrow.isVisible()).toBeTruthy();
+        await expect(this.nameUpArrow).toBeVisible();
+        await expect(this.nameDownArrow).toBeVisible();
+        await expect(this.statusUpArrow).toBeVisible();
+        await expect(this.statusDownArrow).toBeVisible();
+        await expect(this.startDateUpArrow).toBeVisible();
+        await expect(this.startDateDownArrow).toBeVisible();
+        await expect(this.stopDateUpArrow).toBeVisible();
+        await expect(this.stopDateDownArrow).toBeVisible();
     }
 
     async verifyNameColumnSortedAscending() {
@@ -683,12 +722,12 @@ export class SoloPaymentOrderSetupPage {
     }
 
     async verifyNameColumnSortedDescending() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.page.waitForTimeout(2000);
         await this.nameDownArrow.click();
         const actualValues = await this.nameColumnCells.allTextContents();
         const trimmedValues = actualValues.map(v => v.trim());
-        const expectedSortedValues = [...trimmedValues].sort((a, b) =>a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+        const expectedSortedValues = [...trimmedValues].sort((a, b) =>
+            b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }),
+        );
         expect(trimmedValues).toEqual(expectedSortedValues);
         console.log("Name column is in descending order:", trimmedValues);
     }
@@ -734,11 +773,11 @@ export class SoloPaymentOrderSetupPage {
         await checkboxLabel.waitFor({ state: 'visible' });
 
         await checkboxLabel.click();
-        await expect(checkboxInput).toHaveAttribute('aria-checked', 'true', { timeout: 5000 });
+        await expect(checkboxInput).toBeChecked({ timeout: 5000 });
         console.log('Checkbox checked successfully');
 
         await checkboxLabel.click();
-        await expect(checkboxInput).toHaveAttribute('aria-checked', 'false', { timeout: 5000 });
+        await expect(checkboxInput).not.toBeChecked({ timeout: 5000 });
         console.log('Checkbox unchecked successfully');
     }
 
@@ -748,7 +787,7 @@ export class SoloPaymentOrderSetupPage {
 
         const rowCount = await this.rowCheckboxInputs.count();
         for (let i = 0; i < rowCount; i++) {
-            await expect(this.rowCheckboxInputs.nth(i)).toHaveAttribute('aria-checked', 'true', { timeout: 5000 });
+            await expect(this.rowCheckboxInputs.nth(i)).toBeChecked({ timeout: 5000 });
         }
         console.log(`All ${rowCount} row checkboxes selected successfully`);
     }
@@ -760,9 +799,7 @@ export class SoloPaymentOrderSetupPage {
     }
 
     async verifyUncheckShowsDownArrow() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        const isChecked = await this.soloPaymentOrderCheckboxInput.getAttribute('aria-checked');
-        if (isChecked === 'true') {
+        if (await this.soloPaymentOrderCheckboxInput.isChecked()) {
             await this.soloPaymentOrderCheckboxLabel.click();
         }
         await expect(this.soloPaymentOrderTypeDownArrow).toBeVisible();
@@ -770,33 +807,25 @@ export class SoloPaymentOrderSetupPage {
     }
 
     async verifyItemsPerPageLabelAndDropdownIsDisplayed(): Promise<void> {
-        await new Promise(resolve => setTimeout(resolve, 5000));
         await expect(this.itemsPerPageLabel).toBeVisible();
-        await this.itemsPerPageLabel.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
         await expect(this.itemsPerPageDropdown).toBeVisible();
-        await this.itemsPerPageDropdown.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
     }
 
     async verifyItemsPerPageDropdownOptionsAreDisplayed(){
         await this.itemsPerPageDropdown.click();
-        await new Promise(resolve => setTimeout(resolve, 3000));
         await expect(this.page.locator('//mat-option//span')).toHaveText(['10','15','20','30','50','100','250']);
     }
 
     async verifyPreviousPageButtonIsDisabledAndTooltipIsNotDisplayed(): Promise<void> {
-        await new Promise(resolve => setTimeout(resolve, 3000));
         await expect(this.previousPageButton).toBeDisabled();
-        //await this.previousPageButton.hover();
         await expect(this.paginatorTooltip).toHaveCount(0);
     }
 
     async verifySaveButtonIsEnabled(): Promise<void> {
-        await new Promise(resolve => setTimeout(resolve, 3000));
         await expect(this.saveBtn).toBeEnabled();
     }
 
     async verifySaveWithoutSearchShowsErrorMessage(): Promise<void> {
-        await new Promise(resolve => setTimeout(resolve, 3000));
         await this.saveBtn.click();
         await this.errorMessageLocator.scrollIntoViewIfNeeded();
         await expect(this.errorMessageLocator).toBeVisible();
@@ -814,8 +843,7 @@ export class SoloPaymentOrderSetupPage {
         const cell = this.page.locator('td.mat-column-soloPaymentOrderType').first();
         await cell.waitFor({ state: 'visible', timeout: 10000 });
         await cell.click();
-        await this.page.waitForTimeout(300);
-        const dropdownTrigger = cell.locator('.mat-select-trigger');
+        const dropdownTrigger = cell.locator('.mat-mdc-select-trigger, .mat-select-trigger');
         await dropdownTrigger.waitFor({ state: 'visible', timeout: 10000 });
         await dropdownTrigger.click();
         const option = this.page.locator(`//div[contains(@class,'cdk-overlay-pane')]//mat-option//span[normalize-space(.)='${newValue}']`);

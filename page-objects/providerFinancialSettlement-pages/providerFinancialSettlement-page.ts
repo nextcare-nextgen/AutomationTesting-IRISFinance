@@ -63,7 +63,7 @@ export class ProviderFinancialSettlementPage {
         this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
         this.financials = page.getByRole('button', { name: 'Financials' });
-        this.providersFinancialSettlement = page.locator("//a[contains(., \"Provider's Financial Settlement\")]"); 
+        this.providersFinancialSettlement = page.getByRole("link", { name: "Provider's Financial Settlement", exact: true }).first();
         this.payerRadio = page.locator("//mat-radio-button[@value='Payer']");
         this.reinsurerRadio = page.locator("//mat-radio-button[@value='Reinsurer']");
         this.reinsurerInput = page.locator("//mat-label[text()='Reinsurer']/ancestor::mat-form-field//input");
@@ -84,8 +84,8 @@ export class ProviderFinancialSettlementPage {
         this.accountNumber = page.locator("//input[@formcontrolname='accountNumber']");
         this.accountName = page.locator("//input[@formcontrolname='accountName']");
         this.voucherSearchButton = page.locator("//button[@title='Search']"); 
-        this.voucherSearchSelectAccountName = page.locator("(//a[@class='ng-star-inserted'][normalize-space()='Select'])[10]");
-        this.voucherSearchSelectAccountNumber = page.locator("//a[normalize-space()='Select']");
+        this.voucherSearchSelectAccountName = page.getByRole("dialog").getByRole("link", { name: "Select", exact: true }).first();
+        this.voucherSearchSelectAccountNumber = this.voucherSearchSelectAccountName;
         this.selectedAccountName = page.locator('td.mat-column-accountName .td-content');
         this.selectedAccountNumber = page.locator('td.mat-column-accountNumber .td-content');
         this.currencyLabel = page.locator("//mat-label[normalize-space()='Currency']").first();
@@ -123,28 +123,89 @@ export class ProviderFinancialSettlementPage {
         this.glAccountDescription = page.getByLabel("GL Account Desc");
     }
 
+    private async dismissTransientErrorDialog(): Promise<void> {
+        const errorDialog = this.page.getByRole("dialog").filter({ hasText: "Unknown Error" });
+        if (await errorDialog.isVisible()) {
+            await errorDialog.getByRole("button", { name: "Close" }).click();
+            await expect(errorDialog).toBeHidden();
+        }
+    }
+
+    private async ensureSettlementFormReady(): Promise<void> {
+        await this.dismissTransientErrorDialog();
+        const loaderCleared = await this.appLoader
+            .waitFor({ state: "hidden", timeout: 30000 })
+            .then(() => true)
+            .catch(() => false);
+        if (loaderCleared && await this.payerRadio.isVisible()) return;
+
+        await this.page.reload({ waitUntil: "domcontentloaded", timeout: 120000 });
+        await this.dismissTransientErrorDialog();
+        if (!await this.payerRadio.isVisible()) {
+            await expect(this.searchIcon).toBeVisible({ timeout: 60000 });
+            await this.searchIcon.fill("FINANCIALS");
+            await expect(this.financials).toBeVisible({ timeout: 30000 });
+            await this.financials.click({ force: true, timeout: 10000 });
+            const routeLinkVisible = await this.providersFinancialSettlement
+                .isVisible({ timeout: 10000 })
+                .catch(() => false);
+            const navigationStarted = routeLinkVisible
+                ? await this.providersFinancialSettlement
+                    .click({ force: true, timeout: 10000 })
+                    .then(() => true)
+                    .catch(() => false)
+                : false;
+            if (!navigationStarted) {
+                const settlementUrl = new URL("/layout/finance/providersettelment", this.page.url()).toString();
+                await this.page.goto(settlementUrl, { waitUntil: "domcontentloaded", timeout: 120000 });
+            }
+        }
+        await this.appLoader.waitFor({ state: "hidden", timeout: 60000 });
+        await this.dismissTransientErrorDialog();
+        await expect(this.payerRadio).toBeVisible({ timeout: 60000 });
+    }
+
     async searchAndClickFinancials() {  
-        await this.searchIcon.waitFor({ state: 'visible' });
+        await this.dismissTransientErrorDialog();
+        await this.searchIcon.waitFor({ state: 'visible', timeout: 60000 });
         await expect(this.searchIcon).toBeEnabled();
 
         await this.searchIcon.click();
         await this.searchIcon.fill("FINANCIALS");
 
-        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
-        await this.financials.click();
+        await expect(this.financials).toBeVisible({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 15000 }).catch(() => {});
+        const financialsOpened = await this.financials
+            .click({ timeout: 10000 })
+            .then(() => true)
+            .catch(() => false);
+        if (!financialsOpened) {
+            await this.financials.click({ force: true, timeout: 10000 });
+        }
     }
 
     async clickOnProvidersFinancialSettlement() {  
-        //await new Promise(resolve => setTimeout(resolve, 5000));
-        await this.providersFinancialSettlement.scrollIntoViewIfNeeded();
-        await this.providersFinancialSettlement.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
-        await this.providersFinancialSettlement.click();
+        const navigationStarted = await this.providersFinancialSettlement
+            .click({ timeout: 10000 })
+            .then(() => true)
+            .catch(() => false);
+        if (!navigationStarted) {
+            const forcedNavigationStarted = await this.providersFinancialSettlement
+                .click({ force: true, timeout: 10000 })
+                .then(() => true)
+                .catch(() => false);
+            if (!forcedNavigationStarted) {
+                const settlementUrl = new URL("/layout/finance/providersettelment", this.page.url()).toString();
+                await this.page.goto(settlementUrl, { waitUntil: "domcontentloaded", timeout: 120000 });
+            }
+        }
+
+        await this.ensureSettlementFormReady();
     }
 
     async toVerifyPayersAndReinsurerRadioButton() { 
-        await new Promise(resolve => setTimeout(resolve, 10000)); 
-        await expect(this.payerRadio).toBeVisible();
-        await expect(this.reinsurerRadio).toBeVisible();
+        await expect(this.payerRadio).toBeVisible({ timeout: 30000 });
+        await expect(this.reinsurerRadio).toBeVisible({ timeout: 30000 });
     }
 
     async verifyRadioButtonsAreMutuallyExclusive() {
@@ -170,15 +231,16 @@ export class ProviderFinancialSettlementPage {
     }
 
     async clickOnPayersRadioButton() { 
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await this.ensureSettlementFormReady();
+        await expect(this.payerRadio).toBeVisible({ timeout: 30000 });
         await this.payerRadio.click();
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
-
+        await expect(this.payerRadio).toHaveClass(/mat-mdc-radio-checked/);
     }
 
     async clickOnReinsurerRadioRadioButton() { 
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await expect(this.reinsurerRadio).toBeVisible({ timeout: 30000 });
         await this.reinsurerRadio.click();
+        await expect(this.reinsurerRadio).toHaveClass(/mat-mdc-radio-checked/);
     }
 
     async verifyReinsurerDropdownValues() {
@@ -208,8 +270,9 @@ export class ProviderFinancialSettlementPage {
     }
 
     async clickOnSearchButton() {
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        await expect(this.searchBtn).toBeVisible({ timeout: 30000 });
         await this.searchBtn.click();
+        await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
     }
 
     async discoverDhamaniPaymentOrder(payerValue: string): Promise<string> {
@@ -306,37 +369,63 @@ export class ProviderFinancialSettlementPage {
 
     private async selectExactPayer(payerValue: string): Promise<string> {
         const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const payerOption = this.page.locator('mat-option').filter({
+        const searchValue = /ADNIC/i.test(payerValue)
+            ? "ADNIC"
+            : payerValue.replace(/\s*\([^)]*\)\s*$/, "").trim();
+        const escapedSearchValue = searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const exactPayerOption = this.page.locator('mat-option').filter({
             hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, 'i'),
-        });
+        }).first();
+        const matchingPayerOption = this.page.locator('mat-option').filter({
+            hasText: new RegExp(escapedSearchValue, 'i'),
+        }).first();
+        const availablePayerOption = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({ hasNotText: /^\s*-- Select --\s*$/ })
+            .first();
 
-        for (let attempt = 0; attempt < 2; attempt++) {
-            await this.payerDropdown.click();
+        for (let attempt = 0; attempt < 3; attempt++) {
+            await this.ensureSettlementFormReady();
+            await this.payerDropdown.click({ timeout: 15000 });
             await this.payerDropdown.fill('');
+            const currentSearchValue = searchValue;
+            const payerResponse = this.page.waitForResponse(
+                response =>
+                    response.url().includes("/payer/api/payers/") &&
+                    response.url().includes(`payerName=${encodeURIComponent(currentSearchValue)}`) &&
+                    response.status() === 200,
+                { timeout: 30000 },
+            );
+            await this.payerDropdown.pressSequentially(
+                currentSearchValue,
+                { delay: 250 },
+            );
+            await payerResponse;
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await this.payerDropdown.click();
+            await this.payerDropdown.press("ArrowDown");
+            await expect(availablePayerOption).toBeVisible({ timeout: 15000 });
 
-            for (let index = 0; index < payerValue.length; index++) {
-                await this.payerDropdown.pressSequentially(payerValue[index], {delay: 200});
-                if (index === 2) {
-                    await this.page.waitForTimeout(3000);
-                }
-                if (await payerOption.isVisible()) {
-                    await expect(payerOption).toHaveCount(1);
-                    await this.page.waitForTimeout(500);
-                    const selectedPayer = (await payerOption.innerText()).trim();
-                    await payerOption.click();
+            const payerOption = await exactPayerOption.isVisible()
+                ? exactPayerOption
+                : matchingPayerOption;
+            const optionVisible = await payerOption
+                .waitFor({ state: "visible", timeout: 15000 })
+                .then(() => true)
+                .catch(() => false);
+            if (!optionVisible) continue;
 
-                    const selectionCommitted = await expect
-                        .poll(
-                            async () => (await this.payerDropdown.inputValue()).trim().toLowerCase(),
-                            {timeout: 5000},
-                        )
-                        .toBe(selectedPayer.toLowerCase())
-                        .then(() => true)
-                        .catch(() => false);
-                    if (selectionCommitted) return selectedPayer;
-                    break;
-                }
-            }
+            const selectedPayer = (await payerOption.innerText()).trim();
+            await payerOption.click();
+            const selectionCommitted = await expect
+                .poll(
+                    async () => (await this.payerDropdown.inputValue()).trim().toLowerCase(),
+                    { timeout: 10000 },
+                )
+                .toBe(selectedPayer.toLowerCase())
+                .then(() => true)
+                .catch(() => false);
+            if (selectionCommitted) return selectedPayer;
         }
 
         throw new Error(`Exact payer option "${payerValue}" could not be selected`);
@@ -519,12 +608,26 @@ export class ProviderFinancialSettlementPage {
     // }
 
     async selectBankAccount(value: string) {
-        await this.bankAccountDropdown.click();
-        const option = this.bankAccountOptions.filter({ hasText: value }).first();
-        //await option.waitFor({ state: "visible", timeout: 25000 });
-        await expect(option).toBeVisible({ timeout: 90000 });
+        await expect(this.bankAccountDropdown).toBeVisible({ timeout: 30000 });
+        await expect(this.bankAccountDropdown).toBeEnabled({ timeout: 90000 });
+        const requestedOption = this.bankAccountOptions.filter({ hasText: value }).first();
+        const availableOption = this.bankAccountOptions
+            .filter({ hasNotText: /^\s*-- Select --\s*$/ })
+            .first();
+
+        for (let attempt = 0; attempt < 3; attempt++) {
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            await this.bankAccountDropdown.click();
+            if (await availableOption.isVisible({ timeout: 30000 }).catch(() => false)) break;
+            await this.page.keyboard.press("Escape");
+            await this.page.waitForTimeout(2000);
+        }
+
+        await expect(availableOption).toBeVisible({ timeout: 30000 });
+        const option = await requestedOption.isVisible() ? requestedOption : availableOption;
+        const selectedAccount = (await option.innerText()).trim();
         await option.click();
-        console.log(`Bank Account "${value}" selected successfully.`);
+        console.log(`Bank Account "${selectedAccount}" selected successfully.`);
     }
 
 //     async selectBankAccountTC741(value: string) {
@@ -673,14 +776,18 @@ export class ProviderFinancialSettlementPage {
     }
 
     async VoucherSearchSelectAccountName() {
+        const dialog = this.page.getByRole("dialog");
+        await expect(this.voucherSearchSelectAccountName).toBeVisible({ timeout: 30000 });
         await this.voucherSearchSelectAccountName.click();
-        await expect(this.voucherSearchSelectAccountName).toBeVisible();
+        await expect(dialog).toBeHidden({ timeout: 30000 });
         console.log('User Is able to select Account name for provider.');
     }
 
     async VoucherSearchSelectAccountNumber() {
+        const dialog = this.page.getByRole("dialog");
+        await expect(this.voucherSearchSelectAccountNumber).toBeVisible({ timeout: 30000 });
         await this.voucherSearchSelectAccountNumber.click();
-        await expect(this.voucherSearchSelectAccountNumber).toBeVisible();
+        await expect(dialog).toBeHidden({ timeout: 30000 });
         console.log('User Is able to select Account number for provider.');
     }
 

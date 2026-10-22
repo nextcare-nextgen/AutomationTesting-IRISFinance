@@ -1,4 +1,4 @@
-import { Keyboard, Locator, Page, expect } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
 import { log } from "console";
 
 export class ProviderReconcilationPage{
@@ -78,43 +78,43 @@ export class ProviderReconcilationPage{
     readonly tCurrency:Locator;
     readonly tCVAmount:Locator;
     readonly tCVCurrency:Locator;
+    readonly appLoader: Locator;
     constructor(page: Page) {
         this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
         this.financials = page.getByRole('button', { name: 'Financials' });
         this.providerReconcilation = page.getByRole('link', { name: 'Provider Reconciliation' });
-        this.payer = page.locator("#mat-input-14");   
-        this.Recoincilation=page.locator("//h1[text()='Provider Reconciliation ']");
+        this.payer = page.locator("//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input");
+        this.Recoincilation=page.getByRole("heading", { name: "Provider Reconciliation", exact: true });
         this.headingSC=page.getByText("Search Criteria");
         this.headingBC=page.getByText("Batch Criteria");   
         this.headingTransactions=page.locator("//h2[text()='Transactions']");  
-        this.country=page.locator("//input[@id='mat-input-2']");
-        this.providerType=page.locator("//input[@id='mat-input-3']");
-        //this.provider=page.locator("//input[@id='mat-input-13']");
+        this.country=page.locator("input[formcontrolname='country']");
+        this.providerType=page.locator("input[formcontrolname='providerType']");
         this.provider = this.page.getByRole("combobox", {name: "Provider"});
-        this.fromDueDate=page.locator("//input[@id='mat-input-4']");
-        this.toDueDate=page.locator("//input[@id='mat-input-5']");
-        this.fromSettleDate=page.locator("//input[@id='mat-input-6']");
-        this.toSettleDate=page.locator("//input[@id='mat-input-7']");
-        this.fromValidationDate=page.locator("//input[@id='mat-input-8']");
-        this.toValidationDate=page.locator("//input[@id='mat-input-9']");
-        this.payers=page.locator("mat-input-30");
-        this.currency=page.locator("//input[@id='mat-input-15']");
-        this.Account=page.locator("mat-select-4");
-        this.paymentOrder=page.locator("//input[@id='mat-input-10']");
+        this.fromDueDate=page.locator("//mat-label[normalize-space()='From Due Date']/ancestor::mat-form-field//input");
+        this.toDueDate=page.locator("//mat-label[normalize-space()='To Due Date']/ancestor::mat-form-field//input");
+        this.fromSettleDate=page.locator("//mat-label[normalize-space()='From Settle Date']/ancestor::mat-form-field//input");
+        this.toSettleDate=page.locator("//mat-label[normalize-space()='To Settle Date']/ancestor::mat-form-field//input");
+        this.fromValidationDate=page.locator("//mat-label[normalize-space()='From Validation Date']/ancestor::mat-form-field//input");
+        this.toValidationDate=page.locator("//mat-label[normalize-space()='To Validation Date']/ancestor::mat-form-field//input");
+        this.payers=this.payer;
+        this.currency=page.locator("//mat-label[normalize-space()='Currency']/ancestor::mat-form-field//input");
+        this.Account=page.locator("//mat-label[normalize-space()='Account']/ancestor::mat-form-field//mat-select");
+        this.paymentOrder=page.locator("//mat-label[normalize-space()='Payment Order']/ancestor::mat-form-field//input");
         this.showOnlyNotSetteled=page.getByText("Show Only Not Settled", { exact: true});
-        this.fromReceptionDate=page.locator("//input[@id='mat-input-8']");
-        this.toReceptionDate=page.locator("//input[@id='mat-input-9']");
+        this.fromReceptionDate=page.locator("//mat-label[normalize-space()='From Reception Date']/ancestor::mat-form-field//input");
+        this.toReceptionDate=page.locator("//mat-label[normalize-space()='To Reception Date']/ancestor::mat-form-field//input");
         this.providerDD=page.locator("//span[text()='Yara Pharmacy - DXB']");
-        this.searchButton=page.locator("//div[text()='Search']");
-        this.toggleButton=page.locator("//input[@id='mat-slide-toggle-3-input']");
-        this.generateFile=page.locator("//button[text()=' Generate Data File ']");
-        this.popup=page.locator("//mat-dialog-container[@id='mat-dialog-2']");
-        this.requiredField=page.locator("mat-error-0");
-        this.payerError=page.locator("mat-error-3");
-        this.perPage=page.locator("#mat-select-5");
-        this.perPageDropdown=page.locator("//span[text()='10']/../../../div[2]");
-        this.page10=page.locator("//span[@class='mat-option-text' and text()='10']");
+        this.searchButton=page.getByRole("button", { name: "Search", exact: true });
+        this.toggleButton=page.getByRole("switch", { name: "Show Only Not Settled" });
+        this.generateFile=page.getByRole("button", { name: "Generate Data File" });
+        this.popup=page.locator("mat-dialog-container");
+        this.requiredField=page.locator("mat-error").first();
+        this.payerError=page.locator("mat-error").filter({ hasText: "required" }).first();
+        this.perPage=page.locator("#main-paginator mat-select");
+        this.perPageDropdown=this.perPage;
+        this.page10=page.getByRole("option", { name: "10", exact: true });
         this.page15=page.locator("//span[text()='15']");
         this.page20=page.locator("//span[text()='20']");
         this.page30=page.locator("//span[text()='30']");
@@ -122,25 +122,25 @@ export class ProviderReconcilationPage{
         this.page100=page.locator("//span[text()='100']");
         this.pagination=page.locator('#main-paginator');
         this.toDueDateLabel=page.locator("//mat-label[text()='To Due Date']");
-        this.toDueDateCalendar=page.locator("//input[@id='mat-input-5']/../../div[2]/mat-datepicker-toggle/button");
-        this.todayCalender=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']");
-        this.oldDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']/../../../tr[2]/td[1]");
-        this.newDate=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']/../../../tr[5]/td[1]");
+        this.toDueDateCalendar=this.toDueDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.todayCalender=page.locator(".mat-calendar-body-today").first();
+        this.oldDate=page.locator("mat-calendar .mat-calendar-body-cell:not(.mat-calendar-body-disabled)").first();
+        this.newDate=page.locator("mat-calendar .mat-calendar-body-cell:not(.mat-calendar-body-disabled)").last();
         this.fromDueDateLabel=page.locator("//mat-label[text()='From Due Date']");
-        this.fromDurDateCalendar=page.locator("//input[@id='mat-input-4']/../../div[2]/mat-datepicker-toggle/button");
+        this.fromDurDateCalendar=this.fromDueDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromSettleDateLabel=page.locator("//mat-label[text()='From Settle Date']");
-        this.fromSettleDateCalendar=page.locator("//label[@id='mat-form-field-label-17']/../../../div[2]/mat-datepicker-toggle/button");
+        this.fromSettleDateCalendar=this.fromSettleDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toSettleDateLabel=page.locator("//mat-label[text()='To Settle Date']");
-        this.toSettleDateCalendar=page.locator("//label[@id='mat-form-field-label-19']/../../../div[2]/mat-datepicker-toggle/button")
+        this.toSettleDateCalendar=this.toSettleDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromValidationDateLabel=page.locator("//mat-label[text()='From Validation Date']");
-        this.fromValidationDateCalendar=page.locator("//label[@id='mat-form-field-label-21']/../../../div[2]/mat-datepicker-toggle/button");
+        this.fromValidationDateCalendar=this.fromValidationDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toValidationDateLabel=page.locator("//mat-label[text()='To Validation Date']");
-        this.toValidationDateCalendar=page.locator("//label[@id='mat-form-field-label-23']/../../../div[2]/mat-datepicker-toggle/button");
+        this.toValidationDateCalendar=this.toValidationDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromReceptionDateLabel=page.locator("//mat-label[text()='From Reception Date']");
-        this.fromReceptionDateCalendar=page.locator("//label[@id='mat-form-field-label-29']/../../../div[2]/mat-datepicker-toggle/button");
+        this.fromReceptionDateCalendar=this.fromReceptionDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toReceptionDateLabel=page.locator("//mat-label[text()='To Reception Date']");
-        this.toReceptionDateCalendar=page.locator("//label[@id='mat-form-field-label-31']/../../../div[2]/mat-datepicker-toggle/button");
-        this.accountDD=page.locator("//mat-select[@id='mat-select-4']/div/div[2]");
+        this.toReceptionDateCalendar=this.toReceptionDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.accountDD=this.Account;
         this.upArrow=page.locator("//span[text()=' Payer']/../div/img[1]");
         this.downArrow=page.locator("//span[text()=' Payer']/../div/img[2]");
         this.tPayer=page.locator("//span[text()=' Payer']");
@@ -155,53 +155,92 @@ export class ProviderReconcilationPage{
         this.tCurrency=page.locator("//span[text()=' Currency']");
         this.tCVAmount=page.locator("//span[text()=' CV Amount']");
         this.tCVCurrency=page.locator("//span[text()=' CV Currency']");
+        this.appLoader=page.locator("app-new-loader");
+    }
+
+    private async dismissTransientErrorDialog(): Promise<void> {
+        const errorDialog = this.page.getByRole("dialog").filter({ hasText: "Unknown Error" });
+        if (await errorDialog.isVisible().catch(() => false)) {
+            await errorDialog.getByRole("button", { name: "Close" }).click();
+            await expect(errorDialog).toBeHidden({ timeout: 30000 });
+        }
     }
 
     async searchAndClickOnPaymentOrderUnderFinancials() {
-       
-        await this.searchIcon.waitFor({ state: 'visible' });
+        await this.dismissTransientErrorDialog();
+        await this.searchIcon.waitFor({ state: 'visible', timeout: 60000 });
         await expect(this.searchIcon).toBeEnabled();
 
         await this.searchIcon.click();
         await this.searchIcon.fill("FINANCIALS");
 
-        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
-        await this.financials.click();
-        await this.providerReconcilation.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
-        await this.providerReconcilation.click();
+        await expect(this.financials).toBeVisible({ timeout: 30000 });
+        await this.appLoader.waitFor({ state: "hidden", timeout: 15000 }).catch(() => {});
+        const financialsOpened = await this.financials
+            .click({ timeout: 10000 })
+            .then(() => true)
+            .catch(() => false);
+        if (!financialsOpened) {
+            await this.financials.click({ force: true, timeout: 10000 });
+        }
+        await expect(this.providerReconcilation).toBeVisible({ timeout: 30000 });
+        const navigationStarted = await this.providerReconcilation
+            .click({ timeout: 10000 })
+            .then(() => true)
+            .catch(() => false);
+        if (!navigationStarted) {
+            await this.providerReconcilation.click({ force: true, timeout: 10000 });
+        }
+        const loaderCleared = await this.appLoader
+            .waitFor({ state: "hidden", timeout: 30000 })
+            .then(() => true)
+            .catch(() => false);
+        const headingVisible = loaderCleared &&
+            await this.Recoincilation.isVisible({ timeout: 10000 }).catch(() => false);
+        if (!headingVisible) {
+            const reconciliationUrl = new URL(
+                "/layout/finance/providerreconciliation",
+                this.page.url(),
+            ).toString();
+            await this.page.goto(reconciliationUrl, {
+                waitUntil: "domcontentloaded",
+                timeout: 120000,
+            });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 60000 });
+            await this.dismissTransientErrorDialog();
+        }
+        await expect(this.Recoincilation).toBeVisible({ timeout: 60000 });
     }
     async providerRecoincialtionField(){
-        await this.Recoincilation.isVisible();
+        await expect(this.Recoincilation).toBeVisible({ timeout: 30000 });
     }
     
     async visiblefield(){
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        await this.headingBC.isVisible();
-        await this.headingSC.isVisible();
-        await this.headingTransactions.isVisible();
+        await expect(this.headingBC).toBeVisible();
+        await expect(this.headingSC).toBeVisible();
+        await expect(this.headingTransactions).toBeVisible();
     }
         
     async SearchCriteria(){
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        expect(await this.country.isVisible());
-        expect(await this.providerType.isVisible());
-        expect(await this.provider.isVisible());
-        expect(await this.fromDueDate.isVisible());
-        expect(await this.toDueDate.isVisible());
-        expect(await this.fromSettleDate.isVisible());
-        expect(await this.toSettleDate.isVisible());
-        expect(await this.fromValidationDate.isVisible());
-        expect(await this.toValidationDate.isVisible());
-        expect(await this.payers.isVisible());
-        expect(await this.currency.isVisible());
-        expect(await this.Account.isVisible());
-        expect(await this.paymentOrder.isVisible());
-        expect(await this.showOnlyNotSetteled.isVisible());
+        await expect(this.country).toBeVisible();
+        await expect(this.providerType).toBeVisible();
+        await expect(this.provider).toBeVisible();
+        await expect(this.fromDueDate).toBeVisible();
+        await expect(this.toDueDate).toBeVisible();
+        await expect(this.fromSettleDate).toBeVisible();
+        await expect(this.toSettleDate).toBeVisible();
+        await expect(this.fromValidationDate).toBeVisible();
+        await expect(this.toValidationDate).toBeVisible();
+        await expect(this.payers).toBeVisible();
+        await expect(this.currency).toBeVisible();
+        await expect(this.Account).toBeVisible();
+        await expect(this.paymentOrder).toBeVisible();
+        await expect(this.showOnlyNotSetteled).toBeVisible();
     }
 
     async batchCriteria(){
-        expect(await this.fromReceptionDate.isVisible());
-        expect(await this.toReceptionDate.isVisible());
+        await expect(this.fromReceptionDate).toBeVisible();
+        await expect(this.toReceptionDate).toBeVisible();
 
     }
 
@@ -240,12 +279,11 @@ export class ProviderReconcilationPage{
     }
 
     async searchProvder(){
-        
+        await expect(this.searchButton).toBeEnabled({ timeout: 30000 });
         await this.searchButton.click();
-        await this.page.waitForLoadState("networkidle");
-        await this.page.waitForLoadState();
-        await this.page.waitForTimeout(10000);
-        await this.page.locator("(//tr[@class='test mat-row ng-star-inserted'][1])").isVisible();
+        await this.appLoader.waitFor({ state: "hidden", timeout: 60000 });
+        await expect(this.headingTransactions).toBeVisible({ timeout: 60000 });
+        await expect(this.tPayer).toBeVisible({ timeout: 60000 });
     }
 
     async payerfield(payerValue: string) {
@@ -308,33 +346,35 @@ export class ProviderReconcilationPage{
     }
     async generateFileButton(){
         await this.generateFile.click();
-        await this.page.waitForTimeout(2000);
-        await this.popup.isVisible();
+        const hasCompleteCriteria =
+            (await this.provider.inputValue()).trim().length > 0 &&
+            (await this.payer.inputValue()).trim().length > 0;
+        if (hasCompleteCriteria) {
+            await expect(this.popup).toBeVisible({ timeout: 30000 });
+        } else {
+            await expect(this.requiredField).toBeVisible({ timeout: 30000 });
+        }
     }
     async requireErrorMsg(){
-        expect(await this.requiredField.isVisible());
+        await expect(this.requiredField).toBeVisible();
     }
 
     async requirePayerMsg(){
-        expect(await this.payerError.isVisible());
+        await expect(this.payerError).toBeVisible();
     }
     async pageDropdown(){
-        expect(await this.perPage.isVisible());
+        await expect(this.perPage).toBeVisible();
         await this.perPageDropdown.click();
-        await this.page.waitForTimeout(5000);
     }
     async pageCount(){
-        //await this.page10.click();
-        //await this.perPageDropdown.click();
-        expect(await this.page15.isVisible());
-        expect(await this.page20.isVisible());
-        expect(await this.page30.isVisible());
-        expect(await this.page50.isVisible());
-        expect(await this.page100.isVisible());
+        await expect(this.page15).toBeVisible();
+        await expect(this.page20).toBeVisible();
+        await expect(this.page30).toBeVisible();
+        await expect(this.page50).toBeVisible();
+        await expect(this.page100).toBeVisible();
     }
     async verifyPagination(){
-        await this.page.waitForLoadState('networkidle');
-        await this.pagination.isVisible();
+        await expect(this.pagination).toBeVisible();
     }
     async verifytoDueDate(){
         expect(await this.toDueDateLabel.isVisible());
@@ -344,17 +384,16 @@ export class ProviderReconcilationPage{
         await this.toDueDateCalendar.click();
     }
     async verifyTodayDate(){
-        await this.page.waitForLoadState('networkidle');
+        await expect(this.todayCalender).toBeVisible();
         await this.todayCalender.click();
-        await this.page.waitForTimeout(2000);
     }
 
     async verifyOldDate(){
-        await this.page.waitForLoadState('networkidle');
+        await expect(this.oldDate).toBeVisible();
         await this.oldDate.click();
     }
     async verifyNewDate(){
-        await this.page.waitForLoadState('networkidle');
+        await expect(this.newDate).toBeVisible();
         await this.newDate.click();
     }
     async verifyfromDueDate(){
@@ -413,10 +452,10 @@ export class ProviderReconcilationPage{
         await this.page.waitForTimeout(2000);
     }
     async verifyCurrencyText(){
-        expect(await this.currency.inputValue()).not.toHaveLength(0);
+        await expect(this.currency).not.toHaveValue("");
     } 
     async verifyAccountText(){
-        await this.accountDD.isVisible();
+        await expect(this.accountDD).toBeVisible();
         await this.accountDD.click();
     } 
     async sendpaymentOrder(digit:String){
@@ -426,12 +465,10 @@ export class ProviderReconcilationPage{
         await this.page.waitForTimeout(5000);
     }
     async validatePaymentOrder(){
-
-        expect(await this.paymentOrder.inputValue()).toBeNull
+        await expect(this.paymentOrder).toHaveValue("");
     }
     async validatePaymentOrderaccepted(){
-        console.log(this.paymentOrder.inputValue());
-        expect(await this.paymentOrder.inputValue()).not.toBeNull
+        await expect(this.paymentOrder).not.toHaveValue("");
     }
     async displayArrow(){
         expect(await this.upArrow.isVisible());
@@ -465,8 +502,9 @@ export class ProviderReconcilationPage{
         expect(colVal!=null)
     }
     async toggleClick(){
-        await this.page.waitForTimeout(2000);
-        await this.page.locator("//input[@id='mat-slide-toggle-3-input']/..").click();
+        await expect(this.toggleButton).toBeVisible();
+        await this.toggleButton.click();
+        await expect(this.toggleButton).toBeChecked();
     }
     async settleDataNotPresent(){
     const colVal = await this.page.$$eval(

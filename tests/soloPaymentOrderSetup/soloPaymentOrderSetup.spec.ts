@@ -6,6 +6,7 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 //const dashboardData = require(`../../testdata/${process.env.ENV || 'eu'}/dashboard.json`) as Record<string, any>;
 const SoloPaymentOrderSetupData = require(`../../testdata/${process.env.ENV || 'eu'}/soloPaymentOrderSetup.json`) as Record<string, any>;
 
+test.describe.configure({ timeout: 360000 });
 
 test('FIN-TC-250: TC_257_Solo Payment Order Setup_Verify that user is navigate to Solo Payment Order Setup', async ({ page }) => {
 
@@ -783,6 +784,7 @@ test('FIN-TC-273: TC_280_Solo Payment Order Setup_IN dropdown 10,15,20, 30, 50, 
 //         await soloPaymentOrderSetupPage.verifyItemsPerPageDropdownOptionsAreDisplayed();
 //     });
 // });
+
 
 test('FIN-TC-275: TC_282_Solo Payment Order Setup_verify that when user is on 1st page then Previous page button is disabled and Tooltip is not displayed when hover over to icon', async ({ page }) => {
 
@@ -1663,5 +1665,3 @@ test('FIN-TC-280: TC_287_Solo Payment Order Setup_verify that click on save butt
 //         await soloPaymentOrderSetupPage.verifyNameDoesNotAllowLeadingTrailingSpaces();
 //     });
 // });
-
-

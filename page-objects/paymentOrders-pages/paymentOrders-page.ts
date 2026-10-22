@@ -96,25 +96,25 @@ export class PaymentOrdersPage {
         this.autocompletePanel = page.locator('div[role="listbox"]');
         this.firstAutocompleteOptionText = page.locator('span.custom-mat-option-text').first();
         this.fromDateLabel = page.locator('//mat-label[text()="From Date"]');
-        this.fromDateTextbox = page.locator('//input[@id="fromdate"]');
-        this.fromDateCalendarIcon = page.locator('//mat-icon[@matdatepickertoggleicon]').first();
+        this.fromDateTextbox = this.fromDate;
+        this.fromDateCalendarIcon = this.fromDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toDateLabel = page.locator('//mat-label[text()="To Date"]');
-        this.toDateTextbox = page.locator('//input[@id="todate"]');
-        this.toDateCalendarIcon = page.locator('//input[@id="todate"]/ancestor::mat-form-field//mat-icon[@matdatepickertoggleicon]');
+        this.toDateTextbox = this.toDate;
+        this.toDateCalendarIcon = this.toDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.searchButton=page.locator("//button[@title='Search']");
         this.errorMsg=page.locator("(//mat-error[text()=' This field is required '])[1]");
-        this.fromReleaseDateCalenderIcon = page.locator('//input[@id="fromreleasedate"]/ancestor::mat-form-field//mat-icon[@matdatepickertoggleicon]');
+        this.fromReleaseDateCalenderIcon = this.fromReleaseDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromReleaseDateLabel = page.locator('//mat-label[text()="From Release Date"]');
-        this.fromReleaseDateTextbox = page.locator('//input[@id="fromreleasedate"]');
-        this.toReleaseDateCalendarIcon = page.locator('//input[@id="toreleasedate"]/ancestor::mat-form-field//mat-icon[@matdatepickertoggleicon]');
+        this.fromReleaseDateTextbox = this.fromReleaseDate;
+        this.toReleaseDateCalendarIcon = this.toReleaseDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toReleaseDateLabel = page.locator('//mat-label[text()="To Release Date"]');
-        this.toReleaseDateTextbox = page.locator('//input[@id="toreleasedate"]');
-        this.fromDeliveryDateCalendarIcon = page.locator('//input[@id="fromdeliverydate"]/ancestor::mat-form-field//mat-icon[@matdatepickertoggleicon]');
+        this.toReleaseDateTextbox = this.toReleaseDate;
+        this.fromDeliveryDateCalendarIcon = this.fromDeliveryDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromDeliveryDateLabel = page.locator('//mat-label[text()="From Delivery Date"]');
-        this.fromDeliveryDateTextbox = page.locator('//input[@id="fromdeliverydate"]');
-        this.toDeliveryDateCalendarIcon = page.locator('//input[@id="todeliverydate"]/ancestor::mat-form-field//mat-icon[@matdatepickertoggleicon]');
+        this.fromDeliveryDateTextbox = this.fromDeliveryDate;
+        this.toDeliveryDateCalendarIcon = this.toDeliveryDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toDeliveryDateLabel = page.locator('//mat-label[text()="To Delivery Date"]');
-        this.toDeliveryDateTextbox = page.locator('//input[@id="todeliverydate"]');
+        this.toDeliveryDateTextbox = this.toDeliveryDate;
         this.showOnlyNotDeliveredToggle = page.locator('//mat-slide-toggle[@formcontrolname="showOnlyNotDelivered"]');
         this.capitationToggle = page.locator('//mat-slide-toggle[@formcontrolname="capitation"]');
         this.appLoader = page.locator("app-new-loader");
@@ -123,19 +123,43 @@ export class PaymentOrdersPage {
     }
 
     async searchAndClickOnPaymentOrderUnderFinancials() {
-        // await new Promise(resolve => setTimeout(resolve, 8000));
-        // await this.page.waitForLoadState('networkidle');
-
-        await this.searchIcon.waitFor({ state: 'visible' });
+        await this.searchIcon.waitFor({state: 'visible', timeout: 60000});
         await expect(this.searchIcon).toBeEnabled();
-
         await this.searchIcon.click();
         await this.searchIcon.fill("FINANCIALS");
 
-        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
-        await this.financials.click();
-        await this.paymentOrders.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
-        await this.paymentOrders.click();
+        await expect(this.financials).toBeVisible({timeout: 30000});
+        await this.appLoader.waitFor({state: "hidden", timeout: 15000}).catch(() => {});
+        const financialsOpened = await this.financials
+            .click({timeout: 10000})
+            .then(() => true)
+            .catch(() => false);
+        if (!financialsOpened) {
+            await this.financials.click({force: true, timeout: 10000});
+        }
+        await expect(this.paymentOrders).toBeVisible({timeout: 30000});
+        const paymentOrdersOpened = await this.paymentOrders
+            .click({timeout: 10000})
+            .then(() => true)
+            .catch(() => false);
+        if (!paymentOrdersOpened) {
+            await this.paymentOrders.click({force: true, timeout: 10000});
+        }
+        const loaderCleared = await this.appLoader
+            .waitFor({state: "hidden", timeout: 30000})
+            .then(() => true)
+            .catch(() => false);
+
+        const errorDialog = this.page.getByRole("dialog").filter({hasText: "Unknown Error"});
+        if (await errorDialog.isVisible()) {
+            await errorDialog.getByRole("button", {name: "Close"}).click();
+            await expect(errorDialog).toBeHidden();
+        }
+        if (!loaderCleared) {
+            await this.page.reload({waitUntil: "domcontentloaded", timeout: 120000});
+            await this.appLoader.waitFor({state: "hidden", timeout: 60000});
+        }
+        await expect(this.payer).toBeVisible({timeout: 60000});
     }
 
     async allFieldsOfPaymentOrder() {
@@ -1440,11 +1464,11 @@ export class PaymentOrdersPage {
     async verifyUserCanEnableShowOnlyNotDeliveredToggle() {
         await this.showOnlyNotDeliveredToggle.waitFor({ state: 'visible', timeout: 10000 });
 
-        const toggleSwitch = this.showOnlyNotDeliveredToggle.locator('input[role="switch"]');
+        const toggleSwitch = this.showOnlyNotDeliveredToggle.locator('[role="switch"]');
         const initialState = await toggleSwitch.getAttribute('aria-checked');
         console.log(`Show Only Not Delivered toggle initial aria-checked: ${initialState}`);
 
-        await this.showOnlyNotDelivered.click();
+        await toggleSwitch.click();
 
         await expect(toggleSwitch).toHaveAttribute('aria-checked', 'true', { timeout: 5000 });
         const finalState = await toggleSwitch.getAttribute('aria-checked');
@@ -1454,15 +1478,15 @@ export class PaymentOrdersPage {
     async verifyUserCanDisableShowOnlyNotDeliveredToggle() {
         await this.showOnlyNotDeliveredToggle.waitFor({ state: 'visible', timeout: 10000 });
 
-        const toggleSwitch = this.showOnlyNotDeliveredToggle.locator('input[role="switch"]');
+        const toggleSwitch = this.showOnlyNotDeliveredToggle.locator('[role="switch"]');
 
         // Enable first
-        await this.showOnlyNotDelivered.click();
+        await toggleSwitch.click();
         await expect(toggleSwitch).toHaveAttribute('aria-checked', 'true', { timeout: 5000 });
         console.log('Show Only Not Delivered toggle enabled (preparation step)');
 
         // Then disable
-        await this.showOnlyNotDelivered.click();
+        await toggleSwitch.click();
         await expect(toggleSwitch).toHaveAttribute('aria-checked', 'false', { timeout: 5000 });
         const finalState = await toggleSwitch.getAttribute('aria-checked');
         console.log(`Show Only Not Delivered toggle after second click — aria-checked: ${finalState} (disabled as expected)`);
@@ -1477,11 +1501,11 @@ export class PaymentOrdersPage {
     async verifyUserCanEnableCapitationToggle() {
         await this.capitationToggle.waitFor({ state: 'visible', timeout: 10000 });
 
-        const toggleSwitch = this.capitationToggle.locator('input[role="switch"]');
+        const toggleSwitch = this.capitationToggle.locator('[role="switch"]');
         const initialState = await toggleSwitch.getAttribute('aria-checked');
         console.log(`Capitation toggle initial aria-checked: ${initialState}`);
 
-        await this.capitation.click();
+        await toggleSwitch.click();
 
         await expect(toggleSwitch).toHaveAttribute('aria-checked', 'true', { timeout: 5000 });
         const finalState = await toggleSwitch.getAttribute('aria-checked');
@@ -1491,15 +1515,15 @@ export class PaymentOrdersPage {
     async verifyUserCanDisableCapitationToggle() {
         await this.capitationToggle.waitFor({ state: 'visible', timeout: 10000 });
 
-        const toggleSwitch = this.capitationToggle.locator('input[role="switch"]');
+        const toggleSwitch = this.capitationToggle.locator('[role="switch"]');
 
         // Enable first
-        await this.capitation.click();
+        await toggleSwitch.click();
         await expect(toggleSwitch).toHaveAttribute('aria-checked', 'true', { timeout: 5000 });
         console.log('Capitation toggle enabled (preparation step)');
 
         // Then disable
-        await this.capitation.click();
+        await toggleSwitch.click();
         await expect(toggleSwitch).toHaveAttribute('aria-checked', 'false', { timeout: 5000 });
         const finalState = await toggleSwitch.getAttribute('aria-checked');
         console.log(`Capitation toggle after second click — aria-checked: ${finalState} (disabled as expected)`);

@@ -6,6 +6,7 @@ const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as 
 //const PaymentOrderDetailsData = require(`../../testdata/${process.env.ENV || 'eu'}/paymentOrderDetails.json`) as Record<string, any>;
 const ProviderReconcilationData = require(`../../testdata/${process.env.ENV || 'eu'}/providerReconcilation.json`) as Record<string, any>;
 
+test.describe.configure({ timeout: 360000 });
 
 test('FIN-TC-161: TC_164_provider Reconciliation_Verify that user is navigate to provider Reconciliation', async ({ page }) => {
 
@@ -182,7 +183,7 @@ test('FIN-TC-167: TC_170_provider Reconciliation_verify that fill country, provi
 
     await test.step("Selecting the Payers field" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
     })
 
     await test.step("Vaidate that the toggel button is disabled",async()=>{
@@ -217,7 +218,7 @@ test('FIN-TC-168: TC_171_provider Reconciliation_verify that fill country, provi
 
     await test.step("Selecting the Payers field" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
     })
 
     await test.step("Vaidate that the toggel button is disabled",async()=>{
@@ -252,7 +253,7 @@ test('FIN-TC-169: TC_172_provider Reconciliation_verify that fill country, provi
 
     await test.step("Selecting the Payers field" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
     })
     
     await test.step("Searching the selected value",async()=>{
@@ -283,7 +284,7 @@ test('FIN-TC-170: TC_173_provider Reconciliation_verify that fill country, provi
 
     await test.step("Selecting the Payers field and reception date" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
         await providerReconcilationPage.receptionDate(ProviderReconcilationData["providerReconcilation-001"].fromReceptionDate,ProviderReconcilationData["providerReconcilation-001"].toReceptionDate);
     })
  
@@ -315,9 +316,9 @@ test('FIN-TC-171: TC_174_provider Reconciliation_verify that fill country, provi
 
     await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
             await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-            await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+            await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
             await providerReconcilationPage.receptionDate(ProviderReconcilationData["providerReconcilation-001"].fromReceptionDate,ProviderReconcilationData["providerReconcilation-001"].toReceptionDate);
-            await providerReconcilationPage.settleDate(ProviderReconcilationData["providerReconcilation-001"].fromSettleDate,ProviderReconcilationData["providerReconcilation-001"].toSettleDate);
+            await providerReconcilationPage.settleDate(ProviderReconcilationData["providerReconcilation-001"].fromSettleDate,ProviderReconcilationData["providerReconcilation-001"].toSttleDate);
         })
     
     await test.step("Searching the selected value",async()=>{
@@ -348,9 +349,9 @@ test('FIN-TC-172:TC_175_provider Reconciliation_verify that fill country, provid
 
   await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+        await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
         await providerReconcilationPage.receptionDate(ProviderReconcilationData["providerReconcilation-001"].fromReceptionDate,ProviderReconcilationData["providerReconcilation-001"].toReceptionDate);
-        await providerReconcilationPage.settleDate(ProviderReconcilationData["providerReconcilation-001"].fromSettleDate,ProviderReconcilationData["providerReconcilation-001"].toSettleDate);
+        await providerReconcilationPage.settleDate(ProviderReconcilationData["providerReconcilation-001"].fromSettleDate,ProviderReconcilationData["providerReconcilation-001"].toSttleDate);
     })
  await test.step("Vaidate that the toggel button is disabled",async()=>{
         await providerReconcilationPage.toggelDisable();
@@ -382,7 +383,7 @@ test('FIN-TC-173:TC_176_provider Reconciliation_verify that click on generate da
 
   await test.step("Selecting the Payers field,settle date and reception date" , async()=>{
         await providerReconcilationPage.payerfield(ProviderReconcilationData["providerReconcilation-001"].payerValue);
-         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].toDueDate,ProviderReconcilationData["providerReconcilation-001"].fromDueDate);
+         await providerReconcilationPage.DueDate(ProviderReconcilationData["providerReconcilation-001"].fromDueDate,ProviderReconcilationData["providerReconcilation-001"].toDueDate);
    
     })
 

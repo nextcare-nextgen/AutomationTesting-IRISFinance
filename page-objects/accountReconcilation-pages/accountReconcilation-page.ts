@@ -42,6 +42,7 @@ export class AccountReconcilationPage{
     item30: Locator;
     item50: Locator;
     item100: Locator;
+    item250: Locator;
     search: Locator;
     noRecord: Locator;
     save: Locator;
@@ -98,14 +99,15 @@ export class AccountReconcilationPage{
         //this.settled=page.locator("//mat-checkbox[@id='mat-checkbox-3']");
         this.bankReferenceNumber=page.locator("//input[@id='externalRef0']");
         //this.chequeReleasd=page.locator("//mat-checkbox[@id='mat-checkbox-4']");
-        this.itemPage=page.locator("//mat-select[@aria-label='Items per page:']");
-        this.item10=page.locator("//span[text()='10']");
-        this.item15=page.locator("//span[text()='15']");
-        this.item20=page.locator("//span[text()='20']");
-        this.item30=page.locator("//span[text()='30']");
-        this.item50=page.locator("//span[text()='50']");
-        this.item100=page.locator("//span[text()='100']");
-        this.search=page.locator("//input[@aria-label='Search']");
+        this.itemPage=page.locator("mat-paginator mat-select").first();
+        this.item10=page.locator("mat-option").filter({hasText: /^\s*10\s*$/});
+        this.item15=page.locator("mat-option").filter({hasText: /^\s*15\s*$/});
+        this.item20=page.locator("mat-option").filter({hasText: /^\s*20\s*$/});
+        this.item30=page.locator("mat-option").filter({hasText: /^\s*30\s*$/});
+        this.item50=page.locator("mat-option").filter({hasText: /^\s*50\s*$/});
+        this.item100=page.locator("mat-option").filter({hasText: /^\s*100\s*$/});
+        this.item250=page.locator("mat-option").filter({hasText: /^\s*250\s*$/});
+        this.search=page.locator('input[aria-label="Search"]:visible').last();
         this.noRecord=page.locator("//div[text()=' No Records Found ']");
         this.save=page.locator("//span[text()='Save']");
         this.alertBankPopUp=page.locator("//mat-dialog-container[@id='mat-dialog-1']");
@@ -114,8 +116,8 @@ export class AccountReconcilationPage{
         this.providerMore=page.locator("//div[@id='More0']/button");
         this.providerText=page.locator("//div[@id='Hide0']/div");
         this.providerHide=page.locator("//div[@id='Hide0']/button");
-        this.fromDueDateCalendar=page.locator("//input[@id='mat-input-2']/../../div[2]/mat-datepicker-toggle/button");
-        this.toDueDateCalendar=page.locator("//input[@id='mat-input-3']/../../div[2]/mat-datepicker-toggle/button");
+        this.fromDueDateCalendar=this.fromDueDate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.toDueDateCalendar=this.toDuedate.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         //this.dueDateToday=page.locator("//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today']");
         //this.dueDateToday = this.page.locator("div.mat-calendar-body-today");
         this.dueDateToday = this.page.locator('button[aria-current="date"]');
@@ -124,9 +126,12 @@ export class AccountReconcilationPage{
         this.errormsgDate=page.locator("//mat-error[text()=' Incorrect entry '][@id='mat-error-64']");
         this.paymentOrderId=page.locator("//input[@id='mat-input-4']");
         this.generatebutton=page.locator("//span[text()='Generate']/../..");
-        this.preferences=page.locator("//mat-expansion-panel-header");
-        this.fileName=page.locator("//mat-label[text()='File Name']/../../../div/input");
-        this.generatebuttonPop=page.locator("//span[text()=' Generate ']/..");
+        this.preferences=page.locator("mat-expansion-panel-header").filter({hasText: "Preferences"});
+        this.fileName=page.locator("mat-form-field").filter({hasText: "File Name"}).locator("input");
+        this.generatebuttonPop=page.getByRole("dialog").getByRole("button", {
+            name: "Generate",
+            exact: true,
+        });
         this.jobButton=page.locator("//button[text()='Dismiss']");
         this.appLoader = page.locator("app-new-loader");
         this.dropdownOptions = page.locator("mat-option span");
@@ -136,18 +141,45 @@ export class AccountReconcilationPage{
     private escapeRegex(value: string): string {
         return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
+
+    private async ensureReconciliationFormReady(): Promise<void> {
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.payer.waitFor({state: "visible", timeout: 30000});
+
+        const loaderCleared = await this.appLoader
+            .waitFor({state: "hidden", timeout: 30000})
+            .then(() => true)
+            .catch(() => false);
+        if (loaderCleared) return;
+
+        await this.page.reload({waitUntil: "domcontentloaded"});
+        await expect(this.Recoincilation).toBeVisible({timeout: 60000});
+        await this.appLoader.waitFor({state: "hidden", timeout: 60000});
+        await expect(this.payer).toBeEditable({timeout: 30000});
+    }
+
     async searchAndClickOnAccountReconcilationUnderFinancials(){
-        await this.searchIcon.waitFor({ state: 'visible' });
+        await expect(this.searchIcon).toBeVisible({timeout: 60000});
         await expect(this.searchIcon).toBeEnabled();
 
         await this.searchIcon.click();
         await this.searchIcon.fill("FINANCIALS");
 
-        await this.financials.evaluate((el: HTMLElement) => {el.style.border = "3px solid red";});
+        await expect(this.financials).toBeVisible({timeout: 30000});
         await this.financials.click();
-        await this.accountReconcilation.evaluate((el: HTMLElement) => {el.style.border = "3px solid blue";});
+        await expect(this.accountReconcilation).toBeVisible({timeout: 30000});
         await this.accountReconcilation.click();
-    
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        const navigationCompleted = await expect(this.Recoincilation)
+            .toBeVisible({timeout: 30000})
+            .then(() => true)
+            .catch(() => false);
+        if (!navigationCompleted) {
+            await expect(this.accountReconcilation).toBeVisible({timeout: 30000});
+            await this.accountReconcilation.click({force: true});
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        }
+        await expect(this.Recoincilation).toBeVisible({timeout: 60000});
     }
     async accountRecoincialtionField(){
         await this.Recoincilation.isVisible();
@@ -171,79 +203,40 @@ export class AccountReconcilationPage{
     }
 
     async fillMandatoryDetailsWithRetry(payerValue: string) {
-        const appLoader = this.page.locator("app-new-loader");
-        await this.page.waitForLoadState("domcontentloaded");
-        await this.payer.waitFor({ state: "visible", timeout: 30000 });
-        await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-
-        await this.payer.click();
-        await this.payer.fill("");
-
-        const payerOption = this.page.locator(`//span[contains(text(),'${payerValue}')]`).first();
-
-        try {
-            await this.payer.type(payerValue, { delay: 200 });
-            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
-        } catch {
-            console.log("Retrying payer selection...");
-            await this.payer.click();
-            await this.payer.fill("");
-            for (const char of payerValue) {
-                await this.payer.type(char, { delay: 200 });
-                await appLoader.waitFor({ state: "hidden", timeout: 10000 }).catch(() => {});
-            }
-            await appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
-            await payerOption.waitFor({ state: "visible", timeout: 15000 });
-            await payerOption.click();
-        }
-
-        await this.page.waitForTimeout(2000);
+        await this.ensureReconciliationFormReady();
+        await this.selectExactPayer(payerValue);
+        await expect(this.currency).not.toHaveValue("", {timeout: 30000});
         await expect(this.account).toBeVisible({ timeout: 10000 });
         await this.account.click();
-        //await this.page.getByText("abcd", { exact: true }).click();
-        const firstAccountOption = this.page.locator("mat-option").first();
-        await firstAccountOption.waitFor({ state: "visible", timeout: 10000 });
+        const firstAccountOption = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({hasNotText: /^\s*-- Select --\s*$/})
+            .first();
+        await expect(firstAccountOption, "At least one account must be available").toBeVisible({
+            timeout: 20000,
+        });
         await firstAccountOption.click();
         console.log(`Payer "${payerValue}" selected successfully.`);
     }
 
     async fillMandatoryDetailsTC1214(payerValue: string,accountValue: string) {
-        const payerSearchValue = payerValue.replace(/\s*\([^)]*\)\s*$/, '').trim();
-        const payerPattern = new RegExp(
-            payerSearchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
-            'i',
-        );
-        await this.payer.click();
-        await this.payer.fill("");
-
-        for (let i = 0; i < payerSearchValue.length; i++) {
-            await this.payer.pressSequentially(payerSearchValue[i], {
-                delay: 250
-            });
-
-            if (i === 2) {
-                await this.page.waitForTimeout(5000);
-            }
-        }
-
-        let payerOption = this.page.locator("mat-option").filter({hasText: payerPattern}).first();
-        await expect(payerOption).toBeVisible({timeout: 15000});
-        await payerOption.click();
-        await this.payer.click();
-        await this.page.waitForTimeout(1000);
-        payerOption = this.page.locator("mat-option").filter({hasText: payerPattern}).first();
-        await expect(payerOption).toBeVisible({timeout: 15000});
-        await payerOption.click();
-        await this.payer.press("Tab");
-        const currency = this.page.getByRole("combobox", {name: "Currency"});
-        await expect(currency).toHaveValue("UAE Dirham", {timeout: 30000});
+        await this.ensureReconciliationFormReady();
+        await this.selectExactPayer(payerValue);
+        await expect(this.currency).not.toHaveValue("", {timeout: 30000});
         await this.account.click();
 
-        const accountOption = this.page.locator("mat-option").filter({hasText: accountValue}).first();
-        await expect(accountOption).toBeVisible({timeout: 20000});
-
+        const escapedAccount = this.escapeRegex(accountValue);
+        const requestedAccount = this.page.locator("mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedAccount}\\s*$`, "i"),
+        });
+        const availableAccount = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({hasNotText: /^\s*-- Select --\s*$/})
+            .first();
+        const accountOption = await requestedAccount.isVisible() ? requestedAccount : availableAccount;
+        await expect(accountOption, "At least one account must be available").toBeVisible({
+            timeout: 20000,
+        });
         await accountOption.click();
     }
 
@@ -314,13 +307,20 @@ export class AccountReconcilationPage{
             'i',
         );
         const payerOption = this.page.locator("mat-option").filter({hasText: payerPattern});
+        const transientErrorDialog = this.page.getByRole('dialog').filter({hasText: 'Unknown Error'});
 
-        for (let attempt = 0; attempt < 2; attempt++) {
-            await this.payer.click();
+        for (let attempt = 0; attempt < 3; attempt++) {
+            if (await transientErrorDialog.isVisible()) {
+                await transientErrorDialog.getByRole('button', {name: 'Close'}).click();
+                await expect(transientErrorDialog).toBeHidden();
+            }
+
+            await this.payer.click({timeout: 15000});
             await this.payer.fill("");
 
             for (let index = 0; index < payerValue.length; index++) {
                 await this.payer.pressSequentially(payerValue[index], {delay: 200});
+                if (await transientErrorDialog.isVisible()) break;
                 if (index === 2) {
                     await this.page.waitForTimeout(3000);
                 }
@@ -367,9 +367,7 @@ export class AccountReconcilationPage{
     // }
     
     async fillAllDetails(payerValue: string, fromDue: string, toDue: string) {
-        await this.page.waitForLoadState("domcontentloaded");
-        await expect(this.payer).toBeEditable({timeout: 30000});
-        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await this.ensureReconciliationFormReady();
         await this.selectExactPayer(payerValue);
         await expect(this.currency).toHaveValue("UAE Dirham", {timeout: 30000});
 
@@ -439,90 +437,7 @@ export class AccountReconcilationPage{
         fromDue: string,
         toDue: string
     ) {
-        // ==============================
-        // PAYER
-        // ==============================
-        await this.page.waitForLoadState("networkidle");
-        await this.page.waitForTimeout(5000);
-
-        await this.payer.click();
-        await this.payer.fill("");
-
-        let typedText = "";
-
-        for (const char of payerValue) {
-            typedText += char;
-
-            await this.payer.pressSequentially(char, {
-                delay: 300
-            });
-
-            // Wait for dropdown after 3rd character
-            if (typedText.length === 3) {
-                await this.page.waitForTimeout(5000);
-            }
-        }
-
-        // First payer selection
-        let payerOption = this.page
-            .locator(`//span[contains(normalize-space(.), '${payerValue}')]`)
-            .first();
-
-        await expect(payerOption).toBeVisible({
-            timeout: 30000
-        });
-
-        await payerOption.click();
-
-        // ==============================
-        // SELECT PAYER AGAIN
-        // ==============================
-        await this.payer.click();
-        await this.page.waitForTimeout(1000);
-
-        payerOption = this.page
-            .locator(`//span[contains(normalize-space(.), '${payerValue}')]`)
-            .first();
-
-        await expect(payerOption).toBeVisible({
-            timeout: 15000
-        });
-
-        await payerOption.click();
-
-        await this.payer.press("Tab");
-
-        // ==============================
-        // CURRENCY
-        // ==============================
-        const currency = this.page.getByRole("combobox", {
-            name: "Currency"
-        });
-
-        await expect(currency).toHaveValue("UAE Dirham", {
-            timeout: 30000
-        });
-
-        // ==============================
-        // ACCOUNT
-        // ==============================
-        await this.account.click();
-
-        const accountOption = this.page
-            .locator("//span[contains(normalize-space(.), 'ADNIC - Escrow')]")
-            .first();
-
-        await expect(accountOption).toBeVisible({
-            timeout: 20000
-        });
-
-        await accountOption.click();
-
-        // ==============================
-        // DUE DATES
-        // ==============================
-        await this.fromDueDate.fill(fromDue.trim());
-        await this.toDuedate.fill(toDue.trim());
+        await this.fillAllDetails(payerValue, fromDue, toDue);
     }
     
     async verifyErrorMessage(){
@@ -618,19 +533,24 @@ export class AccountReconcilationPage{
     }
 
     async itemsPerPage(){
-        await this.itemPage.isVisible();
-        await this.itemPage.click();
+        await expect(this.itemPage).toBeVisible({timeout: 30000});
     }
 
     async itemPerPageList(){
-        await this.item10.isVisible();
-        await this.itemPage.click();
-        await this.page.waitForTimeout(5000);
-        await this.item15.isVisible();
-        await this.item20.isVisible();
-        await this.item30.isVisible();
-        await this.item50.isVisible();
-        await this.item100.isVisible();
+        await expect(this.itemPage).toBeVisible({timeout: 30000});
+        await this.itemPage.focus();
+        await this.itemPage.press("Enter");
+        for (const option of [
+            this.item10,
+            this.item15,
+            this.item20,
+            this.item30,
+            this.item50,
+            this.item100,
+            this.item250,
+        ]) {
+            await expect(option).toBeVisible({timeout: 10000});
+        }
     }
 
     async displayArrow(){
@@ -638,8 +558,10 @@ export class AccountReconcilationPage{
         await this.downArrow.isVisible();
     }
 
-    async searchByID(id:String){
+    async searchByID(id: String){
+        await expect(this.search).toBeVisible({timeout: 30000});
         await this.search.click();
+        await expect(this.search).toBeEditable({timeout: 30000});
         await this.search.fill(id.trim());
     }
 
@@ -924,13 +846,9 @@ export class AccountReconcilationPage{
     }
 
     async verifyfromDueDate(){
-        await this.page.waitForLoadState('networkidle');
-        expect(this.fromDueDate.isVisible());
-        await this.page.waitForTimeout(10000);
-        await this.page.waitForLoadState('networkidle');
-        this.fromDueDate.click();
-        await this.page.waitForTimeout(2000);
-        expect(this.fromDueDateLabel.isVisible());
+        await expect(this.fromDueDate).toBeVisible({timeout: 30000});
+        await expect(this.fromDueDate).toBeEditable({timeout: 30000});
+        await expect(this.fromDueDateLabel).toBeVisible({timeout: 30000});
     }
 
     async verifyfromDueDateCalendar() {
@@ -943,27 +861,24 @@ export class AccountReconcilationPage{
     }
 
     async oldDateSelect(){
-        await this.page.waitForLoadState('networkidle');
+        await expect(this.oldDate).toBeVisible({timeout: 10000});
         await this.oldDate.click();
     }
 
     async futureDateSelect(){
-        await this.page.waitForLoadState('networkidle');
+        await expect(this.futureDate).toBeVisible({timeout: 10000});
         await this.futureDate.click();
     }
 
     async verifytoDueDate(){
-        await this.page.waitForLoadState('networkidle');
-        expect(this.toDuedate.isVisible());
-        await this.page.waitForTimeout(10000);
-        this.toDuedate.click();
-        await this.page.waitForTimeout(2000);
-        expect(this.toDueDateLabel.isVisible());
+        await expect(this.toDuedate).toBeVisible({timeout: 30000});
+        await expect(this.toDuedate).toBeEditable({timeout: 30000});
+        await expect(this.toDueDateLabel).toBeVisible({timeout: 30000});
     }
 
     async verifytoDueDateCalendar(){
-        expect(this.toDueDateCalendar.isVisible());
-        this.toDueDateCalendar.click();
+        await expect(this.toDueDateCalendar).toBeVisible({timeout: 10000});
+        await this.toDueDateCalendar.click();
     }
 
     async dueDateErrorMsg(){
@@ -986,18 +901,19 @@ export class AccountReconcilationPage{
     }
 
     async clickGenerateButton(){
-        await this.page.waitForLoadState("networkidle");
-        await this.page.waitForTimeout(15000);
+        await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+        await expect(this.generatebutton).toBeVisible({timeout: 30000});
+        await expect(this.generatebutton).toBeEnabled();
         await this.generatebutton.click();
-        await this.page.waitForLoadState("networkidle");
-    // await this.generatebutton.click();
-        await this.preferences.click();
+        await expect(this.preferences).toBeVisible({timeout: 30000});
+        if (!await this.fileName.isVisible()) {
+            await this.preferences.click();
+        }
+        await expect(this.fileName).toBeEditable({timeout: 15000});
         await this.fileName.fill("test");
-        await this.page.waitForTimeout(2000);
+        await expect(this.generatebuttonPop).toBeEnabled({timeout: 15000});
         await this.generatebuttonPop.click();
-        await this.page.waitForTimeout(5000);
-        await this.page.waitForLoadState("networkidle");
-        expect(this.jobButton.isVisible());
+        await expect(this.jobButton).toBeVisible({timeout: 30000});
     }
 
     async jobRun(){

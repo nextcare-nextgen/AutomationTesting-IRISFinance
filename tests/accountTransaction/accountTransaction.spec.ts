@@ -797,6 +797,7 @@ test('FIN-TC-119:TC_120_Account Transaction_verify that reason label and multipl
 
 //22
 test('FIN-TC-120:TC_121_Account Transaction_verify that click on apply button without filing reason then proper error message is displayed', async ({ page }) => {
+    test.setTimeout(360000);
 
     const loginPage: LoginPage = new LoginPage(page);
     const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);

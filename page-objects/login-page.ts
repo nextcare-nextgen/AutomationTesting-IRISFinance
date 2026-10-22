@@ -64,13 +64,30 @@ export class LoginPage {
     // }
 
     async loginToApplication(superUser: string, password: string) {
-        await new Promise(resolve => setTimeout(resolve, 9000));
+        const loginFormLoaded = await this.userNameOrEmailInputField
+            .waitFor({state: "visible", timeout: 60000})
+            .then(() => true)
+            .catch(() => false);
 
-        await expect(this.userNameOrEmailInputField).toBeVisible({ timeout: 30000 });
+        if (!loginFormLoaded) {
+            console.log("Login form did not load; reloading once...");
+            await this.page.reload({waitUntil: "domcontentloaded", timeout: 120000});
+        }
+
+        await expect(this.userNameOrEmailInputField).toBeVisible({ timeout: 60000 });
         await this.userNameOrEmailInputField.fill(superUser);
 
         await expect(this.passwordInputField).toBeVisible({ timeout: 30000 });
         await this.passwordInputField.fill(password);
+
+        const recaptchaErrorDialog = this.page
+            .getByRole("dialog")
+            .filter({ hasText: "Failed to load Recaptcha" });
+        if (await recaptchaErrorDialog.isVisible().catch(() => false)) {
+            console.log("Recaptcha failed to load; requesting one reload...");
+            await recaptchaErrorDialog.getByRole("button", { name: "Reload CAPTCHA" }).click();
+            await expect(recaptchaErrorDialog).toBeHidden({ timeout: 30000 });
+        }
 
         await expect(this.signinButton).toBeEnabled({ timeout: 50000 });
         await this.signinButton.click({ force: true });
@@ -84,6 +101,15 @@ export class LoginPage {
         if (!dashboardLoaded && await this.signinButton.isVisible().catch(() => false)) {
             console.log('Retrying Sign In...');
             await expect(this.signinButton).toBeEnabled({timeout: 30000});
+            await this.signinButton.click({ force: true });
+        }
+
+        const loginErrorDialog = this.page.getByRole("dialog").filter({ hasText: "Unknown Error" });
+        if (await loginErrorDialog.isVisible().catch(() => false)) {
+            console.log("Login returned Unknown Error; closing and retrying once...");
+            await loginErrorDialog.getByRole("button", { name: "Close" }).click();
+            await expect(loginErrorDialog).toBeHidden({ timeout: 30000 });
+            await expect(this.signinButton).toBeEnabled({ timeout: 30000 });
             await this.signinButton.click({ force: true });
         }
 
