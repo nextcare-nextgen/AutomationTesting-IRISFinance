@@ -1,8 +1,9 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="60.59989100000001">
-<testsuite name="tests\sanityTestingSuite\sanityTestingSuite.spec.ts" timestamp="2026-10-21T06:01:22.829Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="50.057" errors="0">
-<testcase name="FIN-TC-1877 @sanity: TC01_Sanity_Account Reconciliation_Verify that Account Reconciliation hyperlink is displayed" classname="tests\sanityTestingSuite\sanityTestingSuite.spec.ts" time="50.057">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="206.6708089999999">
+<testsuite name="tests\accountReconcilation\accountReconcilation.spec.ts" timestamp="2026-10-23T05:42:56.846Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="175.915" errors="0">
+<testcase name="FIN-TC-1215: TC_521_Account Reconciliation_verify that click on more then Reimbursement Claims text and Hide hyperlink is displayed" classname="tests\accountReconcilation\accountReconcilation.spec.ts" time="175.915">
 <system-out>
 <![CDATA[✅ Login process completed
+[36m[Function: toString][39m
 ]]>
 </system-out>
 </testcase>

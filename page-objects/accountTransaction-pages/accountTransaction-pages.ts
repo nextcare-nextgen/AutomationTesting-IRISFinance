@@ -127,7 +127,7 @@ export class AccountTransactionPage{
     constructor(page: Page){
      this.page = page;
         this.searchIcon = page.locator("//input[@placeholder='Quick Search']");
-         this.financials = page.getByRole('button', { name: 'Financials' });
+        this.financials = page.getByRole('button', { name: 'Financials' });
         this.accountTransaction = page.getByRole('link', { name: 'Account Transaction' });
         this.Transaction=page.getByRole("heading", {name: "Account Transactions", exact: true});
         this.payer=page.locator("//mat-label[normalize-space()='Payer']/ancestor::mat-form-field//input");
@@ -141,42 +141,42 @@ export class AccountTransactionPage{
         this.futureDate=page.locator("(//table[@class='mat-calendar-table']/tbody/tr[5]/td)[1]");
         this.toPOValidationDateLabel=page.locator("//mat-label[text()='To PO Validation Date']");
         this.toPOValidationDate=this.toPOValidationDateLabel.locator("xpath=ancestor::mat-form-field//input");
-       this.toPOValidationcalendarButton=this.toPOValidationDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.toPOValidationcalendarButton=this.toPOValidationDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.Type=page.locator("//mat-label[normalize-space()='Type']/ancestor::mat-form-field//input");
         this.fromDueDateLabel=page.locator("//mat-label[text()='From Due Date']");
         this.fromDueDate=this.fromDueDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.fromDueDatecalendarButton=this.fromDueDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.fromDueDatecalendarButton=this.fromDueDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromDueDateDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toDueDateLabel=page.locator("//mat-label[text()='To Due Date']");
         this.toDueDate=this.toDueDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.toDueDatecalendarButton=this.toDueDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.toDueDatecalendarButton=this.toDueDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toDueDateDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.destinationAccount=page.locator("//input[@id='mat-input-6']");
         this.fromSettleDateLabel=page.locator("//mat-label[text()='From Settle Date']");
         this.fromSettleDate=this.fromSettleDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.fromSettleDatecalendarButton=this.fromSettleDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.fromSettleDatecalendarButton=this.fromSettleDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromSettleDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toSettleDateLabel=page.locator("//mat-label[text()='To Settle Date']");
-         this.toSettleDatecalendarButton=this.toSettleDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.toSettleDatecalendarButton=this.toSettleDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toSettleDateDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toSettleDate=this.toSettleDateLabel.locator("xpath=ancestor::mat-form-field//input");
         this.POID=page.locator("//input[@id='mat-input-9']");
         this.fromChequeReleaseDateLabel=page.locator("//mat-label[text()='From Cheque Release Date']");
         this.fromChequeReleaseDate=this.fromChequeReleaseDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.fromChequeReleaseDatecalendarButton=this.fromChequeReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.fromChequeReleaseDatecalendarButton=this.fromChequeReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromChequeReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toChequeReleaseDateLabel=page.locator("//mat-label[text()='To Cheque Release Date']");
         this.toChecqueReleaseDate=this.toChequeReleaseDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.toChequeReleaseDatecalendarButton=this.toChequeReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.toChequeReleaseDatecalendarButton=this.toChequeReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toChequeReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.bankReference=page.locator("//input[@id='mat-input-12']");
         this.fromPOReleaseDateLabel=page.locator("//mat-label[text()='From PO Release Date']");
         this.fromPOReleaseDate=this.fromPOReleaseDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.fromPOReleaseDatecalendarButton=this.fromPOReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.fromPOReleaseDatecalendarButton=this.fromPOReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.fromPOReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toPOReleaseDateLabel=page.locator("//mat-label[text()='To PO Release Date']");
         this.toPOReleaseDate=this.toPOReleaseDateLabel.locator("xpath=ancestor::mat-form-field//input");
-         this.toPOReleaseDatecalendarButton=this.toPOReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
+        this.toPOReleaseDatecalendarButton=this.toPOReleaseDateLabel.locator("xpath=ancestor::mat-form-field//mat-datepicker-toggle//button");
         this.toPOReleaseDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.Settled=page.locator("//mat-select[@id='mat-select-0']");
         this.Country=page.locator("//mat-label[normalize-space()='Country']/ancestor::mat-form-field//input");
@@ -188,7 +188,7 @@ export class AccountTransactionPage{
         this.fromdeliveryDate=this.fromdeliveryDateLabel.locator("xpath=ancestor::mat-form-field//input");
         this.fromdeliveryDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
         this.fromdeliveryDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
-       this.todeliveryDateLabel=page.locator("//mat-label[text()='To Delivery Date']");
+        this.todeliveryDateLabel=page.locator("//mat-label[text()='To Delivery Date']");
         this.todeliveryDatecalendarButton=page.locator("//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-10']/button");
         this.todeliveryDateCalendar=page.locator("mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-today");
         this.toDeliveryDate=this.todeliveryDateLabel.locator("xpath=ancestor::mat-form-field//input");
@@ -1178,9 +1178,10 @@ export class AccountTransactionPage{
         expect(type1).toBe(await this.Type.inputValue())
     }
 
-     async selectedSettleOption(type1:String){
+    async selectedSettleOption(type1:String){
         expect(type1.trim()).toBe((await this.Settled.innerText()).trim())
     }
+
     async fillPaymentOrderID(paymentOrderID:String){
         await this.POID.fill(paymentOrderID.trim());
     }
@@ -1215,7 +1216,8 @@ export class AccountTransactionPage{
        // expect(await this.toAmount.getAttribute("aria-invalid")).toBe("true");
        expect(await this.errorAmount.isVisible());
     }
-     async blankToAmount(){
+
+    async blankToAmount(){
        const x = await this.toAmount.inputValue();
        console.log(x);
        expect(x).toBe("");
@@ -1295,21 +1297,21 @@ export class AccountTransactionPage{
 
     async tableFieldVisibility(){
         expect(await this.page.getByRole('columnheader', { name: 'Settled Up Sorting Icon Down' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Cheque Released Up Sorting' }).isVisible());
-  expect(await this.page.getByRole('columnheader', { name: 'Cheque Released Up Sorting' }).isVisible());
-  expect(await this.page.getByRole('columnheader', { name: 'Cheque Sent Up Sorting Icon' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'PO ID Up Sorting Icon Down' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'TXN NBR Up Sorting Icon Down' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Due Date Up Sorting Icon Down' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Destination Account Up' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'principal Up Sorting Icon' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Provider Up Sorting Icon Down' }).isVisible());
-  //expect(await this.page.getByRole('button', { name: 'Amount Up Sorting Icon Down' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Counter Value Up Sorting Icon' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Settled Date Up Sorting Icon' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Cheque Released Date Up' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Cheque Sent Date Up Sorting' }).isVisible());
-  expect(await this.page.getByRole('button', { name: 'Bank Reference Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Cheque Released Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('columnheader', { name: 'Cheque Released Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('columnheader', { name: 'Cheque Sent Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'PO ID Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'TXN NBR Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Due Date Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Destination Account Up' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'principal Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Provider Up Sorting Icon Down' }).isVisible());
+        //expect(await this.page.getByRole('button', { name: 'Amount Up Sorting Icon Down' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Counter Value Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Settled Date Up Sorting Icon' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Cheque Released Date Up' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Cheque Sent Date Up Sorting' }).isVisible());
+        expect(await this.page.getByRole('button', { name: 'Bank Reference Up Sorting' }).isVisible());
 
     }
 
@@ -1330,9 +1332,9 @@ export class AccountTransactionPage{
     }
 
     async generateDatefileFieldsVerifiedDev() {
-    const dialog = this.page.locator('mat-dialog-container').last();
+        const dialog = this.page.locator('mat-dialog-container').last();
 
-    await expect(dialog).toBeVisible({
+        await expect(dialog).toBeVisible({
         timeout: 30000
     });
 
@@ -1364,8 +1366,8 @@ export class AccountTransactionPage{
 
     console.log(
         'Generate file dialog Preferences fields verified.'
-    );
-}
+        );
+    }
 
     async generateDatefileFields(){
         await this.page.waitForLoadState("networkidle");
