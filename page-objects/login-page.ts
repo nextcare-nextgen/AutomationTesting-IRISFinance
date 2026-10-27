@@ -29,6 +29,24 @@ export class LoginPage {
         this.captchaError= page.locator("//mat-icon[@title='Cancel']//*[name()='svg']");
     }
 
+    private async dismissPasswordExpiryWarning(): Promise<void> {
+        const passwordExpiryDialog = this.page
+            .locator("mat-dialog-container")
+            .filter({ hasText: /change your password/i });
+        const warningVisible = await passwordExpiryDialog
+            .waitFor({ state: "visible", timeout: 5000 })
+            .then(() => true)
+            .catch(() => false);
+
+        if (!warningVisible) {
+            return;
+        }
+
+        console.log("Password expiry warning displayed; dismissing it...");
+        await passwordExpiryDialog.getByRole("button", { name: "OK", exact: true }).click();
+        await expect(passwordExpiryDialog).toBeHidden({ timeout: 30000 });
+    }
+
     async gotoLoginPage(url: string) {
         await this.page.goto(process.env.URL as string || url, { waitUntil: "domcontentloaded", timeout: 120000 });
     }
@@ -117,6 +135,7 @@ export class LoginPage {
             dashboardSearch,
             'IRIS dashboard must be ready after sign in',
         ).toBeVisible({timeout: 60000});
+        await this.dismissPasswordExpiryWarning();
         console.log('✅ Login process completed');
     }
 
