@@ -35,7 +35,7 @@ export default defineConfig({
     baseURL: process.env.URL || 'https://test-iris-uae.tatsh.cloud/login',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure',
+    trace: 'off',
     screenshot: 'only-on-failure',
     video: 'off',
     headless: false
