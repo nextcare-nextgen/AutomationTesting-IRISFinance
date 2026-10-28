@@ -603,32 +603,58 @@ export class PaymentOrdersPage {
 
     private async selectExactPayer(payerValue: string): Promise<void> {
         const normalizedPayer = payerValue.trim().toLowerCase();
+        const searchValue = /ADNIC/i.test(payerValue)
+            ? "ADNIC"
+            : payerValue.replace(/\s*\([^)]*\)\s*$/, "").trim();
         const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const payerOption = this.page.locator("mat-option").filter({
+        const escapedSearchValue = searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const exactPayerOption = this.page.locator("mat-option").filter({
             hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
-        });
+        }).first();
+        const matchingPayerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(escapedSearchValue, "i"),
+        }).first();
+        const availablePayerOption = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({hasNotText: /^\s*-- Select --\s*$/})
+            .first();
 
-        for (let attempt = 0; attempt < 2; attempt++) {
+        for (let attempt = 0; attempt < 3; attempt++) {
             await this.payer.click();
             await this.payer.fill("");
+            const payerResponse = this.page.waitForResponse(
+                response =>
+                    response.url().includes("/payer/api/payers/") &&
+                    response.status() === 200,
+                {timeout: 30000},
+            );
+            await this.payer.pressSequentially(searchValue, {delay: 200});
+            await payerResponse;
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+            await this.payer.click();
+            await this.payer.press("ArrowDown");
+            await expect(availablePayerOption).toBeVisible({timeout: 15000});
 
-            for (let index = 0; index < payerValue.length; index++) {
-                await this.payer.pressSequentially(payerValue[index], {delay: 200});
-                if (index === 2) {
-                    await this.page.waitForTimeout(3000);
-                }
-                if (await payerOption.isVisible()) {
-                    await expect(payerOption).toHaveCount(1);
-                    await this.page.waitForTimeout(500);
-                    await payerOption.click();
-                    break;
+            const payerOption = await exactPayerOption.isVisible()
+                ? exactPayerOption
+                : matchingPayerOption;
+            if (!await payerOption.isVisible()) continue;
+            await payerOption.click();
+            if ((await this.payer.inputValue()).trim().toLowerCase() !== normalizedPayer) {
+                await this.payer.click();
+                const reopenedOption = await exactPayerOption.isVisible()
+                    ? exactPayerOption
+                    : matchingPayerOption;
+                if (await reopenedOption.isVisible()) {
+                    await reopenedOption.click();
                 }
             }
+            await this.payer.press("Tab");
 
             const selectionCommitted = await expect
                 .poll(
                     async () => (await this.payer.inputValue()).trim().toLowerCase(),
-                    {timeout: 5000},
+                    {timeout: 10000},
                 )
                 .toBe(normalizedPayer)
                 .then(() => true)

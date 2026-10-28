@@ -275,22 +275,39 @@ export class AccountTransactionPage{
 
     private async selectAvailableAccount(requestedAccount: string): Promise<void> {
         await expect(this.Account).toBeVisible({timeout: 30000});
-        await this.Account.click();
-
+        await expect(this.Account).toBeEditable({timeout: 30000});
+        const normalizedAccount = requestedAccount.trim().toLowerCase();
+        const searchValue = requestedAccount.split("-")[0].trim();
         const escapedAccount = requestedAccount.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        const requestedOption = this.page.locator("mat-option").filter({
+        const requestedOption = this.page.locator(".cdk-overlay-pane:visible mat-option").filter({
             hasText: new RegExp(`^\\s*${escapedAccount}\\s*$`, "i"),
-        });
-        const availableOption = this.page
-            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
-            .filter({hasNotText: /^\s*-- Select --\s*$/})
-            .first();
-        const accountOption = await requestedOption.isVisible() ? requestedOption : availableOption;
+        }).first();
 
-        await expect(accountOption, "At least one account must be available").toBeVisible({
-            timeout: 20000,
-        });
-        await accountOption.click();
+        for (let attempt = 0; attempt < 3; attempt++) {
+            await this.Account.click();
+            await this.Account.fill("");
+            await this.Account.pressSequentially(searchValue, {delay: 150});
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+            await this.Account.press("ArrowDown");
+            const optionVisible = await requestedOption
+                .waitFor({state: "visible", timeout: 20000})
+                .then(() => true)
+                .catch(() => false);
+            if (!optionVisible) continue;
+            await requestedOption.click();
+
+            const selectionCommitted = await expect
+                .poll(
+                    async () => (await this.Account.inputValue()).trim().toLowerCase(),
+                    {timeout: 10000},
+                )
+                .toBe(normalizedAccount)
+                .then(() => true)
+                .catch(() => false);
+            if (selectionCommitted) return;
+        }
+
+        throw new Error(`Exact account option "${requestedAccount}" could not be selected`);
     }
 
     private async fillDateRange(
@@ -489,13 +506,25 @@ export class AccountTransactionPage{
 
     private async selectExactPayer(payerValue: string): Promise<void> {
         const normalizedPayer = payerValue.trim().toLowerCase();
+        const searchValue = /ADNIC/i.test(payerValue)
+            ? "ADNIC"
+            : payerValue.replace(/\s*\([^)]*\)\s*$/, "").trim();
         const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const payerOption = this.page.locator("mat-option").filter({
+        const escapedSearchValue = searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const exactPayerOption = this.page.locator("mat-option").filter({
             hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
-        });
+        }).first();
+        const matchingPayerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(escapedSearchValue, "i"),
+        }).first();
+        const availablePayerOption = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({hasNotText: /^\s*-- Select --\s*$/})
+            .first();
         const transientErrorDialog = this.page.getByRole("dialog").filter({hasText: "Unknown Error"});
 
         for (let attempt = 0; attempt < 3; attempt++) {
+            await this.ensureTransactionFormReady();
             if (await transientErrorDialog.isVisible()) {
                 await transientErrorDialog.getByRole("button", {name: "Close"}).click();
                 await expect(transientErrorDialog).toBeHidden();
@@ -523,20 +552,24 @@ export class AccountTransactionPage{
                 continue;
             }
             await this.payer.fill("");
+            const payerResponse = this.page.waitForResponse(
+                response =>
+                    response.url().includes("/payer/api/payers/") &&
+                    response.status() === 200,
+                {timeout: 30000},
+            );
+            await this.payer.pressSequentially(searchValue, {delay: 200});
+            await payerResponse;
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+            await this.payer.click();
+            await this.payer.press("ArrowDown");
+            await expect(availablePayerOption).toBeVisible({timeout: 15000});
 
-            for (let index = 0; index < payerValue.length; index++) {
-                await this.payer.pressSequentially(payerValue[index], {delay: 200});
-                if (await transientErrorDialog.isVisible()) break;
-                if (index === 2) {
-                    await this.page.waitForTimeout(3000);
-                }
-                if (await payerOption.isVisible()) {
-                    await expect(payerOption).toHaveCount(1);
-                    await this.page.waitForTimeout(500);
-                    await payerOption.click();
-                    break;
-                }
-            }
+            const payerOption = await exactPayerOption.isVisible()
+                ? exactPayerOption
+                : matchingPayerOption;
+            if (!await payerOption.isVisible()) continue;
+            await payerOption.click();
 
             const selectionCommitted = await expect
                 .poll(

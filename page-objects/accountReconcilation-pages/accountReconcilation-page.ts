@@ -302,45 +302,91 @@ export class AccountReconcilationPage{
 
     private async selectExactPayer(payerValue: string): Promise<void> {
         const normalizedPayer = payerValue.trim().toLowerCase();
-        const payerPattern = new RegExp(
-            `^\\s*${payerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`,
-            'i',
-        );
-        const payerOption = this.page.locator("mat-option").filter({hasText: payerPattern});
+        const searchValue = /ADNIC/i.test(payerValue)
+            ? "ADNIC"
+            : payerValue.replace(/\s*\([^)]*\)\s*$/, "").trim();
+        const escapedPayer = this.escapeRegex(payerValue);
+        const escapedSearchValue = this.escapeRegex(searchValue);
+        const exactPayerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
+        }).first();
+        const matchingPayerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(escapedSearchValue, "i"),
+        }).first();
+        const availablePayerOption = this.page
+            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
+            .filter({hasNotText: /^\s*-- Select --\s*$/})
+            .first();
         const transientErrorDialog = this.page.getByRole('dialog').filter({hasText: 'Unknown Error'});
 
         for (let attempt = 0; attempt < 3; attempt++) {
+            await this.ensureReconciliationFormReady();
             if (await transientErrorDialog.isVisible()) {
                 await transientErrorDialog.getByRole('button', {name: 'Close'}).click();
                 await expect(transientErrorDialog).toBeHidden();
             }
 
-            await this.payer.click({timeout: 15000});
-            await this.payer.fill("");
-
-            for (let index = 0; index < payerValue.length; index++) {
-                await this.payer.pressSequentially(payerValue[index], {delay: 200});
-                if (await transientErrorDialog.isVisible()) break;
-                if (index === 2) {
-                    await this.page.waitForTimeout(3000);
+            const payerReady = await this.payer
+                .click({timeout: 15000})
+                .then(() => true)
+                .catch(() => false);
+            if (!payerReady) {
+                const loaderCleared = await this.appLoader
+                    .waitFor({state: "hidden", timeout: 30000})
+                    .then(() => true)
+                    .catch(() => false);
+                if (!loaderCleared) {
+                    await this.ensureReconciliationFormReady();
                 }
-                if (await payerOption.isVisible()) {
-                    await expect(payerOption).toHaveCount(1);
-                    await this.page.waitForTimeout(500);
-                    await payerOption.click();
-                    break;
-                }
+                await this.payer.click({force: true, timeout: 10000});
             }
+            await this.payer.fill("");
+            const payerResponse = this.page.waitForResponse(
+                response =>
+                    response.url().includes("/payer/api/payers/") &&
+                    response.status() === 200,
+                {timeout: 30000},
+            );
+            await this.payer.pressSequentially(searchValue, {delay: 200});
+            await payerResponse;
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+            await this.payer.click();
+            await this.payer.press("ArrowDown");
+            await expect(availablePayerOption).toBeVisible({timeout: 15000});
+
+            const payerOption = await exactPayerOption.isVisible()
+                ? exactPayerOption
+                : matchingPayerOption;
+            if (!await payerOption.isVisible()) continue;
+            await payerOption.click();
+            await this.payer.click();
+            const reopenedOption = await exactPayerOption.isVisible()
+                ? exactPayerOption
+                : matchingPayerOption;
+            if (await reopenedOption.isVisible()) {
+                await reopenedOption.click();
+            }
+            await this.payer.press("Tab");
 
             const selectionCommitted = await expect
                 .poll(
                     async () => (await this.payer.inputValue()).trim().toLowerCase(),
-                    {timeout: 5000},
+                    {timeout: 10000},
                 )
                 .toBe(normalizedPayer)
                 .then(() => true)
                 .catch(() => false);
-            if (selectionCommitted) return;
+            if (!selectionCommitted) continue;
+
+            const currencyPopulated = await expect
+                .poll(
+                    async () => (await this.currency.inputValue()).trim(),
+                    {timeout: 20000},
+                )
+                .not.toBe("")
+                .then(() => true)
+                .catch(() => false);
+            if (currencyPopulated) return;
         }
 
         throw new Error(`Exact payer option "${payerValue}" could not be selected`);

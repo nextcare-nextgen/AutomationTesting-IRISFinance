@@ -125,10 +125,38 @@ export class ProviderFinancialSettlementPage {
 
     private async dismissTransientErrorDialog(): Promise<void> {
         const errorDialog = this.page.getByRole("dialog").filter({ hasText: "Unknown Error" });
-        if (await errorDialog.isVisible()) {
-            await errorDialog.getByRole("button", { name: "Close" }).click();
-            await expect(errorDialog).toBeHidden();
+        if (await errorDialog.isVisible().catch(() => false)) {
+            const closeButton = errorDialog.getByRole("button", { name: "Close" });
+            const closedNormally = await closeButton
+                .click({ timeout: 5000 })
+                .then(() => true)
+                .catch(() => false);
+            if (!closedNormally && await errorDialog.isVisible().catch(() => false)) {
+                await closeButton.click({ force: true, timeout: 5000 });
+            }
+            await expect(errorDialog).toBeHidden({ timeout: 10000 });
         }
+    }
+
+    private async clickSettlementRadioButton(radioButton: Locator): Promise<void> {
+        for (let attempt = 0; attempt < 2; attempt++) {
+            await this.ensureSettlementFormReady();
+            const clicked = await radioButton
+                .click({ timeout: 10000, force: attempt > 0 })
+                .then(() => true)
+                .catch(() => false);
+            if (clicked) {
+                const checked = await expect(radioButton)
+                    .toHaveClass(/mat-mdc-radio-checked/, { timeout: 10000 })
+                    .then(() => true)
+                    .catch(() => false);
+                if (checked) return;
+            }
+            await this.dismissTransientErrorDialog();
+            await this.appLoader.waitFor({ state: "hidden", timeout: 15000 }).catch(() => {});
+        }
+
+        throw new Error("Provider Financial Settlement radio button could not be selected");
     }
 
     private async ensureSettlementFormReady(): Promise<void> {
@@ -231,16 +259,11 @@ export class ProviderFinancialSettlementPage {
     }
 
     async clickOnPayersRadioButton() { 
-        await this.ensureSettlementFormReady();
-        await expect(this.payerRadio).toBeVisible({ timeout: 30000 });
-        await this.payerRadio.click();
-        await expect(this.payerRadio).toHaveClass(/mat-mdc-radio-checked/);
+        await this.clickSettlementRadioButton(this.payerRadio);
     }
 
     async clickOnReinsurerRadioRadioButton() { 
-        await expect(this.reinsurerRadio).toBeVisible({ timeout: 30000 });
-        await this.reinsurerRadio.click();
-        await expect(this.reinsurerRadio).toHaveClass(/mat-mdc-radio-checked/);
+        await this.clickSettlementRadioButton(this.reinsurerRadio);
     }
 
     async verifyReinsurerDropdownValues() {

@@ -9,6 +9,7 @@ export class LoginPage {
     readonly rememberMeCheckbox: Locator;
     readonly checkBoxSelector: Locator;
     readonly captchaError: Locator;
+    private loginUrl?: string;
 
 
     constructor(page: Page) {
@@ -48,7 +49,24 @@ export class LoginPage {
     }
 
     async gotoLoginPage(url: string) {
-        await this.page.goto(process.env.URL as string || url, { waitUntil: "domcontentloaded", timeout: 120000 });
+        this.loginUrl = process.env.URL || url;
+        let lastNavigationError: unknown;
+        for (let attempt = 0; attempt < 2; attempt++) {
+            try {
+                await this.page.goto(this.loginUrl, {
+                    waitUntil: "domcontentloaded",
+                    timeout: 120000,
+                });
+                return;
+            } catch (error) {
+                lastNavigationError = error;
+                if (attempt === 0) {
+                    console.warn("Initial login navigation failed; retrying once...");
+                    await this.page.waitForTimeout(2000);
+                }
+            }
+        }
+        throw lastNavigationError;
     }
 
     // async gotoLoginPage(url: string) {
@@ -82,17 +100,27 @@ export class LoginPage {
     // }
 
     async loginToApplication(superUser: string, password: string) {
-        const loginFormLoaded = await this.userNameOrEmailInputField
-            .waitFor({state: "visible", timeout: 60000})
-            .then(() => true)
-            .catch(() => false);
+        let loginFormLoaded = false;
+        for (let attempt = 0; attempt < 3; attempt++) {
+            loginFormLoaded = await this.userNameOrEmailInputField
+                .waitFor({state: "visible", timeout: 30000})
+                .then(() => true)
+                .catch(() => false);
+            if (loginFormLoaded) break;
 
-        if (!loginFormLoaded) {
-            console.log("Login form did not load; reloading once...");
-            await this.page.reload({waitUntil: "domcontentloaded", timeout: 120000});
+            if (attempt === 0) {
+                console.log("Login form did not load; reloading once...");
+                await this.page.reload({waitUntil: "domcontentloaded", timeout: 120000});
+            } else if (this.loginUrl) {
+                console.log("Login form still unavailable; navigating to the login URL once...");
+                await this.page.goto(this.loginUrl, {
+                    waitUntil: "domcontentloaded",
+                    timeout: 120000,
+                });
+            }
         }
 
-        await expect(this.userNameOrEmailInputField).toBeVisible({ timeout: 60000 });
+        expect(loginFormLoaded, "IRIS login form must be available").toBeTruthy();
         await this.userNameOrEmailInputField.fill(superUser);
 
         await expect(this.passwordInputField).toBeVisible({ timeout: 30000 });
@@ -125,8 +153,15 @@ export class LoginPage {
         const loginErrorDialog = this.page.getByRole("dialog").filter({ hasText: "Unknown Error" });
         if (await loginErrorDialog.isVisible().catch(() => false)) {
             console.log("Login returned Unknown Error; closing and retrying once...");
-            await loginErrorDialog.getByRole("button", { name: "Close" }).click();
-            await expect(loginErrorDialog).toBeHidden({ timeout: 30000 });
+            const closeButton = loginErrorDialog.getByRole("button", { name: "Close" });
+            const closedNormally = await closeButton
+                .click({ timeout: 5000 })
+                .then(() => true)
+                .catch(() => false);
+            if (!closedNormally && await loginErrorDialog.isVisible().catch(() => false)) {
+                await closeButton.click({ force: true, timeout: 5000 });
+            }
+            await expect(loginErrorDialog).toBeHidden({ timeout: 10000 });
             await expect(this.signinButton).toBeEnabled({ timeout: 30000 });
             await this.signinButton.click({ force: true });
         }

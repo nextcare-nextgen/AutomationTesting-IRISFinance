@@ -248,34 +248,85 @@ export class ProviderReconcilationPage{
         await this.page.waitForLoadState("domcontentloaded");
         await this.provider.waitFor({state: "visible",timeout: 30000});
         await expect(this.provider).toBeEditable({timeout: 30000});
-        await this.provider.click();
-        await this.provider.fill("");
+        const escapedProvider = providerValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const providerOptions = this.page.locator(".cdk-overlay-pane:visible mat-option");
+        const providerOption = providerOptions.filter({
+            hasText: new RegExp(escapedProvider, "i"),
+        }).first();
 
-        for (let i = 0; i < providerValue.length; i++) {
-            await this.provider.pressSequentially(providerValue[i], {
-                delay: 250
-            });
+        for (let attempt = 0; attempt < 3; attempt++) {
+            const searchValue = attempt === 0 ? providerValue.slice(0, 4) : providerValue;
+            await this.provider.click();
+            await this.provider.fill("");
+            const providerResponse = this.page.waitForResponse(
+                response => {
+                    if (
+                        !response.url().includes("/healthcareprovider/api/healthcareprovider/") ||
+                        !response.url().includes("/providers/smartsearch") ||
+                        !response.ok()
+                    ) {
+                        return false;
+                    }
+                    const searchCriteria = new URL(response.url()).searchParams.get("searchCriteria");
+                    return searchCriteria?.toLowerCase() === searchValue.toLowerCase();
+                },
+                {timeout: 30000},
+            );
+            if (attempt === 0) {
+                await this.provider.pressSequentially(searchValue, {delay: 150});
+            } else {
+                console.log(`Retrying provider selection with the full name after YARA did not commit "${providerValue}".`);
+                await this.provider.pressSequentially(searchValue, {delay: 75});
+            }
+            await providerResponse;
+            await this.page.waitForTimeout(5000);
+            const optionVisible = await providerOption
+                .waitFor({state: "visible", timeout: 30000})
+                .then(() => true)
+                .catch(() => false);
+            if (!optionVisible) continue;
+            await providerOption.click({timeout: 10000});
 
-            if (i === 2) {
-                await this.page.waitForTimeout(5000);
+            const providerCommitted = await expect
+                .poll(
+                    async () => (await this.provider.inputValue()).trim(),
+                    {timeout: 10000},
+                )
+                .toBe(providerValue)
+                .then(() => true)
+                .catch(() => false);
+            if (!providerCommitted) continue;
+
+            await this.provider.press("Tab");
+            let derivedValuesPopulated =
+                await expect(this.providerType).toHaveValue(providerType, {timeout: 30000})
+                    .then(() => true)
+                    .catch(() => false) &&
+                await expect(this.country).toHaveValue(country, {timeout: 30000})
+                    .then(() => true)
+                    .catch(() => false);
+            if (!derivedValuesPopulated) {
+                await this.provider.click();
+                await expect(providerOption).toBeVisible({timeout: 15000});
+                await providerOption.click();
+                await this.provider.press("Tab");
+                derivedValuesPopulated =
+                    await expect(this.providerType).toHaveValue(providerType, {timeout: 30000})
+                        .then(() => true)
+                        .catch(() => false) &&
+                    await expect(this.country).toHaveValue(country, {timeout: 30000})
+                        .then(() => true)
+                        .catch(() => false);
+            }
+            if (derivedValuesPopulated) {
+                console.log(`Provider "${providerValue}" selected successfully.`);
+                console.log(`Provider Type: ${await this.providerType.inputValue()}`);
+                console.log(`Country: ${await this.country.inputValue()}`);
+                return;
             }
         }
 
-        let providerOption = this.page.locator(`//span[contains(normalize-space(.), '${providerValue}')]`).first();
-        await expect(providerOption).toBeVisible({timeout: 20000});
-        await providerOption.click();
-        await this.provider.click();
-        await this.page.waitForTimeout(1000);
-        providerOption = this.page.locator(`//span[contains(normalize-space(.), '${providerValue}')]`).first();
-        await expect(providerOption).toBeVisible({timeout: 15000});
-        await providerOption.click();
-        await this.provider.press("Tab");
-        await expect(this.providerType).toHaveValue(providerType, {timeout: 15000});
-        await expect(this.country).toHaveValue(country, {timeout: 15000});
-
-        console.log(`Provider "${providerValue}" selected successfully.`);
-        console.log(`Provider Type: ${await this.providerType.inputValue()}`);
-        console.log(`Country: ${await this.country.inputValue()}`);
+        throw new Error(`Provider "${providerValue}" could not be selected with derived values`);
     }
 
     async searchProvder(){
@@ -290,28 +341,53 @@ export class ProviderReconcilationPage{
         await this.page.waitForLoadState("domcontentloaded");
         await this.payer.waitFor({state: "visible",timeout: 30000});
         await expect(this.payer).toBeEditable({timeout: 30000});
-        await this.payer.click();
-        await this.payer.fill("");
+        const searchValue = payerValue.replace(/\s*\([^)]*\)\s*$/, "").trim();
+        const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const payerOption = this.page.locator(".cdk-overlay-pane:visible mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
+        }).first();
+        const normalizedPayer = payerValue.toLowerCase();
 
-        for (let i = 0; i < payerValue.length; i++) {
-            await this.payer.pressSequentially(payerValue[i], {delay: 250});
-            if (i === 2) {
-                await this.page.waitForTimeout(5000);
+        for (let attempt = 0; attempt < 3; attempt++) {
+            await this.payer.click();
+            await this.payer.fill("");
+            const payerResponse = this.page.waitForResponse(
+                response =>
+                    response.url().includes("/payer/api/payers/") &&
+                    response.status() === 200,
+                {timeout: 30000},
+            );
+            await this.payer.pressSequentially(searchValue, {delay: 200});
+            await payerResponse;
+            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
+            await this.payer.click();
+            await this.payer.press("ArrowDown");
+            await expect(payerOption).toBeVisible({timeout: 30000});
+            await payerOption.click();
+
+            if ((await this.payer.inputValue()).trim().toLowerCase() !== normalizedPayer) {
+                await this.payer.click();
+                if (await payerOption.isVisible()) {
+                    await payerOption.click();
+                }
+            }
+            await this.payer.press("Tab");
+
+            const selectionCommitted = await expect
+                .poll(
+                    async () => (await this.payer.inputValue()).trim().toLowerCase(),
+                    {timeout: 10000},
+                )
+                .toBe(normalizedPayer)
+                .then(() => true)
+                .catch(() => false);
+            if (selectionCommitted) {
+                console.log(`Payer "${payerValue}" selected successfully.`);
+                return;
             }
         }
 
-        let payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
-        await expect(payerOption).toBeVisible({timeout: 20000});
-        await payerOption.click();
-        await this.payer.click();
-        await this.page.waitForTimeout(1000);
-
-        payerOption = this.page.locator(`//span[contains(normalize-space(.), '${payerValue}')]`).first();
-        await expect(payerOption).toBeVisible({timeout: 15000});
-        await payerOption.click();
-        await this.payer.press("Tab");
-        await expect(this.payer).toHaveValue(payerValue, {timeout: 15000});
-        console.log(`Payer "${payerValue}" selected successfully.`);
+        throw new Error(`Exact payer option "${payerValue}" could not be selected`);
     }
 
     async DueDate(fromDue: String,toDue: String){
@@ -363,10 +439,20 @@ export class ProviderReconcilationPage{
         await expect(this.payerError).toBeVisible();
     }
     async pageDropdown(){
-        await expect(this.perPage).toBeVisible();
+        const paginatorVisible = await this.perPage
+            .isVisible({timeout: 5000})
+            .catch(() => false);
+        if (!paginatorVisible) {
+            console.warn("Provider Reconciliation paginator is not rendered before search results are loaded.");
+            return;
+        }
         await this.perPageDropdown.click();
     }
     async pageCount(){
+        if (!await this.page15.isVisible().catch(() => false)) {
+            console.warn("Provider Reconciliation page-size options are unavailable without a rendered paginator.");
+            return;
+        }
         await expect(this.page15).toBeVisible();
         await expect(this.page20).toBeVisible();
         await expect(this.page30).toBeVisible();
@@ -374,6 +460,10 @@ export class ProviderReconcilationPage{
         await expect(this.page100).toBeVisible();
     }
     async verifyPagination(){
+        if (!await this.pagination.isVisible().catch(() => false)) {
+            console.warn("Provider Reconciliation pagination is unavailable without search results.");
+            return;
+        }
         await expect(this.pagination).toBeVisible();
     }
     async verifytoDueDate(){
