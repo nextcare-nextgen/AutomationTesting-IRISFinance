@@ -394,7 +394,7 @@ test('FIN-TC-1887 @sanity: TC11_Sanity_Account Transactions_Verify that all fiel
          await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
      })
   
-       await test.step("Verify that Account Transaction Page is visible", async () => {
+    await test.step("Verify that Account Transaction Page is visible", async () => {
          await accountTransactionPage.accountTransactionField();
      })
  
@@ -417,37 +417,37 @@ test('FIN-TC-1887 @sanity: TC11_Sanity_Account Transactions_Verify that all fiel
      const loginPage: LoginPage = new LoginPage(page);
      const accountTransactionPage: AccountTransactionPage = new AccountTransactionPage(page);
  
-     await test.step("User navigates to Mawista application", async () => {
-         await loginPage.gotoLoginPage(data['Login-Access'].url);
-     })
- 
-     await test.step("User Enter Username and Password", async () => {
-         await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
-     })
- 
-     await test.step("Click On Provider Transaction Under Financials", async () => {
-         await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
-     })
-  
-       await test.step("Verify that Account Transaction Page is visible", async () => {
-         await accountTransactionPage.accountTransactionField();
-     })
- 
-     await test.step("Verify that Account Transactions Page is visible", async () => {
-         await accountTransactionPage.validatefieldsVisibility();
-     })
- 
-      await test.step("Fill all the mandatory feilds", async () => {
-         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
-     })
- 
-     await test.step("Click on the Generate file button", async () => {
-         await accountTransactionPage.clickgeneratefile();
-     })
+        await test.step("User navigates to Mawista application", async () => {
+            await loginPage.gotoLoginPage(data['Login-Access'].url);
+        })
+    
+        await test.step("User Enter Username and Password", async () => {
+            await loginPage.loginToApplication(data['Login-Access'].userNameInput, data['Login-Access'].passwordInput);
+        })
+    
+        await test.step("Click On Provider Transaction Under Financials", async () => {
+            await accountTransactionPage.searchAndClickOnAccountTransactionUnderFinancials();
+        })
+    
+        await test.step("Verify that Account Transaction Page is visible", async () => {
+            await accountTransactionPage.accountTransactionField();
+        })
+    
+        await test.step("Verify that Account Transactions Page is visible", async () => {
+            await accountTransactionPage.validatefieldsVisibility();
+        })
+    
+        await test.step("Fill all the mandatory feilds", async () => {
+            await accountTransactionPage.fillReportPreferencesSanityDetails(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
+        })
+    
+        await test.step("Click on the Generate file button", async () => {
+            await accountTransactionPage.openGenerateFileForReportPreferencesSanity();
+        })
 
-     await test.step("Valdate that various fields have been populated correctly",async()=>{
-        await accountTransactionPage.generateDatefileFieldsVerified();
-     })
+        await test.step("Valdate that various fields have been populated correctly",async()=>{
+            await accountTransactionPage.generateDatefileFieldsVerified();
+        })
  
  });
  
@@ -478,11 +478,11 @@ test('FIN-TC-1887 @sanity: TC11_Sanity_Account Transactions_Verify that all fiel
      })
  
       await test.step("Fill all the mandatory feilds", async () => {
-         await accountTransactionPage.fillMandatoryDetailsWithRetry(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
+         await accountTransactionPage.fillReportPreferencesSanityDetails(AccountTransactionData["accountTransaction-001"].payer,AccountTransactionData["accountTransaction-001"].fromDeliveryDate,AccountTransactionData["accountTransaction-001"].todeliverydate,AccountTransactionData["accountTransaction-001"].Account);
      })
  
      await test.step("Click on the Generate file button", async () => {
-         await accountTransactionPage.clickgeneratefile();
+         await accountTransactionPage.openGenerateFileForReportPreferencesSanity();
      })
 
      await test.step("Validate that various fields have been populated correctly",async()=>{
@@ -490,7 +490,7 @@ test('FIN-TC-1887 @sanity: TC11_Sanity_Account Transactions_Verify that all fiel
      })
  
      await test.step("Validate that success job creation message is created",async()=>{
-        await accountTransactionPage.JobCreatedMsg();
+        await accountTransactionPage.generateReportAndVerifyJobCreated();
      })
  });
  

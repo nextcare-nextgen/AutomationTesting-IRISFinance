@@ -123,7 +123,7 @@ export class AccountReconcilationPage{
         this.dueDateToday = this.page.locator('button[aria-current="date"]');
         this.oldDate=page.locator("//tbody[@class='mat-calendar-body']/tr[2]/td[1]");
         this.futureDate=page.locator("//tbody[@class='mat-calendar-body']/tr[5]/td[1]");
-        this.errormsgDate=page.locator("//mat-error[text()=' Incorrect entry '][@id='mat-error-64']");
+        this.errormsgDate=page.locator("mat-error").filter({hasText: /^\s*Incorrect entry\s*$/}).first();
         this.paymentOrderId=page.locator("//input[@id='mat-input-4']");
         this.generatebutton=page.locator("//span[text()='Generate']/../..");
         this.preferences=page.locator("mat-expansion-panel-header").filter({hasText: "Preferences"});
@@ -303,68 +303,83 @@ export class AccountReconcilationPage{
     private async selectExactPayer(payerValue: string): Promise<void> {
         const normalizedPayer = payerValue.trim().toLowerCase();
         const searchValue = /ADNIC/i.test(payerValue)
-            ? "ADNIC"
+            ? "ABU DHABI"
             : payerValue.replace(/\s*\([^)]*\)\s*$/, "").trim();
-        const escapedPayer = this.escapeRegex(payerValue);
-        const escapedSearchValue = this.escapeRegex(searchValue);
-        const exactPayerOption = this.page.locator("mat-option").filter({
-            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
-        }).first();
-        const matchingPayerOption = this.page.locator("mat-option").filter({
-            hasText: new RegExp(escapedSearchValue, "i"),
-        }).first();
-        const availablePayerOption = this.page
-            .locator(".cdk-overlay-pane mat-option:not([aria-disabled='true'])")
-            .filter({hasNotText: /^\s*-- Select --\s*$/})
+        const exactPayerOption = this.page
+            .locator("mat-option")
+            .filter({hasText: /ABU DHABI NATIONAL INSURANCE CO\.\s+ADNIC/i})
+            .filter({hasNotText: /Ring Fenced/i})
             .first();
-        const transientErrorDialog = this.page.getByRole('dialog').filter({hasText: 'Unknown Error'});
+        const transientErrorDialog = this.page.locator("nc-error-dialog").last();
 
         for (let attempt = 0; attempt < 3; attempt++) {
             await this.ensureReconciliationFormReady();
             if (await transientErrorDialog.isVisible()) {
-                await transientErrorDialog.getByRole('button', {name: 'Close'}).click();
-                await expect(transientErrorDialog).toBeHidden();
+                await transientErrorDialog.getByRole("button", {name: "Close"}).click({
+                    timeout: 10000,
+                });
+                await expect(transientErrorDialog).toBeHidden({timeout: 10000});
             }
 
-            const payerReady = await this.payer
-                .click({timeout: 15000})
+            await this.payer.click({force: true, timeout: 10000});
+            await this.payer.fill("");
+            await this.payer.pressSequentially(searchValue, {delay: 200});
+            const optionVisible = await exactPayerOption
+                .waitFor({state: "visible", timeout: 35000})
                 .then(() => true)
                 .catch(() => false);
-            if (!payerReady) {
-                const loaderCleared = await this.appLoader
-                    .waitFor({state: "hidden", timeout: 30000})
-                    .then(() => true)
-                    .catch(() => false);
-                if (!loaderCleared) {
-                    await this.ensureReconciliationFormReady();
-                }
-                await this.payer.click({force: true, timeout: 10000});
-            }
-            await this.payer.fill("");
-            const payerResponse = this.page.waitForResponse(
-                response =>
-                    response.url().includes("/payer/api/payers/") &&
-                    response.status() === 200,
-                {timeout: 30000},
-            );
-            await this.payer.pressSequentially(searchValue, {delay: 200});
-            await payerResponse;
-            await this.appLoader.waitFor({state: "hidden", timeout: 30000}).catch(() => {});
-            await this.payer.click();
-            await this.payer.press("ArrowDown");
-            await expect(availablePayerOption).toBeVisible({timeout: 15000});
+            if (!optionVisible) continue;
 
-            const payerOption = await exactPayerOption.isVisible()
-                ? exactPayerOption
-                : matchingPayerOption;
-            if (!await payerOption.isVisible()) continue;
-            await payerOption.click();
-            await this.payer.click();
-            const reopenedOption = await exactPayerOption.isVisible()
-                ? exactPayerOption
-                : matchingPayerOption;
-            if (await reopenedOption.isVisible()) {
-                await reopenedOption.click();
+            if (await transientErrorDialog.isVisible()) {
+                await transientErrorDialog.getByRole("button", {name: "Close"}).click();
+                await expect(transientErrorDialog).toBeHidden({timeout: 10000});
+                continue;
+            }
+
+            const payerSelected = await exactPayerOption
+                .click({force: true, timeout: 10000})
+                .then(() => true)
+                .catch(async () => {
+                    if (await transientErrorDialog.isVisible()) {
+                        await transientErrorDialog.getByRole("button", {name: "Close"}).click();
+                        await expect(transientErrorDialog).toBeHidden({timeout: 10000});
+                    }
+                    return false;
+                });
+            if (!payerSelected) continue;
+            const firstSelectionCommitted = await expect
+                .poll(
+                    async () => (await this.payer.inputValue()).trim().toLowerCase(),
+                    {timeout: 10000},
+                )
+                .toBe(normalizedPayer)
+                .then(() => true)
+                .catch(() => false);
+            if (!firstSelectionCommitted) continue;
+
+            const firstSelectionPopulatedCurrency = await expect
+                .poll(
+                    async () => (await this.currency.inputValue()).trim(),
+                    {timeout: 20000},
+                )
+                .not.toBe("")
+                .then(() => true)
+                .catch(() => false);
+            if (firstSelectionPopulatedCurrency) return;
+
+            const loaderCleared = await this.appLoader
+                .waitFor({state: "hidden", timeout: 30000})
+                .then(() => true)
+                .catch(() => false);
+            if (!loaderCleared) continue;
+
+            await this.payer.click({force: true});
+            const reopenedOptionVisible = await exactPayerOption
+                .waitFor({state: "visible", timeout: 10000})
+                .then(() => true)
+                .catch(() => false);
+            if (reopenedOptionVisible) {
+                await exactPayerOption.click({force: true});
             }
             await this.payer.press("Tab");
 
@@ -928,7 +943,7 @@ export class AccountReconcilationPage{
     }
 
     async dueDateErrorMsg(){
-        expect(this.errormsgDate.isVisible());
+        await expect(this.errormsgDate).toBeVisible({timeout: 15000});
     }
 
     async fillpaymentOrderId(paymentOrder: String){

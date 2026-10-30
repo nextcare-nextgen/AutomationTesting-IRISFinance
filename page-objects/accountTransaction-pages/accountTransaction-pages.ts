@@ -793,6 +793,101 @@ export class AccountTransactionPage{
         await this.page.waitForTimeout(5000);
     }
 
+    async fillReportPreferencesSanityDetails(
+        payerValue: string,
+        fromDeliveryDate: string,
+        toDeliveryDate: string,
+        accountValue: string,
+    ): Promise<void> {
+        await this.ensureTransactionFormReady();
+        await this.selectReportPreferencesSanityPayer(payerValue);
+        await expect(this.Currency).not.toHaveValue("", {timeout: 30000});
+        await this.selectAvailableAccount(accountValue);
+
+        await this.fromdeliveryDate.click();
+        await this.fromdeliveryDate.fill(fromDeliveryDate.trim());
+        await this.fromdeliveryDate.press("Tab");
+        await this.page.waitForTimeout(5000);
+
+        await this.toDeliveryDate.click();
+        await this.toDeliveryDate.fill(toDeliveryDate.trim());
+        await this.toDeliveryDate.press("Tab");
+        await this.page.waitForTimeout(5000);
+
+        await expect(this.fromdeliveryDate).toHaveValue(fromDeliveryDate.trim(), {timeout: 10000});
+        await expect(this.toDeliveryDate).toHaveValue(toDeliveryDate.trim(), {timeout: 10000});
+    }
+
+    private async selectReportPreferencesSanityPayer(payerValue: string): Promise<void> {
+        await this.selectExactPayer(payerValue);
+        await this.recommitReportPreferencesSanityPayer(payerValue);
+    }
+
+    private async recommitReportPreferencesSanityPayer(payerValue: string): Promise<void> {
+        const escapedPayer = payerValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const exactPayerOption = this.page.locator("mat-option").filter({
+            hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, "i"),
+        }).first();
+
+        await this.payer.click();
+        await expect(exactPayerOption).toBeVisible({timeout: 10000});
+        await exactPayerOption.click();
+        await this.payer.press("Tab");
+        await expect(this.payer).toHaveValue(payerValue.trim(), {timeout: 10000});
+    }
+
+    private reportPreferencesDialog(): Locator {
+        return this.page
+            .locator("mat-dialog-container, [role='dialog']")
+            .filter({hasText: /Run Report\s*-\s*Account Transaction/i})
+            .last();
+    }
+
+    async openGenerateFileForReportPreferencesSanity(): Promise<void> {
+        const generateFileButton = this.page.getByRole("button", {
+            name: "Generate Data File",
+            exact: true,
+        });
+        const dialog = this.reportPreferencesDialog();
+        const validationDialog = this.page.locator("mat-dialog-container").filter({
+            hasText: "You should enter at least one of the related date",
+        }).last();
+        const payerValue = (await this.payer.inputValue()).trim();
+        const accountValue = (await this.Account.inputValue()).trim();
+        const fromDeliveryDate = (await this.fromdeliveryDate.inputValue()).trim();
+        const toDeliveryDate = (await this.toDeliveryDate.inputValue()).trim();
+
+        await expect(generateFileButton).toBeVisible({timeout: 30000});
+        await generateFileButton.click();
+        const dialogOpened = await dialog
+            .waitFor({state: "visible", timeout: 30000})
+            .then(() => true)
+            .catch(() => false);
+        if (dialogOpened) return;
+
+        if (await dialog.isVisible()) return;
+
+        if (await validationDialog.isVisible()) {
+            await validationDialog.getByRole("button", {name: "OK", exact: true}).click();
+            await expect(validationDialog).toBeHidden({timeout: 10000});
+        }
+
+        await this.recommitReportPreferencesSanityPayer(payerValue);
+        await expect(this.Currency).not.toHaveValue("", {timeout: 30000});
+        await this.selectAvailableAccount(accountValue);
+        await this.fromdeliveryDate.fill("");
+        await this.fromdeliveryDate.fill(fromDeliveryDate);
+        await this.fromdeliveryDate.press("Tab");
+        await this.page.waitForTimeout(5000);
+        await this.toDeliveryDate.fill("");
+        await this.toDeliveryDate.fill(toDeliveryDate);
+        await this.toDeliveryDate.press("Tab");
+        await this.page.waitForTimeout(5000);
+
+        await generateFileButton.click();
+        await expect(dialog).toBeVisible({timeout: 30000});
+    }
+
     async verifySearch(provider: String){
         await this.page.waitForTimeout(5000);
         await this.search.click();
@@ -1419,6 +1514,52 @@ export class AccountTransactionPage{
 
     async JobCreatedMsg(){
         expect(await this.page.locator('snack-bar-container').isVisible());
+    }
+
+    async generateReportAndVerifyJobCreated(): Promise<void> {
+        const dialog = this.reportPreferencesDialog();
+        const generateButton = dialog.getByRole("button", {
+            name: "Generate",
+            exact: true,
+        });
+        const fileNameLabel = dialog.locator("mat-label").filter({
+            hasText: /^\s*File Name\s*$/,
+        });
+        const fileNameField = fileNameLabel
+            .locator("xpath=ancestor::mat-form-field")
+            .locator("input");
+        const titleLabel = dialog.locator("mat-label").filter({
+            hasText: /^\s*Title\s*$/,
+        });
+        const titleField = titleLabel
+            .locator("xpath=ancestor::mat-form-field")
+            .locator("input");
+        const successMessage = this.page
+            .locator(
+                "simple-snack-bar, snack-bar-container, mat-snack-bar-container, .mat-mdc-snack-bar-container",
+            )
+            .first();
+
+        await expect(dialog).toBeVisible({timeout: 30000});
+        const reportName = `sanity-report-${Date.now()}`;
+        await expect(titleField).toBeEditable({timeout: 15000});
+        await titleField.fill(reportName);
+        await expect(fileNameField).toBeEditable({timeout: 15000});
+        await fileNameField.fill(reportName);
+        await expect(generateButton).toBeEnabled({timeout: 15000});
+        const dispatchResponsePromise = this.page.waitForResponse(
+            response =>
+                response.request().method() === "POST" &&
+                response.url().includes("/reportingdispatcher/api/print/v1.0"),
+            {timeout: 30000},
+        );
+        await generateButton.click();
+        const dispatchResponse = await dispatchResponsePromise;
+        expect(dispatchResponse.ok(), "Report dispatcher request must succeed").toBeTruthy();
+        const dispatchResult = await dispatchResponse.json();
+        expect(Array.isArray(dispatchResult), "Report dispatcher response must be a list").toBeTruthy();
+        expect(dispatchResult[0]?.statusDesc).toBe("Requested");
+        await expect(successMessage).toBeVisible({timeout: 15000});
     }
 
     async verifyfromDeleiveryDate(){

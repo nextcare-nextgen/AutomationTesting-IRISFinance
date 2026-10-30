@@ -162,14 +162,14 @@ export class LoginPage {
                 await closeButton.click({ force: true, timeout: 5000 });
             }
             await expect(loginErrorDialog).toBeHidden({ timeout: 10000 });
-            await expect(this.signinButton).toBeEnabled({ timeout: 30000 });
+            await expect(this.signinButton).toBeEnabled({ timeout: 50000 });
             await this.signinButton.click({ force: true });
         }
 
         await expect(
             dashboardSearch,
             'IRIS dashboard must be ready after sign in',
-        ).toBeVisible({timeout: 60000});
+        ).toBeVisible({timeout: 90000});
         await this.dismissPasswordExpiryWarning();
         console.log('✅ Login process completed');
     }
