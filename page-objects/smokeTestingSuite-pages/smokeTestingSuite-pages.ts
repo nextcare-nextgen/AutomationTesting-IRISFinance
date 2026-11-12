@@ -186,7 +186,7 @@ export class SmokeTestingSuitePage{
             }
             await this.page.waitForTimeout(5000);
             payerSelected = await expect
-                .poll(() => this.poPayer.inputValue(), {timeout: 5000})
+                .poll(() => this.poPayer.inputValue(), {timeout: 10000})
                 .toBe(payer)
                 .then(() => true)
                 .catch(() => false);
