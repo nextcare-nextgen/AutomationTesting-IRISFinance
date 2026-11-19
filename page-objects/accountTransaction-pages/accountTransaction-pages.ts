@@ -396,7 +396,7 @@ export class AccountTransactionPage{
         await this.page.waitForLoadState("networkidle");
         await this.payer.fill("");  
         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+            const option = this.page.locator(`//span[text()='${payerValue.trim()}']`).first();
         await option.waitFor({ state: "visible", timeout: 10000 });
         await option.click();      
         await this.Account.click();
@@ -1588,7 +1588,7 @@ export class AccountTransactionPage{
         await this.page.waitForLoadState("networkidle");
         await this.payer.fill("");  
         for (const char of payerValue) {await this.payer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
+             const option = this.page.locator(`//span[text()='${payerValue.trim()}']`).first();
         await option.waitFor({ state: "visible", timeout: 10000 });
         await option.click();      
         await this.Account.click();

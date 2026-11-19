@@ -1,8 +1,190 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="86.03489599999995">
-<testsuite name="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" timestamp="2026-11-12T06:54:10.134Z" hostname="Mawista-EU" tests="1" failures="0" skipped="0" time="67.717" errors="0">
-<testcase name="FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="67.717">
+<testsuites id="" name="" tests="14" failures="3" skipped="0" errors="0" time="840.094956">
+<testsuite name="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" timestamp="2026-11-19T09:09:37.359Z" hostname="Mawista-EU" tests="14" failures="3" skipped="0" time="822.638" errors="0">
+<testcase name="FIN-TC-1741 @smoke: TC_001_Payment Orders_Verify that the user is able to navigate to Payment Orders_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="34.159">
 <system-out>
 <![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="91.223">
+<failure message="smokeTestingSuite.spec.ts:28:6 FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\smokeTestingSuite\smokeTestingSuite.spec.ts:28:6 › FIN-TC-1742 @smoke: TC_002_Create New_verify that click on create new button Payment Order popup window display_Smoke › Search all the mandatory feilds 
+
+    Error: Exact payer option "TEST PAYER (Do Not Use1)" must be selected
+
+    expect(received).toBeTruthy()
+
+    Received: false
+
+       at page-objects\smokeTestingSuite-pages\smokeTestingSuite-pages.ts:197
+
+      195 |             }
+      196 |         }
+    > 197 |         expect(payerSelected, `Exact payer option "${payer}" must be selected`).toBeTruthy();
+          |                                                                                 ^
+      198 |         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+      199 |
+      200 |         await expect(this.poAccount).toBeVisible({ timeout: 10000 });
+
+        at SmokeTestingSuitePage.fillMandaoryDetails (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\page-objects\smokeTestingSuite-pages\smokeTestingSuite-pages.ts:197:81)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\tests\smokeTestingSuite\smokeTestingSuite.spec.ts:46:10)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\common\testType.js:236:24)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\tests\smokeTestingSuite\smokeTestingSuite.spec.ts:45:5)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\workerMain.js:336:9)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\testInfo.js:297:11)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\workerMain.js:328:7)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\testInfo.js:297:11)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-smokeTestingSuite-sm-55a20--popup-window-display-Smoke-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[✅ Login process completed
+
+[[ATTACHMENT|..\test-results\tests-smokeTestingSuite-sm-55a20--popup-window-display-Smoke-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="74.173">
+<failure message="smokeTestingSuite.spec.ts:55:6 FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\smokeTestingSuite\smokeTestingSuite.spec.ts:55:6 › FIN-TC-1743 @smoke: TC_003_Payment Order popup_verify that Payment Order Type and corrections option  dropdown display_Smoke › Search all the mandatory feilds 
+
+    Error: Exact payer option "TEST PAYER (Do Not Use1)" must be selected
+
+    expect(received).toBeTruthy()
+
+    Received: false
+
+       at page-objects\smokeTestingSuite-pages\smokeTestingSuite-pages.ts:197
+
+      195 |             }
+      196 |         }
+    > 197 |         expect(payerSelected, `Exact payer option "${payer}" must be selected`).toBeTruthy();
+          |                                                                                 ^
+      198 |         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+      199 |
+      200 |         await expect(this.poAccount).toBeVisible({ timeout: 10000 });
+
+        at SmokeTestingSuitePage.fillMandaoryDetails (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\page-objects\smokeTestingSuite-pages\smokeTestingSuite-pages.ts:197:81)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\tests\smokeTestingSuite\smokeTestingSuite.spec.ts:73:10)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\common\testType.js:236:24)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\tests\smokeTestingSuite\smokeTestingSuite.spec.ts:72:5)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\workerMain.js:336:9)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\testInfo.js:297:11)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\workerMain.js:328:7)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\testInfo.js:297:11)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-smokeTestingSuite-sm-81ba0-tion-dropdown-display-Smoke-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[✅ Login process completed
+
+[[ATTACHMENT|..\test-results\tests-smokeTestingSuite-sm-81ba0-tion-dropdown-display-Smoke-Mawista-EU\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1744 @smoke: TC_004_Payer&apos;s Financial Collection_verify that user is navigate to Payer&apos;s Financial collection_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="49.618">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1745 @smoke: TC_005_Payer&apos;s Financial Collection_verify that  all fields are displayed in Payer/Reinsurer Information , Bank Account Information , Collection Information_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="48.356">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1746 @smoke: TC_006_Payer&apos;s Financial Collection_verify that click on search button without filing any fields proper messages are displayed for mandatory fields_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="48.883">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1747 @smoke: TC_007_Account Transaction_Verify that user is navigate to Account Transaction_smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="49.794">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1748 @smoke: TC_008_Account Transaction_Verify that  without filling any values and click on search_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="49.507">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1749 @smoke: TC_009_Account Reconciliation_Verify that user is navigate to Account  Reconciliation_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="46.095">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1750 @smoke: TC_010_Account Reconciliation_Verify that user can search by PO ID- Ex-3600709_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="78.028">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1751 @smoke: TC_011_provider Reconciliation_Verify that user is navigate to provider Reconciliation_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="46.689">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1752 @smoke: TC_012_provider Reconciliation_Verify that in Search Criteria, batch criteria, Transactions  all fields are displayed_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="49.837">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1753 @smoke: TC_013_Provider&apos;s Financial Settlement_verify that  payer and reinsurer radio button are displayed_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="50.171">
+<system-out>
+<![CDATA[✅ Login process completed
+]]>
+</system-out>
+</testcase>
+<testcase name="FIN-TC-1754 @smoke: TC_014_Provider&apos;s Financial Settlement_Verify that when Payer is selected, then  Payer&apos;s auto populated list should be display_Smoke" classname="tests\smokeTestingSuite\smokeTestingSuite.spec.ts" time="106.105">
+<failure message="smokeTestingSuite.spec.ts:331:6 FIN-TC-1754 @smoke: TC_014_Provider&apos;s Financial Settlement_Verify that when Payer is selected, then  Payer&apos;s auto populated list should be display_Smoke" type="FAILURE">
+<![CDATA[  [Mawista-EU] › tests\smokeTestingSuite\smokeTestingSuite.spec.ts:331:6 › FIN-TC-1754 @smoke: TC_014_Provider's Financial Settlement_Verify that when Payer is selected, then  Payer's auto populated list should be display_Smoke › Fill all the mandatory details 
+
+    TimeoutError: locator.waitFor: Timeout 20000ms exceeded.
+    Call log:
+      - waiting for locator('//span[text()=\'TEST PAYER (Do Not Use)\']').first() to be visible
+
+
+       at page-objects\smokeTestingSuite-pages\smokeTestingSuite-pages.ts:387
+
+      385 |             await this.pfsPayer.fill("");
+      386 |             for (const char of payer) {await this.pfsPayer.type(char, { delay: 250 }); }
+    > 387 |             await option.waitFor({ state: "visible", timeout: 20000 });
+          |                          ^
+      388 |         }
+      389 |         await option.click();      
+      390 |     }
+
+        at SmokeTestingSuitePage.fillPayer (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\page-objects\smokeTestingSuite-pages\smokeTestingSuite-pages.ts:387:26)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\tests\smokeTestingSuite\smokeTestingSuite.spec.ts:349:11)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\common\testType.js:236:24)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\tests\smokeTestingSuite\smokeTestingSuite.spec.ts:348:9)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\workerMain.js:336:9)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\testInfo.js:297:11)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\workerMain.js:328:7)
+        at C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (C:\Users\ashwini.sunil.yeskar\Replacement Data\Replacement Data\AutomationTesting-IRISPortal-Playwright (2)\AutomationTesting-IRISPortal-Playwright\2)\AutomationTesting-IRISPortal-Playwright\node_modules\playwright\lib\worker\testInfo.js:297:11)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\tests-smokeTestingSuite-sm-11d22-ist-should-be-display-Smoke-Mawista-EU\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[✅ Login process completed
+
+[[ATTACHMENT|..\test-results\tests-smokeTestingSuite-sm-11d22-ist-should-be-display-Smoke-Mawista-EU\test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>

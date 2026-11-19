@@ -168,36 +168,27 @@ export class SmokeTestingSuitePage{
         const payerOption = this.page.locator('mat-option').filter({
             hasText: new RegExp(`^\\s*${escapedPayer}\\s*$`, 'i'),
         });
-        let payerSelected = false;
-        for (let attempt = 0; attempt < 2 && !payerSelected; attempt++) {
-            await this.poPayer.click();
-            await this.poPayer.fill("");
-            for (let index = 0; index < payer.length; index++) {
-                await this.poPayer.pressSequentially(payer[index], {delay: 200});
-                if (index === 2) {
-                    await this.page.waitForTimeout(3000);
-                }
-                if (await payerOption.isVisible()) {
-                    await expect(payerOption).toHaveCount(1);
-                    await this.page.waitForTimeout(1000);
-                    await payerOption.click();
-                    break;
-                }
-            }
-            await this.page.waitForTimeout(5000);
-            payerSelected = await expect
-                .poll(() => this.poPayer.inputValue(), {timeout: 10000})
-                .toBe(payer)
-                .then(() => true)
-                .catch(() => false);
-            if (!payerSelected) {
-                await this.page.waitForTimeout(1000);
-            }
+        await this.poPayer.click();
+        await this.poPayer.fill("");
+        await this.poPayer.pressSequentially(payer.slice(0, 3), {delay: 200});
+        await this.page.waitForTimeout(8000);
+        await this.poPayer.pressSequentially(payer.slice(3), {delay: 200});
+        await payerOption.first().waitFor({ state: "visible", timeout: 60000 });
+        await this.page.waitForTimeout(3000);
+        await payerOption.first().click();
+        if (!(await payerOption.first().waitFor({ state: "hidden", timeout: 3000 }).then(() => true).catch(() => false))) {
+            await payerOption.first().evaluate((el: HTMLElement) => el.click());
         }
-        expect(payerSelected, `Exact payer option "${payer}" must be selected`).toBeTruthy();
+        await expect(this.poPayer).toHaveValue(payer);
         await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
         await expect(this.poAccount).toBeVisible({ timeout: 10000 });
+        const accountPopulated = await expect(this.poAccount).toContainText(account, { timeout: 15000 })
+            .then(() => true)
+            .catch(() => false);
+        if (accountPopulated) {
+            return;
+        }
         await this.poAccount.click();
         const accountOption = this.page.locator("mat-option", {
             hasText: account
@@ -375,18 +366,20 @@ export class SmokeTestingSuitePage{
          expect(await this.providerreisurerRadio.isVisible());
     }
 
-    async fillPayer(payer: String,account:String){
+    async fillPayer(payer: string,account:String){
         await this.pfsPayer.fill("");  
-        for (const char of payer) {await this.pfsPayer.type(char, { delay: 200 }); }
-        const option = this.page.locator("//span[text()='TEST PAYER (Do Not Use)']").first();
-        try {
-            await option.waitFor({ state: "visible", timeout: 20000 });
-        } catch {
-            await this.pfsPayer.fill("");
-            for (const char of payer) {await this.pfsPayer.type(char, { delay: 250 }); }
-            await option.waitFor({ state: "visible", timeout: 20000 });
+        await this.pfsPayer.pressSequentially(payer.slice(0, 3), {delay: 200});
+        await this.page.waitForTimeout(8000);
+        await this.pfsPayer.pressSequentially(payer.slice(3), {delay: 200});
+        const option = this.page.locator('mat-option').filter({
+            hasText: new RegExp(`^\\s*${payer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'i'),
+        }).first();
+        await option.waitFor({ state: "visible", timeout: 60000 });
+        await this.page.waitForTimeout(3000);
+        await option.click();
+        if (!(await option.waitFor({ state: "hidden", timeout: 3000 }).then(() => true).catch(() => false))) {
+            await option.evaluate((el: HTMLElement) => el.click());
         }
-        await option.click();      
     }
     async searchAndClickOnPayersCollectionUnderFinancials(){
           await this.searchIcon.waitFor({ state: 'visible' });

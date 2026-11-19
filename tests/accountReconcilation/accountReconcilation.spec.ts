@@ -5,7 +5,7 @@ import '../../page-objects/utilities-pages/global-setup.ts';
 const data = require(`../../testdata/${process.env.ENV || 'eu'}/login.json`) as Record<string, any>;
 const AccountReconcilationData = require(`../../testdata/${process.env.ENV||'eu'}/accountReconcilation.json`) as Record< string,any >
 
-1
+//1
 test('FIN-TC-131: TC_132_Account Reconciliation_Verify that user is navigate to Account  Reconciliation', async ({ page }) => {
 
     const loginPage: LoginPage = new LoginPage(page);

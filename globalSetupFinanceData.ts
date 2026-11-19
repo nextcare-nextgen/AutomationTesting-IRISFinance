@@ -515,6 +515,10 @@ export async function setupFinanceOrchestratorData(): Promise<void> {
 
     const paths = resolveFinanceArtifactPaths(__dirname);
     const { financeData } = loadAndValidateFinanceArtifacts(paths);
+    const generatedAt = (financeData._metadata as JsonObject | undefined)?.generatedAt;
+    console.log('[globalSetup] ── TEST-UAE Finance data injection ─────────────');
+    console.log(`[globalSetup] Finance artifacts: ${paths.financeDirectory}`);
+    console.log(`[globalSetup] Finance data generatedAt: ${generatedAt}`);
     const targetFiles = mapFinanceData(financeData, __dirname);
     writeMappedFinanceData(targetFiles);
     console.log(
