@@ -409,7 +409,12 @@ export class ProviderFinancialSettlementPage {
 
         for (let attempt = 0; attempt < 3; attempt++) {
             await this.ensureSettlementFormReady();
-            await this.payerDropdown.click({ timeout: 15000 });
+            await this.appLoader.waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
+            const payerFieldClicked = await this.payerDropdown
+                .click({ timeout: 15000 })
+                .then(() => true)
+                .catch(() => false);
+            if (!payerFieldClicked) continue;
             await this.payerDropdown.fill('');
             const currentSearchValue = searchValue;
             const payerResponse = this.page.waitForResponse(

@@ -215,7 +215,10 @@ export class AccountReconcilationPage{
         await expect(firstAccountOption, "At least one account must be available").toBeVisible({
             timeout: 20000,
         });
-        await firstAccountOption.click();
+        // Options re-render while the list loads, so retry the click until it is stable
+        await expect(async () => {
+            await firstAccountOption.click({timeout: 5000});
+        }).toPass({timeout: 30000});
         console.log(`Payer "${payerValue}" selected successfully.`);
     }
 
@@ -437,7 +440,9 @@ export class AccountReconcilationPage{
             hasText: /^\s*ADNIC - Escrow\s*$/i,
         });
         await expect(accountOption).toBeVisible({timeout: 20000});
-        await accountOption.click();
+        await expect(async () => {
+            await accountOption.click({timeout: 5000});
+        }).toPass({timeout: 30000});
 
         await this.fromDueDate.fill(fromDue.trim());
         await this.fromDueDate.press("Tab");
