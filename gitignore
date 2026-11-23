@@ -3,3 +3,13 @@ allure-report/
 allure/
 test-results/
 playwright-report/
+node_modules/
+ 
+# Playwright
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+ 
+# Test Data Orchestrator artifact landing folder
+orchestrator-data/

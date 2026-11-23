@@ -142,11 +142,11 @@ test("FIN-TC-1746 @smoke: TC_006_Payer's Financial Collection_verify that click 
     })
 
     await test.step("Click on the Search button", async () => {
-         await smokeTestingSuitePage.clickonSearch();
+        await smokeTestingSuitePage.clickonSearch();
      })
  
-     await test.step("Validate thst popup should be displayed",async()=>{
-         await smokeTestingSuitePage.verifyErrorMsg();
+    await test.step("Validate thst popup should be displayed",async()=>{
+        await smokeTestingSuitePage.verifyErrorMsg();
      })
  });
 
